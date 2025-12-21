@@ -1,0 +1,183 @@
+
+████████████████████████████████████████████████████████████
+  CONVERSATION SIMULATION: SIMULATED_ANNEALING
+████████████████████████████████████████████████████████████
+============================================================
+CONVERSATION SIMULATION WITH OPTIMIZATION
+============================================================
+
+Initializing Hybrid System...
+============================================================
+INITIALIZING HYBRID QUANTUM-LLM SYSTEM
+============================================================
+QuantumCore: Loading semantic space...
+  Loaded 19055 states
+QuantumCore: Loading verb transitions...
+  Loaded 2444 verbs, 1285 subject-specific patterns
+QuantumCore: Loading spin pairs...
+  Loaded 93 spin pairs
+  Examples:
+    array ↔ disarray (cos=-0.09, Δτ=0.17)
+    quest ↔ inquest (cos=0.36, Δτ=0.43)
+    junction ↔ injunction (cos=-0.94, Δτ=0.47)
+    approval ↔ disapproval (cos=-0.48, Δτ=0.09)
+    tent ↔ intent (cos=-0.25, Δτ=0.15)
+OllamaRenderer: Using qwen2.5:1.5b (local)
+============================================================
+SYSTEM READY
+============================================================
+
+Initializing Semantic Optimizer...
+Initializing SemanticOptimizer...
+OllamaRenderer: Using qwen2.5:1.5b (local)
+Precomputing j_norms...
+  Cached 19055 j_norm values
+Building verb index...
+  Indexed 2444 verbs -> 2976 objects
+  Using DYNAMIC graph (on-demand neighbor computation)
+  Available: 2444 verbs, 2444 indexed
+
+Using algorithm: simulated_annealing
+
+############################################################
+DIALOGUE 1: From Darkness to Light
+Algorithm: simulated_annealing
+############################################################
+
+============================================================
+STARTING DIALOGUE
+Initial concepts: ['darkness', 'fear', 'hope']
+Overall intent: good
+============================================================
+
+────────────────────────────────────────────────────────────
+TURN 1
+────────────────────────────────────────────────────────────
+
+[CLAUDE]: Let's explore 'darkness' (g=+0.09, tau=2.11)
+         Intent: navigate toward 'good'
+
+  [OPTIMIZER] Running simulated_annealing...
+  Step 0 (T=1.000): darkness --hand--> package ↓ Δ=-0.068
+  Step 2 (T=0.810): package --mutter--> prayer ↑ Δ=+0.251
+  Step 3 (T=0.729): prayer --destroy--> kingdom ↑ Δ=+0.011
+  Step 5 (T=0.590): kingdom --instill--> habit ↓ Δ=-0.597
+  Step 6 (T=0.531): habit --spill--> bean ↑ Δ=+0.016
+  Step 7 (T=0.478): bean --hate--> change ↑ Δ=+0.686
+  Step 8 (T=0.430): change --span--> hip ↑ Δ=+0.053
+  Step 9 (T=0.387): hip --resemble--> pyramid ↓ Δ=-0.429
+  Step 10 (T=0.349): pyramid --name--> price ↓ Δ=-0.212
+  Step 12 (T=0.282): price --sport--> grin ↑ Δ=+0.121
+  Step 13 (T=0.254): grin --numb--> shoulder ↓ Δ=-0.113
+  Step 14 (T=0.229): shoulder --spot--> figure ↑ Δ=+0.462
+  [OPTIMIZER] Path: darkness -> package -> prayer -> kingdom -> habit -> bean -> change -> hip -> pyramid -> price -> grin -> shoulder -> figure
+  [OPTIMIZER] Improvement: +0.353 in 12 steps
+
+  [FEEDBACK LOOP] Attempt 1/3
+    [LLM] Rendering trajectory...
+    [LLM] Output: "Darkness swallowed everything, causing him to forget his true purpose, leading t..."
+    [VERIFY] Fidelity: 0.52 | Extracted: 62 words
+    [FEEDBACK] ✓ ACCEPTED (fidelity >= 0.4)
+
+[HYBRID (Simulated Annealing)]:
+  Response: "Darkness swallowed everything, causing him to forget his true purpose, leading to a package being thrown away, then finding it again after a period of..."
+  Path: darkness -> package -> prayer -> kingdom -> habit -> bean -> change -> hip -> pyramid -> price -> grin -> shoulder -> figure
+  Delta-g: +0.353 | Efficiency: 0.0294
+  Steps: 12 | Fidelity: 0.52 | Accepted: True
+  Arrived at: 'hip'
+
+────────────────────────────────────────────────────────────
+TURN 2
+────────────────────────────────────────────────────────────
+
+[CLAUDE]: Let's explore 'fear' (g=+0.59, tau=2.28)
+         Intent: navigate toward 'good'
+
+  [OPTIMIZER] Running simulated_annealing...
+  Step 1 (T=0.900): fear --answer--> ring ↓ Δ=-0.727
+  Step 2 (T=0.810): ring --reflect--> candlelight ↓ Δ=-0.257
+  Step 3 (T=0.729): candlelight --acquire--> tinge ↑ Δ=+0.566
+  Step 4 (T=0.656): tinge --void--> provision ↓ Δ=-0.387
+  Step 5 (T=0.590): provision --shine--> blue ↑ Δ=+0.443
+  Step 6 (T=0.531): blue --investigate--> possibility ↑ Δ=+0.389
+  Step 8 (T=0.430): possibility --massage--> nipple ↑ Δ=+0.063
+  Step 12 (T=0.282): nipple --wave--> car ↓ Δ=-0.018
+  [OPTIMIZER] Path: fear -> ring -> candlelight -> tinge -> provision -> blue -> possibility -> nipple -> car
+  [OPTIMIZER] Improvement: +0.090 in 8 steps
+
+  [FEEDBACK LOOP] Attempt 1/3
+    [LLM] Rendering trajectory...
+    [LLM] Output: "The fear of leaving led to a feeling of abandonment. The candle was lit with car..."
+    [VERIFY] Fidelity: 0.47 | Extracted: 57 words
+    [FEEDBACK] ✓ ACCEPTED (fidelity >= 0.4)
+
+[HYBRID (Simulated Annealing)]:
+  Response: "The fear of leaving led to a feeling of abandonment. The candle was lit with care, casting gentle light over everything. She discovered that her heart..."
+  Path: fear -> ring -> candlelight -> tinge -> provision -> blue -> possibility -> nipple -> car
+  Delta-g: +0.090 | Efficiency: 0.0113
+  Steps: 8 | Fidelity: 0.47 | Accepted: True
+  Arrived at: 'nipple'
+
+[CLAUDE] (following hybrid's lead with 'nipple')
+
+────────────────────────────────────────────────────────────
+TURN 3
+────────────────────────────────────────────────────────────
+
+[CLAUDE]: Let's explore 'nipple' (g=+0.68, tau=2.42)
+         Intent: navigate toward 'good'
+
+  [OPTIMIZER] Running simulated_annealing...
+  Step 0 (T=1.000): nipple --paint--> pink ↓ Δ=-0.644
+  Step 1 (T=0.900): pink --drag--> friend ↑ Δ=+0.478
+  Step 2 (T=0.810): friend --bother--> hell ↓ Δ=-0.020
+  Step 3 (T=0.729): hell --dig--> trench ↓ Δ=-0.800
+  Step 4 (T=0.656): trench --dispel--> discomfort ↑ Δ=+0.584
+  Step 5 (T=0.590): discomfort --hate--> government ↑ Δ=+0.042
+  Step 6 (T=0.531): government --traverse--> length ↑ Δ=+0.690
+  [OPTIMIZER] Path: nipple -> pink -> friend -> hell -> trench -> discomfort -> government -> length
+  [OPTIMIZER] Improvement: +0.331 in 7 steps
+
+  [FEEDBACK LOOP] Attempt 1/3
+    [LLM] Rendering trajectory...
+    [LLM] Output: "The nipple flickered at an unsettling sensation, followed by a tingling warmth s..."
+    [VERIFY] Fidelity: 0.30 | Extracted: 56 words
+    [FEEDBACK] ✗ REJECTED (fidelity < 0.4), retrying...
+
+  [FEEDBACK LOOP] Attempt 2/3
+    [LLM] Rendering trajectory...
+    [LLM] Output: "The nipple was pressed against a soft surface, followed by sensation that tickle..."
+    [VERIFY] Fidelity: 0.53 | Extracted: 59 words
+    [FEEDBACK] ✓ ACCEPTED (fidelity >= 0.4)
+
+[HYBRID (Simulated Annealing)]:
+  Response: "The nipple was pressed against a soft surface, followed by sensation that tickled and tingled, leading to an awareness of a body part transitioning in..."
+  Path: nipple -> pink -> friend -> hell -> trench -> discomfort -> government -> length
+  Delta-g: +0.331 | Efficiency: 0.0473
+  Steps: 7 | Fidelity: 0.53 | Accepted: True
+  Arrived at: 'length'
+
+============================================================
+CONVERSATION SUMMARY
+============================================================
+
+Algorithm: simulated_annealing
+Turns: 3
+Total semantic movement (delta-g): +0.774
+Average fidelity: 0.505
+Average efficiency: 0.0293
+Total optimization steps: 27
+Total LLM retries: 4
+Accepted responses: 3/3
+
+Conversation flow:
+  1. darkness -> hip (Dg=+0.353, eff=0.0294, steps=12)
+  2. fear -> nipple (Dg=+0.090, eff=0.0113, steps=8)
+  3. nipple -> length (Dg=+0.331, eff=0.0473, steps=7)
+
+Semantic journey:
+  Started: darkness (g=+0.091)
+  Ended:   length (g=+1.014)
+  Net change: +0.924
+
+[Quick mode - stopping after 1 dialogue]
