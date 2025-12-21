@@ -1,0 +1,45 @@
+Initializing SemanticOptimizer...
+QuantumCore: Loading semantic space...
+  Loaded 19055 states
+QuantumCore: Loading verb transitions...
+  Loaded 2444 verbs, 1285 subject-specific patterns
+QuantumCore: Loading spin pairs...
+  Loaded 93 spin pairs
+  Examples:
+    fidelity ↔ infidelity (cos=-0.77, Δτ=0.28)
+    quiet ↔ disquiet (cos=-0.38, Δτ=0.01)
+    plantation ↔ implantation (cos=-0.97, Δτ=0.47)
+    sect ↔ insect (cos=-0.88, Δτ=0.03)
+    agreement ↔ disagreement (cos=-0.98, Δτ=0.45)
+OllamaRenderer: Using qwen2.5:1.5b (local)
+Precomputing j_norms...
+  Cached 19055 j_norm values
+Building verb index...
+  Indexed 2444 verbs -> 2976 objects
+Building spin index (quantum tunneling)...
+  Indexed 187 spin transitions (quantum tunneling enabled)
+  Tunneling formula: P = e^(-2κd)
+    disarray ↔ array (Δg=+0.70, P_tunnel=0.829)
+    insect ↔ sect (Δg=-0.43, P_tunnel=0.939)
+    order ↔ disorder (Δg=-0.17, P_tunnel=0.704)
+  Using DYNAMIC graph (on-demand neighbor computation)
+  Available: 2444 verbs, 2444 indexed
+QUANTUM TUNNELING PROBABILITY CALCULATIONS
+============================================================
+Formula: P(tunnel) = e^(-2κd)
+  where d = |Δτ| (abstraction distance)
+        κ = (1 - cos(j₁, j₂)) / 2 (opacity)
+
+order        → disorder     | P=0.704 | Δg=-0.173
+comfort      → discomfort   | P=0.594 | Δg=+0.201
+love         → hate         | P=0.316 | Δg=+0.204
+fear         → courage      | P=0.984 | Δg=-0.099
+darkness     → light        | P=0.474 | Δg=+0.057
+life         → death        | P=0.935 | Δg=+0.394
+good         → evil         | P=0.619 | Δg=-1.176
+beauty       → ugliness     | P=0.634 | Δg=-0.597
+truth        → lie          | P=0.972 | Δg=+0.210
+
+INTERPRETATION:
+  High P = easy insight (semantic tunnel)
+  Low P  = rare breakthrough (opaque barrier)

@@ -68,6 +68,42 @@ Step 7 (T=0.478): bean --hate--> change ↑ Δ=+0.686
 - Multiple restarts to escape local maxima
 - Moderate exploration
 
+### 4. Quantum Annealing (NEW)
+Combines thermal annealing with quantum tunneling:
+
+**Two Formulas (Priority Order):**
+1. Quantum tunneling: `P(tunnel) = believe × e^(-2κd)` — insight/breakthrough (FIRST)
+2. Thermal acceptance: `P(accept) = e^(Δg/T)` — smooth transitions (FALLBACK)
+
+**Believe Parameter:**
+- `believe = 1.0`: Strong belief → tunnel often, many breakthroughs
+- `believe = 0.1`: Weak belief → mostly thermal, rare insights
+- Models belief in possibility of change/breakthrough
+
+**Behavior:**
+1. FIRST: Try tunneling (if `random() < believe`)
+2. FALLBACK: Use thermal exploration until tunneling possible
+3. Tunneling = "insight" (jump to semantically different state)
+
+**Tunneling Probability Examples:**
+```
+fear         → courage      | P=0.984 (easy insight - thin barrier)
+life         → death        | P=0.935 (high probability)
+truth        → lie          | P=0.972 (near certain)
+love         → hate         | P=0.316 (rare breakthrough - thick barrier)
+```
+
+**Believe Comparison:**
+```
+believe=0.8: 9 tunnel events (many insights)
+believe=0.1: 0 tunnel events (thermal only)
+```
+
+```python
+# Run with quantum annealing
+python3 conversation_test.py -a quantum -q
+```
+
 ## Key Innovation: Dynamic Graph
 
 ### Problem (Before)
@@ -155,6 +191,7 @@ wisdom --imagine--> life --scar--> wit --resemble--> mask
 | Hill Climbing | 0.89 | Low | Quick convergence |
 | Simulated Annealing | 0.03-0.11 | High | Diverse paths |
 | Random Local | 0.13-0.49 | Medium | Escaping local maxima |
+| Quantum Annealing | 0.01-0.03 | Very High | Insight/breakthrough paths |
 
 ## Files
 
@@ -172,6 +209,7 @@ wisdom --imagine--> life --scar--> wit --resemble--> mask
 python3 conversation_test.py -a hill_climbing
 python3 conversation_test.py -a simulated_annealing
 python3 conversation_test.py -a random_local
+python3 conversation_test.py -a quantum
 
 # Quick test (1 dialogue only)
 python3 conversation_test.py -a simulated_annealing -q

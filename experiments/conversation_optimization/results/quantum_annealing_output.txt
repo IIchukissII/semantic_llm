@@ -1,0 +1,196 @@
+
+████████████████████████████████████████████████████████████
+  CONVERSATION SIMULATION: QUANTUM
+████████████████████████████████████████████████████████████
+============================================================
+CONVERSATION SIMULATION WITH OPTIMIZATION
+============================================================
+
+Initializing Hybrid System...
+============================================================
+INITIALIZING HYBRID QUANTUM-LLM SYSTEM
+============================================================
+QuantumCore: Loading semantic space...
+  Loaded 19055 states
+QuantumCore: Loading verb transitions...
+  Loaded 2444 verbs, 1285 subject-specific patterns
+QuantumCore: Loading spin pairs...
+  Loaded 93 spin pairs
+  Examples:
+    animate ↔ inanimate (cos=0.24, Δτ=0.00)
+    quest ↔ inquest (cos=0.36, Δτ=0.43)
+    tress ↔ distress (cos=-0.84, Δτ=0.16)
+    reliability ↔ unreliability (cos=-0.56, Δτ=0.43)
+    steady ↔ unsteady (cos=-0.05, Δτ=0.41)
+OllamaRenderer: Using qwen2.5:1.5b (local)
+============================================================
+SYSTEM READY
+============================================================
+
+Initializing Semantic Optimizer...
+Initializing SemanticOptimizer...
+OllamaRenderer: Using qwen2.5:1.5b (local)
+Precomputing j_norms...
+  Cached 19055 j_norm values
+Building verb index...
+  Indexed 2444 verbs -> 2976 objects
+Building spin index (quantum tunneling)...
+  Indexed 187 spin transitions (quantum tunneling enabled)
+  Tunneling formula: P = e^(-2κd)
+    disarray ↔ array (Δg=+0.70, P_tunnel=0.829)
+    insect ↔ sect (Δg=-0.43, P_tunnel=0.939)
+    order ↔ disorder (Δg=-0.17, P_tunnel=0.704)
+  Using DYNAMIC graph (on-demand neighbor computation)
+  Available: 2444 verbs, 2444 indexed
+
+Using algorithm: quantum
+
+############################################################
+DIALOGUE 1: From Darkness to Light
+Algorithm: quantum
+############################################################
+
+============================================================
+STARTING DIALOGUE
+Initial concepts: ['darkness', 'fear', 'hope']
+Overall intent: good
+============================================================
+
+────────────────────────────────────────────────────────────
+TURN 1
+────────────────────────────────────────────────────────────
+
+[CLAUDE]: Let's explore 'darkness' (g=+0.09, tau=2.11)
+         Intent: navigate toward 'good'
+
+  [OPTIMIZER] Running quantum...
+  Step 0 (T=1.000): darkness --hand--> package ↓ Δ=-0.068
+  Step 1 (T=0.900): package --teach--> kid ↑ Δ=+0.020
+  Step 2 (T=0.810): kid --besmirch--> marble ↑ Δ=+0.057
+  Step 3 (T=0.729): marble --wind--> mountain ↑ Δ=+0.168
+  Step 4 ⚡TUNNEL: mountain ══════> keeper (P=0.989, Δ=+0.915) [INSIGHT!]
+  Step 9 (T=0.387): keeper --ignore--> wish ↓ Δ=-1.107
+  Step 10 (T=0.349): wish --hold--> mine ↑ Δ=+0.180
+  Step 11 ⚡TUNNEL: mine ══════> acid (P=0.799, Δ=+0.954) [INSIGHT!]
+  Step 12 (T=0.282): acid --read--> book ↓ Δ=-0.783
+  Step 13 ⚡TUNNEL: book ══════> bed (P=0.993, Δ=+0.438) [INSIGHT!]
+
+  ⚡ INSIGHTS DETECTED: 3
+     mountain ══> keeper (P=0.989)
+     mine ══> acid (P=0.799)
+     book ══> bed (P=0.993)
+  [OPTIMIZER] Path: darkness -> package -> kid -> marble -> mountain -> keeper -> wish -> mine -> acid -> book -> bed
+  [OPTIMIZER] Improvement: +1.119 in 10 steps
+
+  [FEEDBACK LOOP] Attempt 1/3
+    [LLM] Rendering trajectory...
+    [LLM] Output: "Darkness fades into the night, memory slipping away as dreams turn to oblivion. ..."
+    [VERIFY] Fidelity: 0.47 | Extracted: 52 words
+    [FEEDBACK] ✓ ACCEPTED (fidelity >= 0.4)
+
+[HYBRID (Quantum Annealing)]:
+  Response: "Darkness fades into the night, memory slipping away as dreams turn to oblivion. Packages cradle precious items, one a delicate marble that holds count..."
+  Path: darkness -> package -> kid -> marble -> mountain -> keeper -> wish -> mine -> acid -> book -> bed
+  Delta-g: +1.119 | Efficiency: 0.1119
+  Steps: 10 | Fidelity: 0.47 | Accepted: True
+  Arrived at: 'acid'
+
+[CLAUDE] (following hybrid's lead with 'acid')
+
+────────────────────────────────────────────────────────────
+TURN 2
+────────────────────────────────────────────────────────────
+
+[CLAUDE]: Let's explore 'acid' (g=+1.21, tau=2.13)
+         Intent: navigate toward 'good'
+
+  [OPTIMIZER] Running quantum...
+  Step 1 (T=0.900): acid --pour--> stream ↓ Δ=-1.140
+  Step 2 (T=0.810): stream --rip--> cloud ↓ Δ=-0.202
+  Step 3 (T=0.729): cloud --outreach--> family ↑ Δ=+0.305
+  Step 4 ⚡TUNNEL: family ══════> joe (P=0.931, Δ=+0.840) [INSIGHT!]
+  Step 5 (T=0.590): joe --diminish--> weariness ↓ Δ=-1.183
+  Step 6 (T=0.531): weariness --shoulder--> pole ↑ Δ=+1.046
+  Step 8 (T=0.430): pole --book--> passage ↓ Δ=-0.829
+  Step 9 (T=0.387): passage --spurt--> steam ↓ Δ=-0.003
+  Step 10 ⚡TUNNEL: steam ══════> paw (P=0.917, Δ=+0.922) [INSIGHT!]
+
+  ⚡ INSIGHTS DETECTED: 2
+     family ══> joe (P=0.931)
+     steam ══> paw (P=0.917)
+  [OPTIMIZER] Path: acid -> stream -> cloud -> family -> joe -> weariness -> pole -> passage -> steam -> paw
+  [OPTIMIZER] Improvement: +0.000 in 9 steps
+
+  [FEEDBACK LOOP] Attempt 1/3
+    [LLM] Rendering trajectory...
+    [LLM] Output: "The acid seeped through his skin, causing him to lose consciousness. His lifeles..."
+    [VERIFY] Fidelity: 0.64 | Extracted: 62 words
+    [FEEDBACK] ✓ ACCEPTED (fidelity >= 0.4)
+
+[HYBRID (Quantum Annealing)]:
+  Response: "The acid seeped through his skin, causing him to lose consciousness. His lifeless body drifted down a winding stream, where it was eventually consumed..."
+  Path: acid -> stream -> cloud -> family -> joe -> weariness -> pole -> passage -> steam -> paw
+  Delta-g: +0.000 | Efficiency: 0.0000
+  Steps: 9 | Fidelity: 0.64 | Accepted: True
+  Arrived at: 'acid'
+
+────────────────────────────────────────────────────────────
+TURN 3
+────────────────────────────────────────────────────────────
+
+[CLAUDE]: Let's explore 'hope' (g=-0.10, tau=2.85)
+         Intent: navigate toward 'good'
+
+  [OPTIMIZER] Running quantum...
+  Step 0 ⚡TUNNEL: hope ══════> vay (P=0.968, Δ=+0.836) [INSIGHT!]
+  Step 1 ⚡TUNNEL: vay ══════> age (P=0.974, Δ=+0.514) [INSIGHT!]
+  Step 2 ⚡TUNNEL: age ══════> grassglider (P=0.903, Δ=+0.234) [INSIGHT!]
+  Step 5 ⚡TUNNEL: grassglider ══════> regulated (P=1.000, Δ=+0.045) [INSIGHT!]
+  Step 13 ⚡TUNNEL: regulated ══════> touch (P=0.981, Δ=-0.636) [INSIGHT!]
+
+  ⚡ INSIGHTS DETECTED: 5
+     hope ══> vay (P=0.968)
+     vay ══> age (P=0.974)
+     age ══> grassglider (P=0.903)
+     grassglider ══> regulated (P=1.000)
+     regulated ══> touch (P=0.981)
+  [OPTIMIZER] Path: hope -> vay -> age -> grassglider -> regulated -> touch
+  [OPTIMIZER] Improvement: +1.630 in 5 steps
+
+  [FEEDBACK LOOP] Attempt 1/3
+    [LLM] Rendering trajectory...
+    [LLM] Output: "Hope gently spreads into embrace, then veers towards Vay's embrace, where ages s..."
+    [VERIFY] Fidelity: 0.80 | Extracted: 14 words
+    [FEEDBACK] ✓ ACCEPTED (fidelity >= 0.4)
+
+[HYBRID (Quantum Annealing)]:
+  Response: "Hope gently spreads into embrace, then veers towards Vay's embrace, where ages slowly pass and individuals traverse from embracing hope to reaching fo..."
+  Path: hope -> vay -> age -> grassglider -> regulated -> touch
+  Delta-g: +1.630 | Efficiency: 0.3259
+  Steps: 5 | Fidelity: 0.80 | Accepted: True
+  Arrived at: 'regulated'
+
+============================================================
+CONVERSATION SUMMARY
+============================================================
+
+Algorithm: quantum
+Turns: 3
+Total semantic movement (delta-g): +2.749
+Average fidelity: 0.638
+Average efficiency: 0.1459
+Total optimization steps: 24
+Total LLM retries: 3
+Accepted responses: 3/3
+
+Conversation flow:
+  1. darkness -> acid (Dg=+1.119, eff=0.1119, steps=10)
+  2. acid -> acid (Dg=+0.000, eff=0.0000, steps=9)
+  3. hope -> regulated (Dg=+1.630, eff=0.3259, steps=5)
+
+Semantic journey:
+  Started: darkness (g=+0.091)
+  Ended:   regulated (g=+1.532)
+  Net change: +1.441
+
+[Quick mode - stopping after 1 dialogue]

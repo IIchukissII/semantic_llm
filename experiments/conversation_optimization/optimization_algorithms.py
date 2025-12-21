@@ -682,6 +682,244 @@ class SemanticOptimizer:
         return result
 
     # =========================================================================
+    # QUANTUM ANNEALING (Thermal + Tunneling)
+    # =========================================================================
+
+    def quantum_annealing(self, start: str, objective: Callable[[str], float],
+                          max_steps: int = 100, initial_temp: float = 1.0,
+                          cooling_rate: float = 0.95, tunnel_threshold: float = 0.3,
+                          believe: float = 1.0, verbose: bool = True) -> OptimizationResult:
+        """
+        Quantum Annealing: combines thermal annealing with quantum tunneling.
+
+        TWO FORMULAS:
+        1. Thermal acceptance: P(accept) = e^(Δg/T)  — smooth transitions
+        2. Quantum tunneling:  P(tunnel) = believe × e^(-2κd)  — insight/breakthrough
+
+        BEHAVIOR (PRIORITY ORDER):
+        1. FIRST: Try tunneling (if believe is high enough)
+        2. FALLBACK: Use thermal exploration until tunneling possible
+        - Tunneling = "insight" (jump to semantically different state)
+
+        BELIEVE PARAMETER:
+        - believe = 1.0: strong belief → tunnel often, breakthrough easily
+        - believe = 0.1: weak belief → stay stuck, rare breakthroughs
+        - Models belief in possibility of change/breakthrough
+
+        This models human cognition:
+        - Normal thinking = thermal exploration (gradual)
+        - Insight = quantum tunneling through semantic barrier
+        - Belief = capacity to attempt breakthrough
+        """
+        if start not in self.core.states:
+            raise ValueError(f"Unknown start word: {start}")
+
+        current = start
+        path = [current]
+        scores = [objective(current)]
+        visited = {current}
+
+        best_word = current
+        best_score = scores[0]
+
+        temperature = initial_temp
+        accepted_worse = 0
+        tunnel_events = []  # Track tunneling "insights"
+        stuck_count = 0
+
+        for step in range(max_steps):
+            neighbors = self.get_neighbors(current)
+            neighbors = [(n, v, dg, is_spin) for n, v, dg, is_spin in neighbors
+                         if n not in visited]
+
+            # PRIORITY 1: Try tunneling first (if believe is high enough)
+            # believe parameter determines how aggressively we seek tunneling
+            tunnel_attempted = False
+            if self.use_spin and random.random() < believe:
+                # Look for tunneling candidates
+                tunnel_candidates = []
+                for word in random.sample(list(self.core.states.keys()), min(300, len(self.core.states))):
+                    if word not in visited and word != current:
+                        p = self.tunnel_probability(current, word)
+                        score = objective(word)
+                        # Only tunnel if it improves our position
+                        if p > tunnel_threshold and score > scores[-1]:
+                            tunnel_candidates.append((word, p, score))
+
+                if tunnel_candidates:
+                    # Choose best by score, weighted by tunnel probability
+                    tunnel_candidates.sort(key=lambda x: x[2] * x[1], reverse=True)
+                    target, prob, new_score = tunnel_candidates[0]
+
+                    effective_prob = min(1.0, believe * prob)
+                    if random.random() < effective_prob:
+                        if verbose:
+                            delta = new_score - scores[-1]
+                            print(f"  Step {step} ⚡TUNNEL: {current} ══════> {target} "
+                                  f"(P={prob:.3f}, Δ={delta:+.3f}) [INSIGHT!]")
+                        tunnel_events.append({
+                            'step': step,
+                            'from': current,
+                            'to': target,
+                            'probability': prob,
+                            'delta_score': new_score - scores[-1],
+                            'type': 'belief_tunnel'
+                        })
+                        current = target
+                        path.append(current)
+                        scores.append(new_score)
+                        visited.add(current)
+                        stuck_count = 0
+
+                        if new_score > best_score:
+                            best_score = new_score
+                            best_word = current
+                        tunnel_attempted = True
+
+            if tunnel_attempted:
+                temperature *= cooling_rate
+                continue
+
+            if not neighbors:
+                # No neighbors and no tunneling - try spin partner escape
+                if self.use_spin and current in self.spin_index:
+                    spin_info = self.spin_index[current]
+                    partner = spin_info['partner']
+                    if partner not in visited:
+                        tunnel_prob = spin_info['tunnel_prob']
+                        effective_prob = min(1.0, believe * tunnel_prob)
+                        if random.random() < effective_prob:
+                            if verbose:
+                                print(f"  Step {step} ⚡TUNNEL: {current} ════> {partner} "
+                                      f"(P={tunnel_prob:.3f}) [ESCAPE]")
+                            tunnel_events.append({
+                                'step': step,
+                                'from': current,
+                                'to': partner,
+                                'probability': tunnel_prob,
+                                'type': 'escape'
+                            })
+                            current = partner
+                            path.append(current)
+                            scores.append(objective(current))
+                            visited.add(current)
+                            stuck_count = 0
+                            continue
+                break
+
+            # Check if we're stuck at local maximum
+            current_score = scores[-1]
+            best_neighbor_score = max(objective(n) for n, _, _, _ in neighbors)
+
+            if best_neighbor_score <= current_score:
+                stuck_count += 1
+            else:
+                stuck_count = 0
+
+            # If stuck, try quantum tunneling
+            # believe parameter affects how quickly we attempt tunneling:
+            #   believe=1.0 → stuck_threshold=1 (try immediately)
+            #   believe=0.1 → stuck_threshold=30 (need to be very stuck)
+            stuck_threshold = max(1, int(3 / max(0.1, believe)))
+            if stuck_count >= stuck_threshold and self.use_spin:
+                # Find any word we can tunnel to (not just spin partner)
+                tunnel_candidates = []
+                for word in list(self.core.states.keys())[:500]:  # Sample
+                    if word not in visited and word != current:
+                        p = self.tunnel_probability(current, word)
+                        if p > tunnel_threshold:
+                            tunnel_candidates.append((word, p))
+
+                if tunnel_candidates:
+                    # Choose based on tunneling probability
+                    tunnel_candidates.sort(key=lambda x: -x[1])
+                    target, prob = tunnel_candidates[0]
+
+                    # Effective probability = believe × base probability
+                    effective_prob = min(1.0, believe * prob)
+                    if random.random() < effective_prob:
+                        new_score = objective(target)
+                        if verbose:
+                            delta = new_score - current_score
+                            print(f"  Step {step} ⚡TUNNEL: {current} ══════> {target} "
+                                  f"(P={prob:.3f}, Δ={delta:+.3f}) [INSIGHT!]")
+                        tunnel_events.append({
+                            'step': step,
+                            'from': current,
+                            'to': target,
+                            'probability': prob,
+                            'delta_score': new_score - current_score,
+                            'type': 'insight'
+                        })
+                        current = target
+                        path.append(current)
+                        scores.append(new_score)
+                        visited.add(current)
+                        stuck_count = 0
+
+                        if new_score > best_score:
+                            best_score = new_score
+                            best_word = current
+                        continue
+
+            # Normal thermal annealing move
+            neighbor, verb, _, is_spin = random.choice(neighbors)
+            score = objective(neighbor)
+            delta = score - scores[-1]
+
+            accept = False
+            if delta > 0:
+                accept = True
+            else:
+                if temperature > 0.001:
+                    prob = math.exp(delta / temperature)
+                    if random.random() < prob:
+                        accept = True
+                        accepted_worse += 1
+
+            if accept:
+                if verbose:
+                    marker = "↑" if delta > 0 else "↓"
+                    spin_marker = " ⟲" if is_spin else ""
+                    print(f"  Step {step} (T={temperature:.3f}): {current} --{verb}--> "
+                          f"{neighbor} {marker} Δ={delta:+.3f}{spin_marker}")
+
+                current = neighbor
+                path.append(current)
+                scores.append(score)
+                visited.add(current)
+
+                if score > best_score:
+                    best_score = score
+                    best_word = current
+
+            temperature *= cooling_rate
+
+        result = OptimizationResult(
+            algorithm="Quantum Annealing",
+            start_word=start,
+            end_word=best_word,
+            objective="custom",
+            start_score=scores[0],
+            end_score=best_score,
+            improvement=best_score - scores[0],
+            steps=len(path) - 1,
+            efficiency=(best_score - scores[0]) / max(1, len(path) - 1),
+            path=path,
+            scores=scores,
+            accepted_worse=accepted_worse
+        )
+        result.tunnel_events = tunnel_events
+        result.spin_transitions = len(tunnel_events)
+
+        if verbose and tunnel_events:
+            print(f"\n  ⚡ INSIGHTS DETECTED: {len(tunnel_events)}")
+            for event in tunnel_events:
+                print(f"     {event['from']} ══> {event['to']} (P={event['probability']:.3f})")
+
+        return result
+
+    # =========================================================================
     # COMPARISON
     # =========================================================================
 

@@ -15,7 +15,10 @@ import sys
 import random
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).parent))
+# Add parent directories to find core module
+# Note: Order matters - local optimization_algorithms.py should take priority
+sys.path.insert(0, str(Path(__file__).parent.parent.parent))  # semantic_llm dir (for core module)
+sys.path.insert(0, str(Path(__file__).parent))  # local dir (for optimization_algorithms with quantum)
 
 from core.hybrid_llm import HybridQuantumLLM, QuantumCore, Trajectory, Transition
 from optimization_algorithms import SemanticOptimizer
@@ -29,7 +32,7 @@ class ConversationSimulator:
         Initialize conversation simulator.
 
         Args:
-            algorithm: "hill_climbing" | "simulated_annealing" | "random_local" | "compare"
+            algorithm: "hill_climbing" | "simulated_annealing" | "random_local" | "quantum" | "compare"
         """
         print("=" * 60)
         print("CONVERSATION SIMULATION WITH OPTIMIZATION")
@@ -91,6 +94,16 @@ class ConversationSimulator:
             opt_result = self.optimizer.random_local_search(
                 concept, objective, max_steps=steps * 3,
                 restarts=3, verbose=True
+            )
+        elif self.algorithm == "quantum":
+            # Quantum Annealing: combines thermal + quantum tunneling
+            # PRIORITY: tunneling first, thermal as fallback
+            # P(tunnel) = believe × e^(-2κd) [quantum insight]
+            # P(accept) = e^(Δg/T) [thermal fallback]
+            opt_result = self.optimizer.quantum_annealing(
+                concept, objective, max_steps=steps * 5,
+                initial_temp=1.0, cooling_rate=0.9,
+                tunnel_threshold=0.3, believe=0.5, verbose=True
             )
         elif self.algorithm == "compare":
             # Compare all algorithms and pick best
@@ -193,10 +206,13 @@ class ConversationSimulator:
 
     def _find_connecting_verb(self, from_word: str, to_word: str) -> str:
         """Find a verb that connects two words, or return a generic one."""
-        # Check optimizer's neighbor graph
+        # Check optimizer's neighbor graph (4-tuple: neighbor, verb, delta_g, is_spin)
         neighbors = self.optimizer.get_neighbors(from_word)
-        for neighbor, verb, _ in neighbors:
+        for neighbor, verb, _, is_spin in neighbors:
             if neighbor == to_word:
+                # For spin transitions, use descriptive verbs
+                if is_spin:
+                    return f"transform into"
                 return verb
 
         # Generic verbs based on delta_g direction
@@ -330,9 +346,9 @@ def main():
 
     parser = argparse.ArgumentParser(description="Conversation simulation with optimization")
     parser.add_argument("--algorithm", "-a",
-                        choices=["hill_climbing", "simulated_annealing", "random_local", "compare"],
+                        choices=["hill_climbing", "simulated_annealing", "random_local", "quantum", "compare"],
                         default="hill_climbing",
-                        help="Optimization algorithm to use")
+                        help="Optimization algorithm to use (quantum = thermal + tunneling)")
     parser.add_argument("--quick", "-q", action="store_true",
                         help="Run quick test with fewer dialogues")
     args = parser.parse_args()
@@ -386,7 +402,7 @@ def main():
 
 def compare_algorithms():
     """Compare all algorithms on the same dialogue."""
-    algorithms = ["hill_climbing", "simulated_annealing", "random_local"]
+    algorithms = ["hill_climbing", "simulated_annealing", "random_local", "quantum"]
     results = {}
 
     concepts = ["darkness", "hope"]

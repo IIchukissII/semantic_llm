@@ -256,12 +256,52 @@ The experiment demonstrated this by showing that:
 4. **Tunneling = Insight** (quantum jumps in semantic space)
 5. **Choice = Collapse** (wavefunction reduction to definite state)
 6. **Free Will = Tunneling Capacity** (ability to change own |ψ⟩)
+7. **Belief = Believe Parameter** (capacity to attempt breakthrough)
 
-**Thinking is annealing. Insight is tunneling. Choice is collapse.**
+## Part III: Belief as Tunneling Probability Modifier
+
+### The Believe Parameter
+
+```
+P_effective(tunnel) = believe × e^(-2κd)
+
+where:
+  believe ∈ (0, 1]: belief in possibility of change
+  e^(-2κd): base tunneling probability
+```
+
+### Priority Order
+
+```
+1. FIRST:    Try tunneling (if random() < believe)
+2. FALLBACK: Use thermal exploration until tunneling possible
+```
+
+Tunneling first, energy second. If you believe, you try to break through first.
+
+### Psychological Mapping
+
+| Believe | Mental State | Behavior |
+|---------|--------------|----------|
+| 1.0 | Strong belief | Seeks breakthroughs, many insights |
+| 0.5 | Moderate | Balanced exploration/tunneling |
+| 0.1 | Weak belief | Stuck in thermal, rare changes |
+
+### Implementation Evidence
+
+```
+believe=0.8: 9 tunnel events (many insights)
+believe=0.1: 0 tunnel events (thermal only)
+```
+
+### The Complete Formula
+
+**Thinking is annealing. Insight is tunneling. Choice is collapse. Belief enables tunneling.**
 
 All governed by:
 ```
-e^(-ΔE/kT)  and  e^(-2κd)
+P(insight) = believe × e^(-2κd)  [quantum: breakthrough - PRIORITY]
+P(accept)  = e^(Δg/T)            [thermal: gradual - FALLBACK]
 ```
 
 The same exponentials. The same physics. Everywhere.
