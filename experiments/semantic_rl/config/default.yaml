@@ -1,0 +1,41 @@
+# Semantic RL Configuration
+
+environment:
+  # World settings
+  max_steps: 100
+  reward_scale: 1.0
+
+  # Semantic physics
+  physics:
+    tau_to_altitude: 1.0      # τ → height multiplier
+    goodness_to_reward: 1.0   # g → reward multiplier
+    friction_base: 0.5
+    gravity: 0.1
+
+  # Tunneling
+  tunneling:
+    threshold: 0.3            # Min probability to attempt
+    knowledge_required: true   # Must have lived connection
+    max_distance: 3.0         # Max semantic distance
+
+agent:
+  # Default agent parameters
+  believe: 0.5                # Belief in breakthrough (0-1)
+  temperature: 1.0            # Exploration temperature
+  cooling_rate: 0.95          # Temperature decay
+
+  # Learning
+  learning_rate: 0.1
+  discount_factor: 0.99
+
+knowledge:
+  # How knowledge accumulates
+  decay_rate: 0.0             # 0 = permanent memory
+  similarity_threshold: 0.7   # Min similarity to count as "known"
+  tunnel_memory: true         # Remember successful tunnels
+
+visualization:
+  enabled: true
+  update_frequency: 10        # Steps between renders
+  show_knowledge: true        # Highlight lived states
+  show_barriers: true         # Show tunnel barriers
