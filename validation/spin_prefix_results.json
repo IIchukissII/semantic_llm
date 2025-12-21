@@ -1,0 +1,131 @@
+{
+  "tau_conservation": [
+    {
+      "base": "order",
+      "prefixed": "disorder",
+      "tau_base": 2.3472434748999924,
+      "tau_pref": 2.0809967861147745,
+      "delta_tau": -0.26624668878521796
+    },
+    {
+      "base": "connect",
+      "prefixed": "disconnect",
+      "tau_base": 1.784111821095198,
+      "tau_pref": 1.1697067294739445,
+      "delta_tau": -0.6144050916212536
+    },
+    {
+      "base": "appear",
+      "prefixed": "disappear",
+      "tau_base": 1.102151177264695,
+      "tau_pref": 1.228497221402646,
+      "delta_tau": 0.12634604413795092
+    },
+    {
+      "base": "agree",
+      "prefixed": "disagree",
+      "tau_base": 0.0,
+      "tau_pref": 6.0,
+      "delta_tau": 6.0
+    },
+    {
+      "base": "trust",
+      "prefixed": "distrust",
+      "tau_base": 2.1513095412563397,
+      "tau_pref": 1.5639074410067528,
+      "delta_tau": -0.5874021002495868
+    },
+    {
+      "base": "comfort",
+      "prefixed": "discomfort",
+      "tau_base": 2.3854151578073024,
+      "tau_pref": 2.011136350873932,
+      "delta_tau": -0.37427880693337023
+    },
+    {
+      "base": "compose",
+      "prefixed": "decompose",
+      "tau_base": 0.0,
+      "tau_pref": 0.0,
+      "delta_tau": 0.0
+    },
+    {
+      "base": "code",
+      "prefixed": "decode",
+      "tau_base": 2.0576409724417255,
+      "tau_pref": 6.0,
+      "delta_tau": 3.9423590275582745
+    },
+    {
+      "base": "build",
+      "prefixed": "rebuild",
+      "tau_base": 2.231141273582719,
+      "tau_pref": 1.5303302495219209,
+      "delta_tau": -0.7008110240607983
+    },
+    {
+      "base": "make",
+      "prefixed": "remake",
+      "tau_base": 1.8061238447468633,
+      "tau_pref": 1.1476501089490057,
+      "delta_tau": -0.6584737357978576
+    },
+    {
+      "base": "do",
+      "prefixed": "redo",
+      "tau_base": 1.561020335531749,
+      "tau_pref": 1.089294835825624,
+      "delta_tau": -0.4717254997061249
+    }
+  ],
+  "direction_flip": [
+    {
+      "base": "order",
+      "prefixed": "disorder",
+      "prefix": "dis-",
+      "j_cos": -0.3190996104917382,
+      "full_cos": -0.31909961049180596
+    },
+    {
+      "base": "connect",
+      "prefixed": "disconnect",
+      "prefix": "dis-",
+      "j_cos": -0.15519749296292903,
+      "full_cos": -0.15519749296289784
+    },
+    {
+      "base": "appear",
+      "prefixed": "disappear",
+      "prefix": "dis-",
+      "j_cos": 0.8843106513261677,
+      "full_cos": 0.88431065132498
+    },
+    {
+      "base": "trust",
+      "prefixed": "distrust",
+      "prefix": "dis-",
+      "j_cos": 0.5625964240491226,
+      "full_cos": 0.5625964240480712
+    }
+  ],
+  "complex_conjugation": [
+    {
+      "base": "order",
+      "prefixed": "disorder",
+      "tau_base": 2.3472434748999924,
+      "tau_pref": 2.0809967861147745,
+      "s_base": -1.9318379559219978,
+      "s_pref": 0.6464171449211518,
+      "is_conjugate": 1.0
+    },
+    {
+      "base": "trust",
+      "prefixed": "distrust",
+      "tau_base": 2.1513095412563397,
+      "tau_pref": 1.5639074410067528,
+      "s_base": 0.9904940026001057,
+      "s_pref": 0.8363587979769168,
+      "is_conjugate": false
+    }
+  ]
+}

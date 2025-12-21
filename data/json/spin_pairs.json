@@ -1,0 +1,76 @@
+{
+  "exported_at": "2025-12-21T13:03:58.717102",
+  "description": "Prefix spin operator pairs (\u03c4-conserving direction flips)",
+  "theory": {
+    "tau_conservation": "Prefixes conserve \u03c4 (abstraction level)",
+    "direction_flip": "Prefixes flip direction in j-space (semantic conjugation)"
+  },
+  "pairs": [
+    {
+      "base": "order",
+      "prefixed": "disorder",
+      "delta_tau": -0.26624668878521796,
+      "tau_conserved": true
+    },
+    {
+      "base": "connect",
+      "prefixed": "disconnect",
+      "delta_tau": -0.6144050916212536,
+      "tau_conserved": false
+    },
+    {
+      "base": "appear",
+      "prefixed": "disappear",
+      "delta_tau": 0.12634604413795092,
+      "tau_conserved": true
+    },
+    {
+      "base": "agree",
+      "prefixed": "disagree",
+      "delta_tau": 6.0,
+      "tau_conserved": false
+    },
+    {
+      "base": "trust",
+      "prefixed": "distrust",
+      "delta_tau": -0.5874021002495868,
+      "tau_conserved": false
+    },
+    {
+      "base": "comfort",
+      "prefixed": "discomfort",
+      "delta_tau": -0.37427880693337023,
+      "tau_conserved": true
+    },
+    {
+      "base": "compose",
+      "prefixed": "decompose",
+      "delta_tau": 0.0,
+      "tau_conserved": true
+    },
+    {
+      "base": "code",
+      "prefixed": "decode",
+      "delta_tau": 3.9423590275582745,
+      "tau_conserved": false
+    },
+    {
+      "base": "build",
+      "prefixed": "rebuild",
+      "delta_tau": -0.7008110240607983,
+      "tau_conserved": false
+    },
+    {
+      "base": "make",
+      "prefixed": "remake",
+      "delta_tau": -0.6584737357978576,
+      "tau_conserved": false
+    },
+    {
+      "base": "do",
+      "prefixed": "redo",
+      "delta_tau": -0.4717254997061249,
+      "tau_conserved": true
+    }
+  ]
+}

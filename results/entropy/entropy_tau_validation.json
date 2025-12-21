@@ -1,0 +1,12 @@
+{
+  "generated_at": "2025-12-21T13:12:25.749797",
+  "source": "csv",
+  "n_nouns": 29023,
+  "results": {
+    "ratio_mean": 1.5794775063169975,
+    "difference_mean": 1.0784990007924748,
+    "euler_mean": 0.36222209174934006,
+    "one_bit_law_confirmed": true,
+    "euler_confirmed": true
+  }
+}

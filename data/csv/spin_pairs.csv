@@ -1,0 +1,12 @@
+base,prefixed,delta_tau,tau_conserved
+order,disorder,-0.26624668878521796,True
+connect,disconnect,-0.6144050916212536,False
+appear,disappear,0.12634604413795092,True
+agree,disagree,6.0,False
+trust,distrust,-0.5874021002495868,False
+comfort,discomfort,-0.37427880693337023,True
+compose,decompose,0.0,True
+code,decode,3.9423590275582745,False
+build,rebuild,-0.7008110240607983,False
+make,remake,-0.6584737357978576,False
+do,redo,-0.4717254997061249,True
