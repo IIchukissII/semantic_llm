@@ -29,7 +29,9 @@ from collections import defaultdict
 random.seed(42)
 np.random.seed(42)
 
-sys.path.insert(0, str(Path(__file__).parent))
+# Add parent directories to path for imports
+sys.path.insert(0, str(Path(__file__).parent.parent.parent))  # semantic_llm
+sys.path.insert(0, str(Path(__file__).parent))  # conversation_optimization
 
 from core.hybrid_llm import QuantumCore, OllamaRenderer, Trajectory, Transition, SemanticState
 
@@ -74,11 +76,12 @@ class SemanticOptimizer:
     """
 
     def __init__(self, core: Optional[QuantumCore] = None, max_edges: int = 100000,
-                 dynamic_graph: bool = True):
+                 dynamic_graph: bool = True, use_spin: bool = True):
         print("Initializing SemanticOptimizer...")
         self.core = core or QuantumCore()
         self.max_edges = max_edges
         self.dynamic_graph = dynamic_graph
+        self.use_spin = use_spin  # Enable spin transitions (quantum tunneling)
 
         # Add timeout for Ollama to prevent hanging
         try:
@@ -98,6 +101,11 @@ class SemanticOptimizer:
         print("Building verb index...")
         self._build_verb_index()
 
+        # Build spin index for quantum tunneling
+        if use_spin:
+            print("Building spin index (quantum tunneling)...")
+            self._build_spin_index()
+
         if dynamic_graph:
             print(f"  Using DYNAMIC graph (on-demand neighbor computation)")
             print(f"  Available: {len(self.core.verb_objects)} verbs, {len(self.verb_to_objects)} indexed")
@@ -108,6 +116,110 @@ class SemanticOptimizer:
             self.neighbors = self._build_neighbor_graph()
             print(f"  Graph: {len(self.neighbors)} nodes, "
                   f"{sum(len(v) for v in self.neighbors.values())} edges")
+
+    def _build_spin_index(self):
+        """
+        Build spin pair index for quantum tunneling transitions.
+
+        QUANTUM TUNNELING MODEL:
+        ========================
+        P(tunnel) = e^(-2κd)
+
+        where:
+          d = semantic distance between states (barrier width)
+          κ = opacity (how "different" the states are)
+
+        In our implementation:
+          d = |Δτ| (abstraction distance)
+          κ = (1 - j_cosine) / 2  (direction difference, 0=same, 1=opposite)
+
+        Spin operator: word ↔ prefixed_word
+        - τ approximately conserved (small d)
+        - j inverted (high κ, but that's the point)
+        - Tunneling probability computed from quantum formula
+        """
+        self.spin_index = {}  # word → (partner, delta_g, tunnel_prob, ...)
+        spin_count = 0
+
+        for word, state in self.core.states.items():
+            if word in self.core.spin_pairs:
+                pair = self.core.spin_pairs[word]
+                # Determine partner
+                partner = pair.prefixed if word == pair.base else pair.base
+
+                if partner in self.core.states:
+                    partner_state = self.core.states[partner]
+                    delta_g = partner_state.goodness - state.goodness
+
+                    # QUANTUM TUNNELING PROBABILITY
+                    # d = barrier width (τ difference)
+                    d = abs(pair.delta_tau)
+                    # κ = opacity (direction difference)
+                    # j_cosine: 1 = same direction, -1 = opposite
+                    # κ: 0 = transparent, 1 = opaque
+                    kappa = (1 - pair.j_cosine) / 2
+
+                    # P(tunnel) = e^(-2κd)
+                    # For spin pairs: low d (τ conserved), high κ (j flipped)
+                    # This gives moderate tunneling probability
+                    tunnel_prob = math.exp(-2 * kappa * d) if d > 0 else 1.0
+
+                    self.spin_index[word] = {
+                        'partner': partner,
+                        'delta_g': delta_g,
+                        'j_cosine': pair.j_cosine,
+                        'delta_tau': pair.delta_tau,
+                        'prefix': pair.prefix,
+                        'tunnel_prob': tunnel_prob,
+                        'd': d,
+                        'kappa': kappa
+                    }
+                    spin_count += 1
+
+        print(f"  Indexed {spin_count} spin transitions (quantum tunneling enabled)")
+        print(f"  Tunneling formula: P = e^(-2κd)")
+
+        # Show examples with tunneling probability
+        examples = list(self.spin_index.items())[:3]
+        for word, info in examples:
+            print(f"    {word} ↔ {info['partner']} (Δg={info['delta_g']:+.2f}, "
+                  f"P_tunnel={info['tunnel_prob']:.3f})")
+
+    def tunnel_probability(self, word1: str, word2: str) -> float:
+        """
+        Calculate quantum tunneling probability between two words.
+
+        P(tunnel) = e^(-2κd)
+
+        where:
+          d = |τ₁ - τ₂| (abstraction barrier width)
+          κ = (1 - cos(j₁, j₂)) / 2 (semantic opacity)
+
+        Returns probability in [0, 1].
+        """
+        if word1 not in self.core.states or word2 not in self.core.states:
+            return 0.0
+
+        s1 = self.core.states[word1]
+        s2 = self.core.states[word2]
+
+        # d = barrier width (τ difference)
+        d = abs(s1.tau - s2.tau)
+
+        # κ = opacity (direction difference in j-space)
+        j1_norm = np.linalg.norm(s1.j)
+        j2_norm = np.linalg.norm(s2.j)
+        if j1_norm > 0 and j2_norm > 0:
+            j_cos = float(np.dot(s1.j, s2.j) / (j1_norm * j2_norm))
+        else:
+            j_cos = 0
+
+        kappa = (1 - j_cos) / 2  # 0 = same direction, 1 = opposite
+
+        # Quantum tunneling probability
+        tunnel_prob = math.exp(-2 * kappa * d) if d > 0 else 1.0
+
+        return tunnel_prob
 
     def _build_verb_index(self):
         """Build reverse index: object → [(verb, count), ...] for fast lookup."""
@@ -196,13 +308,18 @@ class SemanticOptimizer:
 
         return dict(graph)
 
-    def get_neighbors(self, word: str) -> List[Tuple[str, str, float]]:
-        """Get neighbors of a word: [(neighbor, verb, delta_g), ...]
+    def get_neighbors(self, word: str, include_spin: bool = True
+                       ) -> List[Tuple[str, str, float, bool]]:
+        """Get neighbors of a word: [(neighbor, verb, delta_g, is_spin), ...]
 
         If dynamic_graph=True, computes neighbors on-demand using ALL verbs.
+        If include_spin=True, adds spin partner as special "tunneling" transition.
+
+        Returns 4-tuple: (neighbor, verb, delta_g, is_spin_transition)
         """
         if not self.dynamic_graph:
-            return self.neighbors.get(word, [])
+            # Add is_spin=False to static neighbors
+            return [(n, v, dg, False) for n, v, dg in self.neighbors.get(word, [])]
 
         # DYNAMIC: Compute neighbors on-the-fly
         if word not in self.core.states:
@@ -211,16 +328,25 @@ class SemanticOptimizer:
         state = self.core.states[word]
         neighbors = []
 
-        # 1. Subject-specific transitions (highest priority)
+        # 0. SPIN TRANSITION (quantum tunneling) - HIGHEST PRIORITY
+        if self.use_spin and include_spin and word in self.spin_index:
+            spin_info = self.spin_index[word]
+            partner = spin_info['partner']
+            delta_g = spin_info['delta_g']
+            # Verb for spin is "become" + prefix effect
+            spin_verb = f"⟲{spin_info['prefix']}"  # Special marker for spin
+            neighbors.append((partner, spin_verb, delta_g, True))  # is_spin=True
+
+        # 1. Subject-specific transitions (high priority)
         if word in self.core.subject_verbs:
             for verb, obj in self.core.subject_verbs[word]:
                 if obj in self.core.states:
                     obj_state = self.core.states[obj]
                     delta_g = obj_state.goodness - state.goodness
-                    neighbors.append((obj, verb, delta_g))
+                    neighbors.append((obj, verb, delta_g, False))
 
         # 2. All verb-object pairs (use ALL 2444 verbs!)
-        seen = set((obj for obj, _, _ in neighbors))  # Avoid duplicates
+        seen = set((obj for obj, _, _, _ in neighbors))  # Avoid duplicates
 
         # Sample verbs for diversity (use all if under limit)
         verb_list = list(self.verb_to_objects.keys())
@@ -240,7 +366,7 @@ class SemanticOptimizer:
                 if obj not in seen and obj in self.core.states:
                     obj_state = self.core.states[obj]
                     delta_g = obj_state.goodness - state.goodness
-                    neighbors.append((obj, verb, delta_g))
+                    neighbors.append((obj, verb, delta_g, False))
                     seen.add(obj)
 
         return neighbors
@@ -287,10 +413,11 @@ class SemanticOptimizer:
     def hill_climbing(self, start: str, objective: Callable[[str], float],
                       max_steps: int = 50, verbose: bool = True) -> OptimizationResult:
         """
-        Steepest ascent hill climbing.
+        Steepest ascent hill climbing with spin transitions.
 
         Always moves to the best neighbor if it improves the objective.
         Stops at local maximum.
+        Spin transitions (tunneling) are considered as valid moves.
         """
         if start not in self.core.states:
             raise ValueError(f"Unknown start word: {start}")
@@ -299,28 +426,32 @@ class SemanticOptimizer:
         path = [current]
         scores = [objective(current)]
         visited = {current}
+        spin_transitions = 0
 
         for step in range(max_steps):
             neighbors = self.get_neighbors(current)
-            # Filter visited
-            neighbors = [(n, v, dg) for n, v, dg in neighbors if n not in visited]
+            # Filter visited - handle 4-tuple format
+            neighbors = [(n, v, dg, is_spin) for n, v, dg, is_spin in neighbors
+                         if n not in visited]
 
             if not neighbors:
                 if verbose:
                     print(f"  Step {step}: No unvisited neighbors")
                 break
 
-            # Find best neighbor
+            # Find best neighbor (including spin transitions)
             best_neighbor = None
             best_score = scores[-1]
             best_verb = None
+            best_is_spin = False
 
-            for neighbor, verb, _ in neighbors:
+            for neighbor, verb, _, is_spin in neighbors:
                 score = objective(neighbor)
                 if score > best_score:
                     best_score = score
                     best_neighbor = neighbor
                     best_verb = verb
+                    best_is_spin = is_spin
 
             if best_neighbor is None:
                 if verbose:
@@ -328,15 +459,19 @@ class SemanticOptimizer:
                 break
 
             if verbose:
+                spin_marker = " ⟲SPIN" if best_is_spin else ""
                 print(f"  Step {step}: {current} --{best_verb}--> {best_neighbor} "
-                      f"(score: {scores[-1]:.3f} → {best_score:.3f})")
+                      f"(score: {scores[-1]:.3f} → {best_score:.3f}){spin_marker}")
+
+            if best_is_spin:
+                spin_transitions += 1
 
             current = best_neighbor
             path.append(current)
             scores.append(best_score)
             visited.add(current)
 
-        return OptimizationResult(
+        result = OptimizationResult(
             algorithm="Hill Climbing",
             start_word=start,
             end_word=current,
@@ -349,6 +484,8 @@ class SemanticOptimizer:
             path=path,
             scores=scores
         )
+        result.spin_transitions = spin_transitions
+        return result
 
     # =========================================================================
     # RANDOM LOCAL SEARCH
@@ -358,7 +495,7 @@ class SemanticOptimizer:
                             max_steps: int = 50, restarts: int = 5,
                             verbose: bool = True) -> OptimizationResult:
         """
-        Random local search with restarts.
+        Random local search with restarts and spin transitions.
 
         Randomly picks neighbors and accepts improvements.
         Restarts from random positions to escape local maxima.
@@ -376,18 +513,20 @@ class SemanticOptimizer:
             path = [current]
             scores = [objective(current)]
             visited = {current}
+            spin_count = 0
 
             steps_per_restart = max_steps // restarts
 
             for step in range(steps_per_restart):
                 neighbors = self.get_neighbors(current)
-                neighbors = [(n, v, dg) for n, v, dg in neighbors if n not in visited]
+                neighbors = [(n, v, dg, is_spin) for n, v, dg, is_spin in neighbors
+                             if n not in visited]
 
                 if not neighbors:
                     break
 
                 # Random selection
-                neighbor, verb, _ = random.choice(neighbors)
+                neighbor, verb, _, is_spin = random.choice(neighbors)
                 score = objective(neighbor)
 
                 # Accept if better
@@ -396,10 +535,13 @@ class SemanticOptimizer:
                     path.append(current)
                     scores.append(score)
                     visited.add(current)
+                    if is_spin:
+                        spin_count += 1
 
                     if verbose and restart == 0:
+                        spin_marker = " ⟲SPIN" if is_spin else ""
                         print(f"  Step {step}: {path[-2]} --{verb}--> {current} "
-                              f"(score: {scores[-2]:.3f} → {score:.3f})")
+                              f"(score: {scores[-2]:.3f} → {score:.3f}){spin_marker}")
 
             result = OptimizationResult(
                 algorithm="Random Local Search",
@@ -415,6 +557,7 @@ class SemanticOptimizer:
                 scores=scores,
                 restarts=restart + 1
             )
+            result.spin_transitions = spin_count
 
             if best_result is None or result.end_score > best_result.end_score:
                 best_result = result
@@ -427,13 +570,18 @@ class SemanticOptimizer:
 
     def simulated_annealing(self, start: str, objective: Callable[[str], float],
                             max_steps: int = 100, initial_temp: float = 1.0,
-                            cooling_rate: float = 0.95, verbose: bool = True
-                            ) -> OptimizationResult:
+                            cooling_rate: float = 0.95, spin_bonus: float = 0.3,
+                            verbose: bool = True) -> OptimizationResult:
         """
-        Simulated annealing.
+        Simulated annealing with quantum spin transitions.
 
         Accepts worse moves with probability exp(-ΔE/T).
         Temperature decreases over time, reducing randomness.
+
+        QUANTUM EXTENSION:
+        - Spin transitions (tunneling) have boosted acceptance probability
+        - Spin allows "jumping" to opposite semantic state
+        - P(spin) = exp(Δg/T) * (1 + spin_bonus)
         """
         if start not in self.core.states:
             raise ValueError(f"Unknown start word: {start}")
@@ -448,16 +596,27 @@ class SemanticOptimizer:
 
         temperature = initial_temp
         accepted_worse = 0
+        spin_transitions = 0  # Count quantum tunneling events
 
         for step in range(max_steps):
             neighbors = self.get_neighbors(current)
-            neighbors = [(n, v, dg) for n, v, dg in neighbors if n not in visited]
+            neighbors = [(n, v, dg, is_spin) for n, v, dg, is_spin in neighbors
+                         if n not in visited]
 
             if not neighbors:
                 break
 
-            # Random neighbor
-            neighbor, verb, _ = random.choice(neighbors)
+            # Random neighbor (with spin preference at high T)
+            if temperature > 0.5 and self.use_spin:
+                # At high T, prefer spin transitions (exploration)
+                spin_neighbors = [n for n in neighbors if n[3]]  # is_spin=True
+                if spin_neighbors and random.random() < 0.3:  # 30% chance to try spin
+                    neighbor, verb, _, is_spin = random.choice(spin_neighbors)
+                else:
+                    neighbor, verb, _, is_spin = random.choice(neighbors)
+            else:
+                neighbor, verb, _, is_spin = random.choice(neighbors)
+
             score = objective(neighbor)
             delta = score - scores[-1]
 
@@ -467,7 +626,17 @@ class SemanticOptimizer:
                 accept = True
             else:
                 # Probability of accepting worse move
-                prob = math.exp(delta / temperature) if temperature > 0.001 else 0
+                # QUANTUM: Spin transitions get bonus (tunneling through barrier)
+                if temperature > 0.001:
+                    base_prob = math.exp(delta / temperature)
+                    if is_spin:
+                        # Spin transitions can "tunnel" - higher acceptance
+                        prob = min(1.0, base_prob * (1 + spin_bonus))
+                    else:
+                        prob = base_prob
+                else:
+                    prob = 0
+
                 if random.random() < prob:
                     accept = True
                     accepted_worse += 1
@@ -475,8 +644,12 @@ class SemanticOptimizer:
             if accept:
                 if verbose:
                     marker = "↑" if delta > 0 else "↓"
+                    spin_marker = " ⟲SPIN" if is_spin else ""
                     print(f"  Step {step} (T={temperature:.3f}): {current} --{verb}--> "
-                          f"{neighbor} {marker} Δ={delta:+.3f}")
+                          f"{neighbor} {marker} Δ={delta:+.3f}{spin_marker}")
+
+                if is_spin:
+                    spin_transitions += 1
 
                 current = neighbor
                 path.append(current)
@@ -490,7 +663,7 @@ class SemanticOptimizer:
             # Cool down
             temperature *= cooling_rate
 
-        return OptimizationResult(
+        result = OptimizationResult(
             algorithm="Simulated Annealing",
             start_word=start,
             end_word=best_word,
@@ -504,6 +677,9 @@ class SemanticOptimizer:
             scores=scores,
             accepted_worse=accepted_worse
         )
+        # Add spin count to result
+        result.spin_transitions = spin_transitions
+        return result
 
     # =========================================================================
     # COMPARISON

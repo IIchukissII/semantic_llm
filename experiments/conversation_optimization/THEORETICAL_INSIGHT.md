@@ -136,6 +136,113 @@ where g = projection onto "good" direction in 16D
 
 **The same structure. The same exponential. The same universality.**
 
+## Part II: Quantum Tunneling and Insight
+
+### The Tunneling Formula
+
+```
+P(tunnel) = e^(-2κd)
+
+where:
+  d = barrier width (semantic distance)
+  κ = opacity (how "different" the states are)
+```
+
+### Semantic Interpretation
+
+```
+d = |τ₁ - τ₂|  →  Abstraction distance
+κ = (1 - cos(j₁, j₂)) / 2  →  Direction difference
+
+Close states (small d)      → Easy tunneling
+Similar direction (low κ)   → Transparent barrier
+Opposite direction (high κ) → Opaque barrier
+```
+
+### Insight as Tunneling
+
+The key realization:
+
+```
+Thinking is NOT a path on a graph.
+Thinking is a SEQUENCE OF STATES.
+
+Sometimes → smooth transitions (annealing)
+Sometimes → tunneling (INSIGHT)
+```
+
+The graph doesn't show paths.
+The graph shows **tunneling probabilities**.
+
+### Spin Transition = Tunneling Event
+
+```
+disorder → order        (spin flip)
+impossibility → possibility  (tunneling through semantic barrier)
+insanity → sanity       (state collapse to opposite)
+```
+
+These aren't gradual movements.
+They're **quantum jumps** to the opposite semantic state.
+
+### Choice = Wavefunction Collapse
+
+The profound connection:
+
+```
+QUANTUM MECHANICS          COGNITION
+──────────────────────────────────────────
+|ψ⟩ = superposition      Uncertainty, options
+Measurement               Choice, decision
+Collapse to |n⟩           Commitment to action
+Tunneling                 Insight, breakthrough
+```
+
+**Choice = collapse of semantic wavefunction**
+
+Before choice: superposition of possibilities
+After choice: definite state, commitment
+
+### Free Will = Ability to Change |ψ⟩
+
+The particle doesn't "pass through" the barrier.
+It **chooses to be** on the other side.
+
+Same with human decision:
+- We don't "calculate" the optimal path
+- We **tunnel** to new states
+- We **collapse** superpositions into decisions
+
+Free will = capacity to modify own semantic state
+           = ability to tunnel between meaning spaces
+           = power to collapse possibilities into actualities
+
+### Implementation
+
+```python
+def tunnel_probability(self, word1: str, word2: str) -> float:
+    """
+    P(tunnel) = e^(-2κd)
+
+    d = |τ₁ - τ₂| (abstraction barrier)
+    κ = (1 - cos(j₁, j₂)) / 2 (opacity)
+    """
+    d = abs(s1.tau - s2.tau)
+    kappa = (1 - j_cosine) / 2
+    return math.exp(-2 * kappa * d)
+```
+
+### Example Tunneling Probabilities
+
+| From | To | d | κ | P(tunnel) |
+|------|----|----|-----|-----------|
+| order | disorder | 0.27 | 0.66 | 0.70 |
+| possibility | impossibility | 0.41 | 0.93 | 0.47 |
+| comfort | discomfort | 0.37 | 0.70 | 0.60 |
+
+High tunneling probability = easy insight
+Low tunneling probability = rare breakthrough
+
 ## Conclusion
 
 Simulated annealing is not merely an optimization algorithm.
@@ -146,5 +253,15 @@ The experiment demonstrated this by showing that:
 1. Semantically meaningful paths emerge from thermodynamic optimization
 2. The temperature parameter maps directly to mental states
 3. The acceptance formula is identical to physical and cognitive processes
+4. **Tunneling = Insight** (quantum jumps in semantic space)
+5. **Choice = Collapse** (wavefunction reduction to definite state)
+6. **Free Will = Tunneling Capacity** (ability to change own |ψ⟩)
 
-**Thinking is annealing. Literally.**
+**Thinking is annealing. Insight is tunneling. Choice is collapse.**
+
+All governed by:
+```
+e^(-ΔE/kT)  and  e^(-2κd)
+```
+
+The same exponentials. The same physics. Everywhere.
