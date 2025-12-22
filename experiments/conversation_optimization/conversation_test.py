@@ -12,8 +12,10 @@ for smarter semantic navigation.
 """
 
 import sys
+import json
 import random
 from pathlib import Path
+from datetime import datetime
 
 # Add parent directories to find core module
 # Note: Order matters - local optimization_algorithms.py should take priority
@@ -27,24 +29,27 @@ from optimization_algorithms import SemanticOptimizer
 class ConversationSimulator:
     """Simulates a conversation between two speakers."""
 
-    def __init__(self, algorithm: str = "hill_climbing"):
+    def __init__(self, algorithm: str = "hill_climbing", model: str = None):
         """
         Initialize conversation simulator.
 
         Args:
             algorithm: "hill_climbing" | "simulated_annealing" | "random_local" | "quantum" | "compare"
+            model: Optional ollama model name (e.g. "mistral:7b", "qwen2.5:1.5b")
         """
         print("=" * 60)
         print("CONVERSATION SIMULATION WITH OPTIMIZATION")
         print("=" * 60)
-        print("\nInitializing Hybrid System...")
-        self.hybrid = HybridQuantumLLM(renderer="ollama", fidelity_threshold=0.4)
+        print(f"\nInitializing Hybrid System... (model: {model or 'default'})")
+        self.hybrid = HybridQuantumLLM(renderer="ollama", fidelity_threshold=0.4, model=model)
 
         print("\nInitializing Semantic Optimizer...")
         self.optimizer = SemanticOptimizer(core=self.hybrid.core, max_edges=50000)
 
         self.algorithm = algorithm
+        self.model = model or "qwen2.5:1.5b"  # Store model name
         self.conversation_history = []
+        self.all_dialogues = []  # Store all dialogues for saving
         print(f"\nUsing algorithm: {algorithm}")
 
     def speaker1_prompt(self, concept: str, intent: str = "good") -> dict:
@@ -339,6 +344,54 @@ class ConversationSimulator:
             print(f"  Ended:   {end_word} (g={end_state.goodness:+.3f})")
             print(f"  Net change: {end_state.goodness - start_state.goodness:+.3f}")
 
+        # Store dialogue summary
+        self.all_dialogues.append({
+            "turns": len(self.conversation_history),
+            "algorithm": self.algorithm,
+            "total_delta_g": total_delta_g,
+            "avg_fidelity": avg_fidelity,
+            "avg_efficiency": avg_efficiency,
+            "total_steps": total_steps,
+            "accepted_count": accepted_count,
+            "start_word": start_word,
+            "end_word": end_word,
+            "net_change": end_state.goodness - start_state.goodness if start_state and end_state else 0,
+            "history": self.conversation_history.copy()
+        })
+
+    def save_results(self, filename: str = None):
+        """Save all dialogue results to JSON file."""
+        results_dir = Path(__file__).parent / "results"
+        results_dir.mkdir(parents=True, exist_ok=True)
+
+        if filename is None:
+            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+            filename = f"conversation_{self.model.replace(':', '_')}_{self.algorithm}_{timestamp}.json"
+
+        output_file = results_dir / filename
+
+        results = {
+            "timestamp": datetime.now().isoformat(),
+            "model": self.model,
+            "algorithm": self.algorithm,
+            "renderer": "ollama",
+            "dialogues": self.all_dialogues,
+            "summary": {
+                "total_dialogues": len(self.all_dialogues),
+                "total_delta_g": sum(d["total_delta_g"] for d in self.all_dialogues),
+                "avg_fidelity": sum(d["avg_fidelity"] for d in self.all_dialogues) / len(self.all_dialogues) if self.all_dialogues else 0,
+            }
+        }
+
+        with open(output_file, 'w') as f:
+            json.dump(results, f, indent=2, default=str)
+
+        print(f"\n{'='*60}")
+        print(f"RESULTS SAVED: {output_file}")
+        print(f"{'='*60}")
+
+        return output_file
+
 
 def main():
     """Run conversation simulation with different algorithms."""
@@ -349,15 +402,20 @@ def main():
                         choices=["hill_climbing", "simulated_annealing", "random_local", "quantum", "compare"],
                         default="hill_climbing",
                         help="Optimization algorithm to use (quantum = thermal + tunneling)")
+    parser.add_argument("--model", "-m",
+                        default=None,
+                        help="Ollama model to use (e.g. 'mistral:7b', 'qwen2.5:1.5b')")
     parser.add_argument("--quick", "-q", action="store_true",
                         help="Run quick test with fewer dialogues")
     args = parser.parse_args()
 
     print("\n" + "█" * 60)
     print(f"  CONVERSATION SIMULATION: {args.algorithm.upper()}")
+    if args.model:
+        print(f"  MODEL: {args.model}")
     print("█" * 60)
 
-    sim = ConversationSimulator(algorithm=args.algorithm)
+    sim = ConversationSimulator(algorithm=args.algorithm, model=args.model)
 
     # Dialogue 1: Journey from darkness to light
     print("\n" + "#" * 60)
@@ -371,6 +429,7 @@ def main():
 
     if args.quick:
         print("\n[Quick mode - stopping after 1 dialogue]")
+        sim.save_results()
         return
 
     # Reset for new dialogue
@@ -398,6 +457,9 @@ def main():
         starting_concepts=["truth", "wisdom", "freedom"],
         intent="good"
     )
+
+    # Save all results
+    sim.save_results()
 
 
 def compare_algorithms():

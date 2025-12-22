@@ -1,0 +1,117 @@
+{
+  "timestamp": "2025-12-22T14:28:02.528055",
+  "model": "mistral:7b",
+  "algorithm": "quantum",
+  "renderer": "ollama",
+  "dialogues": [
+    {
+      "turns": 3,
+      "algorithm": "quantum",
+      "total_delta_g": 3.916226288955697,
+      "avg_fidelity": 0.8916666666666666,
+      "avg_efficiency": 0.26889264499557514,
+      "total_steps": 15,
+      "accepted_count": 3,
+      "start_word": "darkness",
+      "end_word": "aggrandizement",
+      "net_change": 1.4213761011271298,
+      "history": [
+        {
+          "speaker1": {
+            "speaker": "Claude",
+            "concept": "darkness",
+            "intent": "good",
+            "goodness": -0.06313110755771173,
+            "tau": 1.572673283260856,
+            "message": "Let's explore 'darkness' (g=-0.06, tau=1.57)"
+          },
+          "speaker2": {
+            "speaker": "Hybrid",
+            "algorithm": "Quantum Annealing",
+            "trajectory": [
+              "darkness",
+              "package",
+              "dishrag",
+              "making",
+              "sake",
+              "gluttony"
+            ],
+            "response": "In the depths of darkness, one begins to forget many things. One day, while wandering through this oblivion, a peculiar package is stumbled upon. Embracing the mystery, one opens the package and finds an old dishrag inside. The discovery sparks curiosity, leading one to make further investigations. In the course of these inquiries, sake is unveiled as the contents hidden within the dishrag. Once again, the package reveals more than initially perceived - it seems to represent a symbol of gluttony.",
+            "delta_g": 1.8297894027249828,
+            "efficiency": 0.36595788054499656,
+            "fidelity": 0.9,
+            "accepted": true,
+            "end_state": "gluttony",
+            "steps": 5,
+            "retries": 1
+          }
+        },
+        {
+          "speaker1": {
+            "speaker": "Claude",
+            "concept": "gluttony",
+            "intent": "good",
+            "goodness": 1.7666582951672711,
+            "tau": 1.0837823717982988,
+            "message": "Let's explore 'gluttony' (g=+1.77, tau=1.08)"
+          },
+          "speaker2": {
+            "speaker": "Hybrid",
+            "algorithm": "Quantum Annealing",
+            "trajectory": [
+              "gluttony",
+              "transferability",
+              "volition",
+              "forerider"
+            ],
+            "response": "A glutton, in his constant pursuit of food, eventually discovers a quality within himself - transferability, the ability to adapt to different types and quantities of food. However, this newfound trait leads him down a dangerous path. He loses control over his own volition, no longer choosing what to eat but being controlled by his desires. In this state, he reaches a point where he becomes a forerunner, setting an example of unbridled gluttony for others to follow.",
+            "delta_g": 0.7489526211460409,
+            "efficiency": 0.24965087371534697,
+            "fidelity": 0.85,
+            "accepted": true,
+            "end_state": "forerider",
+            "steps": 3,
+            "retries": 1
+          }
+        },
+        {
+          "speaker1": {
+            "speaker": "Claude",
+            "concept": "hope",
+            "intent": "good",
+            "goodness": 0.020760728484744646,
+            "tau": 2.275858978100616,
+            "message": "Let's explore 'hope' (g=+0.02, tau=2.28)"
+          },
+          "speaker2": {
+            "speaker": "Hybrid",
+            "algorithm": "Quantum Annealing",
+            "trajectory": [
+              "hope",
+              "peace",
+              "love",
+              "agreement",
+              "caseload",
+              "endgame",
+              "flatline",
+              "aggrandizement"
+            ],
+            "response": "In the pursuit of hope, one finds peace. Reaching that serene state, love gradually unfolds. Love leads to an agreement, and with this agreement comes a warm embrace. This embrace signifies the acceptance of a caseload. As the journey continues, discoveries are made along the way. The endgame approaches as these discoveries lead back to hope once more. In the final stretch, the desired outcome is found again - but only to be followed by an unexpected turn, as life suddenly flatlines. In this moment of pause, there is a sense of aggrandizement, perhaps recognition of the journey completed.",
+            "delta_g": 1.3374842650846734,
+            "efficiency": 0.19106918072638193,
+            "fidelity": 0.925,
+            "accepted": true,
+            "end_state": "aggrandizement",
+            "steps": 7,
+            "retries": 1
+          }
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "total_dialogues": 1,
+    "total_delta_g": 3.916226288955697,
+    "avg_fidelity": 0.8916666666666666
+  }
+}

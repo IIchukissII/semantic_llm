@@ -864,13 +864,14 @@ class HybridQuantumLLM:
     """
 
     def __init__(self, max_retries: int = 3, fidelity_threshold: float = 0.5,
-                 renderer: str = "auto"):
+                 renderer: str = "auto", model: str = None):
         """
         Initialize hybrid system.
 
         Args:
             renderer: "claude" | "ollama" | "template" | "auto"
                       auto = prefer ollama if available, else claude, else template
+            model: Optional model name for ollama renderer (e.g. "mistral:7b")
         """
         print("=" * 60)
         print("INITIALIZING HYBRID QUANTUM-LLM SYSTEM")
@@ -880,7 +881,7 @@ class HybridQuantumLLM:
 
         # Select renderer
         if renderer == "ollama":
-            self.renderer = OllamaRenderer()
+            self.renderer = OllamaRenderer(model=model) if model else OllamaRenderer()
         elif renderer == "claude":
             self.renderer = LLMRenderer()
         elif renderer == "template":
@@ -888,7 +889,7 @@ class HybridQuantumLLM:
             self.renderer.client = None  # Force template mode
         elif renderer == "auto":
             # Try Ollama first (local, fast, free)
-            ollama = OllamaRenderer()
+            ollama = OllamaRenderer(model=model) if model else OllamaRenderer()
             if ollama.available:
                 self.renderer = ollama
             else:
