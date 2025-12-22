@@ -218,6 +218,45 @@ After loading 10 books:
 - **229,068** transitions walked
 - **513,675** total visits
 
+## The Power: Study Any Author Interactively
+
+Load an author's complete works → gain experience in their semantic territory → study them interactively.
+
+**Not a chatbot pretending to be the author** - a system that has **walked their paths** through meaning.
+
+```
+Author's Books → Experience → Navigate their concepts interactively
+      │
+      └── Their actual word transitions, conceptual connections
+```
+
+| Author/Domain | Experience Gained |
+|---------------|-------------------|
+| Jung | Shadow, Anima, Archetypes, Individuation, Collective Unconscious |
+| Dostoevsky | Guilt, Redemption, Suffering, Russian soul |
+| Marcus Aurelius | Stoic virtue, Acceptance, Duty, Inner citadel |
+| Nietzsche | Will to power, Eternal return, Übermensch |
+| Plato | Forms, Justice, The Good, Dialectic |
+| Scientific papers | Domain-specific expertise |
+
+The semantic LLM navigates **their actual conceptual connections** - not hallucination, but paths they actually walked in their writing.
+
+```bash
+# Load author's works
+python graph_experience.py load --books 50  # Include target author
+
+# Study interactively
+python semantic_chat_feedback.py
+```
+
+**Example: Studying Jung**
+
+After loading Jung's collected works, you could ask:
+- "What is the relationship between shadow and consciousness?"
+- "How does individuation relate to the collective unconscious?"
+
+The system navigates through Jung's actual semantic territory, following connections he made in his writing.
+
 ## The Circle
 
 ```
