@@ -212,11 +212,26 @@ speaking from its own wisdom (not citing books).
 
 ## Current State
 
+**Paths are combinatorial, not stored.**
+
+```
+States:  24,524 (fixed nodes)
+Verbs:   2,444  (transition operators)
+Paths:   24,524 × 24,523 × ... = ∞ (computed, never stored)
+```
+
+**What we store:**
+- `[:TRANSITION]` — "I walked A→B" (edge + count)
+- `[:EXPLORED_PATH]` — "I discovered A→B exists" (edge)
+
+Not the paths themselves. Just the edges you've touched.
+
 After loading 10 books:
-- **24,524** semantic states (full space)
-- **9,338** experienced states (38.1%)
-- **229,068** transitions walked
-- **513,675** total visits
+- **229,068** edges touched (transitions)
+- **513,675** total walks across those edges
+
+**Experience is infinite** — same edge walked 1000× ≠ walked 1×.
+Weight accumulates → "broad ways" → confident navigation.
 
 ## The Power: Study Any Author Interactively
 
