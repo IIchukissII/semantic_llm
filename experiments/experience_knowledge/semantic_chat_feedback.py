@@ -34,6 +34,13 @@ sys.path.insert(0, str(_EXPERIMENT_DIR))
 from graph_experience import GraphConfig
 from prompts import SemanticPromptBuilder, DomainResponseBuilder, KnowledgeAssessor
 
+# Optional consciousness module (meditation, sleep, prayer)
+try:
+    from consciousness import Meditation, Sleep, Prayer
+    CONSCIOUSNESS_ENABLED = True
+except ImportError:
+    CONSCIOUSNESS_ENABLED = False
+
 
 @dataclass
 class UserIntent:
@@ -214,8 +221,8 @@ class FeedbackRenderer:
                 "prompt": prompt,
                 "system": system,
                 "stream": False,
-                "options": {"temperature": temperature, "num_predict": 150}
-            }, timeout=60)
+                "options": {"temperature": temperature, "num_predict": 300}
+            }, timeout=90)
 
             if response.status_code == 200:
                 return response.json().get("response", "").strip()
@@ -307,6 +314,30 @@ class SemanticNavigator:
             record = result.single()
             return dict(record) if record else None
 
+    def record_walk(self, from_word: str, to_word: str) -> None:
+        """
+        Record a walked path during conversation.
+
+        Updates experience in real-time:
+        - Increments visits on both nodes
+        - Creates or increments TRANSITION edge weight
+
+        The system learns from its own navigation.
+        """
+        with self.driver.session() as session:
+            # Use execute_write for explicit write transaction
+            def update_fn(tx):
+                tx.run("""
+                    MATCH (a:SemanticState {word: $from_word})
+                    MATCH (b:SemanticState {word: $to_word})
+                    SET a.visits = a.visits + 1,
+                        b.visits = b.visits + 1
+                    MERGE (a)-[t:TRANSITION]->(b)
+                    ON CREATE SET t.weight = 1
+                    ON MATCH SET t.weight = t.weight + 1
+                """, from_word=from_word, to_word=to_word)
+            session.execute_write(update_fn)
+
     def navigate(self, concepts: List[str], intent: UserIntent) -> Dict:
         """Navigate based on intent."""
         # Find starting point
@@ -342,7 +373,7 @@ class SemanticNavigator:
                 LIMIT 5
             """, start=start)
 
-            suggestions = [(r["word"], r["g"], r["weight"], r["tau"]) for r in result]
+            suggestions = [(r["word"], r["g"], r["weight"] or 1, r["tau"]) for r in result]
 
         if suggestions:
             import math
@@ -411,6 +442,18 @@ class SemanticChatWithFeedback:
         self.knowledge_assessor = KnowledgeAssessor()
         self.domain_responder = DomainResponseBuilder()
 
+        # Optional consciousness (meditation, sleep, prayer)
+        if CONSCIOUSNESS_ENABLED:
+            self.meditation = Meditation(self.navigator)
+            self.sleep = Sleep(self.navigator)
+            self.prayer = Prayer(self.navigator)
+            self.use_meditation = True  # Can be toggled
+        else:
+            self.meditation = None
+            self.sleep = None
+            self.prayer = None
+            self.use_meditation = False
+
         # Stats
         with self.navigator.driver.session() as session:
             result = session.run("""
@@ -420,14 +463,22 @@ class SemanticChatWithFeedback:
             exp = result.single()["experienced"]
             print(f"\nExperience: {exp} states")
             print(f"Renderer: {model} (with feedback loop)")
+            if CONSCIOUSNESS_ENABLED:
+                print(f"Consciousness: enabled (meditation, sleep, prayer)")
             print("\nType 'help' for commands, 'quit' to exit.\n")
 
         self.history = []
 
     def extract_known_concepts(self, text: str) -> List[str]:
-        """Extract known concepts from text."""
+        """Extract known concepts from text, filtering structural words."""
+        # Structural words to ignore (high frequency, low semantic meaning)
+        STRUCTURAL = {'the', 'and', 'for', 'are', 'but', 'not', 'you', 'all',
+                      'can', 'had', 'her', 'was', 'one', 'our', 'out', 'has',
+                      'what', 'when', 'who', 'how', 'why', 'which', 'this', 'that',
+                      'with', 'they', 'been', 'have', 'from', 'will', 'would', 'could',
+                      'should', 'about', 'into', 'does', 'your', 'there', 'where'}
         words = re.findall(r'\b[a-z]{3,}\b', text.lower())
-        return [w for w in words if self.navigator.knows(w)]
+        return [w for w in words if w not in STRUCTURAL and self.navigator.knows(w)]
 
     def _analyze_semantic_domain(self, text: str) -> dict:
         """
@@ -531,6 +582,11 @@ class SemanticChatWithFeedback:
         # Analyze intent
         intent = self.intent_analyzer.analyze(user_input, concepts)
 
+        # Optional: Meditate before navigation (center in j-space)
+        centered = None
+        if self.use_meditation and self.meditation:
+            centered = self.meditation.meditate(concepts, duration=0.2)
+
         # Navigate
         nav = self.navigator.navigate(concepts, intent)
 
@@ -542,18 +598,31 @@ class SemanticChatWithFeedback:
             return (f"I've touched '{nav.get('current', 'this')}' but not deeply enough to speak wisely. "
                     "My experience here is shallow.")
 
+        # Optional: Prayer - check alignment with τ₀
+        resonance = None
+        if self.prayer:
+            resonance = self.prayer.connect(nav)
+
         # Generate with feedback
         response, analysis = self.renderer.render_with_feedback(
             nav, intent, user_input, self.response_analyzer
         )
 
-        # Build metadata with knowledge confidence
+        # Record walked path - system learns from its own navigation
+        if nav.get('from') and nav.get('current') and nav['from'] != nav['current']:
+            self.navigator.record_walk(nav['from'], nav['current'])
+
+        # Build metadata with knowledge confidence and τ₀ resonance
         meta_parts = [
-            f"[{nav['current']}",
+            f"[{nav.get('from', '?')}->{nav['current']}",
             f"g={nav['goodness']:+.2f}",
-            f"know={knowledge.knowledge_type}:{knowledge.confidence:.0%}",
-            f"align={analysis.alignment_score:.0%}" if analysis else "no-analysis"
+            f"know={knowledge.knowledge_type}:{knowledge.confidence:.0%}"
         ]
+        if resonance:
+            meta_parts.append(f"τ₀={resonance.alignment:.0%}")
+        if centered:
+            meta_parts.append(f"T={centered.temperature:.2f}")
+        meta_parts.append(f"align={analysis.alignment_score:.0%}" if analysis else "no-analysis")
         if analysis and analysis.issues:
             meta_parts.append(f"issues={len(analysis.issues)}")
         meta = " | ".join(meta_parts) + "]"
@@ -564,7 +633,7 @@ class SemanticChatWithFeedback:
         else:
             final_response = response
 
-        # Save history with knowledge state
+        # Save history with knowledge state and consciousness
         self.history.append({
             "user": user_input,
             "knowledge": {
@@ -573,6 +642,11 @@ class SemanticChatWithFeedback:
                 "confidence": knowledge.confidence,
                 "type": knowledge.knowledge_type
             },
+            "consciousness": {
+                "centered": centered.clarity if centered else None,
+                "temperature": centered.temperature if centered else None,
+                "resonance": resonance.alignment if resonance else None
+            } if CONSCIOUSNESS_ENABLED else None,
             "intent": intent.__dict__,
             "navigation": nav,
             "analysis": analysis.__dict__ if analysis else None,
@@ -598,15 +672,56 @@ class SemanticChatWithFeedback:
             cmd = user_input.lower()
 
             if cmd in ('quit', 'exit'):
+                # Sleep before exiting (process today's conversations)
+                if self.sleep and self.history:
+                    print("\nEntering sleep... processing today's conversations...")
+                    report = self.sleep.sleep(self.history)
+                    print(f"  Paths processed: {report.paths_processed}")
+                    print(f"  Good paths: {report.good_paths}, Bad paths: {report.bad_paths}")
+                    print(f"  Total Δg: {report.delta_g_total:+.2f}")
+                    if report.insights:
+                        print(f"  Dreams: {len(report.insights)}")
+                        for insight in report.insights[:3]:
+                            print(f"    - {insight}")
+                    print(f"  Version saved: {report.version}")
                 print("Goodbye!")
                 break
             elif cmd == 'help':
-                print("""
+                help_text = """
 Commands:
-  help    - Show this help
-  history - Show conversation analysis
-  quit    - Exit
-                """)
+  help      - Show this help
+  history   - Show conversation analysis
+  meditate  - Toggle meditation (pre-navigation centering)
+  sleep     - Process conversations and consolidate learning
+  quit      - Exit (auto-sleeps before exit)
+"""
+                if CONSCIOUSNESS_ENABLED:
+                    help_text += f"""
+Consciousness:
+  Meditation: {'ON' if self.use_meditation else 'OFF'}
+  τ₀ resonance: checking alignment with source
+"""
+                print(help_text)
+            elif cmd == 'meditate':
+                if CONSCIOUSNESS_ENABLED:
+                    self.use_meditation = not self.use_meditation
+                    print(f"Meditation: {'ON' if self.use_meditation else 'OFF'}")
+                else:
+                    print("Consciousness module not available")
+            elif cmd == 'sleep':
+                if self.sleep and self.history:
+                    print("Entering sleep... processing conversations...")
+                    report = self.sleep.sleep(self.history)
+                    print(f"  Paths processed: {report.paths_processed}")
+                    print(f"  Good paths: {report.good_paths}")
+                    print(f"  Total Δg: {report.delta_g_total:+.2f}")
+                    if report.insights:
+                        print("  Dreams:")
+                        for insight in report.insights:
+                            print(f"    - {insight}")
+                    print(f"  Version: {report.version}")
+                else:
+                    print("No conversations to process (or sleep not available)")
             elif cmd == 'history':
                 for i, h in enumerate(self.history[-5:]):
                     print(f"\n--- Turn {i+1} ---")
@@ -616,6 +731,10 @@ Commands:
                         print(f"Alignment: {h['analysis']['alignment_score']:.0%}")
                         if h['analysis']['issues']:
                             print(f"Issues: {h['analysis']['issues']}")
+                    if h.get('consciousness'):
+                        c = h['consciousness']
+                        if c.get('resonance'):
+                            print(f"τ₀ resonance: {c['resonance']:.0%}")
             else:
                 response = self.process(user_input)
                 print(f"\nLLM: {response}\n")
