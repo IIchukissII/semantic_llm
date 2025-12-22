@@ -27,6 +27,61 @@ import numpy as np
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 from collections import defaultdict
+from dataclasses import dataclass, field
+
+
+# =========================================================================
+# NounCloud: Nouns as "projections of projections" (clouds of adjectives)
+# =========================================================================
+
+@dataclass
+class NounCloud:
+    """
+    Noun represented as a cloud of adjectives (projection of projections).
+
+    Theory: Nouns are not direct 16D vectors but weighted combinations
+    of adjective vectors. The entropy of the adjective distribution
+    determines the abstraction level (τ).
+
+    τ = 1 + 5 * (1 - h_adj_norm)
+
+    Where:
+      h_adj_norm = normalized Shannon entropy of adjective distribution
+      High entropy (many adjectives) → low τ → abstract (e.g., "love")
+      Low entropy (few adjectives) → high τ → concrete (e.g., "chair")
+    """
+    word: str
+    adj_profile: Dict[str, float]  # adjective -> weight (normalized probability)
+    variety: int                    # number of distinct adjectives
+    h_adj: float                    # Shannon entropy of adj distribution
+    h_adj_norm: float               # Normalized entropy [0, 1]
+    tau: float                      # Derived: 1 + 5 * (1 - h_adj_norm)
+
+    # Centroid computed from weighted sum of adjective vectors
+    j: np.ndarray = field(default_factory=lambda: np.zeros(5))   # 5D j-space centroid
+    i: np.ndarray = field(default_factory=lambda: np.zeros(11))  # 11D i-space centroid
+
+    # Metadata
+    is_cloud: bool = True           # False if fell back to direct vectors
+    total_count: int = 0            # Total adjective occurrences
+
+    @property
+    def vector(self) -> np.ndarray:
+        """Full 16D vector (j + i)."""
+        return np.concatenate([self.j, self.i])
+
+    @property
+    def j_magnitude(self) -> float:
+        """Transcendental depth (||j||)."""
+        return float(np.linalg.norm(self.j))
+
+    def top_adjectives(self, n: int = 10) -> List[Tuple[str, float]]:
+        """Get top n adjectives by weight."""
+        return sorted(self.adj_profile.items(), key=lambda x: -x[1])[:n]
+
+    def __repr__(self):
+        top3 = ', '.join(f'{a}:{w:.2f}' for a, w in self.top_adjectives(3))
+        return f"NounCloud({self.word}, τ={self.tau:.2f}, variety={self.variety}, [{top3}...])"
 
 # Try to import psycopg2, but don't fail if not available
 try:
@@ -568,6 +623,199 @@ class DataLoader:
         conn.close()
         self._svo_patterns = dict(self._svo_patterns)
         return self._svo_patterns
+
+    # =========================================================================
+    # NounCloud: Nouns as Adjective Clouds
+    # =========================================================================
+
+    def load_noun_adj_profiles(self, force_reload: bool = False,
+                               min_count: int = 2, top_n: int = 100) -> Dict[str, Dict[str, int]]:
+        """
+        Load noun-adjective profiles (which adjectives describe each noun).
+
+        Returns:
+            {noun: {adj: count, ...}}  -- raw counts, not normalized
+        """
+        if hasattr(self, '_noun_adj_profiles') and self._noun_adj_profiles is not None and not force_reload:
+            return self._noun_adj_profiles
+
+        # Try JSON first
+        json_file = self.json_dir / "noun_adj_profiles.json"
+        if json_file.exists():
+            with open(json_file) as f:
+                data = json.load(f)
+            self._noun_adj_profiles = {
+                noun: d.get('adj_profile', {})
+                for noun, d in data.get('nouns', {}).items()
+            }
+            return self._noun_adj_profiles
+
+        # Try CSV
+        csv_file = self.csv_dir / "bond_statistics.csv"
+        if csv_file.exists():
+            self._noun_adj_profiles = self._load_adj_profiles_from_csv(csv_file)
+            return self._noun_adj_profiles
+
+        # Fall back to database
+        self._noun_adj_profiles = self._load_adj_profiles_from_db(min_count, top_n)
+        return self._noun_adj_profiles
+
+    def _load_adj_profiles_from_csv(self, csv_file: Path) -> Dict[str, Dict[str, int]]:
+        """Load adjective profiles from bond_statistics.csv."""
+        profiles = defaultdict(dict)
+        with open(csv_file, newline='') as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                adj = row['adj']
+                noun = row['noun']
+                count = int(row['count'])
+                profiles[noun][adj] = count
+        return dict(profiles)
+
+    def _load_adj_profiles_from_db(self, min_count: int = 2, top_n: int = 100) -> Dict[str, Dict[str, int]]:
+        """Load adjective profiles from database."""
+        conn = self._get_db_connection()
+        if conn is None:
+            print("Warning: No noun adjective profiles available.")
+            return {}
+
+        cur = conn.cursor()
+        cur.execute('''
+            SELECT bond, total_count
+            FROM hyp_bond_vocab
+            WHERE total_count >= %s
+            ORDER BY total_count DESC
+        ''', (min_count,))
+
+        profiles = defaultdict(dict)
+        for bond, count in cur.fetchall():
+            parts = bond.split('|')
+            if len(parts) == 2:
+                adj, noun = parts
+                adj = adj.lower()
+                if len(profiles[noun]) < top_n:
+                    profiles[noun][adj] = count
+
+        cur.close()
+        conn.close()
+        return dict(profiles)
+
+    def load_noun_clouds(self, force_reload: bool = False,
+                         min_adjectives: int = 5) -> Dict[str, NounCloud]:
+        """
+        Load nouns as NounCloud objects (adjective clouds).
+
+        This is the theory-consistent representation:
+        - Nouns are weighted combinations of adjective vectors
+        - τ is derived from entropy of adjective distribution
+        - j/i are centroids computed from adjective vectors
+
+        Args:
+            min_adjectives: Minimum adjectives required to create cloud.
+                           Nouns with fewer fall back to direct vectors.
+
+        Returns:
+            {noun: NounCloud}
+        """
+        if hasattr(self, '_noun_clouds') and self._noun_clouds is not None and not force_reload:
+            return self._noun_clouds
+
+        # Load adjective profiles
+        adj_profiles = self.load_noun_adj_profiles(force_reload)
+
+        # Load word vectors (need adjective vectors for centroids)
+        vectors = self.load_word_vectors(force_reload)
+
+        # Build adjective vector lookup
+        # Note: Adjectives may not be classified as word_type=2, so we use
+        # words that appear as adjectives in the adj_profiles
+        j_dims = ['beauty', 'life', 'sacred', 'good', 'love']
+        i_dims = ['truth', 'freedom', 'meaning', 'order', 'peace',
+                  'power', 'nature', 'time', 'knowledge', 'self', 'society']
+
+        # Get all unique adjectives from profiles
+        unique_adjs = set()
+        for profile in adj_profiles.values():
+            unique_adjs.update(profile.keys())
+
+        adj_vectors = {}
+        for word, v in vectors.items():
+            if word in unique_adjs and v.get('j'):  # word appears as adjective
+                adj_vectors[word] = {
+                    'j': np.array([v['j'].get(d, 0) for d in j_dims]),
+                    'i': np.array([v['i'].get(d, 0) for d in i_dims])
+                }
+
+        self._noun_clouds = {}
+
+        for noun, profile in adj_profiles.items():
+            variety = len(profile)
+
+            # Skip nouns with too few adjectives (fall back to direct vectors)
+            if variety < min_adjectives:
+                # Create from direct vector if available
+                if noun in vectors and vectors[noun].get('j'):
+                    v = vectors[noun]
+                    j_arr = np.array([v['j'].get(d, 0) for d in j_dims])
+                    i_arr = np.array([v['i'].get(d, 0) for d in i_dims])
+                    self._noun_clouds[noun] = NounCloud(
+                        word=noun,
+                        adj_profile=profile,
+                        variety=variety,
+                        h_adj=0.0,
+                        h_adj_norm=0.0,
+                        tau=v.get('tau', 4.0),
+                        j=j_arr,
+                        i=i_arr,
+                        is_cloud=False,  # Marked as fallback
+                        total_count=sum(profile.values())
+                    )
+                continue
+
+            # Compute entropy
+            h_adj = self._shannon_entropy(profile)
+            h_adj_norm = self._normalized_entropy(profile)
+            tau = 1 + 5 * (1 - h_adj_norm)
+
+            # Normalize profile to probabilities
+            total = sum(profile.values())
+            probs = {adj: count / total for adj, count in profile.items()}
+
+            # Compute centroids as weighted sum of adjective vectors
+            j_centroid = np.zeros(5)
+            i_centroid = np.zeros(11)
+            weight_sum = 0.0
+
+            for adj, weight in probs.items():
+                if adj in adj_vectors:
+                    j_centroid += weight * adj_vectors[adj]['j']
+                    i_centroid += weight * adj_vectors[adj]['i']
+                    weight_sum += weight
+
+            # Normalize by weight sum (in case some adjectives not found)
+            if weight_sum > 0:
+                j_centroid /= weight_sum
+                i_centroid /= weight_sum
+
+            self._noun_clouds[noun] = NounCloud(
+                word=noun,
+                adj_profile=probs,
+                variety=variety,
+                h_adj=h_adj,
+                h_adj_norm=h_adj_norm,
+                tau=tau,
+                j=j_centroid,
+                i=i_centroid,
+                is_cloud=True,
+                total_count=total
+            )
+
+        return self._noun_clouds
+
+    def get_noun_cloud(self, noun: str) -> Optional[NounCloud]:
+        """Get NounCloud for a specific noun."""
+        clouds = self.load_noun_clouds()
+        return clouds.get(noun)
 
     # =========================================================================
     # Utility Methods

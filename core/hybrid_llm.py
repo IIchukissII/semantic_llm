@@ -30,8 +30,8 @@ from pathlib import Path
 import json
 import re
 
-# Import DataLoader for CSV-based data loading
-from core.data_loader import DataLoader
+# Import DataLoader and NounCloud for CSV-based data loading
+from core.data_loader import DataLoader, NounCloud
 
 # Load API key
 ENV_PATH = Path(__file__).parent.parent / "phase3_generation" / ".env"
@@ -77,8 +77,14 @@ class SemanticState:
     tau: float     # abstraction level
     goodness: float  # projection onto j_good
 
+    # NounCloud metadata (projections of projections)
+    is_cloud: bool = False  # True if derived from adjective cloud
+    variety: int = 0        # Number of adjectives (if is_cloud)
+    h_adj_norm: float = 0.0 # Normalized entropy of adjectives
+
     def __repr__(self):
-        return f"|{self.word}, τ={self.tau:.2f}, g={self.goodness:+.2f}⟩"
+        cloud_marker = "☁" if self.is_cloud else ""
+        return f"|{self.word}{cloud_marker}, τ={self.tau:.2f}, g={self.goodness:+.2f}⟩"
 
 
 @dataclass
@@ -217,20 +223,32 @@ class QuantumCore:
         self._load_spin_pairs()
 
     def _load_space(self):
-        """Load semantic space from CSV/database via DataLoader."""
+        """
+        Load semantic space from CSV/database via DataLoader.
+
+        Uses NounCloud (projections of projections) for nouns:
+        - j/i centroids computed from weighted adjective vectors
+        - τ derived from entropy of adjective distribution
+        - Fallback to direct vectors for sparse nouns (< 5 adjectives)
+        """
         print("QuantumCore: Loading semantic space...")
 
         vectors = self.loader.load_word_vectors()
         j_dims = ['beauty', 'life', 'sacred', 'good', 'love']
 
-        # Get goodness direction from data
+        # Load NounClouds first (to compute goodness from cloud centroids)
+        noun_clouds = self.loader.load_noun_clouds()
+
+        # Compute goodness direction from NounCloud centroids (not raw adjective vectors)
+        # This ensures consistency: both goodness direction and noun positions
+        # are in the same "cloud centroid" space
         special = {}
-        for word in ['good', 'evil', 'love', 'hate', 'beauty', 'ugly']:
-            if word in vectors and vectors[word].get('j'):
-                special[word] = np.array([vectors[word]['j'].get(d, 0) for d in j_dims])
+        for word in ['good', 'evil', 'love', 'hate', 'peace', 'war']:
+            if word in noun_clouds:
+                special[word] = noun_clouds[word].j
 
         directions = []
-        for pos, neg in [('good', 'evil'), ('love', 'hate'), ('beauty', 'ugly')]:
+        for pos, neg in [('good', 'evil'), ('love', 'hate'), ('peace', 'war')]:
             if pos in special and neg in special:
                 d = special[pos] - special[neg]
                 norm = np.linalg.norm(d)
@@ -244,17 +262,41 @@ class QuantumCore:
                 self.j_good = self.j_good / norm
         else:
             self.j_good = np.array([1, 1, 1, 1, 1]) / np.sqrt(5)
+        cloud_count = 0
+        fallback_count = 0
 
-        # Load all words with j and tau
+        # First, load nouns from NounClouds (theory-consistent)
+        for word, cloud in noun_clouds.items():
+            j_arr = cloud.j
+            goodness = float(np.dot(j_arr, self.j_good))
+            self.states[word] = SemanticState(
+                word=word,
+                j=j_arr,
+                tau=cloud.tau,
+                goodness=goodness,
+                is_cloud=cloud.is_cloud,
+                variety=cloud.variety,
+                h_adj_norm=cloud.h_adj_norm
+            )
+            if cloud.is_cloud:
+                cloud_count += 1
+            else:
+                fallback_count += 1
+
+        # Then, add any remaining words from vectors (adjectives, verbs, etc.)
         for word, v in vectors.items():
-            if v.get('j') and v.get('tau') and v['tau'] > 0:
+            if word not in self.states and v.get('j') and v.get('tau') and v['tau'] > 0:
                 j_arr = np.array([v['j'].get(d, 0) for d in j_dims])
                 goodness = float(np.dot(j_arr, self.j_good))
                 self.states[word] = SemanticState(
-                    word=word, j=j_arr, tau=v['tau'], goodness=goodness
+                    word=word, j=j_arr, tau=v['tau'], goodness=goodness,
+                    is_cloud=False  # Not from NounCloud
                 )
 
         print(f"  Loaded {len(self.states)} states")
+        print(f"    NounCloud (theory-consistent): {cloud_count}")
+        print(f"    Fallback (sparse nouns): {fallback_count}")
+        print(f"    Other (adjectives, verbs, etc.): {len(self.states) - cloud_count - fallback_count}")
 
     def _load_verbs(self):
         """Load verb transitions from CSV/database via DataLoader."""

@@ -442,6 +442,175 @@ def export_bond_statistics():
     print(f"  Written {len(csv_rows)} rows to {csv_path}")
 
 
+def export_noun_adj_profiles():
+    """
+    Export noun adjective profiles for NounCloud construction.
+
+    Each noun's profile contains:
+    - adj_profile: {adj: weight} (top adjectives with probabilities)
+    - variety: number of distinct adjectives
+    - h_adj: Shannon entropy
+    - h_adj_norm: normalized entropy [0,1]
+    - tau: derived abstraction level (1 + 5*(1-h_adj_norm))
+    - j_centroid: 5D j-space centroid
+    - i_centroid: 11D i-space centroid
+    """
+    print("Exporting noun adjective profiles...")
+
+    conn = get_connection()
+    cur = conn.cursor()
+
+    # Load all adjective-noun bonds
+    print("  Loading adjective-noun bonds...")
+    cur.execute('''
+        SELECT bond, total_count
+        FROM hyp_bond_vocab
+        WHERE total_count >= 2
+        ORDER BY total_count DESC
+    ''')
+
+    noun_adj = defaultdict(lambda: defaultdict(int))
+    for bond, count in cur.fetchall():
+        parts = bond.split('|')
+        if len(parts) == 2:
+            adj, noun = parts
+            noun_adj[noun][adj.lower()] += count
+
+    # Load adjective vectors for centroid computation
+    # Note: Adjectives may not be classified as word_type=2, so we get vectors
+    # for all words that appear as adjectives in the bond vocabulary
+    print("  Loading adjective vectors...")
+
+    # First, get unique adjectives from bond vocabulary
+    unique_adjs = set()
+    for adj_counts in noun_adj.values():
+        unique_adjs.update(adj_counts.keys())
+
+    # Then get vectors for those adjectives
+    cur.execute("""
+        SELECT word, j, i
+        FROM hyp_semantic_index
+        WHERE j IS NOT NULL
+    """)
+
+    adj_vectors = {}
+    for word, j, i in cur.fetchall():
+        if j and i and word in unique_adjs:  # Only keep words that appear as adjectives
+            adj_vectors[word] = {
+                'j': np.array(j),
+                'i': np.array(i)
+            }
+
+    cur.close()
+    conn.close()
+
+    print(f"  Found {len(noun_adj)} nouns, {len(adj_vectors)} adjective vectors")
+
+    # Build profiles
+    data = {
+        "exported_at": datetime.now().isoformat(),
+        "description": "Noun adjective profiles for NounCloud (projections of projections)",
+        "theory": {
+            "principle": "Nouns are clouds of adjectives, not direct 16D vectors",
+            "tau_formula": "τ = 1 + 5 × (1 - H_norm)",
+            "centroid": "j/i centroids are weighted sums of adjective vectors"
+        },
+        "dimensions": {
+            "j_space": J_DIMS,
+            "i_space": I_DIMS
+        },
+        "nouns": {}
+    }
+
+    # CSV for raw profiles
+    csv_header = ['noun', 'variety', 'h_adj', 'h_adj_norm', 'tau', 'total_count',
+                  'top_adjs', 'is_cloud'] + \
+                 [f'j_{d}' for d in J_DIMS] + [f'i_{d}' for d in I_DIMS]
+    csv_rows = []
+
+    min_adjectives = 5  # Minimum for cloud construction
+
+    for noun, adj_counts in noun_adj.items():
+        variety = len(adj_counts)
+        total_count = sum(adj_counts.values())
+
+        # Compute entropy
+        h_adj = shannon_entropy(adj_counts)
+        h_adj_norm = normalized_entropy(adj_counts)
+        tau = 1 + 5 * (1 - h_adj_norm)
+
+        # Normalize to probabilities (keep top 100)
+        top_adjs = sorted(adj_counts.items(), key=lambda x: -x[1])[:100]
+        probs = {adj: count / total_count for adj, count in top_adjs}
+
+        # Compute centroids
+        j_centroid = np.zeros(5)
+        i_centroid = np.zeros(11)
+        weight_sum = 0.0
+
+        for adj, weight in probs.items():
+            if adj in adj_vectors:
+                j_centroid += weight * adj_vectors[adj]['j']
+                i_centroid += weight * adj_vectors[adj]['i']
+                weight_sum += weight
+
+        if weight_sum > 0:
+            j_centroid /= weight_sum
+            i_centroid /= weight_sum
+
+        is_cloud = variety >= min_adjectives
+
+        # JSON entry
+        entry = {
+            "adj_profile": {adj: round(p, 6) for adj, p in probs.items()},
+            "variety": variety,
+            "h_adj": round(h_adj, 4),
+            "h_adj_norm": round(h_adj_norm, 4),
+            "tau": round(tau, 2),
+            "total_count": total_count,
+            "is_cloud": is_cloud,
+            "j_centroid": dict(zip(J_DIMS, [round(x, 6) for x in j_centroid])),
+            "i_centroid": dict(zip(I_DIMS, [round(x, 6) for x in i_centroid]))
+        }
+        data["nouns"][noun] = entry
+
+        # CSV row (top 5 adjectives as string)
+        top5_str = ','.join(f"{adj}:{p:.3f}" for adj, p in list(probs.items())[:5])
+        row = [noun, variety, round(h_adj, 4), round(h_adj_norm, 4), round(tau, 2),
+               total_count, top5_str, is_cloud]
+        row.extend([round(x, 6) for x in j_centroid])
+        row.extend([round(x, 6) for x in i_centroid])
+        csv_rows.append(row)
+
+    # Statistics
+    cloud_count = sum(1 for n, d in data["nouns"].items() if d["is_cloud"])
+    fallback_count = len(data["nouns"]) - cloud_count
+
+    data["statistics"] = {
+        "total_nouns": len(data["nouns"]),
+        "cloud_nouns": cloud_count,
+        "fallback_nouns": fallback_count,
+        "min_adjectives_for_cloud": min_adjectives,
+        "mean_variety": round(np.mean([d["variety"] for d in data["nouns"].values()]), 1),
+        "mean_tau": round(np.mean([d["tau"] for d in data["nouns"].values()]), 2)
+    }
+
+    # Write JSON
+    json_path = OUTPUT_DIR / "json" / "noun_adj_profiles.json"
+    with open(json_path, 'w') as f:
+        json.dump(data, f, indent=2)
+    print(f"  Written {len(data['nouns'])} noun profiles to {json_path}")
+    print(f"    Cloud nouns: {cloud_count}, Fallback nouns: {fallback_count}")
+
+    # Write CSV
+    csv_path = OUTPUT_DIR / "csv" / "noun_adj_profiles.csv"
+    with open(csv_path, 'w', newline='') as f:
+        writer = csv.writer(f)
+        writer.writerow(csv_header)
+        writer.writerows(csv_rows)
+    print(f"  Written {len(csv_rows)} rows to {csv_path}")
+
+
 def export_svo_triads():
     """Export subject-verb-object triads for navigation."""
     print("Exporting SVO triads...")
@@ -506,6 +675,7 @@ def main():
     parser.add_argument('--spin', action='store_true', help='Export spin pairs')
     parser.add_argument('--bonds', action='store_true', help='Export bond statistics')
     parser.add_argument('--svo', action='store_true', help='Export SVO triads')
+    parser.add_argument('--profiles', action='store_true', help='Export noun adjective profiles (NounCloud)')
     args = parser.parse_args()
 
     # Ensure output directories exist
@@ -516,13 +686,14 @@ def main():
     print("SEMANTIC DATA EXPORT")
     print("=" * 60)
 
-    if args.all or not any([args.vectors, args.entropy, args.verbs, args.spin, args.bonds, args.svo]):
+    if args.all or not any([args.vectors, args.entropy, args.verbs, args.spin, args.bonds, args.svo, args.profiles]):
         export_word_vectors()
         export_entropy_stats()
         export_verb_operators()
         export_spin_pairs()
         export_bond_statistics()
         export_svo_triads()
+        export_noun_adj_profiles()
     else:
         if args.vectors:
             export_word_vectors()
@@ -536,6 +707,8 @@ def main():
             export_bond_statistics()
         if args.svo:
             export_svo_triads()
+        if args.profiles:
+            export_noun_adj_profiles()
 
     print("\nExport complete!")
 

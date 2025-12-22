@@ -1,15 +1,25 @@
 #!/usr/bin/env python3
 """
-Navigator V2 - Corrected Compass
-================================
+Navigator V2 - Corrected Compass with NounCloud Support
+========================================================
 
 Uses actual good→evil direction from data, not assumed [1,1,1,1,1].
+Now uses NounCloud (projections of projections) for theory-consistent nouns.
 """
 
 import numpy as np
-import psycopg2
 from dataclasses import dataclass
 from typing import List, Dict, Optional
+
+# Import DataLoader and NounCloud
+from core.data_loader import DataLoader, NounCloud
+
+# Optional: database fallback
+try:
+    import psycopg2
+    HAS_PSYCOPG2 = True
+except ImportError:
+    HAS_PSYCOPG2 = False
 
 DB_CONFIG = {
     "dbname": "bonds",
@@ -27,8 +37,14 @@ class NounState:
     tau: float
     goodness: float  # projection onto good direction
 
+    # NounCloud metadata
+    is_cloud: bool = False  # True if derived from adjective cloud
+    variety: int = 0        # Number of adjectives (if is_cloud)
+    h_adj_norm: float = 0.0 # Normalized entropy
+
     def __repr__(self):
-        return f"|{self.word}, τ={self.tau:.2f}, g={self.goodness:+.2f}⟩"
+        cloud_marker = "☁" if self.is_cloud else ""
+        return f"|{self.word}{cloud_marker}, τ={self.tau:.2f}, g={self.goodness:+.2f}⟩"
 
 
 @dataclass
@@ -40,34 +56,45 @@ class Transition:
 
 
 class SemanticSpace:
-    def __init__(self):
+    """
+    Semantic space using NounCloud (projections of projections).
+
+    Uses DataLoader to load data from CSV/JSON files or database.
+    Nouns are loaded as NounCloud (adjective centroids with derived τ).
+    """
+
+    def __init__(self, data_loader: Optional[DataLoader] = None):
+        self.loader = data_loader or DataLoader()
         self.nouns: Dict[str, NounState] = {}
         self.j_good = None  # Will be computed from data
-        self._load_from_db()
+        self._load_space()
 
-    def _load_from_db(self):
-        print("Loading semantic space...")
-        conn = psycopg2.connect(**DB_CONFIG)
-        cur = conn.cursor()
+    def _load_space(self):
+        """Load semantic space using NounCloud (projections of projections)."""
+        print("Loading semantic space with NounCloud support...")
 
-        # First, get the good and evil vectors to find direction
-        cur.execute("""
-            SELECT word, j FROM hyp_semantic_index
-            WHERE word IN ('good', 'evil', 'love', 'hate', 'beauty', 'ugly')
-        """)
-        special = {row[0]: np.array(row[1]) for row in cur.fetchall()}
+        vectors = self.loader.load_word_vectors()
+        j_dims = ['beauty', 'life', 'sacred', 'good', 'love']
 
-        # Compute goodness direction from multiple pairs
+        # Load NounClouds first (to compute goodness from cloud centroids)
+        noun_clouds = self.loader.load_noun_clouds()
+
+        # Compute goodness direction from NounCloud centroids (not raw adjective vectors)
+        # This ensures consistency: both goodness direction and noun positions
+        # are in the same "cloud centroid" space
+        special = {}
+        for word in ['good', 'evil', 'love', 'hate', 'peace', 'war']:
+            if word in noun_clouds:
+                special[word] = noun_clouds[word].j
+
+        # Compute goodness direction from cloud-based pairs
         directions = []
-        if 'good' in special and 'evil' in special:
-            d = special['good'] - special['evil']
-            directions.append(d / np.linalg.norm(d))
-        if 'love' in special and 'hate' in special:
-            d = special['love'] - special['hate']
-            directions.append(d / np.linalg.norm(d))
-        if 'beauty' in special and 'ugly' in special:
-            d = special['beauty'] - special['ugly']
-            directions.append(d / np.linalg.norm(d))
+        for pos, neg in [('good', 'evil'), ('love', 'hate'), ('peace', 'war')]:
+            if pos in special and neg in special:
+                d = special[pos] - special[neg]
+                norm = np.linalg.norm(d)
+                if norm > 0:
+                    directions.append(d / norm)
 
         if directions:
             # Average the directions
@@ -76,27 +103,41 @@ class SemanticSpace:
         else:
             self.j_good = np.array([1, 1, 1, 1, 1]) / np.sqrt(5)
 
-        print(f"  Goodness direction: [{', '.join(f'{x:.2f}' for x in self.j_good)}]")
+        print(f"  Goodness direction (cloud-based): [{', '.join(f'{x:.2f}' for x in self.j_good)}]")
+        cloud_count = 0
+        fallback_count = 0
 
-        # Now load all nouns
-        cur.execute("""
-            SELECT word, j, tau_entropy
-            FROM hyp_semantic_index
-            WHERE j IS NOT NULL AND tau_entropy IS NOT NULL AND tau_entropy > 0
-        """)
-
-        for word, j, tau in cur.fetchall():
-            j_arr = np.array(j)
+        # Load nouns from NounClouds
+        for word, cloud in noun_clouds.items():
+            j_arr = cloud.j
             goodness = float(np.dot(j_arr, self.j_good))
             self.nouns[word] = NounState(
                 word=word,
                 j=j_arr,
-                tau=tau,
-                goodness=goodness
+                tau=cloud.tau,
+                goodness=goodness,
+                is_cloud=cloud.is_cloud,
+                variety=cloud.variety,
+                h_adj_norm=cloud.h_adj_norm
             )
+            if cloud.is_cloud:
+                cloud_count += 1
+            else:
+                fallback_count += 1
 
-        conn.close()
+        # Add remaining words from vectors
+        for word, v in vectors.items():
+            if word not in self.nouns and v.get('j') and v.get('tau') and v['tau'] > 0:
+                j_arr = np.array([v['j'].get(d, 0) for d in j_dims])
+                goodness = float(np.dot(j_arr, self.j_good))
+                self.nouns[word] = NounState(
+                    word=word, j=j_arr, tau=v['tau'], goodness=goodness,
+                    is_cloud=False
+                )
+
         print(f"  Loaded {len(self.nouns)} nouns")
+        print(f"    NounCloud (theory-consistent): {cloud_count}")
+        print(f"    Fallback (sparse): {fallback_count}")
 
         # Show calibration
         print("\n  Goodness calibration:")
@@ -114,33 +155,18 @@ class Navigator:
         self.verb_objects = self._load_verbs()
 
     def _load_verbs(self) -> Dict[str, List[str]]:
+        """Load verb transitions using DataLoader."""
         print("\nLoading verb transitions...")
-        conn = psycopg2.connect(**DB_CONFIG)
-        cur = conn.cursor()
 
-        # Get semantically meaningful verbs
-        cur.execute("""
-            SELECT verb, object, SUM(total_count) as cnt
-            FROM hyp_svo_triads
-            WHERE total_count >= 10
-              AND LENGTH(verb) >= 3
-              AND LENGTH(object) >= 3
-            GROUP BY verb, object
-            HAVING SUM(total_count) >= 20
-            ORDER BY verb, cnt DESC
-        """)
+        raw_verb_objects = self.space.loader.load_verb_objects()
 
+        # Filter to verbs with valid objects (present in semantic space)
         verb_objects = {}
-        for verb, obj, cnt in cur.fetchall():
-            if verb not in verb_objects:
-                verb_objects[verb] = []
-            if len(verb_objects[verb]) < 10 and obj in self.space.nouns:
-                verb_objects[verb].append(obj)
+        for verb, objs in raw_verb_objects.items():
+            valid_objs = [obj for obj in objs if obj in self.space.nouns]
+            if len(valid_objs) >= 3:  # At least 3 valid objects
+                verb_objects[verb] = valid_objs[:10]
 
-        # Filter verbs that have at least 3 valid objects
-        verb_objects = {v: objs for v, objs in verb_objects.items() if len(objs) >= 3}
-
-        conn.close()
         print(f"  Loaded {len(verb_objects)} meaningful verbs")
         return verb_objects
 
@@ -203,7 +229,7 @@ class Navigator:
 
 def demo():
     print("=" * 70)
-    print("NAVIGATOR V2 - Corrected Compass")
+    print("NAVIGATOR V2 - NounCloud Support (Projections of Projections)")
     print("=" * 70)
 
     space = SemanticSpace()
