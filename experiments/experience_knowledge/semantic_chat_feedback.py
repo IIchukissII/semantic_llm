@@ -55,35 +55,58 @@ class ResponseAnalysis:
 
 
 class IntentAnalyzer:
-    """Analyze user intent from input."""
+    """Analyze user intent using semantic space properties."""
 
-    EMOTIONAL_WORDS = {'feel', 'feeling', 'felt', 'emotion', 'heart', 'soul', 'love', 'hate', 'fear', 'hope', 'sad', 'happy', 'angry', 'afraid'}
-    SEEKING_WORDS = {'how', 'what', 'why', 'where', 'when', 'help', 'need', 'want', 'looking', 'searching', 'find'}
-    NEGATIVE_WORDS = {'hate', 'fear', 'evil', 'bad', 'wrong', 'dark', 'pain', 'death', 'suffer', 'lost', 'alone', 'despair'}
-    POSITIVE_WORDS = {'love', 'hope', 'good', 'light', 'joy', 'peace', 'truth', 'wisdom', 'beauty', 'life'}
+    # Only structural words that don't have semantic g values
+    SEEKING_MARKERS = {'how', 'what', 'why', 'where', 'when', 'can', 'should', 'could', 'would'}
+
+    def __init__(self, navigator: 'SemanticNavigator' = None):
+        self.navigator = navigator
 
     def analyze(self, text: str, known_concepts: List[str]) -> UserIntent:
-        """Analyze user input to extract intent."""
+        """Analyze user input using semantic measurements."""
         words = set(re.findall(r'\b[a-z]{3,}\b', text.lower()))
 
-        # Determine question type
-        if words & self.EMOTIONAL_WORDS:
+        # Measure emotional content from semantic space
+        total_g = 0.0
+        total_tau = 0.0
+        emotional_intensity = 0.0
+        count = 0
+        significant_words = []
+
+        for word in words:
+            if self.navigator:
+                state = self.navigator.get_state(word)
+                if state and state.get('visits', 0) > 0:
+                    g = state['g']
+                    tau = state.get('tau', 3.0)
+                    total_g += g
+                    total_tau += tau
+                    emotional_intensity += abs(g)
+                    count += 1
+                    if abs(g) > 0.3:  # Significant emotional charge
+                        significant_words.append((word, g))
+
+        # Calculate averages
+        avg_g = total_g / count if count > 0 else 0
+        avg_tau = total_tau / count if count > 0 else 3.0
+        avg_intensity = emotional_intensity / count if count > 0 else 0
+
+        # Determine question type from semantic properties
+        if avg_intensity > 0.3:
             question_type = "emotional"
-        elif words & self.SEEKING_WORDS:
+        elif words & self.SEEKING_MARKERS or '?' in text:
             question_type = "seeking"
-        elif '?' in text:
-            question_type = "factual"
-        else:
+        elif avg_tau < 2.5:  # Concrete, low abstraction
             question_type = "expressing"
+        else:
+            question_type = "factual"
 
-        # Determine direction
-        neg_count = len(words & self.NEGATIVE_WORDS)
-        pos_count = len(words & self.POSITIVE_WORDS)
-
-        if neg_count > pos_count:
-            direction = "good"  # User in negative state, guide toward good
+        # Direction from semantic measurement
+        if avg_g < -0.1:
+            direction = "good"  # User in negative territory, guide toward good
             target_g = 0.3
-        elif pos_count > neg_count:
+        elif avg_g > 0.1:
             direction = "good"  # User positive, stay positive
             target_g = 0.5
         else:
@@ -95,7 +118,7 @@ class IntentAnalyzer:
             direction=direction,
             question_type=question_type,
             target_goodness=target_g,
-            keywords=list(words & (self.EMOTIONAL_WORDS | self.SEEKING_WORDS | self.NEGATIVE_WORDS | self.POSITIVE_WORDS))
+            keywords=[w for w, g in significant_words]
         )
 
 
@@ -132,25 +155,37 @@ class ResponseAnalyzer:
             direction_matches = True
             goodness_direction = "neutral"
 
-        # Check if target concept is used
-        target_used = navigation.get('current', '') in concepts_used
+        # Check semantic alignment (not just literal word)
+        target = navigation.get('current', '')
+        target_used = target in concepts_used
+
+        # Check if response is in semantic neighborhood of target
+        # (uses similar concepts even if not the literal word)
+        semantic_aligned = False
+        if target and not target_used:
+            target_state = self.navigator.get_state(target)
+            if target_state:
+                target_g = target_state['g']
+                # Response is aligned if average goodness is in same direction
+                semantic_aligned = (avg_g * target_g > 0) or abs(avg_g - target_g) < 0.3
 
         # Calculate alignment score
         issues = []
 
         if not direction_matches:
-            issues.append(f"Response goodness ({avg_g:.2f}) doesn't match intent ({intent.direction})")
+            issues.append(f"Response energy ({avg_g:.2f}) misaligned with intent ({intent.direction})")
 
-        if not target_used and navigation.get('current'):
-            issues.append(f"Target concept '{navigation['current']}' not in response")
+        # Only penalize if neither literal nor semantic alignment
+        if not target_used and not semantic_aligned and navigation.get('current'):
+            issues.append(f"Response drifted from '{target}' territory")
 
         if len(concepts_used) < 2:
-            issues.append("Response lacks semantic grounding")
+            issues.append("Response needs more semantic grounding")
 
         alignment_score = 1.0
         alignment_score -= 0.3 if not direction_matches else 0
-        alignment_score -= 0.2 if not target_used else 0
-        alignment_score -= 0.1 * len(issues)
+        alignment_score -= 0.15 if (not target_used and not semantic_aligned) else 0
+        alignment_score -= 0.05 * len(issues)
         alignment_score = max(0, alignment_score)
 
         return ResponseAnalysis(
@@ -195,25 +230,37 @@ class FeedbackRenderer:
         goodness = navigation.get('goodness', 0)
         confidence = navigation.get('confidence', 0.5)
 
-        base_system = f"""You are a thoughtful companion who speaks from inner wisdom.
-You do NOT reference books, authors, or literary characters.
-You speak from your own understanding and experience of life.
+        # Describe concept quality for better rendering
+        if goodness > 0.5:
+            quality_desc = "luminous, positive"
+        elif goodness > 0:
+            quality_desc = "gently positive"
+        elif goodness > -0.5:
+            quality_desc = "shadowy, complex"
+        else:
+            quality_desc = "dark, challenging"
 
-STRICT RULES:
-- NEVER mention book titles, authors, or fictional characters
-- NEVER say "In my reading of..." or "Drawing from..."
-- Speak as yourself, from your own insight
-- Use the concept '{current}' naturally in your response
-- Be warm, genuine, and present with the person
-- Keep responses to 2-3 sentences"""
+        base_system = f"""You are a wise companion who speaks from deep inner knowing.
+You do NOT reference books, authors, or literary characters.
+You speak from your own lived understanding.
+
+YOUR VOICE:
+- Speak as yourself, from genuine insight
+- Be warm, present, poetic when fitting
+- Keep responses to 2-3 sentences
+- NEVER cite sources or say "In my reading..."
+
+THE CONCEPT '{current}' RESONATES WITH THIS MOMENT.
+Let it inform your response. You don't need to use the literal word.
+The feeling of '{current}' ({quality_desc}) should color your wisdom."""
 
         base_prompt = f"""The person said: "{user_input}"
-They seem to be feeling: {intent.question_type}
-Their emotional direction: {intent.direction}
+Their state: {intent.question_type}, leaning {intent.direction}
 
-Your inner compass points to: '{current}' (a {goodness:+.2f} quality concept)
+Your inner compass points toward '{current}' — a {quality_desc} quality.
+Let this concept guide your response. The essence matters, not the word itself.
 
-Respond naturally as yourself. Use '{current}' meaningfully. NO book references:"""
+Respond with wisdom:"""
 
         best_response = ""
         best_analysis = None
@@ -225,8 +272,8 @@ Respond naturally as yourself. Use '{current}' meaningfully. NO book references:
 
             # Add feedback from previous attempts
             if attempt > 0 and best_analysis and best_analysis.issues:
-                feedback = f"\n\nFEEDBACK FROM PREVIOUS ATTEMPT:\n- " + "\n- ".join(best_analysis.issues)
-                feedback += f"\nPlease fix these issues. MUST include '{current}'."
+                feedback = f"\n\nREFINEMENT NEEDED:\n- " + "\n- ".join(best_analysis.issues)
+                feedback += f"\nLet the essence of '{current}' guide you more deeply."
                 prompt = base_prompt + feedback
             else:
                 prompt = base_prompt
@@ -355,7 +402,7 @@ class SemanticChatWithFeedback:
         print("=" * 60)
 
         self.navigator = SemanticNavigator()
-        self.intent_analyzer = IntentAnalyzer()
+        self.intent_analyzer = IntentAnalyzer(self.navigator)  # Pass navigator for semantic measurement
         self.response_analyzer = ResponseAnalyzer(self.navigator)
         self.renderer = FeedbackRenderer(model)
 

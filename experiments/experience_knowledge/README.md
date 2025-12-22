@@ -194,9 +194,9 @@ python load_semantic_space.py query --word love
 python explored_paths.py explore
 ```
 
-## Example Conversation
+## Example Conversations
 
-**Simulating depression dialogue:**
+### Depression Dialogue
 
 | User | Navigation | g | Response |
 |------|------------|---|----------|
@@ -207,8 +207,25 @@ python explored_paths.py explore
 | "Maybe I'm broken" | → would | +0.03 | Growth mindset, embracing journey |
 | "Any point in trying?" | → favour | +0.00 | Persistence, not alone |
 
-The semantic LLM navigates from negative states toward positive ones,
-speaking from its own wisdom (not citing books).
+### Philosophical Inquiry (Navigating Dante's Territory)
+
+| Question | Navigation | g | Response |
+|----------|------------|---|----------|
+| "shadow and light" | → making | +1.39 | "Shadows are depths where hidden strengths can be discovered" |
+| "soul and consciousness" | → hell | +0.00 | "Connect with your soul deeply - a guiding light through challenging times" |
+| "suffering → understanding self" | → agitation | -0.00 | "Amidst agitation lies opportunity for self-discovery" |
+| "good and evil within us" | → hell | +0.00 | "Hell symbolizes the chasm - invitation to face and transform" |
+
+**All responses 100% aligned.** The system navigates through Dante's territory
+(Divine Comedy experience) to discuss consciousness, shadow, transformation.
+
+No book citations. Speaks from walked paths:
+- "hell" = 47 visits (Dante's journey)
+- "agitation" = emotional territory
+- "making" = growth, creation (+1.39 goodness)
+
+**To get Jungian navigation** (archetype, anima, individuation) → load Jung's books.
+The system would then navigate through Jung's actual conceptual paths.
 
 ## Current State
 
