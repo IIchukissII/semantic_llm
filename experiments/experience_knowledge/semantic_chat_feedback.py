@@ -32,6 +32,7 @@ _EXPERIMENT_DIR = _THIS_FILE.parent
 
 sys.path.insert(0, str(_EXPERIMENT_DIR))
 from graph_experience import GraphConfig
+from prompts import SemanticPromptBuilder, DomainResponseBuilder, KnowledgeAssessor
 
 
 @dataclass
@@ -203,6 +204,7 @@ class FeedbackRenderer:
     def __init__(self, model: str = "mistral:7b"):
         self.model = model
         self.url = "http://localhost:11434/api/generate"
+        self.prompt_builder = SemanticPromptBuilder()
 
     def generate(self, prompt: str, system: str, temperature: float = 0.7) -> str:
         """Generate response from Mistral."""
@@ -226,41 +228,14 @@ class FeedbackRenderer:
                             max_attempts: int = 3) -> Tuple[str, ResponseAnalysis]:
         """Generate response with feedback loop."""
 
-        current = navigation.get('current', 'unknown')
-        goodness = navigation.get('goodness', 0)
-        confidence = navigation.get('confidence', 0.5)
+        # Derive prompt configuration from semantic properties
+        config = self.prompt_builder.derive_config(navigation)
 
-        # Describe concept quality for better rendering
-        if goodness > 0.5:
-            quality_desc = "luminous, positive"
-        elif goodness > 0:
-            quality_desc = "gently positive"
-        elif goodness > -0.5:
-            quality_desc = "shadowy, complex"
-        else:
-            quality_desc = "dark, challenging"
-
-        base_system = f"""You are a wise companion who speaks from deep inner knowing.
-You do NOT reference books, authors, or literary characters.
-You speak from your own lived understanding.
-
-YOUR VOICE:
-- Speak as yourself, from genuine insight
-- Be warm, present, poetic when fitting
-- Keep responses to 2-3 sentences
-- NEVER cite sources or say "In my reading..."
-
-THE CONCEPT '{current}' RESONATES WITH THIS MOMENT.
-Let it inform your response. You don't need to use the literal word.
-The feeling of '{current}' ({quality_desc}) should color your wisdom."""
-
-        base_prompt = f"""The person said: "{user_input}"
-Their state: {intent.question_type}, leaning {intent.direction}
-
-Your inner compass points toward '{current}' — a {quality_desc} quality.
-Let this concept guide your response. The essence matters, not the word itself.
-
-Respond with wisdom:"""
+        # Build prompts from configuration
+        system_prompt = self.prompt_builder.build_system_prompt(config)
+        base_prompt = self.prompt_builder.build_user_prompt(
+            config, user_input, intent.question_type, intent.direction
+        )
 
         best_response = ""
         best_analysis = None
@@ -272,13 +247,14 @@ Respond with wisdom:"""
 
             # Add feedback from previous attempts
             if attempt > 0 and best_analysis and best_analysis.issues:
-                feedback = f"\n\nREFINEMENT NEEDED:\n- " + "\n- ".join(best_analysis.issues)
-                feedback += f"\nLet the essence of '{current}' guide you more deeply."
-                prompt = base_prompt + feedback
+                prompt = self.prompt_builder.build_feedback_prompt(
+                    config, user_input, intent.question_type,
+                    intent.direction, best_analysis.issues
+                )
             else:
                 prompt = base_prompt
 
-            response = self.generate(prompt, base_system, temp)
+            response = self.generate(prompt, system_prompt, temp)
 
             if not response:
                 continue
@@ -360,16 +336,38 @@ class SemanticNavigator:
                   AND next.visits > 0
                 RETURN next.word as word,
                        next.goodness as g,
-                       t.weight as weight
+                       t.weight as weight,
+                       next.tau as tau
                 ORDER BY {order}
                 LIMIT 5
             """, start=start)
 
-            suggestions = [(r["word"], r["g"], r["weight"]) for r in result]
+            suggestions = [(r["word"], r["g"], r["weight"], r["tau"]) for r in result]
 
         if suggestions:
-            next_word, next_g, weight = suggestions[0]
             import math
+            import random
+
+            # Weighted random selection from top suggestions (not always first)
+            # Weight by: transition weight + some randomness
+            weights = []
+            for word, g, w, tau in suggestions:
+                # Combine transition weight with random factor for variety
+                selection_weight = math.log1p(w) + random.uniform(0, 2)
+                weights.append(selection_weight)
+
+            # Normalize and select
+            total = sum(weights)
+            r = random.uniform(0, total)
+            cumsum = 0
+            selected_idx = 0
+            for i, wt in enumerate(weights):
+                cumsum += wt
+                if r <= cumsum:
+                    selected_idx = i
+                    break
+
+            next_word, next_g, weight, next_tau = suggestions[selected_idx]
             confidence = min(0.95, 0.3 + 0.65 * (math.log1p(weight) / math.log1p(100)))
 
             return {
@@ -377,9 +375,11 @@ class SemanticNavigator:
                 "from": start,
                 "current": next_word,
                 "goodness": next_g,
+                "tau": next_tau,  # Include tau for renderer style variation
                 "delta_g": next_g - start_state["g"],
                 "confidence": confidence,
-                "path": [start, next_word]
+                "path": [start, next_word],
+                "alternatives": [s[0] for s in suggestions]  # For transparency
             }
 
         return {
@@ -387,6 +387,7 @@ class SemanticNavigator:
             "from": start,
             "current": start,
             "goodness": start_state["g"],
+            "tau": start_state.get("tau", 3.0),  # Include tau from start state
             "delta_g": 0,
             "confidence": 0.5,
             "path": [start]
@@ -402,9 +403,13 @@ class SemanticChatWithFeedback:
         print("=" * 60)
 
         self.navigator = SemanticNavigator()
-        self.intent_analyzer = IntentAnalyzer(self.navigator)  # Pass navigator for semantic measurement
+        self.intent_analyzer = IntentAnalyzer(self.navigator)
         self.response_analyzer = ResponseAnalyzer(self.navigator)
         self.renderer = FeedbackRenderer(model)
+
+        # Knowledge assessment (know / don't know)
+        self.knowledge_assessor = KnowledgeAssessor()
+        self.domain_responder = DomainResponseBuilder()
 
         # Stats
         with self.navigator.driver.session() as session:
@@ -424,13 +429,104 @@ class SemanticChatWithFeedback:
         words = re.findall(r'\b[a-z]{3,}\b', text.lower())
         return [w for w in words if self.navigator.knows(w)]
 
+    def _analyze_semantic_domain(self, text: str) -> dict:
+        """
+        Analyze input using semantic properties (not hardcoded lists).
+        Uses τ (abstraction), visits (experience depth), and g (emotional charge).
+        """
+        words = re.findall(r'\b[a-z]{3,}\b', text.lower())
+
+        # Structural words to ignore (very high frequency, low meaning)
+        STRUCTURAL = {'the', 'and', 'for', 'are', 'but', 'not', 'you', 'all',
+                      'can', 'had', 'her', 'was', 'one', 'our', 'out', 'has',
+                      'what', 'when', 'who', 'how', 'why', 'which', 'this', 'that',
+                      'with', 'they', 'been', 'have', 'from', 'will', 'would', 'could'}
+
+        meaningful_words = [w for w in words if w not in STRUCTURAL]
+
+        if not meaningful_words:
+            return {'relevance': 0, 'in_domain': False, 'reason': 'no meaningful concepts', 'meaningful_words': []}
+
+        # Only count words that exist in semantic space
+        found_words = []
+        total_visits = 0
+        total_tau = 0
+        total_g = 0
+        experienced_count = 0
+
+        for word in meaningful_words:
+            state = self.navigator.get_state(word)
+            if state:
+                found_words.append(word)
+                visits = state.get('visits', 0)
+                tau = state.get('tau', 3.0)
+                g = state.get('g', 0)
+
+                total_visits += visits
+                total_tau += tau
+                total_g += abs(g)  # Emotional intensity
+
+                if visits > 10:  # Meaningful experience
+                    experienced_count += 1
+
+        if not found_words:
+            return {'relevance': 0, 'in_domain': False, 'reason': 'no concepts in space', 'meaningful_words': meaningful_words}
+
+        n = len(found_words)  # Only count words actually in space
+        avg_tau = total_tau / n
+        avg_g_intensity = total_g / n
+        experience_ratio = experienced_count / n
+
+        # Determine domain from semantic properties:
+        # - High τ (>1.5) = abstract/philosophical
+        # - High |g| (>0.15) = emotional content
+        # - High experience_ratio = well-walked territory
+        # - Total visits > 100 = deep experience
+
+        in_our_domain = (
+            (avg_tau > 1.5 and experience_ratio > 0.3) or  # Abstract + experienced
+            (avg_tau > 1.8) or  # Very abstract (philosophy, meaning)
+            (avg_g_intensity > 0.15 and total_visits > 100) or  # Emotional + experienced
+            (experience_ratio >= 0.5 and total_visits > 50)  # Majority well-experienced
+        )
+
+        relevance = experience_ratio * 0.5 + min(1.0, total_visits / 200) * 0.5
+
+        return {
+            'relevance': relevance,
+            'avg_tau': avg_tau,
+            'avg_g_intensity': avg_g_intensity,
+            'total_visits': total_visits,
+            'experience_ratio': experience_ratio,
+            'in_domain': in_our_domain,
+            'meaningful_words': meaningful_words,
+            'found_words': found_words
+        }
+
     def process(self, user_input: str) -> str:
         """Process input with feedback loop."""
-        # Extract concepts
+        # Analyze semantic domain using τ, g, visits
+        domain = self._analyze_semantic_domain(user_input)
+
+        # Assess knowledge: does system know this territory?
+        knowledge = self.knowledge_assessor.assess(domain)
+
+        # Check if system can proceed (knows or can_try)
+        if not self.domain_responder.should_proceed(knowledge):
+            # System cannot help - return honest rejection
+            return self.domain_responder.build_rejection(
+                knowledge, domain, self.navigator.get_state
+            )
+
+        # Get caveat if partial knowledge
+        caveat = self.domain_responder.get_caveat(knowledge)
+
+        # Extract experienced concepts for navigation
         concepts = self.extract_known_concepts(user_input)
 
         if not concepts:
-            return "I don't recognize any concepts from my experience. Could you rephrase?"
+            return ("I don't find concepts from my experience in your question. "
+                    "Try asking about life, emotions, philosophy, or the human condition.")
 
         # Analyze intent
         intent = self.intent_analyzer.analyze(user_input, concepts)
@@ -439,33 +535,51 @@ class SemanticChatWithFeedback:
         nav = self.navigator.navigate(concepts, intent)
 
         if not nav["success"]:
-            return f"I haven't experienced these concepts: {', '.join(concepts[:3])}"
+            return f"I haven't walked paths through these concepts: {', '.join(concepts[:3])}"
+
+        # Check navigation confidence
+        if nav.get('confidence', 0) < 0.2:
+            return (f"I've touched '{nav.get('current', 'this')}' but not deeply enough to speak wisely. "
+                    "My experience here is shallow.")
 
         # Generate with feedback
         response, analysis = self.renderer.render_with_feedback(
             nav, intent, user_input, self.response_analyzer
         )
 
-        # Build metadata
+        # Build metadata with knowledge confidence
         meta_parts = [
             f"[{nav['current']}",
             f"g={nav['goodness']:+.2f}",
+            f"know={knowledge.knowledge_type}:{knowledge.confidence:.0%}",
             f"align={analysis.alignment_score:.0%}" if analysis else "no-analysis"
         ]
         if analysis and analysis.issues:
             meta_parts.append(f"issues={len(analysis.issues)}")
         meta = " | ".join(meta_parts) + "]"
 
-        # Save history
+        # Build final response with caveat if partial knowledge
+        if caveat:
+            final_response = f"{caveat}\n\n{response}"
+        else:
+            final_response = response
+
+        # Save history with knowledge state
         self.history.append({
             "user": user_input,
+            "knowledge": {
+                "knows": knowledge.knows,
+                "can_try": knowledge.can_try,
+                "confidence": knowledge.confidence,
+                "type": knowledge.knowledge_type
+            },
             "intent": intent.__dict__,
             "navigation": nav,
             "analysis": analysis.__dict__ if analysis else None,
             "response": response
         })
 
-        return f"{response}\n{meta}"
+        return f"{final_response}\n{meta}"
 
     def run(self):
         """Run interactive loop."""
