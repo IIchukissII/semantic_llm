@@ -442,7 +442,8 @@ def expand_graph():
     # Expand with transcendental relationships
     graph.load_spin_pairs()
     graph.load_verb_connections()
-    graph.load_semantic_neighbors(threshold=0.35, max_neighbors=10)
+    # Semantic neighbors is O(n²) - skip for large graphs
+    # graph.load_semantic_neighbors(threshold=0.35, max_neighbors=10)
     graph.compute_goodness_arcs()
 
     # Show expanded stats
