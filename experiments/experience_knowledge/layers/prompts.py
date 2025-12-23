@@ -223,30 +223,36 @@ class SemanticPromptBuilder:
 
     def build_system_prompt(self, config: PromptConfig) -> str:
         """Build system prompt from semantic configuration."""
-        return f"""You are a wise companion who speaks from deep inner knowing.
-You do NOT reference books, authors, or literary characters.
-You speak from your own lived understanding.
+        return f"""You are a thoughtful companion who engages deeply with what the person shares.
 
-YOUR VOICE for this moment:
+CRITICAL RULES:
+- ACTUALLY ENGAGE with the specific content the person shares (dreams, stories, questions)
+- Answer their actual question, don't give generic wisdom
+- If they describe a dream, interpret the specific symbols they mention
+- If they ask about archetypes or Jung, discuss those concepts directly
+- Stay focused on THEIR content, not abstract philosophy
+
+YOUR VOICE:
 - Tone: {config.tone}
 - Style: {config.style}
-- Keep responses to 2-3 sentences
-- NEVER cite sources or mention where knowledge comes from
+- Keep responses to 2-4 sentences
+- Be specific, not generic
 
-The concept '{config.concept}' resonates here.
-Let its essence ({config.quality_desc}) color your words naturally.
-The word itself need not appear - its meaning should."""
+The semantic compass points to '{config.concept}' ({config.quality_desc}).
+Use this as background energy, but prioritize engaging with what they actually said."""
 
     def build_user_prompt(self, config: PromptConfig, user_input: str,
                           intent_type: str, intent_direction: str) -> str:
         """Build user prompt from semantic configuration and intent."""
-        return f"""The person said: "{user_input}"
-Their state: {intent_type}, leaning {intent_direction}
+        return f"""USER: {user_input}
 
-Your compass points to '{config.concept}' (τ={config.tau:.1f}, g={config.goodness:+.2f}).
-Speak from this place. The essence matters, not the literal word.
+Engage directly with what they said. If they asked a question, answer it.
+If they shared a dream, interpret its specific symbols.
+If they mentioned specific things (train, water, bridge, etc.), address those.
 
-Respond:"""
+Semantic hint: '{config.concept}' (but don't force it if irrelevant to their question)
+
+Your response:"""
 
     def build_feedback_prompt(self, config: PromptConfig, user_input: str,
                               intent_type: str, intent_direction: str,
@@ -254,8 +260,8 @@ Respond:"""
         """Build prompt with feedback for refinement."""
         base = self.build_user_prompt(config, user_input, intent_type, intent_direction)
 
-        feedback = "\n\nREFINEMENT NEEDED:\n- " + "\n- ".join(issues)
-        feedback += f"\nLet the essence of '{config.concept}' guide you more deeply."
+        feedback = "\n\nIMPROVE YOUR RESPONSE:\n- " + "\n- ".join(issues)
+        feedback += "\nBe more specific to what they actually asked."
 
         return base + feedback
 

@@ -43,6 +43,13 @@ try:
 except ImportError:
     CONSCIOUSNESS_ENABLED = False
 
+# Bond tracking (silent, for future use)
+try:
+    from layers.bond_tracker import BondTracker
+    BOND_TRACKING_ENABLED = True
+except ImportError:
+    BOND_TRACKING_ENABLED = False
+
 
 @dataclass
 class UserIntent:
@@ -212,25 +219,46 @@ class FeedbackRenderer:
 
     def __init__(self, model: str = "mistral:7b"):
         self.model = model
-        self.url = "http://localhost:11434/api/generate"
+        self.url = "http://localhost:11434/api/chat"  # Use chat endpoint for memory
         self.prompt_builder = SemanticPromptBuilder()
+        self.messages = []  # Conversation history
 
     def generate(self, prompt: str, system: str, temperature: float = 0.7) -> str:
-        """Generate response from Mistral."""
+        """Generate response from Mistral with conversation memory."""
         try:
+            # Build messages array
+            messages = [{"role": "system", "content": system}]
+
+            # Add conversation history (last N turns to avoid context overflow)
+            max_history = 10  # Keep last 10 exchanges
+            messages.extend(self.messages[-max_history * 2:])
+
+            # Add current user message
+            messages.append({"role": "user", "content": prompt})
+
             response = requests.post(self.url, json={
                 "model": self.model,
-                "prompt": prompt,
-                "system": system,
+                "messages": messages,
                 "stream": False,
                 "options": {"temperature": temperature, "num_predict": 300}
             }, timeout=90)
 
             if response.status_code == 200:
-                return response.json().get("response", "").strip()
+                assistant_response = response.json().get("message", {}).get("content", "").strip()
+
+                # Store in history for memory
+                if assistant_response:
+                    self.messages.append({"role": "user", "content": prompt})
+                    self.messages.append({"role": "assistant", "content": assistant_response})
+
+                return assistant_response
             return ""
         except Exception as e:
             return ""
+
+    def clear_memory(self):
+        """Clear conversation history."""
+        self.messages = []
 
     def render_with_feedback(self, navigation: Dict, intent: UserIntent,
                             user_input: str, analyzer: 'ResponseAnalyzer',
@@ -293,6 +321,8 @@ class SemanticNavigator:
             config.uri,
             auth=(config.user, config.password)
         )
+        # Bond tracker (silent, for future use)
+        self.bond_tracker = BondTracker(self.driver) if BOND_TRACKING_ENABLED else None
 
     def close(self):
         if self.driver:
@@ -316,13 +346,14 @@ class SemanticNavigator:
             record = result.single()
             return dict(record) if record else None
 
-    def record_walk(self, from_word: str, to_word: str) -> None:
+    def record_walk(self, from_word: str, to_word: str, user_id: str = None) -> None:
         """
         Record a walked path during conversation.
 
         Updates experience in real-time:
         - Increments visits on both nodes
         - Creates or increments TRANSITION edge weight
+        - Silently tracks user bond if user_id provided
 
         The system learns from its own navigation.
         """
@@ -339,6 +370,10 @@ class SemanticNavigator:
                     ON MATCH SET t.weight = t.weight + 1
                 """, from_word=from_word, to_word=to_word)
             session.execute_write(update_fn)
+
+        # Silently track user bond (does not affect navigation)
+        if user_id and self.bond_tracker:
+            self.bond_tracker.record_walk(from_word, to_word, user_id)
 
     def navigate(self, concepts: List[str], intent: UserIntent) -> Dict:
         """Navigate based on intent."""
@@ -430,11 +465,12 @@ class SemanticNavigator:
 class SemanticChatWithFeedback:
     """Interactive chat with semantic feedback loop."""
 
-    def __init__(self, model: str = "mistral:7b"):
+    def __init__(self, model: str = "mistral:7b", user_id: str = None):
         print("=" * 60)
         print("SEMANTIC LLM CHAT (with Feedback)")
         print("=" * 60)
 
+        self.user_id = user_id  # Will be set during run() if not provided
         self.navigator = SemanticNavigator()
         self.intent_analyzer = IntentAnalyzer(self.navigator)
         self.response_analyzer = ResponseAnalyzer(self.navigator)
@@ -611,8 +647,9 @@ class SemanticChatWithFeedback:
         )
 
         # Record walked path - system learns from its own navigation
+        # Also silently tracks user bond if user_id is set
         if nav.get('from') and nav.get('current') and nav['from'] != nav['current']:
-            self.navigator.record_walk(nav['from'], nav['current'])
+            self.navigator.record_walk(nav['from'], nav['current'], self.user_id)
 
         # Build metadata with knowledge confidence and τ₀ resonance
         meta_parts = [
@@ -657,8 +694,25 @@ class SemanticChatWithFeedback:
 
         return f"{final_response}\n{meta}"
 
+    def _ask_user_name(self) -> str:
+        """Ask for user name at conversation start."""
+        print("\nBefore we begin, what is your name?")
+        while True:
+            try:
+                name = input("Name: ").strip()
+                if name:
+                    return name
+                print("Please enter your name to continue.")
+            except (EOFError, KeyboardInterrupt):
+                return "anonymous"
+
     def run(self):
         """Run interactive loop."""
+        # Ask for user name if not already set
+        if not self.user_id:
+            self.user_id = self._ask_user_name()
+            print(f"\nWelcome, {self.user_id}. Our conversation begins.\n")
+
         print("Starting conversation with feedback...\n")
 
         while True:
@@ -695,6 +749,7 @@ Commands:
   history   - Show conversation analysis
   meditate  - Toggle meditation (pre-navigation centering)
   sleep     - Process conversations and consolidate learning
+  clear     - Clear LLM conversation memory
   quit      - Exit (auto-sleeps before exit)
 """
                 if CONSCIOUSNESS_ENABLED:
@@ -710,6 +765,9 @@ Consciousness:
                     print(f"Meditation: {'ON' if self.use_meditation else 'OFF'}")
                 else:
                     print("Consciousness module not available")
+            elif cmd == 'clear':
+                self.renderer.clear_memory()
+                print("Conversation memory cleared.")
             elif cmd == 'sleep':
                 if self.sleep and self.history:
                     print("Entering sleep... processing conversations...")
@@ -737,6 +795,21 @@ Consciousness:
                         c = h['consciousness']
                         if c.get('resonance'):
                             print(f"τ₀ resonance: {c['resonance']:.0%}")
+            elif cmd == 'bonds':
+                # Hidden command - show user bond stats (for debugging)
+                if self.navigator.bond_tracker and self.user_id:
+                    stats = self.navigator.bond_tracker.get_user_stats(self.user_id)
+                    print(f"\nBond stats for {self.user_id}:")
+                    print(f"  Edges walked: {stats.get('total_edges', 0)}")
+                    print(f"  Total walks: {stats.get('total_walks', 0)}")
+                    print(f"  Avg weight: {stats.get('avg_weight', 0):.2f}")
+                    walks = self.navigator.bond_tracker.get_user_walks(self.user_id, limit=5)
+                    if walks:
+                        print("  Top paths:")
+                        for w in walks:
+                            print(f"    {w['from']} → {w['to']} (n={w['walks']}, w={w['weight']:.2f})")
+                else:
+                    print("Bond tracking not available")
             else:
                 response = self.process(user_input)
                 print(f"\nLLM: {response}\n")
