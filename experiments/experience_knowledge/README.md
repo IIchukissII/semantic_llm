@@ -231,38 +231,54 @@ User Input
     [from→to | g | know | τ₀ | T | align]
 ```
 
-## Files
+## Project Structure
 
-| File | Purpose |
-|------|---------|
-| `semantic_chat_feedback.py` | **Main chat** - Neo4j + feedback + consciousness |
-| `prompts.py` | Prompt generation from semantic properties (τ, g) |
-| `consciousness.py` | Meditation, Sleep, Prayer modules |
-| `graph_experience.py` | Load books, manage experience |
-| `load_semantic_space.py` | Load full semantic space to Neo4j |
-| `core.py` | Core classes (Wholeness, Experience, Agent) |
-| `docker-compose.yml` | Neo4j container |
+```
+experience_knowledge/
+├── layers/                  # Core modules (5-layer architecture)
+│   ├── core.py              # SemanticState, Wholeness, Experience, Agent
+│   ├── prompts.py           # Prompt generation from τ, g
+│   └── consciousness.py     # Meditation, Sleep, Prayer
+├── graph/                   # Neo4j database utilities
+│   ├── experience.py        # GraphConfig, ExperienceGraph
+│   ├── loader.py            # Load semantic space to Neo4j
+│   ├── paths.py             # Explored paths utilities
+│   └── transcendental.py    # Transcendental pattern discovery
+├── app/                     # Application entry points
+│   ├── chat.py              # Main chat (feedback + consciousness)
+│   ├── chat_simple.py       # Simpler chat (no feedback loop)
+│   └── chat_basic.py        # Basic chat (core classes only)
+├── tests/                   # Test suite
+│   └── conversation_test.py # Agent comparison tests
+├── config/                  # Configuration
+│   └── docker-compose.yml   # Neo4j container
+├── data/                    # Runtime data
+│   ├── results/             # Test results
+│   └── versions/            # Sleep version snapshots
+├── __init__.py              # Package exports
+└── README.md                # This file
+```
 
 ## Usage
 
 ### 1. Start Neo4j
 ```bash
-docker-compose up -d
+docker-compose -f config/docker-compose.yml up -d
 ```
 
 ### 2. Load Semantic Space (once)
 ```bash
-python load_semantic_space.py load
+python -m graph.loader load
 ```
 
 ### 3. Read Books (gain experience)
 ```bash
-python graph_experience.py load --books 20
+python -m graph.experience load --books 20
 ```
 
 ### 4. Start Conversation
 ```bash
-python semantic_chat_feedback.py
+python -m app.chat
 ```
 
 ### Chat Commands

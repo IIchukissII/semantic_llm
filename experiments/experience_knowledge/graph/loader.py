@@ -19,12 +19,13 @@ from neo4j import GraphDatabase
 import sys
 
 _THIS_FILE = Path(__file__).resolve()
-_EXPERIMENT_DIR = _THIS_FILE.parent
-_SEMANTIC_LLM = _EXPERIMENT_DIR.parent.parent
+_GRAPH_DIR = _THIS_FILE.parent
+_EXPERIENCE_KNOWLEDGE = _GRAPH_DIR.parent
+_SEMANTIC_LLM = _EXPERIENCE_KNOWLEDGE.parent.parent
 
-sys.path.insert(0, str(_SEMANTIC_LLM))
+sys.path.insert(0, str(_EXPERIENCE_KNOWLEDGE))
 
-from graph_experience import GraphConfig
+from graph.experience import GraphConfig
 
 
 def load_quantum_core():

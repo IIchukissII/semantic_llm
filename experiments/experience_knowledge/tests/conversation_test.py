@@ -19,13 +19,12 @@ from dataclasses import dataclass, asdict
 
 # Path setup
 _THIS_FILE = Path(__file__).resolve()
-_EXPERIMENT_DIR = _THIS_FILE.parent
-_SEMANTIC_LLM = _EXPERIMENT_DIR.parent.parent
+_TESTS_DIR = _THIS_FILE.parent
+_EXPERIENCE_KNOWLEDGE = _TESTS_DIR.parent
 
-sys.path.insert(0, str(_SEMANTIC_LLM))
-sys.path.insert(0, str(_EXPERIMENT_DIR))
+sys.path.insert(0, str(_EXPERIENCE_KNOWLEDGE))
 
-from core import Wholeness, Experience, ExperiencedAgent, create_naive_agent, create_experienced_agent
+from layers.core import Wholeness, Experience, ExperiencedAgent, create_naive_agent, create_experienced_agent
 
 # Gutenberg books
 GUTENBERG = Path("/home/chukiss/text_project/data/gutenberg")

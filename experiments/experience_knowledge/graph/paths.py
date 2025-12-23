@@ -26,14 +26,13 @@ import json
 
 import sys
 _THIS_FILE = Path(__file__).resolve()
-_EXPERIMENT_DIR = _THIS_FILE.parent
-_SEMANTIC_LLM = _EXPERIMENT_DIR.parent.parent
+_GRAPH_DIR = _THIS_FILE.parent
+_EXPERIENCE_KNOWLEDGE = _GRAPH_DIR.parent
 
-sys.path.insert(0, str(_SEMANTIC_LLM))
-sys.path.insert(0, str(_EXPERIMENT_DIR))
+sys.path.insert(0, str(_EXPERIENCE_KNOWLEDGE))
 
-from core import Wholeness
-from graph_experience import GraphConfig
+from layers.core import Wholeness
+from graph.experience import GraphConfig
 
 
 @dataclass

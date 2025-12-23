@@ -24,10 +24,12 @@ import requests
 
 import sys
 _THIS_FILE = Path(__file__).resolve()
-_EXPERIMENT_DIR = _THIS_FILE.parent
+_APP_DIR = _THIS_FILE.parent
+_EXPERIENCE_KNOWLEDGE = _APP_DIR.parent
 
-sys.path.insert(0, str(_EXPERIMENT_DIR))
-from graph_experience import GraphConfig
+sys.path.insert(0, str(_EXPERIENCE_KNOWLEDGE))
+
+from graph.experience import GraphConfig
 
 
 class MistralRenderer:

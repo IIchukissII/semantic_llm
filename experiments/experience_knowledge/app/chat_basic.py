@@ -24,13 +24,12 @@ from datetime import datetime
 
 # Path setup
 _THIS_FILE = Path(__file__).resolve()
-_EXPERIMENT_DIR = _THIS_FILE.parent
-_SEMANTIC_LLM = _EXPERIMENT_DIR.parent.parent
+_APP_DIR = _THIS_FILE.parent
+_EXPERIENCE_KNOWLEDGE = _APP_DIR.parent
 
-sys.path.insert(0, str(_SEMANTIC_LLM))
-sys.path.insert(0, str(_EXPERIMENT_DIR))
+sys.path.insert(0, str(_EXPERIENCE_KNOWLEDGE))
 
-from core import Wholeness, Experience, ExperiencedAgent
+from layers.core import Wholeness, Experience, ExperiencedAgent
 
 # Try to import Ollama renderer
 try:

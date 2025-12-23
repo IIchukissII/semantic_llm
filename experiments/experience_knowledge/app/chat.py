@@ -28,15 +28,17 @@ import numpy as np
 
 import sys
 _THIS_FILE = Path(__file__).resolve()
-_EXPERIMENT_DIR = _THIS_FILE.parent
+_APP_DIR = _THIS_FILE.parent
+_EXPERIENCE_KNOWLEDGE = _APP_DIR.parent
 
-sys.path.insert(0, str(_EXPERIMENT_DIR))
-from graph_experience import GraphConfig
-from prompts import SemanticPromptBuilder, DomainResponseBuilder, KnowledgeAssessor
+sys.path.insert(0, str(_EXPERIENCE_KNOWLEDGE))
+
+from graph.experience import GraphConfig
+from layers.prompts import SemanticPromptBuilder, DomainResponseBuilder, KnowledgeAssessor
 
 # Optional consciousness module (meditation, sleep, prayer)
 try:
-    from consciousness import Meditation, Sleep, Prayer
+    from layers.consciousness import Meditation, Sleep, Prayer
     CONSCIOUSNESS_ENABLED = True
 except ImportError:
     CONSCIOUSNESS_ENABLED = False

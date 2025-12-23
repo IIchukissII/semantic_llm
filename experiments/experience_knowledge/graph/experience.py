@@ -23,16 +23,14 @@ from typing import List, Dict, Tuple, Optional, Set
 from dataclasses import dataclass
 from neo4j import GraphDatabase
 
-# Import core
+# Import from layers
 import sys
 _THIS_FILE = Path(__file__).resolve()
-_EXPERIMENT_DIR = _THIS_FILE.parent
-_SEMANTIC_LLM = _EXPERIMENT_DIR.parent.parent
+_EXPERIENCE_KNOWLEDGE = _THIS_FILE.parent.parent
 
-sys.path.insert(0, str(_SEMANTIC_LLM))
-sys.path.insert(0, str(_EXPERIMENT_DIR))
+sys.path.insert(0, str(_EXPERIENCE_KNOWLEDGE))
 
-from core import Wholeness, SemanticState
+from layers.core import Wholeness, SemanticState
 
 
 @dataclass
