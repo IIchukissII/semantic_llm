@@ -40,6 +40,9 @@ class SleepReport:
     insights: List[str]       # Patterns discovered during dreaming
     version: str              # Version ID of new state
     delta_g_total: float      # Total movement in g-space
+    # Decay statistics (learning/forgetting dynamics)
+    edges_decayed: int = 0    # Number of edges that decayed
+    total_decay: float = 0.0  # Total weight decay applied
 
 
 @dataclass
@@ -152,16 +155,21 @@ class Sleep:
 
     What happens during sleep:
     - Recalculate alignment with j-space
-    - Strengthen paths that moved toward good
-    - Weaken paths that moved away from good
+    - Strengthen paths that moved toward good (learning)
+    - Apply decay to unused paths (forgetting)
     - Dream: random walk to find patterns
     - Version: save new state
 
     Sleep = finding new minimum of free energy F.
+
+    Now with learning/forgetting dynamics:
+    - Learning: dw/dt = λ(w_max - w) for good paths
+    - Forgetting: dw/dt = λ(w_min - w) for all unused paths
     """
 
-    def __init__(self, navigator, version_dir: str = "versions"):
+    def __init__(self, navigator, version_dir: str = "versions", experience_graph=None):
         self.navigator = navigator
+        self.experience_graph = experience_graph  # For decay operations
         self.version_dir = Path(version_dir)
         self.version_dir.mkdir(exist_ok=True)
 
@@ -178,14 +186,25 @@ class Sleep:
         # 1. Extract walked paths from history
         paths = self._extract_paths(history)
 
+        edges_decayed = 0
+        total_decay = 0.0
+
         if not paths:
+            # Even without paths, apply decay to unused edges
+            if self.experience_graph:
+                decay_stats = self.experience_graph.apply_decay()
+                edges_decayed = decay_stats.get("edges_decayed", 0)
+                total_decay = decay_stats.get("total_decay", 0.0)
+
             return SleepReport(
                 paths_processed=0,
                 good_paths=0,
                 bad_paths=0,
                 insights=[],
                 version=self._get_version_id(),
-                delta_g_total=0
+                delta_g_total=0,
+                edges_decayed=edges_decayed,
+                total_decay=total_decay
             )
 
         # 2. Evaluate alignment with j-space (goodness)
@@ -197,16 +216,22 @@ class Sleep:
             delta_g_total += delta_g
             if delta_g > 0:
                 good_paths += 1
-                # Strengthen path toward good
-                self._update_path_weight(from_word, to_word, bonus=1)
+                # Strengthen path toward good (using dynamics)
+                self._reinforce_path(from_word, to_word)
             elif delta_g < -0.1:  # Only penalize significant moves away
                 bad_paths += 1
-                # Don't weaken, but don't strengthen either
+                # Don't strengthen bad paths (they will decay naturally)
 
-        # 3. Dream: random walk to find patterns
+        # 3. Apply forgetting to unused paths
+        if self.experience_graph:
+            decay_stats = self.experience_graph.apply_decay()
+            edges_decayed = decay_stats.get("edges_decayed", 0)
+            total_decay = decay_stats.get("total_decay", 0.0)
+
+        # 4. Dream: random walk to find patterns
         insights = self._dream(num_walks=5, walk_length=10)
 
-        # 4. Save versioned state
+        # 5. Save versioned state
         version = self._save_version(history, paths)
 
         return SleepReport(
@@ -215,8 +240,19 @@ class Sleep:
             bad_paths=bad_paths,
             insights=insights,
             version=version,
-            delta_g_total=delta_g_total
+            delta_g_total=delta_g_total,
+            edges_decayed=edges_decayed,
+            total_decay=total_decay
         )
+
+    def _reinforce_path(self, from_word: str, to_word: str):
+        """Reinforce a path using learning dynamics."""
+        if self.experience_graph:
+            # Use dynamics-based reinforcement
+            self.experience_graph.reinforce_transition(from_word, to_word, reinforcements=1)
+        else:
+            # Fallback to simple weight increment
+            self._update_path_weight(from_word, to_word, bonus=1)
 
     def _extract_paths(self, history: List[Dict]) -> List[Tuple[str, str, float]]:
         """Extract (from, to, delta_g) tuples from history."""

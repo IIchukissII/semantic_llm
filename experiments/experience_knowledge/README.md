@@ -119,19 +119,22 @@ With meditation:
 
 ### 2. Sleep (Between Conversations)
 
-**Purpose:** Deep restructuring, integration, growth
+**Purpose:** Deep restructuring, integration, growth, forgetting
 
 What happens during sleep:
 - Process walked paths from conversation
-- Strengthen paths toward good (positive Δg)
+- Strengthen paths toward good (positive Δg) using learning dynamics
+- **Apply decay** to unused paths (forgetting dynamics)
 - Dream: random walks to find patterns
 - Version state for rollback
 
 ```
 Day:     excitement, deviation, experience
-Night:   rethermalization, integration
+Night:   rethermalization, integration, forgetting
 Morning: new equilibrium, updated weights, new me
 ```
+
+Sleep consolidates learning AND applies forgetting - like human memory.
 
 ### 3. Prayer (Instant)
 
@@ -177,6 +180,129 @@ if nav['from'] != nav['current']:
 ```
 
 Paths strengthen during conversation → more confident navigation over time.
+
+## Weight Dynamics: Learning and Forgetting
+
+> "Knowledge is never lost, only harder to access."
+
+### The Unified Formula
+
+Learning and forgetting use the **same mathematical function** in opposite directions:
+
+```
+dw/dt = λ · (w_target - w)
+
+Discrete form:
+    w(t+dt) = w_target + (w_current - w_target) · e^(-λ·dt)
+```
+
+| Direction | Target | Effect |
+|-----------|--------|--------|
+| **Learning** | w_max = 1.0 | Weight rises toward maximum |
+| **Forgetting** | w_min = 0.1 | Weight decays toward minimum (never zero) |
+
+```
+Same curve, two directions:
+
+    w_max ──────────────────── Learning: w rises
+         ╲                    ╱
+          ╲    ← current →   ╱
+           ╲                ╱
+    w_min ──────────────────── Forgetting: w decays
+```
+
+### Parameters
+
+| Parameter | Value | Meaning |
+|-----------|-------|---------|
+| `w_min` | 0.1 | Floor - never fully forgotten |
+| `w_max` | 1.0 | Ceiling - fully learned |
+| `λ_learn` | 0.3 | Learning rate (per reinforcement) |
+| `λ_forget` | 0.05 | Forgetting rate (per day) |
+
+**Key insight:** Learning is 6× faster than forgetting. This matches human memory - easy to learn, slow to fully forget.
+
+### Weight Sources
+
+| Source | Initial Weight | Rationale |
+|--------|---------------|-----------|
+| Corpus (books) | w_max (1.0) | Established knowledge |
+| Conversation | 2 × w_min (0.2) | Needs reinforcement |
+| Context-inferred | w_min (0.1) | Weakest, most uncertain |
+
+### When Dynamics Apply
+
+```
+During Conversation:
+    Walk path A → B
+    └── reinforce_transition(A, B)
+        └── w approaches w_max (learning)
+
+During Sleep:
+    For all edges not recently used:
+    └── apply_decay()
+        └── w approaches w_min (forgetting)
+```
+
+### Dormancy
+
+Edges don't disappear - they become **dormant**:
+
+```
+Active:   w > 0.2  → Used in navigation
+Dormant:  w ≤ 0.2  → Exists but not actively used
+Gone:     NEVER    → "Knowledge is never lost"
+```
+
+Dormant paths can be **reactivated** through reinforcement.
+
+### The Capacitor Analogy
+
+```
+Learning  = Charging a capacitor
+            Energy flows IN, voltage rises toward max
+
+Forgetting = Discharging a capacitor
+             Energy leaks OUT, voltage falls toward baseline
+
+The baseline is never zero.
+Something always remains.
+```
+
+### Learning New Words
+
+The system can learn words not in the original corpus through context:
+
+```python
+learn_new_word(word="serendipity", context_words=["discovery", "chance", "fortune"])
+```
+
+How it works:
+1. **τ estimated** from average τ of context words
+2. **g estimated** from average goodness of context words
+3. **j-vector** averaged from context (if available)
+4. **Initial weight** = w_min (0.1) - needs reinforcement to strengthen
+5. **Transitions** created to/from context words
+
+```
+Context words: [discovery, chance, fortune]
+         │
+         ▼
+    ┌─────────────────┐
+    │  serendipity    │  ← New node
+    │  τ ≈ avg(ctx)   │
+    │  g ≈ avg(ctx)   │
+    │  w = 0.1        │
+    └─────────────────┘
+         │
+    Transitions to context (bidirectional)
+```
+
+New words start weak and grow through use.
+
+### Related Theory
+
+The exponential approach formula relates to Van Geert's Logistic Growth Model (1991) for cognitive development. Future work may extract learning rate parameters from this established theory.
 
 ## The Conversation Flow
 
@@ -238,12 +364,16 @@ experience_knowledge/
 ├── layers/                  # Core modules (5-layer architecture)
 │   ├── core.py              # SemanticState, Wholeness, Experience, Agent
 │   ├── prompts.py           # Prompt generation from τ, g
-│   └── consciousness.py     # Meditation, Sleep, Prayer
+│   ├── consciousness.py     # Meditation, Sleep, Prayer
+│   └── dynamics.py          # Weight dynamics (learning/forgetting)
 ├── graph/                   # Neo4j database utilities
-│   ├── experience.py        # GraphConfig, ExperienceGraph
+│   ├── experience.py        # GraphConfig, ExperienceGraph, learn_new_word
 │   ├── loader.py            # Load semantic space to Neo4j
 │   ├── paths.py             # Explored paths utilities
 │   └── transcendental.py    # Transcendental pattern discovery
+├── input/                   # Input processing (future API endpoint)
+│   ├── __init__.py          # Module exports
+│   └── book_processor.py    # BookProcessor, process_book, process_library
 ├── app/                     # Application entry points
 │   ├── chat.py              # Main chat (feedback + consciousness)
 │   ├── chat_simple.py       # Simpler chat (no feedback loop)
@@ -257,6 +387,69 @@ experience_knowledge/
 │   └── versions/            # Sleep version snapshots
 ├── __init__.py              # Package exports
 └── README.md                # This file
+```
+
+## Input Module
+
+The input module provides a clean interface for processing external content into experience. Designed for future API endpoint integration.
+
+### Weight Hierarchy
+
+Different sources have different initial weights based on authority:
+
+| Source | Weight | Rationale |
+|--------|--------|-----------|
+| **Book** | 1.0 (w_max) | Established knowledge, authoritative |
+| **Article** | 0.8 | Curated but less authoritative |
+| **Conversation** | 0.2 | Needs reinforcement through use |
+| **Context-inferred** | 0.1 (w_min) | Weakest, most uncertain |
+
+### Usage
+
+```python
+from input import BookProcessor, process_book, process_library
+
+# Process single book
+result = process_book("/path/to/book.txt")
+print(f"Processed: {result.unique_states} states, {result.unique_transitions} transitions")
+
+# Process library
+results = process_library("/path/to/books/", limit=20)
+
+# With custom processor
+processor = BookProcessor()
+result = processor.process_book("/path/to/book.txt", book_id="Custom Name")
+processor.close()
+```
+
+### CLI
+
+```bash
+# Process single book
+python -m input.book_processor book /path/to/book.txt
+
+# Process library
+python -m input.book_processor library /path/to/books/ --limit 20
+
+# View stats
+python -m input.book_processor stats
+```
+
+### ProcessingResult
+
+```python
+@dataclass
+class ProcessingResult:
+    source_id: str           # Book/article identifier
+    source_type: str         # "book" | "article" | "text"
+    total_words: int         # Raw word count
+    semantic_words: int      # Words in semantic space
+    unique_states: int       # Unique concepts visited
+    unique_transitions: int  # Unique paths walked
+    initial_weight: float    # Weight assigned to edges
+    processing_time_ms: int  # Processing duration
+    success: bool            # Whether processing succeeded
+    error: Optional[str]     # Error message if failed
 ```
 
 ## Usage
@@ -273,7 +466,7 @@ python -m graph.loader load
 
 ### 3. Read Books (gain experience)
 ```bash
-python -m graph.experience load --books 20
+python -m input.book_processor library /path/to/books --limit 20
 ```
 
 ### 4. Start Conversation
@@ -317,11 +510,15 @@ Entering sleep... processing today's conversations...
   Paths processed: 2
   Good paths: 2, Bad paths: 0
   Total Δg: +1.21
+  Edges decayed: 1,247
+  Total decay: -42.3
   Dreams: 3
     - Dream path toward light: bless → and → alarm...
     - Dream path toward shadow: fault → could → risk...
   Version saved: 2025-12-22_231101
 ```
+
+The decay statistics show how many edges lost weight due to forgetting dynamics.
 
 ## The Power: Study Any Author
 

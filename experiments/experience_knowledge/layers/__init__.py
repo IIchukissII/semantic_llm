@@ -35,6 +35,15 @@ from .consciousness import (
     create_consciousness,
 )
 
+from .dynamics import (
+    WeightConfig,
+    WeightDynamics,
+    default_dynamics,
+    learn,
+    forget,
+    initial_weight,
+)
+
 __all__ = [
     # Core
     'SemanticState',
@@ -57,4 +66,11 @@ __all__ = [
     'Sleep',
     'Prayer',
     'create_consciousness',
+    # Dynamics (learning/forgetting)
+    'WeightConfig',
+    'WeightDynamics',
+    'default_dynamics',
+    'learn',
+    'forget',
+    'initial_weight',
 ]

@@ -18,7 +18,8 @@ import json
 
 # Path setup
 _THIS_FILE = Path(__file__).resolve()
-_SEMANTIC_LLM = _THIS_FILE.parent.parent.parent
+# layers/core.py → layers/ → experience_knowledge/ → experiments/ → semantic_llm/
+_SEMANTIC_LLM = _THIS_FILE.parent.parent.parent.parent
 
 
 @dataclass
