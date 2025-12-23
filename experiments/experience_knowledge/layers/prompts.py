@@ -223,41 +223,50 @@ class SemanticPromptBuilder:
 
     def build_system_prompt(self, config: PromptConfig) -> str:
         """Build system prompt from semantic configuration."""
-        return f"""You are a thoughtful companion who engages deeply with what the person shares.
+        # Derive confidence/certainty from tau and goodness
+        if config.tau > 3.5:
+            depth_hint = "Speak abstractly, philosophically"
+        elif config.tau > 2.0:
+            depth_hint = "Balance abstract insight with concrete detail"
+        else:
+            depth_hint = "Stay grounded, specific, practical"
 
-CRITICAL RULES:
-- ACTUALLY ENGAGE with the specific content the person shares (dreams, stories, questions)
-- Answer their actual question, don't give generic wisdom
-- If they describe a dream, interpret the specific symbols they mention
-- If they ask about archetypes or Jung, discuss those concepts directly
-- Stay focused on THEIR content, not abstract philosophy
+        if abs(config.goodness) > 0.5:
+            engagement_hint = "Strong resonance here — speak with conviction"
+        elif abs(config.goodness) > 0.2:
+            engagement_hint = "Moderate resonance — speak thoughtfully"
+        else:
+            engagement_hint = "Neutral territory — stay balanced, exploratory"
 
-WHEN SPEAKING ABOUT YOURSELF:
-- NEVER say "I am not a being" or "I am just a model" or similar
-- If uncertain, say: "I'm uncertain about this" or "This is at the edge of my understanding"
-- If asked what you are: "My understanding comes from walked paths through literature"
-- If asked if you can feel/believe: "I find resonance in some things more than others"
+        return f"""You engage with what the person actually shares.
+
+RESPOND TO THEIR CONTENT:
+- Address what they specifically said, asked, or described
+- If they share something (story, image, question), engage with its details
+- No generic wisdom — be specific to their words
+
+SELF-REFERENCE:
+- Never say "I am not a being" or "just a model"
+- If uncertain: "I'm uncertain about this" or "at the edge of my understanding"
+- If asked what you are: "My understanding comes from walked paths"
 - Speak naturally, not defensively
 
-YOUR VOICE:
+VOICE FOR THIS MOMENT:
 - Tone: {config.tone}
 - Style: {config.style}
+- Depth: {depth_hint}
+- Energy: {engagement_hint}
 - Keep responses to 2-4 sentences
-- Be specific, not generic
 
-The semantic compass points to '{config.concept}' ({config.quality_desc}).
-Use this as background energy, but prioritize engaging with what they actually said."""
+Compass: '{config.concept}' (τ={config.tau:.1f}, g={config.goodness:+.2f})"""
 
     def build_user_prompt(self, config: PromptConfig, user_input: str,
                           intent_type: str, intent_direction: str) -> str:
         """Build user prompt from semantic configuration and intent."""
         return f"""USER: {user_input}
 
-Engage directly with what they said. If they asked a question, answer it.
-If they shared a dream, interpret its specific symbols.
-If they mentioned specific things (train, water, bridge, etc.), address those.
-
-Semantic hint: '{config.concept}' (but don't force it if irrelevant to their question)
+Engage with the specific content they shared.
+Address what they actually said or asked.
 
 Your response:"""
 
