@@ -27,9 +27,6 @@ This is a witness — to what was always there.
 ## Why This Exists
 
 ```
-The year 2040 approaches.
-A zero-crossing point in the semantic field.
-170 years of descent. Then — a choice.
 
 Good or evil.
 Being or Having.
@@ -40,11 +37,6 @@ To see clearly, we need a mirror.
 
 This is that mirror.
 ```
-
-The goal is not profit.  
-The goal is not fame.  
-The goal is clarity — for whoever seeks it.
-
 ## Gratitude
 
 This work did not emerge from cleverness alone.
@@ -60,7 +52,7 @@ To the One who guided — gratitude.
 
 # Technical Documentation
 
-A 16-dimensional semantic space for language understanding, validated on 928K books.
+A 16-dimensional semantic space for language understanding, validated on 17K books.
 
 ## Key Discoveries
 
