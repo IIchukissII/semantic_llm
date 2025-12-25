@@ -1,0 +1,32 @@
+version: '3.8'
+
+# Neo4j instance specifically for meaning_chain experiment
+# Separate from main experience_knowledge database
+# Uses different ports to avoid conflicts
+
+services:
+  neo4j-meaning:
+    image: neo4j:5.26.0
+    container_name: neo4j-meaning-chain
+    ports:
+      - "7688:7687"    # Bolt protocol (main uses 7687)
+      - "7475:7474"    # HTTP browser (main uses 7474)
+    environment:
+      NEO4J_AUTH: neo4j/meaning123
+      NEO4J_PLUGINS: '["apoc"]'
+      NEO4J_dbms_memory_heap_initial__size: 512m
+      NEO4J_dbms_memory_heap_max__size: 1G
+      NEO4J_dbms_memory_pagecache_size: 512m
+    volumes:
+      - meaning_data:/data
+      - meaning_logs:/logs
+    healthcheck:
+      test: ["CMD-SHELL", "wget --no-verbose --tries=1 --spider http://localhost:7474 || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+volumes:
+  meaning_data:
+  meaning_logs:
