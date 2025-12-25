@@ -202,6 +202,25 @@ meaning_chain/
 (:Concept)-[:VIA {verb, weight}]->(:Concept)
 ```
 
+## Processed Books
+
+The semantic graph is populated with SVO patterns extracted from:
+
+| Book | Patterns | Context |
+|------|----------|---------|
+| King James Bible | 4840 | Sacred language, parables, wisdom |
+| Jung, Psychology of the Unconscious | 2152 | Depth psychology, symbols |
+| Jung, Memories Dreams Reflections | 1344 | Personal unconscious, individuation |
+| Jung, Four Archetypes | 721 | Mother, rebirth, spirit, trickster |
+| Breath of Love (Nerim) | 90 | Paradoxes, truth, love |
+
+These books shape how the system navigates meaning - Jung's archetypes influence shadow dialogues, Biblical language enriches discussions of love and suffering.
+
+### Process New Books
+```bash
+python input/book_processor.py /path/to/book.txt --id "Book Name"
+```
+
 ## Theory: Why It Works
 
 ### Meaning as Convergence
