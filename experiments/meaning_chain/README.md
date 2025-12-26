@@ -111,6 +111,22 @@ High T (2.0): Exploratory navigation (random walks)
 
 ## Key Findings
 
+### Gravity Mode Results
+
+Comparison of gravity modes on "What is wisdom?" dialogue (6 exchanges):
+
+| Gravity α | Avg τ | Avg Coherence | Physics |
+|-----------|-------|---------------|---------|
+| 0.0 | 2.38 | 76% | - |
+| **0.5** | **2.48** | **87%** | realm=human, φ=1.37 |
+| 0.75 | 2.36 | 80% | realm=human, φ=1.39 |
+
+**Finding**: Gravity α=0.5 produces optimal results:
+- Highest average coherence (87%)
+- Grounded in human realm (τ < 3.5)
+- Peak coherence of 98% in middle exchanges
+- Meaningful convergence points ("way" → "end" → "permission")
+
 ### Coherence Patterns
 
 From dialogue experiments between Meaning Chain and Claude:
@@ -190,13 +206,22 @@ python app/chat.py
 
 ### Run Dialogue (two semantic agents)
 ```bash
+# Standard mode
 python app/dialogue.py --exchanges 5 --topic "What is meaning?"
+
+# Gravity mode (grounded responses)
+python app/dialogue.py --exchanges 5 --topic "What is meaning?" --gravity 0.5
 ```
 
 ### Run Dialogue with Claude
 ```bash
 export ANTHROPIC_API_KEY="your-key"
+
+# Standard mode
 python app/dialogue_claude.py --exchanges 5
+
+# Gravity mode (recommended for grounded dialogue)
+python app/dialogue_claude.py --exchanges 6 --gravity 0.5 --topic "What is wisdom?"
 ```
 
 ### Run Dialogue Comparison (saves JSON + TXT)
@@ -228,6 +253,7 @@ meaning_chain/
 │
 ├── experiments/
 │   └── physics/
+│       ├── gravity_storm.py          # Gravity-aware storm prototype
 │       ├── semantic_gravity.py       # 6 validated gravity tests
 │       ├── semantic_thermodynamics.py # Temperature, entropy, phase behavior
 │       ├── semantic_optics.py        # Refraction, lens, interference
@@ -255,7 +281,8 @@ meaning_chain/
 │   └── types.py            # MeaningNode, MeaningTree
 │
 └── results/
-    └── dialogue_comparison/  # Before/after dialogue results (JSON + TXT)
+    ├── dialogue_comparison/  # Before/after dialogue results (JSON + TXT)
+    └── dialogue_claude/      # Claude dialogue results with physics metrics
 ```
 
 ## Neo4j Schema
@@ -429,13 +456,32 @@ High coherence (>90%) means the focused thoughts align well in j-space. This cor
 ## Configuration
 
 ```python
-ChatConfig(
-    storm_temperature=1.5,    # Chaos in storm phase
+# Standard mode
+StormLogosBuilder(
+    storm_temperature=1.5,    # Chaos in storm phase [0.5-2.0]
     n_walks=5,                # Parallel walks per seed
     steps_per_walk=8,         # Depth of each walk
-    temperature=0.7,          # LLM temperature
+    gravity_strength=0.0,     # No gravity (original behavior)
+)
+
+# Gravity mode (recommended)
+StormLogosBuilder(
+    storm_temperature=1.5,
+    n_walks=5,
+    steps_per_walk=8,
+    gravity_strength=0.5,     # Semantic gravity [0-1]
 )
 ```
+
+### Gravity Strength Values
+
+| Value | Mode | Effect |
+|-------|------|--------|
+| 0.0 | Standard | Original behavior, no physics |
+| 0.25 | Light | Subtle grounding |
+| **0.5** | **Recommended** | Optimal coherence (87% avg) |
+| 0.75 | Strong | Maximum grounding |
+| 1.0 | Full | Full gravitational dynamics |
 
 ## Connection to Experience Knowledge
 
