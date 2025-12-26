@@ -387,6 +387,98 @@ class MeaningGraph:
             return record["exists"] if record else False
 
     # =========================================================================
+    # Learning Methods
+    # =========================================================================
+
+    def get_learning_store(self):
+        """
+        Get Neo4jLearningStore for this graph.
+
+        Lazy initialization - created on first access.
+        """
+        if not hasattr(self, '_learning_store'):
+            from .learning import Neo4jLearningStore
+            self._learning_store = Neo4jLearningStore(self.driver) if self.driver else None
+        return self._learning_store
+
+    def setup_learning_schema(self):
+        """Setup schema for learning (Adjective nodes, DESCRIBED_BY edges)."""
+        store = self.get_learning_store()
+        if store:
+            store.setup_schema()
+
+    def learn_concept(self, noun: str, adj_counts: Dict[str, int],
+                      source: str = "unknown",
+                      j_vectors: Dict[str, np.ndarray] = None) -> Optional[Dict]:
+        """
+        Learn a new concept from adjective observations.
+
+        This is the main learning entry point:
+        1. Stores adjective observations in Neo4j
+        2. Computes entropy → τ
+        3. Computes j-centroid → g
+        4. Creates/updates Concept node
+
+        Args:
+            noun: Concept to learn
+            adj_counts: {adjective: count} distribution
+            source: Origin ("book", "conversation", etc.)
+            j_vectors: Adjective j-vectors for centroid computation
+
+        Returns:
+            Updated concept properties dict
+        """
+        store = self.get_learning_store()
+        if store:
+            return store.learn_concept(noun, adj_counts, source, j_vectors)
+        return None
+
+    def observe_adjective(self, noun: str, adjective: str,
+                          count: int = 1, source: str = "unknown"):
+        """
+        Record a single adjective observation.
+
+        Use learn_concept() with update_concept() for full learning.
+        This just records the observation without recomputing τ.
+        """
+        store = self.get_learning_store()
+        if store:
+            store.observe_adjective(noun, adjective, count, source)
+
+    def update_learned_concept(self, noun: str,
+                               j_vectors: Dict[str, np.ndarray] = None) -> Optional[Dict]:
+        """
+        Recompute concept's τ, g, j from its adjective distribution.
+
+        Call after batch observations to update derived parameters.
+        """
+        store = self.get_learning_store()
+        if store:
+            return store.update_concept_from_distribution(noun, j_vectors)
+        return None
+
+    def get_learned_concepts(self, min_variety: int = 3) -> List[Dict]:
+        """Get all concepts that were learned (not from corpus)."""
+        store = self.get_learning_store()
+        if store:
+            return store.get_learned_concepts(min_variety)
+        return []
+
+    def get_adj_distribution(self, noun: str) -> Dict[str, int]:
+        """Get adjective distribution for a concept."""
+        store = self.get_learning_store()
+        if store:
+            return store.get_adj_distribution(noun)
+        return {}
+
+    def get_learning_stats(self) -> Dict:
+        """Get learning-specific statistics."""
+        store = self.get_learning_store()
+        if store:
+            return store.get_stats()
+        return {"error": "Learning store not available"}
+
+    # =========================================================================
     # Statistics
     # =========================================================================
 

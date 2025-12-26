@@ -1,0 +1,152 @@
+{
+  "timestamp": "20251226_135259",
+  "model": "corrected",
+  "interpretation": {
+    "low_tau": "ground (common)",
+    "high_tau": "sky (specific)",
+    "gravity": "toward low \u03c4"
+  },
+  "summary": {
+    "total": 6,
+    "passed": 6
+  },
+  "results": [
+    {
+      "test_id": "CG1",
+      "name": "Gravity toward low \u03c4",
+      "value": 1.0636177074171798,
+      "expected": "fall_ratio > 1.0 (falling dominates)",
+      "passed": true,
+      "details": {
+        "falling": 7256,
+        "rising": 6822,
+        "flat": 1873,
+        "fall_percent": 45.489311014983386,
+        "rise_percent": 42.76847846529998
+      }
+    },
+    {
+      "test_id": "CG2",
+      "name": "Ground has higher density",
+      "value": 67.71227289581016,
+      "expected": "ground% > 50% (most at low \u03c4)",
+      "passed": true,
+      "details": {
+        "ground_count": 9131,
+        "sky_count": 3212,
+        "total": 13485,
+        "ground_percent": 67.71227289581016,
+        "sky_percent": 23.81905821282907,
+        "distribution": {
+          "\u03c4=1": 1807,
+          "\u03c4=2": 7324,
+          "\u03c4=3": 925,
+          "\u03c4=4": 217,
+          "\u03c4=5": 76,
+          "\u03c4=6": 3136
+        }
+      }
+    },
+    {
+      "test_id": "CG3",
+      "name": "g increases with \u03c4 (bright sky)",
+      "value": 0.1005860523988955,
+      "expected": "r > 0 (positive correlation)",
+      "passed": "True",
+      "details": {
+        "correlation": 0.1005860523988955,
+        "n_concepts": 10000,
+        "g_mean": 0.033245334553343206,
+        "tau_mean": 1.7823917662976396
+      }
+    },
+    {
+      "test_id": "CV1",
+      "name": "Verb operators balanced",
+      "value": 1.0,
+      "expected": "balance > 0.7 (roughly equal falling/rising)",
+      "passed": true,
+      "details": {
+        "falling_count": 15,
+        "rising_count": 15,
+        "neutral_count": 62,
+        "falling_verbs": [
+          [
+            "enter",
+            -0.3032668777528649
+          ],
+          [
+            "hit",
+            -0.9160914428136105
+          ],
+          [
+            "cover",
+            -0.44060705795133137
+          ],
+          [
+            "ask",
+            -0.7456018787725947
+          ],
+          [
+            "play",
+            -0.4133699555759466
+          ]
+        ],
+        "rising_verbs": [
+          [
+            "mean",
+            0.3163503037721138
+          ],
+          [
+            "smite",
+            0.9597498564432234
+          ],
+          [
+            "run",
+            0.6407817561150423
+          ],
+          [
+            "belong",
+            0.3437467678828906
+          ],
+          [
+            "seem",
+            0.3200768406205145
+          ]
+        ]
+      }
+    },
+    {
+      "test_id": "CA1",
+      "name": "Attractors at ground level",
+      "value": 2.767245439640906,
+      "expected": "avg \u03c4 < 3 (settle to ground)",
+      "passed": "True",
+      "details": {
+        "avg_end_tau": 2.767245439640906,
+        "end_tau_std": 1.9444413011970563,
+        "n_walks": 200,
+        "steps_per_walk": 15
+      }
+    },
+    {
+      "test_id": "CP1",
+      "name": "Potential minimum at ground",
+      "value": 1.0,
+      "expected": "min \u03c4 \u2264 2 (minimum at ground)",
+      "passed": true,
+      "details": {
+        "phi_by_tau": {
+          "\u03c4=1.0": 0.525,
+          "\u03c4=2.0": 0.9746,
+          "\u03c4=3.0": 1.4689,
+          "\u03c4=4.0": 1.9579,
+          "\u03c4=5.0": 2.5354,
+          "\u03c4=6.0": 3.0065
+        },
+        "min_tau": 1,
+        "min_phi": 0.5250254081189156
+      }
+    }
+  ]
+}

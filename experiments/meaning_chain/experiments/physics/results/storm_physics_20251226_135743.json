@@ -1,0 +1,1135 @@
+[
+  {
+    "timestamp": "20251226_135742",
+    "seeds": [
+      "love",
+      "dream"
+    ],
+    "n_steps": 44,
+    "n_falling": 14,
+    "n_rising": 27,
+    "n_flat": 3,
+    "fall_ratio": 0.5185185185185185,
+    "avg_delta_tau": 0.38434499303963515,
+    "tau_start_avg": 2.004634048355312,
+    "tau_end_avg": 2.388979041394947,
+    "avg_phi_start": 1.0589968460260164,
+    "avg_phi_end": 1.2413857500574816,
+    "phi_decreased": 17,
+    "phi_increased": 27,
+    "pattern_tau": 2.719123168548685,
+    "pattern_g": -0.10379222419895721,
+    "pattern_coherence": 0.8807318928119148,
+    "convergence_point": "tactic",
+    "steps": [
+      {
+        "from": "love",
+        "to": "place",
+        "delta_tau": 1.4063077634479506,
+        "delta_phi": 0.7438987717845584
+      },
+      {
+        "from": "place",
+        "to": "cluster",
+        "delta_tau": -0.33251742707678256,
+        "delta_phi": -0.2197609716678155
+      },
+      {
+        "from": "love",
+        "to": "place",
+        "delta_tau": 1.4063077634479506,
+        "delta_phi": 0.7438987717845584
+      },
+      {
+        "from": "place",
+        "to": "security",
+        "delta_tau": -0.5264121545747504,
+        "delta_phi": -0.42491271029343236
+      },
+      {
+        "from": "love",
+        "to": "place",
+        "delta_tau": 1.4063077634479506,
+        "delta_phi": 0.7438987717845584
+      },
+      {
+        "from": "place",
+        "to": "bedroom",
+        "delta_tau": -0.5914918113053647,
+        "delta_phi": -0.46932200848086314
+      },
+      {
+        "from": "bedroom",
+        "to": "bathroom",
+        "delta_tau": -0.1423279174126879,
+        "delta_phi": -0.03530379093783931
+      },
+      {
+        "from": "bathroom",
+        "to": "tub",
+        "delta_tau": 1.0807691673376092,
+        "delta_phi": 0.388743037230312
+      },
+      {
+        "from": "love",
+        "to": "power",
+        "delta_tau": 0.44793157003911066,
+        "delta_phi": 0.30715679172412114
+      },
+      {
+        "from": "power",
+        "to": "life",
+        "delta_tau": 0.1552298563897172,
+        "delta_phi": 0.044731761484341215
+      },
+      {
+        "from": "life",
+        "to": "eye",
+        "delta_tau": 1.2795193665656268,
+        "delta_phi": 0.5894844598135172
+      },
+      {
+        "from": "eye",
+        "to": "her",
+        "delta_tau": -1.1225209952149546,
+        "delta_phi": -0.49392612135084524
+      },
+      {
+        "from": "her",
+        "to": "day",
+        "delta_tau": 0.14814480152338994,
+        "delta_phi": 0.04591488868258131
+      },
+      {
+        "from": "day",
+        "to": "time",
+        "delta_tau": 0.447958779561205,
+        "delta_phi": 0.261794825922262
+      },
+      {
+        "from": "time",
+        "to": "she",
+        "delta_tau": -0.851841155095705,
+        "delta_phi": -0.5572873162198029
+      },
+      {
+        "from": "she",
+        "to": "king",
+        "delta_tau": 0.1475970973475893,
+        "delta_phi": 0.15153153306898726
+      },
+      {
+        "from": "love",
+        "to": "man",
+        "delta_tau": 1.2258883780788086,
+        "delta_phi": 0.5635277737609088
+      },
+      {
+        "from": "man",
+        "to": "hand",
+        "delta_tau": 0.5837937017376689,
+        "delta_phi": 0.3002339401017837
+      },
+      {
+        "from": "hand",
+        "to": "shoulder",
+        "delta_tau": -0.6011829737855776,
+        "delta_phi": -0.29638509065848706
+      },
+      {
+        "from": "shoulder",
+        "to": "inch",
+        "delta_tau": 3.7277871251379646,
+        "delta_phi": 1.9856023652940589
+      },
+      {
+        "from": "inch",
+        "to": "body",
+        "delta_tau": -4.006929173175757,
+        "delta_phi": -2.050762508902125
+      },
+      {
+        "from": "body",
+        "to": "ground",
+        "delta_tau": -0.30860964343583985,
+        "delta_phi": -0.18395643476386803
+      },
+      {
+        "from": "ground",
+        "to": "way",
+        "delta_tau": 0.1008281221660452,
+        "delta_phi": 0.15782964765922003
+      },
+      {
+        "from": "way",
+        "to": "thing",
+        "delta_tau": 0.01959157766054309,
+        "delta_phi": -0.13289943223431944
+      },
+      {
+        "from": "dream",
+        "to": "content",
+        "delta_tau": 0.48815727686784305,
+        "delta_phi": 0.3729808319082747
+      },
+      {
+        "from": "content",
+        "to": "mother",
+        "delta_tau": 0.012642663152830469,
+        "delta_phi": -0.04018301385439593
+      },
+      {
+        "from": "mother",
+        "to": "time",
+        "delta_tau": 0.682561630155174,
+        "delta_phi": 0.3346360454122459
+      },
+      {
+        "from": "time",
+        "to": "nigh",
+        "delta_tau": -0.7695547965633598,
+        "delta_phi": -0.5138683237046122
+      },
+      {
+        "from": "nigh",
+        "to": "enemy",
+        "delta_tau": 1.7050959034515116,
+        "delta_phi": 0.8017511794552015
+      },
+      {
+        "from": "enemy",
+        "to": "mouth",
+        "delta_tau": -1.4674049513939718,
+        "delta_phi": -0.3330826211241864
+      },
+      {
+        "from": "mouth",
+        "to": "her",
+        "delta_tau": -0.06423973657877502,
+        "delta_phi": -0.26250994923124615
+      },
+      {
+        "from": "her",
+        "to": "day",
+        "delta_tau": 0.14814480152338994,
+        "delta_phi": 0.04591488868258131
+      },
+      {
+        "from": "dream",
+        "to": "time",
+        "delta_tau": 1.1833615701758475,
+        "delta_phi": 0.6674338634661247
+      },
+      {
+        "from": "time",
+        "to": "eye",
+        "delta_tau": 0.5264174141303597,
+        "delta_phi": 0.18621640674600193
+      },
+      {
+        "from": "eye",
+        "to": "focus",
+        "delta_tau": 3.0536054381744098,
+        "delta_phi": 1.4939718498113745
+      },
+      {
+        "from": "dream",
+        "to": "image",
+        "delta_tau": 1.1172515704965607,
+        "delta_phi": 0.5029403561606821
+      },
+      {
+        "from": "image",
+        "to": "part",
+        "delta_tau": -0.6411495127304812,
+        "delta_phi": -0.27533764253677784
+      },
+      {
+        "from": "part",
+        "to": "land",
+        "delta_tau": 0.47990061547624263,
+        "delta_phi": 0.378951859207857
+      },
+      {
+        "from": "land",
+        "to": "queer",
+        "delta_tau": -0.4500169456411891,
+        "delta_phi": -0.3617308339349834
+      },
+      {
+        "from": "dream",
+        "to": "favor",
+        "delta_tau": 1.0428927477552268,
+        "delta_phi": 0.5156738063104559
+      },
+      {
+        "from": "dream",
+        "to": "time",
+        "delta_tau": 1.1833615701758475,
+        "delta_phi": 0.6674338634661247
+      },
+      {
+        "from": "time",
+        "to": "thing",
+        "delta_tau": -0.6150962644802389,
+        "delta_phi": -0.4119663460188058
+      },
+      {
+        "from": "thing",
+        "to": "time",
+        "delta_tau": 0.6150962644802389,
+        "delta_phi": 0.4119663460188058
+      },
+      {
+        "from": "time",
+        "to": "lodge",
+        "delta_tau": 3.5800228523047695,
+        "delta_phi": 1.6801882565573765
+      }
+    ]
+  },
+  {
+    "timestamp": "20251226_135742",
+    "seeds": [
+      "truth",
+      "beauty"
+    ],
+    "n_steps": 20,
+    "n_falling": 5,
+    "n_rising": 11,
+    "n_flat": 4,
+    "fall_ratio": 0.45454545454545453,
+    "avg_delta_tau": 0.2040587014884013,
+    "tau_start_avg": 1.970278366266831,
+    "tau_end_avg": 2.1743370677552325,
+    "avg_phi_start": 1.016913131733269,
+    "avg_phi_end": 1.1076027830611896,
+    "phi_decreased": 9,
+    "phi_increased": 11,
+    "pattern_tau": 2.111294330729313,
+    "pattern_g": -0.2239041114750317,
+    "pattern_coherence": 0.873503168520234,
+    "convergence_point": "way",
+    "steps": [
+      {
+        "from": "truth",
+        "to": "man",
+        "delta_tau": 1.1635418520094785,
+        "delta_phi": 0.5712813739967519
+      },
+      {
+        "from": "man",
+        "to": "part",
+        "delta_tau": -0.5768845116244816,
+        "delta_phi": -0.2482023173271516
+      },
+      {
+        "from": "part",
+        "to": "way",
+        "delta_tau": 0.07257167026898603,
+        "delta_phi": 0.16076423605773404
+      },
+      {
+        "from": "way",
+        "to": "thing",
+        "delta_tau": 0.01959157766054309,
+        "delta_phi": -0.13289943223431944
+      },
+      {
+        "from": "thing",
+        "to": "year",
+        "delta_tau": 0.102353609251425,
+        "delta_phi": 0.14923743128362899
+      },
+      {
+        "from": "year",
+        "to": "toll",
+        "delta_tau": -0.07325077346229825,
+        "delta_phi": -0.2668903985551049
+      },
+      {
+        "from": "truth",
+        "to": "way",
+        "delta_tau": 0.6592290106539829,
+        "delta_phi": 0.4838432927273344
+      },
+      {
+        "from": "way",
+        "to": "crawl",
+        "delta_tau": 0.13962890864447397,
+        "delta_phi": -0.12132533902595743
+      },
+      {
+        "from": "truth",
+        "to": "way",
+        "delta_tau": 0.6592290106539829,
+        "delta_phi": 0.4838432927273344
+      },
+      {
+        "from": "way",
+        "to": "thing",
+        "delta_tau": 0.01959157766054309,
+        "delta_phi": -0.13289943223431944
+      },
+      {
+        "from": "thing",
+        "to": "smoke",
+        "delta_tau": 4.195119116785008,
+        "delta_phi": 2.092154602576182
+      },
+      {
+        "from": "smoke",
+        "to": "lung",
+        "delta_tau": -4.298346294847987,
+        "delta_phi": -2.1643458588243676
+      },
+      {
+        "from": "truth",
+        "to": "man",
+        "delta_tau": 1.1635418520094785,
+        "delta_phi": 0.5712813739967519
+      },
+      {
+        "from": "man",
+        "to": "she",
+        "delta_tau": -0.7214661543104186,
+        "delta_phi": -0.3656584837047341
+      },
+      {
+        "from": "she",
+        "to": "soul",
+        "delta_tau": 0.5204716423263873,
+        "delta_phi": 0.5565522571032384
+      },
+      {
+        "from": "soul",
+        "to": "dweller",
+        "delta_tau": -0.5875756607688405,
+        "delta_phi": -0.6442085257309181
+      },
+      {
+        "from": "truth",
+        "to": "way",
+        "delta_tau": 0.6592290106539829,
+        "delta_phi": 0.4838432927273344
+      },
+      {
+        "from": "way",
+        "to": "earth",
+        "delta_tau": 1.6412074018921552,
+        "delta_phi": 0.5745974837451444
+      },
+      {
+        "from": "earth",
+        "to": "dead",
+        "delta_tau": -1.6845466018038957,
+        "delta_phi": -0.930630145987221
+      },
+      {
+        "from": "dead",
+        "to": "tumult",
+        "delta_tau": 1.0079377861155212,
+        "delta_phi": 0.6934543232410739
+      }
+    ]
+  },
+  {
+    "timestamp": "20251226_135743",
+    "seeds": [
+      "fear",
+      "hope"
+    ],
+    "n_steps": 19,
+    "n_falling": 6,
+    "n_rising": 13,
+    "n_flat": 0,
+    "fall_ratio": 0.46153846153846156,
+    "avg_delta_tau": 0.3675943164242542,
+    "tau_start_avg": 1.917755816615195,
+    "tau_end_avg": 2.2853501330394494,
+    "avg_phi_start": 0.9657540082723505,
+    "avg_phi_end": 1.156780409974217,
+    "phi_decreased": 8,
+    "phi_increased": 11,
+    "pattern_tau": 2.4657299507501342,
+    "pattern_g": -0.14945808157901946,
+    "pattern_coherence": 0.7068303366592531,
+    "convergence_point": "nation",
+    "steps": [
+      {
+        "from": "fear",
+        "to": "way",
+        "delta_tau": 0.36182212589168383,
+        "delta_phi": 0.3647784680320997
+      },
+      {
+        "from": "way",
+        "to": "man",
+        "delta_tau": 0.5043128413554956,
+        "delta_phi": 0.08743808126941754
+      },
+      {
+        "from": "man",
+        "to": "wife",
+        "delta_tau": -0.6287296360825296,
+        "delta_phi": -0.2642058578354055
+      },
+      {
+        "from": "wife",
+        "to": "year",
+        "delta_tau": 0.24636198163900214,
+        "delta_phi": 0.19310577561529751
+      },
+      {
+        "from": "year",
+        "to": "nigh",
+        "delta_tau": -0.2568121413345459,
+        "delta_phi": -0.25113940896943543
+      },
+      {
+        "from": "nigh",
+        "to": "enemy",
+        "delta_tau": 1.7050959034515116,
+        "delta_phi": 0.8017511794552015
+      },
+      {
+        "from": "enemy",
+        "to": "trench",
+        "delta_tau": -1.4963980186276131,
+        "delta_phi": -0.649076458244232
+      },
+      {
+        "from": "fear",
+        "to": "all",
+        "delta_tau": 0.21278433812623287,
+        "delta_phi": -0.015529528068712994
+      },
+      {
+        "from": "all",
+        "to": "think",
+        "delta_tau": 0.252195707148827,
+        "delta_phi": 0.3445134959095888
+      },
+      {
+        "from": "fear",
+        "to": "all",
+        "delta_tau": 0.21278433812623287,
+        "delta_phi": -0.015529528068712994
+      },
+      {
+        "from": "all",
+        "to": "company",
+        "delta_tau": 0.5762493895665135,
+        "delta_phi": 0.5765213360595092
+      },
+      {
+        "from": "company",
+        "to": "policy",
+        "delta_tau": -0.14777194536930294,
+        "delta_phi": -0.1749857628023217
+      },
+      {
+        "from": "fear",
+        "to": "eye",
+        "delta_tau": 1.5229273821628255,
+        "delta_phi": 0.8300617885625879
+      },
+      {
+        "from": "eye",
+        "to": "she",
+        "delta_tau": -1.3782585692260647,
+        "delta_phi": -0.7435037229658048
+      },
+      {
+        "from": "she",
+        "to": "voice",
+        "delta_tau": 1.2437913925333954,
+        "delta_phi": 0.6669712316251852
+      },
+      {
+        "from": "voice",
+        "to": "octave",
+        "delta_tau": -0.5225958976380691,
+        "delta_phi": -0.4457030956127618
+      },
+      {
+        "from": "fear",
+        "to": "way",
+        "delta_tau": 0.36182212589168383,
+        "delta_phi": 0.3647784680320997
+      },
+      {
+        "from": "way",
+        "to": "heart",
+        "delta_tau": 0.2890450623009664,
+        "delta_phi": 0.12849897542074884
+      },
+      {
+        "from": "heart",
+        "to": "beat",
+        "delta_tau": 3.925665632144585,
+        "delta_phi": 1.830756194921114
+      }
+    ]
+  },
+  {
+    "timestamp": "20251226_135743",
+    "seeds": [
+      "wisdom",
+      "knowledge"
+    ],
+    "n_steps": 44,
+    "n_falling": 9,
+    "n_rising": 28,
+    "n_flat": 7,
+    "fall_ratio": 0.32142857142857145,
+    "avg_delta_tau": 0.5545653655898437,
+    "tau_start_avg": 1.9176077949409773,
+    "tau_end_avg": 2.4721731605308213,
+    "avg_phi_start": 1.0042078292582117,
+    "avg_phi_end": 1.2831317691599826,
+    "phi_decreased": 11,
+    "phi_increased": 33,
+    "pattern_tau": 2.238279532233118,
+    "pattern_g": -0.02811397291604535,
+    "pattern_coherence": 0.7721119710287703,
+    "convergence_point": "father",
+    "steps": [
+      {
+        "from": "wisdom",
+        "to": "heart",
+        "delta_tau": 0.9901454970391468,
+        "delta_phi": 0.6053747459458485
+      },
+      {
+        "from": "heart",
+        "to": "thump",
+        "delta_tau": -0.1454935413711631,
+        "delta_phi": -0.21566353982177444
+      },
+      {
+        "from": "wisdom",
+        "to": "child",
+        "delta_tau": 0.7621616827179083,
+        "delta_phi": 0.36906325842536225
+      },
+      {
+        "from": "child",
+        "to": "name",
+        "delta_tau": -0.0034959464710171417,
+        "delta_phi": 0.10282805774286496
+      },
+      {
+        "from": "name",
+        "to": "heaven",
+        "delta_tau": 1.4393231769388586,
+        "delta_phi": 0.48136196767670647
+      },
+      {
+        "from": "heaven",
+        "to": "mother",
+        "delta_tau": -1.5447622664619614,
+        "delta_phi": -0.5319466449475936
+      },
+      {
+        "from": "mother",
+        "to": "hand",
+        "delta_tau": 1.1359803311075565,
+        "delta_phi": 0.44324115299896083
+      },
+      {
+        "from": "hand",
+        "to": "hold",
+        "delta_tau": 1.7301644946790056,
+        "delta_phi": 0.8346038195142604
+      },
+      {
+        "from": "wisdom",
+        "to": "heart",
+        "delta_tau": 0.9901454970391468,
+        "delta_phi": 0.6053747459458485
+      },
+      {
+        "from": "heart",
+        "to": "mile",
+        "delta_tau": 0.7838849487272412,
+        "delta_phi": 0.382575327183704
+      },
+      {
+        "from": "wisdom",
+        "to": "father",
+        "delta_tau": 0.5001522393276463,
+        "delta_phi": 0.14600972122442235
+      },
+      {
+        "from": "father",
+        "to": "word",
+        "delta_tau": 0.04390474275806677,
+        "delta_phi": 0.15763027095488114
+      },
+      {
+        "from": "word",
+        "to": "shiver",
+        "delta_tau": 0.4577456816505494,
+        "delta_phi": 0.1629151967862682
+      },
+      {
+        "from": "shiver",
+        "to": "body",
+        "delta_tau": -0.09292070772828742,
+        "delta_phi": 0.03644736866417597
+      },
+      {
+        "from": "body",
+        "to": "her",
+        "delta_tau": -0.1691972602136076,
+        "delta_phi": -0.05476958792500497
+      },
+      {
+        "from": "her",
+        "to": "day",
+        "delta_tau": 0.14814480152338994,
+        "delta_phi": 0.04591488868258131
+      },
+      {
+        "from": "day",
+        "to": "way",
+        "delta_tau": -0.186729062579577,
+        "delta_phi": -0.01727208786222434
+      },
+      {
+        "from": "way",
+        "to": "spirit",
+        "delta_tau": 0.3334790749463261,
+        "delta_phi": 0.19442147356596018
+      },
+      {
+        "from": "wisdom",
+        "to": "heart",
+        "delta_tau": 0.9901454970391468,
+        "delta_phi": 0.6053747459458485
+      },
+      {
+        "from": "heart",
+        "to": "blood",
+        "delta_tau": 1.1372726849335537,
+        "delta_phi": 0.6013934656265911
+      },
+      {
+        "from": "blood",
+        "to": "shirt",
+        "delta_tau": -1.2765169830456269,
+        "delta_phi": -0.8259236385444638
+      },
+      {
+        "from": "shirt",
+        "to": "collar",
+        "delta_tau": 0.1492586421701747,
+        "delta_phi": 0.0924054977646599
+      },
+      {
+        "from": "knowledge",
+        "to": "sadness",
+        "delta_tau": 0.7089377624545985,
+        "delta_phi": 0.3155210493028979
+      },
+      {
+        "from": "sadness",
+        "to": "soul",
+        "delta_tau": 0.190128358451634,
+        "delta_phi": 0.41150944974294523
+      },
+      {
+        "from": "soul",
+        "to": "body",
+        "delta_tau": -0.09553680810166965,
+        "delta_phi": -0.2522050675632739
+      },
+      {
+        "from": "body",
+        "to": "day",
+        "delta_tau": -0.021052458690217657,
+        "delta_phi": -0.008854699242423658
+      },
+      {
+        "from": "day",
+        "to": "bread",
+        "delta_tau": 1.1027587408971773,
+        "delta_phi": 0.5400389472220175
+      },
+      {
+        "from": "bread",
+        "to": "baker",
+        "delta_tau": -1.4981177953966767,
+        "delta_phi": -0.7182268576666646
+      },
+      {
+        "from": "knowledge",
+        "to": "part",
+        "delta_tau": 0.5231761212657822,
+        "delta_phi": 0.28793440832018724
+      },
+      {
+        "from": "part",
+        "to": "way",
+        "delta_tau": 0.07257167026898603,
+        "delta_phi": 0.16076423605773404
+      },
+      {
+        "from": "way",
+        "to": "heart",
+        "delta_tau": 0.2890450623009664,
+        "delta_phi": 0.12849897542074884
+      },
+      {
+        "from": "heart",
+        "to": "speed",
+        "delta_tau": 3.925665632144585,
+        "delta_phi": 1.830756194921114
+      },
+      {
+        "from": "knowledge",
+        "to": "science",
+        "delta_tau": 0.8524833053327958,
+        "delta_phi": 0.4282229184362394
+      },
+      {
+        "from": "science",
+        "to": "religion",
+        "delta_tau": -0.5030346461093478,
+        "delta_phi": -0.301337713976911
+      },
+      {
+        "from": "religion",
+        "to": "pain",
+        "delta_tau": 0.0018840719114527893,
+        "delta_phi": 0.046892735042850076
+      },
+      {
+        "from": "pain",
+        "to": "day",
+        "delta_tau": 0.4311441229794444,
+        "delta_phi": 0.29219279273796717
+      },
+      {
+        "from": "day",
+        "to": "examination",
+        "delta_tau": -0.1947246004275982,
+        "delta_phi": -0.21220456433456447
+      },
+      {
+        "from": "examination",
+        "to": "place",
+        "delta_tau": 0.6927277645726588,
+        "delta_phi": 0.4627415557654073
+      },
+      {
+        "from": "place",
+        "to": "reputation",
+        "delta_tau": 3.529978467720914,
+        "delta_phi": 1.6914460910487956
+      },
+      {
+        "from": "reputation",
+        "to": "while",
+        "delta_tau": -3.400868882309478,
+        "delta_phi": -1.699947687255133
+      },
+      {
+        "from": "knowledge",
+        "to": "part",
+        "delta_tau": 0.5231761212657822,
+        "delta_phi": 0.28793440832018724
+      },
+      {
+        "from": "part",
+        "to": "peg",
+        "delta_tau": 4.287282364714537,
+        "delta_phi": 2.1200194063995967
+      },
+      {
+        "from": "knowledge",
+        "to": "case",
+        "delta_tau": 0.33858937235604913,
+        "delta_phi": 0.268538766698575
+      },
+      {
+        "from": "case",
+        "to": "maidservant",
+        "delta_tau": 4.471869113624271,
+        "delta_phi": 1.971057804731746
+      }
+    ]
+  },
+  {
+    "timestamp": "20251226_135743",
+    "seeds": [
+      "life",
+      "death"
+    ],
+    "n_steps": 41,
+    "n_falling": 9,
+    "n_rising": 29,
+    "n_flat": 3,
+    "fall_ratio": 0.3103448275862069,
+    "avg_delta_tau": 0.7622783309344383,
+    "tau_start_avg": 2.1936720244948833,
+    "tau_end_avg": 2.955950355429322,
+    "avg_phi_start": 1.1506588193481484,
+    "avg_phi_end": 1.512277772600293,
+    "phi_decreased": 12,
+    "phi_increased": 28,
+    "pattern_tau": 2.042593342270908,
+    "pattern_g": -0.12274956944561242,
+    "pattern_coherence": 0.9228618792965075,
+    "convergence_point": "place",
+    "steps": [
+      {
+        "from": "life",
+        "to": "way",
+        "delta_tau": 0.11841411029448512,
+        "delta_phi": 0.1242011392830289
+      },
+      {
+        "from": "way",
+        "to": "man",
+        "delta_tau": 0.5043128413554956,
+        "delta_phi": 0.08743808126941754
+      },
+      {
+        "from": "man",
+        "to": "hand",
+        "delta_tau": 0.5837937017376689,
+        "delta_phi": 0.3002339401017837
+      },
+      {
+        "from": "hand",
+        "to": "hold",
+        "delta_tau": 1.7301644946790056,
+        "delta_phi": 0.8346038195142604
+      },
+      {
+        "from": "life",
+        "to": "body",
+        "delta_tau": 0.3261956315642798,
+        "delta_phi": 0.1503279263876769
+      },
+      {
+        "from": "body",
+        "to": "frost",
+        "delta_tau": 4.006929173175757,
+        "delta_phi": 1.9331283832372148
+      },
+      {
+        "from": "life",
+        "to": "way",
+        "delta_tau": 0.11841411029448512,
+        "delta_phi": 0.1242011392830289
+      },
+      {
+        "from": "way",
+        "to": "madness",
+        "delta_tau": 4.214710694445552,
+        "delta_phi": 1.9592551703418628
+      },
+      {
+        "from": "madness",
+        "to": "hold",
+        "delta_tau": -1.3964396566733814,
+        "delta_phi": -0.7369793294564011
+      },
+      {
+        "from": "life",
+        "to": "mountain",
+        "delta_tau": 0.9318909587111475,
+        "delta_phi": 0.47143382337444306
+      },
+      {
+        "from": "mountain",
+        "to": "man",
+        "delta_tau": -0.30916400706116676,
+        "delta_phi": -0.2597946028219966
+      },
+      {
+        "from": "man",
+        "to": "hand",
+        "delta_tau": 0.5837937017376689,
+        "delta_phi": 0.3002339401017837
+      },
+      {
+        "from": "hand",
+        "to": "hip",
+        "delta_tau": 3.126604151352387,
+        "delta_phi": 1.5715831489706615
+      },
+      {
+        "from": "life",
+        "to": "life",
+        "delta_tau": 0.0,
+        "delta_phi": 0.0
+      },
+      {
+        "from": "life",
+        "to": "thing",
+        "delta_tau": 0.1380056879550282,
+        "delta_phi": -0.008698292951290543
+      },
+      {
+        "from": "thing",
+        "to": "minute",
+        "delta_tau": 4.195119116785008,
+        "delta_phi": 2.092154602576182
+      },
+      {
+        "from": "minute",
+        "to": "time",
+        "delta_tau": -3.5800228523047695,
+        "delta_phi": -1.6801882565573765
+      },
+      {
+        "from": "time",
+        "to": "lodge",
+        "delta_tau": 3.5800228523047695,
+        "delta_phi": 1.6801882565573765
+      },
+      {
+        "from": "death",
+        "to": "end",
+        "delta_tau": 0.39073472434671586,
+        "delta_phi": 0.22355151350616342
+      },
+      {
+        "from": "end",
+        "to": "life",
+        "delta_tau": -0.016702892065848962,
+        "delta_phi": -0.005958980725870089
+      },
+      {
+        "from": "life",
+        "to": "eye",
+        "delta_tau": 1.2795193665656268,
+        "delta_phi": 0.5894844598135172
+      },
+      {
+        "from": "eye",
+        "to": "likeness",
+        "delta_tau": 3.0536054381744098,
+        "delta_phi": 1.4939718498113745
+      },
+      {
+        "from": "death",
+        "to": "power",
+        "delta_tau": 0.2188019758911497,
+        "delta_phi": 0.17286077129595212
+      },
+      {
+        "from": "power",
+        "to": "heaven",
+        "delta_tau": 1.7705324451317717,
+        "delta_phi": 0.6453104140872041
+      },
+      {
+        "from": "heaven",
+        "to": "father",
+        "delta_tau": -1.6978366738581034,
+        "delta_phi": -0.8072435626205113
+      },
+      {
+        "from": "father",
+        "to": "child",
+        "delta_tau": 0.262009443390262,
+        "delta_phi": 0.2230535372009399
+      },
+      {
+        "from": "child",
+        "to": "hand",
+        "delta_tau": 1.0270452951134366,
+        "delta_phi": 0.4954845334709387
+      },
+      {
+        "from": "hand",
+        "to": "way",
+        "delta_tau": -1.0881065430931645,
+        "delta_phi": -0.38767202137120127
+      },
+      {
+        "from": "way",
+        "to": "man",
+        "delta_tau": 0.5043128413554956,
+        "delta_phi": 0.08743808126941754
+      },
+      {
+        "from": "man",
+        "to": "hand",
+        "delta_tau": 0.5837937017376689,
+        "delta_phi": 0.3002339401017837
+      },
+      {
+        "from": "death",
+        "to": "mother",
+        "delta_tau": 0.44457215456096,
+        "delta_phi": 0.28622454043556267
+      },
+      {
+        "from": "mother",
+        "to": "affair",
+        "delta_tau": 0.004575461597162267,
+        "delta_phi": -0.13717127264432616
+      },
+      {
+        "from": "affair",
+        "to": "place",
+        "delta_tau": 0.7280305531418674,
+        "delta_phi": 0.4605494835651529
+      },
+      {
+        "from": "place",
+        "to": "cluster",
+        "delta_tau": -0.33251742707678256,
+        "delta_phi": -0.2197609716678155
+      },
+      {
+        "from": "death",
+        "to": "life",
+        "delta_tau": 0.3740318322808669,
+        "delta_phi": 0.21759253278029334
+      },
+      {
+        "from": "life",
+        "to": "art",
+        "delta_tau": 2.0949784773175315,
+        "delta_phi": 0.9499604321968891
+      },
+      {
+        "from": "art",
+        "to": "house",
+        "delta_tau": -1.6528099995890124,
+        "delta_phi": -0.5637364221495784
+      },
+      {
+        "from": "house",
+        "to": "day",
+        "delta_tau": -0.13702530485445696,
+        "delta_phi": -0.24475078290205743
+      },
+      {
+        "from": "day",
+        "to": "hour",
+        "delta_tau": -0.13907183421872182,
+        "delta_phi": -0.01194964540169896
+      },
+      {
+        "from": "hour",
+        "to": "plenty",
+        "delta_tau": 4.167053466084696,
+        "delta_phi": 2.024340491516611
+      },
+      {
+        "from": "death",
+        "to": "toll",
+        "delta_tau": 0.5411403560250219,
+        "delta_phi": 0.0912412725575269
+      }
+    ]
+  }
+]

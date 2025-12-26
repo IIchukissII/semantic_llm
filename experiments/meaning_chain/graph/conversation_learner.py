@@ -1,8 +1,9 @@
 """
-Conversation Learner - Learn SVO patterns from conversations.
+Conversation Learner - Learn patterns and concepts from conversations.
 
-Extracts Subject-Verb-Object patterns from conversation exchanges
-and stores them in MeaningGraph with conversation-level weights.
+Extracts:
+1. SVO patterns → VIA relationships
+2. Adj-Noun pairs → Concept learning (new words, parameter updates)
 
 Weight hierarchy (matching experience_knowledge):
     Books:        1.0  (established knowledge)
@@ -10,11 +11,17 @@ Weight hierarchy (matching experience_knowledge):
     Conversation: 0.2  (needs reinforcement)
     Context:      0.1  (weakest)
 
+Learning:
+- New nouns are learned from their adjective distributions
+- τ = f(entropy) of adjective distribution
+- Existing concepts update their parameters with new observations
+
 "Each conversation walks new paths through meaning space"
 """
 
 import re
 import spacy
+import numpy as np
 from typing import List, Dict, Tuple, Set, Optional
 from dataclasses import dataclass
 from collections import defaultdict
@@ -27,6 +34,7 @@ _MEANING_CHAIN = _THIS_FILE.parent.parent
 sys.path.insert(0, str(_MEANING_CHAIN))
 
 from graph.meaning_graph import MeaningGraph
+from graph.learning import Neo4jLearningStore
 
 
 @dataclass
@@ -47,9 +55,21 @@ class LearnedPattern:
     reinforced: bool = False  # True if pattern already existed
 
 
+@dataclass
+class LearnedConcept:
+    """A concept learned from conversation."""
+    noun: str
+    adjectives: List[str]
+    is_new: bool = True
+
+
 class ConversationLearner:
     """
-    Learn SVO patterns from conversations.
+    Learn SVO patterns and concepts from conversations.
+
+    Two learning modes:
+    1. SVO patterns → VIA relationships (weight 0.2)
+    2. Adj-Noun pairs → Concept learning (τ from entropy)
 
     Extracts grammatical patterns and stores them in MeaningGraph
     with conversation-level weights (0.2 - needs reinforcement).
@@ -58,8 +78,25 @@ class ConversationLearner:
     # Weight for conversation-learned patterns
     CONVERSATION_WEIGHT = 0.2
 
-    def __init__(self, graph: MeaningGraph = None, model: str = "en_core_web_sm"):
+    def __init__(self, graph: MeaningGraph = None,
+                 model: str = "en_core_web_sm",
+                 enable_learning: bool = True,
+                 adj_vectors: Dict[str, np.ndarray] = None):
+        """
+        Initialize ConversationLearner.
+
+        Args:
+            graph: MeaningGraph instance
+            model: spaCy model name
+            enable_learning: If True, learn new concepts from adj-noun pairs
+            adj_vectors: {adjective: 5D j-vector} for computing centroids
+        """
         self.graph = graph or MeaningGraph()
+        self.enable_learning = enable_learning
+        self.adj_vectors = adj_vectors or {}
+
+        # Learning store
+        self._learning_store = None
 
         # Load spaCy
         try:
@@ -75,7 +112,27 @@ class ConversationLearner:
 
         # Session tracking
         self.session_patterns: List[LearnedPattern] = []
+        self.session_concepts: List[LearnedConcept] = []
         self.session_id = datetime.now().strftime("%Y%m%d_%H%M%S")
+
+        # Setup learning
+        if self.enable_learning:
+            self._setup_learning()
+
+    def _setup_learning(self):
+        """Initialize learning components."""
+        if self.graph.is_connected():
+            self._learning_store = Neo4jLearningStore(self.graph.driver)
+            self._learning_store.setup_schema()
+
+    def load_adj_vectors(self, data_loader):
+        """Load adjective vectors from DataLoader."""
+        vectors = data_loader.load_word_vectors()
+        j_dims = ['beauty', 'life', 'sacred', 'good', 'love']
+
+        for word, v in vectors.items():
+            if v.get('j'):
+                self.adj_vectors[word] = np.array([v['j'].get(d, 0) for d in j_dims])
 
     def _load_known_concepts(self):
         """Load known concepts from graph."""
@@ -137,6 +194,66 @@ class ConversationLearner:
 
         return patterns
 
+    def extract_adj_noun(self, text: str) -> List[Tuple[str, str]]:
+        """
+        Extract Adjective-Noun pairs from text for learning.
+
+        Returns: [(adjective, noun), ...]
+        """
+        doc = self.nlp(text)
+        pairs = []
+
+        for token in doc:
+            if token.pos_ == "NOUN":
+                noun = token.lemma_.lower()
+                if len(noun) < 3:
+                    continue
+
+                # Find adjective modifiers
+                for child in token.children:
+                    if child.dep_ == "amod" and child.pos_ == "ADJ":
+                        adj = child.lemma_.lower()
+                        if len(adj) >= 3:
+                            pairs.append((adj, noun))
+
+        return pairs
+
+    def _aggregate_adj_noun(self, pairs: List[Tuple[str, str]]) -> Dict[str, Dict[str, int]]:
+        """Aggregate adj-noun pairs into distributions."""
+        distributions = defaultdict(lambda: defaultdict(int))
+        for adj, noun in pairs:
+            distributions[noun][adj] += 1
+        return {noun: dict(adjs) for noun, adjs in distributions.items()}
+
+    def _learn_concepts(self, distributions: Dict[str, Dict[str, int]],
+                        source: str) -> List[LearnedConcept]:
+        """Learn concepts from adjective distributions."""
+        if not self._learning_store:
+            return []
+
+        learned = []
+        for noun, adj_counts in distributions.items():
+            is_new = noun not in self.known_concepts
+
+            # Store observations and update
+            result = self._learning_store.learn_concept(
+                noun, adj_counts, source, self.adj_vectors
+            )
+
+            if result:
+                concept = LearnedConcept(
+                    noun=noun,
+                    adjectives=list(adj_counts.keys()),
+                    is_new=is_new
+                )
+                learned.append(concept)
+                self.session_concepts.append(concept)
+
+                if is_new:
+                    self.known_concepts.add(noun)
+
+        return learned
+
     def learn_from_turn(self, turn: ConversationTurn) -> List[LearnedPattern]:
         """
         Learn SVO patterns from a conversation turn.
@@ -172,13 +289,18 @@ class ConversationLearner:
         """
         Learn from a complete exchange (user + assistant).
 
+        Learns both:
+        1. SVO patterns → VIA relationships
+        2. Adj-Noun pairs → Concept learning (if enabled)
+
         Args:
             user_text: User's message
             assistant_text: Assistant's response
 
         Returns:
-            Statistics about learned patterns
+            Statistics about learned patterns and concepts
         """
+        # Learn SVO patterns
         user_patterns = self.learn_from_turn(
             ConversationTurn("user", user_text)
         )
@@ -186,12 +308,33 @@ class ConversationLearner:
             ConversationTurn("assistant", assistant_text)
         )
 
+        all_patterns = user_patterns + assistant_patterns
+
+        # Learn concepts from adj-noun pairs
+        concepts_learned = []
+        if self.enable_learning and self._learning_store:
+            # Combine texts
+            combined_text = f"{user_text} {assistant_text}"
+
+            # Extract adj-noun pairs
+            adj_noun_pairs = self.extract_adj_noun(combined_text)
+
+            if adj_noun_pairs:
+                # Aggregate and learn
+                distributions = self._aggregate_adj_noun(adj_noun_pairs)
+                concepts_learned = self._learn_concepts(
+                    distributions, source=f"conversation:{self.session_id}"
+                )
+
         return {
             "user_patterns": len(user_patterns),
             "assistant_patterns": len(assistant_patterns),
-            "total": len(user_patterns) + len(assistant_patterns),
-            "reinforced": sum(1 for p in user_patterns + assistant_patterns if p.reinforced),
-            "new": sum(1 for p in user_patterns + assistant_patterns if not p.reinforced)
+            "total_patterns": len(all_patterns),
+            "patterns_reinforced": sum(1 for p in all_patterns if p.reinforced),
+            "patterns_new": sum(1 for p in all_patterns if not p.reinforced),
+            "concepts_learned": len(concepts_learned),
+            "concepts_new": sum(1 for c in concepts_learned if c.is_new),
+            "concepts_updated": sum(1 for c in concepts_learned if not c.is_new)
         }
 
     def _check_existing(self, subj: str, verb: str, obj: str) -> bool:
@@ -249,21 +392,34 @@ class ConversationLearner:
 
     def get_session_stats(self) -> Dict:
         """Get statistics for current session."""
-        if not self.session_patterns:
-            return {"patterns": 0}
-
+        # Pattern stats
         pattern_counts = defaultdict(int)
         for p in self.session_patterns:
             key = (p.subject, p.verb, p.object)
             pattern_counts[key] += 1
 
+        # Concept stats
+        concept_counts = defaultdict(list)
+        for c in self.session_concepts:
+            concept_counts[c.noun].extend(c.adjectives)
+
         return {
             "session_id": self.session_id,
+            # Patterns
             "total_patterns": len(self.session_patterns),
             "unique_patterns": len(pattern_counts),
-            "reinforced": sum(1 for p in self.session_patterns if p.reinforced),
-            "new": sum(1 for p in self.session_patterns if not p.reinforced),
-            "top_patterns": sorted(pattern_counts.items(), key=lambda x: -x[1])[:5]
+            "patterns_reinforced": sum(1 for p in self.session_patterns if p.reinforced),
+            "patterns_new": sum(1 for p in self.session_patterns if not p.reinforced),
+            "top_patterns": sorted(pattern_counts.items(), key=lambda x: -x[1])[:5],
+            # Concepts
+            "total_concepts": len(self.session_concepts),
+            "unique_concepts": len(concept_counts),
+            "concepts_new": sum(1 for c in self.session_concepts if c.is_new),
+            "concepts_updated": sum(1 for c in self.session_concepts if not c.is_new),
+            "top_concepts": sorted(
+                [(noun, len(adjs)) for noun, adjs in concept_counts.items()],
+                key=lambda x: -x[1]
+            )[:5]
         }
 
     def close(self):

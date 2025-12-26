@@ -61,30 +61,53 @@ Only thoughts aligned with the lens pass through.
 ### Key Metrics
 
 - **g (goodness)**: Projection onto j_good direction `[-1, +1]`
-- **τ (tau)**: Abstraction level `[1-7]` (concrete → abstract)
+- **τ (tau)**: Semantic altitude `[1-6]` (human reality → transcendental)
 - **Coherence**: How aligned the focused thoughts are `[0-100%]`
 - **Convergence**: Where semantic paths meet (meaning anchor)
 
-## Quantum Physics (Storm Phase)
+## Semantic Physics
 
-Transitions through semantic space follow physical laws:
+The semantic space exhibits physics-like behavior. See `docs/UNIFIED_SEMANTIC_PHYSICS.md` for full theory.
 
-### Barrier Opacity
+### Semantic Gravity
+
 ```
-κ = (1 - cos(j₁, j₂)) / 2
+Potential: φ = +λτ - μg·cos(j, j_good)
 
-κ = 0:   parallel j-vectors (no barrier)
-κ = 0.5: orthogonal (medium barrier)
-κ = 1:   antiparallel (maximum barrier)
+Where:
+  λ = 0.5  (gravitational constant)
+  μ = 0.5  (lift constant)
+  τ = semantic altitude [1-6]
+  g = goodness [-1, +1]
 ```
 
-### Boltzmann Selection
+**Key insight**: Meaning naturally "falls" toward human reality (low τ) while goodness provides "lift" toward the transcendental.
+
+```
+τ=6  ☀️ TRANSCENDENTAL - Beyond ordinary experience
+         ↑ TRANSCENDENCE requires WORK (against gravity)
+τ≈3.5 ═══ THE VEIL (quasi-Lagrange point) ═══
+         ↓ GROUNDING is NATURAL (with gravity)
+τ=1  🌍 HUMAN REALITY - Common shared experience
+```
+
+### Boltzmann Selection (Storm Phase)
 ```
 P_i = exp(-E_i / T) / Σ exp(-E_j / T)
 
-Low T (0.5): Focused navigation
-High T (2.0): Exploratory navigation
+Low T (0.5): Focused navigation (follows strongest edges)
+High T (2.0): Exploratory navigation (random walks)
 ```
+
+### Validated Properties
+
+| Property | Finding |
+|----------|---------|
+| **Gravity** | Meaning flows downward (Δτ < 0 from high altitudes) |
+| **Ground density** | 60%+ concepts at τ ≤ 3 (human reality is dense) |
+| **Coherence** | Topologically protected (Φ ∈ [0.74, 0.91] across all T) |
+| **Interference** | All constructive (meaning reinforces, never cancels) |
+| **Optics** | Ground is thin (n=0.78), sky is dense (n=1.98) |
 
 ## Key Findings
 
@@ -92,14 +115,27 @@ High T (2.0): Exploratory navigation
 
 From dialogue experiments between Meaning Chain and Claude:
 
-| Topic | Coherence | Convergence Point |
-|-------|-----------|-------------------|
-| Love transforming suffering | **99%** | "way" |
-| Nature of meaning | **98%** | "way" |
-| Shadow integration | **91%** | "door" |
-| Consciousness | **93%** | "view" |
+| Topic | Coherence | Convergence Point | Learning |
+|-------|-----------|-------------------|----------|
+| Love transforming suffering | **99%** | "way" | No |
+| Nature of meaning | **98%** | "way" | No |
+| Shadow integration (before) | **72%** | "way" | No |
+| Shadow integration (after) | **89%** | "place", "hold" | **Yes (4051 concepts)** |
+| True understanding | **92%** | "veil", "place" | **Yes (4051 concepts)** |
 
-**Insight**: High coherence (>90%) correlates with finding genuine semantic convergence points.
+**Insight**: Learning improves coherence and produces more meaningful convergence points.
+
+### Learning Impact on Dialogue
+
+Before/after learning comparison on shadow integration topic:
+
+| Metric | Without Learning | With Learning |
+|--------|-----------------|---------------|
+| Coherence | 72% | 89% (+17%) |
+| Convergence | "way" | "place", "hold" |
+| Response depth | Generic | Context-aware |
+
+The learned concepts (4,051 from books) enable richer semantic navigation.
 
 ### Emergent Convergence
 
@@ -163,6 +199,14 @@ export ANTHROPIC_API_KEY="your-key"
 python app/dialogue_claude.py --exchanges 5
 ```
 
+### Run Dialogue Comparison (saves JSON + TXT)
+```bash
+export ANTHROPIC_API_KEY="your-key"
+python scripts/run_dialogue_compare.py --exchanges 5 --topic "Your topic here"
+```
+
+Results saved to `results/dialogue_comparison/` for before/after analysis.
+
 ## Directory Structure
 
 ```
@@ -175,8 +219,32 @@ meaning_chain/
 │   └── feedback.py         # Response validation
 │
 ├── graph/
-│   ├── meaning_graph.py    # Neo4j with VIA relationships
-│   └── conversation_learner.py
+│   ├── meaning_graph.py        # Neo4j with VIA relationships
+│   ├── learning.py             # Entropy-based concept learning
+│   └── conversation_learner.py # Learn from conversations
+│
+├── input/
+│   └── book_processor.py   # Process books → SVO + learn concepts
+│
+├── experiments/
+│   └── physics/
+│       ├── semantic_gravity.py       # 6 validated gravity tests
+│       ├── semantic_thermodynamics.py # Temperature, entropy, phase behavior
+│       ├── semantic_optics.py        # Refraction, lens, interference
+│       ├── storm_physics.py          # Dynamic physics observer
+│       └── results/                  # Experiment outputs (JSON)
+│
+├── docs/
+│   ├── UNIFIED_SEMANTIC_PHYSICS.md   # Complete physics theory
+│   ├── SEMANTIC_THERMODYNAMICS.md    # Thermodynamics detail
+│   └── SEMANTIC_OPTICS.md            # Optics detail
+│
+├── scripts/
+│   ├── reprocess_books.py      # Reprocess all books with learning
+│   └── run_dialogue_compare.py # Run & save dialogues for comparison
+│
+├── tests/
+│   └── test_learning.py    # Learning system tests
 │
 ├── app/
 │   ├── chat.py             # Interactive chat
@@ -186,7 +254,8 @@ meaning_chain/
 ├── models/
 │   └── types.py            # MeaningNode, MeaningTree
 │
-└── results/                # Saved dialogue transcripts
+└── results/
+    └── dialogue_comparison/  # Before/after dialogue results (JSON + TXT)
 ```
 
 ## Neo4j Schema
@@ -197,9 +266,119 @@ meaning_chain/
     g: FLOAT,           // Goodness [-1, +1]
     tau: FLOAT,         // Abstraction [1, 7]
     j: LIST<FLOAT>,     // 5D transcendental vector
+
+    // Learning properties (for learned concepts)
+    learned: BOOLEAN,   // True if learned (not from corpus)
+    variety: INT,       // Number of unique adjectives
+    h_adj: FLOAT,       // Shannon entropy of adj distribution
+    h_adj_norm: FLOAT,  // Normalized entropy [0, 1]
+    confidence: FLOAT,  // Confidence [0.1, 1.0]
+    n_observations: INT // Observation count
 })
 
-(:Concept)-[:VIA {verb, weight}]->(:Concept)
+(:Adjective {word: STRING})
+
+(:Concept)-[:VIA {verb, weight, count, source}]->(:Concept)
+(:Concept)-[:DESCRIBED_BY {count, source}]->(:Adjective)
+```
+
+## Learning System
+
+The meaning_chain now supports **learning new concepts** from books and conversations.
+
+### Theory: Entropy-Based Learning
+
+Concepts learn their parameters from adjective distributions:
+
+```
+τ = 1 + 5 × (1 - H_norm)
+
+Where H_norm = H / log₂(variety)
+      H = -Σ p(adj) log₂ p(adj)  (Shannon entropy)
+```
+
+| Entropy | τ | Meaning |
+|---------|---|---------|
+| High (many varied adjectives) | Low (1-3) | Common concept (human reality) |
+| Low (few concentrated adjectives) | High (4-6) | Specific concept (transcendental) |
+
+### Learning Pipeline
+
+```
+Text → Extract Adj-Noun pairs → Aggregate by noun → Compute τ, g, j → Store in Neo4j
+                                    ↓
+                            {noun: {adj: count}}
+```
+
+### What Gets Learned
+
+1. **New words** not in original corpus → Creates new `:Concept` node
+2. **Existing words** → Updates τ, g, j from new observations
+
+### Usage: Book Processing with Learning
+
+```python
+from input.book_processor import BookProcessor
+
+# Create processor with learning enabled
+processor = BookProcessor(enable_learning=True)
+
+# Optional: load adjective vectors for j-centroid computation
+from core.data_loader import DataLoader
+processor.load_adj_vectors(DataLoader())
+
+# Process book - extracts SVO + learns concepts
+result = processor.process_book("/path/to/book.txt")
+
+print(f"SVO patterns: {result.svo_patterns}")
+print(f"New concepts: {result.new_concepts_learned}")
+print(f"Updated concepts: {result.existing_concepts_updated}")
+```
+
+### Usage: Conversation Learning
+
+```python
+from graph.conversation_learner import ConversationLearner
+
+learner = ConversationLearner(enable_learning=True)
+
+# Learn from exchange
+stats = learner.learn_from_exchange(
+    "What is the beautiful mystery of life?",
+    "The profound mystery reveals itself through authentic connection."
+)
+
+print(f"Concepts learned: {stats['concepts_learned']}")
+print(f"New: {stats['concepts_new']}, Updated: {stats['concepts_updated']}")
+```
+
+### Learning Hierarchy
+
+| Source | Initial Weight | Description |
+|--------|----------------|-------------|
+| Corpus | 1.0 | Pre-computed from 928K books |
+| Books | 0.8 | Processed individually |
+| Conversation | 0.2 | Needs reinforcement |
+| Context | 0.1 | Estimated from neighbors |
+
+### Parameter Refinement
+
+As more observations accumulate:
+- Entropy stabilizes → τ converges to true value
+- J-centroid refines → g becomes more accurate
+- Confidence increases → concept becomes "known"
+
+### Reprocessing Books
+
+After updating the learning system:
+
+```python
+# Reprocess all books to update learned concepts
+processor = BookProcessor(enable_learning=True)
+
+for book in books:
+    result = processor.reprocess_book(book)
+    print(f"{book}: {result.new_concepts_learned} new, {result.existing_concepts_updated} updated")
 ```
 
 ## Processed Books

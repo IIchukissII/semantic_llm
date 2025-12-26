@@ -8,6 +8,11 @@ When a human is asked a question:
 
 This replaces brute-force candidate generation with principled emergence.
 
+Physics Mode (optional):
+- Gravity pulls meaning toward human reality (low τ)
+- Potential φ = λτ - μg (altitude costs, goodness lifts)
+- Walks "feel" gravity when gravity_strength > 0
+
 "The storm of thoughts finds its logos in the structure of meaning"
 """
 
@@ -17,6 +22,15 @@ from dataclasses import dataclass, field
 from collections import Counter
 from pathlib import Path
 import sys
+
+
+# =============================================================================
+# Semantic Physics Constants
+# =============================================================================
+
+LAMBDA = 0.5      # Gravitational constant (τ coupling)
+MU = 0.5          # Lift constant (g coupling)
+VEIL_TAU = 3.5    # Quasi-Lagrange point (boundary between realms)
 
 # Add parent paths for imports
 _THIS_FILE = Path(__file__).resolve()
@@ -38,6 +52,45 @@ class StormState:
     tau: float
     j: np.ndarray
     activation: float = 1.0  # How strongly this thought was activated
+    # Physics properties (populated when gravity_strength > 0)
+    phi: float = 0.0         # Semantic potential φ = λτ - μg
+    realm: str = "human"     # "human" (τ<3.5) or "transcendental" (τ≥3.5)
+
+    def compute_physics(self):
+        """Compute physics properties from τ and g."""
+        self.phi = LAMBDA * self.tau - MU * self.g
+        self.realm = "transcendental" if self.tau >= VEIL_TAU else "human"
+
+
+@dataclass
+class PhysicsTrajectory:
+    """Track physics observables during a walk (when gravity enabled)."""
+    tau_values: List[float] = field(default_factory=list)
+    phi_values: List[float] = field(default_factory=list)
+    delta_tau: List[float] = field(default_factory=list)
+    veil_crossings: int = 0
+    words: List[str] = field(default_factory=list)
+
+    def add_step(self, word: str, tau: float, g: float):
+        """Record a step in the walk."""
+        phi = LAMBDA * tau - MU * g
+        if self.tau_values:
+            self.delta_tau.append(tau - self.tau_values[-1])
+            prev_realm = "transcendental" if self.tau_values[-1] >= VEIL_TAU else "human"
+            curr_realm = "transcendental" if tau >= VEIL_TAU else "human"
+            if prev_realm != curr_realm:
+                self.veil_crossings += 1
+        self.tau_values.append(tau)
+        self.phi_values.append(phi)
+        self.words.append(word)
+
+    @property
+    def gravity_compliance(self) -> float:
+        """Fraction of steps that lowered potential (followed gravity)."""
+        if not self.delta_tau:
+            return 0.0
+        downward = sum(1 for dt in self.delta_tau if dt < 0)
+        return downward / len(self.delta_tau)
 
 
 @dataclass
@@ -47,6 +100,9 @@ class StormResult:
     thoughts: List[StormState]
     visit_counts: Dict[str, int]  # How many times each concept was visited
     total_steps: int
+    # Physics tracking (populated when gravity_strength > 0)
+    trajectories: List[PhysicsTrajectory] = field(default_factory=list)
+    gravity_strength: float = 0.0
 
     @property
     def resonance(self) -> Dict[str, float]:
@@ -61,6 +117,46 @@ class StormResult:
         """Most visited concepts (highest resonance)."""
         return sorted(self.visit_counts.items(), key=lambda x: -x[1])
 
+    # Physics properties (available when gravity enabled)
+    @property
+    def avg_tau(self) -> float:
+        """Average τ across all walks."""
+        if not self.trajectories:
+            return 0.0
+        all_tau = [t for traj in self.trajectories for t in traj.tau_values]
+        return np.mean(all_tau) if all_tau else 0.0
+
+    @property
+    def avg_phi(self) -> float:
+        """Average potential across all walks."""
+        if not self.trajectories:
+            return 0.0
+        all_phi = [p for traj in self.trajectories for p in traj.phi_values]
+        return np.mean(all_phi) if all_phi else 0.0
+
+    @property
+    def total_veil_crossings(self) -> int:
+        """Total crossings of the τ=3.5 boundary."""
+        return sum(t.veil_crossings for t in self.trajectories)
+
+    @property
+    def gravity_compliance(self) -> float:
+        """Average compliance with gravity across all walks."""
+        if not self.trajectories:
+            return 0.0
+        return np.mean([t.gravity_compliance for t in self.trajectories])
+
+    @property
+    def realm_distribution(self) -> Dict[str, float]:
+        """Fraction of time in each realm."""
+        if not self.trajectories:
+            return {"human": 0.5, "transcendental": 0.5}
+        all_tau = [t for traj in self.trajectories for t in traj.tau_values]
+        if not all_tau:
+            return {"human": 0.5, "transcendental": 0.5}
+        human = sum(1 for tau in all_tau if tau < VEIL_TAU)
+        return {"human": human / len(all_tau), "transcendental": 1 - human / len(all_tau)}
+
 
 @dataclass
 class LogosPattern:
@@ -71,6 +167,11 @@ class LogosPattern:
     g_direction: float            # Overall goodness direction
     tau_level: float              # Abstraction level of pattern
     coherence: float              # How coherent is the pattern [0, 1]
+    # Physics metrics (populated when gravity enabled)
+    avg_phi: float = 0.0          # Average semantic potential
+    veil_crossings: int = 0       # Times meaning crossed the τ=3.5 boundary
+    gravity_compliance: float = 0.0  # Fraction of steps following gravity
+    realm: str = "human"          # Dominant realm of pattern
 
 
 class Storm:
@@ -80,16 +181,26 @@ class Storm:
     Like the neocortex firing - many parallel walks through
     semantic space, sampling probabilistically. No analysis,
     just activation spreading.
+
+    Physics Mode (gravity_strength > 0):
+    - Transitions prefer lower potential (falling is natural)
+    - Potential φ = λτ - μg (altitude costs, goodness lifts)
+    - Tracks physics observables during walks
     """
 
-    def __init__(self, temperature: float = 1.5):
+    def __init__(self, temperature: float = 1.5, gravity_strength: float = 0.0):
         """
         Args:
             temperature: Controls storm chaos
                 - Low T (0.5): Focused, constrained associations
                 - High T (2.0): Wild, divergent associations
+            gravity_strength: How much gravity affects transitions [0, 1]
+                - 0.0: Pure edge-weight sampling (default, original behavior)
+                - 0.5: Balanced gravity influence
+                - 1.0: Full gravitational dynamics
         """
         self.temperature = temperature
+        self.gravity_strength = gravity_strength
         self.loader = DataLoader()
         self._graph = None
 
@@ -109,13 +220,16 @@ class Storm:
         concept = self._graph.get_concept(word)
         if not concept:
             return None
-        return StormState(
+        state = StormState(
             word=word,
             g=concept.get('g', 0.0),
             tau=concept.get('tau', 3.0),
             j=np.array(concept.get('j', [0]*5)),
             activation=1.0
         )
+        if self.gravity_strength > 0:
+            state.compute_physics()
+        return state
 
     def _get_transitions(self, word: str) -> List[Tuple[str, float]]:
         """Get transitions with weights."""
@@ -124,15 +238,47 @@ class Storm:
         transitions = self._graph.get_all_transitions(word, limit=15)
         return [(t[1], t[2]) for t in transitions]
 
-    def _sample_next(self, transitions: List[Tuple[str, float]]) -> Optional[str]:
-        """Sample next concept using Boltzmann."""
+    def _sample_next(self, transitions: List[Tuple[str, float]],
+                     current_state: Optional[StormState] = None) -> Optional[str]:
+        """
+        Sample next concept using Boltzmann distribution.
+
+        If gravity_strength > 0 and current_state provided, includes
+        gravitational potential in the energy calculation.
+        """
         if not transitions:
             return None
+
         words = [t[0] for t in transitions]
         weights = np.array([t[1] for t in transitions])
+
+        # Standard Boltzmann on edge weights
+        if self.gravity_strength == 0 or current_state is None:
+            T = max(0.01, self.temperature)
+            exp_w = np.exp(weights / T)
+            probs = exp_w / np.sum(exp_w)
+            return np.random.choice(words, p=probs)
+
+        # Gravity-aware sampling
+        energies = []
+        for word, weight in transitions:
+            next_concept = self._graph.get_concept(word) if self._graph else None
+            if next_concept:
+                next_tau = next_concept.get('tau', 3.0)
+                next_g = next_concept.get('g', 0.0)
+                # Potential change: Δφ = φ(next) - φ(current)
+                phi_next = LAMBDA * next_tau - MU * next_g
+                delta_phi = phi_next - current_state.phi
+                # Effective energy: -weight (prefer high weight) + α·Δφ (gravity)
+                E_eff = -weight + self.gravity_strength * delta_phi
+            else:
+                E_eff = -weight  # Fallback
+            energies.append(E_eff)
+
+        energies = np.array(energies)
         T = max(0.01, self.temperature)
-        exp_w = np.exp(weights / T)
-        probs = exp_w / np.sum(exp_w)
+        exp_neg_E = np.exp(-energies / T)
+        probs = exp_neg_E / np.sum(exp_neg_E)
         return np.random.choice(words, p=probs)
 
     def generate(self, seeds: List[str], n_walks: int = 5,
@@ -146,11 +292,12 @@ class Storm:
             steps_per_walk: Steps in each walk
 
         Returns:
-            StormResult with all activated thoughts
+            StormResult with all activated thoughts (and physics if enabled)
         """
         thoughts = []
         visit_counts = Counter()
         total_steps = 0
+        trajectories = []
 
         for seed in seeds:
             seed_state = self._get_concept(seed)
@@ -159,12 +306,18 @@ class Storm:
 
             # Multiple walks from this seed
             for walk in range(n_walks):
+                current_state = seed_state
                 current = seed
                 visit_counts[current] += 1
 
+                # Physics tracking for this walk
+                trajectory = PhysicsTrajectory() if self.gravity_strength > 0 else None
+                if trajectory:
+                    trajectory.add_step(current, current_state.tau, current_state.g)
+
                 for step in range(steps_per_walk):
                     transitions = self._get_transitions(current)
-                    next_word = self._sample_next(transitions)
+                    next_word = self._sample_next(transitions, current_state)
 
                     if not next_word:
                         break
@@ -176,14 +329,25 @@ class Storm:
                         state.activation = 1.0 / (1.0 + step * 0.2)
                         thoughts.append(state)
                         visit_counts[next_word] += 1
+
+                        # Physics tracking
+                        if trajectory:
+                            trajectory.add_step(next_word, state.tau, state.g)
+
                         current = next_word
+                        current_state = state
                         total_steps += 1
+
+                if trajectory:
+                    trajectories.append(trajectory)
 
         return StormResult(
             seeds=seeds,
             thoughts=thoughts,
             visit_counts=dict(visit_counts),
-            total_steps=total_steps
+            total_steps=total_steps,
+            trajectories=trajectories,
+            gravity_strength=self.gravity_strength
         )
 
     def close(self):
@@ -343,13 +507,24 @@ class Logos:
             tau_level = 3.0
             coherence = 0.0
 
+        # Physics metrics from storm (if gravity was enabled)
+        avg_phi = storm.avg_phi if storm.gravity_strength > 0 else 0.0
+        veil_crossings = storm.total_veil_crossings if storm.gravity_strength > 0 else 0
+        gravity_compliance = storm.gravity_compliance if storm.gravity_strength > 0 else 0.0
+        realm_dist = storm.realm_distribution if storm.gravity_strength > 0 else {"human": 0.5}
+        realm = "human" if realm_dist.get("human", 0.5) > 0.5 else "transcendental"
+
         return LogosPattern(
             core_concepts=core_concepts,
             convergence_point=convergence_point,
             j_center=j_center,
             g_direction=g_direction,
             tau_level=tau_level,
-            coherence=coherence
+            coherence=coherence,
+            avg_phi=avg_phi,
+            veil_crossings=veil_crossings,
+            gravity_compliance=gravity_compliance,
+            realm=realm
         )
 
     # Keep old method for compatibility
@@ -367,15 +542,32 @@ class StormLogosBuilder:
     1. Storm: Generate chaotic associations (neocortex firing)
     2. Logos: Focus through meaning lens (pattern recognition)
     3. Build: Create tree from focused pattern
+
+    Physics Mode (gravity_strength > 0):
+    - Storm walks feel gravitational pull toward human reality
+    - Pattern includes physics metrics (avg_tau, veil_crossings, etc.)
     """
 
     def __init__(self, storm_temperature: float = 1.5,
-                 n_walks: int = 5, steps_per_walk: int = 8):
-        self.storm = Storm(temperature=storm_temperature)
+                 n_walks: int = 5, steps_per_walk: int = 8,
+                 gravity_strength: float = 0.0):
+        """
+        Args:
+            storm_temperature: Controls storm chaos [0.5-2.0]
+            n_walks: Number of parallel walks per seed
+            steps_per_walk: Steps in each walk
+            gravity_strength: Physics mode strength [0-1]
+                - 0.0: Original behavior (default)
+                - 0.5: Recommended for grounded responses
+                - 1.0: Maximum gravitational influence
+        """
+        self.storm = Storm(temperature=storm_temperature,
+                          gravity_strength=gravity_strength)
         self.logos = Logos()
         self.loader = DataLoader()
         self.n_walks = n_walks
         self.steps_per_walk = steps_per_walk
+        self.gravity_strength = gravity_strength
         self._graph = None
 
     def _init_graph(self) -> bool:
@@ -544,49 +736,61 @@ class StormLogosBuilder:
 
 
 def demo():
-    """Demonstrate storm-logos architecture."""
-    print("=" * 60)
+    """Demonstrate storm-logos architecture with optional gravity."""
+    print("=" * 70)
     print("STORM-LOGOS: Biological Meaning Emergence")
-    print("=" * 60)
-
-    builder = StormLogosBuilder(
-        storm_temperature=1.5,
-        n_walks=5,
-        steps_per_walk=8
-    )
+    print("=" * 70)
 
     # Test query
     nouns = ["dream", "love"]
     verbs = ["understand", "find"]
-
     print(f"\nSeeds: {nouns}")
     print(f"Intent (lens): {verbs}")
 
-    print("\n--- Phase 1: STORM (neocortex firing) ---")
-    storm = builder.storm.generate(nouns, n_walks=5, steps_per_walk=8)
-    print(f"Total thoughts: {len(storm.thoughts)}")
-    print(f"Unique concepts: {len(storm.visit_counts)}")
-    print(f"Raw resonance (before lens):")
-    for word, count in storm.top_concepts[:8]:
-        bar = "█" * min(count, 20)
-        print(f"  {word:15s} {bar} ({count})")
+    # Compare standard vs gravity mode
+    for gravity in [0.0, 0.5]:
+        mode = "STANDARD" if gravity == 0 else f"GRAVITY (α={gravity})"
+        print(f"\n{'=' * 70}")
+        print(f"MODE: {mode}")
+        print("=" * 70)
 
-    print("\n--- Phase 2: LOGOS (focus through lens) ---")
-    intent_j = builder._compute_intent_j(verbs)
-    print(f"Intent j-direction: {intent_j}")
-    pattern = builder.logos.focus(storm, intent_j=intent_j)
-    print(f"\nAfter focusing through lens:")
-    print(f"  Core concepts: {pattern.core_concepts[:5]}")
-    print(f"  Convergence: {pattern.convergence_point}")
-    print(f"  Coherence: {pattern.coherence:.2f}")
-    print(f"  G direction: {pattern.g_direction:+.2f}")
-    print(f"  Tau level: {pattern.tau_level:.1f}")
+        builder = StormLogosBuilder(
+            storm_temperature=1.5,
+            n_walks=5,
+            steps_per_walk=8,
+            gravity_strength=gravity
+        )
 
-    print("\n--- Phase 3: BUILD (focused tree) ---")
-    tree, _ = builder.build(nouns, verbs, "what does love mean in dreams?")
-    print(tree.pretty_print())
+        print("\n--- Phase 1: STORM ---")
+        storm = builder.storm.generate(nouns, n_walks=5, steps_per_walk=8)
+        print(f"Total thoughts: {len(storm.thoughts)}")
+        print(f"Unique concepts: {len(storm.visit_counts)}")
 
-    builder.close()
+        if gravity > 0:
+            print(f"Physics: avg_τ={storm.avg_tau:.2f}, avg_φ={storm.avg_phi:.2f}")
+            print(f"         compliance={storm.gravity_compliance:.1%}, veil_crossings={storm.total_veil_crossings}")
+
+        print(f"Top resonance:")
+        for word, count in storm.top_concepts[:5]:
+            bar = "█" * min(count, 15)
+            print(f"  {word:12s} {bar} ({count})")
+
+        print("\n--- Phase 2: LOGOS ---")
+        intent_j = builder._compute_intent_j(verbs)
+        pattern = builder.logos.focus(storm, intent_j=intent_j)
+        print(f"Core concepts: {pattern.core_concepts[:5]}")
+        print(f"Convergence:   {pattern.convergence_point}")
+        print(f"Coherence:     {pattern.coherence:.2f}")
+        print(f"Tau level:     {pattern.tau_level:.1f}")
+
+        if gravity > 0:
+            print(f"Physics:       realm={pattern.realm}, φ={pattern.avg_phi:.2f}")
+
+        print("\n--- Phase 3: BUILD ---")
+        tree, _ = builder.build(nouns, verbs, "what does love mean in dreams?")
+        print(tree.pretty_print())
+
+        builder.close()
 
 
 if __name__ == "__main__":

@@ -34,14 +34,23 @@ from chain_core.renderer import Renderer, RendererConfig
 class MeaningChainAgent:
     """Agent that thinks through semantic space."""
 
-    def __init__(self, name: str = "Semantic"):
+    def __init__(self, name: str = "Semantic", gravity_strength: float = 0.0):
+        """
+        Args:
+            name: Agent identifier
+            gravity_strength: Physics mode [0-1]
+                - 0.0: Standard mode
+                - 0.5: Recommended gravity mode (grounded responses)
+        """
         self.name = name
+        self.gravity_strength = gravity_strength
         self.loader = DataLoader()
         self.decomposer = Decomposer(self.loader)
         self.storm_logos = StormLogosBuilder(
             storm_temperature=1.5,
             n_walks=5,
-            steps_per_walk=8
+            steps_per_walk=8,
+            gravity_strength=gravity_strength
         )
         self.renderer = Renderer(RendererConfig(
             model="mistral:7b",
@@ -125,19 +134,36 @@ Be genuine and exploratory, not didactic."""
         }
 
 
-def run_dialogue(topic: str, exchanges: int = 5, verbose: bool = True):
+def run_dialogue(topic: str, exchanges: int = 5, verbose: bool = True,
+                 gravity_strength: float = 0.0, save_results: bool = True):
     """Run dialogue between MeaningChain and Claude."""
+    import json
+    from datetime import datetime
+
+    mode = "GRAVITY" if gravity_strength > 0 else "STANDARD"
 
     print("=" * 70)
-    print("SEMANTIC DIALOGUE: Meaning Chain ↔ Claude")
+    print(f"SEMANTIC DIALOGUE: Meaning Chain ↔ Claude ({mode} MODE)")
     print("=" * 70)
     print(f"\nTopic: {topic}")
     print(f"Exchanges: {exchanges}")
+    if gravity_strength > 0:
+        print(f"Gravity: α={gravity_strength}")
     print()
 
     # Create agents
-    semantic = MeaningChainAgent("Semantic")
+    semantic = MeaningChainAgent("Semantic", gravity_strength=gravity_strength)
     claude = ClaudeAgent("Claude")
+
+    # Track dialogue for saving
+    dialogue_log = {
+        "topic": topic,
+        "exchanges": exchanges,
+        "gravity_strength": gravity_strength,
+        "mode": mode,
+        "timestamp": datetime.now().isoformat(),
+        "turns": []
+    }
 
     # Claude starts by responding to the topic
     current_message = topic
@@ -154,12 +180,41 @@ def run_dialogue(topic: str, exchanges: int = 5, verbose: bool = True):
             result = speaker.respond(current_message)
             response = result['response']
 
+            # Build turn record
+            turn = {
+                "exchange": i + 1,
+                "speaker": speaker.name,
+                "input": current_message,
+                "response": response
+            }
+
             if verbose and speaker.name == "Semantic" and result.get('pattern'):
                 p = result['pattern']
                 print(f"\n  [Storm-Logos]")
                 print(f"    Convergence: {p.convergence_point}")
                 print(f"    Core: {p.core_concepts[:4]}")
                 print(f"    Coherence: {p.coherence:.0%}")
+                print(f"    τ-level: {p.tau_level:.1f}, G: {p.g_direction:+.2f}")
+                if gravity_strength > 0:
+                    print(f"    Physics: realm={p.realm}, φ={p.avg_phi:.2f}, compliance={p.gravity_compliance:.0%}")
+
+                # Add pattern info to turn
+                turn["pattern"] = {
+                    "convergence": p.convergence_point,
+                    "core_concepts": p.core_concepts[:5],
+                    "coherence": p.coherence,
+                    "tau_level": p.tau_level,
+                    "g_direction": p.g_direction
+                }
+                if gravity_strength > 0:
+                    turn["pattern"]["physics"] = {
+                        "realm": p.realm,
+                        "avg_phi": p.avg_phi,
+                        "gravity_compliance": p.gravity_compliance,
+                        "veil_crossings": p.veil_crossings
+                    }
+
+            dialogue_log["turns"].append(turn)
 
             print(f"\n{speaker.name}:")
             # Wrap long lines
@@ -180,6 +235,19 @@ def run_dialogue(topic: str, exchanges: int = 5, verbose: bool = True):
         print("DIALOGUE COMPLETE")
         print("=" * 70)
 
+        # Save results
+        if save_results:
+            results_dir = _MEANING_CHAIN / "results" / "dialogue_claude"
+            results_dir.mkdir(parents=True, exist_ok=True)
+            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+            gravity_tag = f"_gravity{gravity_strength}" if gravity_strength > 0 else ""
+            filename = results_dir / f"dialogue{gravity_tag}_{timestamp}.json"
+
+            with open(filename, 'w') as f:
+                json.dump(dialogue_log, f, indent=2, default=str)
+
+            print(f"\nResults saved to: {filename}")
+
     finally:
         semantic.close()
 
@@ -189,7 +257,11 @@ def main():
     parser.add_argument("--exchanges", "-e", type=int, default=5)
     parser.add_argument("--topic", "-t", type=str,
                         default="What does it mean to truly understand something - not just know it intellectually, but to understand it with one's whole being?")
+    parser.add_argument("--gravity", "-g", type=float, default=0.0,
+                        help="Gravity strength [0-1] (default: 0, use 0.5 for grounded mode)")
     parser.add_argument("--quiet", "-q", action="store_true")
+    parser.add_argument("--no-save", action="store_true",
+                        help="Don't save results to file")
 
     args = parser.parse_args()
 
@@ -202,7 +274,9 @@ def main():
     run_dialogue(
         topic=args.topic,
         exchanges=args.exchanges,
-        verbose=not args.quiet
+        verbose=not args.quiet,
+        gravity_strength=args.gravity,
+        save_results=not args.no_save
     )
 
 

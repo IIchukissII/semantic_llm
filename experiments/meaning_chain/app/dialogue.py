@@ -34,14 +34,26 @@ class SemanticAgent:
     """An agent that thinks through meaning space."""
 
     def __init__(self, name: str, temperature: float = 0.7,
-                 storm_temperature: float = 1.5):
+                 storm_temperature: float = 1.5,
+                 gravity_strength: float = 0.0):
+        """
+        Args:
+            name: Agent identifier
+            temperature: LLM temperature
+            storm_temperature: Storm chaos level
+            gravity_strength: Physics mode [0-1]
+                - 0.0: Standard mode
+                - 0.5: Recommended gravity mode
+        """
         self.name = name
+        self.gravity_strength = gravity_strength
         self.loader = DataLoader()
         self.decomposer = Decomposer(self.loader)
         self.storm_logos = StormLogosBuilder(
             storm_temperature=storm_temperature,
             n_walks=5,
-            steps_per_walk=8
+            steps_per_walk=8,
+            gravity_strength=gravity_strength
         )
         self.renderer = Renderer(RendererConfig(
             model="mistral:7b",
@@ -88,20 +100,27 @@ class SemanticAgent:
         self.storm_logos.close()
 
 
-def run_dialogue(topic: str, exchanges: int = 5, verbose: bool = True):
+def run_dialogue(topic: str, exchanges: int = 5, verbose: bool = True,
+                 gravity_strength: float = 0.0):
     """Run a dialogue between two semantic agents."""
 
+    mode = "GRAVITY" if gravity_strength > 0 else "STANDARD"
+
     print("=" * 70)
-    print("SEMANTIC DIALOGUE")
+    print(f"SEMANTIC DIALOGUE ({mode} MODE)")
     print("Two minds exploring meaning space")
     print("=" * 70)
     print(f"\nTopic: {topic}")
     print(f"Exchanges: {exchanges}")
+    if gravity_strength > 0:
+        print(f"Gravity: α={gravity_strength}")
     print()
 
     # Create two agents with slightly different temperatures
-    agent_a = SemanticAgent("Seeker", temperature=0.7, storm_temperature=1.5)
-    agent_b = SemanticAgent("Guide", temperature=0.8, storm_temperature=1.3)
+    agent_a = SemanticAgent("Seeker", temperature=0.7, storm_temperature=1.5,
+                           gravity_strength=gravity_strength)
+    agent_b = SemanticAgent("Guide", temperature=0.8, storm_temperature=1.3,
+                           gravity_strength=gravity_strength)
 
     current_message = topic
     current_speaker = agent_a
@@ -124,7 +143,9 @@ def run_dialogue(topic: str, exchanges: int = 5, verbose: bool = True):
                 print(f"    Convergence: {p.convergence_point}")
                 print(f"    Core: {p.core_concepts[:4]}")
                 print(f"    Coherence: {p.coherence:.0%}")
-                print(f"    G: {p.g_direction:+.2f}")
+                print(f"    τ-level: {p.tau_level:.1f}, G: {p.g_direction:+.2f}")
+                if gravity_strength > 0:
+                    print(f"    Physics: realm={p.realm}, φ={p.avg_phi:.2f}, compliance={p.gravity_compliance:.0%}")
 
             response = result['response']
             print(f"\n{current_speaker.name}:")
@@ -142,12 +163,16 @@ def run_dialogue(topic: str, exchanges: int = 5, verbose: bool = True):
         print("\nSeeker's journey:")
         for h in agent_a.history:
             if h['pattern']:
-                print(f"  → {h['pattern'].convergence_point} (coh: {h['pattern'].coherence:.0%})")
+                p = h['pattern']
+                physics = f", φ={p.avg_phi:.1f}" if gravity_strength > 0 else ""
+                print(f"  → {p.convergence_point} (τ={p.tau_level:.1f}, coh={p.coherence:.0%}{physics})")
 
         print("\nGuide's journey:")
         for h in agent_b.history:
             if h['pattern']:
-                print(f"  → {h['pattern'].convergence_point} (coh: {h['pattern'].coherence:.0%})")
+                p = h['pattern']
+                physics = f", φ={p.avg_phi:.1f}" if gravity_strength > 0 else ""
+                print(f"  → {p.convergence_point} (τ={p.tau_level:.1f}, coh={p.coherence:.0%}{physics})")
 
     finally:
         agent_a.close()
@@ -161,6 +186,8 @@ def main():
     parser.add_argument("--topic", "-t", type=str,
                         default="What is the meaning of love and how does it transform us?",
                         help="Starting topic")
+    parser.add_argument("--gravity", "-g", type=float, default=0.0,
+                        help="Gravity strength [0-1] (default: 0, use 0.5 for grounded mode)")
     parser.add_argument("--quiet", "-q", action="store_true",
                         help="Less verbose output")
 
@@ -169,7 +196,8 @@ def main():
     run_dialogue(
         topic=args.topic,
         exchanges=args.exchanges,
-        verbose=not args.quiet
+        verbose=not args.quiet,
+        gravity_strength=args.gravity
     )
 
 

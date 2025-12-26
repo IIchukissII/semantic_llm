@@ -1,0 +1,118 @@
+{
+  "strength_comparison": {
+    "seeds": [
+      "love",
+      "truth",
+      "beauty",
+      "wisdom"
+    ],
+    "n_walks": 10,
+    "steps_per_walk": 10,
+    "comparisons": [
+      {
+        "gravity_strength": 0.0,
+        "avg_tau": 2.1624282475507703,
+        "avg_phi": 1.1620456500664036,
+        "gravity_compliance": 0.1684027777777778,
+        "veil_crossings": 22,
+        "human_fraction": 0.8918918918918919,
+        "total_steps": 145
+      },
+      {
+        "gravity_strength": 0.25,
+        "avg_tau": 1.9786180779074016,
+        "avg_phi": 1.0637881497228876,
+        "gravity_compliance": 0.17152777777777778,
+        "veil_crossings": 15,
+        "human_fraction": 0.9096385542168675,
+        "total_steps": 126
+      },
+      {
+        "gravity_strength": 0.5,
+        "avg_tau": 1.8601887092842262,
+        "avg_phi": 0.9969962677726436,
+        "gravity_compliance": 0.21283730158730158,
+        "veil_crossings": 9,
+        "human_fraction": 0.9479768786127167,
+        "total_steps": 133
+      },
+      {
+        "gravity_strength": 0.75,
+        "avg_tau": 1.764533366716553,
+        "avg_phi": 0.9577599826941363,
+        "gravity_compliance": 0.25029761904761905,
+        "veil_crossings": 11,
+        "human_fraction": 0.945054945054945,
+        "total_steps": 142
+      },
+      {
+        "gravity_strength": 1.0,
+        "avg_tau": 1.8015383918043821,
+        "avg_phi": 0.972495831151992,
+        "gravity_compliance": 0.2542857142857143,
+        "veil_crossings": 10,
+        "human_fraction": 0.9671361502347418,
+        "total_steps": 173
+      }
+    ]
+  },
+  "altitude_dependence": {
+    "test_cases": [
+      {
+        "name": "Ground (\u03c4\u22481-2)",
+        "seeds": [
+          "love",
+          "heart",
+          "life",
+          "way"
+        ],
+        "no_gravity": {
+          "avg_tau": 2.604754494303062,
+          "gravity_compliance": 0.3320039682539682
+        },
+        "full_gravity": {
+          "avg_tau": 2.100712667466812,
+          "gravity_compliance": 0.5047174122174122
+        },
+        "delta_tau": -0.5040418268362497,
+        "delta_compliance": 0.17271344396344396
+      },
+      {
+        "name": "Mid (\u03c4\u22483-4)",
+        "seeds": [
+          "understanding",
+          "essence",
+          "principle"
+        ],
+        "no_gravity": {
+          "avg_tau": 2.279769373253903,
+          "gravity_compliance": 0.10987654320987653
+        },
+        "full_gravity": {
+          "avg_tau": 1.8849483416743473,
+          "gravity_compliance": 0.17922799422799424
+        },
+        "delta_tau": -0.3948210315795555,
+        "delta_compliance": 0.06935145101811771
+      },
+      {
+        "name": "Sky (\u03c4\u22485-6)",
+        "seeds": [
+          "transcendence",
+          "ineffable",
+          "ultimate"
+        ],
+        "no_gravity": {
+          "avg_tau": 0.0,
+          "gravity_compliance": 0.0
+        },
+        "full_gravity": {
+          "avg_tau": 0.0,
+          "gravity_compliance": 0.0
+        },
+        "delta_tau": 0.0,
+        "delta_compliance": 0.0
+      }
+    ]
+  }
+}
