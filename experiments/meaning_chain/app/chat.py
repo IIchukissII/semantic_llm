@@ -243,21 +243,31 @@ class MeaningChainChat:
         laser_result = None
 
         if self.semantic_laser:
-            # Semantic laser for coherent extraction
-            self._log("\n[2] SEMANTIC LASER (coherent extraction)...")
+            # Semantic laser for coherent extraction with intent collapse
+            self._log("\n[2] SEMANTIC LASER (coherent extraction + intent collapse)...")
+            self._log(f"    Intent verbs: {decomposed.verbs}")
+
             laser_result = self.semantic_laser.lase(
                 seeds=decomposed.nouns[:7],
                 pump_power=self.config.laser_pump_power,
                 pump_depth=self.config.laser_pump_depth,
-                coherence_threshold=self.config.laser_coherence
+                coherence_threshold=self.config.laser_coherence,
+                intent_verbs=decomposed.verbs  # Pass verbs for intent collapse
             )
 
             pop = laser_result['population']
             beams = laser_result['beams']
+            intent_info = laser_result.get('intent', {})
 
             self._log(f"    Excited: {pop['total_excited']} states")
             self._log(f"    τ range: {pop['tau_min']:.2f} - {pop['tau_max']:.2f}")
             self._log(f"    Coherent beams: {len(beams)}")
+
+            # Log intent collapse effectiveness
+            if intent_info.get('enabled'):
+                self._log(f"    Intent collapse: {pop.get('intent_fraction', 0):.0%} of states via intent")
+            else:
+                self._log(f"    Intent collapse: disabled (no matching operators)")
 
             # Extract coherent concepts from beams
             coherent_concepts = []
@@ -290,7 +300,12 @@ class MeaningChainChat:
                 'lasing_achieved': metrics.get('lasing_achieved', False),
                 'output_power': metrics.get('output_power', 0.0),
                 'spectral_purity': metrics.get('spectral_purity', 0.0),
-                'dominant_orbital': pop.get('dominant_orbital', 1)
+                'dominant_orbital': pop.get('dominant_orbital', 1),
+                # Intent collapse metrics (NEW)
+                'intent_enabled': intent_info.get('enabled', False),
+                'intent_verbs': intent_info.get('verbs', []),
+                'intent_fraction': pop.get('intent_fraction', 0.0),
+                'intent_focus': metrics.get('intent_focus', 0.5)
             }
 
             # Build tree from coherent concepts

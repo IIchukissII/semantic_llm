@@ -1,7 +1,7 @@
 """
-Semantic Laser: Coherent Meaning Extraction with Euler Physics
+Semantic Laser: Coherent Meaning Extraction with Euler Physics + Intent Collapse
 
-Combines laser physics with Euler orbital theory:
+Combines laser physics with Euler orbital theory AND intent-driven navigation:
 
 LASER PHYSICS:
 1. PUMPING - Excite concepts via Boltzmann-weighted transitions
@@ -15,8 +15,14 @@ EULER ORBITAL THEORY:
 - Veil at τ = e (human/transcendental boundary)
 - Boltzmann transitions: P ∝ exp(-Δτ/kT)
 
+INTENT COLLAPSE (NEW):
+- Verbs act as operators that collapse navigation
+- Pumping prioritizes intent-aligned transitions
+- "understand" + "help" → navigate toward what those verbs act upon
+
 The combination: coherent meaning requires concepts that are
-BOTH at similar energy levels (orbital) AND aligned in meaning (j-vector).
+at similar energy levels (orbital), aligned in meaning (j-vector),
+AND relevant to the user's intent (verb operators).
 """
 
 import numpy as np
@@ -31,6 +37,7 @@ _MEANING_CHAIN = _THIS_FILE.parent.parent
 sys.path.insert(0, str(_MEANING_CHAIN))
 
 from graph.meaning_graph import MeaningGraph
+from chain_core.intent_collapse import IntentCollapse, IntentOperator
 
 # Euler Constants
 E = np.e                    # Euler's number
@@ -48,6 +55,10 @@ class ExcitedState:
     j: np.ndarray  # 5D j-vector
     visits: int = 1
     sources: Set[str] = field(default_factory=set)  # Which seeds reached this
+
+    # Intent collapse tracking (NEW)
+    collapsed_by_intent: bool = False  # True if reached via intent-driven path
+    intent_score: float = 0.0          # How aligned with intent [0, 1]
 
     @property
     def energy(self) -> float:
@@ -82,13 +93,50 @@ class SemanticLaser:
 
     Unlike random walk that finds high-connectivity nodes,
     this finds semantically COHERENT clusters using j-vector alignment.
+
+    NEW: Intent collapse support - verbs act as operators that
+    collapse navigation toward intent-relevant concepts.
     """
 
     def __init__(self, graph: MeaningGraph = None, temperature: float = KT_NATURAL):
         self.graph = graph or MeaningGraph()
         self._j_dims = ['beauty', 'life', 'sacred', 'good', 'love']
         self.kT = temperature  # Semantic temperature for Boltzmann transitions
-        print(f"[SemanticLaser] Euler-aware laser (kT={self.kT:.2f})")
+
+        # Intent collapse support (NEW)
+        self.intent_collapse = IntentCollapse(self.graph)
+        self.intent_enabled = False
+        self.intent_verbs: List[str] = []
+
+        print(f"[SemanticLaser] Euler-aware laser with intent collapse (kT={self.kT:.2f})")
+
+    def set_intent(self, verbs: List[str]) -> Dict:
+        """
+        Set intent operators from user's verbs.
+
+        This enables intent-driven pumping: navigation will prioritize
+        transitions aligned with these verbs.
+
+        Args:
+            verbs: Verbs from user query (e.g., ['understand', 'help'])
+
+        Returns:
+            Stats: {operators, targets, intent_j}
+        """
+        if not verbs:
+            self.intent_enabled = False
+            self.intent_verbs = []
+            return {'operators': 0, 'targets': 0, 'intent_j': None}
+
+        self.intent_verbs = verbs
+        stats = self.intent_collapse.set_intent(verbs)
+        self.intent_enabled = stats['operators'] > 0 or stats['targets'] > 0
+
+        if self.intent_enabled:
+            print(f"[SemanticLaser] Intent set: {verbs} -> "
+                  f"{stats['operators']} operators, {stats['targets']} targets")
+
+        return stats
 
     def _get_j_vector(self, j_data) -> np.ndarray:
         """
@@ -128,7 +176,10 @@ class SemanticLaser:
              pump_depth: int = 5    # steps per walk
              ) -> Dict[str, ExcitedState]:
         """
-        Pumping phase: excite concepts via Boltzmann-weighted exploration.
+        Pumping phase: excite concepts via intent-driven + Boltzmann-weighted exploration.
+
+        NEW: If intent is set, prioritizes intent-aligned transitions.
+        Falls back to Boltzmann when intent space is sparse.
 
         Uses Euler physics: transitions weighted by exp(-|Δτ|/kT).
         This means concepts at similar orbital levels are more likely
@@ -143,6 +194,10 @@ class SemanticLaser:
             {word: ExcitedState} - all excited concepts
         """
         excited = {}  # word -> ExcitedState
+
+        # Track intent collapse statistics
+        intent_transitions = 0
+        random_transitions = 0
 
         for seed in seeds:
             # Get seed properties
@@ -161,56 +216,126 @@ class SemanticLaser:
             )
             excited[seed] = seed_state
 
-            # Boltzmann-weighted walks from this seed
+            # Walks from this seed
             for _ in range(pump_power):
                 current = seed
                 current_tau = seed_tau
+                walk_random_count = 0
+                max_random_per_walk = int(pump_depth * 0.4)  # Allow 40% random fallback
 
-                for _ in range(pump_depth):
-                    # Get ALL transitions (no tau filter)
-                    neighbors = self._get_neighbors_with_tau(current)
-                    if not neighbors:
+                for step in range(pump_depth):
+                    next_word = None
+                    next_tau = None
+                    next_concept = None
+                    collapsed_by_intent = False
+                    step_intent_score = 0.0
+
+                    # INTENT-DRIVEN TRANSITION (if enabled)
+                    if self.intent_enabled:
+                        intent_trans = self._get_intent_transition(current)
+                        if intent_trans:
+                            next_word = intent_trans['word']
+                            next_tau = intent_trans['tau']
+                            next_concept = intent_trans
+                            collapsed_by_intent = True
+                            step_intent_score = intent_trans.get('intent_score', 0.5)
+                            intent_transitions += 1
+
+                    # BOLTZMANN FALLBACK (if no intent match or intent disabled)
+                    if next_word is None and walk_random_count < max_random_per_walk:
+                        neighbors = self._get_neighbors_with_tau(current)
+                        if neighbors:
+                            words = [n[0] for n in neighbors]
+                            taus = [n[1] for n in neighbors]
+                            weights = [self._boltzmann_weight(current_tau, t) for t in taus]
+
+                            total = sum(weights)
+                            if total > 0:
+                                probs = [w / total for w in weights]
+                                idx = np.random.choice(len(words), p=probs)
+                                next_word = words[idx]
+                                next_tau = taus[idx]
+                                next_concept = self.graph.get_concept(next_word)
+                                random_transitions += 1
+                                walk_random_count += 1
+
+                    if next_word is None or next_concept is None:
                         break
-
-                    # Boltzmann-weighted selection
-                    words = [n[0] for n in neighbors]
-                    taus = [n[1] for n in neighbors]
-                    weights = [self._boltzmann_weight(current_tau, t) for t in taus]
-
-                    # Normalize weights
-                    total = sum(weights)
-                    if total == 0:
-                        break
-                    probs = [w / total for w in weights]
-
-                    # Sample according to Boltzmann distribution
-                    idx = np.random.choice(len(words), p=probs)
-                    next_word = words[idx]
-                    next_tau = taus[idx]
-
-                    # Get full properties
-                    next_concept = self.graph.get_concept(next_word)
-                    if not next_concept:
-                        continue
 
                     # Add to excited states
                     if next_word in excited:
                         excited[next_word].visits += 1
                         excited[next_word].sources.add(seed)
+                        # Update intent tracking if this was intent-driven
+                        if collapsed_by_intent:
+                            excited[next_word].collapsed_by_intent = True
+                            excited[next_word].intent_score = max(
+                                excited[next_word].intent_score,
+                                step_intent_score
+                            )
                     else:
                         excited[next_word] = ExcitedState(
                             word=next_word,
-                            tau=next_concept.get('tau', 2.0),
-                            g=next_concept.get('g', 0.0),
-                            j=self._get_j_vector(next_concept.get('j')),
+                            tau=next_concept.get('tau', 2.0) if isinstance(next_concept, dict) else next_tau,
+                            g=next_concept.get('g', 0.0) if isinstance(next_concept, dict) else 0.0,
+                            j=self._get_j_vector(next_concept.get('j') if isinstance(next_concept, dict) else None),
                             visits=1,
-                            sources={seed}
+                            sources={seed},
+                            collapsed_by_intent=collapsed_by_intent,
+                            intent_score=step_intent_score
                         )
 
                     current = next_word
                     current_tau = next_tau
 
+        # Log intent effectiveness
+        total = intent_transitions + random_transitions
+        if total > 0 and self.intent_enabled:
+            ratio = intent_transitions / total
+            print(f"[SemanticLaser] Pump collapse ratio: {ratio:.0%} "
+                  f"({intent_transitions} intent / {random_transitions} random)")
+
         return excited
+
+    def _get_intent_transition(self, word: str) -> Optional[Dict]:
+        """
+        Get intent-driven transition from word.
+
+        Uses the graph's get_intent_transitions() which filters by:
+        1. Edges where verb matches an intent verb
+        2. Edges leading to intent targets (what intent verbs act upon)
+
+        Returns None if no intent-aligned transition found.
+        """
+        if not self.intent_collapse.intent_verbs:
+            return None
+
+        transitions = self.graph.get_intent_transitions(
+            word,
+            self.intent_collapse.intent_verbs,
+            self.intent_collapse.intent_targets,
+            limit=5
+        )
+
+        if not transitions:
+            return None
+
+        # Pick best by intent score (transitions are sorted by score)
+        verb, target, score = transitions[0]
+
+        # Get full concept properties
+        concept = self.graph.get_concept(target)
+        if not concept:
+            return None
+
+        return {
+            'word': target,
+            'tau': concept.get('tau', 2.0),
+            'g': concept.get('g', 0.0),
+            'j': concept.get('j'),
+            'intent_score': score,
+            'collapse_verb': verb
+        }
 
     def _get_neighbors_with_tau(self, word: str, limit: int = 30) -> List[Tuple[str, float]]:
         """Get neighbors with their tau values for Boltzmann weighting."""
@@ -253,7 +378,7 @@ class SemanticLaser:
         Analyze the excited population with Euler orbital statistics.
 
         Returns statistics about the excited states including
-        orbital distribution and veil crossings.
+        orbital distribution, veil crossings, and intent collapse metrics.
         """
         if not excited:
             return {}
@@ -287,6 +412,11 @@ class SemanticLaser:
         # Find dominant orbital (population inversion target)
         dominant_orbital = max(orbital_dist.keys(), key=lambda n: orbital_dist[n]) if orbital_dist else 1
 
+        # Intent collapse statistics (NEW)
+        intent_collapsed = sum(1 for s in states if s.collapsed_by_intent)
+        intent_fraction = intent_collapsed / len(states) if states else 0.0
+        avg_intent_score = np.mean([s.intent_score for s in states if s.collapsed_by_intent]) if intent_collapsed > 0 else 0.0
+
         return {
             'total_excited': len(states),
             'tau_mean': np.mean(taus),
@@ -306,7 +436,11 @@ class SemanticLaser:
             'below_veil': below_veil,
             'above_veil': above_veil,
             'human_fraction': human_fraction,
-            'mean_orbital': np.mean(orbitals)
+            'mean_orbital': np.mean(orbitals),
+            # Intent collapse statistics (NEW)
+            'intent_collapsed': intent_collapsed,
+            'intent_fraction': intent_fraction,
+            'avg_intent_score': avg_intent_score
         }
 
     # =========================================================================
@@ -463,10 +597,13 @@ class SemanticLaser:
              pump_power: int = 10,
              pump_depth: int = 5,
              coherence_threshold: float = 0.3,
-             min_cluster_size: int = 3
+             min_cluster_size: int = 3,
+             intent_verbs: List[str] = None
              ) -> Dict:
         """
         Full laser operation: pump -> analyze -> emit -> output.
+
+        NEW: Can take intent_verbs to enable intent-driven navigation.
 
         Args:
             seeds: Input concepts
@@ -474,15 +611,22 @@ class SemanticLaser:
             pump_depth: Exploration depth
             coherence_threshold: Minimum j-alignment
             min_cluster_size: Minimum beam size
+            intent_verbs: Optional verbs for intent collapse (NEW)
 
         Returns:
             {
                 'beams': List[CoherentBeam],
                 'population': Dict (statistics),
-                'excited': Dict[str, ExcitedState]
+                'excited': Dict[str, ExcitedState],
+                'intent': Dict (intent stats) - NEW
             }
         """
-        # Phase 1: Pump
+        # Set intent if provided
+        intent_stats = None
+        if intent_verbs:
+            intent_stats = self.set_intent(intent_verbs)
+
+        # Phase 1: Pump (now intent-aware)
         excited = self.pump(seeds, pump_power, pump_depth)
 
         # Phase 2: Analyze
@@ -493,7 +637,7 @@ class SemanticLaser:
             excited, coherence_threshold, min_cluster_size
         )
 
-        # Phase 4: Compute laser metrics
+        # Phase 4: Compute laser metrics (now includes intent)
         metrics = self.compute_laser_metrics(population, beams)
 
         return {
@@ -501,7 +645,13 @@ class SemanticLaser:
             'population': population,
             'excited': excited,
             'seeds': seeds,
-            'metrics': metrics
+            'metrics': metrics,
+            # Intent information (NEW)
+            'intent': {
+                'enabled': self.intent_enabled,
+                'verbs': self.intent_verbs,
+                'stats': intent_stats
+            }
         }
 
     def get_primary_beam(self, result: Dict) -> Optional[CoherentBeam]:
@@ -522,14 +672,15 @@ class SemanticLaser:
 
     def compute_laser_metrics(self, population: Dict, beams: List[CoherentBeam]) -> Dict:
         """
-        Compute combined Euler-Laser metrics.
+        Compute combined Euler-Laser metrics with intent collapse.
 
         Nuclear laser formula:
-        Output_coherence = pump_energy × medium_quality × mirror_alignment
+        Output_coherence = pump_energy × medium_quality × mirror_alignment × intent_focus
 
         pump_energy      = veil_crossings × (1 - human_fraction)
         medium_quality   = count(τ > e) / total_states
         mirror_alignment = mean(j_coherence across beams)
+        intent_focus     = fraction of states reached via intent collapse (NEW)
         """
         total_states = population.get('total_excited', 1)
         above_veil = population.get('above_veil', 0)
@@ -548,8 +699,12 @@ class SemanticLaser:
         else:
             mirror_alignment = 0.0
 
-        # Output power: combined metric
-        output_power = pump_energy * (0.1 + medium_quality) * (0.1 + mirror_alignment)
+        # Intent focus: fraction of states reached via intent collapse (NEW)
+        intent_fraction = population.get('intent_fraction', 0.0)
+        intent_focus = 0.5 + 0.5 * intent_fraction  # Range [0.5, 1.0]
+
+        # Output power: combined metric (now includes intent focus)
+        output_power = pump_energy * (0.1 + medium_quality) * (0.1 + mirror_alignment) * intent_focus
 
         # Spectral purity: how narrow is the orbital distribution
         orbital_dist = population.get('orbital_dist', {})
@@ -570,7 +725,10 @@ class SemanticLaser:
             'output_power': output_power,
             'spectral_purity': spectral_purity,
             'lasing_achieved': lasing_achieved,
-            'beam_count': len(beams)
+            'beam_count': len(beams),
+            # Intent metrics (NEW)
+            'intent_fraction': intent_fraction,
+            'intent_focus': intent_focus
         }
 
     def close(self):

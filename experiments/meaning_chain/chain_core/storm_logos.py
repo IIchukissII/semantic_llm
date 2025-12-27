@@ -1,5 +1,5 @@
 """
-Storm-Logos: Biological-Inspired Meaning Emergence
+Storm-Logos: Biological-Inspired Meaning Emergence with Intent Collapse
 
 When a human is asked a question:
 1. STORM (Neocortex): Many thoughts arise chaotically - associations, fragments, memories
@@ -12,6 +12,11 @@ Physics Mode (optional):
 - Gravity pulls meaning toward human reality (low τ)
 - Potential φ = λτ - μg (altitude costs, goodness lifts)
 - Walks "feel" gravity when gravity_strength > 0
+
+Intent Collapse Mode (NEW):
+- Verbs act as operators that collapse navigation
+- Storm prioritizes intent-aligned transitions
+- "understand" + "help" → navigate toward what those verbs act upon
 
 "The storm of thoughts finds its logos in the structure of meaning"
 """
@@ -42,6 +47,7 @@ sys.path.insert(0, str(_MEANING_CHAIN))
 from core.data_loader import DataLoader
 from graph.meaning_graph import MeaningGraph
 from models.types import MeaningNode, MeaningTree, SemanticProperties
+from chain_core.intent_collapse import IntentCollapse
 
 
 @dataclass
@@ -55,6 +61,9 @@ class StormState:
     # Physics properties (populated when gravity_strength > 0)
     phi: float = 0.0         # Semantic potential φ = λτ - μg
     realm: str = "human"     # "human" (τ<3.5) or "transcendental" (τ≥3.5)
+    # Intent collapse properties (NEW)
+    collapsed_by_intent: bool = False  # True if reached via intent-driven path
+    intent_score: float = 0.0          # How aligned with intent [0, 1]
 
     def compute_physics(self):
         """Compute physics properties from τ and g."""
@@ -103,6 +112,10 @@ class StormResult:
     # Physics tracking (populated when gravity_strength > 0)
     trajectories: List[PhysicsTrajectory] = field(default_factory=list)
     gravity_strength: float = 0.0
+    # Intent collapse tracking (NEW)
+    intent_transitions: int = 0      # Transitions driven by intent
+    random_transitions: int = 0       # Transitions via random/Boltzmann
+    intent_verbs: List[str] = field(default_factory=list)
 
     @property
     def resonance(self) -> Dict[str, float]:
@@ -116,6 +129,19 @@ class StormResult:
     def top_concepts(self) -> List[Tuple[str, int]]:
         """Most visited concepts (highest resonance)."""
         return sorted(self.visit_counts.items(), key=lambda x: -x[1])
+
+    @property
+    def intent_collapse_ratio(self) -> float:
+        """Fraction of transitions driven by intent (NEW)."""
+        total = self.intent_transitions + self.random_transitions
+        if total == 0:
+            return 0.0
+        return self.intent_transitions / total
+
+    @property
+    def intent_words(self) -> Set[str]:
+        """Words reached via intent collapse (NEW)."""
+        return {t.word for t in self.thoughts if t.collapsed_by_intent}
 
     # Physics properties (available when gravity enabled)
     @property
@@ -186,6 +212,10 @@ class Storm:
     - Transitions prefer lower potential (falling is natural)
     - Potential φ = λτ - μg (altitude costs, goodness lifts)
     - Tracks physics observables during walks
+
+    Intent Collapse Mode (NEW):
+    - Verbs act as operators that collapse navigation
+    - Prioritizes transitions aligned with intent verbs
     """
 
     def __init__(self, temperature: float = 1.5, gravity_strength: float = 0.0):
@@ -204,6 +234,11 @@ class Storm:
         self.loader = DataLoader()
         self._graph = None
 
+        # Intent collapse support (NEW)
+        self._intent_collapse = None
+        self.intent_verbs: List[str] = []
+        self.intent_enabled = False
+
     def _init_graph(self) -> bool:
         if self._graph is not None:
             return self._graph.is_connected()
@@ -212,6 +247,73 @@ class Storm:
             return self._graph.is_connected()
         except:
             return False
+
+    def set_intent(self, verbs: List[str]) -> Dict:
+        """
+        Set intent operators from verbs.
+
+        This enables intent-driven navigation: walks will prioritize
+        transitions aligned with these verbs.
+
+        Args:
+            verbs: Verbs from user query (e.g., ['understand', 'help'])
+
+        Returns:
+            Stats: {operators, targets, intent_j}
+        """
+        if not verbs:
+            self.intent_enabled = False
+            self.intent_verbs = []
+            return {'operators': 0, 'targets': 0}
+
+        self.intent_verbs = verbs
+
+        # Initialize intent collapse if needed
+        if self._intent_collapse is None:
+            if not self._init_graph():
+                return {'operators': 0, 'targets': 0}
+            self._intent_collapse = IntentCollapse(self._graph)
+
+        stats = self._intent_collapse.set_intent(verbs)
+        self.intent_enabled = stats['operators'] > 0 or stats['targets'] > 0
+
+        return stats
+
+    def _get_intent_transition(self, word: str) -> Optional[Dict]:
+        """
+        Get intent-driven transition from word.
+
+        Returns dict with target word and properties, or None.
+        """
+        if not self._intent_collapse or not self._intent_collapse.intent_verbs:
+            return None
+
+        if not self._graph:
+            return None
+
+        transitions = self._graph.get_intent_transitions(
+            word,
+            self._intent_collapse.intent_verbs,
+            self._intent_collapse.intent_targets,
+            limit=5
+        )
+
+        if not transitions:
+            return None
+
+        # Pick best by score
+        verb, target, score = transitions[0]
+        concept = self._graph.get_concept(target)
+        if not concept:
+            return None
+
+        return {
+            'word': target,
+            'tau': concept.get('tau', 2.0),
+            'g': concept.get('g', 0.0),
+            'j': np.array(concept.get('j', [0]*5)),
+            'intent_score': score
+        }
 
     def _get_concept(self, word: str) -> Optional[StormState]:
         """Get storm state for a concept."""
@@ -282,22 +384,34 @@ class Storm:
         return np.random.choice(words, p=probs)
 
     def generate(self, seeds: List[str], n_walks: int = 5,
-                 steps_per_walk: int = 8) -> StormResult:
+                 steps_per_walk: int = 8,
+                 intent_verbs: List[str] = None) -> StormResult:
         """
         Generate storm of thoughts from seed concepts.
+
+        NEW: Can take intent_verbs to enable intent-driven navigation.
 
         Args:
             seeds: Starting concepts (from query decomposition)
             n_walks: Number of parallel walks per seed
             steps_per_walk: Steps in each walk
+            intent_verbs: Optional verbs for intent collapse (NEW)
 
         Returns:
             StormResult with all activated thoughts (and physics if enabled)
         """
+        # Set intent if provided
+        if intent_verbs:
+            self.set_intent(intent_verbs)
+
         thoughts = []
         visit_counts = Counter()
         total_steps = 0
         trajectories = []
+
+        # Track intent collapse statistics (NEW)
+        intent_transitions = 0
+        random_transitions = 0
 
         for seed in seeds:
             seed_state = self._get_concept(seed)
@@ -309,6 +423,8 @@ class Storm:
                 current_state = seed_state
                 current = seed
                 visit_counts[current] += 1
+                walk_random_count = 0
+                max_random_per_walk = int(steps_per_walk * 0.4)  # 40% fallback
 
                 # Physics tracking for this walk
                 trajectory = PhysicsTrajectory() if self.gravity_strength > 0 else None
@@ -316,30 +432,64 @@ class Storm:
                     trajectory.add_step(current, current_state.tau, current_state.g)
 
                 for step in range(steps_per_walk):
-                    transitions = self._get_transitions(current)
-                    next_word = self._sample_next(transitions, current_state)
+                    next_word = None
+                    next_state = None
+                    collapsed_by_intent = False
+                    step_intent_score = 0.0
 
-                    if not next_word:
+                    # INTENT-DRIVEN TRANSITION (if enabled) - NEW
+                    if self.intent_enabled:
+                        intent_trans = self._get_intent_transition(current)
+                        if intent_trans:
+                            next_word = intent_trans['word']
+                            next_state = StormState(
+                                word=next_word,
+                                g=intent_trans['g'],
+                                tau=intent_trans['tau'],
+                                j=intent_trans['j'],
+                                activation=1.0 / (1.0 + step * 0.2),
+                                collapsed_by_intent=True,
+                                intent_score=intent_trans['intent_score']
+                            )
+                            collapsed_by_intent = True
+                            step_intent_score = intent_trans['intent_score']
+                            intent_transitions += 1
+
+                    # RANDOM FALLBACK (if no intent match)
+                    if next_word is None and walk_random_count < max_random_per_walk:
+                        transitions = self._get_transitions(current)
+                        next_word = self._sample_next(transitions, current_state)
+                        if next_word:
+                            next_state = self._get_concept(next_word)
+                            if next_state:
+                                next_state.activation = 1.0 / (1.0 + step * 0.2)
+                                random_transitions += 1
+                                walk_random_count += 1
+
+                    if not next_word or not next_state:
                         break
 
                     # Record the thought
-                    state = self._get_concept(next_word)
-                    if state:
-                        # Activation decays with distance from seed
-                        state.activation = 1.0 / (1.0 + step * 0.2)
-                        thoughts.append(state)
-                        visit_counts[next_word] += 1
+                    thoughts.append(next_state)
+                    visit_counts[next_word] += 1
 
-                        # Physics tracking
-                        if trajectory:
-                            trajectory.add_step(next_word, state.tau, state.g)
+                    # Physics tracking
+                    if trajectory:
+                        trajectory.add_step(next_word, next_state.tau, next_state.g)
 
-                        current = next_word
-                        current_state = state
-                        total_steps += 1
+                    current = next_word
+                    current_state = next_state
+                    total_steps += 1
 
                 if trajectory:
                     trajectories.append(trajectory)
+
+        # Log intent effectiveness
+        total = intent_transitions + random_transitions
+        if total > 0 and self.intent_enabled:
+            ratio = intent_transitions / total
+            print(f"[Storm] Intent collapse ratio: {ratio:.0%} "
+                  f"({intent_transitions} intent / {random_transitions} random)")
 
         return StormResult(
             seeds=seeds,
@@ -347,7 +497,11 @@ class Storm:
             visit_counts=dict(visit_counts),
             total_steps=total_steps,
             trajectories=trajectories,
-            gravity_strength=self.gravity_strength
+            gravity_strength=self.gravity_strength,
+            # Intent collapse stats (NEW)
+            intent_transitions=intent_transitions,
+            random_transitions=random_transitions,
+            intent_verbs=self.intent_verbs
         )
 
     def close(self):

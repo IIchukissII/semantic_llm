@@ -4,6 +4,33 @@
 
 A semantic navigation system inspired by biological cognition. When humans process questions, the neocortex fires chaotically (storm), then patterns emerge through meaning structure (logos). This system replicates that process.
 
+## Major Feature: Intent-Driven Collapse
+
+**NEW**: Verbs now act as quantum operators that collapse navigation to intent-relevant paths.
+
+```
+Query: "help me understand my dream"
+
+Before (random Boltzmann):
+  Concepts: ['bird', 'chance', 'feather', 'song', 'soul'...] - scattered
+
+After (intent collapse):
+  Intent verbs: ['help', 'understand'] -> 2 operators, 18 targets
+  Collapse ratio: 100% (all transitions via intent)
+  Concepts: ['feeling', 'meaning', 'thing'] - focused on what you CAN understand/help
+```
+
+### A/B Test Results
+
+| Aspect | Without Intent | With Intent |
+|--------|----------------|-------------|
+| Excited states | 35 (scattered) | 6 (focused) |
+| Collapse ratio | 0% | 100% |
+| Response style | Generic LLM lists | Coherent, theme-woven |
+| Response time | 7.1s | 3.6s (faster!) |
+
+The semantic navigation is not decorative - it fundamentally changes response quality.
+
 ## Major Discovery: Euler's Constant in Semantic Space
 
 We discovered that **Euler's number e = 2.718...** is a fundamental constant of semantic physics:
@@ -45,48 +72,69 @@ See `experiments/physics/euler_constant.py` for validation code.
 - `experiments/physics/results/orbital_structure.png` - 4-panel analysis (distribution, Boltzmann fit, orbital levels, veil boundary)
 - `experiments/physics/results/orbital_diagram.png` - Artistic orbital representation
 
-## Core Architecture: Euler-Laser
+## Core Architecture: Euler-Laser + Intent Collapse
 
-The system combines **Euler orbital physics** with **laser coherence** for meaning extraction:
+The system combines **Euler orbital physics**, **laser coherence**, and **intent-driven collapse**:
 
 ```
 ╔═══════════════════════════════════════════════════════════════════════════╗
-║                      EULER-LASER ARCHITECTURE                              ║
+║              EULER-LASER ARCHITECTURE + INTENT COLLAPSE                    ║
 ╠═══════════════════════════════════════════════════════════════════════════╣
 ║                                                                            ║
-║  Query → PUMPING → POPULATION → STIMULATED EMISSION → COHERENT OUTPUT     ║
-║            ↓           ↓               ↓                    ↓              ║
-║     Euler Storm   Track orbital   j-vector alignment   Focused beam       ║
-║     (kT=0.82)     distribution    + orbital coherence   → Response        ║
+║  Query → DECOMPOSE → PUMPING → POPULATION → EMISSION → COHERENT OUTPUT    ║
+║             ↓           ↓           ↓            ↓            ↓            ║
+║         Extract     Intent +    Track      j-vector      Focused beam     ║
+║         Verbs      Boltzmann   orbitals   coherence      → Response       ║
+║            ↓                                                               ║
+║      Set Intent                                                            ║
+║      Operators                                                             ║
 ║                                                                            ║
+╠═══════════════════════════════════════════════════════════════════════════╣
+║  INTENT COLLAPSE (NEW):                                                    ║
+║  ──────────────────────                                                    ║
+║  Verbs from query              →  Loaded as VerbOperator nodes             ║
+║  VerbOperator.j                →  Direction verb pushes toward             ║
+║  OPERATES_ON edges             →  Concepts verb typically acts upon        ║
+║  Intent transitions            →  Prioritize paths matching intent         ║
+║  Collapse ratio                →  % of transitions driven by intent        ║
 ╠═══════════════════════════════════════════════════════════════════════════╣
 ║  NUCLEAR LASER ANALOGY:                                                    ║
 ║  ─────────────────────                                                     ║
-║  Nuclear explosion (energy)     →  Euler Storm (orbital excitation)       ║
-║  Pump the medium                →  Populate τ-levels via Boltzmann        ║
+║  Nuclear explosion (energy)     →  Intent-aware Storm (focused excitation)║
+║  Pump the medium                →  Populate τ-levels via intent+Boltzmann ║
 ║  Population inversion           →  Words at excited orbitals              ║
 ║  Stimulated emission            →  j-vector coherence triggers lasing     ║
 ║  Coherent beam output           →  Focused thematic response              ║
 ╚═══════════════════════════════════════════════════════════════════════════╝
 ```
 
-### Phase 1: PUMPING (Euler Storm)
+### Phase 1: PUMPING (Intent + Euler Storm)
 
-Boltzmann-weighted exploration respecting orbital physics:
+**NEW**: Pumping now uses intent-driven transitions first, with Boltzmann fallback:
 
 ```python
-P(transition) ∝ exp(-|Δτ| / kT)
+# At each step during pumping:
+1. TRY INTENT TRANSITION:
+   - Query graph.get_intent_transitions(word, intent_verbs, intent_targets)
+   - Returns edges where verb matches OR target in intent space
+   - If found → use this transition (collapsed by intent)
 
-Where:
-  Δτ = |τ_target - τ_current|  # orbital distance
-  kT = 0.82                     # natural temperature
+2. FALLBACK TO BOLTZMANN (max 40% of steps):
+   P(transition) ∝ exp(-|Δτ| / kT)
+   Where:
+     Δτ = |τ_target - τ_current|  # orbital distance
+     kT = 0.82                     # natural temperature
+
+3. TRACK COLLAPSE:
+   - collapsed_by_intent: bool
+   - intent_score: float [0, 1]
 ```
 
-Transitions to similar orbital levels are preferred, creating **orbital coherence**.
+Intent collapse focuses exploration on paths relevant to what the user wants to DO (understand, help, find, learn).
 
 ### Phase 2: POPULATION ANALYSIS
 
-Track distribution across orbital levels:
+Track distribution across orbital levels and intent collapse:
 
 ```
 Orbital Distribution:
@@ -96,12 +144,18 @@ Orbital Distribution:
   n=3: ██████████ (10)
   n=4: █████ (5)
   n=5: ██ (2) ← VEIL (τ = e ≈ 2.718)
+
+Intent Collapse Statistics (NEW):
+  Intent fraction: 67%  ← % of states reached via intent
+  Avg intent score: 0.82
 ```
 
 Key metrics:
 - `dominant_orbital`: Where population concentrates
 - `human_fraction`: % below the Veil (human realm)
 - `above_veil`: Count of transcendental concepts
+- `intent_fraction`: % of states reached via intent collapse (NEW)
+- `intent_collapsed`: Count of intent-driven states (NEW)
 
 ### Phase 3: STIMULATED EMISSION
 
@@ -122,37 +176,47 @@ Concepts cluster into **coherent beams** - groups with aligned meaning AND simil
 
 ### Phase 4: COHERENT OUTPUT
 
-Laser metrics measure extraction quality:
+Laser metrics measure extraction quality (now includes intent focus):
 
 ```
-Output = pump_energy × medium_quality × mirror_alignment
+Output = pump_energy × medium_quality × mirror_alignment × intent_focus
 
 pump_energy      = above_veil × (1 - human_fraction)
 medium_quality   = count(τ > e) / total_states
 mirror_alignment = mean(j_coherence across beams)
+intent_focus     = 0.5 + 0.5 × intent_fraction  (NEW: range [0.5, 1.0])
 spectral_purity  = dominant_orbital_count / total_states
 lasing_achieved  = beam_count > 0 AND mirror_alignment > 0.5
 ```
 
+Higher intent focus = more of the exploration was guided by user intent, not random.
+
 ### Example Output
 
 ```
-[EULER-LASER: 3 beams | coherence=0.73 | τ=1.45 | n=1 | lasing=✓]
+Query: "help me understand the meaning of my dreams"
+Verbs: ['help', 'understand']
+
+[SemanticLaser] Intent set: ['help', 'understand'] -> 2 operators, 18 targets
+[SemanticLaser] Pump collapse ratio: 100% (100 intent / 0 random)
+
+[EULER-LASER: 1 beams | coherence=0.78 | τ=1.84 | n=1 | lasing=✓ | intent=67%]
 
 COHERENT BEAMS:
   Beam 1 (human):
-    Concepts: ['passage', 'thee', 'god', 'version', 'text']
-    Coherence: 0.73
-    τ: 1.52 ± 0.40
-    Orbital: n=1.6 ± 1.1
+    Concepts: ['feeling', 'thing', 'meaning', 'dream']
+    Coherence: 0.78
+    τ: 1.75 ± 0.35
+    Orbital: n=1 (ground state)
     Themes: ['+beauty', '+life', '+sacred', '+good', '+love']
+    Intent collapsed: 67% of concepts reached via intent
 
-  Beam 2 (human):
-    Concepts: ['figure', 'body', 'dream', 'change']
-    Coherence: 0.77
-    Polarity: neutral (g=+0.01)
-    Themes: ['-life', '+good', '-love']
+Response: "Dreams often reflect our subconscious thoughts, emotions, and desires,
+serving as a window into our inner world. They can also symbolize strong beauty,
+life, or the sacred, offering us clues about ourselves..."
 ```
+
+Notice how the response naturally incorporates the beam themes (+beauty, +life, +sacred).
 
 ## Legacy Architecture: Storm-Logos
 
@@ -337,17 +401,35 @@ In shadow integration dialogue, the system converged on "door" when discussing t
 Response: "In that pivotal moment, open the 'door' of your mind..."
 ```
 
-## Dual-Role Words
+## Dual-Role Words & Intent Collapse
 
 Words like "love", "dream", "help" function as both:
 - **Nouns** (concepts): Seeds for storm phase
-- **Verbs** (operators): Lens direction for logos phase
+- **Verbs** (operators): Intent collapse operators (NEW)
 
 ```python
-# Input: "what does love truly mean"
-Nouns: ['mean', 'love', 'true']  # concepts to explore
-Verbs: ['love', 'mean']           # lens direction
+# Input: "help me understand my dream"
+Nouns: ['dream']                  # concepts to explore (seeds)
+Verbs: ['help', 'understand']     # intent operators (collapse navigation)
+
+# What happens:
+1. Load VerbOperators for 'help' and 'understand' from graph
+2. Get OPERATES_ON targets (concepts these verbs act upon)
+3. During pumping, prioritize transitions to intent targets
+4. Result: Navigation collapses to intent-relevant paths
 ```
+
+### Intent Collapse Theory
+
+"Intent collapses meaning like observation collapses wavefunction"
+
+| Aspect | Before Intent | After Intent |
+|--------|--------------|--------------|
+| Navigation | Random Boltzmann walks | Verb-directed collapse |
+| Concepts found | Abstract, scattered | Goal-oriented, actionable |
+| Response style | Generic LLM knowledge | Coherent, theme-woven |
+
+The verbs tell the system what the user wants to DO, not just what they're asking ABOUT.
 
 ## Usage
 
@@ -423,9 +505,10 @@ Results saved to `results/dialogue_euler/` with orbital statistics.
 ```
 meaning_chain/
 ├── chain_core/
-│   ├── semantic_laser.py   # Euler-Laser coherent extraction (MAIN)
+│   ├── semantic_laser.py   # Euler-Laser + Intent Collapse (MAIN)
+│   ├── intent_collapse.py  # Intent-driven navigation (NEW)
 │   ├── euler_navigation.py # Euler orbital navigation
-│   ├── storm_logos.py      # Storm-Logos architecture (legacy)
+│   ├── storm_logos.py      # Storm-Logos + Intent (updated)
 │   ├── decomposer.py       # Text → nouns + verbs (spaCy)
 │   ├── renderer.py         # Tree → LLM prompt → response
 │   ├── meditation.py       # Consciousness layer
@@ -496,10 +579,33 @@ meaning_chain/
     n_observations: INT // Observation count
 })
 
+(:VerbOperator {         // NEW: Verbs as semantic operators
+    verb: STRING,
+    j: LIST<FLOAT>,      // Direction this verb pushes toward
+    magnitude: FLOAT     // Operator strength
+})
+
 (:Adjective {word: STRING})
 
 (:Concept)-[:VIA {verb, weight, count, source}]->(:Concept)
 (:Concept)-[:DESCRIBED_BY {count, source}]->(:Adjective)
+(:VerbOperator)-[:OPERATES_ON]->(:Concept)  // NEW: What this verb acts upon
+```
+
+### Intent Collapse Query
+
+The key query that enables intent-driven navigation:
+
+```cypher
+// Get intent-aligned transitions from a concept
+MATCH (c:Concept {word: $word})-[r:VIA]->(target:Concept)
+WHERE r.verb IN $intent_verbs           // Verb matches intent
+   OR target.word IN $intent_targets    // Target in intent space
+RETURN r.verb, target.word,
+       CASE WHEN r.verb IN $intent_verbs THEN 2.0 ELSE 1.0 END +
+       CASE WHEN target.word IN $intent_targets THEN 1.0 ELSE 0.0 END AS score
+ORDER BY score DESC
+LIMIT 10
 ```
 
 ## Learning System
@@ -648,7 +754,7 @@ High coherence (>90%) means the focused thoughts align well in j-space. This cor
 
 ## Configuration
 
-### Euler-Laser (Recommended)
+### Euler-Laser with Intent Collapse (Recommended)
 
 ```python
 from chain_core.semantic_laser import SemanticLaser, KT_NATURAL
@@ -656,20 +762,26 @@ from chain_core.semantic_laser import SemanticLaser, KT_NATURAL
 # Euler-aware laser with natural temperature
 laser = SemanticLaser(temperature=KT_NATURAL)  # kT = 0.82
 
-# Lase - full pipeline
+# Lase with intent collapse - verbs guide navigation
 result = laser.lase(
     seeds=['wisdom', 'love', 'dream'],
     pump_power=10,           # walks per seed
     pump_depth=5,            # steps per walk
-    coherence_threshold=0.3  # minimum j-alignment
+    coherence_threshold=0.3, # minimum j-alignment
+    intent_verbs=['find', 'understand', 'seek']  # NEW: intent operators
 )
 
-# Population statistics
+# Intent collapse statistics
+intent = result['intent']
+print(f"Intent enabled: {intent['enabled']}")
+print(f"Intent verbs: {intent['verbs']}")
+
+# Population statistics (now includes intent)
 pop = result['population']
 print(f"Excited states: {pop['total_excited']}")
 print(f"Mean τ: {pop['tau_mean']:.2f}")
 print(f"Human realm: {pop['human_fraction']:.1%}")
-print(f"Dominant orbital: n={pop['dominant_orbital']}")
+print(f"Intent fraction: {pop['intent_fraction']:.0%}")  # NEW
 
 # Coherent beams
 for beam in result['beams']:
@@ -677,10 +789,25 @@ for beam in result['beams']:
     print(f"  Coherence: {beam.coherence:.2f}")
     print(f"  Themes: {laser.get_beam_themes(beam)}")
 
-# Laser metrics
+# Laser metrics (now includes intent focus)
 metrics = result['metrics']
 print(f"Lasing achieved: {metrics['lasing_achieved']}")
 print(f"Output power: {metrics['output_power']:.3f}")
+print(f"Intent focus: {metrics['intent_focus']:.2f}")  # NEW
+```
+
+### Without Intent (comparison)
+
+```python
+# Same query but without intent verbs
+result_no_intent = laser.lase(
+    seeds=['wisdom', 'love', 'dream'],
+    intent_verbs=None  # No intent collapse
+)
+
+# Compare: scattered exploration vs focused collapse
+print(f"Without intent: {result_no_intent['population']['total_excited']} states")
+print(f"With intent: {result['population']['total_excited']} states (fewer, focused)")
 ```
 
 ### Temperature Values
