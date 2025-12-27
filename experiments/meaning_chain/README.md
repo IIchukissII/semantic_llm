@@ -45,7 +45,116 @@ See `experiments/physics/euler_constant.py` for validation code.
 - `experiments/physics/results/orbital_structure.png` - 4-panel analysis (distribution, Boltzmann fit, orbital levels, veil boundary)
 - `experiments/physics/results/orbital_diagram.png` - Artistic orbital representation
 
-## Core Architecture: Storm-Logos
+## Core Architecture: Euler-Laser
+
+The system combines **Euler orbital physics** with **laser coherence** for meaning extraction:
+
+```
+╔═══════════════════════════════════════════════════════════════════════════╗
+║                      EULER-LASER ARCHITECTURE                              ║
+╠═══════════════════════════════════════════════════════════════════════════╣
+║                                                                            ║
+║  Query → PUMPING → POPULATION → STIMULATED EMISSION → COHERENT OUTPUT     ║
+║            ↓           ↓               ↓                    ↓              ║
+║     Euler Storm   Track orbital   j-vector alignment   Focused beam       ║
+║     (kT=0.82)     distribution    + orbital coherence   → Response        ║
+║                                                                            ║
+╠═══════════════════════════════════════════════════════════════════════════╣
+║  NUCLEAR LASER ANALOGY:                                                    ║
+║  ─────────────────────                                                     ║
+║  Nuclear explosion (energy)     →  Euler Storm (orbital excitation)       ║
+║  Pump the medium                →  Populate τ-levels via Boltzmann        ║
+║  Population inversion           →  Words at excited orbitals              ║
+║  Stimulated emission            →  j-vector coherence triggers lasing     ║
+║  Coherent beam output           →  Focused thematic response              ║
+╚═══════════════════════════════════════════════════════════════════════════╝
+```
+
+### Phase 1: PUMPING (Euler Storm)
+
+Boltzmann-weighted exploration respecting orbital physics:
+
+```python
+P(transition) ∝ exp(-|Δτ| / kT)
+
+Where:
+  Δτ = |τ_target - τ_current|  # orbital distance
+  kT = 0.82                     # natural temperature
+```
+
+Transitions to similar orbital levels are preferred, creating **orbital coherence**.
+
+### Phase 2: POPULATION ANALYSIS
+
+Track distribution across orbital levels:
+
+```
+Orbital Distribution:
+  n=0: ██████████████████████████████ (35)
+  n=1: ██████████████████████████████ (48)  ← GROUND STATE (peak)
+  n=2: ████████████████████████ (24)
+  n=3: ██████████ (10)
+  n=4: █████ (5)
+  n=5: ██ (2) ← VEIL (τ = e ≈ 2.718)
+```
+
+Key metrics:
+- `dominant_orbital`: Where population concentrates
+- `human_fraction`: % below the Veil (human realm)
+- `above_veil`: Count of transcendental concepts
+
+### Phase 3: STIMULATED EMISSION
+
+True laser coherence requires BOTH:
+1. **j-vector alignment** (polarization coherence)
+2. **Orbital proximity** (frequency coherence)
+
+```python
+combined_coherence = (1 - w) * j_coherence + w * orbital_coherence
+
+Where:
+  j_coherence = cos(j₁, j₂)                    # j-vector similarity
+  orbital_coherence = exp(-|n₁ - n₂| / 2)      # orbital proximity
+  w = 0.3                                       # orbital weight
+```
+
+Concepts cluster into **coherent beams** - groups with aligned meaning AND similar abstraction level.
+
+### Phase 4: COHERENT OUTPUT
+
+Laser metrics measure extraction quality:
+
+```
+Output = pump_energy × medium_quality × mirror_alignment
+
+pump_energy      = above_veil × (1 - human_fraction)
+medium_quality   = count(τ > e) / total_states
+mirror_alignment = mean(j_coherence across beams)
+spectral_purity  = dominant_orbital_count / total_states
+lasing_achieved  = beam_count > 0 AND mirror_alignment > 0.5
+```
+
+### Example Output
+
+```
+[EULER-LASER: 3 beams | coherence=0.73 | τ=1.45 | n=1 | lasing=✓]
+
+COHERENT BEAMS:
+  Beam 1 (human):
+    Concepts: ['passage', 'thee', 'god', 'version', 'text']
+    Coherence: 0.73
+    τ: 1.52 ± 0.40
+    Orbital: n=1.6 ± 1.1
+    Themes: ['+beauty', '+life', '+sacred', '+good', '+love']
+
+  Beam 2 (human):
+    Concepts: ['figure', 'body', 'dream', 'change']
+    Coherence: 0.77
+    Polarity: neutral (g=+0.01)
+    Themes: ['-life', '+good', '-love']
+```
+
+## Legacy Architecture: Storm-Logos
 
 ```
 Query → STORM (chaotic walks) → LOGOS (focus lens) → Focused Tree → Response
@@ -247,37 +356,44 @@ Verbs: ['love', 'mean']           # lens direction
 cd config && docker-compose up -d
 ```
 
-### Run Chat (Euler-Aware)
+### Run Chat (Euler-Laser)
 ```bash
 python app/chat.py
 ```
 
-The chat now uses Euler navigation by default:
+The chat now uses **Euler-Laser** by default:
 ```
 ============================================================
   MEANING CHAIN CHAT
-  Euler-Aware Semantic Navigation
+  Semantic Laser Navigation
 ============================================================
 
-  Euler Constants:
-    e = 2.7183 (orbital spacing = 1/e)
-    kT = 0.82 (natural temperature)
-    Veil at τ = e (human < e < transcendental)
+  Semantic Laser:
+    Pumping -> Population -> Stimulated Emission -> Coherent Output
+    Uses j-vector alignment for thematic coherence
 
 Commands:
-  /euler  - Toggle Euler mode
+  /laser  - Toggle Laser mode
+  /euler  - Toggle legacy Euler mode
+  /clear  - Clear conversation history
   /quiet  - Toggle verbose output
   /exit   - Exit
 
-You: What is wisdom?
+You: I dreamed of climbing a mountain with ancient symbols...
 
-[2] EULER STORM phase (orbital navigation)...
-    Convergence: heart
-    Mean τ: 1.85 (orbital n=2.3)
-    Human realm: 98.0%
-    Veil crossings: 2
+[2] SEMANTIC LASER (coherent extraction)...
+    Excited: 139 states
+    τ range: 1.00 - 4.23
+    Coherent beams: 2
+    Beam 1: ['passage', 'way', 'place', 'dream'] (coherence=0.70)
+    Beam 2: ['god', 'sun', 'expression'] (coherence=0.75)
 
-[τ=1.85 | n=2 | human | veil×2]
+[3] COHERENT OUTPUT
+    Primary beam: 40 concepts
+    Polarity: neutral (g=-0.03)
+    Themes: ['+life', '+sacred', '+good']
+
+[EULER-LASER: 2 beams | coherence=0.70 | τ=1.51 | n=1 | lasing=✓]
 ```
 
 ### Run Euler Dialogue with Claude
@@ -307,10 +423,11 @@ Results saved to `results/dialogue_euler/` with orbital statistics.
 ```
 meaning_chain/
 ├── chain_core/
-│   ├── storm_logos.py      # Storm-Logos architecture (main)
-│   ├── euler_navigation.py # Euler-aware orbital navigation (NEW)
-│   ├── decomposer.py       # Text → nouns + verbs
-│   ├── renderer.py         # Tree → LLM prompt → response (Euler-aware)
+│   ├── semantic_laser.py   # Euler-Laser coherent extraction (MAIN)
+│   ├── euler_navigation.py # Euler orbital navigation
+│   ├── storm_logos.py      # Storm-Logos architecture (legacy)
+│   ├── decomposer.py       # Text → nouns + verbs (spaCy)
+│   ├── renderer.py         # Tree → LLM prompt → response
 │   ├── meditation.py       # Consciousness layer
 │   └── feedback.py         # Response validation
 │
@@ -531,27 +648,42 @@ High coherence (>90%) means the focused thoughts align well in j-space. This cor
 
 ## Configuration
 
-### Euler Navigation (Recommended)
+### Euler-Laser (Recommended)
 
 ```python
-from chain_core.euler_navigation import EulerAwareStorm, KT_NATURAL
+from chain_core.semantic_laser import SemanticLaser, KT_NATURAL
 
-# Euler-aware storm with natural temperature
-storm = EulerAwareStorm(temperature=KT_NATURAL)  # kT = 0.82
+# Euler-aware laser with natural temperature
+laser = SemanticLaser(temperature=KT_NATURAL)  # kT = 0.82
 
-# Generate orbital walks
-result = storm.generate(
-    seeds=['wisdom', 'love'],
-    n_walks=5,
-    steps_per_walk=8
+# Lase - full pipeline
+result = laser.lase(
+    seeds=['wisdom', 'love', 'dream'],
+    pump_power=10,           # walks per seed
+    pump_depth=5,            # steps per walk
+    coherence_threshold=0.3  # minimum j-alignment
 )
 
-# Result includes orbital statistics
-print(f"Mean τ: {result['statistics']['mean_tau']}")
-print(f"Human realm: {result['statistics']['human_fraction']:.1%}")
+# Population statistics
+pop = result['population']
+print(f"Excited states: {pop['total_excited']}")
+print(f"Mean τ: {pop['tau_mean']:.2f}")
+print(f"Human realm: {pop['human_fraction']:.1%}")
+print(f"Dominant orbital: n={pop['dominant_orbital']}")
+
+# Coherent beams
+for beam in result['beams']:
+    print(f"Beam: {beam.concepts[:5]}")
+    print(f"  Coherence: {beam.coherence:.2f}")
+    print(f"  Themes: {laser.get_beam_themes(beam)}")
+
+# Laser metrics
+metrics = result['metrics']
+print(f"Lasing achieved: {metrics['lasing_achieved']}")
+print(f"Output power: {metrics['output_power']:.3f}")
 ```
 
-### Euler Temperature Values
+### Temperature Values
 
 | Temperature | Mode | Effect |
 |-------------|------|--------|
@@ -560,7 +692,7 @@ print(f"Human realm: {result['statistics']['human_fraction']:.1%}")
 | 1.5 | Warm | More exploration, occasional veil crossing |
 | 2.0 | Hot | Exploratory, can reach transcendental |
 
-### Legacy Configuration (Storm-Logos)
+### Legacy Configuration (Euler Navigation)
 
 ```python
 # Standard mode

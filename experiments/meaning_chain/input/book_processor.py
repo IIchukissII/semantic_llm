@@ -100,6 +100,7 @@ class BookProcessor:
     def __init__(self, graph: MeaningGraph = None,
                  model: str = "en_core_web_sm",
                  enable_learning: bool = True,
+                 include_proper_nouns: bool = True,
                  adj_vectors: Dict[str, np.ndarray] = None):
         """
         Initialize BookProcessor.
@@ -108,10 +109,12 @@ class BookProcessor:
             graph: MeaningGraph instance
             model: spaCy model name
             enable_learning: If True, learn new concepts from adj-noun pairs
+            include_proper_nouns: If True, include proper nouns (names) in extraction
             adj_vectors: {adjective: 5D j-vector} for computing centroids
         """
         self.graph = graph or MeaningGraph()
         self.enable_learning = enable_learning
+        self.include_proper_nouns = include_proper_nouns
         self.adj_vectors = adj_vectors or {}
 
         # Learning store (lazy init)
@@ -207,6 +210,18 @@ class BookProcessor:
 
         return patterns
 
+    def _is_valid_noun(self, token, word: str) -> bool:
+        """Check if a token is a valid noun for extraction."""
+        if len(word) < 3:
+            return False
+        # Known concepts are always valid
+        if word in self.known_concepts:
+            return True
+        # Proper nouns are valid if include_proper_nouns is True
+        if self.include_proper_nouns and token.pos_ == "PROPN":
+            return True
+        return False
+
     def _extract_svo_from_sentence(self, sent) -> List[SVOPattern]:
         """Extract SVO patterns from a single sentence."""
         patterns = []
@@ -220,20 +235,20 @@ class BookProcessor:
                 if verb in {'be', 'have', 'do', 'will', 'would', 'could', 'should', 'may', 'might'}:
                     continue
 
-                # Find subject
+                # Find subject (include proper nouns if enabled)
                 subjects = []
                 for child in token.children:
                     if child.dep_ in ('nsubj', 'nsubjpass'):
                         subj = child.lemma_.lower()
-                        if len(subj) >= 3 and subj in self.known_concepts:
+                        if self._is_valid_noun(child, subj):
                             subjects.append(subj)
 
-                # Find object
+                # Find object (include proper nouns if enabled)
                 objects = []
                 for child in token.children:
                     if child.dep_ in ('dobj', 'pobj', 'attr'):
                         obj = child.lemma_.lower()
-                        if len(obj) >= 3 and obj in self.known_concepts:
+                        if self._is_valid_noun(child, obj):
                             objects.append(obj)
 
                 # Also check prep objects
@@ -242,7 +257,7 @@ class BookProcessor:
                         for grandchild in child.children:
                             if grandchild.dep_ == 'pobj':
                                 obj = grandchild.lemma_.lower()
-                                if len(obj) >= 3 and obj in self.known_concepts:
+                                if self._is_valid_noun(grandchild, obj):
                                     objects.append(obj)
 
                 # Create patterns
@@ -292,9 +307,10 @@ class BookProcessor:
 
                 sentences_processed += 1
 
-                # Extract adj-noun pairs
+                # Extract adj-noun pairs (include proper nouns if enabled)
+                valid_pos = ("NOUN", "PROPN") if self.include_proper_nouns else ("NOUN",)
                 for token in sent:
-                    if token.pos_ == "NOUN":
+                    if token.pos_ in valid_pos:
                         noun = token.lemma_.lower()
 
                         # Skip short/invalid nouns

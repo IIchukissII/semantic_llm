@@ -48,8 +48,15 @@ class Decomposer:
     - Verbs: become operators for tree expansion
     """
 
-    def __init__(self, data_loader: Optional[DataLoader] = None):
+    def __init__(self, data_loader: Optional[DataLoader] = None,
+                 include_proper_nouns: bool = True):
+        """
+        Args:
+            data_loader: DataLoader for semantic space vocabulary
+            include_proper_nouns: If True, include proper nouns (names) as navigation seeds
+        """
         self.loader = data_loader or DataLoader()
+        self.include_proper_nouns = include_proper_nouns
 
         # Load vocabularies
         self._word_vectors = None
@@ -199,9 +206,12 @@ class Decomposer:
                     seen_nouns.add(match)
                     nouns.append(match)
                 elif not match and lemma not in seen_nouns:
-                    # Unknown noun - still valuable for context
                     seen_nouns.add(lemma)
-                    unknown.append(lemma)
+                    # Proper nouns go to navigation seeds if enabled, otherwise to unknown
+                    if self.include_proper_nouns and token.pos_ == 'PROPN':
+                        nouns.append(lemma)  # Use as navigation seed
+                    else:
+                        unknown.append(lemma)  # Just context
 
             elif token.pos_ == 'VERB':
                 # It's a verb - check vocabulary

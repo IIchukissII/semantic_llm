@@ -270,21 +270,27 @@ class MeaningChainChat:
 
             # Build euler_stats for renderer (compatible format)
             primary_beam = self.semantic_laser.get_primary_beam(laser_result)
+            metrics = laser_result.get('metrics', {})
             euler_stats = {
                 'mean_tau': pop['tau_mean'],
                 'orbital_n': int(round((pop['tau_mean'] - 1) * E)),
                 'realm': 'human' if pop['tau_mean'] < VEIL_TAU else 'transcendental',
                 'below_veil': pop['tau_mean'] < VEIL_TAU,
                 'near_ground': abs(pop['tau_mean'] - GROUND_STATE_TAU) < 0.5,
-                'veil_crossings': 0,  # Laser doesn't track this
-                'human_fraction': 1.0 if pop['tau_mean'] < VEIL_TAU else 0.5,
+                'veil_crossings': pop.get('above_veil', 0),
+                'human_fraction': pop.get('human_fraction', 0.5),
                 'convergence': coherent_concepts[0] if coherent_concepts else None,
                 'core_concepts': coherent_concepts[:8],
                 'key_symbols': decomposed.unknown_words[:10],
                 'known_nouns': decomposed.nouns[:8],
+                # Laser metrics
                 'laser_beams': len(beams),
                 'laser_coherence': primary_beam.coherence if primary_beam else 0.0,
-                'laser_themes': list(set(beam_themes))[:5]
+                'laser_themes': list(set(beam_themes))[:5],
+                'lasing_achieved': metrics.get('lasing_achieved', False),
+                'output_power': metrics.get('output_power', 0.0),
+                'spectral_purity': metrics.get('spectral_purity', 0.0),
+                'dominant_orbital': pop.get('dominant_orbital', 1)
             }
 
             # Build tree from coherent concepts
@@ -469,9 +475,11 @@ class MeaningChainChat:
         self._log(f"{'='*60}")
         self._log(final_response)
         if laser_result and euler_stats:
-            self._log(f"\n[LASER: {euler_stats.get('laser_beams', 0)} beams | "
+            lasing = "✓" if euler_stats.get('lasing_achieved') else "✗"
+            self._log(f"\n[EULER-LASER: {euler_stats.get('laser_beams', 0)} beams | "
                       f"coherence={euler_stats.get('laser_coherence', 0):.2f} | "
-                      f"τ={euler_stats['mean_tau']:.2f}]")
+                      f"τ={euler_stats['mean_tau']:.2f} | n={euler_stats.get('dominant_orbital', 1)} | "
+                      f"lasing={lasing}]")
         elif euler_stats:
             self._log(f"\n[τ={euler_stats['mean_tau']:.2f} | n={euler_stats['orbital_n']} | "
                       f"{euler_stats['realm']} | veil×{euler_stats['veil_crossings']}]")
