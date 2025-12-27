@@ -23,6 +23,22 @@ until a new act of differentiation arises.
 **Reality as order is a function of consciousness.**
 Without consciousness, only the potential of structures remains, but not structure as such.
 
+### Why It Works (Simply)
+
+```
+EXPLOSION  →  LOGOS  →  MEANING
+   ↓            ↓          ↓
+ Storm      Overlay     Accept/Reject
+```
+
+1. **Create explosion** — storm through semantic space, excite many concepts
+2. **Overlay on Logos** — apply the meaning lens (j-vectors, coherence, intent)
+3. **Where parts agree** — they pass through, accepted into meaning structure
+4. **Where they don't** — filtered out, not meaningful in this context
+
+The explosion creates potential. Logos selects what coheres.
+What remains is meaning — not invented, but *recognized*.
+
 ---
 
 ## Major Feature: Intent-Driven Collapse
