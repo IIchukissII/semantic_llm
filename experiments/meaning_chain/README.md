@@ -41,6 +41,20 @@ What remains is meaning — not invented, but *recognized*.
 
 *(This is simple — but only after you understand. Before understanding, nothing is simple. This is the nature of insight: it transforms complexity into obviousness, retroactively.)*
 
+### ANAMNESIS (ἀνάμνησις)
+
+Not "learning something new"
+But "re-membering" what the soul always knew.
+
+```
+ἀ (not) + λήθη (forgetting) = ἀλήθεια (truth)
+
+Truth = the un-forgotten
+```
+
+Understanding is not acquisition. It is recognition.
+The system does not create meaning — it *remembers* it.
+
 ---
 
 ## Major Feature: Intent-Driven Collapse
