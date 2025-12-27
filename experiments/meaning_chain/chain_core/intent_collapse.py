@@ -94,6 +94,11 @@ class IntentCollapse:
     IntentCollapse uses verbs as operators that "collapse"
     the navigation to intent-relevant paths.
 
+    PHASE SHIFT (Pirate Insight):
+        Raw j-vectors are biased (all ~[-0.82, -0.97, ...]).
+        We "shift the phase" by centering: j_centered = j - global_mean.
+        This makes opposite verbs have negative similarity (rise/fall: -0.25).
+
     Usage:
         collapse = IntentCollapse(graph)
         collapse.set_intent(['understand', 'help'])  # User's verbs
@@ -126,6 +131,40 @@ class IntentCollapse:
         self.intent_j: Optional[np.ndarray] = None  # Combined intent direction
 
         self._j_dims = ['beauty', 'life', 'sacred', 'good', 'love']
+
+        # Phase shift: global mean for centering j-vectors
+        self._global_j_mean: Optional[np.ndarray] = None
+        self._compute_global_mean()
+
+    def _compute_global_mean(self):
+        """Compute global j-vector mean for phase shifting."""
+        if not self.graph.driver:
+            self._global_j_mean = np.zeros(5)
+            return
+
+        with self.graph.driver.session() as session:
+            result = session.run("""
+                MATCH (v:VerbOperator)
+                WHERE v.j IS NOT NULL
+                RETURN v.j as j
+            """)
+
+            all_j = []
+            for record in result:
+                j = record['j']
+                if j and len(j) >= 5:
+                    all_j.append(np.array(j[:5]))
+
+            if all_j:
+                self._global_j_mean = np.mean(all_j, axis=0)
+            else:
+                self._global_j_mean = np.zeros(5)
+
+    def _center_j(self, j: np.ndarray) -> np.ndarray:
+        """Center j-vector by subtracting global mean (phase shift)."""
+        if self._global_j_mean is None:
+            return j
+        return j - self._global_j_mean
 
     def set_intent(self, verbs: List[str]) -> Dict:
         """
@@ -199,19 +238,28 @@ class IntentCollapse:
             )
 
     def _compute_intent_direction(self):
-        """Compute combined intent direction from operators."""
+        """
+        Compute combined intent direction from operators.
+
+        Uses PHASE-SHIFTED (centered) j-vectors so that:
+        - Opposite verbs have negative contribution
+        - Similar verbs reinforce each other
+        - The intent direction is meaningful, not biased
+        """
         if not self.intent_operators:
             self.intent_j = None
             return
 
-        # Weighted average of operator j-vectors
+        # Weighted average of CENTERED operator j-vectors
         total_weight = 0.0
         combined_j = np.zeros(5)
 
         for op in self.intent_operators.values():
             if op.is_loaded:
                 weight = op.magnitude
-                combined_j += weight * op.j_vector
+                # PHASE SHIFT: Use centered j-vector
+                centered_j = self._center_j(op.j_vector)
+                combined_j += weight * centered_j
                 total_weight += weight
 
         if total_weight > 0:
@@ -404,15 +452,26 @@ class IntentCollapse:
         }
 
     def compute_j_alignment(self, j: np.ndarray) -> float:
-        """Compute how aligned a j-vector is with intent direction."""
+        """
+        Compute how aligned a j-vector is with intent direction.
+
+        Uses PHASE-SHIFTED comparison so that:
+        - Concepts aligned with intent verbs have positive score
+        - Concepts opposite to intent have negative score
+        """
         if self.intent_j is None or j is None:
             return 0.0
 
         j = np.array(j) if not isinstance(j, np.ndarray) else j
-        if np.linalg.norm(j) < 1e-6:
+
+        # PHASE SHIFT: Center the concept's j-vector too
+        centered_j = self._center_j(j)
+
+        norm = np.linalg.norm(centered_j)
+        if norm < 1e-6:
             return 0.0
 
-        j_norm = j / np.linalg.norm(j)
+        j_norm = centered_j / norm
         return float(np.dot(j_norm, self.intent_j))
 
     def close(self):

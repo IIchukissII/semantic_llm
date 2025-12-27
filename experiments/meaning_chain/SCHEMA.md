@@ -33,12 +33,33 @@ experience_knowledge/          meaning_chain/
     pos: STRING             // Part of speech: "noun", "verb", "adj"
 })
 
-// VerbOperator - verbs as navigation operators
+// VerbOperator - verbs as navigation operators (DUAL STRUCTURE)
 (:VerbOperator {
     verb: STRING,           // The verb
-    j: LIST<FLOAT>,         // Verb's j-vector (semantic direction)
+
+    // Original properties
+    j: LIST<FLOAT>,         // Raw j-vector (5D semantic direction)
     magnitude: FLOAT,       // Operator strength
-    objects: LIST<STRING>   // Typical objects this verb operates on
+    objects: LIST<STRING>,  // Typical objects this verb operates on
+
+    // Phase-shifted properties (Pirate Insight)
+    i: LIST<FLOAT>,         // Centered j-vector = j - global_mean
+                            // Represents INTRINSIC action type
+    delta_tau: FLOAT,       // Δτ: abstraction effect
+                            //   > 0: ascends (abstract)
+                            //   < 0: descends (concrete)
+    delta_g: FLOAT,         // Δg: moral push direction
+                            //   > 0: pushes toward good
+                            //   < 0: pushes toward evil
+    transition_count: INT,  // Number of VIA edges for this verb
+    phase_shifted: BOOL     // Flag: new properties computed
+})
+
+// GlobalMean - stores the bias for phase shifting
+(:GlobalMean {
+    name: STRING,           // 'verb_j_mean'
+    j_mean: LIST<FLOAT>,    // Global mean j-vector
+    updated_at: DATETIME
 })
 ```
 
@@ -287,9 +308,65 @@ User: "help me understand my dream"
 5. Render to LLM with intent context
 ```
 
+## Verb Dual Structure (The Pirate Insight)
+
+Verbs have a parallel structure to nouns:
+
+```
+NOUN                    VERB
+----                    ----
+τ (tau)                 Δτ (delta_tau) - ascend/descend effect
+g (good/evil)           Δg (delta_g) - moral push direction
+j (5D position)         i (centered j) - intrinsic action type
+                        j (raw) - effect direction
+```
+
+### The Phase Shift
+
+Raw verb j-vectors are biased toward a global mean, making opposite verbs appear similar (99% cosine similarity). The "pirate insight" centers them:
+
+```python
+i_vector = j_vector - global_mean  # The "phase shift"
+```
+
+**Results**:
+- create/destroy: 0.99 → 0.04 (now ORTHOGONAL)
+- rise/fall: 0.97 → -0.25 (now OPPOSITE)
+- love: i-dominant = +life (life-affirming action)
+- love: Δτ = -0.41 (GROUNDS abstract→concrete)
+
+### Key Verbs
+
+| Verb | i-dominant | Δτ | Δg | Meaning |
+|------|-----------|-----|-----|---------|
+| love | +life | -0.41 | -0.64 | Life-affirming, grounds |
+| create | +sacred | +0.07 | +0.03 | Sacred, stable level |
+| destroy | +good | -0.08 | +0.69 | Moral, targets evil |
+| find | +love | -0.13 | -0.36 | Connection-seeking |
+| learn | -love | -0.08 | -0.74 | Knowledge over sentiment |
+
+### Queries
+
+```cypher
+// Find grounding verbs (Δτ < -0.2)
+MATCH (v:VerbOperator)
+WHERE v.delta_tau < -0.2
+RETURN v.verb, v.delta_tau, v.i
+ORDER BY v.delta_tau ASC
+
+// Find life-affirming verbs
+MATCH (v:VerbOperator)
+WHERE v.i[1] > 0.1  // life dimension is index 1
+RETURN v.verb, v.i[1] as life_score
+ORDER BY life_score DESC
+```
+
+See `docs/VERB_DUAL_STRUCTURE.md` for full documentation.
+
 ## Success Criteria
 
 1. **Isolation**: No changes to experience_knowledge
 2. **Intent-driven**: Verbs actually filter navigation
 3. **Semantic**: Paths make semantic sense
 4. **Testable**: Clear before/after comparison
+5. **Phase-shifted**: Verb similarities are meaningful
