@@ -4,6 +4,27 @@
 
 A semantic navigation system inspired by biological cognition. When humans process questions, the neocortex fires chaotically (storm), then patterns emerge through meaning structure (logos). This system replicates that process.
 
+## Ontological Foundation
+
+**Chaos is reality without consciousness.**
+**Order is reality seen by consciousness.**
+
+Consciousness does not invent order from nothing.
+It chooses trajectories of stability in what could be seen infinite ways.
+
+As vision does not create light but makes it visible,
+so consciousness does not create reality but makes it meaningful.
+
+If the principle of meaning ceases to be recognizable,
+reality does not "fall into chaos" —
+it returns to a pre-differentiated state
+until a new act of differentiation arises.
+
+**Reality as order is a function of consciousness.**
+Without consciousness, only the potential of structures remains, but not structure as such.
+
+---
+
 ## Major Feature: Intent-Driven Collapse
 
 **NEW**: Verbs now act as quantum operators that collapse navigation to intent-relevant paths.
