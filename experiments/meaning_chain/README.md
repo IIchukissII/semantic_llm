@@ -41,7 +41,7 @@ What remains is meaning — not invented, but *recognized*.
 
 *(This is simple — but only after you understand. Before understanding, nothing is simple. This is the nature of insight: it transforms complexity into obviousness, retroactively.)*
 
-### ANAMNESIS (ἀνάμνησις)
+### ANAMNESIS (ἀνάμνησις) — Plato
 
 Not "learning something new"
 But "re-membering" what the soul always knew.
