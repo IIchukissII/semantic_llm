@@ -1,0 +1,4780 @@
+{
+  "question": "What is meaning?",
+  "label": "abstract",
+  "n_samples": 100,
+  "timestamp": "2025-12-27T19:55:22.688321",
+  "aggregate": {
+    "tau_mean": 1.6706712118214784,
+    "tau_std_mean": 0.3043916460804502,
+    "tau_variance_across_samples": 4.930380657631324e-32,
+    "coherence_mean": 0.0,
+    "coherence_std": 0.0,
+    "coherence_min": 0.0,
+    "coherence_max": 0.0,
+    "beam_count_mean": 0.0,
+    "beam_count_std": 0.0,
+    "orbital_distribution": {
+      "1": 100,
+      "3": 100,
+      "2": 100
+    },
+    "dominant_orbitals": [
+      [
+        1,
+        100
+      ],
+      [
+        3,
+        100
+      ],
+      [
+        2,
+        100
+      ]
+    ],
+    "intent_fraction_mean": 0.6666666666666669,
+    "intent_fraction_std": 2.220446049250313e-16,
+    "lasing_success_rate": 0.0,
+    "top_attractors": [
+      [
+        "difference",
+        4000
+      ],
+      [
+        "thing",
+        1000
+      ],
+      [
+        "meaning",
+        100
+      ]
+    ],
+    "attractors_by_orbital": {
+      "1": [
+        [
+          "meaning",
+          100,
+          1.34
+        ]
+      ],
+      "2": [
+        [
+          "difference",
+          4000,
+          1.6
+        ]
+      ],
+      "3": [
+        [
+          "thing",
+          1000,
+          2.07
+        ]
+      ]
+    },
+    "n_unique_words": 3,
+    "concentration": 1.0
+  },
+  "samples": [
+    {
+      "sample_id": 0,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 1,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 2,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 3,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 4,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 5,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 6,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 7,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 8,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 9,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 10,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 11,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 12,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 13,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 14,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 15,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 16,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 17,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 18,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 19,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 20,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 21,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 22,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 23,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 24,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 25,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 26,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 27,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 28,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 29,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 30,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 31,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 32,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 33,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 34,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 35,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 36,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 37,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 38,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 39,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 40,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 41,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 42,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 43,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 44,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 45,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 46,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 47,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 48,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 49,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 50,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 51,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 52,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 53,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 54,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 55,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 56,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 57,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 58,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 59,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 60,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 61,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 62,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 63,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 64,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 65,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 66,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 67,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 68,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 69,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 70,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 71,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 72,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 73,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 74,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 75,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 76,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 77,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 78,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 79,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 80,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 81,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 82,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 83,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 84,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 85,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 86,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 87,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 88,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 89,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 90,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 91,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 92,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 93,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 94,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 95,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 96,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 97,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 98,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    },
+    {
+      "sample_id": 99,
+      "seeds": [
+        "meaning"
+      ],
+      "intent_verbs": [
+        "mean"
+      ],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 3,
+      "tau_mean": 1.6706712118214782,
+      "tau_std": 0.30439164608045016,
+      "tau_min": 1.336923871050886,
+      "tau_max": 2.0730038928684342,
+      "g_mean": 1.9404266716837884,
+      "orbital_dist": {
+        "1": 1,
+        "3": 1,
+        "2": 1
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.6666666666666666,
+      "intent_collapsed": 2,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0008333333333333335,
+      "lasing_achieved": false,
+      "excited_words": [
+        "meaning",
+        "thing",
+        "difference"
+      ],
+      "excited_taus": [
+        1.336923871050886,
+        2.0730038928684342,
+        1.6020858715451145
+      ],
+      "excited_visits": [
+        1,
+        10,
+        40
+      ]
+    }
+  ]
+}

@@ -1,0 +1,4057 @@
+{
+  "question": "What is a tree?",
+  "label": "concrete",
+  "n_samples": 100,
+  "timestamp": "2025-12-27T19:55:44.073326",
+  "aggregate": {
+    "tau_mean": 1.3476727074796029,
+    "tau_std_mean": 0.0874265743298006,
+    "tau_variance_across_samples": 1.9721522630525295e-31,
+    "coherence_mean": 0.0,
+    "coherence_std": 0.0,
+    "coherence_min": 0.0,
+    "coherence_max": 0.0,
+    "beam_count_mean": 0.0,
+    "beam_count_std": 0.0,
+    "orbital_distribution": {
+      "1": 200
+    },
+    "dominant_orbitals": [
+      [
+        1,
+        200
+      ]
+    ],
+    "intent_fraction_mean": 0.5,
+    "intent_fraction_std": 0.0,
+    "lasing_success_rate": 0.0,
+    "top_attractors": [
+      [
+        "death",
+        5000
+      ],
+      [
+        "tree",
+        100
+      ]
+    ],
+    "attractors_by_orbital": {
+      "1": [
+        [
+          "death",
+          5000,
+          1.26
+        ],
+        [
+          "tree",
+          100,
+          1.44
+        ]
+      ]
+    },
+    "n_unique_words": 2,
+    "concentration": 1.0
+  },
+  "samples": [
+    {
+      "sample_id": 0,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 1,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 2,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 3,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 4,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 5,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 6,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 7,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 8,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 9,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 10,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 11,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 12,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 13,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 14,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 15,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 16,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 17,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 18,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 19,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 20,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 21,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 22,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 23,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 24,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 25,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 26,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 27,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 28,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 29,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 30,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 31,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 32,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 33,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 34,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 35,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 36,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 37,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 38,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 39,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 40,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 41,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 42,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 43,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 44,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 45,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 46,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 47,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 48,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 49,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 50,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 51,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 52,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 53,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 54,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 55,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 56,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 57,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 58,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 59,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 60,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 61,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 62,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 63,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 64,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 65,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 66,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 67,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 68,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 69,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 70,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 71,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 72,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 73,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 74,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 75,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 76,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 77,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 78,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 79,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 80,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 81,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 82,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 83,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 84,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 85,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 86,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 87,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 88,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 89,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 90,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 91,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 92,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 93,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 94,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 95,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 96,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 97,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 98,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    },
+    {
+      "sample_id": 99,
+      "seeds": [
+        "tree"
+      ],
+      "intent_verbs": [],
+      "beam_count": 0,
+      "beams": [],
+      "total_excited": 2,
+      "tau_mean": 1.3476727074796024,
+      "tau_std": 0.08742657432980061,
+      "tau_min": 1.2602461331498018,
+      "tau_max": 1.435099281809403,
+      "g_mean": -0.022123930469155395,
+      "orbital_dist": {
+        "1": 2
+      },
+      "dominant_orbital": 1,
+      "human_fraction": 1.0,
+      "intent_fraction": 0.5,
+      "intent_collapsed": 1,
+      "coherence": 0.0,
+      "pump_energy": 0.1,
+      "medium_quality": 0.0,
+      "mirror_alignment": 0.0,
+      "output_power": 0.0007500000000000002,
+      "lasing_achieved": false,
+      "excited_words": [
+        "tree",
+        "death"
+      ],
+      "excited_taus": [
+        1.435099281809403,
+        1.2602461331498018
+      ],
+      "excited_visits": [
+        1,
+        50
+      ]
+    }
+  ]
+}

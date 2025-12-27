@@ -1,0 +1,547 @@
+{
+  "timestamp": "2025-12-27T19:56:06.216647",
+  "experiments": [
+    {
+      "question": "What is meaning?",
+      "label": "abstract",
+      "aggregate": {
+        "tau_mean": 1.6706712118214784,
+        "tau_std_mean": 0.3043916460804502,
+        "tau_variance_across_samples": 4.930380657631324e-32,
+        "coherence_mean": 0.0,
+        "coherence_std": 0.0,
+        "coherence_min": 0.0,
+        "coherence_max": 0.0,
+        "beam_count_mean": 0.0,
+        "beam_count_std": 0.0,
+        "orbital_distribution": {
+          "1": 100,
+          "3": 100,
+          "2": 100
+        },
+        "dominant_orbitals": [
+          [
+            1,
+            100
+          ],
+          [
+            3,
+            100
+          ],
+          [
+            2,
+            100
+          ]
+        ],
+        "intent_fraction_mean": 0.6666666666666669,
+        "intent_fraction_std": 2.220446049250313e-16,
+        "lasing_success_rate": 0.0,
+        "top_attractors": [
+          [
+            "difference",
+            4000
+          ],
+          [
+            "thing",
+            1000
+          ],
+          [
+            "meaning",
+            100
+          ]
+        ],
+        "attractors_by_orbital": {
+          "1": [
+            [
+              "meaning",
+              100,
+              1.34
+            ]
+          ],
+          "2": [
+            [
+              "difference",
+              4000,
+              1.6
+            ]
+          ],
+          "3": [
+            [
+              "thing",
+              1000,
+              2.07
+            ]
+          ]
+        },
+        "n_unique_words": 3,
+        "concentration": 1.0
+      }
+    },
+    {
+      "question": "What is a tree?",
+      "label": "concrete",
+      "aggregate": {
+        "tau_mean": 1.3476727074796029,
+        "tau_std_mean": 0.0874265743298006,
+        "tau_variance_across_samples": 1.9721522630525295e-31,
+        "coherence_mean": 0.0,
+        "coherence_std": 0.0,
+        "coherence_min": 0.0,
+        "coherence_max": 0.0,
+        "beam_count_mean": 0.0,
+        "beam_count_std": 0.0,
+        "orbital_distribution": {
+          "1": 200
+        },
+        "dominant_orbitals": [
+          [
+            1,
+            200
+          ]
+        ],
+        "intent_fraction_mean": 0.5,
+        "intent_fraction_std": 0.0,
+        "lasing_success_rate": 0.0,
+        "top_attractors": [
+          [
+            "death",
+            5000
+          ],
+          [
+            "tree",
+            100
+          ]
+        ],
+        "attractors_by_orbital": {
+          "1": [
+            [
+              "death",
+              5000,
+              1.26
+            ],
+            [
+              "tree",
+              100,
+              1.44
+            ]
+          ]
+        },
+        "n_unique_words": 2,
+        "concentration": 1.0
+      }
+    },
+    {
+      "question": "What do my dreams mean?",
+      "label": "personal",
+      "aggregate": {
+        "tau_mean": 1.4635042379337788,
+        "tau_std_mean": 0.2830499439246153,
+        "tau_variance_across_samples": 0.002194851440168587,
+        "coherence_mean": 0.8143170702380792,
+        "coherence_std": 0.05240156710496805,
+        "coherence_min": 0.6855121420985814,
+        "coherence_max": 0.922491949821312,
+        "beam_count_mean": 1.81,
+        "beam_count_std": 0.3923009049186606,
+        "orbital_distribution": {
+          "1": 1193,
+          "2": 546,
+          "3": 119,
+          "0": 83,
+          "4": 64
+        },
+        "dominant_orbitals": [
+          [
+            1,
+            1193
+          ],
+          [
+            2,
+            546
+          ],
+          [
+            3,
+            119
+          ],
+          [
+            0,
+            83
+          ],
+          [
+            4,
+            64
+          ]
+        ],
+        "intent_fraction_mean": 0.30936333939164734,
+        "intent_fraction_std": 0.05294669199834181,
+        "lasing_success_rate": 1.0,
+        "top_attractors": [
+          [
+            "mass",
+            1000
+          ],
+          [
+            "life",
+            408
+          ],
+          [
+            "difference",
+            392
+          ],
+          [
+            "end",
+            325
+          ],
+          [
+            "thing",
+            173
+          ],
+          [
+            "dream",
+            100
+          ],
+          [
+            "criminal",
+            95
+          ],
+          [
+            "ground",
+            92
+          ],
+          [
+            "death",
+            90
+          ],
+          [
+            "contemplation",
+            89
+          ],
+          [
+            "picture",
+            83
+          ],
+          [
+            "right",
+            81
+          ],
+          [
+            "lover",
+            81
+          ],
+          [
+            "arm",
+            80
+          ],
+          [
+            "generation",
+            77
+          ],
+          [
+            "man",
+            77
+          ],
+          [
+            "thread",
+            77
+          ],
+          [
+            "fury",
+            66
+          ],
+          [
+            "pedestal",
+            61
+          ],
+          [
+            "mistake",
+            52
+          ],
+          [
+            "history",
+            48
+          ],
+          [
+            "one",
+            43
+          ],
+          [
+            "home",
+            42
+          ],
+          [
+            "hair",
+            41
+          ],
+          [
+            "chapel",
+            39
+          ],
+          [
+            "trace",
+            38
+          ],
+          [
+            "distance",
+            35
+          ],
+          [
+            "pause",
+            33
+          ],
+          [
+            "thee",
+            23
+          ],
+          [
+            "soul",
+            19
+          ],
+          [
+            "peace",
+            16
+          ],
+          [
+            "vapor",
+            12
+          ],
+          [
+            "crown",
+            11
+          ],
+          [
+            "she",
+            11
+          ],
+          [
+            "harm",
+            11
+          ],
+          [
+            "thane",
+            11
+          ],
+          [
+            "blood",
+            11
+          ],
+          [
+            "charm",
+            10
+          ],
+          [
+            "trouble",
+            10
+          ],
+          [
+            "sand",
+            9
+          ],
+          [
+            "place",
+            9
+          ],
+          [
+            "lot",
+            9
+          ],
+          [
+            "world",
+            9
+          ],
+          [
+            "possession",
+            9
+          ],
+          [
+            "gesture",
+            8
+          ],
+          [
+            "way",
+            8
+          ],
+          [
+            "shoulder",
+            8
+          ],
+          [
+            "interruption",
+            8
+          ],
+          [
+            "pain",
+            8
+          ],
+          [
+            "shape",
+            8
+          ]
+        ],
+        "attractors_by_orbital": {
+          "0": [
+            [
+              "picture",
+              83,
+              1.16
+            ],
+            [
+              "gesture",
+              8,
+              1.14
+            ],
+            [
+              "high",
+              7,
+              1.09
+            ]
+          ],
+          "1": [
+            [
+              "mass",
+              1000,
+              1.2
+            ],
+            [
+              "dream",
+              100,
+              1.39
+            ],
+            [
+              "criminal",
+              95,
+              1.2
+            ],
+            [
+              "ground",
+              92,
+              1.35
+            ],
+            [
+              "death",
+              90,
+              1.26
+            ],
+            [
+              "contemplation",
+              89,
+              1.22
+            ],
+            [
+              "right",
+              81,
+              1.23
+            ],
+            [
+              "lover",
+              81,
+              1.19
+            ],
+            [
+              "arm",
+              80,
+              1.29
+            ],
+            [
+              "generation",
+              77,
+              1.33
+            ]
+          ],
+          "2": [
+            [
+              "life",
+              408,
+              1.66
+            ],
+            [
+              "difference",
+              392,
+              1.6
+            ],
+            [
+              "end",
+              325,
+              1.55
+            ],
+            [
+              "pedestal",
+              61,
+              1.59
+            ],
+            [
+              "home",
+              42,
+              1.68
+            ],
+            [
+              "hair",
+              41,
+              1.61
+            ],
+            [
+              "chapel",
+              39,
+              1.72
+            ],
+            [
+              "distance",
+              35,
+              1.72
+            ],
+            [
+              "pause",
+              33,
+              1.87
+            ],
+            [
+              "soul",
+              19,
+              1.58
+            ]
+          ],
+          "3": [
+            [
+              "thing",
+              173,
+              2.07
+            ],
+            [
+              "trouble",
+              10,
+              2.05
+            ],
+            [
+              "place",
+              9,
+              2.03
+            ],
+            [
+              "year",
+              7,
+              1.96
+            ],
+            [
+              "rapping",
+              7,
+              1.94
+            ]
+          ],
+          "4": [
+            [
+              "man",
+              77,
+              2.32
+            ],
+            [
+              "hand",
+              6,
+              2.49
+            ]
+          ]
+        },
+        "n_unique_words": 112,
+        "concentration": 0.6429402186555013
+      }
+    }
+  ]
+}

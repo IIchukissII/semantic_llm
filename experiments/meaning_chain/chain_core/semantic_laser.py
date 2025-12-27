@@ -98,17 +98,29 @@ class SemanticLaser:
     collapse navigation toward intent-relevant concepts.
     """
 
-    def __init__(self, graph: MeaningGraph = None, temperature: float = KT_NATURAL):
+    def __init__(self, graph: MeaningGraph = None, temperature: float = KT_NATURAL,
+                 intent_strength: float = 0.3):
+        """
+        Initialize Semantic Laser.
+
+        Args:
+            graph: MeaningGraph connection
+            temperature: Boltzmann temperature (kT)
+            intent_strength: α parameter for intent weighting (0=pure Boltzmann, 1=hard collapse)
+                           Recommended: 0.3 (soft guidance, "wind not wall")
+        """
         self.graph = graph or MeaningGraph()
         self._j_dims = ['beauty', 'life', 'sacred', 'good', 'love']
         self.kT = temperature  # Semantic temperature for Boltzmann transitions
+        self.intent_strength = intent_strength  # α: intent as wind, not wall
 
-        # Intent collapse support (NEW)
+        # Intent collapse support
         self.intent_collapse = IntentCollapse(self.graph)
         self.intent_enabled = False
         self.intent_verbs: List[str] = []
 
-        print(f"[SemanticLaser] Euler-aware laser with intent collapse (kT={self.kT:.2f})")
+        mode = "soft guidance" if 0 < intent_strength < 1 else ("hard collapse" if intent_strength >= 1 else "pure Boltzmann")
+        print(f"[SemanticLaser] kT={self.kT:.2f}, α={self.intent_strength:.2f} ({mode})")
 
     def set_intent(self, verbs: List[str]) -> Dict:
         """
@@ -176,14 +188,16 @@ class SemanticLaser:
              pump_depth: int = 5    # steps per walk
              ) -> Dict[str, ExcitedState]:
         """
-        Pumping phase: excite concepts via intent-driven + Boltzmann-weighted exploration.
+        Pumping phase: intent-WEIGHTED Boltzmann exploration.
 
-        NEW: If intent is set, prioritizes intent-aligned transitions.
-        Falls back to Boltzmann when intent space is sparse.
+        Formula: P(next) ∝ exp(-|Δτ|/kT) × (1 + α × intent_alignment)
 
-        Uses Euler physics: transitions weighted by exp(-|Δτ|/kT).
-        This means concepts at similar orbital levels are more likely
-        to be explored together, creating orbital coherence.
+        where α = intent_strength:
+          - α = 0:   Pure Boltzmann (cloud)
+          - α = 0.3: Soft guidance (wind)
+          - α ≥ 2:   Strong collapse (wall)
+
+        Intent is wind, not wall.
 
         Args:
             seeds: Starting concepts
@@ -195,9 +209,9 @@ class SemanticLaser:
         """
         excited = {}  # word -> ExcitedState
 
-        # Track intent collapse statistics
-        intent_transitions = 0
-        random_transitions = 0
+        # Track statistics
+        total_intent_weight = 0.0
+        total_weight = 0.0
 
         for seed in seeds:
             # Get seed properties
@@ -220,80 +234,89 @@ class SemanticLaser:
             for _ in range(pump_power):
                 current = seed
                 current_tau = seed_tau
-                walk_random_count = 0
-                max_random_per_walk = int(pump_depth * 0.4)  # Allow 40% random fallback
 
                 for step in range(pump_depth):
-                    next_word = None
-                    next_tau = None
-                    next_concept = None
-                    collapsed_by_intent = False
-                    step_intent_score = 0.0
+                    # Get ALL neighbors
+                    neighbors = self._get_neighbors_with_tau(current)
+                    if not neighbors:
+                        break
 
-                    # INTENT-DRIVEN TRANSITION (if enabled)
-                    if self.intent_enabled:
-                        intent_trans = self._get_intent_transition(current)
-                        if intent_trans:
-                            next_word = intent_trans['word']
-                            next_tau = intent_trans['tau']
-                            next_concept = intent_trans
-                            collapsed_by_intent = True
-                            step_intent_score = intent_trans.get('intent_score', 0.5)
-                            intent_transitions += 1
+                    # Compute intent-weighted Boltzmann probabilities
+                    words = []
+                    taus = []
+                    weights = []
+                    intent_scores = []
 
-                    # BOLTZMANN FALLBACK (if no intent match or intent disabled)
-                    if next_word is None and walk_random_count < max_random_per_walk:
-                        neighbors = self._get_neighbors_with_tau(current)
-                        if neighbors:
-                            words = [n[0] for n in neighbors]
-                            taus = [n[1] for n in neighbors]
-                            weights = [self._boltzmann_weight(current_tau, t) for t in taus]
+                    for word, tau in neighbors:
+                        # Base Boltzmann weight
+                        boltz = self._boltzmann_weight(current_tau, tau)
 
-                            total = sum(weights)
-                            if total > 0:
-                                probs = [w / total for w in weights]
-                                idx = np.random.choice(len(words), p=probs)
-                                next_word = words[idx]
-                                next_tau = taus[idx]
-                                next_concept = self.graph.get_concept(next_word)
-                                random_transitions += 1
-                                walk_random_count += 1
+                        # Intent alignment (0 or 1+)
+                        intent_align = 0.0
+                        if self.intent_enabled:
+                            # Check if word is in intent targets
+                            if word in self.intent_collapse.intent_targets:
+                                intent_align = 1.0
+                            # Or check if edge verb matches intent verbs
+                            # (this is approximated - full check would need edge data)
 
-                    if next_word is None or next_concept is None:
+                        # Combined weight: P ∝ boltz × (1 + α × intent)
+                        combined = boltz * (1.0 + self.intent_strength * intent_align)
+
+                        words.append(word)
+                        taus.append(tau)
+                        weights.append(combined)
+                        intent_scores.append(intent_align)
+
+                        # Track for statistics
+                        total_weight += combined
+                        total_intent_weight += combined * intent_align
+
+                    # Normalize and sample
+                    total = sum(weights)
+                    if total <= 0:
+                        break
+
+                    probs = [w / total for w in weights]
+                    idx = np.random.choice(len(words), p=probs)
+
+                    next_word = words[idx]
+                    next_tau = taus[idx]
+                    next_intent = intent_scores[idx]
+
+                    # Get full concept
+                    next_concept = self.graph.get_concept(next_word)
+                    if not next_concept:
                         break
 
                     # Add to excited states
                     if next_word in excited:
                         excited[next_word].visits += 1
                         excited[next_word].sources.add(seed)
-                        # Update intent tracking if this was intent-driven
-                        if collapsed_by_intent:
+                        if next_intent > 0:
                             excited[next_word].collapsed_by_intent = True
                             excited[next_word].intent_score = max(
-                                excited[next_word].intent_score,
-                                step_intent_score
+                                excited[next_word].intent_score, next_intent
                             )
                     else:
                         excited[next_word] = ExcitedState(
                             word=next_word,
-                            tau=next_concept.get('tau', 2.0) if isinstance(next_concept, dict) else next_tau,
-                            g=next_concept.get('g', 0.0) if isinstance(next_concept, dict) else 0.0,
-                            j=self._get_j_vector(next_concept.get('j') if isinstance(next_concept, dict) else None),
+                            tau=next_concept.get('tau', 2.0),
+                            g=next_concept.get('g', 0.0),
+                            j=self._get_j_vector(next_concept.get('j')),
                             visits=1,
                             sources={seed},
-                            collapsed_by_intent=collapsed_by_intent,
-                            intent_score=step_intent_score
+                            collapsed_by_intent=(next_intent > 0),
+                            intent_score=next_intent
                         )
 
                     current = next_word
                     current_tau = next_tau
 
-        # Log intent effectiveness
-        total = intent_transitions + random_transitions
-        if total > 0 and self.intent_enabled:
-            ratio = intent_transitions / total
-            print(f"[SemanticLaser] Pump collapse ratio: {ratio:.0%} "
-                  f"({intent_transitions} intent / {random_transitions} random)")
+        # Log intent influence (not collapse ratio, but weight contribution)
+        if total_weight > 0 and self.intent_enabled:
+            influence = total_intent_weight / total_weight
+            print(f"[SemanticLaser] Intent influence: {influence:.1%} (α={self.intent_strength:.2f})")
 
         return excited
 
