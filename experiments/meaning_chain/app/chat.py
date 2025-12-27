@@ -45,7 +45,12 @@ from chain_core.tree_builder import TreeBuilder, TreeBuilderConfig
 from chain_core.renderer import Renderer, RendererConfig
 from chain_core.feedback import FeedbackAnalyzer, FeedbackConfig, FeedbackResult
 from chain_core.storm_logos import StormLogosBuilder, LogosPattern
-from models.types import MeaningTree
+from chain_core.euler_navigation import (
+    EulerAwareStorm, EulerNavigator,
+    KT_NATURAL, VEIL_TAU, GROUND_STATE_TAU, E
+)
+from models.types import MeaningTree, MeaningNode, SemanticProperties
+import numpy as np
 
 # Import conversation learner
 from graph.conversation_learner import ConversationLearner
@@ -63,6 +68,10 @@ class ChatConfig:
     storm_temperature: float = 1.5        # Controls chaos in storm phase
     n_walks: int = 5                      # Parallel walks per seed
     steps_per_walk: int = 8               # Steps in each walk
+
+    # Euler Navigation (orbital physics)
+    euler_mode: bool = True               # Use Euler orbital navigation
+    euler_temperature: float = KT_NATURAL # Natural temperature kT ≈ 0.82
 
     # Rendering
     model: str = "mistral:7b"
@@ -112,7 +121,8 @@ class MeaningChainChat:
             RendererConfig(
                 model=self.config.model,
                 temperature=self.config.temperature,
-                max_tokens=self.config.max_tokens
+                max_tokens=self.config.max_tokens,
+                euler_mode=self.config.euler_mode  # Enable Euler context in prompts
             )
         )
 
@@ -125,7 +135,14 @@ class MeaningChainChat:
 
         # Storm-Logos builder (biological emergence)
         self.storm_logos = None
-        if self.config.use_storm_logos:
+        self.euler_storm = None
+
+        if self.config.euler_mode:
+            # Euler-aware navigation with orbital physics
+            self.euler_storm = EulerAwareStorm(temperature=self.config.euler_temperature)
+            self._log(f"[Chat] Euler navigation enabled (kT={self.config.euler_temperature:.2f})")
+        elif self.config.use_storm_logos:
+            # Standard storm-logos (fallback)
             self.storm_logos = StormLogosBuilder(
                 storm_temperature=self.config.storm_temperature,
                 n_walks=self.config.n_walks,
@@ -145,8 +162,10 @@ class MeaningChainChat:
                 self._log(f"[Chat] Learning disabled: {e}")
                 self.learner = None
 
-        # Conversation history
+        # Conversation history (for context)
         self.history: List[Dict[str, Any]] = []
+        # Chat messages for Ollama (user/assistant format)
+        self.chat_messages: List[Dict[str, str]] = []
 
     def _log(self, message: str):
         """Log message if verbose."""
@@ -181,19 +200,114 @@ class MeaningChainChat:
         if decomposed.unknown_words:
             self._log(f"    Unknown: {decomposed.unknown_words}")
 
+        # Accumulate context nouns from conversation history for richer navigation
+        if self.chat_messages:
+            context_nouns = []
+            for msg in self.chat_messages[-6:]:  # Last 3 exchanges
+                if msg['role'] == 'user':  # Only from user messages
+                    ctx_decomposed = self.decomposer.decompose(msg['content'])
+                    context_nouns.extend(ctx_decomposed.nouns[:5])
+
+            if context_nouns:
+                # Combine current nouns with context, prioritizing current
+                all_nouns = decomposed.nouns + [n for n in context_nouns if n not in decomposed.nouns]
+                decomposed.nouns = all_nouns[:8]  # Limit to 8 seeds for navigation
+                if len(context_nouns) > 0:
+                    self._log(f"    With context: {decomposed.nouns}")
+
         if not decomposed.nouns:
-            return {
-                'response': "I couldn't identify any concepts in your query. "
-                           "Could you rephrase?",
-                'tree': None,
-                'feedback': None,
-                'attempts': 0,
-                'metadata': {'error': 'no_concepts'}
+                return {
+                    'response': "I couldn't identify any concepts in your query. "
+                               "Could you rephrase?",
+                    'tree': None,
+                    'feedback': None,
+                    'attempts': 0,
+                    'metadata': {'error': 'no_concepts'}
+                }
+
+        # Step 2: Build tree using Euler, Storm-Logos, or fallback
+        pattern = None
+        euler_stats = None
+
+        if self.euler_storm:
+            # Euler-aware navigation with orbital physics
+            self._log("\n[2] EULER STORM phase (orbital navigation)...")
+            storm_result = self.euler_storm.generate(
+                seeds=decomposed.nouns[:5],
+                n_walks=self.config.n_walks,
+                steps_per_walk=self.config.steps_per_walk
+            )
+
+            stats = storm_result['statistics']
+            all_states = storm_result['states']
+
+            # Find convergence (most visited non-seed word)
+            word_counts = {}
+            for state in all_states:
+                word_counts[state.word] = word_counts.get(state.word, 0) + 1
+
+            seeds_set = set(decomposed.nouns[:5])
+            convergence = None
+            max_count = 0
+            for word, count in word_counts.items():
+                if word not in seeds_set and count > max_count:
+                    convergence = word
+                    max_count = count
+
+            core_concepts = sorted(word_counts.keys(), key=lambda w: -word_counts[w])[:10]
+
+            # Count veil crossings
+            veil_crossings = sum(p.get('veil_crossings', 0) for p in stats.get('path_stats', []))
+
+            # Orbital distribution
+            orbital_dist = {}
+            for state in all_states:
+                n = state.orbital_n
+                orbital_dist[n] = orbital_dist.get(n, 0) + 1
+
+            self._log(f"    Convergence: {convergence}")
+            self._log(f"    Core concepts: {core_concepts[:5]}")
+            self._log(f"    Mean τ: {stats['mean_tau']:.2f} (orbital n={stats['mean_orbital']:.1f})")
+            self._log(f"    Human realm: {stats['human_fraction']:.1%}")
+            self._log(f"    Veil crossings: {veil_crossings}")
+
+            # Build euler_stats for renderer
+            euler_stats = {
+                'mean_tau': stats['mean_tau'],
+                'orbital_n': int(round((stats['mean_tau'] - 1) * E)),
+                'realm': 'human' if stats['mean_tau'] < VEIL_TAU else 'transcendental',
+                'below_veil': stats['mean_tau'] < VEIL_TAU,
+                'near_ground': abs(stats['mean_tau'] - GROUND_STATE_TAU) < 0.5,
+                'veil_crossings': veil_crossings,
+                'human_fraction': stats['human_fraction'],
+                'convergence': convergence,
+                'core_concepts': core_concepts[:5],
+                'key_symbols': decomposed.unknown_words[:10],  # Important symbols not in vocab
+                'known_nouns': decomposed.nouns[:8]  # Nouns we could navigate
             }
 
-        # Step 2: Build tree using Storm-Logos or fallback
-        pattern = None
-        if self.storm_logos:
+            # Build tree from Euler results
+            root_word = convergence or decomposed.nouns[0]
+            root = MeaningNode(
+                word=root_word,
+                properties=SemanticProperties(
+                    g=0.0,
+                    tau=stats['mean_tau'],
+                    j=np.zeros(5)
+                ),
+                depth=0
+            )
+            tree = MeaningTree(roots=[root])
+
+            self._log("\n[3] ORBITAL PHYSICS")
+            if euler_stats['near_ground']:
+                self._log("    Position: Ground state - immediate experience")
+            elif euler_stats['below_veil']:
+                self._log("    Position: Human territory - everyday meaning")
+            else:
+                self._log("    Position: Transcendental - beyond the Veil")
+
+        elif self.storm_logos:
             self._log("\n[2] STORM phase (chaotic associations)...")
             tree, pattern = self.storm_logos.build(
                 decomposed.nouns,
@@ -221,10 +335,18 @@ class MeaningChainChat:
         summary = tree.summary()
         self._log(f"    Nodes: {summary['total_nodes']}, Paths: {summary['paths']}")
 
-        # Step 4: Render ONE response from the pattern
+        # Step 4: Render ONE response from the pattern (with conversation history)
         self._log("\n[4] Rendering response...")
-        render_result = self.renderer.render(tree, query)
+        render_result = self.renderer.render(
+            tree, query,
+            euler_stats=euler_stats,
+            conversation_history=self.chat_messages
+        )
         final_response = render_result['response']
+
+        # Update chat messages for next turn
+        self.chat_messages.append({"role": "user", "content": query})
+        self.chat_messages.append({"role": "assistant", "content": final_response})
 
         # Validate with feedback (but don't regenerate - pattern is the answer)
         final_feedback = self.feedback.analyze(final_response, tree)
@@ -237,6 +359,7 @@ class MeaningChainChat:
             'tree': tree,
             'feedback': final_feedback,
             'pattern': pattern,  # The logos pattern
+            'euler_stats': euler_stats,  # Euler orbital statistics
             'metadata': {
                 'model': self.config.model,
                 'tree_summary': summary,
@@ -256,9 +379,9 @@ class MeaningChainChat:
         # Learn from this exchange (if enabled)
         if self.learner:
             learn_stats = self.learner.learn_from_exchange(query, final_response)
-            if learn_stats['total'] > 0:
-                self._log(f"\n[5] Learning: {learn_stats['total']} patterns "
-                          f"({learn_stats['new']} new, {learn_stats['reinforced']} reinforced)")
+            if learn_stats.get('total', 0) > 0:
+                self._log(f"\n[5] Learning: {learn_stats.get('total', 0)} patterns "
+                          f"({learn_stats.get('new', 0)} new, {learn_stats.get('reinforced', 0)} reinforced)")
             result['metadata']['learned'] = learn_stats
 
         # Final output
@@ -266,13 +389,26 @@ class MeaningChainChat:
         self._log("RESPONSE:")
         self._log(f"{'='*60}")
         self._log(final_response)
-        if pattern:
+        if euler_stats:
+            self._log(f"\n[τ={euler_stats['mean_tau']:.2f} | n={euler_stats['orbital_n']} | "
+                      f"{euler_stats['realm']} | veil×{euler_stats['veil_crossings']}]")
+        elif pattern:
             self._log(f"\n[Coherence: {pattern.coherence:.0%} | "
                       f"Alignment: {final_feedback.alignment_score:.0%}]")
         else:
             self._log(f"\n[Alignment: {final_feedback.alignment_score:.0%}]")
 
         return result
+
+    def close(self):
+        """Clean up resources."""
+        if self.learner:
+            self.learner.close()
+        if self.euler_storm:
+            self.euler_storm.close()
+        if self.storm_logos:
+            self.storm_logos.close()
+        self.tree_builder.close()
 
     def respond_stream(self, query: str):
         """
@@ -315,17 +451,24 @@ def main():
     """Interactive chat loop."""
     print("="*60)
     print("  MEANING CHAIN CHAT")
-    print("  Semantic navigation through meaning space")
+    print("  Euler-Aware Semantic Navigation")
     print("="*60)
+    print()
+    print(f"  Euler Constants:")
+    print(f"    e = {E:.4f} (orbital spacing = 1/e)")
+    print(f"    kT = {KT_NATURAL:.2f} (natural temperature)")
+    print(f"    Veil at τ = e (human < e < transcendental)")
     print()
     print("Commands:")
     print("  /tree <query>  - Show meaning tree only")
     print("  /learn         - Show learning statistics")
+    print("  /euler         - Toggle Euler mode")
+    print("  /clear         - Clear conversation history")
     print("  /quiet         - Toggle verbose output")
     print("  /exit          - Exit")
     print()
 
-    chat = MeaningChainChat(ChatConfig(verbose=True, show_tree=True))
+    chat = MeaningChainChat(ChatConfig(verbose=True, show_tree=False, euler_mode=True))
 
     try:
         while True:
@@ -345,6 +488,19 @@ def main():
             if query == "/quiet":
                 chat.config.verbose = not chat.config.verbose
                 print(f"Verbose: {chat.config.verbose}")
+                continue
+
+            if query == "/euler":
+                chat.config.euler_mode = not chat.config.euler_mode
+                if chat.config.euler_mode and not chat.euler_storm:
+                    chat.euler_storm = EulerAwareStorm(temperature=chat.config.euler_temperature)
+                print(f"Euler mode: {chat.config.euler_mode}")
+                continue
+
+            if query == "/clear":
+                chat.chat_messages = []
+                chat.history = []
+                print("Conversation history cleared.")
                 continue
 
             if query == "/learn":
@@ -378,9 +534,13 @@ def main():
         if chat.learner:
             stats = chat.learner.get_session_stats()
             if stats.get('total_patterns', 0) > 0:
-                print(f"\nSession learned {stats['total_patterns']} patterns "
-                      f"({stats['new']} new)")
+                print(f"\nSession learned {stats.get('total_patterns', 0)} patterns "
+                      f"({stats.get('new', 0)} new)")
             chat.learner.close()
+        if chat.euler_storm:
+            chat.euler_storm.close()
+        if chat.storm_logos:
+            chat.storm_logos.close()
         chat.tree_builder.close()
 
 

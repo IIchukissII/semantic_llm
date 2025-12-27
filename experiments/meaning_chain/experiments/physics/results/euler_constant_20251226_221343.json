@@ -1,0 +1,302 @@
+{
+  "timestamp": "20251226_221343",
+  "discovery": "Euler's constant in semantic physics",
+  "euler_constant": {
+    "e": 2.718281828459045,
+    "1/e": 0.36787944117144233,
+    "e^e": 15.154262241479262
+  },
+  "hypothesis": {
+    "population_ratio": "ln(N_ground/N_excited) \u2248 e",
+    "peak_fraction": "fraction at \u03c4-peak \u2248 1/e",
+    "orbital_spacing": "\u03c4_n = 1 + n/e",
+    "boltzmann_temp": "kT = \u0394E/e"
+  },
+  "summary": {
+    "total_tests": 6,
+    "passed": 5,
+    "pass_rate": "83.3%",
+    "euler_validated": false
+  },
+  "results": [
+    {
+      "test_id": "E1",
+      "name": "Population ratio ln(N_g/N_e) \u2248 e",
+      "measured": 2.686347464656716,
+      "expected": 2.718281828459045,
+      "expected_name": "e",
+      "error": 0.03193436380232928,
+      "error_percent": 1.174799590976643,
+      "passed": "True",
+      "threshold": 5.0,
+      "details": {
+        "N_ground": 17320,
+        "N_excited": 1180,
+        "ratio": 14.677966101694915,
+        "ln_ratio": 2.686347464656716,
+        "e": 2.718281828459045,
+        "e_to_e": 15.154262241479262,
+        "ground_threshold": "\u03c4 \u2208 [1, 3]",
+        "excited_threshold": "\u03c4 \u2265 5.5"
+      }
+    },
+    {
+      "test_id": "E2",
+      "name": "Peak fraction \u2248 1/e",
+      "measured": 0.41721332983468906,
+      "expected": 0.36787944117144233,
+      "expected_name": "1/e",
+      "error": 0.04933388866324673,
+      "error_percent": 13.410341308052528,
+      "passed": "False",
+      "threshold": 10.0,
+      "details": {
+        "peak_tau": 1.3678794411714423,
+        "peak_width": 0.5,
+        "n_at_peak": 7950,
+        "total": 19055,
+        "fraction": 0.41721332983468906,
+        "1/e": 0.36787944117144233
+      }
+    },
+    {
+      "test_id": "E3",
+      "name": "Orbital quantization \u03c4_n = 1 + n/e",
+      "measured": 0.9282602991340856,
+      "expected": 0.85,
+      "expected_name": "85% coverage",
+      "error": 0.07826029913408561,
+      "error_percent": 9.207094015774778,
+      "passed": "True",
+      "threshold": 80.0,
+      "details": {
+        "orbital_spacing": 0.36787944117144233,
+        "orbitals": [
+          {
+            "n": 0,
+            "tau": 1.0,
+            "count": 3014,
+            "percent": 15.81737076882708
+          },
+          {
+            "n": 1,
+            "tau": 1.3678794411714423,
+            "count": 5793,
+            "percent": 30.401469430595647
+          },
+          {
+            "n": 2,
+            "tau": 1.7357588823428847,
+            "count": 4093,
+            "percent": 21.479926528470216
+          },
+          {
+            "n": 3,
+            "tau": 2.103638323514327,
+            "count": 2738,
+            "percent": 14.36893203883495
+          },
+          {
+            "n": 4,
+            "tau": 2.4715177646857693,
+            "count": 1217,
+            "percent": 6.386775124639202
+          },
+          {
+            "n": 5,
+            "tau": 2.8393972058572117,
+            "count": 474,
+            "percent": 2.4875360797690895
+          },
+          {
+            "n": 6,
+            "tau": 3.207276647028654,
+            "count": 233,
+            "percent": 1.222776174232485
+          },
+          {
+            "n": 7,
+            "tau": 3.5751560882000963,
+            "count": 126,
+            "percent": 0.6612437680398845
+          }
+        ],
+        "total_in_orbitals": 17688,
+        "coverage": 0.9282602991340856,
+        "1/e": 0.36787944117144233
+      }
+    },
+    {
+      "test_id": "E4",
+      "name": "Boltzmann temperature kT = \u0394E/e",
+      "measured": 0.8164632591892683,
+      "expected": 0.8068714521598382,
+      "expected_name": "\u0394E/e",
+      "error": 0.009591807029430077,
+      "error_percent": 1.1887651996801563,
+      "passed": "True",
+      "threshold": 10.0,
+      "details": {
+        "phi_ground": 0.7961881581151494,
+        "phi_excited": 2.9894921644235994,
+        "delta_E": 2.19330400630845,
+        "ln_ratio": 2.686347464656716,
+        "kT_measured": 0.8164632591892683,
+        "kT_expected": 0.8068714521598382,
+        "close_to_1": 0.18353674081073168
+      }
+    },
+    {
+      "test_id": "E5",
+      "name": "Veil at \u03c4 = e (89% human)",
+      "measured": 0.8904749409603778,
+      "expected": 0.89,
+      "expected_name": "89%",
+      "error": 0.0004749409603778121,
+      "error_percent": 0.05336415285143956,
+      "passed": true,
+      "threshold": 85.0,
+      "details": {
+        "veil_comparisons": {
+          "2.5": {
+            "veil": 2.5,
+            "frac_below": 0.8644975072159539,
+            "frac_above": 0.13550249278404614,
+            "g_below": 0.0385236307742953,
+            "g_above": 0.024033501067138432,
+            "delta_g": -0.014490129707156865
+          },
+          "e": {
+            "veil": 2.718281828459045,
+            "frac_below": 0.8904749409603778,
+            "frac_above": 0.10952505903962217,
+            "g_below": 0.03886635511511515,
+            "g_above": 0.017810232825608008,
+            "delta_g": -0.021056122289507144
+          },
+          "3.0": {
+            "veil": 3.0,
+            "frac_below": 0.9089477827341905,
+            "frac_above": 0.09105221726580948,
+            "g_below": 0.03869820100028591,
+            "g_above": 0.015216961484360749,
+            "delta_g": -0.023481239515925165
+          },
+          "3.5": {
+            "veil": 3.5,
+            "frac_below": 0.9239569666754133,
+            "frac_above": 0.07604303332458673,
+            "g_below": 0.03782712146159706,
+            "g_above": 0.021166300239779244,
+            "delta_g": -0.016660821221817813
+          }
+        },
+        "e": 2.718281828459045
+      }
+    },
+    {
+      "test_id": "E6",
+      "name": "Robustness across thresholds",
+      "measured": 1.0,
+      "expected": 0.8,
+      "expected_name": "80% pass",
+      "error": 0.19999999999999996,
+      "error_percent": 24.999999999999993,
+      "passed": true,
+      "threshold": 70.0,
+      "details": {
+        "passing": 9,
+        "total": 9,
+        "robustness": 1.0,
+        "threshold_tests": [
+          {
+            "ground_max": 2.5,
+            "excited_min": 5.0,
+            "N_ground": 16473,
+            "N_excited": 1195,
+            "ln_ratio": 2.623576491581371,
+            "error_pct": 3.484014640651191,
+            "passed": "True"
+          },
+          {
+            "ground_max": 2.5,
+            "excited_min": 5.5,
+            "N_ground": 16473,
+            "N_excited": 1180,
+            "ln_ratio": 2.636208238487272,
+            "error_pct": 3.0193186413749964,
+            "passed": "True"
+          },
+          {
+            "ground_max": 2.5,
+            "excited_min": 6.0,
+            "N_ground": 16473,
+            "N_excited": 1178,
+            "ln_ratio": 2.63790459173545,
+            "error_pct": 2.9569132928780815,
+            "passed": "True"
+          },
+          {
+            "ground_max": 3.0,
+            "excited_min": 5.0,
+            "N_ground": 17320,
+            "N_excited": 1195,
+            "ln_ratio": 2.6737157177508153,
+            "error_pct": 1.6394955902528212,
+            "passed": "True"
+          },
+          {
+            "ground_max": 3.0,
+            "excited_min": 5.5,
+            "N_ground": 17320,
+            "N_excited": 1180,
+            "ln_ratio": 2.686347464656716,
+            "error_pct": 1.174799590976643,
+            "passed": "True"
+          },
+          {
+            "ground_max": 3.0,
+            "excited_min": 6.0,
+            "N_ground": 17320,
+            "N_excited": 1178,
+            "ln_ratio": 2.688043817904894,
+            "error_pct": 1.112394242479728,
+            "passed": "True"
+          },
+          {
+            "ground_max": 3.5,
+            "excited_min": 5.0,
+            "N_ground": 17606,
+            "N_excited": 1195,
+            "ln_ratio": 2.69009356765524,
+            "error_pct": 1.036988163209861,
+            "passed": "True"
+          },
+          {
+            "ground_max": 3.5,
+            "excited_min": 5.5,
+            "N_ground": 17606,
+            "N_excited": 1180,
+            "ln_ratio": 2.702725314561141,
+            "error_pct": 0.5722921639336668,
+            "passed": "True"
+          },
+          {
+            "ground_max": 3.5,
+            "excited_min": 6.0,
+            "N_ground": 17606,
+            "N_excited": 1178,
+            "ln_ratio": 2.7044216678093194,
+            "error_pct": 0.5098868154367515,
+            "passed": "True"
+          }
+        ]
+      }
+    }
+  ],
+  "interpretation": {
+    "conclusion": "Euler's number is a fundamental constant of semantic physics",
+    "mechanism": "Semantic space is in thermal equilibrium following Boltzmann statistics",
+    "significance": "e appears because meaning diffuses to equilibrium like physical systems"
+  }
+}

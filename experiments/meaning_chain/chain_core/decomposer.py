@@ -2,7 +2,7 @@
 Decomposer: Sentence -> List of Meanings
 
 Extracts semantic concepts (nouns) and operators (verbs) from input text.
-Uses the semantic space vocabulary to filter to known concepts.
+Uses spaCy for POS tagging and the semantic space vocabulary to filter to known concepts.
 """
 
 import re
@@ -17,6 +17,16 @@ _SEMANTIC_LLM = _THIS_FILE.parent.parent.parent.parent
 sys.path.insert(0, str(_SEMANTIC_LLM))
 
 from core.data_loader import DataLoader
+
+# Load spaCy
+import spacy
+try:
+    _nlp = spacy.load("en_core_web_sm")
+except OSError:
+    print("[Decomposer] Downloading spaCy model...")
+    from spacy.cli import download
+    download("en_core_web_sm")
+    _nlp = spacy.load("en_core_web_sm")
 
 
 @dataclass
@@ -68,11 +78,8 @@ class Decomposer:
             'up', 'out', 'off', 'over', 'under', 'few', 'many', 'much'
         }
 
-        # Minimum tau for meaningful roots (filter function words)
-        self.min_tau_for_root = 2.0
-
         # Maximum roots to extract (focus on key concepts)
-        self.max_roots = 5
+        self.max_roots = 12
 
         # Question words (not stop words, but don't add to meaning tree)
         self.question_words = {'what', 'why', 'how', 'when', 'where', 'who', 'which'}
@@ -157,7 +164,7 @@ class Decomposer:
 
     def decompose(self, text: str) -> DecomposedSentence:
         """
-        Decompose a sentence into semantic concepts.
+        Decompose a sentence into semantic concepts using spaCy.
 
         Args:
             text: Input sentence
@@ -167,47 +174,52 @@ class Decomposer:
         """
         self._load_vocabularies()
 
-        tokens = self._tokenize(text)
+        # Use spaCy for POS tagging
+        doc = _nlp(text)
 
         nouns = []
         verbs = []
         unknown = []
-        seen = set()
+        seen_nouns = set()
+        seen_verbs = set()
 
-        for token in tokens:
-            # Skip stop words and question words
-            if token in self.stop_words or token in self.question_words:
+        for token in doc:
+            # Skip punctuation and stop words
+            if token.is_punct or token.is_stop:
                 continue
 
-            if token in seen:
-                continue
-            seen.add(token)
+            lemma = token.lemma_.lower()
+            word = token.text.lower()
 
-            found_any = False
+            # Handle based on POS tag
+            if token.pos_ in ('NOUN', 'PROPN'):
+                # It's a noun - check vocabulary
+                match = lemma if lemma in self._noun_set else (word if word in self._noun_set else None)
+                if match and match not in seen_nouns:
+                    seen_nouns.add(match)
+                    nouns.append(match)
+                elif not match and lemma not in seen_nouns:
+                    # Unknown noun - still valuable for context
+                    seen_nouns.add(lemma)
+                    unknown.append(lemma)
 
-            # Check for verb
-            verb_match = self._find_in_vocab(token, self._verb_set)
-            if verb_match:
-                verbs.append(verb_match)
-                found_any = True
+            elif token.pos_ == 'VERB':
+                # It's a verb - check vocabulary
+                match = lemma if lemma in self._verb_set else (word if word in self._verb_set else None)
+                if match and match not in seen_verbs:
+                    seen_verbs.add(match)
+                    verbs.append(match)
 
-            # Also check for noun - words can be BOTH verb and noun
-            # e.g., "love", "dream", "help" are both concepts and operators
-            noun_match = self._find_in_vocab(token, self._noun_set)
-            if noun_match:
-                data = self._word_vectors.get(noun_match, {})
-                tau = data.get('tau', 3.0)
-                if tau >= self.min_tau_for_root:
-                    nouns.append((noun_match, tau))
-                    found_any = True
-
-            # Unknown word (not in either vocabulary)
-            if not found_any:
-                unknown.append(token)
-
-        # Sort nouns by tau (higher = more abstract/meaningful) and limit
-        nouns.sort(key=lambda x: -x[1])
-        nouns = [n[0] for n in nouns[:self.max_roots]]
+            elif token.pos_ == 'ADJ':
+                # Adjectives can be meaningful - check if in noun vocab
+                match = lemma if lemma in self._noun_set else (word if word in self._noun_set else None)
+                if match and match not in seen_nouns:
+                    seen_nouns.add(match)
+                    nouns.append(match)
+                elif not match and lemma not in seen_nouns:
+                    # Unknown adjective - could be valuable (e.g., "mystical")
+                    seen_nouns.add(lemma)
+                    unknown.append(lemma)
 
         # Create noun-verb pairs based on proximity
         # Simple heuristic: pair each noun with nearest verb

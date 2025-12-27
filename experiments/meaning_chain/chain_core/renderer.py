@@ -29,6 +29,15 @@ class RendererConfig:
     include_paths: bool = True       # Include all paths
     include_transitions: bool = True # Include verb transitions
     system_prompt: str = ""
+    euler_mode: bool = False         # Include Euler orbital physics
+
+
+# Euler Constants (from euler_navigation.py)
+import numpy as np
+E = np.e                    # Euler's number = 2.71828...
+KT_NATURAL = 0.82           # Natural temperature
+VEIL_TAU = E                # The Veil boundary
+GROUND_STATE_TAU = 1.37     # Peak population (n=1 orbital)
 
 
 class TreeSerializer:
@@ -210,14 +219,85 @@ class Renderer:
             'coherence': coherence
         }
 
-    def build_prompt(self, tree: MeaningTree, user_query: str) -> str:
+    def _compute_euler_physics(self, tree: MeaningTree) -> Dict[str, Any]:
+        """
+        Compute Euler orbital physics from the tree.
+
+        Returns orbital level, realm, and physics interpretation.
+        """
+        nodes = tree.all_nodes()
+        if not nodes:
+            return {
+                'mean_tau': 3.0,
+                'orbital_n': 5,
+                'realm': 'human',
+                'below_veil': True,
+                'near_ground': False
+            }
+
+        tau_vals = [n.tau for n in nodes if n.tau is not None]
+        if not tau_vals:
+            tau_vals = [3.0]
+
+        mean_tau = np.mean(tau_vals)
+        orbital_n = int(round((mean_tau - 1) * E))  # n = (τ - 1) * e
+        realm = "human" if mean_tau < VEIL_TAU else "transcendental"
+        below_veil = mean_tau < VEIL_TAU
+        near_ground = abs(mean_tau - GROUND_STATE_TAU) < 0.5
+
+        return {
+            'mean_tau': mean_tau,
+            'orbital_n': orbital_n,
+            'realm': realm,
+            'below_veil': below_veil,
+            'near_ground': near_ground,
+            'tau_range': (min(tau_vals), max(tau_vals))
+        }
+
+    def build_prompt(self, tree: MeaningTree, user_query: str,
+                     euler_stats: Optional[Dict] = None) -> str:
         """
         Build LLM prompt from meaning tree using semantic collapse quality.
 
         The collapse quality metrics tell the LLM how much information
         is available and whether to ask for more or proceed with interpretation.
+
+        Args:
+            tree: The meaning tree
+            user_query: Original user question
+            euler_stats: Optional Euler orbital statistics from EulerAwareStorm
         """
         sections = []
+
+        # Euler Navigation Results (full info for the model, but instruct not to echo jargon)
+        if self.config.euler_mode or euler_stats:
+            physics = euler_stats or self._compute_euler_physics(tree)
+            sections.append("## Navigation Results (use this info, but don't echo the jargon)")
+            sections.append(f"Semantic depth: {physics.get('mean_tau', 3.0):.2f} (1=surface, 3=everyday, 6=transcendental)")
+            sections.append(f"Orbital level: n={physics.get('orbital_n', 3)} (lower=grounded, higher=abstract)")
+
+            if physics.get('near_ground'):
+                sections.append("Position: Very grounded - immediate felt experience")
+            elif physics.get('below_veil'):
+                sections.append("Position: Human territory - everyday meaning")
+            else:
+                sections.append("Position: Transcendental - beyond ordinary experience")
+
+            if euler_stats:
+                if 'veil_crossings' in euler_stats and euler_stats['veil_crossings'] > 0:
+                    sections.append(f"Boundary crossings: {euler_stats['veil_crossings']} (touched transcendental)")
+                if 'human_fraction' in euler_stats:
+                    sections.append(f"Groundedness: {euler_stats['human_fraction']:.0%} in human territory")
+                if 'convergence' in euler_stats and euler_stats['convergence']:
+                    sections.append(f"Convergence point: '{euler_stats['convergence']}' (where meaning crystallized)")
+                if 'core_concepts' in euler_stats and euler_stats['core_concepts']:
+                    sections.append(f"Core concepts explored: {', '.join(euler_stats['core_concepts'])}")
+                if 'key_symbols' in euler_stats and euler_stats['key_symbols']:
+                    sections.append(f"Key symbols from user: {', '.join(euler_stats['key_symbols'])}")
+                if 'known_nouns' in euler_stats and euler_stats['known_nouns']:
+                    sections.append(f"Grounded concepts: {', '.join(euler_stats['known_nouns'])}")
+
+            sections.append("")
 
         # Measure collapse quality
         quality = self._collapse_quality(tree)
@@ -258,14 +338,24 @@ class Renderer:
         sections.append(f"Query: {user_query}")
         sections.append("")
 
-        # Guidance based on collapse quality
+        # Guidance based on available information
         sections.append("## Guidance")
-        if quality['richness'] < 0.3:
+        # Check if we have enough from euler_stats (known_nouns) even if tree is minimal
+        has_concepts = euler_stats and len(euler_stats.get('known_nouns', [])) >= 3
+        if has_concepts:
+            sections.append("- Respond using the grounded concepts and key symbols above")
+        elif quality['richness'] < 0.3:
             sections.append("- Low richness: ask what specific information the user can share")
-        if quality['specificity'] < 0.4:
+        elif quality['specificity'] < 0.4:
             sections.append("- Low specificity: ask for concrete details")
-        if quality['richness'] >= 0.3 and quality['specificity'] >= 0.4:
+        else:
             sections.append("- Good collapse: respond using the concepts and connections")
+
+        # Euler-aware guidance - simple, no jargon
+        if self.config.euler_mode or euler_stats:
+            sections.append("- Start fresh each time - no formulaic openings")
+            sections.append("- Don't echo physics terms from the input (tau, orbital, veil, etc.)")
+            sections.append("- Respond as a thoughtful human would, not a physics textbook")
 
         sections.append("- Be concise (2-3 sentences)")
 
@@ -276,17 +366,31 @@ class Renderer:
         if self.config.system_prompt:
             return self.config.system_prompt
 
+        if self.config.euler_mode:
+            return """You interpret meaning through semantic connections.
+
+Use the navigation results to guide your response:
+- Core concepts show where meaning converged
+- Grounded concepts are the user's symbols
+- Convergence point is the central meaning
+
+Be substantive, not generic. 2-3 sentences."""
+
         return """You respond based on semantic meaning structures.
 Follow the concept connections naturally. Match the tone to the semantic context.
 Be concise and insightful, not mechanical."""
 
-    def render(self, tree: MeaningTree, user_query: str) -> Dict[str, Any]:
+    def render(self, tree: MeaningTree, user_query: str,
+               euler_stats: Optional[Dict] = None,
+               conversation_history: Optional[List[Dict]] = None) -> Dict[str, Any]:
         """
         Render meaning tree into natural language response.
 
         Args:
             tree: The meaning tree
             user_query: Original user question
+            euler_stats: Optional Euler orbital statistics from EulerAwareStorm
+            conversation_history: Optional list of previous messages for context
 
         Returns:
             {
@@ -300,16 +404,25 @@ Be concise and insightful, not mechanical."""
 
         # Build prompts
         system_prompt = self.build_system_prompt()
-        user_prompt = self.build_prompt(tree, user_query)
+        user_prompt = self.build_prompt(tree, user_query, euler_stats)
+
+        # Build messages with conversation history
+        messages = [{"role": "system", "content": system_prompt}]
+
+        # Add conversation history (last N exchanges for context)
+        if conversation_history:
+            # Keep last 6 exchanges (12 messages) for context
+            recent_history = conversation_history[-12:]
+            messages.extend(recent_history)
+
+        # Add current query with navigation context
+        messages.append({"role": "user", "content": user_prompt})
 
         # Call LLM
         try:
             response = ollama.chat(
                 model=self.config.model,
-                messages=[
-                    {"role": "system", "content": system_prompt},
-                    {"role": "user", "content": user_prompt}
-                ],
+                messages=messages,
                 options={
                     "temperature": self.config.temperature,
                     "num_predict": self.config.max_tokens

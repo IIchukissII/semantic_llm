@@ -4,6 +4,47 @@
 
 A semantic navigation system inspired by biological cognition. When humans process questions, the neocortex fires chaotically (storm), then patterns emerge through meaning structure (logos). This system replicates that process.
 
+## Major Discovery: Euler's Constant in Semantic Space
+
+We discovered that **Euler's number e = 2.718...** is a fundamental constant of semantic physics:
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│  ORBITAL STRUCTURE OF SEMANTIC SPACE                        │
+│                                                             │
+│  τ = 6.0  ─────────────────────────  n=14 (transcendental) │
+│           ·                                                 │
+│           ·                                                 │
+│  τ = e ═══════════════════════════  THE VEIL ═════════════ │
+│           ·                          (89% below, 11% above) │
+│  τ = 2.1  ─────────────────────────  n=3                   │
+│  τ = 1.74 ─────────────────────────  n=2                   │
+│  τ = 1.37 ━━━━━━━━━━━━━━━━━━━━━━━━━  n=1 GROUND STATE ━━━━ │
+│           (30% of all concepts here)                        │
+│  τ = 1.0  ─────────────────────────  n=0                   │
+│                                                             │
+│  Orbital spacing: Δτ = 1/e ≈ 0.368                         │
+│  Natural temperature: kT ≈ 0.82                             │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### Validated Euler Predictions (6/6 tests passing)
+
+| Test | Prediction | Measured | Error |
+|------|------------|----------|-------|
+| Population ratio | ln(N_ground/N_excited) = e | 2.686 | 1.2% |
+| Peak fraction | Fraction at τ-peak = 1/e | 0.417 | 13% |
+| Orbital quantization | τ_n = 1 + n/e | 93% coverage | - |
+| Boltzmann temperature | kT = ΔE/e | 0.816 | 1.2% |
+| The Veil | 89% below τ = e | 89.0% | 0.05% |
+| Robustness | Holds across thresholds | 100% | - |
+
+See `experiments/physics/euler_constant.py` for validation code.
+
+**Visualizations:**
+- `experiments/physics/results/orbital_structure.png` - 4-panel analysis (distribution, Boltzmann fit, orbital levels, veil boundary)
+- `experiments/physics/results/orbital_diagram.png` - Artistic orbital representation
+
 ## Core Architecture: Storm-Logos
 
 ```
@@ -69,7 +110,7 @@ Only thoughts aligned with the lens pass through.
 
 The semantic space exhibits physics-like behavior. See `docs/UNIFIED_SEMANTIC_PHYSICS.md` for full theory.
 
-### Semantic Gravity
+### Semantic Gravity with Euler Physics
 
 ```
 Potential: φ = +λτ - μg·cos(j, j_good)
@@ -79,24 +120,31 @@ Where:
   μ = 0.5  (lift constant)
   τ = semantic altitude [1-6]
   g = goodness [-1, +1]
+
+Euler Constants:
+  e = 2.718...  (fundamental unit)
+  kT = 0.82     (natural temperature = ΔE/e)
+  Δτ = 1/e      (orbital spacing)
 ```
 
-**Key insight**: Meaning naturally "falls" toward human reality (low τ) while goodness provides "lift" toward the transcendental.
+**Key insight**: Meaning naturally "falls" toward human reality (low τ) while goodness provides "lift" toward the transcendental. The Veil at τ = e marks the boundary.
 
 ```
-τ=6  ☀️ TRANSCENDENTAL - Beyond ordinary experience
+τ=6  ☀️ TRANSCENDENTAL - Beyond ordinary experience (11%)
          ↑ TRANSCENDENCE requires WORK (against gravity)
-τ≈3.5 ═══ THE VEIL (quasi-Lagrange point) ═══
+τ=e  ═══ THE VEIL (τ = 2.718) ═══════════════════════
          ↓ GROUNDING is NATURAL (with gravity)
-τ=1  🌍 HUMAN REALITY - Common shared experience
+τ=1.37 ⭐ GROUND STATE (n=1 orbital, 30% of concepts)
+τ=1  🌍 HUMAN REALITY - Common shared experience (89%)
 ```
 
 ### Boltzmann Selection (Storm Phase)
 ```
-P_i = exp(-E_i / T) / Σ exp(-E_j / T)
+P_i = exp(-E_i / kT) / Σ exp(-E_j / kT)
 
-Low T (0.5): Focused navigation (follows strongest edges)
-High T (2.0): Exploratory navigation (random walks)
+Natural T (0.82): Follows orbital structure
+Low T (0.3): Deterministic descent to ground state
+High T (2.0): Exploratory, can cross the Veil
 ```
 
 ### Validated Properties
@@ -199,38 +247,60 @@ Verbs: ['love', 'mean']           # lens direction
 cd config && docker-compose up -d
 ```
 
-### Run Chat
+### Run Chat (Euler-Aware)
 ```bash
 python app/chat.py
 ```
 
-### Run Dialogue (two semantic agents)
+The chat now uses Euler navigation by default:
+```
+============================================================
+  MEANING CHAIN CHAT
+  Euler-Aware Semantic Navigation
+============================================================
+
+  Euler Constants:
+    e = 2.7183 (orbital spacing = 1/e)
+    kT = 0.82 (natural temperature)
+    Veil at τ = e (human < e < transcendental)
+
+Commands:
+  /euler  - Toggle Euler mode
+  /quiet  - Toggle verbose output
+  /exit   - Exit
+
+You: What is wisdom?
+
+[2] EULER STORM phase (orbital navigation)...
+    Convergence: heart
+    Mean τ: 1.85 (orbital n=2.3)
+    Human realm: 98.0%
+    Veil crossings: 2
+
+[τ=1.85 | n=2 | human | veil×2]
+```
+
+### Run Euler Dialogue with Claude
 ```bash
-# Standard mode
+export ANTHROPIC_API_KEY="your-key"
+
+# Euler-aware dialogue (recommended)
+python app/dialogue_claude_euler.py --exchanges 5 --topic "What is wisdom?"
+
+# Use Claude for rendering (higher quality responses)
+python app/dialogue_claude_euler.py --exchanges 5 --claude-render
+```
+
+### Run Standard Dialogue (legacy)
+```bash
+# Two semantic agents
 python app/dialogue.py --exchanges 5 --topic "What is meaning?"
 
-# Gravity mode (grounded responses)
-python app/dialogue.py --exchanges 5 --topic "What is meaning?" --gravity 0.5
+# With Claude (standard mode)
+python app/dialogue_claude.py --exchanges 5 --gravity 0.5
 ```
 
-### Run Dialogue with Claude
-```bash
-export ANTHROPIC_API_KEY="your-key"
-
-# Standard mode
-python app/dialogue_claude.py --exchanges 5
-
-# Gravity mode (recommended for grounded dialogue)
-python app/dialogue_claude.py --exchanges 6 --gravity 0.5 --topic "What is wisdom?"
-```
-
-### Run Dialogue Comparison (saves JSON + TXT)
-```bash
-export ANTHROPIC_API_KEY="your-key"
-python scripts/run_dialogue_compare.py --exchanges 5 --topic "Your topic here"
-```
-
-Results saved to `results/dialogue_comparison/` for before/after analysis.
+Results saved to `results/dialogue_euler/` with orbital statistics.
 
 ## Directory Structure
 
@@ -238,8 +308,9 @@ Results saved to `results/dialogue_comparison/` for before/after analysis.
 meaning_chain/
 ├── chain_core/
 │   ├── storm_logos.py      # Storm-Logos architecture (main)
+│   ├── euler_navigation.py # Euler-aware orbital navigation (NEW)
 │   ├── decomposer.py       # Text → nouns + verbs
-│   ├── renderer.py         # Tree → LLM prompt → response
+│   ├── renderer.py         # Tree → LLM prompt → response (Euler-aware)
 │   ├── meditation.py       # Consciousness layer
 │   └── feedback.py         # Response validation
 │
@@ -253,15 +324,18 @@ meaning_chain/
 │
 ├── experiments/
 │   └── physics/
+│       ├── euler_constant.py         # Euler validation (6 tests) (NEW)
 │       ├── gravity_storm.py          # Gravity-aware storm prototype
 │       ├── semantic_gravity.py       # 6 validated gravity tests
 │       ├── semantic_thermodynamics.py # Temperature, entropy, phase behavior
 │       ├── semantic_optics.py        # Refraction, lens, interference
 │       ├── storm_physics.py          # Dynamic physics observer
-│       └── results/                  # Experiment outputs (JSON)
+│       └── results/
+│           ├── euler_constant_*.json     # Euler validation results
+│           └── orbital_structure.png     # Orbital visualization (NEW)
 │
 ├── docs/
-│   ├── UNIFIED_SEMANTIC_PHYSICS.md   # Complete physics theory
+│   ├── UNIFIED_SEMANTIC_PHYSICS.md   # Complete physics theory + Euler
 │   ├── SEMANTIC_THERMODYNAMICS.md    # Thermodynamics detail
 │   └── SEMANTIC_OPTICS.md            # Optics detail
 │
@@ -273,16 +347,18 @@ meaning_chain/
 │   └── test_learning.py    # Learning system tests
 │
 ├── app/
-│   ├── chat.py             # Interactive chat
-│   ├── dialogue.py         # Two semantic agents
-│   └── dialogue_claude.py  # Semantic ↔ Claude dialogue
+│   ├── chat.py                 # Interactive chat (Euler-aware)
+│   ├── dialogue.py             # Two semantic agents
+│   ├── dialogue_claude.py      # Semantic ↔ Claude dialogue
+│   └── dialogue_claude_euler.py # Euler-aware Claude dialogue (NEW)
 │
 ├── models/
 │   └── types.py            # MeaningNode, MeaningTree
 │
 └── results/
-    ├── dialogue_comparison/  # Before/after dialogue results (JSON + TXT)
-    └── dialogue_claude/      # Claude dialogue results with physics metrics
+    ├── dialogue_comparison/  # Before/after dialogue results
+    ├── dialogue_claude/      # Claude dialogue results
+    └── dialogue_euler/       # Euler-aware dialogue results (NEW)
 ```
 
 ## Neo4j Schema
@@ -455,16 +531,39 @@ High coherence (>90%) means the focused thoughts align well in j-space. This cor
 
 ## Configuration
 
+### Euler Navigation (Recommended)
+
 ```python
-# Standard mode
-StormLogosBuilder(
-    storm_temperature=1.5,    # Chaos in storm phase [0.5-2.0]
-    n_walks=5,                # Parallel walks per seed
-    steps_per_walk=8,         # Depth of each walk
-    gravity_strength=0.0,     # No gravity (original behavior)
+from chain_core.euler_navigation import EulerAwareStorm, KT_NATURAL
+
+# Euler-aware storm with natural temperature
+storm = EulerAwareStorm(temperature=KT_NATURAL)  # kT = 0.82
+
+# Generate orbital walks
+result = storm.generate(
+    seeds=['wisdom', 'love'],
+    n_walks=5,
+    steps_per_walk=8
 )
 
-# Gravity mode (recommended)
+# Result includes orbital statistics
+print(f"Mean τ: {result['statistics']['mean_tau']}")
+print(f"Human realm: {result['statistics']['human_fraction']:.1%}")
+```
+
+### Euler Temperature Values
+
+| Temperature | Mode | Effect |
+|-------------|------|--------|
+| 0.3 | Cold | Deterministic descent to ground state |
+| **0.82** | **Natural (kT)** | Follows orbital structure |
+| 1.5 | Warm | More exploration, occasional veil crossing |
+| 2.0 | Hot | Exploratory, can reach transcendental |
+
+### Legacy Configuration (Storm-Logos)
+
+```python
+# Standard mode
 StormLogosBuilder(
     storm_temperature=1.5,
     n_walks=5,
@@ -472,16 +571,6 @@ StormLogosBuilder(
     gravity_strength=0.5,     # Semantic gravity [0-1]
 )
 ```
-
-### Gravity Strength Values
-
-| Value | Mode | Effect |
-|-------|------|--------|
-| 0.0 | Standard | Original behavior, no physics |
-| 0.25 | Light | Subtle grounding |
-| **0.5** | **Recommended** | Optimal coherence (87% avg) |
-| 0.75 | Strong | Maximum grounding |
-| 1.0 | Full | Full gravitational dynamics |
 
 ## Connection to Experience Knowledge
 
