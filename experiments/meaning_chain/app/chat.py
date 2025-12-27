@@ -49,6 +49,7 @@ from chain_core.euler_navigation import (
     EulerAwareStorm, EulerNavigator,
     KT_NATURAL, VEIL_TAU, GROUND_STATE_TAU, E
 )
+from chain_core.semantic_laser import SemanticLaser
 from models.types import MeaningTree, MeaningNode, SemanticProperties
 import numpy as np
 
@@ -70,8 +71,14 @@ class ChatConfig:
     steps_per_walk: int = 8               # Steps in each walk
 
     # Euler Navigation (orbital physics)
-    euler_mode: bool = True               # Use Euler orbital navigation
+    euler_mode: bool = False              # Use Euler orbital navigation (legacy)
     euler_temperature: float = KT_NATURAL # Natural temperature kT ≈ 0.82
+
+    # Semantic Laser (coherent extraction)
+    laser_mode: bool = True               # Use semantic laser for coherent beams
+    laser_pump_power: int = 10            # Exploration intensity per seed
+    laser_pump_depth: int = 5             # Steps per exploration walk
+    laser_coherence: float = 0.3          # Minimum j-vector alignment
 
     # Rendering
     model: str = "mistral:7b"
@@ -133,11 +140,16 @@ class MeaningChainChat:
             )
         )
 
-        # Storm-Logos builder (biological emergence)
+        # Navigation components
         self.storm_logos = None
         self.euler_storm = None
+        self.semantic_laser = None
 
-        if self.config.euler_mode:
+        if self.config.laser_mode:
+            # Semantic laser for coherent extraction
+            self.semantic_laser = SemanticLaser()
+            self._log(f"[Chat] Semantic laser enabled (coherence={self.config.laser_coherence})")
+        elif self.config.euler_mode:
             # Euler-aware navigation with orbital physics
             self.euler_storm = EulerAwareStorm(temperature=self.config.euler_temperature)
             self._log(f"[Chat] Euler navigation enabled (kT={self.config.euler_temperature:.2f})")
@@ -225,11 +237,77 @@ class MeaningChainChat:
                     'metadata': {'error': 'no_concepts'}
                 }
 
-        # Step 2: Build tree using Euler, Storm-Logos, or fallback
+        # Step 2: Build tree using Laser, Euler, Storm-Logos, or fallback
         pattern = None
         euler_stats = None
+        laser_result = None
 
-        if self.euler_storm:
+        if self.semantic_laser:
+            # Semantic laser for coherent extraction
+            self._log("\n[2] SEMANTIC LASER (coherent extraction)...")
+            laser_result = self.semantic_laser.lase(
+                seeds=decomposed.nouns[:7],
+                pump_power=self.config.laser_pump_power,
+                pump_depth=self.config.laser_pump_depth,
+                coherence_threshold=self.config.laser_coherence
+            )
+
+            pop = laser_result['population']
+            beams = laser_result['beams']
+
+            self._log(f"    Excited: {pop['total_excited']} states")
+            self._log(f"    τ range: {pop['tau_min']:.2f} - {pop['tau_max']:.2f}")
+            self._log(f"    Coherent beams: {len(beams)}")
+
+            # Extract coherent concepts from beams
+            coherent_concepts = []
+            beam_themes = []
+            for i, beam in enumerate(beams[:3]):
+                themes = self.semantic_laser.get_beam_themes(beam)
+                self._log(f"    Beam {i+1}: {beam.concepts[:6]} (coherence={beam.coherence:.2f})")
+                coherent_concepts.extend(beam.concepts[:5])
+                beam_themes.extend(themes)
+
+            # Build euler_stats for renderer (compatible format)
+            primary_beam = self.semantic_laser.get_primary_beam(laser_result)
+            euler_stats = {
+                'mean_tau': pop['tau_mean'],
+                'orbital_n': int(round((pop['tau_mean'] - 1) * E)),
+                'realm': 'human' if pop['tau_mean'] < VEIL_TAU else 'transcendental',
+                'below_veil': pop['tau_mean'] < VEIL_TAU,
+                'near_ground': abs(pop['tau_mean'] - GROUND_STATE_TAU) < 0.5,
+                'veil_crossings': 0,  # Laser doesn't track this
+                'human_fraction': 1.0 if pop['tau_mean'] < VEIL_TAU else 0.5,
+                'convergence': coherent_concepts[0] if coherent_concepts else None,
+                'core_concepts': coherent_concepts[:8],
+                'key_symbols': decomposed.unknown_words[:10],
+                'known_nouns': decomposed.nouns[:8],
+                'laser_beams': len(beams),
+                'laser_coherence': primary_beam.coherence if primary_beam else 0.0,
+                'laser_themes': list(set(beam_themes))[:5]
+            }
+
+            # Build tree from coherent concepts
+            root_word = coherent_concepts[0] if coherent_concepts else decomposed.nouns[0]
+            root = MeaningNode(
+                word=root_word,
+                properties=SemanticProperties(
+                    g=primary_beam.g_polarity if primary_beam else 0.0,
+                    tau=pop['tau_mean'],
+                    j=primary_beam.j_centroid if primary_beam else np.zeros(5)
+                ),
+                depth=0
+            )
+            tree = MeaningTree(roots=[root])
+
+            self._log("\n[3] COHERENT OUTPUT")
+            if primary_beam:
+                g_label = "positive" if primary_beam.g_polarity > 0.1 else "negative" if primary_beam.g_polarity < -0.1 else "neutral"
+                self._log(f"    Primary beam: {len(primary_beam.concepts)} concepts")
+                self._log(f"    Polarity: {g_label} (g={primary_beam.g_polarity:+.2f})")
+                self._log(f"    Themes: {euler_stats['laser_themes']}")
+
+        elif self.euler_storm:
             # Euler-aware navigation with orbital physics
             self._log("\n[2] EULER STORM phase (orbital navigation)...")
             storm_result = self.euler_storm.generate(
@@ -359,7 +437,8 @@ class MeaningChainChat:
             'tree': tree,
             'feedback': final_feedback,
             'pattern': pattern,  # The logos pattern
-            'euler_stats': euler_stats,  # Euler orbital statistics
+            'euler_stats': euler_stats,  # Euler/Laser statistics
+            'laser_result': laser_result,  # Full laser result (if used)
             'metadata': {
                 'model': self.config.model,
                 'tree_summary': summary,
@@ -389,7 +468,11 @@ class MeaningChainChat:
         self._log("RESPONSE:")
         self._log(f"{'='*60}")
         self._log(final_response)
-        if euler_stats:
+        if laser_result and euler_stats:
+            self._log(f"\n[LASER: {euler_stats.get('laser_beams', 0)} beams | "
+                      f"coherence={euler_stats.get('laser_coherence', 0):.2f} | "
+                      f"τ={euler_stats['mean_tau']:.2f}]")
+        elif euler_stats:
             self._log(f"\n[τ={euler_stats['mean_tau']:.2f} | n={euler_stats['orbital_n']} | "
                       f"{euler_stats['realm']} | veil×{euler_stats['veil_crossings']}]")
         elif pattern:
@@ -404,6 +487,8 @@ class MeaningChainChat:
         """Clean up resources."""
         if self.learner:
             self.learner.close()
+        if self.semantic_laser:
+            self.semantic_laser.close()
         if self.euler_storm:
             self.euler_storm.close()
         if self.storm_logos:
@@ -451,24 +536,24 @@ def main():
     """Interactive chat loop."""
     print("="*60)
     print("  MEANING CHAIN CHAT")
-    print("  Euler-Aware Semantic Navigation")
+    print("  Semantic Laser Navigation")
     print("="*60)
     print()
-    print(f"  Euler Constants:")
-    print(f"    e = {E:.4f} (orbital spacing = 1/e)")
-    print(f"    kT = {KT_NATURAL:.2f} (natural temperature)")
-    print(f"    Veil at τ = e (human < e < transcendental)")
+    print("  Semantic Laser:")
+    print("    Pumping -> Population -> Stimulated Emission -> Coherent Output")
+    print("    Uses j-vector alignment for thematic coherence")
     print()
     print("Commands:")
     print("  /tree <query>  - Show meaning tree only")
     print("  /learn         - Show learning statistics")
+    print("  /laser         - Toggle Laser mode")
     print("  /euler         - Toggle Euler mode")
     print("  /clear         - Clear conversation history")
     print("  /quiet         - Toggle verbose output")
     print("  /exit          - Exit")
     print()
 
-    chat = MeaningChainChat(ChatConfig(verbose=True, show_tree=False, euler_mode=True))
+    chat = MeaningChainChat(ChatConfig(verbose=True, show_tree=False, laser_mode=True))
 
     try:
         while True:
@@ -490,10 +575,21 @@ def main():
                 print(f"Verbose: {chat.config.verbose}")
                 continue
 
+            if query == "/laser":
+                chat.config.laser_mode = not chat.config.laser_mode
+                if chat.config.laser_mode:
+                    if not chat.semantic_laser:
+                        chat.semantic_laser = SemanticLaser()
+                    chat.config.euler_mode = False
+                print(f"Laser mode: {chat.config.laser_mode}")
+                continue
+
             if query == "/euler":
                 chat.config.euler_mode = not chat.config.euler_mode
-                if chat.config.euler_mode and not chat.euler_storm:
-                    chat.euler_storm = EulerAwareStorm(temperature=chat.config.euler_temperature)
+                if chat.config.euler_mode:
+                    if not chat.euler_storm:
+                        chat.euler_storm = EulerAwareStorm(temperature=chat.config.euler_temperature)
+                    chat.config.laser_mode = False
                 print(f"Euler mode: {chat.config.euler_mode}")
                 continue
 
@@ -537,6 +633,8 @@ def main():
                 print(f"\nSession learned {stats.get('total_patterns', 0)} patterns "
                       f"({stats.get('new', 0)} new)")
             chat.learner.close()
+        if chat.semantic_laser:
+            chat.semantic_laser.close()
         if chat.euler_storm:
             chat.euler_storm.close()
         if chat.storm_logos:

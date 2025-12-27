@@ -302,7 +302,7 @@ class MeaningGraph:
                 MATCH (source:Concept {word: $word})
                       -[r:VIA]->
                       (target:Concept)
-                WHERE target.tau > 1.5
+                WHERE target.tau > 1.0
                   AND size(target.word) >= 3
                 WITH r, target,
                      CASE WHEN r.verb IN $intent_verbs THEN 1.0 ELSE 0.0 END as verb_match,
@@ -339,7 +339,7 @@ class MeaningGraph:
                 MATCH (source:Concept {word: $word})
                       -[r:VIA]->
                       (target:Concept)
-                WHERE target.tau > 1.5
+                WHERE target.tau > 1.0
                   AND size(target.word) >= 3
                 RETURN r.verb as verb,
                        target.word as target,
