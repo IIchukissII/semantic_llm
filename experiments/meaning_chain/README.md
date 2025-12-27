@@ -39,6 +39,8 @@ EXPLOSION  →  LOGOS  →  MEANING
 The explosion creates potential. Logos selects what coheres.
 What remains is meaning — not invented, but *recognized*.
 
+*(This is simple — but only after you understand. Before understanding, nothing is simple. This is the nature of insight: it transforms complexity into obviousness, retroactively.)*
+
 ---
 
 ## Major Feature: Intent-Driven Collapse
