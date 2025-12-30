@@ -1,0 +1,1180 @@
+{
+  "timestamp": "20251230_220806",
+  "experiment": "Orbital Resonance Spectroscopy",
+  "theory": {
+    "orbital_formula": "\u03c4_n = 1 + n/e",
+    "euler_constant": 2.718281828459045,
+    "orbital_spacing": 0.36787944117144233,
+    "predicted_orbitals": [
+      {
+        "n": 0,
+        "tau": 1.0
+      },
+      {
+        "n": 1,
+        "tau": 1.3678794411714423
+      },
+      {
+        "n": 2,
+        "tau": 1.7357588823428847
+      },
+      {
+        "n": 3,
+        "tau": 2.103638323514327
+      },
+      {
+        "n": 4,
+        "tau": 2.4715177646857693
+      },
+      {
+        "n": 5,
+        "tau": 2.8393972058572117
+      },
+      {
+        "n": 6,
+        "tau": 3.207276647028654
+      },
+      {
+        "n": 7,
+        "tau": 3.5751560882000963
+      }
+    ]
+  },
+  "parameters": {
+    "tau_min": 1.0,
+    "tau_max": 6.0,
+    "tau_steps": 100,
+    "tau_tolerance": 0.15
+  },
+  "results": {
+    "spectrum": [
+      {
+        "tau_drive": 1.0,
+        "coherence": 0.7742940417646975,
+        "beam_count": 2,
+        "response_tau": 1.236829687752912,
+        "intensity": 9.561125776983946,
+        "lasing": "True"
+      },
+      {
+        "tau_drive": 1.0505050505050506,
+        "coherence": 0.7572408081050706,
+        "beam_count": 2,
+        "response_tau": 1.473128415353226,
+        "intensity": 31.64818057943043,
+        "lasing": "True"
+      },
+      {
+        "tau_drive": 1.101010101010101,
+        "coherence": 0.7570517307457139,
+        "beam_count": 2,
+        "response_tau": 1.5020158983353655,
+        "intensity": 26.50253501883089,
+        "lasing": "True"
+      },
+      {
+        "tau_drive": 1.1515151515151516,
+        "coherence": 0.7522616797341103,
+        "beam_count": 2,
+        "response_tau": 1.4706474517842485,
+        "intensity": 39.114064210796705,
+        "lasing": "True"
+      },
+      {
+        "tau_drive": 1.202020202020202,
+        "coherence": 0.7460766962251237,
+        "beam_count": 2,
+        "response_tau": 1.4873251192334576,
+        "intensity": 31.446253857128127,
+        "lasing": "True"
+      },
+      {
+        "tau_drive": 1.2525252525252526,
+        "coherence": 0.7987217098822254,
+        "beam_count": 2,
+        "response_tau": 1.50280806539262,
+        "intensity": 26.394313911446638,
+        "lasing": "True"
+      },
+      {
+        "tau_drive": 1.303030303030303,
+        "coherence": 0.7771209749888067,
+        "beam_count": 2,
+        "response_tau": 1.458826210883445,
+        "intensity": 33.33502240312622,
+        "lasing": "True"
+      },
+      {
+        "tau_drive": 1.3535353535353536,
+        "coherence": 0.777636328261839,
+        "beam_count": 2,
+        "response_tau": 1.4824493466086126,
+        "intensity": 31.146408994984796,
+        "lasing": "True"
+      },
+      {
+        "tau_drive": 1.404040404040404,
+        "coherence": 0.7652781319418023,
+        "beam_count": 2,
+        "response_tau": 1.4483542414672896,
+        "intensity": 33.75359337995518,
+        "lasing": "True"
+      },
+      {
+        "tau_drive": 1.4545454545454546,
+        "coherence": 0.8080768095102266,
+        "beam_count": 2,
+        "response_tau": 1.4944609527010286,
+        "intensity": 11.102388841345826,
+        "lasing": "True"
+      },
+      {
+        "tau_drive": 1.5050505050505052,
+        "coherence": 0.840498491622639,
+        "beam_count": 2,
+        "response_tau": 1.40460571165452,
+        "intensity": 12.684580497525081,
+        "lasing": "True"
+      },
+      {
+        "tau_drive": 1.5555555555555556,
+        "coherence": 0.7030318028601227,
+        "beam_count": 2,
+        "response_tau": 1.523201877763493,
+        "intensity": 8.555130568364287,
+        "lasing": "True"
+      },
+      {
+        "tau_drive": 1.606060606060606,
+        "coherence": 0.808769074606245,
+        "beam_count": 2,
+        "response_tau": 1.4824269529262437,
+        "intensity": 12.123313874936464,
+        "lasing": "True"
+      },
+      {
+        "tau_drive": 1.6565656565656566,
+        "coherence": 0.7891845044336165,
+        "beam_count": 2,
+        "response_tau": 1.4787488686235917,
+        "intensity": 12.479839232880256,
+        "lasing": "True"
+      },
+      {
+        "tau_drive": 1.7070707070707072,
+        "coherence": 0.49751750410139656,
+        "beam_count": 1,
+        "response_tau": 1.7063191511137539,
+        "intensity": 1.4925525123041896,
+        "lasing": "False"
+      },
+      {
+        "tau_drive": 1.7575757575757576,
+        "coherence": 0.9281024058052457,
+        "beam_count": 1,
+        "response_tau": 1.7806063194967705,
+        "intensity": 2.784307217415737,
+        "lasing": "True"
+      },
+      {
+        "tau_drive": 1.808080808080808,
+        "coherence": 0.9666419807751391,
+        "beam_count": 1,
+        "response_tau": 1.7997592774446758,
+        "intensity": 2.8999259423254173,
+        "lasing": "True"
+      },
+      {
+        "tau_drive": 1.8585858585858586,
+        "coherence": 0.4436974091267279,
+        "beam_count": 3,
+        "response_tau": 1.5245222932182028,
+        "intensity": 11.402343226602676,
+        "lasing": "False"
+      },
+      {
+        "tau_drive": 1.9090909090909092,
+        "coherence": 0.6747116249862416,
+        "beam_count": 2,
+        "response_tau": 1.6010762421726246,
+        "intensity": 13.22590484313453,
+        "lasing": "True"
+      },
+      {
+        "tau_drive": 1.9595959595959596,
+        "coherence": 0.7967027621292286,
+        "beam_count": 2,
+        "response_tau": 1.5459851044915887,
+        "intensity": 9.84122253641545,
+        "lasing": "True"
+      },
+      {
+        "tau_drive": 2.0101010101010104,
+        "coherence": 0.8066990819325782,
+        "beam_count": 1,
+        "response_tau": 1.9602598827535793,
+        "intensity": 2.4200972457977348,
+        "lasing": "True"
+      },
+      {
+        "tau_drive": 2.0606060606060606,
+        "coherence": 0.7774897921934458,
+        "beam_count": 2,
+        "response_tau": 1.6026134618772079,
+        "intensity": 13.410114186079298,
+        "lasing": "True"
+      },
+      {
+        "tau_drive": 2.111111111111111,
+        "coherence": 0.6978899094043669,
+        "beam_count": 1,
+        "response_tau": 2.0870583494724753,
+        "intensity": 2.7915596376174676,
+        "lasing": "True"
+      },
+      {
+        "tau_drive": 2.1616161616161618,
+        "coherence": 0.7819871859054839,
+        "beam_count": 2,
+        "response_tau": 1.6276408575012615,
+        "intensity": 20.458958635973268,
+        "lasing": "True"
+      },
+      {
+        "tau_drive": 2.212121212121212,
+        "coherence": 0.2094760450092751,
+        "beam_count": 1,
+        "response_tau": 2.2076008935844578,
+        "intensity": 0.6284281350278254,
+        "lasing": "False"
+      },
+      {
+        "tau_drive": 2.2626262626262625,
+        "coherence": 0.6118764255609809,
+        "beam_count": 1,
+        "response_tau": 2.3141745642388125,
+        "intensity": 2.4475057022439235,
+        "lasing": "True"
+      },
+      {
+        "tau_drive": 2.313131313131313,
+        "coherence": 0.42832712907466414,
+        "beam_count": 1,
+        "response_tau": 2.2963129925506935,
+        "intensity": 1.7133085162986565,
+        "lasing": "False"
+      },
+      {
+        "tau_drive": 2.3636363636363633,
+        "coherence": 0.7845440997771854,
+        "beam_count": 1,
+        "response_tau": 2.3973767946304356,
+        "intensity": 2.353632299331556,
+        "lasing": "True"
+      },
+      {
+        "tau_drive": 2.4141414141414144,
+        "coherence": 0.43982215533568286,
+        "beam_count": 1,
+        "response_tau": 2.3941311722621315,
+        "intensity": 1.3194664660070485,
+        "lasing": "False"
+      },
+      {
+        "tau_drive": 2.4646464646464645,
+        "coherence": 0.7721577153720186,
+        "beam_count": 1,
+        "response_tau": 2.522037075723684,
+        "intensity": 2.316473146116056,
+        "lasing": "True"
+      },
+      {
+        "tau_drive": 2.515151515151515,
+        "coherence": 0.8288964986758567,
+        "beam_count": 2,
+        "response_tau": 1.6478535224866029,
+        "intensity": 14.92013697616542,
+        "lasing": "True"
+      },
+      {
+        "tau_drive": 2.5656565656565657,
+        "coherence": 0.6319402496869075,
+        "beam_count": 1,
+        "response_tau": 2.6093058731402676,
+        "intensity": 3.159701248434538,
+        "lasing": "True"
+      },
+      {
+        "tau_drive": 2.616161616161616,
+        "coherence": 0.9362566554082358,
+        "beam_count": 1,
+        "response_tau": 2.596607269149166,
+        "intensity": 2.808769966224707,
+        "lasing": "True"
+      },
+      {
+        "tau_drive": 2.666666666666667,
+        "coherence": 0.8922096765935406,
+        "beam_count": 1,
+        "response_tau": 2.688477072078882,
+        "intensity": 2.6766290297806217,
+        "lasing": "True"
+      },
+      {
+        "tau_drive": 2.717171717171717,
+        "coherence": 0.5824481490379184,
+        "beam_count": 1,
+        "response_tau": 2.683959056179434,
+        "intensity": 1.7473444471137554,
+        "lasing": "True"
+      },
+      {
+        "tau_drive": 2.7676767676767677,
+        "coherence": 0.4857392660041111,
+        "beam_count": 1,
+        "response_tau": 2.776787076658076,
+        "intensity": 1.4572177980123333,
+        "lasing": "False"
+      },
+      {
+        "tau_drive": 2.8181818181818183,
+        "coherence": 0.7379633425138806,
+        "beam_count": 2,
+        "response_tau": 1.8743409096445471,
+        "intensity": 9.558365182176281,
+        "lasing": "True"
+      },
+      {
+        "tau_drive": 2.8686868686868685,
+        "coherence": 0.4316232212513569,
+        "beam_count": 1,
+        "response_tau": 2.890769317365095,
+        "intensity": 1.2948696637540706,
+        "lasing": "False"
+      },
+      {
+        "tau_drive": 2.919191919191919,
+        "coherence": 0.6736561942148788,
+        "beam_count": 1,
+        "response_tau": 2.204159388281913,
+        "intensity": 4.715593359504151,
+        "lasing": "True"
+      },
+      {
+        "tau_drive": 2.9696969696969697,
+        "coherence": 0.6903243047078821,
+        "beam_count": 1,
+        "response_tau": 3.001686535064983,
+        "intensity": 2.0709729141236464,
+        "lasing": "True"
+      },
+      {
+        "tau_drive": 3.0202020202020203,
+        "coherence": 0.5749467730507475,
+        "beam_count": 1,
+        "response_tau": 2.9926855648223394,
+        "intensity": 2.29978709220299,
+        "lasing": "True"
+      },
+      {
+        "tau_drive": 3.0707070707070705,
+        "coherence": 0.7406753868253948,
+        "beam_count": 2,
+        "response_tau": 1.7241128683653704,
+        "intensity": 9.14110734653184,
+        "lasing": "True"
+      },
+      {
+        "tau_drive": 3.121212121212121,
+        "coherence": 0.5821104267705406,
+        "beam_count": 2,
+        "response_tau": 1.806929541118913,
+        "intensity": 8.040741819291206,
+        "lasing": "True"
+      },
+      {
+        "tau_drive": 3.1717171717171717,
+        "coherence": 0.7486735805048873,
+        "beam_count": 2,
+        "response_tau": 1.6795176011282997,
+        "intensity": 19.52640936659631,
+        "lasing": "True"
+      },
+      {
+        "tau_drive": 3.2222222222222223,
+        "coherence": 0.959812846849624,
+        "beam_count": 1,
+        "response_tau": 3.201039005460148,
+        "intensity": 2.879438540548872,
+        "lasing": "True"
+      },
+      {
+        "tau_drive": 3.2727272727272725,
+        "coherence": 0.6558845459882008,
+        "beam_count": 2,
+        "response_tau": 1.869357588189067,
+        "intensity": 6.654895327413492,
+        "lasing": "True"
+      },
+      {
+        "tau_drive": 3.323232323232323,
+        "coherence": 0.6785903426745468,
+        "beam_count": 2,
+        "response_tau": 1.82713760402538,
+        "intensity": 10.857445482792748,
+        "lasing": "True"
+      },
+      {
+        "tau_drive": 3.3737373737373737,
+        "coherence": 0.7725490551781993,
+        "beam_count": 2,
+        "response_tau": 1.8928688419465607,
+        "intensity": 9.954312634433908,
+        "lasing": "True"
+      },
+      {
+        "tau_drive": 3.4242424242424243,
+        "coherence": 0.0,
+        "beam_count": 0,
+        "response_tau": 3.388734389890086,
+        "intensity": 0.0,
+        "lasing": false
+      },
+      {
+        "tau_drive": 3.474747474747475,
+        "coherence": 0.71515105342739,
+        "beam_count": 1,
+        "response_tau": 3.147502232558027,
+        "intensity": 2.86060421370956,
+        "lasing": "True"
+      },
+      {
+        "tau_drive": 3.525252525252525,
+        "coherence": 0.8173047758429351,
+        "beam_count": 1,
+        "response_tau": 3.149564593091348,
+        "intensity": 4.086523879214676,
+        "lasing": "True"
+      },
+      {
+        "tau_drive": 3.5757575757575757,
+        "coherence": 0.7725290327161071,
+        "beam_count": 1,
+        "response_tau": 3.6075330730083044,
+        "intensity": 3.0901161308644283,
+        "lasing": "True"
+      },
+      {
+        "tau_drive": 3.6262626262626263,
+        "coherence": 0.8787642401103133,
+        "beam_count": 1,
+        "response_tau": 3.5936948570975664,
+        "intensity": 2.63629272033094,
+        "lasing": "True"
+      },
+      {
+        "tau_drive": 3.676767676767677,
+        "coherence": 0.7916940895102721,
+        "beam_count": 2,
+        "response_tau": 1.9411947387648276,
+        "intensity": 11.829737620040076,
+        "lasing": "True"
+      },
+      {
+        "tau_drive": 3.727272727272727,
+        "coherence": 0.7178511884553928,
+        "beam_count": 2,
+        "response_tau": 1.9281753775605028,
+        "intensity": 8.336116746946146,
+        "lasing": "True"
+      },
+      {
+        "tau_drive": 3.7777777777777777,
+        "coherence": 0.8182612255876484,
+        "beam_count": 2,
+        "response_tau": 1.8570496269283516,
+        "intensity": 10.601518078194132,
+        "lasing": "True"
+      },
+      {
+        "tau_drive": 3.8282828282828283,
+        "coherence": 0.7914095526873433,
+        "beam_count": 1,
+        "response_tau": 3.8066877904878402,
+        "intensity": 3.165638210749373,
+        "lasing": "True"
+      },
+      {
+        "tau_drive": 3.878787878787879,
+        "coherence": 0.9653402198752931,
+        "beam_count": 1,
+        "response_tau": 3.8976945420324203,
+        "intensity": 2.8960206596258793,
+        "lasing": "True"
+      },
+      {
+        "tau_drive": 3.929292929292929,
+        "coherence": 0.6070873074877867,
+        "beam_count": 2,
+        "response_tau": 2.265580325271492,
+        "intensity": 6.445782868078697,
+        "lasing": "True"
+      },
+      {
+        "tau_drive": 3.9797979797979797,
+        "coherence": 0.7166598781787273,
+        "beam_count": 2,
+        "response_tau": 1.6565272586682345,
+        "intensity": 12.30406662075652,
+        "lasing": "True"
+      },
+      {
+        "tau_drive": 4.03030303030303,
+        "coherence": 0.0,
+        "beam_count": 0,
+        "response_tau": 3.9951668380259853,
+        "intensity": 0.0,
+        "lasing": false
+      },
+      {
+        "tau_drive": 4.080808080808081,
+        "coherence": 0.7044380612811941,
+        "beam_count": 1,
+        "response_tau": 4.123483040211557,
+        "intensity": 2.1133141838435825,
+        "lasing": "True"
+      },
+      {
+        "tau_drive": 4.1313131313131315,
+        "coherence": 0.8875153791874437,
+        "beam_count": 1,
+        "response_tau": 4.118693242919674,
+        "intensity": 3.550061516749775,
+        "lasing": "True"
+      },
+      {
+        "tau_drive": 4.181818181818182,
+        "coherence": 0.7646719822684936,
+        "beam_count": 1,
+        "response_tau": 4.215073791406151,
+        "intensity": 2.294015946805481,
+        "lasing": "True"
+      },
+      {
+        "tau_drive": 4.232323232323232,
+        "coherence": 0.0,
+        "beam_count": 0,
+        "response_tau": 4.204411080871548,
+        "intensity": 0.0,
+        "lasing": false
+      },
+      {
+        "tau_drive": 4.282828282828283,
+        "coherence": 0.7674400777978929,
+        "beam_count": 2,
+        "response_tau": 1.9752689833453185,
+        "intensity": 9.995457088642071,
+        "lasing": "True"
+      },
+      {
+        "tau_drive": 4.333333333333334,
+        "coherence": 0.775371778680205,
+        "beam_count": 2,
+        "response_tau": 2.0253422319407517,
+        "intensity": 10.236147956674479,
+        "lasing": "True"
+      },
+      {
+        "tau_drive": 4.383838383838384,
+        "coherence": 0.4620653934958458,
+        "beam_count": 1,
+        "response_tau": 4.386550916718792,
+        "intensity": 1.8482615739833832,
+        "lasing": "False"
+      },
+      {
+        "tau_drive": 4.434343434343434,
+        "coherence": 0.6806548838809713,
+        "beam_count": 1,
+        "response_tau": 4.375918652423193,
+        "intensity": 2.722619535523885,
+        "lasing": "True"
+      },
+      {
+        "tau_drive": 4.484848484848484,
+        "coherence": 0.470269882098874,
+        "beam_count": 3,
+        "response_tau": 2.5194287184233617,
+        "intensity": 6.213468594366356,
+        "lasing": "False"
+      },
+      {
+        "tau_drive": 4.5353535353535355,
+        "coherence": 0.486353826021182,
+        "beam_count": 1,
+        "response_tau": 4.212203568215088,
+        "intensity": 1.459061478063546,
+        "lasing": "False"
+      },
+      {
+        "tau_drive": 4.585858585858586,
+        "coherence": 0.6226085553730609,
+        "beam_count": 2,
+        "response_tau": 2.3547239256188313,
+        "intensity": 5.971803019854491,
+        "lasing": "True"
+      },
+      {
+        "tau_drive": 4.636363636363637,
+        "coherence": 0.6295424757356745,
+        "beam_count": 2,
+        "response_tau": 2.282785459174867,
+        "intensity": 5.400923848694415,
+        "lasing": "True"
+      },
+      {
+        "tau_drive": 4.686868686868687,
+        "coherence": 0.7590644250893192,
+        "beam_count": 1,
+        "response_tau": 4.701091783913331,
+        "intensity": 3.0362577003572766,
+        "lasing": "True"
+      },
+      {
+        "tau_drive": 4.737373737373737,
+        "coherence": 0.6734618232156144,
+        "beam_count": 2,
+        "response_tau": 2.2786309264041162,
+        "intensity": 7.580121582869619,
+        "lasing": "True"
+      },
+      {
+        "tau_drive": 4.787878787878787,
+        "coherence": 0.9413926910627762,
+        "beam_count": 1,
+        "response_tau": 4.793565638143883,
+        "intensity": 3.765570764251105,
+        "lasing": "True"
+      },
+      {
+        "tau_drive": 4.838383838383838,
+        "coherence": 0.7348733289583969,
+        "beam_count": 1,
+        "response_tau": 4.771026984247926,
+        "intensity": 2.2046199868751906,
+        "lasing": "True"
+      },
+      {
+        "tau_drive": 4.888888888888889,
+        "coherence": 0.7564434513272997,
+        "beam_count": 2,
+        "response_tau": 1.6637416276923749,
+        "intensity": 23.465748058248018,
+        "lasing": "True"
+      },
+      {
+        "tau_drive": 4.9393939393939394,
+        "coherence": 0.679527299383869,
+        "beam_count": 3,
+        "response_tau": 1.689886281118148,
+        "intensity": 27.74812256895374,
+        "lasing": "True"
+      },
+      {
+        "tau_drive": 4.98989898989899,
+        "coherence": 0.7589540757925555,
+        "beam_count": 1,
+        "response_tau": 5.002888940596451,
+        "intensity": 2.2768622273776664,
+        "lasing": "True"
+      },
+      {
+        "tau_drive": 5.040404040404041,
+        "coherence": 0.7589540757925555,
+        "beam_count": 1,
+        "response_tau": 5.002888940596452,
+        "intensity": 2.2768622273776664,
+        "lasing": "True"
+      },
+      {
+        "tau_drive": 5.090909090909091,
+        "coherence": 0.0,
+        "beam_count": 0,
+        "response_tau": 5.096585058311908,
+        "intensity": 0.0,
+        "lasing": false
+      },
+      {
+        "tau_drive": 5.141414141414141,
+        "coherence": 0.0,
+        "beam_count": 0,
+        "response_tau": 5.096585058311908,
+        "intensity": 0.0,
+        "lasing": false
+      },
+      {
+        "tau_drive": 5.191919191919192,
+        "coherence": 0.13710282761345244,
+        "beam_count": 1,
+        "response_tau": 5.185470914134,
+        "intensity": 0.4113084828403573,
+        "lasing": "False"
+      },
+      {
+        "tau_drive": 5.242424242424242,
+        "coherence": 0.0,
+        "beam_count": 0,
+        "response_tau": 5.173894942955502,
+        "intensity": 0.0,
+        "lasing": false
+      },
+      {
+        "tau_drive": 5.292929292929293,
+        "coherence": 0.7781486968223257,
+        "beam_count": 2,
+        "response_tau": 1.623889267541366,
+        "intensity": 25.40836700019861,
+        "lasing": "True"
+      },
+      {
+        "tau_drive": 5.343434343434343,
+        "coherence": 0.5838446718085508,
+        "beam_count": 3,
+        "response_tau": 1.6446435092152714,
+        "intensity": 14.062205457591944,
+        "lasing": "True"
+      },
+      {
+        "tau_drive": 5.393939393939394,
+        "coherence": 0.0,
+        "beam_count": 0,
+        "response_tau": 5.405706786970976,
+        "intensity": 0.0,
+        "lasing": false
+      },
+      {
+        "tau_drive": 5.444444444444445,
+        "coherence": 0.0,
+        "beam_count": 0,
+        "response_tau": 5.405706786970976,
+        "intensity": 0.0,
+        "lasing": false
+      },
+      {
+        "tau_drive": 5.494949494949495,
+        "coherence": 0.6774701081970554,
+        "beam_count": 3,
+        "response_tau": 2.080968436835532,
+        "intensity": 12.9864858883977,
+        "lasing": "True"
+      },
+      {
+        "tau_drive": 5.545454545454545,
+        "coherence": 0.7110155956773323,
+        "beam_count": 2,
+        "response_tau": 1.9445094127406564,
+        "intensity": 12.798280722191981,
+        "lasing": "True"
+      },
+      {
+        "tau_drive": 5.595959595959596,
+        "coherence": 0.0,
+        "beam_count": 0,
+        "response_tau": 5.59670692314721,
+        "intensity": 0.0,
+        "lasing": false
+      },
+      {
+        "tau_drive": 5.646464646464646,
+        "coherence": 0.0,
+        "beam_count": 0,
+        "response_tau": 5.59670692314721,
+        "intensity": 0.0,
+        "lasing": false
+      },
+      {
+        "tau_drive": 5.696969696969697,
+        "coherence": 0.7278112484678357,
+        "beam_count": 2,
+        "response_tau": 2.348581810074359,
+        "intensity": 8.437183702242272,
+        "lasing": "True"
+      },
+      {
+        "tau_drive": 5.747474747474747,
+        "coherence": 0.6560447488817587,
+        "beam_count": 3,
+        "response_tau": 2.2714322655179706,
+        "intensity": 9.00816288507859,
+        "lasing": "True"
+      },
+      {
+        "tau_drive": 5.797979797979798,
+        "coherence": 0.3650460014772854,
+        "beam_count": 1,
+        "response_tau": 6.0,
+        "intensity": 1.825230007386427,
+        "lasing": "False"
+      },
+      {
+        "tau_drive": 5.848484848484849,
+        "coherence": 0.3,
+        "beam_count": 1,
+        "response_tau": 6.0,
+        "intensity": 0.8999999999999999,
+        "lasing": "False"
+      },
+      {
+        "tau_drive": 5.898989898989899,
+        "coherence": 0.783743589880482,
+        "beam_count": 2,
+        "response_tau": 2.356807311746704,
+        "intensity": 9.404923078565783,
+        "lasing": "True"
+      },
+      {
+        "tau_drive": 5.94949494949495,
+        "coherence": 0.3661161630345602,
+        "beam_count": 1,
+        "response_tau": 6.0,
+        "intensity": 1.830580815172801,
+        "lasing": "False"
+      },
+      {
+        "tau_drive": 6.0,
+        "coherence": 0.7522878268649079,
+        "beam_count": 2,
+        "response_tau": 2.1116331090891727,
+        "intensity": 17.3181343047285,
+        "lasing": "True"
+      }
+    ],
+    "peaks": [
+      {
+        "tau_center": 2.1616161616161618,
+        "tau_width": 1.212121212121212,
+        "peak_height": 0.7819871859054839,
+        "q_factor": 1.7833333333333337,
+        "orbital_n": 3,
+        "tau_predicted": 2.103638323514327,
+        "error": 0.05797783810183477,
+        "matches_prediction": "True"
+      },
+      {
+        "tau_center": 2.2626262626262625,
+        "tau_width": 1.2121212121212124,
+        "peak_height": 0.6118764255609809,
+        "q_factor": 1.8666666666666663,
+        "orbital_n": 3,
+        "tau_predicted": 2.103638323514327,
+        "error": 0.15898793911193554,
+        "matches_prediction": "False"
+      },
+      {
+        "tau_center": 2.3636363636363633,
+        "tau_width": 1.2121212121212124,
+        "peak_height": 0.7845440997771854,
+        "q_factor": 1.9499999999999993,
+        "orbital_n": 4,
+        "tau_predicted": 2.4715177646857693,
+        "error": 0.10788140104940602,
+        "matches_prediction": "True"
+      },
+      {
+        "tau_center": 2.515151515151515,
+        "tau_width": 1.2121212121212124,
+        "peak_height": 0.8288964986758567,
+        "q_factor": 2.0749999999999997,
+        "orbital_n": 4,
+        "tau_predicted": 2.4715177646857693,
+        "error": 0.0436337504657458,
+        "matches_prediction": "True"
+      },
+      {
+        "tau_center": 2.8181818181818183,
+        "tau_width": 1.2121212121212124,
+        "peak_height": 0.7379633425138806,
+        "q_factor": 2.3249999999999997,
+        "orbital_n": 5,
+        "tau_predicted": 2.8393972058572117,
+        "error": 0.021215387675393327,
+        "matches_prediction": "True"
+      },
+      {
+        "tau_center": 3.0707070707070705,
+        "tau_width": 1.2121212121212124,
+        "peak_height": 0.7406753868253948,
+        "q_factor": 2.5333333333333328,
+        "orbital_n": 6,
+        "tau_predicted": 3.207276647028654,
+        "error": 0.1365695763215835,
+        "matches_prediction": "True"
+      },
+      {
+        "tau_center": 3.2222222222222223,
+        "tau_width": 0.5555555555555558,
+        "peak_height": 0.959812846849624,
+        "q_factor": 5.799999999999998,
+        "orbital_n": 6,
+        "tau_predicted": 3.207276647028654,
+        "error": 0.014945575193568317,
+        "matches_prediction": "True"
+      },
+      {
+        "tau_center": 3.3737373737373737,
+        "tau_width": 1.2121212121212124,
+        "peak_height": 0.7725490551781993,
+        "q_factor": 2.7833333333333328,
+        "orbital_n": 6,
+        "tau_predicted": 3.207276647028654,
+        "error": 0.1664607267087197,
+        "matches_prediction": "False"
+      },
+      {
+        "tau_center": 3.6262626262626263,
+        "tau_width": 0.606060606060606,
+        "peak_height": 0.8787642401103133,
+        "q_factor": 5.983333333333334,
+        "orbital_n": 7,
+        "tau_predicted": 3.5751560882000963,
+        "error": 0.05110653806252996,
+        "matches_prediction": "True"
+      },
+      {
+        "tau_center": 3.878787878787879,
+        "tau_width": 0.606060606060606,
+        "peak_height": 0.9653402198752931,
+        "q_factor": 6.400000000000001,
+        "orbital_n": 8,
+        "tau_predicted": 3.9430355293715387,
+        "error": 0.06424765058365978,
+        "matches_prediction": "True"
+      },
+      {
+        "tau_center": 3.9797979797979797,
+        "tau_width": 0.606060606060606,
+        "peak_height": 0.7166598781787273,
+        "q_factor": 6.566666666666667,
+        "orbital_n": 8,
+        "tau_predicted": 3.9430355293715387,
+        "error": 0.036762450426440996,
+        "matches_prediction": "True"
+      },
+      {
+        "tau_center": 4.1313131313131315,
+        "tau_width": 0.20202020202020154,
+        "peak_height": 0.8875153791874437,
+        "q_factor": 20.45000000000005,
+        "orbital_n": 9,
+        "tau_predicted": 4.3109149705429815,
+        "error": 0.17960183922984996,
+        "matches_prediction": "False"
+      },
+      {
+        "tau_center": 4.434343434343434,
+        "tau_width": 0.858585858585859,
+        "peak_height": 0.6806548838809713,
+        "q_factor": 5.164705882352939,
+        "orbital_n": 9,
+        "tau_predicted": 4.3109149705429815,
+        "error": 0.1234284638004528,
+        "matches_prediction": "True"
+      },
+      {
+        "tau_center": 4.686868686868687,
+        "tau_width": 0.858585858585859,
+        "peak_height": 0.7590644250893192,
+        "q_factor": 5.458823529411762,
+        "orbital_n": 10,
+        "tau_predicted": 4.678794411714423,
+        "error": 0.00807427515426351,
+        "matches_prediction": "True"
+      },
+      {
+        "tau_center": 4.787878787878787,
+        "tau_width": 0.6060606060606064,
+        "peak_height": 0.9413926910627762,
+        "q_factor": 7.899999999999994,
+        "orbital_n": 10,
+        "tau_predicted": 4.678794411714423,
+        "error": 0.10908437616436384,
+        "matches_prediction": "True"
+      },
+      {
+        "tau_center": 5.292929292929293,
+        "tau_width": 0.15151515151515138,
+        "peak_height": 0.7781486968223257,
+        "q_factor": 34.933333333333366,
+        "orbital_n": 12,
+        "tau_predicted": 5.414553294057308,
+        "error": 0.12162400112801475,
+        "matches_prediction": "True"
+      },
+      {
+        "tau_center": 5.696969696969697,
+        "tau_width": 0.20202020202020243,
+        "peak_height": 0.7278112484678357,
+        "q_factor": 28.199999999999942,
+        "orbital_n": 13,
+        "tau_predicted": 5.782432735228751,
+        "error": 0.08546303825905355,
+        "matches_prediction": "True"
+      },
+      {
+        "tau_center": 5.898989898989899,
+        "tau_width": 0.10101010101010122,
+        "peak_height": 0.783743589880482,
+        "q_factor": 58.39999999999988,
+        "orbital_n": 13,
+        "tau_predicted": 5.782432735228751,
+        "error": 0.116557163761148,
+        "matches_prediction": "True"
+      }
+    ],
+    "transitions": [
+      {
+        "n_start": 0,
+        "n_end": 0,
+        "probability": 0.6,
+        "delta_n": 0,
+        "allowed": false
+      },
+      {
+        "n_start": 0,
+        "n_end": 1,
+        "probability": 0.26666666666666666,
+        "delta_n": 1,
+        "allowed": true
+      },
+      {
+        "n_start": 0,
+        "n_end": 2,
+        "probability": 0.13333333333333333,
+        "delta_n": 2,
+        "allowed": false
+      },
+      {
+        "n_start": 1,
+        "n_end": 1,
+        "probability": 0.7333333333333333,
+        "delta_n": 0,
+        "allowed": false
+      },
+      {
+        "n_start": 1,
+        "n_end": 2,
+        "probability": 0.26666666666666666,
+        "delta_n": 1,
+        "allowed": true
+      },
+      {
+        "n_start": 2,
+        "n_end": 1,
+        "probability": 0.21428571428571427,
+        "delta_n": -1,
+        "allowed": true
+      },
+      {
+        "n_start": 2,
+        "n_end": 2,
+        "probability": 0.7857142857142857,
+        "delta_n": 0,
+        "allowed": false
+      },
+      {
+        "n_start": 3,
+        "n_end": 1,
+        "probability": 0.06666666666666667,
+        "delta_n": -2,
+        "allowed": false
+      },
+      {
+        "n_start": 3,
+        "n_end": 2,
+        "probability": 0.4,
+        "delta_n": -1,
+        "allowed": true
+      },
+      {
+        "n_start": 3,
+        "n_end": 3,
+        "probability": 0.5333333333333333,
+        "delta_n": 0,
+        "allowed": false
+      },
+      {
+        "n_start": 4,
+        "n_end": 1,
+        "probability": 0.07142857142857142,
+        "delta_n": -3,
+        "allowed": false
+      },
+      {
+        "n_start": 4,
+        "n_end": 4,
+        "probability": 0.9285714285714286,
+        "delta_n": 0,
+        "allowed": false
+      },
+      {
+        "n_start": 5,
+        "n_end": 1,
+        "probability": 0.13333333333333333,
+        "delta_n": -4,
+        "allowed": false
+      },
+      {
+        "n_start": 5,
+        "n_end": 2,
+        "probability": 0.26666666666666666,
+        "delta_n": -3,
+        "allowed": false
+      },
+      {
+        "n_start": 5,
+        "n_end": 3,
+        "probability": 0.06666666666666667,
+        "delta_n": -2,
+        "allowed": false
+      },
+      {
+        "n_start": 5,
+        "n_end": 5,
+        "probability": 0.5333333333333333,
+        "delta_n": 0,
+        "allowed": false
+      }
+    ],
+    "q_analysis": {
+      "q_mean": 11.142973856209144,
+      "q_std": 14.749957076782517,
+      "q_expected": 2.718281828459045,
+      "q_values": [
+        1.7833333333333337,
+        1.8666666666666663,
+        1.9499999999999993,
+        2.0749999999999997,
+        2.3249999999999997,
+        2.5333333333333328,
+        5.799999999999998,
+        2.7833333333333328,
+        5.983333333333334,
+        6.400000000000001,
+        6.566666666666667,
+        20.45000000000005,
+        5.164705882352939,
+        5.458823529411762,
+        7.899999999999994,
+        34.933333333333366,
+        28.199999999999942,
+        58.39999999999988
+      ],
+      "consistency": 1.3237002318338449
+    }
+  },
+  "summary": {
+    "peaks_found": 18,
+    "peaks_matching": 15,
+    "quantization_proven": true
+  }
+}

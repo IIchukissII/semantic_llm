@@ -125,6 +125,113 @@ See `experiments/physics/euler_constant.py` for validation code.
 - `experiments/physics/results/orbital_structure.png` - 4-panel analysis (distribution, Boltzmann fit, orbital levels, veil boundary)
 - `experiments/physics/results/orbital_diagram.png` - Artistic orbital representation
 
+## Major Feature: Unified Semantic Navigator
+
+**NEW**: All semantic engines unified into one goal-based system.
+
+```
+┌─────────────────────────────────────────────────────────────────────────┐
+│                     SEMANTIC NAVIGATOR                                  │
+│                                                                         │
+│                         USER QUERY                                      │
+│                              │                                          │
+│                    ┌─────────▼─────────┐                                │
+│                    │    GOAL ROUTER    │                                │
+│                    └─────────┬─────────┘                                │
+│                              │                                          │
+│     ┌────────────┬───────────┼───────────┬────────────┐                 │
+│     ▼            ▼           ▼           ▼            ▼                 │
+│  ORBITAL    MONTE CARLO   PARADOX    STORM      COMBINED                │
+│  Resonance  Stability     Tension    Chaos      Multi-engine            │
+│     │            │           │           │            │                 │
+│     └────────────┴───────────┼───────────┴────────────┘                 │
+│                              │                                          │
+│                    ┌─────────▼─────────┐                                │
+│                    │  QUALITY METRICS  │                                │
+│                    │  R, C, D, S, P    │                                │
+│                    └───────────────────┘                                │
+└─────────────────────────────────────────────────────────────────────────┘
+```
+
+### Navigation Goals
+
+| Goal | Strategy | Optimizes | When to Use |
+|------|----------|-----------|-------------|
+| `accurate` | Orbital auto | Resonance (R) | Precise answers |
+| `deep` | Orbital transcend | Depth (C/R) | Philosophical insight |
+| `grounded` | Orbital ground | Low τ | Practical advice |
+| `stable` | Monte Carlo | Stability (S) | Consensus answers |
+| `powerful` | Paradox | Power (P) | Impactful statements |
+| `balanced` | Orbital + MC | Composite | General use |
+
+### Quality Metrics
+
+```python
+R: Resonance  — How well we hit target orbital [0, 1]
+C: Coherence  — Beam j-vector alignment [0, 1]
+D: Depth      — C/R ratio (the paradox!)
+S: Stability  — Monte Carlo consensus [0, 1]
+P: Power      — Paradox tension × stability
+```
+
+### The Resonance-Coherence Paradox
+
+```
+Goal: accurate  → R=0.78, C=0.74, D=1.0  (precise)
+Goal: deep      → R=0.21, C=0.74, D=3.6  (profound)
+```
+
+**Lower resonance can produce higher depth.** Hard jumps (low R) create selection pressure that filters for coherent paths (high C). The ratio D = C/R measures this.
+
+### Usage
+
+```python
+from chain_core.navigator import SemanticNavigator
+
+nav = SemanticNavigator()
+
+# Navigate with a goal
+result = nav.navigate("What is consciousness?", goal="deep")
+print(result.concepts)  # ['time', 'mind', 'life', ...]
+print(result.quality)   # Quality(R=0.21, C=0.78, D=3.6)
+
+# Compare all strategies
+results = nav.navigate_multi("What is love?")
+
+# Find best strategy for a goal
+result = nav.navigate_best("What is wisdom?", goal="powerful")
+```
+
+### Navigator Dialogue App
+
+```bash
+# Standard dialogue with goal
+python app/dialogue_navigator.py --goal deep --topic "What is consciousness?"
+
+# Compare all strategies
+python app/dialogue_navigator.py --compare --topic "What is love?"
+
+# Interactive mode with goal switching
+python app/dialogue_navigator.py --interactive --goal balanced
+```
+
+Interactive commands:
+- `goal <name>` — Change goal (accurate, deep, grounded, stable, powerful, balanced)
+- `quit` — Exit
+
+### Example Output
+
+```
+Goal: powerful | Strategy: paradox
+R=50% C=0.78 D=1.6 | 6 paradoxes found
+Concepts: ['she', 'part', 'idea', 'foot', 'song']
+
+Response: "We seek meaning because she who is whole within us
+recognizes that each part of existence sings its own desperate song..."
+```
+
+See `docs/UNIFIED_NAVIGATOR.md` for full documentation.
+
 ## Core Architecture: Euler-Laser + Intent Collapse
 
 The system combines **Euler orbital physics**, **laser coherence**, and **intent-driven collapse**:
@@ -558,14 +665,24 @@ Results saved to `results/dialogue_euler/` with orbital statistics.
 ```
 meaning_chain/
 ├── chain_core/
-│   ├── semantic_laser.py   # Euler-Laser + Intent Collapse (MAIN)
-│   ├── intent_collapse.py  # Intent-driven navigation (NEW)
+│   ├── navigator.py        # Unified Semantic Navigator (NEW)
+│   ├── semantic_laser.py   # Euler-Laser + Intent Collapse
+│   ├── monte_carlo_renderer.py  # Monte Carlo sampling
+│   ├── paradox_detector.py # Paradox detection & synthesis
+│   ├── storm_logos.py      # Storm-Logos architecture
+│   ├── intent_collapse.py  # Intent-driven navigation
 │   ├── euler_navigation.py # Euler orbital navigation
-│   ├── storm_logos.py      # Storm-Logos + Intent (updated)
 │   ├── decomposer.py       # Text → nouns + verbs (spaCy)
 │   ├── renderer.py         # Tree → LLM prompt → response
 │   ├── meditation.py       # Consciousness layer
-│   └── feedback.py         # Response validation
+│   ├── feedback.py         # Response validation
+│   └── orbital/            # Orbital resonance module (NEW)
+│       ├── constants.py    # Euler constants (e, kT, Veil)
+│       ├── detector.py     # OrbitalDetector
+│       ├── tuner.py        # OrbitalTuner
+│       ├── mapper.py       # IntentOrbitalMapper (learned)
+│       ├── veil.py         # VeilCrosser
+│       └── resonant_laser.py  # ResonantLaser
 │
 ├── graph/
 │   ├── meaning_graph.py        # Neo4j with VIA relationships
@@ -589,6 +706,9 @@ meaning_chain/
 │
 ├── docs/
 │   ├── UNIFIED_SEMANTIC_PHYSICS.md   # Complete physics theory + Euler
+│   ├── UNIFIED_NAVIGATOR.md          # Navigator architecture (NEW)
+│   ├── ORBITAL_RESONANCE.md          # Resonance proof (NEW)
+│   ├── RESONANCE_COHERENCE_PARADOX.md # The R/C paradox (NEW)
 │   ├── SEMANTIC_THERMODYNAMICS.md    # Thermodynamics detail
 │   └── SEMANTIC_OPTICS.md            # Optics detail
 │
@@ -603,7 +723,9 @@ meaning_chain/
 │   ├── chat.py                 # Interactive chat (Euler-aware)
 │   ├── dialogue.py             # Two semantic agents
 │   ├── dialogue_claude.py      # Semantic ↔ Claude dialogue
-│   └── dialogue_claude_euler.py # Euler-aware Claude dialogue (NEW)
+│   ├── dialogue_claude_euler.py # Euler-aware Claude dialogue
+│   ├── dialogue_resonant.py    # Orbital resonant dialogue
+│   └── dialogue_navigator.py   # Unified Navigator dialogue (NEW)
 │
 ├── models/
 │   └── types.py            # MeaningNode, MeaningTree

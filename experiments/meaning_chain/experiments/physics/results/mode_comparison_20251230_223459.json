@@ -1,0 +1,600 @@
+{
+  "timestamp": "20251230_223459",
+  "experiment": "Orbital Mode Comparison",
+  "modes_tested": [
+    "auto",
+    "ground",
+    "transcend"
+  ],
+  "categories": [
+    "practical",
+    "balanced",
+    "philosophical"
+  ],
+  "n_queries": 9,
+  "results": [
+    {
+      "query": "How do I fix my sleep schedule?",
+      "category": "practical",
+      "expected_orbital": 1,
+      "decomposition": {
+        "nouns": [
+          "sleep",
+          "schedule"
+        ],
+        "verbs": []
+      },
+      "modes": {
+        "auto": {
+          "detected_orbital": 1,
+          "target_orbital": 1,
+          "resonance_quality": 0.7759622460697269,
+          "coherence": 0.7282016708400488,
+          "tau_mean": 1.4437345614949384,
+          "beam_concepts": [
+            "thee",
+            "head",
+            "eye",
+            "tear",
+            "month",
+            "sky"
+          ]
+        },
+        "ground": {
+          "detected_orbital": 1,
+          "target_orbital": 2,
+          "resonance_quality": 0.696962205479043,
+          "coherence": 0.7757784815762694,
+          "tau_mean": 1.6097357623096098,
+          "beam_concepts": [
+            "side",
+            "she",
+            "point",
+            "shower",
+            "water",
+            "result"
+          ]
+        },
+        "transcend": {
+          "detected_orbital": 1,
+          "target_orbital": 6,
+          "resonance_quality": 0.2129227600509126,
+          "coherence": 0.7147160316794369,
+          "tau_mean": 1.738668722906519,
+          "beam_concepts": [
+            "she",
+            "provocation",
+            "chile",
+            "pause",
+            "kitchenette",
+            "breast"
+          ]
+        }
+      }
+    },
+    {
+      "query": "What should I eat for breakfast?",
+      "category": "practical",
+      "expected_orbital": 1,
+      "decomposition": {
+        "nouns": [
+          "breakfast"
+        ],
+        "verbs": [
+          "eat"
+        ]
+      },
+      "modes": {
+        "auto": {
+          "detected_orbital": 0,
+          "target_orbital": 2,
+          "resonance_quality": 0.8269129693935213,
+          "coherence": 0.7702398253397263,
+          "tau_mean": 1.6951918566263884,
+          "beam_concepts": [
+            "side",
+            "shower",
+            "she",
+            "death",
+            "ear",
+            "tub"
+          ]
+        },
+        "ground": {
+          "detected_orbital": 0,
+          "target_orbital": 2,
+          "resonance_quality": 0.8143953946718925,
+          "coherence": 0.7811925513879263,
+          "tau_mean": 1.6877720814440254,
+          "beam_concepts": [
+            "shower",
+            "side",
+            "enthusiasm",
+            "difference",
+            "ear",
+            "table"
+          ]
+        },
+        "transcend": {
+          "detected_orbital": 0,
+          "target_orbital": 6,
+          "resonance_quality": 0.2221480150530964,
+          "coherence": 0.7868844259416947,
+          "tau_mean": 1.9368666327803667,
+          "beam_concepts": [
+            "drawer",
+            "voice",
+            "mean",
+            "runt",
+            "day",
+            "squeak"
+          ]
+        }
+      }
+    },
+    {
+      "query": "How do I organize my desk?",
+      "category": "practical",
+      "expected_orbital": 1,
+      "decomposition": {
+        "nouns": [
+          "desk"
+        ],
+        "verbs": []
+      },
+      "modes": {
+        "auto": {
+          "detected_orbital": 14,
+          "target_orbital": 14,
+          "resonance_quality": 0.20000843535913268,
+          "coherence": 0.7687983846764902,
+          "tau_mean": 1.9835612516555576,
+          "beam_concepts": [
+            "fountain",
+            "suspect",
+            "time",
+            "arm",
+            "body",
+            "man"
+          ]
+        },
+        "ground": {
+          "detected_orbital": 14,
+          "target_orbital": 2,
+          "resonance_quality": 0.8070897568223085,
+          "coherence": 0.737926103918381,
+          "tau_mean": 1.7881462705326023,
+          "beam_concepts": [
+            "time",
+            "ear",
+            "side",
+            "shower",
+            "nation",
+            "form"
+          ]
+        },
+        "transcend": {
+          "detected_orbital": 14,
+          "target_orbital": 6,
+          "resonance_quality": 0.22321768982955506,
+          "coherence": 0.7320523153978091,
+          "tau_mean": 1.9542182560233883,
+          "beam_concepts": [
+            "shut",
+            "sea",
+            "chile",
+            "kitchenette",
+            "desk",
+            "body"
+          ]
+        }
+      }
+    },
+    {
+      "query": "What is the meaning of love?",
+      "category": "balanced",
+      "expected_orbital": 2,
+      "decomposition": {
+        "nouns": [
+          "meaning",
+          "love"
+        ],
+        "verbs": []
+      },
+      "modes": {
+        "auto": {
+          "detected_orbital": 1,
+          "target_orbital": 1,
+          "resonance_quality": 0.7468667300719256,
+          "coherence": 0.7255913882785389,
+          "tau_mean": 1.4586997518601283,
+          "beam_concepts": [
+            "she",
+            "body",
+            "way",
+            "difference",
+            "time",
+            "air"
+          ]
+        },
+        "ground": {
+          "detected_orbital": 1,
+          "target_orbital": 2,
+          "resonance_quality": 0.6482924817290181,
+          "coherence": 0.7460489603286621,
+          "tau_mean": 1.5718191282005394,
+          "beam_concepts": [
+            "she",
+            "way",
+            "lot",
+            "time",
+            "tongue",
+            "shower"
+          ]
+        },
+        "transcend": {
+          "detected_orbital": 1,
+          "target_orbital": 6,
+          "resonance_quality": 0.20722776112503366,
+          "coherence": 0.7124296512164813,
+          "tau_mean": 1.524908408556308,
+          "beam_concepts": [
+            "time",
+            "she",
+            "heart",
+            "difference",
+            "breast",
+            "thing"
+          ]
+        }
+      }
+    },
+    {
+      "query": "How do I find purpose in work?",
+      "category": "balanced",
+      "expected_orbital": 2,
+      "decomposition": {
+        "nouns": [
+          "purpose",
+          "work"
+        ],
+        "verbs": [
+          "find"
+        ]
+      },
+      "modes": {
+        "auto": {
+          "detected_orbital": 1,
+          "target_orbital": 2,
+          "resonance_quality": 0.6232579838576655,
+          "coherence": 0.7991652407620459,
+          "tau_mean": 1.5506793053390024,
+          "beam_concepts": [
+            "she",
+            "breakfast",
+            "shower",
+            "form",
+            "sign",
+            "time"
+          ]
+        },
+        "ground": {
+          "detected_orbital": 1,
+          "target_orbital": 2,
+          "resonance_quality": 0.6344214036944648,
+          "coherence": 0.7129334213046377,
+          "tau_mean": 1.5602563679286836,
+          "beam_concepts": [
+            "she",
+            "mind",
+            "side",
+            "shower",
+            "way",
+            "power"
+          ]
+        },
+        "transcend": {
+          "detected_orbital": 1,
+          "target_orbital": 6,
+          "resonance_quality": 0.21010918089957772,
+          "coherence": 0.76690113947229,
+          "tau_mean": 1.6483373642205406,
+          "beam_concepts": [
+            "head",
+            "name",
+            "course",
+            "knee",
+            "hour",
+            "answer"
+          ]
+        }
+      }
+    },
+    {
+      "query": "Why do relationships matter?",
+      "category": "balanced",
+      "expected_orbital": 2,
+      "decomposition": {
+        "nouns": [
+          "relationship"
+        ],
+        "verbs": []
+      },
+      "modes": {
+        "auto": {
+          "detected_orbital": 0,
+          "target_orbital": 0,
+          "resonance_quality": 0.4196463842062266,
+          "coherence": 0.6721838971925879,
+          "tau_mean": 1.440314559968447,
+          "beam_concepts": [
+            "heaven",
+            "mind",
+            "man",
+            "one",
+            "horizon",
+            "room"
+          ]
+        },
+        "ground": {
+          "detected_orbital": 0,
+          "target_orbital": 2,
+          "resonance_quality": 0.6358136719885233,
+          "coherence": 0.7394535762506693,
+          "tau_mean": 1.5614334919800812,
+          "beam_concepts": [
+            "shower",
+            "tongue",
+            "man",
+            "one",
+            "tub",
+            "pair"
+          ]
+        },
+        "transcend": {
+          "detected_orbital": 0,
+          "target_orbital": 6,
+          "resonance_quality": 0.22589823316433294,
+          "coherence": 0.8047611708262294,
+          "tau_mean": 1.994412862360995,
+          "beam_concepts": [
+            "fact",
+            "nature",
+            "runt",
+            "exertion",
+            "traver",
+            "end"
+          ]
+        }
+      }
+    },
+    {
+      "query": "What is consciousness?",
+      "category": "philosophical",
+      "expected_orbital": 3,
+      "decomposition": {
+        "nouns": [
+          "consciousness"
+        ],
+        "verbs": []
+      },
+      "modes": {
+        "auto": {
+          "detected_orbital": 1,
+          "target_orbital": 1,
+          "resonance_quality": 0.7469685757600304,
+          "coherence": 0.7390458382495689,
+          "tau_mean": 1.4586312462364128,
+          "beam_concepts": [
+            "bone",
+            "body",
+            "water",
+            "time",
+            "death",
+            "power"
+          ]
+        },
+        "ground": {
+          "detected_orbital": 1,
+          "target_orbital": 2,
+          "resonance_quality": 0.6950439840622834,
+          "coherence": 0.7820002696855497,
+          "tau_mean": 1.6083130391253906,
+          "beam_concepts": [
+            "side",
+            "time",
+            "harmony",
+            "shower",
+            "consciousness",
+            "garland"
+          ]
+        },
+        "transcend": {
+          "detected_orbital": 1,
+          "target_orbital": 6,
+          "resonance_quality": 0.21380210595809448,
+          "coherence": 0.7514957282169938,
+          "tau_mean": 1.762886625450198,
+          "beam_concepts": [
+            "person",
+            "philosophy",
+            "chile",
+            "thing",
+            "kitchenette",
+            "pleasure"
+          ]
+        }
+      }
+    },
+    {
+      "query": "Does free will exist?",
+      "category": "philosophical",
+      "expected_orbital": 4,
+      "decomposition": {
+        "nouns": [
+          "free"
+        ],
+        "verbs": []
+      },
+      "modes": {
+        "auto": {
+          "detected_orbital": 1,
+          "target_orbital": 1,
+          "resonance_quality": 0.8069345168637103,
+          "coherence": 0.7703485895196746,
+          "tau_mean": 1.4381060016256824,
+          "beam_concepts": [
+            "heart",
+            "mind",
+            "she",
+            "way",
+            "time",
+            "life"
+          ]
+        },
+        "ground": {
+          "detected_orbital": 1,
+          "target_orbital": 2,
+          "resonance_quality": 0.6809139014766482,
+          "coherence": 0.7688835818951522,
+          "tau_mean": 1.597659853743731,
+          "beam_concepts": [
+            "deal",
+            "window",
+            "view",
+            "snake",
+            "seat",
+            "day"
+          ]
+        },
+        "transcend": {
+          "detected_orbital": 1,
+          "target_orbital": 6,
+          "resonance_quality": 1.0,
+          "coherence": 0.9041823991504043,
+          "tau_mean": 3.2093390628410705,
+          "beam_concepts": [
+            "chile",
+            "kitchenette",
+            "ginger",
+            "decorating",
+            "roping",
+            "lam\u00e9"
+          ]
+        }
+      }
+    },
+    {
+      "query": "What is the nature of reality?",
+      "category": "philosophical",
+      "expected_orbital": 4,
+      "decomposition": {
+        "nouns": [
+          "nature",
+          "reality"
+        ],
+        "verbs": []
+      },
+      "modes": {
+        "auto": {
+          "detected_orbital": 1,
+          "target_orbital": 1,
+          "resonance_quality": 0.73592303968726,
+          "coherence": 0.7556241105551967,
+          "tau_mean": 1.4661362753813127,
+          "beam_concepts": [
+            "bone",
+            "man",
+            "time",
+            "body",
+            "power",
+            "care"
+          ]
+        },
+        "ground": {
+          "detected_orbital": 1,
+          "target_orbital": 2,
+          "resonance_quality": 0.5834819087572449,
+          "coherence": 0.7518148069839379,
+          "tau_mean": 1.514373489892303,
+          "beam_concepts": [
+            "side",
+            "half",
+            "mode",
+            "field",
+            "form",
+            "mine"
+          ]
+        },
+        "transcend": {
+          "detected_orbital": 1,
+          "target_orbital": 6,
+          "resonance_quality": 0.20906802102160368,
+          "coherence": 0.7013695973412557,
+          "tau_mean": 1.608352562454846,
+          "beam_concepts": [
+            "knight",
+            "strength",
+            "idea",
+            "fact",
+            "fable",
+            "while"
+          ]
+        }
+      }
+    }
+  ],
+  "aggregate_stats": {
+    "practical": {
+      "auto": {
+        "avg_resonance": 0.6009612169407936,
+        "avg_coherence": 0.7557466269520884,
+        "avg_tau": 1.707495889925628
+      },
+      "ground": {
+        "avg_resonance": 0.7728157856577479,
+        "avg_coherence": 0.7649657122941922,
+        "avg_tau": 1.6952180380954125
+      },
+      "transcend": {
+        "avg_resonance": 0.21942948831118803,
+        "avg_coherence": 0.7445509243396469,
+        "avg_tau": 1.8765845372367582
+      }
+    },
+    "balanced": {
+      "auto": {
+        "avg_resonance": 0.5965903660452726,
+        "avg_coherence": 0.7323135087443909,
+        "avg_tau": 1.4832312057225259
+      },
+      "ground": {
+        "avg_resonance": 0.639509185804002,
+        "avg_coherence": 0.7328119859613231,
+        "avg_tau": 1.5645029960364347
+      },
+      "transcend": {
+        "avg_resonance": 0.21441172506298142,
+        "avg_coherence": 0.761363987171667,
+        "avg_tau": 1.722552878379281
+      }
+    },
+    "philosophical": {
+      "auto": {
+        "avg_resonance": 0.7632753774370004,
+        "avg_coherence": 0.7550061794414801,
+        "avg_tau": 1.4542911744144693
+      },
+      "ground": {
+        "avg_resonance": 0.6531465980987256,
+        "avg_coherence": 0.7675662195215466,
+        "avg_tau": 1.5734487942538082
+      },
+      "transcend": {
+        "avg_resonance": 0.4742900423265661,
+        "avg_coherence": 0.7856825749028845,
+        "avg_tau": 2.193526083582038
+      }
+    }
+  }
+}

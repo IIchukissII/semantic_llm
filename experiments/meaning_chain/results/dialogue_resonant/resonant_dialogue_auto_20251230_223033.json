@@ -1,0 +1,110 @@
+{
+  "topic": "What is the meaning of love?",
+  "exchanges": 3,
+  "mode": "auto",
+  "tuning": "soft",
+  "timestamp": "2025-12-30T22:30:12.852448",
+  "turns": [
+    {
+      "exchange": 1,
+      "speaker": "Claude",
+      "input": "What is the meaning of love?",
+      "response": "Love seems to be both the most universal human experience and the most mysteriously personal one - we all recognize it yet struggle to capture its essence in words. Perhaps meaning in love isn't something we find but something we create through the very act of loving itself?\n\nWhat draws you to ask about love's meaning - are you thinking about it as an emotion, a choice, or something else entirely?"
+    },
+    {
+      "exchange": 2,
+      "speaker": "Resonant",
+      "input": "Love seems to be both the most universal human experience and the most mysteriously personal one - we all recognize it yet struggle to capture its essence in words. Perhaps meaning in love isn't something we find but something we create through the very act of loving itself?\n\nWhat draws you to ask about love's meaning - are you thinking about it as an emotion, a choice, or something else entirely?",
+      "response": "Love operates in that paradoxical space where the heart's deepest certainties meet the mind's most persistent questions - we feel its power with absolute clarity yet find ourselves pausing whenever we try to pin down exactly what that means. I think you're onto something profound: meaning in love isn't a treasure we unearth but something we forge in the very act of loving, the way two people create a shared sense of reality that exists nowhere else in the world.\n\nWhat draws me is how love seems to be both the most embodied experience - felt in the chest, the breath, the way our whole being shifts - and simultaneously the most transcendent, lifting us beyond our usual boundaries into something larger than ourselves.",
+      "resonance": {
+        "detected_orbital": 1,
+        "target_orbital": 2,
+        "resonance_quality": 0.5580498584368926,
+        "coherence": 0.7303672076222375,
+        "tau_mean": 1.4891295292183657,
+        "beam_concepts": [
+          "she",
+          "power",
+          "mind",
+          "death",
+          "air",
+          "way",
+          "heart",
+          "arm"
+        ],
+        "intent_profile": "balanced",
+        "tuning": "soft"
+      },
+      "decomposition": {
+        "nouns": [
+          "love",
+          "universal",
+          "human",
+          "experience",
+          "essence",
+          "word",
+          "act",
+          "meaning",
+          "emotion",
+          "choice"
+        ],
+        "verbs": [
+          "recognize",
+          "capture",
+          "mean",
+          "find",
+          "create",
+          "love",
+          "draw",
+          "ask",
+          "think"
+        ]
+      }
+    },
+    {
+      "exchange": 3,
+      "speaker": "Claude",
+      "input": "Love operates in that paradoxical space where the heart's deepest certainties meet the mind's most persistent questions - we feel its power with absolute clarity yet find ourselves pausing whenever we try to pin down exactly what that means. I think you're onto something profound: meaning in love isn't a treasure we unearth but something we forge in the very act of loving, the way two people create a shared sense of reality that exists nowhere else in the world.\n\nWhat draws me is how love seems to be both the most embodied experience - felt in the chest, the breath, the way our whole being shifts - and simultaneously the most transcendent, lifting us beyond our usual boundaries into something larger than ourselves.",
+      "response": "Yes, that embodied-yet-transcendent quality is so striking - love seems to root us most deeply in our physical selves while simultaneously dissolving the very boundaries that define those selves. It's as if love operates at the intersection where individual consciousness touches something infinite.\n\nYour image of two people creating a shared reality resonates deeply - love as a kind of collaborative meaning-making where the \"we\" that emerges isn't just the sum of two \"I\"s but something entirely new. That shared reality becomes a living thing with its own logic, its own language, its own gravitational pull.\n\nI'm curious about that moment of transition you hint at - when we move from feeling love's certainty to questioning its nature. Is that shift itself part of love's meaning, this dance between knowing and not-knowing?"
+    }
+  ],
+  "aggregate_stats": {
+    "avg_resonance_quality": 0.5580498584368926,
+    "avg_coherence": 0.7303672076222375,
+    "avg_tau": 1.4891295292183657,
+    "top_concepts": [
+      [
+        "she",
+        1
+      ],
+      [
+        "power",
+        1
+      ],
+      [
+        "mind",
+        1
+      ],
+      [
+        "death",
+        1
+      ],
+      [
+        "air",
+        1
+      ],
+      [
+        "way",
+        1
+      ],
+      [
+        "heart",
+        1
+      ],
+      [
+        "arm",
+        1
+      ]
+    ]
+  }
+}
