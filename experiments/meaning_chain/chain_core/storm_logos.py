@@ -29,20 +29,22 @@ from pathlib import Path
 import sys
 
 
-# =============================================================================
-# Semantic Physics Constants
-# =============================================================================
-
-LAMBDA = 0.5      # Gravitational constant (τ coupling)
-MU = 0.5          # Lift constant (g coupling)
-VEIL_TAU = 3.5    # Quasi-Lagrange point (boundary between realms)
-
 # Add parent paths for imports
 _THIS_FILE = Path(__file__).resolve()
 _MEANING_CHAIN = _THIS_FILE.parent.parent
 _SEMANTIC_LLM = _MEANING_CHAIN.parent.parent
 sys.path.insert(0, str(_SEMANTIC_LLM))
 sys.path.insert(0, str(_MEANING_CHAIN))
+
+# =============================================================================
+# Semantic Physics Constants
+# =============================================================================
+
+LAMBDA = 0.5      # Gravitational constant (τ coupling)
+MU = 0.5          # Lift constant (g coupling)
+
+# Import Euler-based VEIL_TAU from orbital constants (τ = e ≈ 2.718)
+from chain_core.orbital.constants import VEIL_TAU
 
 from core.data_loader import DataLoader
 from graph.meaning_graph import MeaningGraph
@@ -60,7 +62,7 @@ class StormState:
     activation: float = 1.0  # How strongly this thought was activated
     # Physics properties (populated when gravity_strength > 0)
     phi: float = 0.0         # Semantic potential φ = λτ - μg
-    realm: str = "human"     # "human" (τ<3.5) or "transcendental" (τ≥3.5)
+    realm: str = "human"     # "human" (τ<e) or "transcendental" (τ≥e)
     # Intent collapse properties (NEW)
     collapsed_by_intent: bool = False  # True if reached via intent-driven path
     intent_score: float = 0.0          # How aligned with intent [0, 1]
@@ -162,7 +164,7 @@ class StormResult:
 
     @property
     def total_veil_crossings(self) -> int:
-        """Total crossings of the τ=3.5 boundary."""
+        """Total crossings of the τ=e boundary."""
         return sum(t.veil_crossings for t in self.trajectories)
 
     @property
@@ -195,7 +197,7 @@ class LogosPattern:
     coherence: float              # How coherent is the pattern [0, 1]
     # Physics metrics (populated when gravity enabled)
     avg_phi: float = 0.0          # Average semantic potential
-    veil_crossings: int = 0       # Times meaning crossed the τ=3.5 boundary
+    veil_crossings: int = 0       # Times meaning crossed the τ=e boundary
     gravity_compliance: float = 0.0  # Fraction of steps following gravity
     realm: str = "human"          # Dominant realm of pattern
 
