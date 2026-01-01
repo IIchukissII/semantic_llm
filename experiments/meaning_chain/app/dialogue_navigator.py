@@ -457,7 +457,7 @@ def interactive_mode(goal: str = "balanced"):
     print("=" * 70)
     print(f"\nGoal: {goal}")
     print("Type 'quit' to exit, 'goal <name>' to change goal")
-    print("Goals: accurate, deep, grounded, stable, powerful, balanced")
+    print("Goals: accurate, deep, grounded, stable, powerful, balanced, wisdom, supercritical")
     print()
 
     navigator_agent = NavigatorAgent("Navigator", goal=goal)
@@ -507,7 +507,8 @@ def main():
                         default="What is the nature of consciousness?")
     parser.add_argument("--goal", "-g", type=str, default="balanced",
                         choices=["accurate", "deep", "grounded", "stable",
-                                "powerful", "balanced", "exploratory"],
+                                "powerful", "balanced", "exploratory",
+                                "supercritical", "wisdom"],
                         help="Navigation goal")
     parser.add_argument("--compare", "-c", action="store_true",
                         help="Compare all strategies on the topic")

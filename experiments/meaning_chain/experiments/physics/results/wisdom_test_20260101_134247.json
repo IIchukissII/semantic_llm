@@ -1,0 +1,919 @@
+{
+  "timestamp": "20260101_134247",
+  "title": "WISDOM vs POWERFUL Mode Comparison",
+  "optimal": {
+    "C": 0.615,
+    "P": 6.15,
+    "meaning": 3.78,
+    "sigma": 1.22
+  },
+  "comparisons": [
+    {
+      "question": "What is wisdom?",
+      "powerful": {
+        "C": 0.08953771648074234,
+        "P": 7.624855765879399,
+        "meaning": 0.6827121737718631,
+        "sigma": 0.8520232930686823,
+        "efficiency": 0.18061168618303258,
+        "balance_ratio": 0.11742873469346952,
+        "thesis": "thee",
+        "antithesis": "odd",
+        "concepts": [
+          "thee",
+          "odd",
+          "wisdom",
+          "room",
+          "all"
+        ]
+      },
+      "wisdom": {
+        "C": 0.15891920829572914,
+        "P": 7.921397300632402,
+        "meaning": 1.2588621876124273,
+        "sigma": 0.9510589383589694,
+        "efficiency": 0.3330323247651924,
+        "balance_ratio": 0.20062017124559814,
+        "thesis": "she",
+        "antithesis": "thee",
+        "synthesis": [
+          "wisdom",
+          "way",
+          "heart",
+          "haste",
+          "man"
+        ],
+        "concepts": [
+          "wisdom",
+          "way",
+          "heart",
+          "haste",
+          "man"
+        ]
+      },
+      "closer_to_optimal": "WISDOM"
+    },
+    {
+      "question": "What is love?",
+      "powerful": {
+        "C": 0.27767954560355373,
+        "P": 9.452087706690953,
+        "meaning": 2.62465141939888,
+        "sigma": 1.2228883162726492,
+        "efficiency": 0.6943522273542011,
+        "balance_ratio": 0.2937758876348446,
+        "thesis": "she",
+        "antithesis": "thee",
+        "concepts": [
+          "she",
+          "thee",
+          "bound",
+          "difference",
+          "darkness"
+        ]
+      },
+      "wisdom": {
+        "C": 0.16331287034596778,
+        "P": 11.400838066436554,
+        "meaning": 1.861903588979327,
+        "sigma": 1.3033966769896232,
+        "efficiency": 0.492567087031568,
+        "balance_ratio": 0.14324637311247493,
+        "thesis": "thee",
+        "antithesis": "she",
+        "synthesis": [
+          "love",
+          "heart",
+          "way",
+          "fool",
+          "strength"
+        ],
+        "concepts": [
+          "love",
+          "heart",
+          "way",
+          "fool",
+          "strength"
+        ]
+      },
+      "closer_to_optimal": "POWERFUL"
+    },
+    {
+      "question": "What is the meaning of life?",
+      "powerful": {
+        "C": 0.1815411698376034,
+        "P": 15.304725319037516,
+        "meaning": 2.7784377384612586,
+        "sigma": 1.7120137017413553,
+        "efficiency": 0.7350364387463647,
+        "balance_ratio": 0.11861772495308015,
+        "thesis": "she",
+        "antithesis": "end",
+        "concepts": [
+          "she",
+          "end",
+          "thee",
+          "eye",
+          "life"
+        ]
+      },
+      "wisdom": {
+        "C": 0.308510985840247,
+        "P": 16.74244710549003,
+        "meaning": 5.165228861892919,
+        "sigma": 1.98275569638925,
+        "efficiency": 1.3664626618764335,
+        "balance_ratio": 0.18426875348412056,
+        "thesis": "she",
+        "antithesis": "eye",
+        "synthesis": [
+          "way",
+          "life",
+          "sense",
+          "meaning",
+          "end"
+        ],
+        "concepts": [
+          "way",
+          "life",
+          "sense",
+          "meaning",
+          "end"
+        ]
+      },
+      "closer_to_optimal": "WISDOM"
+    },
+    {
+      "question": "What is consciousness?",
+      "powerful": {
+        "C": 0.3174369888312559,
+        "P": 9.79681300100792,
+        "meaning": 3.109870819182853,
+        "sigma": 1.2971182889320478,
+        "efficiency": 0.8227171479319717,
+        "balance_ratio": 0.3240206675360622,
+        "thesis": "she",
+        "antithesis": "order",
+        "concepts": [
+          "she",
+          "order",
+          "consciousness",
+          "fact",
+          "thing"
+        ]
+      },
+      "wisdom": {
+        "C": 0.2279064022068417,
+        "P": 9.95253961774045,
+        "meaning": 2.2682474971002815,
+        "sigma": 1.2231603639808868,
+        "efficiency": 0.600065475423355,
+        "balance_ratio": 0.22899321274802806,
+        "thesis": "she",
+        "antithesis": "thee",
+        "synthesis": [
+          "order",
+          "consciousness",
+          "orientation",
+          "level",
+          "care"
+        ],
+        "concepts": [
+          "order",
+          "consciousness",
+          "orientation",
+          "level",
+          "care"
+        ]
+      },
+      "closer_to_optimal": "POWERFUL"
+    },
+    {
+      "question": "What is truth?",
+      "powerful": {
+        "C": 0.7496388098485026,
+        "P": 13.213011222466456,
+        "meaning": 9.904986007324663,
+        "sigma": 2.0709399320951483,
+        "efficiency": 2.6203666686044085,
+        "balance_ratio": 0.5673489541686535,
+        "thesis": "she",
+        "antithesis": "truth",
+        "concepts": [
+          "she",
+          "truth",
+          "thee",
+          "science",
+          "eye"
+        ]
+      },
+      "wisdom": {
+        "C": 0.158748822432977,
+        "P": 12.966017271214433,
+        "meaning": 2.058339973450933,
+        "sigma": 1.4553505495544203,
+        "efficiency": 0.5445343845108288,
+        "balance_ratio": 0.12243452951849118,
+        "thesis": "she",
+        "antithesis": "truth",
+        "synthesis": [
+          "thee",
+          "ear",
+          "eye",
+          "end",
+          "opinion"
+        ],
+        "concepts": [
+          "thee",
+          "ear",
+          "eye",
+          "end",
+          "opinion"
+        ]
+      },
+      "closer_to_optimal": "POWERFUL"
+    },
+    {
+      "question": "What is beauty?",
+      "powerful": {
+        "C": 0.3048919694162843,
+        "P": 8.642953033325439,
+        "meaning": 2.6351669719030415,
+        "sigma": 1.1691872727488282,
+        "efficiency": 0.6971341195510692,
+        "balance_ratio": 0.35276365408985094,
+        "thesis": "thee",
+        "antithesis": "she",
+        "concepts": [
+          "thee",
+          "she",
+          "deed",
+          "impression",
+          "eye"
+        ]
+      },
+      "wisdom": {
+        "C": 0.41038725321458797,
+        "P": 9.596393310220822,
+        "meaning": 3.9382374913483704,
+        "sigma": 1.3700265842366703,
+        "efficiency": 1.0418617701979815,
+        "balance_ratio": 0.4276473878759191,
+        "thesis": "thee",
+        "antithesis": "simplicity",
+        "synthesis": [
+          "beauty",
+          "she",
+          "way",
+          "growth",
+          "identity"
+        ],
+        "concepts": [
+          "beauty",
+          "she",
+          "way",
+          "growth",
+          "identity"
+        ]
+      },
+      "closer_to_optimal": "WISDOM"
+    },
+    {
+      "question": "What is freedom?",
+      "powerful": {
+        "C": 0.9226934754593129,
+        "P": 14.889113561530047,
+        "meaning": 13.738087938596548,
+        "sigma": 2.4116048316123178,
+        "efficiency": 3.6344147985705155,
+        "balance_ratio": 0.6197101470455131,
+        "thesis": "market",
+        "antithesis": "state",
+        "concepts": [
+          "market",
+          "state",
+          "she",
+          "shame"
+        ]
+      },
+      "wisdom": {
+        "C": 0.1295995329275787,
+        "P": 10.181976857902157,
+        "meaning": 1.319579445063535,
+        "sigma": 1.1477972187177945,
+        "efficiency": 0.3490950912866495,
+        "balance_ratio": 0.12728327193849145,
+        "thesis": "market",
+        "antithesis": "shame",
+        "synthesis": [
+          "state",
+          "attraction",
+          "drone",
+          "recommendation",
+          "she"
+        ],
+        "concepts": [
+          "state",
+          "attraction",
+          "drone",
+          "recommendation",
+          "she"
+        ]
+      },
+      "closer_to_optimal": "POWERFUL"
+    },
+    {
+      "question": "What is death?",
+      "powerful": {
+        "C": 0.34503496092432523,
+        "P": 14.106528664023843,
+        "meaning": 4.86724556636934,
+        "sigma": 1.7556878273267096,
+        "efficiency": 1.2876311022141114,
+        "balance_ratio": 0.24459239345273842,
+        "thesis": "death",
+        "antithesis": "end",
+        "concepts": [
+          "death",
+          "end",
+          "she",
+          "thee",
+          "eye"
+        ]
+      },
+      "wisdom": {
+        "C": 0.17209623014736736,
+        "P": 15.069503538413569,
+        "meaning": 2.5934047491533883,
+        "sigma": 1.6790465839887243,
+        "efficiency": 0.6860859124744414,
+        "balance_ratio": 0.11420165880626261,
+        "thesis": "she",
+        "antithesis": "thee",
+        "synthesis": [
+          "death",
+          "eye",
+          "way",
+          "band",
+          "fear"
+        ],
+        "concepts": [
+          "death",
+          "eye",
+          "way",
+          "band",
+          "fear"
+        ]
+      },
+      "closer_to_optimal": "POWERFUL"
+    },
+    {
+      "question": "What is happiness?",
+      "powerful": {
+        "C": 0.0290767736322546,
+        "P": 10.407493639084803,
+        "meaning": 0.30261633662279847,
+        "sigma": 1.069826137540735,
+        "efficiency": 0.08005723191079325,
+        "balance_ratio": 0.027938305456232305,
+        "thesis": "she",
+        "antithesis": "thee",
+        "concepts": [
+          "she",
+          "thee",
+          "mind",
+          "happiness",
+          "soul"
+        ]
+      },
+      "wisdom": {
+        "C": 0.7718017491605738,
+        "P": 7.908371177985181,
+        "meaning": 6.10369470818003,
+        "sigma": 1.5626388669590918,
+        "efficiency": 1.6147340497830769,
+        "balance_ratio": 0.9759301021543679,
+        "thesis": "soul",
+        "antithesis": "state",
+        "synthesis": [
+          "pleasure",
+          "happiness",
+          "mind",
+          "she",
+          "circumstance"
+        ],
+        "concepts": [
+          "pleasure",
+          "happiness",
+          "mind",
+          "she",
+          "circumstance"
+        ]
+      },
+      "closer_to_optimal": "WISDOM"
+    },
+    {
+      "question": "What is suffering?",
+      "powerful": {
+        "C": 0.978441850399758,
+        "P": 10.196599702598803,
+        "meaning": 9.976779880796395,
+        "sigma": 1.9981018206596382,
+        "efficiency": 2.6393597568244433,
+        "balance_ratio": 0.9595766029241913,
+        "thesis": "she",
+        "antithesis": "feather",
+        "concepts": [
+          "she",
+          "feather",
+          "idea",
+          "mind"
+        ]
+      },
+      "wisdom": {
+        "C": 0.3064806759688381,
+        "P": 11.850489058019315,
+        "meaning": 3.6319458970630794,
+        "sigma": 1.4915295817707697,
+        "efficiency": 0.9608322479002855,
+        "balance_ratio": 0.25862280828101375,
+        "thesis": "she",
+        "antithesis": "part",
+        "synthesis": [
+          "meaning",
+          "sense",
+          "mind",
+          "song",
+          "idea"
+        ],
+        "concepts": [
+          "meaning",
+          "sense",
+          "mind",
+          "song",
+          "idea"
+        ]
+      },
+      "closer_to_optimal": "POWERFUL"
+    },
+    {
+      "question": "What is faith?",
+      "powerful": {
+        "C": 0.7875080295976605,
+        "P": 8.773358936622417,
+        "meaning": 6.909090609132546,
+        "sigma": 1.6648439232599022,
+        "efficiency": 1.8278017484477636,
+        "balance_ratio": 0.8976129157447156,
+        "thesis": "faith",
+        "antithesis": "she",
+        "concepts": [
+          "faith",
+          "she",
+          "thee",
+          "opinion"
+        ]
+      },
+      "wisdom": {
+        "C": 0.1648921789918924,
+        "P": 7.599341953391159,
+        "meaning": 1.2530720535991722,
+        "sigma": 0.9248263743310083,
+        "efficiency": 0.3315005432802043,
+        "balance_ratio": 0.21698218082989448,
+        "thesis": "faith",
+        "antithesis": "confidence",
+        "synthesis": [
+          "righteousness",
+          "thee",
+          "opinion",
+          "she",
+          "earth"
+        ],
+        "concepts": [
+          "righteousness",
+          "thee",
+          "opinion",
+          "she",
+          "earth"
+        ]
+      },
+      "closer_to_optimal": "POWERFUL"
+    },
+    {
+      "question": "What is hope?",
+      "powerful": {
+        "C": 0.3177795372294119,
+        "P": 10.108930289719904,
+        "meaning": 3.2124111893515757,
+        "sigma": 1.3286725662014023,
+        "efficiency": 0.8498442299871893,
+        "balance_ratio": 0.3143552563148765,
+        "thesis": "she",
+        "antithesis": "thee",
+        "concepts": [
+          "she",
+          "thee",
+          "effort",
+          "hope",
+          "strength"
+        ]
+      },
+      "wisdom": {
+        "C": 0.20919271174993445,
+        "P": 9.372723684834245,
+        "meaning": 1.9607054841133138,
+        "sigma": 1.146465080233359,
+        "efficiency": 0.5187051545273317,
+        "balance_ratio": 0.22319308536580845,
+        "thesis": "she",
+        "antithesis": "thee",
+        "synthesis": [
+          "hope",
+          "way",
+          "effort",
+          "seat",
+          "love"
+        ],
+        "concepts": [
+          "hope",
+          "way",
+          "effort",
+          "seat",
+          "love"
+        ]
+      },
+      "closer_to_optimal": "POWERFUL"
+    },
+    {
+      "question": "What is time?",
+      "powerful": {
+        "C": 0.022941744696114708,
+        "P": 13.474740755898209,
+        "meaning": 0.30913406226814844,
+        "sigma": 1.3704158202859356,
+        "efficiency": 0.08178149795453662,
+        "balance_ratio": 0.017025741060044192,
+        "thesis": "time",
+        "antithesis": "day",
+        "concepts": [
+          "time",
+          "day",
+          "thee",
+          "she",
+          "toll"
+        ]
+      },
+      "wisdom": {
+        "C": 0.19730614587174242,
+        "P": 14.522698430684715,
+        "meaning": 2.865417655016003,
+        "sigma": 1.649575988940214,
+        "efficiency": 0.7580469986814823,
+        "balance_ratio": 0.13586052675641758,
+        "thesis": "time",
+        "antithesis": "day",
+        "synthesis": [
+          "way",
+          "eye",
+          "she",
+          "thing",
+          "thee"
+        ],
+        "concepts": [
+          "way",
+          "eye",
+          "she",
+          "thing",
+          "thee"
+        ]
+      },
+      "closer_to_optimal": "WISDOM"
+    },
+    {
+      "question": "What is reality?",
+      "powerful": {
+        "C": 0.3285034536171126,
+        "P": 13.329811333863844,
+        "meaning": 4.378889059238803,
+        "sigma": 1.661484587003497,
+        "efficiency": 1.1584362590578845,
+        "balance_ratio": 0.2464426880390744,
+        "thesis": "mind",
+        "antithesis": "idea",
+        "concepts": [
+          "mind",
+          "idea",
+          "order",
+          "circumstance",
+          "she"
+        ]
+      },
+      "wisdom": {
+        "C": 0.14442838162094712,
+        "P": 14.49925817717202,
+        "meaning": 2.0941043932332386,
+        "sigma": 1.5943541993381491,
+        "efficiency": 0.5539958712257246,
+        "balance_ratio": 0.0996108765401106,
+        "thesis": "mind",
+        "antithesis": "amount",
+        "synthesis": [
+          "idea",
+          "she",
+          "light",
+          "reality",
+          "abstraction"
+        ],
+        "concepts": [
+          "idea",
+          "she",
+          "light",
+          "reality",
+          "abstraction"
+        ]
+      },
+      "closer_to_optimal": "POWERFUL"
+    },
+    {
+      "question": "What is power?",
+      "powerful": {
+        "C": 0.30610280901800613,
+        "P": 9.132445315858334,
+        "meaning": 2.7954671643875684,
+        "sigma": 1.2193473406038395,
+        "efficiency": 0.7395415778803092,
+        "balance_ratio": 0.33518165007401013,
+        "thesis": "life",
+        "antithesis": "name",
+        "concepts": [
+          "life",
+          "name",
+          "heart",
+          "she",
+          "power"
+        ]
+      },
+      "wisdom": {
+        "C": 0.707109288219793,
+        "P": 7.896469628700262,
+        "meaning": 5.5836670185994555,
+        "sigma": 1.4967562510898191,
+        "efficiency": 1.4771605869310729,
+        "balance_ratio": 0.8954752205336872,
+        "thesis": "power",
+        "antithesis": "name",
+        "synthesis": [
+          "she",
+          "one",
+          "way",
+          "sense",
+          "state"
+        ],
+        "concepts": [
+          "she",
+          "one",
+          "way",
+          "sense",
+          "state"
+        ]
+      },
+      "closer_to_optimal": "WISDOM"
+    },
+    {
+      "question": "What is knowledge?",
+      "powerful": {
+        "C": 0.30499363202816204,
+        "P": 12.296100583673235,
+        "meaning": 3.7502323767981034,
+        "sigma": 1.5346036903954856,
+        "efficiency": 0.9921249674069057,
+        "balance_ratio": 0.2480409378182321,
+        "thesis": "she",
+        "antithesis": "thee",
+        "concepts": [
+          "she",
+          "thee",
+          "day",
+          "mind",
+          "mean"
+        ]
+      },
+      "wisdom": {
+        "C": 0.062081878212620546,
+        "P": 15.153539472905075,
+        "meaning": 0.940760192047031,
+        "sigma": 1.577435825503128,
+        "efficiency": 0.24887835768439975,
+        "balance_ratio": 0.0409685660063938,
+        "thesis": "she",
+        "antithesis": "thee",
+        "synthesis": [
+          "knowledge",
+          "mind",
+          "thing",
+          "strength",
+          "way"
+        ],
+        "concepts": [
+          "knowledge",
+          "mind",
+          "thing",
+          "strength",
+          "way"
+        ]
+      },
+      "closer_to_optimal": "POWERFUL"
+    },
+    {
+      "question": "What is friendship?",
+      "powerful": {
+        "C": 0.21386522222208193,
+        "P": 18.64204107643072,
+        "meaning": 3.986884257484035,
+        "sigma": 2.078069329865154,
+        "efficiency": 1.0547312850486865,
+        "balance_ratio": 0.1147219992409916,
+        "thesis": "thee",
+        "antithesis": "lot",
+        "concepts": [
+          "thee",
+          "lot",
+          "spring",
+          "grass",
+          "end"
+        ]
+      },
+      "wisdom": {
+        "C": 0.18568290124265294,
+        "P": 10.465655595649604,
+        "meaning": 1.9432932944066235,
+        "sigma": 1.2322484608076134,
+        "efficiency": 0.5140987551340274,
+        "balance_ratio": 0.17742118450738828,
+        "thesis": "loyalty",
+        "antithesis": "thee",
+        "synthesis": [
+          "world",
+          "grass",
+          "sympathy",
+          "way",
+          "spring"
+        ],
+        "concepts": [
+          "world",
+          "grass",
+          "sympathy",
+          "way",
+          "spring"
+        ]
+      },
+      "closer_to_optimal": "WISDOM"
+    },
+    {
+      "question": "What is justice?",
+      "powerful": {
+        "C": 0.2689842571525357,
+        "P": 10.635194227676516,
+        "meaning": 2.8606998190045037,
+        "sigma": 1.3325036799201873,
+        "efficiency": 0.7567988939165354,
+        "balance_ratio": 0.2529189889664112,
+        "thesis": "she",
+        "antithesis": "eye",
+        "concepts": [
+          "she",
+          "eye",
+          "tree",
+          "justice",
+          "burden"
+        ]
+      },
+      "wisdom": {
+        "C": 0.20889436478888487,
+        "P": 7.97022166460455,
+        "meaning": 1.664934391854176,
+        "sigma": 1.0059165312493399,
+        "efficiency": 0.4404588338238561,
+        "balance_ratio": 0.2620935446708801,
+        "thesis": "justice",
+        "antithesis": "ground",
+        "synthesis": [
+          "she",
+          "lip",
+          "way",
+          "force",
+          "view"
+        ],
+        "concepts": [
+          "she",
+          "lip",
+          "way",
+          "force",
+          "view"
+        ]
+      },
+      "closer_to_optimal": "WISDOM"
+    },
+    {
+      "question": "What is art?",
+      "powerful": {
+        "C": 0.06404571429863859,
+        "P": 10.608117881222093,
+        "meaning": 0.6794044870670295,
+        "sigma": 1.1248575024208478,
+        "efficiency": 0.17973663679021945,
+        "balance_ratio": 0.060374248302810435,
+        "thesis": "hand",
+        "antithesis": "interest",
+        "concepts": [
+          "hand",
+          "interest",
+          "art",
+          "she",
+          "day"
+        ]
+      },
+      "wisdom": {
+        "C": 0.16800886312001748,
+        "P": 8.134112195397549,
+        "meaning": 1.3666029424394117,
+        "sigma": 0.9814200826597724,
+        "efficiency": 0.36153516995751633,
+        "balance_ratio": 0.2065484948868549,
+        "thesis": "day",
+        "antithesis": "she",
+        "synthesis": [
+          "hand",
+          "way",
+          "interest",
+          "art",
+          "moment"
+        ],
+        "concepts": [
+          "hand",
+          "way",
+          "interest",
+          "art",
+          "moment"
+        ]
+      },
+      "closer_to_optimal": "WISDOM"
+    },
+    {
+      "question": "What is creativity?",
+      "powerful": {
+        "C": 0.9075370458626217,
+        "P": 31.846759348007904,
+        "meaning": 28.902113898988926,
+        "sigma": 4.092212980663412,
+        "efficiency": 7.646061878039399,
+        "balance_ratio": 0.28496998264264223,
+        "thesis": "voice",
+        "antithesis": "creativity",
+        "concepts": [
+          "voice",
+          "creativity",
+          "ear",
+          "mouth",
+          "quality"
+        ]
+      },
+      "wisdom": {
+        "C": 0.11655045259897182,
+        "P": 31.070620445191537,
+        "meaning": 3.6212948754179406,
+        "sigma": 3.2236124971181255,
+        "efficiency": 0.9580145173063336,
+        "balance_ratio": 0.03751146611461023,
+        "thesis": "voice",
+        "antithesis": "creativity",
+        "synthesis": [
+          "edge",
+          "quality",
+          "ear",
+          "squeak",
+          "room"
+        ],
+        "concepts": [
+          "edge",
+          "quality",
+          "ear",
+          "squeak",
+          "room"
+        ]
+      },
+      "closer_to_optimal": "POWERFUL"
+    }
+  ],
+  "summary": {
+    "n_questions": 20,
+    "wisdom_avg_meaning": 2.6746648350285325,
+    "powerful_avg_meaning": 5.420244088807445,
+    "wisdom_avg_efficiency": 0.707583289690088,
+    "powerful_avg_efficiency": 1.4339270076210169,
+    "wisdom_closer_to_optimal": 9,
+    "powerful_closer_to_optimal": 11,
+    "wisdom_balance_win_rate": 0.45
+  }
+}

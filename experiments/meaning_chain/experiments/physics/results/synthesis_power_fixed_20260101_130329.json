@@ -1,0 +1,141 @@
+{
+  "timestamp": "20260101_130329",
+  "title": "Synthesis-Power Uncertainty (Fixed)",
+  "hypothesis": "|C_synthesis| \u00d7 P_poles \u2248 constant",
+  "n_valid": 15,
+  "n_total": 15,
+  "C_mean": 0.06608999638322541,
+  "C_std": 0.03843742855209603,
+  "P_mean": 11.612531220483824,
+  "P_std": 2.406360657910098,
+  "CP_mean": 0.8067230054769309,
+  "CP_std": 0.6252600864752791,
+  "CP_cv": 0.7750616782096456,
+  "correlation": 0.42435968903105176,
+  "C_when_high_P": 0.07585617488699192,
+  "C_when_low_P": 0.05754459019242973,
+  "uncertainty_holds": false,
+  "conservation_holds": false,
+  "measurements": [
+    {
+      "question": "What is love?",
+      "thesis": "thee",
+      "antithesis": "change",
+      "P": 9.750880212537906,
+      "C": 0.09228274205084153,
+      "CP": 0.8998379634222904
+    },
+    {
+      "question": "What is the meaning of life?",
+      "thesis": "she",
+      "antithesis": "eye",
+      "P": 15.714066442738229,
+      "C": 0.18576193274140904,
+      "CP": 2.919075353629972
+    },
+    {
+      "question": "What is consciousness?",
+      "thesis": "she",
+      "antithesis": "order",
+      "P": 11.314601529999408,
+      "C": -0.028900004197828722,
+      "CP": 0.32699203171374214
+    },
+    {
+      "question": "What is truth?",
+      "thesis": "she",
+      "antithesis": "truth",
+      "P": 12.817829575264168,
+      "C": -0.08206572398668044,
+      "CP": 1.0519044640319386
+    },
+    {
+      "question": "What is freedom?",
+      "thesis": "state",
+      "antithesis": "soul",
+      "P": 14.013885314745556,
+      "C": -0.05326404166409361,
+      "CP": 0.7464361712804369
+    },
+    {
+      "question": "What is death?",
+      "thesis": "death",
+      "antithesis": "thee",
+      "P": 15.040149613490163,
+      "C": 0.07493240835015504,
+      "CP": 1.1269946324854714
+    },
+    {
+      "question": "What is beauty?",
+      "thesis": "thee",
+      "antithesis": "she",
+      "P": 10.932567037610365,
+      "C": -0.07334874142455114,
+      "CP": 0.8018900327482538
+    },
+    {
+      "question": "What is wisdom?",
+      "thesis": "wisdom",
+      "antithesis": "she",
+      "P": 7.774255043432476,
+      "C": -0.03417978962818379,
+      "CP": 0.2657224019003689
+    },
+    {
+      "question": "What is time?",
+      "thesis": "time",
+      "antithesis": "day",
+      "P": 13.257349355289293,
+      "C": -0.05627864564663668,
+      "CP": 0.7461056665799933
+    },
+    {
+      "question": "What is reality?",
+      "thesis": "mind",
+      "antithesis": "amount",
+      "P": 12.427935733621611,
+      "C": -0.034104090003913484,
+      "CP": 0.423843438822284
+    },
+    {
+      "question": "What is happiness?",
+      "thesis": "mind",
+      "antithesis": "thee",
+      "P": 9.33608120916851,
+      "C": -0.021576776124282323,
+      "CP": 0.20144253412834795
+    },
+    {
+      "question": "What is suffering?",
+      "thesis": "she",
+      "antithesis": "part",
+      "P": 8.819947889821062,
+      "C": 0.07075753711240501,
+      "CP": 0.6240777901434921
+    },
+    {
+      "question": "What is knowledge?",
+      "thesis": "she",
+      "antithesis": "thee",
+      "P": 14.059085680980933,
+      "C": -0.04458638181605524,
+      "CP": 0.6268437621568509
+    },
+    {
+      "question": "What is faith?",
+      "thesis": "faith",
+      "antithesis": "mind",
+      "P": 8.850004884999334,
+      "C": -0.05245473022772327,
+      "CP": 0.4642246187566732
+    },
+    {
+      "question": "What is power?",
+      "thesis": "she",
+      "antithesis": "thee",
+      "P": 10.07932878355836,
+      "C": 0.08685640077362206,
+      "CP": 0.8754542203538493
+    }
+  ]
+}

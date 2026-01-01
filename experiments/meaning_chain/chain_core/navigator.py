@@ -58,6 +58,8 @@ class NavigationGoal(Enum):
     GROUNDED = "grounded"    # Low tau, practical
     BALANCED = "balanced"    # Composite optimization
     EXPLORATORY = "exploratory"  # Storm-logos chaos
+    SUPERCRITICAL = "supercritical"  # Chain reaction mode (α=0.2, λ>1)
+    WISDOM = "wisdom"        # Optimal C=0.1P balance (max meaning production)
 
 
 @dataclass
@@ -182,7 +184,25 @@ class SemanticNavigator:
             NavigationGoal.GROUNDED: {'r': 0.3, 'c': 0.2, 'd': 0.0, 's': 0.2, 'p': 0.0, 'tau': 0.3},
             NavigationGoal.BALANCED: {'r': 0.25, 'c': 0.25, 'd': 0.2, 's': 0.15, 'p': 0.15},
             NavigationGoal.EXPLORATORY: {'r': 0.1, 'c': 0.3, 'd': 0.2, 's': 0.1, 'p': 0.3},
+            NavigationGoal.SUPERCRITICAL: {'r': 0.1, 'c': 0.2, 'd': 0.1, 's': 0.1, 'p': 0.5},
+            NavigationGoal.WISDOM: {'r': 0.15, 'c': 0.35, 'd': 0.15, 's': 0.15, 'p': 0.20},
         }
+
+        # Optimal constants for WISDOM mode (from semantic energy conservation)
+        # Σ = C + 0.1P ≈ e^(1/5) ≈ 1.22 (semantic budget)
+        # Optimal: C = 0.1P = Σ/2 ≈ 0.615 (maximum meaning production)
+        self.SIGMA = 1.2214  # e^(1/5) - semantic budget
+        self.C_OPTIMAL = 0.615  # Optimal coherence
+        self.P_OPTIMAL = 6.15   # Optimal power
+        self.K_COUPLING = 0.1   # Power-to-coherence weight
+
+        # Critical intent strength for chain reactions (α ≈ 0.2)
+        # At this α, chain coefficient λ > 1 (supercritical)
+        self.CRITICAL_ALPHA = 0.2
+
+        # Supercritical engines (lazy loaded with α=0.2)
+        self._supercritical_mc = None
+        self._supercritical_paradox = None
 
     # =========================================================================
     # Lazy initialization
@@ -229,6 +249,26 @@ class SemanticNavigator:
                 steps_per_walk=8
             )
         return self._storm_logos
+
+    def _init_supercritical_mc(self):
+        """Initialize Monte Carlo with critical α=0.2 for chain reactions."""
+        if self._supercritical_mc is None:
+            from chain_core.monte_carlo_renderer import MonteCarloRenderer
+            self._supercritical_mc = MonteCarloRenderer(
+                intent_strength=self.CRITICAL_ALPHA,  # α=0.2: supercritical
+                n_samples=30
+            )
+        return self._supercritical_mc
+
+    def _init_supercritical_paradox(self):
+        """Initialize Paradox detector with critical α=0.2 for chain reactions."""
+        if self._supercritical_paradox is None:
+            from chain_core.paradox_detector import ParadoxDetector
+            self._supercritical_paradox = ParadoxDetector(
+                intent_strength=self.CRITICAL_ALPHA,  # α=0.2: supercritical
+                n_samples=25
+            )
+        return self._supercritical_paradox
 
     # =========================================================================
     # Decomposition
@@ -370,6 +410,12 @@ class SemanticNavigator:
         elif goal == NavigationGoal.POWERFUL:
             return self._navigate_with_paradox(query, nouns, verbs, goal)
 
+        elif goal == NavigationGoal.SUPERCRITICAL:
+            return self._navigate_with_supercritical(query, nouns, verbs, goal)
+
+        elif goal == NavigationGoal.WISDOM:
+            return self._navigate_with_wisdom(query, nouns, verbs, goal)
+
         elif goal == NavigationGoal.EXPLORATORY:
             return self._navigate_with_storm(query, nouns, verbs, goal)
 
@@ -456,6 +502,237 @@ class SemanticNavigator:
             antithesis=antithesis,
             synthesis=synthesis
         )
+
+    def _navigate_with_supercritical(self, query: str, nouns: List[str],
+                                      verbs: List[str],
+                                      goal: NavigationGoal) -> NavigationResult:
+        """
+        Navigate using SUPERCRITICAL mode (α=0.2).
+
+        This mode operates at the critical point where chain coefficient λ > 1,
+        enabling meaning amplification through chain reactions.
+
+        Use for: paradox-powered dialogue, creative explosion, power amplification
+        """
+        # Use supercritical paradox detector (α=0.2)
+        detector = self._init_supercritical_paradox()
+        landscape = detector.detect(query)
+
+        # Compute quality from paradox
+        if landscape.strongest:
+            power = landscape.strongest.power
+            stability = landscape.strongest.stability
+        else:
+            power = 0.0
+            stability = 0.0
+
+        # Also sample with supercritical MC for additional stability measure
+        mc = self._init_supercritical_mc()
+        mc_landscape = mc.sample_landscape(query)
+
+        # Combine quality metrics (supercritical emphasizes power)
+        quality = NavigationQuality(
+            resonance=mc_landscape.lasing_rate,
+            coherence=max(landscape.coherence, mc_landscape.coherence),
+            stability=mc_landscape.concentration,
+            power=power * 1.2,  # Boost power in supercritical mode
+            tau_mean=mc_landscape.tau_mean
+        )
+
+        # Collect concepts from paradoxes
+        concepts = []
+        if landscape.strongest:
+            concepts.append(landscape.strongest.thesis)
+            concepts.append(landscape.strongest.antithesis)
+            concepts.extend(landscape.strongest.synthesis_concepts[:3])
+
+        # Add more from other paradoxes
+        for p in landscape.paradoxes[1:5]:
+            if p.thesis not in concepts:
+                concepts.append(p.thesis)
+            if p.antithesis not in concepts:
+                concepts.append(p.antithesis)
+
+        # Enrich with MC attractors
+        for word, _ in mc_landscape.core_attractors[:5]:
+            if word not in concepts:
+                concepts.append(word)
+
+        synthesis = []
+        thesis = None
+        antithesis = None
+
+        if landscape.strongest:
+            thesis = landscape.strongest.thesis
+            antithesis = landscape.strongest.antithesis
+            synthesis = landscape.strongest.synthesis_concepts
+
+        return NavigationResult(
+            concepts=concepts[:10],
+            quality=quality,
+            query=query,
+            goal=goal,
+            strategy=f"supercritical_α={self.CRITICAL_ALPHA}",
+            nouns=nouns,
+            verbs=verbs,
+            paradox_result=landscape,
+            monte_carlo_result=mc_landscape,
+            thesis=thesis,
+            antithesis=antithesis,
+            synthesis=synthesis
+        )
+
+    def _navigate_with_wisdom(self, query: str, nouns: List[str],
+                               verbs: List[str],
+                               goal: NavigationGoal) -> NavigationResult:
+        """
+        Navigate using WISDOM mode: optimal C = 0.1P balance.
+
+        This mode targets the theoretical optimum for meaning production:
+            C_opt = 0.615, P_opt = 6.15
+            where Meaning = C × P is maximized under Σ = C + 0.1P = 1.22
+
+        Strategy:
+            1. Detect paradoxes and compute power for each
+            2. Compute synthesis coherence for non-pole concepts
+            3. Select the paradox closest to C = 0.1P balance
+            4. Favor coherent synthesis over raw power
+
+        Use for: wise dialogue, balanced understanding, maximum meaning
+        """
+        detector = self._init_paradox()
+        landscape = detector.detect(query)
+
+        mc = self._init_monte_carlo()
+        mc_landscape = mc.sample_landscape(query)
+
+        # Collect all potential synthesis concepts from MC (non-poles)
+        all_attractors = [w for w, _ in mc_landscape.core_attractors[:20]]
+
+        best_meaning = 0.0
+        best_paradox = None
+        best_coherence = 0.0
+        best_power = 0.0
+        best_synthesis = []
+
+        # Evaluate each paradox for meaning production
+        for paradox in landscape.paradoxes[:10]:
+            thesis, antithesis = paradox.thesis, paradox.antithesis
+            power = paradox.power
+
+            # Filter synthesis: non-pole concepts from attractors
+            synthesis = [w for w in all_attractors
+                        if w not in [thesis, antithesis]][:10]
+
+            if len(synthesis) < 2:
+                continue
+
+            # Compute synthesis coherence
+            coherence = self._compute_synthesis_coherence(synthesis)
+            abs_coherence = abs(coherence)
+
+            # Compute meaning = C × P
+            meaning = abs_coherence * power
+
+            # Also consider distance from optimal balance
+            # Optimal: C = 0.1P, so ratio C/(0.1P) should be close to 1
+            if power > 0:
+                balance_ratio = abs_coherence / (self.K_COUPLING * power)
+                # Penalty for imbalance (prefer ratio close to 1)
+                balance_score = 1.0 / (1.0 + abs(1.0 - balance_ratio))
+                # Weighted meaning: meaning × balance
+                adjusted_meaning = meaning * (0.7 + 0.3 * balance_score)
+            else:
+                adjusted_meaning = meaning
+
+            if adjusted_meaning > best_meaning:
+                best_meaning = adjusted_meaning
+                best_paradox = paradox
+                best_coherence = coherence
+                best_power = power
+                best_synthesis = synthesis
+
+        # Fallback to strongest if no good balance found
+        if best_paradox is None and landscape.strongest:
+            best_paradox = landscape.strongest
+            best_power = best_paradox.power
+            best_synthesis = [w for w in all_attractors
+                             if w not in [best_paradox.thesis, best_paradox.antithesis]][:10]
+            best_coherence = self._compute_synthesis_coherence(best_synthesis)
+
+        # Build concepts list: synthesis first (high coherence), then poles
+        concepts = list(best_synthesis[:6])
+        if best_paradox:
+            if best_paradox.thesis not in concepts:
+                concepts.append(best_paradox.thesis)
+            if best_paradox.antithesis not in concepts:
+                concepts.append(best_paradox.antithesis)
+
+        # Add remaining attractors
+        for w, _ in mc_landscape.core_attractors[:5]:
+            if w not in concepts:
+                concepts.append(w)
+
+        # Compute quality metrics
+        actual_sigma = abs(best_coherence) + self.K_COUPLING * best_power
+        meaning_efficiency = (abs(best_coherence) * best_power) / (self.C_OPTIMAL * self.P_OPTIMAL)
+
+        quality = NavigationQuality(
+            resonance=mc_landscape.lasing_rate,
+            coherence=abs(best_coherence),
+            stability=mc_landscape.concentration,
+            power=best_power,
+            tau_mean=mc_landscape.tau_mean
+        )
+
+        thesis = best_paradox.thesis if best_paradox else None
+        antithesis = best_paradox.antithesis if best_paradox else None
+
+        result = NavigationResult(
+            concepts=concepts[:10],
+            quality=quality,
+            query=query,
+            goal=goal,
+            strategy=f"wisdom_C={abs(best_coherence):.3f}_P={best_power:.2f}_Σ={actual_sigma:.2f}_eff={meaning_efficiency:.1%}",
+            nouns=nouns,
+            verbs=verbs,
+            paradox_result=landscape,
+            monte_carlo_result=mc_landscape,
+            thesis=thesis,
+            antithesis=antithesis,
+            synthesis=best_synthesis
+        )
+
+        return result
+
+    def _compute_synthesis_coherence(self, concepts: List[str]) -> float:
+        """Compute average pairwise coherence among synthesis concepts."""
+        if len(concepts) < 2:
+            return 0.0
+
+        graph = self._init_graph()
+        j_vectors = []
+
+        for word in concepts:
+            concept = graph.get_concept(word)
+            if concept and concept.get('j'):
+                j = np.array(concept['j'])
+                if len(j) == 5:
+                    j_vectors.append(j)
+
+        if len(j_vectors) < 2:
+            return 0.0
+
+        # Average pairwise cosine similarity
+        sims = []
+        for i in range(len(j_vectors)):
+            for k in range(i + 1, len(j_vectors)):
+                v1, v2 = j_vectors[i], j_vectors[k]
+                n1, n2 = np.linalg.norm(v1), np.linalg.norm(v2)
+                if n1 > 1e-8 and n2 > 1e-8:
+                    sims.append(float(np.dot(v1, v2) / (n1 * n2)))
+
+        return float(np.mean(sims)) if sims else 0.0
 
     def _navigate_with_storm(self, query: str, nouns: List[str],
                               verbs: List[str],
@@ -664,6 +941,10 @@ class SemanticNavigator:
             self._paradox_detector.close()
         if self._storm_logos:
             self._storm_logos.close()
+        if self._supercritical_mc:
+            self._supercritical_mc.close()
+        if self._supercritical_paradox:
+            self._supercritical_paradox.close()
         if self._graph:
             self._graph.close()
 
@@ -685,6 +966,7 @@ def demo():
         ("How do I fix my sleep schedule?", "grounded"),
         ("What is love?", "powerful"),
         ("What is the meaning of life?", "balanced"),
+        ("What is wisdom?", "wisdom"),  # NEW: optimal C=0.1P balance
     ]
 
     try:

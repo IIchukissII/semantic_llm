@@ -1,0 +1,905 @@
+{
+  "timestamp": "20260101_122641",
+  "title": "Unified Hypothesis Testing: Formula Interconnections",
+  "hypotheses": {
+    "H1": "kT = e^(-1/5)",
+    "H2": "Coherence \u00d7 Power \u2248 constant",
+    "H3": "\u03bb = 1 is a phase transition",
+    "H4": "Orbital clustering at \u03c4 = e",
+    "H5": "Dialectical synthesis is potential minimum",
+    "H6": "Grand Potential \u03a6 unifies dynamics"
+  },
+  "summary": {
+    "total_tests": 6,
+    "confirmed": 4,
+    "pass_rate": "66.7%"
+  },
+  "results": [
+    {
+      "hypothesis_id": "H1",
+      "name": "kT = e^(-1/5)",
+      "description": "Natural Boltzmann temperature derives from Euler",
+      "measured": 0.822291576540579,
+      "expected": 0.8187307530779818,
+      "error_percent": 0.4349199598537702,
+      "passed": "True",
+      "confidence": "strong",
+      "details": {
+        "kT_measured": 0.822291576540579,
+        "kT_std": 0.015159278095326056,
+        "kT_expected_e^(-1/5)": 0.8187307530779818,
+        "measurements": [
+          {
+            "ground_max": 2.5,
+            "excited_min": 5.0,
+            "kT": 0.8443904420223781,
+            "delta_phi": 2.215322913405914,
+            "ln_ratio": 2.623576491581371
+          },
+          {
+            "ground_max": 2.5,
+            "excited_min": 5.5,
+            "kT": 0.8423820149627337,
+            "delta_phi": 2.220694407798267,
+            "ln_ratio": 2.636208238487272
+          },
+          {
+            "ground_max": 2.5,
+            "excited_min": 6.0,
+            "kT": 0.8419390298727344,
+            "delta_phi": 2.2209548328625766,
+            "ln_ratio": 2.63790459173545
+          },
+          {
+            "ground_max": 3.0,
+            "excited_min": 5.0,
+            "kT": 0.8183115719410256,
+            "delta_phi": 2.187932511916097,
+            "ln_ratio": 2.6737157177508153
+          },
+          {
+            "ground_max": 3.0,
+            "excited_min": 5.5,
+            "kT": 0.8164632591892683,
+            "delta_phi": 2.19330400630845,
+            "ln_ratio": 2.686347464656716
+          },
+          {
+            "ground_max": 3.0,
+            "excited_min": 6.0,
+            "kT": 0.8160448935994131,
+            "delta_phi": 2.1935644313727596,
+            "ln_ratio": 2.688043817904894
+          },
+          {
+            "ground_max": 3.5,
+            "excited_min": 5.0,
+            "kT": 0.8083612731380948,
+            "delta_phi": 2.1745674612103896,
+            "ln_ratio": 2.69009356765524
+          },
+          {
+            "ground_max": 3.5,
+            "excited_min": 5.5,
+            "kT": 0.8065706654901825,
+            "delta_phi": 2.1799389556027426,
+            "ln_ratio": 2.702725314561141
+          },
+          {
+            "ground_max": 3.5,
+            "excited_min": 6.0,
+            "kT": 0.8061610386493809,
+            "delta_phi": 2.180199380667052,
+            "ln_ratio": 2.7044216678093194
+          }
+        ],
+        "alternatives": {
+          "e^(-1/5)": {
+            "value": 0.8187307530779818,
+            "error": 0.003560823462597229
+          },
+          "e^(-1/4)": {
+            "value": 0.7788007830714049,
+            "error": 0.04349079346917417
+          },
+          "e^(-1/3)": {
+            "value": 0.7165313105737893,
+            "error": 0.10576026596678978
+          },
+          "1 - 1/e": {
+            "value": 0.6321205588285577,
+            "error": 0.19017101771202138
+          },
+          "e/\u03c0": {
+            "value": 0.8652559794322651,
+            "error": 0.042964402891686015
+          },
+          "ln(e/(e-1))": {
+            "value": 0.45867514538708193,
+            "error": 0.3636164311534971
+          }
+        },
+        "best_match": "e^(-1/5)",
+        "best_match_value": 0.8187307530779818,
+        "best_match_error": 0.003560823462597229
+      },
+      "implications": [
+        "If kT = e^(-1/5), temperature is Euler-derived",
+        "The exponent 1/5 may relate to 5 j-dimensions",
+        "Best match: e^(-1/5) = 0.8187"
+      ]
+    },
+    {
+      "hypothesis_id": "H2",
+      "name": "Coherence \u00d7 Power \u2248 constant",
+      "description": "Heisenberg-like uncertainty between synthesis and tension",
+      "measured": 0.2603349374307986,
+      "expected": 0.0,
+      "error_percent": 26.03349374307986,
+      "passed": "True",
+      "confidence": "moderate",
+      "details": {
+        "measurements": [
+          {
+            "question": "What is love?",
+            "coherence": 0.7924310639128135,
+            "power": 35.53986162405753,
+            "product": 28.16289035806608,
+            "n_paradoxes": 9
+          },
+          {
+            "question": "What is the meaning of life?",
+            "coherence": 0.7067972926165546,
+            "power": 59.66900218607059,
+            "product": 42.173889198245966,
+            "n_paradoxes": 8
+          },
+          {
+            "question": "How do I find purpose?",
+            "coherence": 0.7812679478312347,
+            "power": 63.28542526760914,
+            "product": 49.44287432645196,
+            "n_paradoxes": 9
+          },
+          {
+            "question": "What is truth?",
+            "coherence": 0.7655007449086665,
+            "power": 46.71105017522322,
+            "product": 35.75734370459947,
+            "n_paradoxes": 8
+          },
+          {
+            "question": "What is freedom?",
+            "coherence": 0.773366002779974,
+            "power": 62.796549096020804,
+            "product": 48.564716162766004,
+            "n_paradoxes": 6
+          },
+          {
+            "question": "What is death?",
+            "coherence": 0.8135594334682684,
+            "power": 58.535385225966806,
+            "product": 47.6220148422844,
+            "n_paradoxes": 12
+          },
+          {
+            "question": "What is beauty?",
+            "coherence": 0.7930898811063412,
+            "power": 36.40764814980591,
+            "product": 28.87453734249107,
+            "n_paradoxes": 6
+          },
+          {
+            "question": "What is wisdom?",
+            "coherence": 0.7683879947078247,
+            "power": 29.263500243782516,
+            "product": 22.485722270451987,
+            "n_paradoxes": 11
+          }
+        ],
+        "product_mean": 37.88549852566962,
+        "product_std": 9.862918888214812,
+        "coefficient_of_variation": 0.2603349374307986,
+        "correlation_C_P": -0.19818588941908358,
+        "inverse_relation": "False"
+      },
+      "implications": [
+        "C \u00d7 P = 37.89 \u00b1 9.86",
+        "Correlation(C, P) = -0.20",
+        "No clear inverse relation"
+      ]
+    },
+    {
+      "hypothesis_id": "H3",
+      "name": "\u03bb = 1 phase transition",
+      "description": "Chain coefficient \u03bb = 1 is a critical point",
+      "measured": 0.1466729127600544,
+      "expected": 0.3,
+      "error_percent": 51.10902907998187,
+      "passed": true,
+      "confidence": "moderate",
+      "details": {
+        "chain_data": [
+          {
+            "alpha": 0.1,
+            "powers": [
+              50.33373416916231,
+              48.02737896723514,
+              35.766624474335146,
+              39.15742174295286
+            ],
+            "lambdas": [
+              0.9541787383750241,
+              0.7447132290674362,
+              1.094803390547823
+            ],
+            "avg_lambda": 0.931231785996761,
+            "supercritical": "False"
+          },
+          {
+            "alpha": 0.2,
+            "powers": [
+              38.770197047628685,
+              42.606082041400924,
+              54.41032876545561,
+              46.77781767123862
+            ],
+            "lambdas": [
+              1.0989390120731113,
+              1.2770554380612686,
+              0.8597231211904978
+            ],
+            "avg_lambda": 1.0785725237749593,
+            "supercritical": "True"
+          },
+          {
+            "alpha": 0.3,
+            "powers": [
+              55.32050729387153,
+              50.912383283440946,
+              48.99314276059407,
+              44.4236211929773
+            ],
+            "lambdas": [
+              0.9203166379691005,
+              0.9623030705091525,
+              0.9067314054551303
+            ],
+            "avg_lambda": 0.9297837046444611,
+            "supercritical": "False"
+          },
+          {
+            "alpha": 0.4,
+            "powers": [
+              37.30251931589005,
+              36.28823478540758,
+              44.017721404541604,
+              25.430201240775208
+            ],
+            "lambdas": [
+              0.9728092217607831,
+              1.213002552062473,
+              0.5777264344753521
+            ],
+            "avg_lambda": 0.9211794027662027,
+            "supercritical": "False"
+          },
+          {
+            "alpha": 0.5,
+            "powers": [
+              44.69081137464554,
+              46.02811983197869,
+              38.03034132871257,
+              39.12210297303736
+            ],
+            "lambdas": [
+              1.0299235663036506,
+              0.8262414686400127,
+              1.0287076477933297
+            ],
+            "avg_lambda": 0.9616242275789976,
+            "supercritical": "False"
+          },
+          {
+            "alpha": 0.7,
+            "powers": [
+              43.31901894500744,
+              49.56898730045737,
+              36.47537250738404,
+              38.9230602569792
+            ],
+            "lambdas": [
+              1.1442776985181526,
+              0.7358506698208757,
+              1.0671052159672847
+            ],
+            "avg_lambda": 0.9824111947687709,
+            "supercritical": "False"
+          },
+          {
+            "alpha": 1.0,
+            "powers": [
+              53.52228207602727,
+              37.22714535275401,
+              46.41271067911147,
+              40.60983278052537
+            ],
+            "lambdas": [
+              0.695544806924967,
+              1.2467437467825593,
+              0.8749722260631129
+            ],
+            "avg_lambda": 0.9390869265902131,
+            "supercritical": "False"
+          }
+        ],
+        "critical_alpha": 0.1466729127600544,
+        "lambda_variance": 0.002595405950111641,
+        "supercritical_count": 1,
+        "subcritical_count": 6
+      },
+      "implications": [
+        "Critical point at \u03b1 \u2248 0.15",
+        "\u03bb variance = 0.00 (high = critical fluctuations)",
+        "Supercritical phases: 1/7"
+      ]
+    },
+    {
+      "hypothesis_id": "H4",
+      "name": "Orbital clustering at \u03c4 = e",
+      "description": "Chain reaction concepts cluster near the Veil",
+      "measured": 1.4986567921794363,
+      "expected": 2.718281828459045,
+      "error_percent": 44.86749767852426,
+      "passed": false,
+      "confidence": "weak",
+      "details": {
+        "tau_distributions": [
+          {
+            "question": "What is love?",
+            "tau_mean": 1.4962262097814312,
+            "tau_std": 0.46514380444673864,
+            "orbitals": {
+              "2": {
+                "tau": 1.7357588823428847,
+                "count": 15,
+                "concepts": [
+                  "heart",
+                  "way",
+                  "she",
+                  "mind",
+                  "difference"
+                ]
+              },
+              "1": {
+                "tau": 1.3678794411714423,
+                "count": 23,
+                "concepts": [
+                  "thought",
+                  "love",
+                  "thee",
+                  "power",
+                  "strength"
+                ]
+              },
+              "3": {
+                "tau": 2.103638323514327,
+                "count": 4,
+                "concepts": [
+                  "place",
+                  "thing",
+                  "day",
+                  "house"
+                ]
+              },
+              "0": {
+                "tau": 1.0,
+                "count": 4,
+                "concepts": [
+                  "modesty",
+                  "mark",
+                  "passion",
+                  "schoolboy"
+                ]
+              },
+              "4": {
+                "tau": 2.4715177646857693,
+                "count": 3,
+                "concepts": [
+                  "time",
+                  "hand",
+                  "man"
+                ]
+              },
+              "14": {
+                "tau": 6.150312176400193,
+                "count": 1,
+                "concepts": [
+                  "holm"
+                ]
+              }
+            },
+            "near_veil": "False"
+          },
+          {
+            "question": "What is the meaning of life?",
+            "tau_mean": 1.508366527878222,
+            "tau_std": 0.38626637142272574,
+            "orbitals": {
+              "2": {
+                "tau": 1.7357588823428847,
+                "count": 16,
+                "concepts": [
+                  "way",
+                  "she",
+                  "life",
+                  "eye",
+                  "sense"
+                ]
+              },
+              "1": {
+                "tau": 1.3678794411714423,
+                "count": 21,
+                "concepts": [
+                  "meaning",
+                  "thee",
+                  "foot",
+                  "idea",
+                  "green"
+                ]
+              },
+              "3": {
+                "tau": 2.103638323514327,
+                "count": 7,
+                "concepts": [
+                  "place",
+                  "body",
+                  "thing",
+                  "redress",
+                  "woman"
+                ]
+              },
+              "4": {
+                "tau": 2.4715177646857693,
+                "count": 3,
+                "concepts": [
+                  "hand",
+                  "time",
+                  "man"
+                ]
+              },
+              "0": {
+                "tau": 1.0,
+                "count": 3,
+                "concepts": [
+                  "lightning",
+                  "interpretation",
+                  "concept"
+                ]
+              }
+            },
+            "near_veil": "False"
+          },
+          {
+            "question": "What is consciousness?",
+            "tau_mean": 1.4913776388786555,
+            "tau_std": 0.37965837291907256,
+            "orbitals": {
+              "2": {
+                "tau": 1.7357588823428847,
+                "count": 18,
+                "concepts": [
+                  "she",
+                  "way",
+                  "life",
+                  "level",
+                  "case"
+                ]
+              },
+              "1": {
+                "tau": 1.3678794411714423,
+                "count": 21,
+                "concepts": [
+                  "consciousness",
+                  "one",
+                  "order",
+                  "fact",
+                  "state"
+                ]
+              },
+              "3": {
+                "tau": 2.103638323514327,
+                "count": 4,
+                "concepts": [
+                  "thing",
+                  "place",
+                  "body",
+                  "day"
+                ]
+              },
+              "0": {
+                "tau": 1.0,
+                "count": 6,
+                "concepts": [
+                  "totality",
+                  "recognition",
+                  "clarity",
+                  "picture",
+                  "supremacy"
+                ]
+              },
+              "4": {
+                "tau": 2.4715177646857693,
+                "count": 1,
+                "concepts": [
+                  "time"
+                ]
+              }
+            },
+            "near_veil": "False"
+          }
+        ],
+        "avg_tau": 1.4986567921794363,
+        "distance_to_veil": 1.2196250362796088,
+        "veil_tau": 2.718281828459045,
+        "near_veil_fraction": 0.0
+      },
+      "implications": [
+        "Average \u03c4 = 1.50 (Veil at 2.72)",
+        "Distance to Veil: 1.22",
+        "0/3 questions near Veil"
+      ]
+    },
+    {
+      "hypothesis_id": "H5",
+      "name": "Dialectical potential minimum",
+      "description": "Synthesis points have lower potential than poles",
+      "measured": 0.82,
+      "expected": 1.0,
+      "error_percent": 18.000000000000004,
+      "passed": true,
+      "confidence": "strong",
+      "details": {
+        "synthesis_results": [
+          {
+            "thesis": "girlfriend",
+            "antithesis": "fantasy",
+            "synthesis": "hegemony",
+            "thesis_phi": 1.3412650475559926,
+            "antithesis_phi": 0.9993479916265475,
+            "synthesis_phi": 0.761452371380841,
+            "avg_pole_phi": 1.17030651959127,
+            "is_minimum": "True"
+          },
+          {
+            "thesis": "girlfriend",
+            "antithesis": "pagoda",
+            "synthesis": "derri\u00e8re",
+            "thesis_phi": 1.3412650475559926,
+            "antithesis_phi": 0.6580801952150171,
+            "synthesis_phi": 0.5933154320013105,
+            "avg_pole_phi": 0.999672621385505,
+            "is_minimum": "True"
+          },
+          {
+            "thesis": "girlfriend",
+            "antithesis": "hottie",
+            "synthesis": "charity",
+            "thesis_phi": 1.3412650475559926,
+            "antithesis_phi": 0.7497536240322394,
+            "synthesis_phi": 0.8951939112462546,
+            "avg_pole_phi": 1.045509335794116,
+            "is_minimum": "True"
+          },
+          {
+            "thesis": "girlfriend",
+            "antithesis": "portion",
+            "synthesis": "pomade",
+            "thesis_phi": 1.3412650475559926,
+            "antithesis_phi": 0.8148787581421493,
+            "synthesis_phi": 0.5713599899020132,
+            "avg_pole_phi": 1.078071902849071,
+            "is_minimum": "True"
+          },
+          {
+            "thesis": "girlfriend",
+            "antithesis": "man",
+            "synthesis": "blabber",
+            "thesis_phi": 1.3412650475559926,
+            "antithesis_phi": 1.296617152987087,
+            "synthesis_phi": 2.993775414308208,
+            "avg_pole_phi": 1.3189411002715397,
+            "is_minimum": "False"
+          },
+          {
+            "thesis": "girlfriend",
+            "antithesis": "interview",
+            "synthesis": "pedipalp",
+            "thesis_phi": 1.3412650475559926,
+            "antithesis_phi": 0.87498507203507,
+            "synthesis_phi": 0.6698586106082705,
+            "avg_pole_phi": 1.1081250597955314,
+            "is_minimum": "True"
+          },
+          {
+            "thesis": "girlfriend",
+            "antithesis": "talent",
+            "synthesis": "sic",
+            "thesis_phi": 1.3412650475559926,
+            "antithesis_phi": 0.7356316543592178,
+            "synthesis_phi": 2.838590960818341,
+            "avg_pole_phi": 1.0384483509576052,
+            "is_minimum": "False"
+          },
+          {
+            "thesis": "girlfriend",
+            "antithesis": "trough",
+            "synthesis": "chili",
+            "thesis_phi": 1.3412650475559926,
+            "antithesis_phi": 0.8492923542531687,
+            "synthesis_phi": 0.9375947652645958,
+            "avg_pole_phi": 1.0952787009045806,
+            "is_minimum": "True"
+          },
+          {
+            "thesis": "girlfriend",
+            "antithesis": "pattern",
+            "synthesis": "hook",
+            "thesis_phi": 1.3412650475559926,
+            "antithesis_phi": 0.8718587101041597,
+            "synthesis_phi": 1.0605637769409495,
+            "avg_pole_phi": 1.1065618788300762,
+            "is_minimum": "True"
+          },
+          {
+            "thesis": "girlfriend",
+            "antithesis": "shame",
+            "synthesis": "passenger",
+            "thesis_phi": 1.3412650475559926,
+            "antithesis_phi": 0.9139929031721067,
+            "synthesis_phi": 1.2489581801225846,
+            "avg_pole_phi": 1.1276289753640496,
+            "is_minimum": "False"
+          },
+          {
+            "thesis": "girlfriend",
+            "antithesis": "basket",
+            "synthesis": "growth",
+            "thesis_phi": 1.3412650475559926,
+            "antithesis_phi": 0.9061631420869286,
+            "synthesis_phi": 0.8617509912082176,
+            "avg_pole_phi": 1.1237140948214606,
+            "is_minimum": "True"
+          },
+          {
+            "thesis": "girlfriend",
+            "antithesis": "atmosphere",
+            "synthesis": "acorn",
+            "thesis_phi": 1.3412650475559926,
+            "antithesis_phi": 0.8323045893529605,
+            "synthesis_phi": 0.7838447600841045,
+            "avg_pole_phi": 1.0867848184544766,
+            "is_minimum": "True"
+          },
+          {
+            "thesis": "girlfriend",
+            "antithesis": "jug",
+            "synthesis": "gradient",
+            "thesis_phi": 1.3412650475559926,
+            "antithesis_phi": 1.1033543040283682,
+            "synthesis_phi": 0.8911044170583983,
+            "avg_pole_phi": 1.2223096757921805,
+            "is_minimum": "True"
+          },
+          {
+            "thesis": "girlfriend",
+            "antithesis": "go",
+            "synthesis": "cauldron",
+            "thesis_phi": 1.3412650475559926,
+            "antithesis_phi": 0.9889502481099359,
+            "synthesis_phi": 1.0054442418231038,
+            "avg_pole_phi": 1.1651076478329643,
+            "is_minimum": "True"
+          },
+          {
+            "thesis": "girlfriend",
+            "antithesis": "lookin",
+            "synthesis": "deletion",
+            "thesis_phi": 1.3412650475559926,
+            "antithesis_phi": 1.2124606461212524,
+            "synthesis_phi": 0.6272247867006667,
+            "avg_pole_phi": 1.2768628468386225,
+            "is_minimum": "True"
+          },
+          {
+            "thesis": "girlfriend",
+            "antithesis": "square",
+            "synthesis": "growth",
+            "thesis_phi": 1.3412650475559926,
+            "antithesis_phi": 0.8542996374755885,
+            "synthesis_phi": 0.8617509912082176,
+            "avg_pole_phi": 1.0977823425157904,
+            "is_minimum": "True"
+          },
+          {
+            "thesis": "girlfriend",
+            "antithesis": "excerpt",
+            "synthesis": "ditch",
+            "thesis_phi": 1.3412650475559926,
+            "antithesis_phi": 1.0041925843956494,
+            "synthesis_phi": 1.3728775349085585,
+            "avg_pole_phi": 1.172728815975821,
+            "is_minimum": "False"
+          },
+          {
+            "thesis": "girlfriend",
+            "antithesis": "batch",
+            "synthesis": "hegemony",
+            "thesis_phi": 1.3412650475559926,
+            "antithesis_phi": 1.3177606894076705,
+            "synthesis_phi": 0.761452371380841,
+            "avg_pole_phi": 1.3295128684818316,
+            "is_minimum": "True"
+          },
+          {
+            "thesis": "girlfriend",
+            "antithesis": "revival",
+            "synthesis": "derri\u00e8re",
+            "thesis_phi": 1.3412650475559926,
+            "antithesis_phi": 0.5954099560163842,
+            "synthesis_phi": 0.5933154320013105,
+            "avg_pole_phi": 0.9683375017861884,
+            "is_minimum": "True"
+          },
+          {
+            "thesis": "girlfriend",
+            "antithesis": "split",
+            "synthesis": "hegemony",
+            "thesis_phi": 1.3412650475559926,
+            "antithesis_phi": 0.6439283790408,
+            "synthesis_phi": 0.761452371380841,
+            "avg_pole_phi": 0.9925967132983964,
+            "is_minimum": "True"
+          }
+        ],
+        "minima_fraction": 0.82,
+        "total_pairs": 50
+      },
+      "implications": [
+        "Synthesis is minimum in 82% of cases",
+        "Tested 50 thesis/antithesis pairs",
+        "Supports: \u03c6(synthesis) < \u03c6(thesis) + \u03c6(antithesis)"
+      ]
+    },
+    {
+      "hypothesis_id": "H6",
+      "name": "Grand Potential \u03a6",
+      "description": "Single potential unifies navigation: P \u221d exp(-\u03a6/kT)",
+      "measured": 0.44843764010707604,
+      "expected": 0.8187307530779818,
+      "error_percent": 45.22770295103797,
+      "passed": "False",
+      "confidence": "strong",
+      "details": {
+        "kT_from_fit": 0.44843764010707604,
+        "kT_expected": 0.8187307530779818,
+        "r_squared": 0.860070904177772,
+        "slope": -2.229964460077937,
+        "intercept": 9.209444227817428,
+        "n_bins": 20,
+        "populations": [
+          {
+            "phi": 0.4743211663990719,
+            "count": "1895",
+            "log_count": 7.546974117516527
+          },
+          {
+            "phi": 0.593964484852899,
+            "count": "2978",
+            "log_count": 7.999007213243955
+          },
+          {
+            "phi": 0.7136078033067261,
+            "count": "3198",
+            "log_count": 8.0702808933939
+          },
+          {
+            "phi": 0.8332511217605532,
+            "count": "2635",
+            "log_count": 7.876638460975463
+          },
+          {
+            "phi": 0.9528944402143804,
+            "count": "2084",
+            "log_count": 7.642044402873258
+          },
+          {
+            "phi": 1.0725377586682074,
+            "count": "1475",
+            "log_count": 7.29641326877392
+          },
+          {
+            "phi": 1.1921810771220345,
+            "count": "978",
+            "log_count": 6.885509670034818
+          },
+          {
+            "phi": 1.3118243955758617,
+            "count": "580",
+            "log_count": 6.363028103540465
+          },
+          {
+            "phi": 1.4314677140296888,
+            "count": "387",
+            "log_count": 5.958424693029782
+          },
+          {
+            "phi": 1.5511110324835158,
+            "count": "217",
+            "log_count": 5.37989735354046
+          },
+          {
+            "phi": 1.670754350937343,
+            "count": "141",
+            "log_count": 4.948759890378168
+          },
+          {
+            "phi": 1.79039766939117,
+            "count": "104",
+            "log_count": 4.6443908991413725
+          },
+          {
+            "phi": 1.910040987844997,
+            "count": "79",
+            "log_count": 4.3694478524670215
+          },
+          {
+            "phi": 2.029684306298824,
+            "count": "61",
+            "log_count": 4.110873864173311
+          },
+          {
+            "phi": 2.149327624752652,
+            "count": "51",
+            "log_count": 3.9318256327243257
+          },
+          {
+            "phi": 2.2689709432064786,
+            "count": "41",
+            "log_count": 3.713572066704308
+          },
+          {
+            "phi": 2.3886142616603054,
+            "count": "26",
+            "log_count": 3.258096538021482
+          },
+          {
+            "phi": 2.5082575801141327,
+            "count": "25",
+            "log_count": 3.2188758248682006
+          },
+          {
+            "phi": 2.62790089856796,
+            "count": "83",
+            "log_count": 4.418840607796598
+          },
+          {
+            "phi": 2.7475442170217867,
+            "count": "111",
+            "log_count": 4.709530201312334
+          }
+        ]
+      },
+      "implications": [
+        "Boltzmann fit R\u00b2 = 0.860",
+        "kT from fit = 0.448",
+        "Fit quality insufficient"
+      ]
+    }
+  ],
+  "interpretation": {
+    "strong": false,
+    "moderate": true,
+    "conclusion": "Deep formula interconnections exist"
+  }
+}

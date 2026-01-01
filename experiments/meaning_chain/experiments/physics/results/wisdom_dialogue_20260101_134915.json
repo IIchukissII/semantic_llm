@@ -1,0 +1,500 @@
+{
+  "timestamp": "20260101_134915",
+  "title": "WISDOM vs POWERFUL Dialogue Comparison",
+  "comparisons": [
+    {
+      "question": "What is wisdom?",
+      "wisdom": {
+        "navigation": {
+          "goal": "wisdom",
+          "strategy": "wisdom_C=0.185_P=6.44_\u03a3=0.83_eff=31.4%",
+          "concepts": [
+            "wisdom",
+            "thee",
+            "all",
+            "way",
+            "view",
+            "lip",
+            "tear",
+            "she"
+          ],
+          "synthesis_concepts": [
+            "wisdom",
+            "thee",
+            "all",
+            "way",
+            "view",
+            "lip"
+          ],
+          "quality": {
+            "resonance": 1.0,
+            "coherence_landscape": 0.1845172077094379,
+            "coherence_synthesis": 0.5891582417742431,
+            "depth": 0.1845172077094379,
+            "stability": 0.1607669616519174,
+            "power": 6.440084985593098,
+            "tau_mean": 1.4627605673423458
+          },
+          "meaning_metrics": {
+            "C": 0.5891582417742431,
+            "P": 6.440084985593098,
+            "meaning": 3.794229146988732,
+            "sigma": 1.233166740333553,
+            "balance_ratio": 0.9148299177607587,
+            "efficiency": 1.0037643246001937
+          },
+          "paradox": {
+            "thesis": "tear",
+            "antithesis": "she",
+            "synthesis": [
+              "wisdom",
+              "thee",
+              "all",
+              "way",
+              "view"
+            ]
+          }
+        },
+        "response": "Wisdom is not merely knowledge gathered, but the way thee learns to view all experience through a lens that transforms even pain into understanding. It lives not just on the lip as words spoken, but in the quiet spaces where you hold both joy and sorrow with equal grace, seeing how all threads weave together in the greater tapestry. True wisdom emerges when you cease grasping after certainty and instead learn to dance with the mystery, finding in yourself the capacity to embrace contradiction without losing your center."
+      },
+      "powerful": {
+        "navigation": {
+          "goal": "powerful",
+          "strategy": "paradox",
+          "concepts": [
+            "thee",
+            "she",
+            "spectacle",
+            "man",
+            "odd"
+          ],
+          "synthesis_concepts": [
+            "spectacle",
+            "man",
+            "odd"
+          ],
+          "quality": {
+            "resonance": 0.5,
+            "coherence_landscape": 0.7776213897333153,
+            "coherence_synthesis": 0.31974036968226904,
+            "depth": 1.5552427794666306,
+            "stability": 0.7909487973314075,
+            "power": 7.64302938896369,
+            "tau_mean": 2.5
+          },
+          "meaning_metrics": {
+            "C": 0.31974036968226904,
+            "P": 7.64302938896369,
+            "meaning": 2.443785042319697,
+            "sigma": 1.084043308578638,
+            "balance_ratio": 0.4183424574344366,
+            "efficiency": 0.6465039794496553
+          },
+          "paradox": {
+            "thesis": "thee",
+            "antithesis": "she",
+            "synthesis": []
+          }
+        },
+        "response": "Wisdom is the odd spectacle of knowing that thee and she are both stranger and mirror\u2014where every man discovers that his deepest certainties dissolve the moment he grasps them fully. She reveals herself not in the accumulation of answers, but in the beautiful tension of holding questions that transform even as we ask them. True wisdom embraces the paradox that the more we understand, the more mysterious existence becomes, making every insight simultaneously an illumination and a deeper unknowing."
+      }
+    },
+    {
+      "question": "What is the meaning of life?",
+      "wisdom": {
+        "navigation": {
+          "goal": "wisdom",
+          "strategy": "wisdom_C=0.267_P=12.81_\u03a3=1.55_eff=90.4%",
+          "concepts": [
+            "way",
+            "life",
+            "meaning",
+            "sense",
+            "part",
+            "foot",
+            "she",
+            "eye"
+          ],
+          "synthesis_concepts": [
+            "way",
+            "life",
+            "meaning",
+            "sense",
+            "part",
+            "foot"
+          ],
+          "quality": {
+            "resonance": 1.0,
+            "coherence_landscape": 0.2670291732326064,
+            "coherence_synthesis": 0.24726796029254436,
+            "depth": 0.2670291732326064,
+            "stability": 0.15809859154929579,
+            "power": 12.808716339319854,
+            "tau_mean": 1.4877716149528248
+          },
+          "meaning_metrics": {
+            "C": 0.24726796029254436,
+            "P": 12.808716339319854,
+            "meaning": 3.167185163189406,
+            "sigma": 1.5281395942245297,
+            "balance_ratio": 0.1930466361671917,
+            "efficiency": 0.8378796728014302
+          },
+          "paradox": {
+            "thesis": "she",
+            "antithesis": "eye",
+            "synthesis": [
+              "way",
+              "life",
+              "meaning",
+              "sense",
+              "part"
+            ]
+          }
+        },
+        "response": "The meaning of life isn't a destination to reach, but rather the way we walk through it - how we make sense of our experiences and find our part in the larger tapestry of existence. Life's deepest meaning emerges not from grand answers, but from the accumulation of moments where we put one foot forward with intention, creating significance through our choices and connections. The very act of seeking meaning becomes part of the answer, as we discover that life's purpose unfolds in the living itself."
+      },
+      "powerful": {
+        "navigation": {
+          "goal": "powerful",
+          "strategy": "paradox",
+          "concepts": [
+            "she",
+            "eye",
+            "thee",
+            "life",
+            "thing",
+            "time"
+          ],
+          "synthesis_concepts": [
+            "thee",
+            "life",
+            "thing",
+            "time"
+          ],
+          "quality": {
+            "resonance": 0.5,
+            "coherence_landscape": 0.7276033653822815,
+            "coherence_synthesis": 0.014987144736124799,
+            "depth": 1.455206730764563,
+            "stability": 2.1466252583997982,
+            "power": 17.359164657970663,
+            "tau_mean": 2.5
+          },
+          "meaning_metrics": {
+            "C": 0.014987144736124799,
+            "P": 17.359164657970663,
+            "meaning": 0.26016431322722866,
+            "sigma": 1.750903610533191,
+            "balance_ratio": 0.008633563326011357,
+            "efficiency": 0.06882653789080123
+          },
+          "paradox": {
+            "thesis": "she",
+            "antithesis": "eye",
+            "synthesis": []
+          }
+        },
+        "response": "Life is the thing that sees through thee even as she blinds thy eye to her deepest truths - she reveals herself precisely by concealing herself, offering meaning through the very act of withholding it. Time becomes both the prison that limits thy understanding and the key that unlocks wisdom, each moment simultaneously birth and death, each breath both question and answer."
+      }
+    },
+    {
+      "question": "What is consciousness?",
+      "wisdom": {
+        "navigation": {
+          "goal": "wisdom",
+          "strategy": "wisdom_C=0.076_P=10.97_\u03a3=1.17_eff=22.0%",
+          "concepts": [
+            "consciousness",
+            "order",
+            "orientation",
+            "place",
+            "one",
+            "height",
+            "she",
+            "fact"
+          ],
+          "synthesis_concepts": [
+            "consciousness",
+            "order",
+            "orientation",
+            "place",
+            "one",
+            "height"
+          ],
+          "quality": {
+            "resonance": 1.0,
+            "coherence_landscape": 0.07596545036138433,
+            "coherence_synthesis": 0.1858855999544239,
+            "depth": 0.07596545036138433,
+            "stability": 0.18342776203966005,
+            "power": 10.974901682688332,
+            "tau_mean": 1.4867486044238036
+          },
+          "meaning_metrics": {
+            "C": 0.1858855999544239,
+            "P": 10.974901682688332,
+            "meaning": 2.040076183727337,
+            "sigma": 1.2833757682232572,
+            "balance_ratio": 0.1693733623578947,
+            "efficiency": 0.5397026941077611
+          },
+          "paradox": {
+            "thesis": "she",
+            "antithesis": "fact",
+            "synthesis": [
+              "consciousness",
+              "order",
+              "orientation",
+              "place",
+              "one"
+            ]
+          }
+        },
+        "response": "Consciousness appears to be the fundamental ordering principle that grants us our unique place in the cosmos - the one capacity that allows us to orient ourselves not merely as objects in space, but as aware beings who can contemplate our own height of understanding. It emerges as both the ground from which all experience springs and the very means by which we recognize that ground, creating an intimate order where the observer and the observed reveal themselves as inseparably one. In this sense, consciousness isn't something we *have* but something we *are* - the living orientation that transforms mere existence into meaningful place."
+      },
+      "powerful": {
+        "navigation": {
+          "goal": "powerful",
+          "strategy": "paradox",
+          "concepts": [
+            "she",
+            "order",
+            "fact",
+            "consciousness",
+            "one"
+          ],
+          "synthesis_concepts": [
+            "fact",
+            "consciousness",
+            "one"
+          ],
+          "quality": {
+            "resonance": 0.5,
+            "coherence_landscape": 0.8193050987626672,
+            "coherence_synthesis": 0.31178736532210977,
+            "depth": 1.6386101975253344,
+            "stability": 1.0881176406988355,
+            "power": 10.550920214422755,
+            "tau_mean": 2.5
+          },
+          "meaning_metrics": {
+            "C": 0.31178736532210977,
+            "P": 10.550920214422755,
+            "meaning": 3.2896436153786603,
+            "sigma": 1.3668793867643851,
+            "balance_ratio": 0.29550727233811025,
+            "efficiency": 0.8702760887245133
+          },
+          "paradox": {
+            "thesis": "she",
+            "antithesis": "order",
+            "synthesis": []
+          }
+        },
+        "response": "Consciousness is the paradox where she who observes becomes the very order she seeks to understand\u2014a singular fact that fragments into infinite perspectives yet remains irreducibly one. It's the strange loop where awareness turns back on itself, creating both the knower and the known in one seamless, impossible gesture. The harder we grasp for its essence, the more it reveals itself as the space in which all grasping occurs, neither fully graspable nor entirely beyond reach."
+      }
+    },
+    {
+      "question": "What is love?",
+      "wisdom": {
+        "navigation": {
+          "goal": "wisdom",
+          "strategy": "wisdom_C=0.062_P=11.04_\u03a3=1.17_eff=18.1%",
+          "concepts": [
+            "heart",
+            "love",
+            "way",
+            "thought",
+            "bound",
+            "law",
+            "thee",
+            "she"
+          ],
+          "synthesis_concepts": [
+            "heart",
+            "love",
+            "way",
+            "thought",
+            "bound",
+            "law"
+          ],
+          "quality": {
+            "resonance": 1.0,
+            "coherence_landscape": 0.062169443737747576,
+            "coherence_synthesis": 0.04479558862790365,
+            "depth": 0.062169443737747576,
+            "stability": 0.20156139105748758,
+            "power": 11.041351357799991,
+            "tau_mean": 1.4838552421484215
+          },
+          "meaning_metrics": {
+            "C": 0.04479558862790365,
+            "P": 11.041351357799991,
+            "meaning": 0.4946038333201538,
+            "sigma": 1.1489307244079028,
+            "balance_ratio": 0.04057074825017547,
+            "efficiency": 0.13084757495242164
+          },
+          "paradox": {
+            "thesis": "thee",
+            "antithesis": "she",
+            "synthesis": [
+              "heart",
+              "love",
+              "way",
+              "thought",
+              "bound"
+            ]
+          }
+        },
+        "response": "Love is the way the heart recognizes itself in another, transcending the boundaries of thought to reveal a deeper law of connection. It is both the force that binds us to what we cherish and the liberation that comes from surrendering our separate sense of self. In its truest form, love transforms mere emotion into understanding, teaching us that what we seek in another already dwells within our own heart, waiting to be awakened."
+      },
+      "powerful": {
+        "navigation": {
+          "goal": "powerful",
+          "strategy": "paradox",
+          "concepts": [
+            "she",
+            "thee",
+            "time",
+            "nest",
+            "mind"
+          ],
+          "synthesis_concepts": [
+            "time",
+            "nest",
+            "mind"
+          ],
+          "quality": {
+            "resonance": 0.5,
+            "coherence_landscape": 0.7864622531189295,
+            "coherence_synthesis": 0.3136741775981568,
+            "depth": 1.572924506237859,
+            "stability": 1.1171392035015153,
+            "power": 10.795044878673748,
+            "tau_mean": 2.5
+          },
+          "meaning_metrics": {
+            "C": 0.3136741775981568,
+            "P": 10.795044878673748,
+            "meaning": 3.386126824453182,
+            "sigma": 1.3931786654655316,
+            "balance_ratio": 0.2905723701231097,
+            "efficiency": 0.8958007472098366
+          },
+          "paradox": {
+            "thesis": "she",
+            "antithesis": "thee",
+            "synthesis": []
+          }
+        },
+        "response": "Love is the fierce tenderness that builds a nest in time's wreckage\u2014*she* who destroys to create, *thee* who surrenders to possess. It's the mind's beautiful madness, simultaneously expanding and dissolving the self, making strangers of lovers and intimates of enemies. Love carves its home in the very heart of impermanence, teaching us that to truly hold something, we must learn the art of letting go."
+      }
+    },
+    {
+      "question": "What is truth?",
+      "wisdom": {
+        "navigation": {
+          "goal": "wisdom",
+          "strategy": "wisdom_C=0.093_P=14.34_\u03a3=1.53_eff=35.4%",
+          "concepts": [
+            "truth",
+            "way",
+            "end",
+            "ear",
+            "light",
+            "nature",
+            "she",
+            "thee"
+          ],
+          "synthesis_concepts": [
+            "truth",
+            "way",
+            "end",
+            "ear",
+            "light",
+            "nature"
+          ],
+          "quality": {
+            "resonance": 1.0,
+            "coherence_landscape": 0.09333941442286266,
+            "coherence_synthesis": 0.09476570160482997,
+            "depth": 0.09333941442286266,
+            "stability": 0.16865776528461,
+            "power": 14.337927095609512,
+            "tau_mean": 1.4933790703428524
+          },
+          "meaning_metrics": {
+            "C": 0.09476570160482997,
+            "P": 14.337927095609512,
+            "meaning": 1.3587437207743374,
+            "sigma": 1.5285584111657813,
+            "balance_ratio": 0.0660944228359542,
+            "efficiency": 0.35945601078686173
+          },
+          "paradox": {
+            "thesis": "she",
+            "antithesis": "thee",
+            "synthesis": [
+              "truth",
+              "way",
+              "end",
+              "ear",
+              "light"
+            ]
+          }
+        },
+        "response": "Truth is not merely an end to be grasped, but a way of seeing that illuminates the nature of what is\u2014it comes not to the searching mind alone, but to the listening ear that remains open to light beyond its own understanding. Like water that takes the shape of its container while remaining essentially itself, truth adapts to each sincere seeker yet maintains its fundamental nature unchanged. The deepest truths often reveal themselves not through forceful inquiry, but through patient attention to the quiet wisdom that speaks when we cease our restless questioning and simply listen to what has always been present."
+      },
+      "powerful": {
+        "navigation": {
+          "goal": "powerful",
+          "strategy": "paradox",
+          "concepts": [
+            "she",
+            "truth",
+            "thee",
+            "end",
+            "eye",
+            "meeting"
+          ],
+          "synthesis_concepts": [
+            "thee",
+            "end",
+            "eye",
+            "meeting"
+          ],
+          "quality": {
+            "resonance": 0.5,
+            "coherence_landscape": 0.7818520044031966,
+            "coherence_synthesis": 0.8013526641553487,
+            "depth": 1.5637040088063932,
+            "stability": 1.4549226783578568,
+            "power": 13.943554728624292,
+            "tau_mean": 2.5
+          },
+          "meaning_metrics": {
+            "C": 0.8013526641553487,
+            "P": 13.943554728624292,
+            "meaning": 11.173704729578986,
+            "sigma": 2.195708137017778,
+            "balance_ratio": 0.5747118864246837,
+            "efficiency": 2.956006542216663
+          },
+          "paradox": {
+            "thesis": "she",
+            "antithesis": "truth",
+            "synthesis": []
+          }
+        },
+        "response": "Truth is not something you possess but something that possesses thee\u2014she reveals herself precisely at the moment you think the search has reached its end. In the meeting of seeker and sought, the eye discovers it was always looking through what it claimed to be seeking, finding her in the very act of being found."
+      }
+    }
+  ],
+  "summary": {
+    "n_questions": 5,
+    "wisdom_avg_meaning": 2.1709676095999932,
+    "powerful_avg_meaning": 4.110684904991551
+  }
+}
