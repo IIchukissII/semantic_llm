@@ -100,10 +100,10 @@ class Decomposer:
         self._verb_operators = self.loader.load_verb_operators()
 
         # Build sets for fast lookup
-        # Nouns: word_type == 0
+        # Nouns: word_type == 'noun' or word_type == 0 (legacy)
         self._noun_set = {
             word for word, data in self._word_vectors.items()
-            if data.get('word_type') == 0 and data.get('j') is not None
+            if data.get('word_type') in ('noun', 0) and data.get('j') is not None
         }
 
         # Verbs: from verb operators

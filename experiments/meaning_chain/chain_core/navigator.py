@@ -142,6 +142,39 @@ class NavigationResult:
     thesis: Optional[str] = None
     antithesis: Optional[str] = None
 
+    @property
+    def mean_tau(self) -> float:
+        """Mean τ from orbital result."""
+        if self.orbital_result and hasattr(self.orbital_result, 'mean_tau'):
+            return self.orbital_result.mean_tau
+        return self.quality.depth  # Use depth as proxy
+
+    @property
+    def human_fraction(self) -> float:
+        """Fraction of navigation in human realm (τ < e)."""
+        if self.orbital_result and hasattr(self.orbital_result, 'human_fraction'):
+            return self.orbital_result.human_fraction
+        return 0.5  # Default
+
+    @property
+    def convergence_word(self) -> Optional[str]:
+        """Word where navigation converged."""
+        if self.orbital_result and hasattr(self.orbital_result, 'convergence'):
+            return self.orbital_result.convergence
+        if self.concepts:
+            return self.concepts[0]
+        return None
+
+    @property
+    def core_concepts(self) -> List[str]:
+        """Alias for concepts."""
+        return self.concepts
+
+    @property
+    def strategy_used(self) -> str:
+        """Alias for strategy."""
+        return self.strategy
+
     def __repr__(self):
         return (f"NavigationResult(goal={self.goal.value}, "
                 f"concepts={self.concepts[:5]}, "
