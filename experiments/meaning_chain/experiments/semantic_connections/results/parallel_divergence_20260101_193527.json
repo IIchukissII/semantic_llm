@@ -1,0 +1,88 @@
+{
+  "timestamp": "2026-01-01T19:35:27.991400",
+  "hypothesis": "Parallel paths have >1.5x coverage vs series",
+  "seeds": [
+    "wisdom",
+    "love",
+    "knowledge",
+    "feeling",
+    "word",
+    "hand"
+  ],
+  "results": [
+    {
+      "seed": "wisdom",
+      "series_coverage": 1.0,
+      "parallel_coverage": 1.0,
+      "coverage_ratio": 1.0,
+      "series_concepts": 6,
+      "parallel_concepts": 12,
+      "series_unique": 6,
+      "parallel_unique": 12,
+      "hypothesis_confirmed": false
+    },
+    {
+      "seed": "love",
+      "series_coverage": 1.0,
+      "parallel_coverage": 1.0,
+      "coverage_ratio": 1.0,
+      "series_concepts": 4,
+      "parallel_concepts": 8,
+      "series_unique": 4,
+      "parallel_unique": 8,
+      "hypothesis_confirmed": false
+    },
+    {
+      "seed": "knowledge",
+      "series_coverage": 1.0,
+      "parallel_coverage": 1.0,
+      "coverage_ratio": 1.0,
+      "series_concepts": 6,
+      "parallel_concepts": 12,
+      "series_unique": 6,
+      "parallel_unique": 12,
+      "hypothesis_confirmed": false
+    },
+    {
+      "seed": "feeling",
+      "series_coverage": 0.8333333333333334,
+      "parallel_coverage": 1.0,
+      "coverage_ratio": 1.2,
+      "series_concepts": 6,
+      "parallel_concepts": 10,
+      "series_unique": 5,
+      "parallel_unique": 10,
+      "hypothesis_confirmed": false
+    },
+    {
+      "seed": "word",
+      "series_coverage": 1.0,
+      "parallel_coverage": 1.0,
+      "coverage_ratio": 1.0,
+      "series_concepts": 4,
+      "parallel_concepts": 12,
+      "series_unique": 4,
+      "parallel_unique": 12,
+      "hypothesis_confirmed": false
+    },
+    {
+      "seed": "hand",
+      "series_coverage": 0.8333333333333334,
+      "parallel_coverage": 1.0,
+      "coverage_ratio": 1.2,
+      "series_concepts": 6,
+      "parallel_concepts": 11,
+      "series_unique": 5,
+      "parallel_unique": 11,
+      "hypothesis_confirmed": false
+    }
+  ],
+  "summary": {
+    "total_seeds": 6,
+    "successful_tests": 6,
+    "avg_coverage_ratio": 1.0666666666666667,
+    "confirmed_count": 0,
+    "confirmation_rate": 0.0,
+    "hypothesis_status": "NOT CONFIRMED"
+  }
+}

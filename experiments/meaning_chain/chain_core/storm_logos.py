@@ -10,8 +10,14 @@ This replaces brute-force candidate generation with principled emergence.
 
 Physics Mode (optional):
 - Gravity pulls meaning toward human reality (low τ)
-- Potential φ = λτ - μg (altitude costs, goodness lifts)
+- Potential φ = λτ - μA (altitude costs, affirmation lifts)
 - Walks "feel" gravity when gravity_strength > 0
+
+Coordinate System (Jan 2026):
+- (A, S, τ) = three semantic coordinates
+- A = Affirmation (replaces old 'g')
+- S = Sacred (orthogonal axis)
+- τ = Abstraction level
 
 Intent Collapse Mode (NEW):
 - Verbs act as operators that collapse navigation
@@ -41,7 +47,7 @@ sys.path.insert(0, str(_MEANING_CHAIN))
 # =============================================================================
 
 LAMBDA = 0.5      # Gravitational constant (τ coupling)
-MU = 0.5          # Lift constant (g coupling)
+MU = 0.5          # Lift constant (A coupling) - formerly g, now Affirmation
 
 # Import Euler-based VEIL_TAU from orbital constants (τ = e ≈ 2.718)
 from chain_core.orbital.constants import VEIL_TAU
@@ -56,20 +62,36 @@ from chain_core.intent_collapse import IntentCollapse
 class StormState:
     """A thought in the storm - concept with its activation."""
     word: str
-    g: float
-    tau: float
-    j: np.ndarray
+    affirmation: float       # A: Affirmation score (formerly g)
+    sacred: float = 0.0      # S: Sacred score (new in 2D model)
+    tau: float = 3.0
+    j: np.ndarray = None     # Original 5D j-vector
     activation: float = 1.0  # How strongly this thought was activated
     # Physics properties (populated when gravity_strength > 0)
-    phi: float = 0.0         # Semantic potential φ = λτ - μg
+    phi: float = 0.0         # Semantic potential φ = λτ - μA
     realm: str = "human"     # "human" (τ<e) or "transcendental" (τ≥e)
     # Intent collapse properties (NEW)
     collapsed_by_intent: bool = False  # True if reached via intent-driven path
     intent_score: float = 0.0          # How aligned with intent [0, 1]
 
+    @property
+    def g(self) -> float:
+        """Legacy alias: g ≈ A (affirmation)."""
+        return self.affirmation
+
+    @property
+    def A(self) -> float:
+        """Alias for affirmation."""
+        return self.affirmation
+
+    @property
+    def S(self) -> float:
+        """Alias for sacred."""
+        return self.sacred
+
     def compute_physics(self):
-        """Compute physics properties from τ and g."""
-        self.phi = LAMBDA * self.tau - MU * self.g
+        """Compute physics properties from τ and A."""
+        self.phi = LAMBDA * self.tau - MU * self.affirmation
         self.realm = "transcendental" if self.tau >= VEIL_TAU else "human"
 
 
@@ -82,9 +104,9 @@ class PhysicsTrajectory:
     veil_crossings: int = 0
     words: List[str] = field(default_factory=list)
 
-    def add_step(self, word: str, tau: float, g: float):
-        """Record a step in the walk."""
-        phi = LAMBDA * tau - MU * g
+    def add_step(self, word: str, tau: float, affirmation: float):
+        """Record a step in the walk. Uses A (affirmation) for phi calculation."""
+        phi = LAMBDA * tau - MU * affirmation
         if self.tau_values:
             self.delta_tau.append(tau - self.tau_values[-1])
             prev_realm = "transcendental" if self.tau_values[-1] >= VEIL_TAU else "human"
@@ -192,7 +214,7 @@ class LogosPattern:
     core_concepts: List[str]      # Highest resonance concepts
     convergence_point: Optional[str]  # Where thoughts meet
     j_center: np.ndarray          # Center of meaning in j-space
-    g_direction: float            # Overall goodness direction
+    affirmation_direction: float  # Overall affirmation direction (formerly g_direction)
     tau_level: float              # Abstraction level of pattern
     coherence: float              # How coherent is the pattern [0, 1]
     # Physics metrics (populated when gravity enabled)
@@ -200,6 +222,11 @@ class LogosPattern:
     veil_crossings: int = 0       # Times meaning crossed the τ=e boundary
     gravity_compliance: float = 0.0  # Fraction of steps following gravity
     realm: str = "human"          # Dominant realm of pattern
+
+    @property
+    def g_direction(self) -> float:
+        """Legacy alias for affirmation_direction."""
+        return self.affirmation_direction
 
 
 class Storm:
@@ -212,7 +239,7 @@ class Storm:
 
     Physics Mode (gravity_strength > 0):
     - Transitions prefer lower potential (falling is natural)
-    - Potential φ = λτ - μg (altitude costs, goodness lifts)
+    - Potential φ = λτ - μA (altitude costs, affirmation lifts)
     - Tracks physics observables during walks
 
     Intent Collapse Mode (NEW):
@@ -369,9 +396,10 @@ class Storm:
             next_concept = self._graph.get_concept(word) if self._graph else None
             if next_concept:
                 next_tau = next_concept.get('tau', 3.0)
-                next_g = next_concept.get('g', 0.0)
+                # Use affirmation (A) instead of g. Fall back to g for compatibility
+                next_A = next_concept.get('affirmation', next_concept.get('g', 0.0))
                 # Potential change: Δφ = φ(next) - φ(current)
-                phi_next = LAMBDA * next_tau - MU * next_g
+                phi_next = LAMBDA * next_tau - MU * next_A
                 delta_phi = phi_next - current_state.phi
                 # Effective energy: -weight (prefer high weight) + α·Δφ (gravity)
                 E_eff = -weight + self.gravity_strength * delta_phi
@@ -431,7 +459,7 @@ class Storm:
                 # Physics tracking for this walk
                 trajectory = PhysicsTrajectory() if self.gravity_strength > 0 else None
                 if trajectory:
-                    trajectory.add_step(current, current_state.tau, current_state.g)
+                    trajectory.add_step(current, current_state.tau, current_state.affirmation)
 
                 for step in range(steps_per_walk):
                     next_word = None
@@ -444,9 +472,13 @@ class Storm:
                         intent_trans = self._get_intent_transition(current)
                         if intent_trans:
                             next_word = intent_trans['word']
+                            # Use affirmation, fall back to g for compatibility
+                            affirmation = intent_trans.get('affirmation', intent_trans.get('g', 0.0))
+                            sacred = intent_trans.get('sacred', 0.0)
                             next_state = StormState(
                                 word=next_word,
-                                g=intent_trans['g'],
+                                affirmation=affirmation,
+                                sacred=sacred,
                                 tau=intent_trans['tau'],
                                 j=intent_trans['j'],
                                 activation=1.0 / (1.0 + step * 0.2),
@@ -477,7 +509,7 @@ class Storm:
 
                     # Physics tracking
                     if trajectory:
-                        trajectory.add_step(next_word, next_state.tau, next_state.g)
+                        trajectory.add_step(next_word, next_state.tau, next_state.affirmation)
 
                     current = next_word
                     current_state = next_state
@@ -539,16 +571,16 @@ class Logos:
         """
         Compute how well a thought passes through the lens.
 
-        Score = alignment with focus direction × goodness × activation
+        Score = alignment with focus direction × affirmation × activation
 
-        High score = thought is focused, relevant, good
-        Low score = thought is scattered, irrelevant, or negative
+        High score = thought is focused, relevant, affirming
+        Low score = thought is scattered, irrelevant, or negating
         """
         score = thought.activation  # Base: how strongly activated
 
-        # Goodness lens: prefer positive g
-        g_factor = (thought.g + 1) / 2  # Map [-1,1] to [0,1]
-        score *= (0.5 + 0.5 * g_factor)  # Range [0.5, 1.0]
+        # Affirmation lens: prefer positive A (formerly g)
+        a_factor = (thought.A + 1) / 2  # Map A to [0,1] range
+        score *= (0.5 + 0.5 * a_factor)  # Range [0.5, 1.0]
 
         # J-good lens: alignment with "the good"
         if thought.j is not None and np.linalg.norm(thought.j) > 1e-6:
@@ -591,7 +623,7 @@ class Logos:
                 core_concepts=storm.seeds,
                 convergence_point=None,
                 j_center=np.zeros(5),
-                g_direction=0.0,
+                affirmation_direction=0.0,
                 tau_level=3.0,
                 coherence=0.0
             )
@@ -642,7 +674,7 @@ class Logos:
                 weights = np.array(weights)
                 weights = weights / (np.sum(weights) + 1e-6)
                 j_center = np.average(j_vectors, axis=0, weights=weights)
-                g_direction = np.average([t.g for t in focused_thoughts], weights=weights)
+                affirmation_direction = np.average([t.A for t in focused_thoughts], weights=weights)
                 tau_level = np.average([t.tau for t in focused_thoughts], weights=weights)
 
                 # Coherence: how well-focused is the result?
@@ -654,12 +686,12 @@ class Logos:
                 coherence = (np.mean(alignments) + 1) / 2
             else:
                 j_center = np.zeros(5)
-                g_direction = 0.0
+                affirmation_direction = 0.0
                 tau_level = 3.0
                 coherence = 0.0
         else:
             j_center = np.zeros(5)
-            g_direction = 0.0
+            affirmation_direction = 0.0
             tau_level = 3.0
             coherence = 0.0
 
@@ -674,7 +706,7 @@ class Logos:
             core_concepts=core_concepts,
             convergence_point=convergence_point,
             j_center=j_center,
-            g_direction=g_direction,
+            affirmation_direction=affirmation_direction,
             tau_level=tau_level,
             coherence=coherence,
             avg_phi=avg_phi,

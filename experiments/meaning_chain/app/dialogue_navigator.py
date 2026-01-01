@@ -508,7 +508,7 @@ def main():
     parser.add_argument("--goal", "-g", type=str, default="balanced",
                         choices=["accurate", "deep", "grounded", "stable",
                                 "powerful", "balanced", "exploratory",
-                                "supercritical", "wisdom"],
+                                "supercritical", "wisdom", "parallel", "resonant", "filtered"],
                         help="Navigation goal")
     parser.add_argument("--compare", "-c", action="store_true",
                         help="Compare all strategies on the topic")

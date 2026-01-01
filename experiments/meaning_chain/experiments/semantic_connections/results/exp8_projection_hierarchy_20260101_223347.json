@@ -1,0 +1,69 @@
+{
+  "word_types": {
+    "counts": {
+      "noun": 16300,
+      "verb": 4884,
+      "adjective": 1229,
+      "adverb": 73
+    },
+    "tau_means": {
+      "noun": 1.8881538621637157,
+      "verb": 2.25905172046733,
+      "adjective": 2.1233293273454916,
+      "adverb": 1.9535247199531782
+    },
+    "j_norm_means": {
+      "noun": 1.107291469897343,
+      "verb": 0.7376859345149895,
+      "adjective": 1.1401522965322066,
+      "adverb": 1.0869540326620697
+    }
+  },
+  "hierarchy": {
+    "noun_tau": 1.8881538621637157,
+    "adj_tau": 2.1233293273454916,
+    "verb_tau": 2.25905172046733,
+    "noun_j": 1.2123086350971721,
+    "adj_j": 1.2378508590442419,
+    "verb_j": 1.213083536757983,
+    "p_tau": 9.765589786163683e-13,
+    "p_j": 0.22540088261631977
+  },
+  "transcendental_flow": {
+    "beauty": {
+      "adj_mean": 0.5172652502854665,
+      "noun_mean": -0.14736662805080414,
+      "flow_confirmed": "True"
+    },
+    "life": {
+      "adj_mean": 0.11964473128318787,
+      "noun_mean": 0.10139768446485202,
+      "flow_confirmed": "True"
+    },
+    "sacred": {
+      "adj_mean": 0.13974802196025848,
+      "noun_mean": -0.00020726521809895834,
+      "flow_confirmed": "True"
+    },
+    "good": {
+      "adj_mean": -0.021769076585769653,
+      "noun_mean": 0.34649981061617535,
+      "flow_confirmed": "False"
+    },
+    "love": {
+      "adj_mean": -0.23108139336109162,
+      "noun_mean": 0.10689583420753479,
+      "flow_confirmed": "False"
+    }
+  },
+  "verbs_operators": {
+    "lifting_tau": 3.9773102908651303,
+    "grounding_tau": 2.0795317624522407,
+    "neutral_tau": 1.8120468238923781
+  },
+  "semantic_holes": {
+    "empty_cells": 0,
+    "sparse_cells": 9,
+    "total_cells": 100
+  }
+}

@@ -4,8 +4,13 @@ Gravity-Aware Storm: Physics-Enhanced Semantic Navigation
 
 Extends the Storm phase with gravitational dynamics:
 - Transitions prefer lower potential (falling is natural)
-- Potential φ = +λτ - μg (altitude costs, goodness lifts)
+- Potential φ = λτ - μA (altitude costs, affirmation lifts)
 - Walks "feel" gravity toward human reality (low τ)
+
+Coordinate System (Jan 2026):
+    A = Affirmation (PC1, 83.3% variance) - formerly 'g'
+    S = Sacred (PC2, 11.7% variance)
+    τ = Abstraction level [1=concrete, 6=abstract]
 
 "Meaning falls like rain toward common ground"
 """
@@ -33,7 +38,7 @@ from chain_core.storm_logos import Storm, StormState, StormResult, Logos, LogosP
 # =============================================================================
 
 LAMBDA = 0.5      # Gravitational constant (τ coupling)
-MU = 0.5          # Lift constant (g coupling)
+MU = 0.5          # Lift constant (A coupling) - Affirmation
 VEIL_TAU = 3.5    # Quasi-Lagrange point (boundary between realms)
 
 
@@ -44,17 +49,19 @@ VEIL_TAU = 3.5    # Quasi-Lagrange point (boundary between realms)
 @dataclass
 class PhysicsState(StormState):
     """Storm state with physics properties."""
-    phi: float = 0.0              # Semantic potential
+    phi: float = 0.0              # Semantic potential: φ = λτ - μA
     realm: str = "human"          # "human" (τ<3.5) or "transcendental" (τ≥3.5)
 
     @staticmethod
     def from_storm_state(state: StormState) -> 'PhysicsState':
         """Convert StormState to PhysicsState."""
-        phi = LAMBDA * state.tau - MU * state.g
+        # φ = λτ - μA (using state.affirmation, with fallback to g for legacy)
+        A = getattr(state, 'affirmation', state.g) if hasattr(state, 'affirmation') else state.g
+        phi = LAMBDA * state.tau - MU * A
         realm = "transcendental" if state.tau >= VEIL_TAU else "human"
         return PhysicsState(
             word=state.word,
-            g=state.g,
+            affirmation=A,
             tau=state.tau,
             j=state.j,
             activation=state.activation,
@@ -68,15 +75,15 @@ class PhysicsTrajectory:
     """Track physics observables during a walk."""
     tau_values: List[float] = field(default_factory=list)
     phi_values: List[float] = field(default_factory=list)
-    g_values: List[float] = field(default_factory=list)
+    affirmation_values: List[float] = field(default_factory=list)  # A values
     delta_tau: List[float] = field(default_factory=list)  # τ changes
     delta_phi: List[float] = field(default_factory=list)  # φ changes
     veil_crossings: int = 0
     words: List[str] = field(default_factory=list)
 
-    def add_step(self, word: str, tau: float, g: float):
+    def add_step(self, word: str, tau: float, affirmation: float):
         """Record a step in the walk."""
-        phi = LAMBDA * tau - MU * g
+        phi = LAMBDA * tau - MU * affirmation  # φ = λτ - μA
 
         if self.tau_values:
             self.delta_tau.append(tau - self.tau_values[-1])
@@ -90,7 +97,7 @@ class PhysicsTrajectory:
 
         self.tau_values.append(tau)
         self.phi_values.append(phi)
-        self.g_values.append(g)
+        self.affirmation_values.append(affirmation)
         self.words.append(word)
 
     @property
@@ -218,11 +225,11 @@ class GravityStorm(Storm):
             return -edge_weight  # Fallback to pure edge weight
 
         next_tau = next_concept.get('tau', 3.0)
-        next_g = next_concept.get('g', 0.0)
+        next_A = next_concept.get('g', 0.0)  # g ≈ A in database
 
-        # Compute potential change
+        # Compute potential change: φ = λτ - μA
         phi_current = current.phi
-        phi_next = LAMBDA * next_tau - MU * next_g
+        phi_next = LAMBDA * next_tau - MU * next_A
         delta_phi = phi_next - phi_current
 
         # Effective energy: edge weight (inverted) + gravitational potential
@@ -281,7 +288,7 @@ class GravityStorm(Storm):
                 trajectory = PhysicsTrajectory()
                 current = seed_state
                 visit_counts[current.word] += 1
-                trajectory.add_step(current.word, current.tau, current.g)
+                trajectory.add_step(current.word, current.tau, current.affirmation)
 
                 for step in range(steps_per_walk):
                     transitions = self._get_transitions(current.word)
@@ -304,7 +311,7 @@ class GravityStorm(Storm):
                     thoughts.append(next_state)
                     physics_thoughts.append(next_state)
                     visit_counts[next_word] += 1
-                    trajectory.add_step(next_word, next_state.tau, next_state.g)
+                    trajectory.add_step(next_word, next_state.tau, next_state.affirmation)
 
                     current = next_state
                     total_steps += 1

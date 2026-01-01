@@ -1,0 +1,57 @@
+{
+  "timestamp": "20260101_225051",
+  "refractive_indices": [
+    {
+      "tau": 1,
+      "n": 0.32235441640237034,
+      "density": 0.2871128318584071
+    },
+    {
+      "tau": 2,
+      "n": 0.41525678991499404,
+      "density": 0.3201327433628319
+    },
+    {
+      "tau": 3,
+      "n": 0.9731379271370982,
+      "density": 0.0394358407079646
+    },
+    {
+      "tau": 4,
+      "n": 0.7520088505880977,
+      "density": 0.010176991150442478
+    },
+    {
+      "tau": 5,
+      "n": 1.1807108978261225,
+      "density": 0.003484513274336283
+    },
+    {
+      "tau": 6,
+      "n": 6.104972155609909,
+      "density": 0.3396570796460177
+    }
+  ],
+  "lens": {
+    "focal_length": 10.3,
+    "magnification": 5.0808598463636425,
+    "aberration": 0.8399566629725232,
+    "polarization_efficiency": 1.1158492975224563
+  },
+  "interference": {
+    "n_constructive": 20,
+    "n_destructive": 0
+  },
+  "polarization": {
+    "mean_alignment": 0.05504272860610601,
+    "std_alignment": 0.34467105877039184,
+    "positive_fraction": 0.558562874251497,
+    "by_tau": {
+      "1": 0.05504272860610601
+    }
+  },
+  "refraction": {
+    "up_jumps": 13,
+    "down_jumps": 17
+  }
+}

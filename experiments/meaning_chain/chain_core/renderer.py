@@ -73,7 +73,7 @@ class TreeSerializer:
             verb_str = f"({node.verb_from_parent}) " if node.verb_from_parent else ""
 
             if include_props:
-                props = f"[g={node.g:.2f}, τ={node.tau:.1f}]"
+                props = f"[A={node.A:.2f}, S={node.S:.2f}, τ={node.tau:.1f}]"
                 lines.append(f"{prefix}{verb_str}{node.word} {props}")
             else:
                 lines.append(f"{prefix}{verb_str}{node.word}")
@@ -126,16 +126,18 @@ class Renderer:
         return self._ollama
 
     def _compute_ranges(self, tree: MeaningTree) -> Dict[str, Tuple[float, float]]:
-        """Compute actual g and tau ranges from the tree."""
+        """Compute actual A, S and tau ranges from the tree."""
         nodes = tree.all_nodes()
         if not nodes:
-            return {'g': (-1, 1), 'tau': (1, 7)}
+            return {'A': (-1, 1), 'S': (-1, 1), 'tau': (1, 7)}
 
-        g_vals = [n.g for n in nodes if n.g is not None]
+        a_vals = [n.A for n in nodes if n.A is not None]
+        s_vals = [n.S for n in nodes if n.S is not None]
         tau_vals = [n.tau for n in nodes if n.tau is not None]
 
         return {
-            'g': (min(g_vals) if g_vals else -1, max(g_vals) if g_vals else 1),
+            'A': (min(a_vals) if a_vals else -1, max(a_vals) if a_vals else 1),
+            'S': (min(s_vals) if s_vals else -1, max(s_vals) if s_vals else 1),
             'tau': (min(tau_vals) if tau_vals else 1, max(tau_vals) if tau_vals else 7)
         }
 
@@ -306,8 +308,8 @@ class Renderer:
         themes = self._get_dominant_themes(tree)
 
         # Semantic space context
-        g_min, g_max = ranges['g']
-        avg_g = summary['avg_goodness']
+        a_min, a_max = ranges['A']
+        avg_a = summary.get('avg_affirmation', summary.get('avg_goodness', 0))
 
         sections.append("## Collapse Quality")
         sections.append(f"Richness: {quality['richness']:.2f} (concepts extracted)")

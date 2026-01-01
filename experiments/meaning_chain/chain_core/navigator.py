@@ -60,6 +60,9 @@ class NavigationGoal(Enum):
     EXPLORATORY = "exploratory"  # Storm-logos chaos
     SUPERCRITICAL = "supercritical"  # Chain reaction mode (α=0.2, λ>1)
     WISDOM = "wisdom"        # Optimal C=0.1P balance (max meaning production)
+    PARALLEL = "parallel"    # Parallel path exploration (2x coverage, stable coherence)
+    RESONANT = "resonant"    # Impedance matching (Z_query ≈ Z_concept for max transfer)
+    FILTERED = "filtered"    # τ-level filtering (explicit band-pass/low-pass/high-pass)
 
 
 @dataclass
@@ -186,6 +189,9 @@ class SemanticNavigator:
             NavigationGoal.EXPLORATORY: {'r': 0.1, 'c': 0.3, 'd': 0.2, 's': 0.1, 'p': 0.3},
             NavigationGoal.SUPERCRITICAL: {'r': 0.1, 'c': 0.2, 'd': 0.1, 's': 0.1, 'p': 0.5},
             NavigationGoal.WISDOM: {'r': 0.15, 'c': 0.35, 'd': 0.15, 's': 0.15, 'p': 0.20},
+            NavigationGoal.PARALLEL: {'r': 0.15, 'c': 0.30, 'd': 0.15, 's': 0.25, 'p': 0.15},  # Balanced with coverage priority
+            NavigationGoal.RESONANT: {'r': 0.35, 'c': 0.25, 'd': 0.10, 's': 0.15, 'p': 0.15},  # High resonance via impedance match
+            NavigationGoal.FILTERED: {'r': 0.25, 'c': 0.25, 'd': 0.20, 's': 0.15, 'p': 0.15},  # τ-filtered navigation
         }
 
         # Optimal constants for WISDOM mode (from semantic energy conservation)
@@ -203,6 +209,15 @@ class SemanticNavigator:
         # Supercritical engines (lazy loaded with α=0.2)
         self._supercritical_mc = None
         self._supercritical_paradox = None
+
+        # Parallel connection engine (lazy loaded)
+        self._parallel_connection = None
+
+        # Impedance matcher (lazy loaded)
+        self._impedance_matcher = None
+
+        # Goal filter (lazy loaded)
+        self._goal_filter = None
 
     # =========================================================================
     # Lazy initialization
@@ -269,6 +284,30 @@ class SemanticNavigator:
                 n_samples=25
             )
         return self._supercritical_paradox
+
+    def _init_parallel(self):
+        """Initialize ParallelConnection for multi-path exploration."""
+        if self._parallel_connection is None:
+            from experiments.semantic_connections.connection_types import ParallelConnection
+            self._parallel_connection = ParallelConnection(
+                self._init_graph(),
+                n_paths=3  # 3 parallel paths by default
+            )
+        return self._parallel_connection
+
+    def _init_impedance_matcher(self):
+        """Initialize ImpedanceMatcher for resonant navigation."""
+        if self._impedance_matcher is None:
+            from experiments.semantic_connections.impedance import ImpedanceMatcher
+            self._impedance_matcher = ImpedanceMatcher(self._init_graph())
+        return self._impedance_matcher
+
+    def _init_goal_filter(self):
+        """Initialize GoalFilter for τ-filtered navigation."""
+        if self._goal_filter is None:
+            from experiments.semantic_connections.filters import GoalFilter
+            self._goal_filter = GoalFilter
+        return self._goal_filter
 
     # =========================================================================
     # Decomposition
@@ -418,6 +457,15 @@ class SemanticNavigator:
 
         elif goal == NavigationGoal.EXPLORATORY:
             return self._navigate_with_storm(query, nouns, verbs, goal)
+
+        elif goal == NavigationGoal.PARALLEL:
+            return self._navigate_with_parallel(query, nouns, verbs, goal)
+
+        elif goal == NavigationGoal.RESONANT:
+            return self._navigate_with_resonant(query, nouns, verbs, goal)
+
+        elif goal == NavigationGoal.FILTERED:
+            return self._navigate_with_filter(query, nouns, verbs, goal)
 
         else:  # BALANCED
             return self._navigate_balanced(query, nouns, verbs, goal)
@@ -750,6 +798,268 @@ class SemanticNavigator:
             verbs=verbs,
             storm_result=(tree, pattern)
         )
+
+    def _navigate_with_parallel(self, query: str, nouns: List[str],
+                                 verbs: List[str],
+                                 goal: NavigationGoal) -> NavigationResult:
+        """
+        Navigate using parallel path exploration.
+
+        Explores multiple paths simultaneously from seed concepts,
+        capturing different aspects of the semantic space.
+
+        Benefits:
+        - 2x more unique concepts than series navigation
+        - More stable coherence (avoids extreme values)
+        - Controlled τ-jumps (moderate abstraction changes)
+        - Synthesis point identified (central concept)
+        """
+        parallel = self._init_parallel()
+
+        # Use first noun as primary seed
+        seed = nouns[0] if nouns else "meaning"
+
+        # Navigate with parallel paths
+        result = parallel.connect(seed, depth=4)
+
+        # Compute quality metrics
+        # Coherence from parallel result
+        coherence = max(0.0, min(1.0, result.coherence))
+
+        # Stability from coverage (high coverage = stable exploration)
+        stability = result.coverage
+
+        # Resonance based on tau consistency
+        # If tau_delta is small, we're resonating at a consistent level
+        resonance = max(0.0, 1.0 - abs(result.tau_delta) / 3.0)
+
+        # Power from synthesis (having a clear synthesis point)
+        power = 1.0 if result.synthesis else 0.5
+
+        quality = NavigationQuality(
+            resonance=resonance,
+            coherence=coherence,
+            stability=stability,
+            power=power,
+            tau_mean=result.tau_mean
+        )
+
+        # Build concept list (synthesis first if available)
+        concepts = list(result.concepts)
+        if result.synthesis and result.synthesis in concepts:
+            concepts.remove(result.synthesis)
+            concepts.insert(0, result.synthesis)
+
+        return NavigationResult(
+            concepts=concepts[:10],
+            quality=quality,
+            query=query,
+            goal=goal,
+            strategy=f"parallel_n{parallel.n_paths}",
+            nouns=nouns,
+            verbs=verbs,
+            synthesis=[result.synthesis] if result.synthesis else [],
+        )
+
+    def _navigate_with_resonant(self, query: str, nouns: List[str],
+                                 verbs: List[str],
+                                 goal: NavigationGoal) -> NavigationResult:
+        """
+        Navigate using impedance matching for maximum meaning transfer.
+
+        This mode finds concepts that resonate with the query's impedance:
+            Z_query ≈ Z_concept* (conjugate match)
+
+        Strategy:
+            1. Compute query impedance from verbs (R = target τ, X = intent)
+            2. Find seed concepts from nouns
+            3. Expand via neighbors, keeping only well-matched concepts
+            4. Rank by match quality (1 - |Γ|)
+
+        Use for: Precise semantic targeting, maximum meaning transfer
+        """
+        from experiments.semantic_connections.impedance import (
+            compute_query_impedance, impedance_match_quality
+        )
+
+        matcher = self._init_impedance_matcher()
+        graph = self._init_graph()
+
+        # Compute query impedance from verbs
+        query_z = compute_query_impedance(query, verbs, graph)
+
+        # Get seed concepts from nouns
+        seed_concepts = []
+        for noun in nouns[:5]:
+            if graph.get_concept(noun):
+                seed_concepts.append(noun)
+
+        if not seed_concepts:
+            seed_concepts = ["meaning"]
+
+        # Find resonant concepts via impedance matching
+        resonant = matcher.find_resonant_concepts(
+            query_z,
+            seed_concepts,
+            depth=3,
+            threshold=0.4  # Match quality threshold
+        )
+
+        # Build concept list from resonant matches
+        concepts = []
+        match_qualities = []
+        tau_values = []
+
+        for concept, quality, concept_z in resonant[:15]:
+            if concept not in concepts:
+                concepts.append(concept)
+                match_qualities.append(quality)
+                tau_values.append(concept_z.tau)
+
+        # If not enough resonant concepts, add seeds
+        for seed in seed_concepts:
+            if seed not in concepts:
+                concepts.append(seed)
+                concept_z = matcher.compute_concept_impedance(seed, query_z.intent_direction)
+                match_qualities.append(impedance_match_quality(concept_z.Z, query_z.Z))
+                tau_values.append(concept_z.tau)
+
+        # Compute quality metrics
+        avg_match = np.mean(match_qualities) if match_qualities else 0.0
+        avg_tau = np.mean(tau_values) if tau_values else query_z.target_tau
+
+        # Resonance = average impedance match quality
+        resonance = avg_match
+
+        # Coherence: how aligned are the resonant concepts?
+        coherence = self._compute_synthesis_coherence(concepts[:8])
+
+        # Stability: consistency of match qualities
+        if len(match_qualities) > 1:
+            stability = 1.0 - np.std(match_qualities) / (np.mean(match_qualities) + 0.01)
+            stability = max(0.0, min(1.0, stability))
+        else:
+            stability = 0.5
+
+        # Power: strength of query impedance
+        power = min(1.0, query_z.magnitude / 3.0)
+
+        quality = NavigationQuality(
+            resonance=resonance,
+            coherence=abs(coherence),
+            stability=stability,
+            power=power,
+            tau_mean=avg_tau
+        )
+
+        return NavigationResult(
+            concepts=concepts[:10],
+            quality=quality,
+            query=query,
+            goal=goal,
+            strategy=f"resonant_Z={query_z.R:.2f}+j{query_z.X:.2f}",
+            nouns=nouns,
+            verbs=verbs,
+        )
+
+    def _navigate_with_filter(self, query: str, nouns: List[str],
+                               verbs: List[str],
+                               goal: NavigationGoal) -> NavigationResult:
+        """
+        Navigate using τ-level filters.
+
+        Applies goal-specific frequency filters to concepts:
+            - GROUNDED: Low-pass (τ < 1.74)
+            - DEEP: High-pass (τ > 2.1)
+            - WISDOM: Band-pass (1.3 < τ < 1.6)
+
+        Strategy:
+            1. Get broad concept set via orbital navigation
+            2. Apply goal-appropriate filter
+            3. Return only concepts that pass the filter
+
+        Use for: Strict τ-level control, realm-specific navigation
+        """
+        from experiments.semantic_connections.filters import GoalFilter
+
+        # First, get concepts via orbital (broad search)
+        orbital_result, orbital_quality = self._navigate_orbital(nouns, verbs, "auto")
+
+        # Get concept τ values
+        graph = self._init_graph()
+        concept_taus = []
+
+        for concept in orbital_result.concepts[:20]:
+            props = graph.get_concept(concept)
+            if props:
+                tau = props.get('tau', 1.5)
+                concept_taus.append((concept, tau))
+
+        # Determine filter type from verbs
+        filter_goal = self._infer_filter_goal_from_verbs(verbs)
+
+        # Apply filter
+        filter_response = GoalFilter.filter_for_goal(filter_goal, concept_taus)
+
+        # Build filtered concept list
+        filtered_concepts = filter_response.passed
+        filtered_taus = [c.tau for c in filter_response.output_concepts if c.passed]
+
+        # If not enough passed, relax threshold
+        if len(filtered_concepts) < 3:
+            # Use all concepts, sorted by filter gain
+            sorted_by_gain = sorted(
+                filter_response.output_concepts,
+                key=lambda c: c.gain,
+                reverse=True
+            )
+            filtered_concepts = [c.concept for c in sorted_by_gain[:10]]
+            filtered_taus = [c.tau for c in sorted_by_gain[:10]]
+
+        # Compute quality metrics
+        avg_tau = np.mean(filtered_taus) if filtered_taus else 1.5
+        pass_rate = filter_response.pass_rate
+
+        quality = NavigationQuality(
+            resonance=orbital_quality.resonance * pass_rate,
+            coherence=orbital_quality.coherence,
+            stability=pass_rate,  # Stability = how well we match the filter
+            power=filter_response.avg_gain,
+            tau_mean=avg_tau
+        )
+
+        return NavigationResult(
+            concepts=filtered_concepts[:10],
+            quality=quality,
+            query=query,
+            goal=goal,
+            strategy=f"filtered_{filter_response.filter_type}",
+            nouns=nouns,
+            verbs=verbs,
+        )
+
+    def _infer_filter_goal_from_verbs(self, verbs: List[str]) -> str:
+        """
+        Infer appropriate filter goal from query verbs.
+
+        Grounding verbs → low-pass (grounded)
+        Ascending verbs → high-pass (deep)
+        Medium verbs → band-pass (balanced)
+        """
+        grounding_verbs = {"find", "get", "use", "make", "do", "have", "see", "take"}
+        ascending_verbs = {"understand", "contemplate", "transcend", "realize", "enlighten"}
+        wisdom_verbs = {"know", "feel", "believe", "learn", "think"}
+
+        verb_set = set(v.lower() for v in verbs)
+
+        if verb_set & ascending_verbs:
+            return "deep"
+        elif verb_set & grounding_verbs:
+            return "grounded"
+        elif verb_set & wisdom_verbs:
+            return "wisdom"
+        else:
+            return "balanced"
 
     def _navigate_balanced(self, query: str, nouns: List[str],
                            verbs: List[str],

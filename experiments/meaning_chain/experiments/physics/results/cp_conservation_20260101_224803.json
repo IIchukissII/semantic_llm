@@ -1,0 +1,204 @@
+{
+  "timestamp": "20260101_224803",
+  "title": "Coherence \u00d7 Power Conservation Test",
+  "hypothesis": "C \u00d7 P \u2248 constant (semantic uncertainty principle)",
+  "method": "Compare raw vs phase-shifted (centered) j-vector metrics",
+  "global_mean": [
+    0.0027981726370086978,
+    -0.007928741292250673,
+    0.00697480604318985,
+    0.052046156717400774,
+    -0.0020624246266902745
+  ],
+  "n_measurements": 15,
+  "raw": {
+    "c_mean": -0.19390701514755487,
+    "c_std": 0.07394440660459145,
+    "p_mean": 10.204296126645257,
+    "p_std": 0.9771109690327756,
+    "cp_mean": -1.9909811499047756,
+    "cp_std": 0.7564706861939415,
+    "cp_cv": Infinity,
+    "correlation_cp": -0.17018995863573314
+  },
+  "shifted": {
+    "c_mean": -0.1915369178206438,
+    "c_std": 0.07436317219625943,
+    "p_mean": 10.229933356105489,
+    "p_std": 0.9747633539637007,
+    "cp_mean": -1.9718343336193338,
+    "cp_std": 0.7608382268264943,
+    "cp_cv": Infinity,
+    "correlation_cp": -0.17140336356525657
+  },
+  "raw_conservation_score": 0.0,
+  "shifted_conservation_score": 0.0,
+  "phase_shift_improves": false,
+  "measurements": [
+    {
+      "question": "What is love?",
+      "thesis": "she",
+      "antithesis": "part",
+      "coherence_raw": -0.19262036287423165,
+      "power_raw": 9.418576503095094,
+      "cp_raw": -1.8142096237848888,
+      "coherence_shifted": -0.19193885611672534,
+      "power_shifted": 9.424665733868077,
+      "cp_shifted": -1.8089595602411364
+    },
+    {
+      "question": "What is the meaning of life?",
+      "thesis": "she",
+      "antithesis": "order",
+      "coherence_raw": -0.18590386088479324,
+      "power_raw": 9.93594415840227,
+      "cp_raw": -1.8471303805826897,
+      "coherence_shifted": -0.18040993783224088,
+      "power_shifted": 9.986483236151,
+      "cp_shifted": -1.8016608197967177
+    },
+    {
+      "question": "What is consciousness?",
+      "thesis": "she",
+      "antithesis": "feather",
+      "coherence_raw": -0.19345406848522567,
+      "power_raw": 8.617699709035394,
+      "cp_raw": -1.6671290696968424,
+      "coherence_shifted": -0.1922211649813037,
+      "power_shifted": 8.64442304582785,
+      "cp_shifted": -1.661641068460259
+    },
+    {
+      "question": "What is truth?",
+      "thesis": "she",
+      "antithesis": "essence",
+      "coherence_raw": -0.20907708416976659,
+      "power_raw": 10.652627742133795,
+      "cp_raw": -2.227220347071298,
+      "coherence_shifted": -0.20407170355578647,
+      "power_shifted": 10.720237631508532,
+      "cp_shifted": -2.1876971559847953
+    },
+    {
+      "question": "What is freedom?",
+      "thesis": "she",
+      "antithesis": "part",
+      "coherence_raw": -0.1892657191919082,
+      "power_raw": 11.386503763898073,
+      "cp_raw": -2.1550748239555384,
+      "coherence_shifted": -0.19204674650452616,
+      "power_shifted": 11.39386528494035,
+      "cp_shifted": -2.1881547580836602
+    },
+    {
+      "question": "What is death?",
+      "thesis": "she",
+      "antithesis": "part",
+      "coherence_raw": -0.32457415629178216,
+      "power_raw": 10.580793927417755,
+      "cp_raw": -3.43425226188883,
+      "coherence_shifted": -0.3221807024455061,
+      "power_shifted": 10.58763454669438,
+      "cp_shifted": -3.411131535490303
+    },
+    {
+      "question": "What is beauty?",
+      "thesis": "she",
+      "antithesis": "part",
+      "coherence_raw": -0.0333919684016971,
+      "power_raw": 8.31210670030645,
+      "cp_raw": -0.2775576042881677,
+      "coherence_shifted": -0.03172565000381126,
+      "power_shifted": 8.317480584129678,
+      "cp_shifted": -0.2638774779255938
+    },
+    {
+      "question": "What is wisdom?",
+      "thesis": "order",
+      "antithesis": "she",
+      "coherence_raw": -0.18863551396323963,
+      "power_raw": 9.426064273438804,
+      "cp_raw": -1.7780904788706597,
+      "coherence_shifted": -0.18375262605386108,
+      "power_shifted": 9.4740098523979,
+      "cp_shifted": -1.7408741896382671
+    },
+    {
+      "question": "What is time?",
+      "thesis": "she",
+      "antithesis": "idea",
+      "coherence_raw": -0.20087692094008824,
+      "power_raw": 11.01098403304089,
+      "cp_raw": -2.211852569077729,
+      "coherence_shifted": -0.2003621700677231,
+      "power_shifted": 11.07636693733838,
+      "cp_shifted": -2.219284916031498
+    },
+    {
+      "question": "What is the nature of reality?",
+      "thesis": "she",
+      "antithesis": "part",
+      "coherence_raw": -0.06819333884719517,
+      "power_raw": 10.550519776877508,
+      "cp_raw": -0.7194751701586418,
+      "coherence_shifted": -0.065910728342674,
+      "power_shifted": 10.557340823526673,
+      "cp_shifted": -0.6958420230404887
+    },
+    {
+      "question": "What is happiness?",
+      "thesis": "she",
+      "antithesis": "example",
+      "coherence_raw": -0.2164205303050221,
+      "power_raw": 11.264010803104368,
+      "cp_raw": -2.437763191369345,
+      "coherence_shifted": -0.21086876973253227,
+      "power_shifted": 11.278200188726558,
+      "cp_shifted": -2.3782201985939824
+    },
+    {
+      "question": "What is suffering?",
+      "thesis": "she",
+      "antithesis": "part",
+      "coherence_raw": -0.19262036287423165,
+      "power_raw": 10.117174089217059,
+      "cp_raw": -1.9487737443267639,
+      "coherence_shifted": -0.19193885611672534,
+      "power_shifted": 10.123714972309049,
+      "cp_shifted": -1.9431342714367645
+    },
+    {
+      "question": "What is knowledge?",
+      "thesis": "she",
+      "antithesis": "part",
+      "coherence_raw": -0.17723661650548622,
+      "power_raw": 11.25464567612025,
+      "cp_raw": -1.9947353196036535,
+      "coherence_shifted": -0.1693206400683284,
+      "power_shifted": 11.261921949213908,
+      "cp_shifted": -1.9068758328404556
+    },
+    {
+      "question": "What is faith?",
+      "thesis": "she",
+      "antithesis": "essence",
+      "coherence_raw": -0.3428806549934296,
+      "power_raw": 9.225446241746733,
+      "cp_raw": -3.1632270499767934,
+      "coherence_shifted": -0.34408405050660934,
+      "power_shifted": 9.28399812349231,
+      "cp_shifted": -3.1944756792269944
+    },
+    {
+      "question": "What is power?",
+      "thesis": "she",
+      "antithesis": "part",
+      "coherence_raw": -0.19345406848522567,
+      "power_raw": 11.31134450184443,
+      "cp_raw": -2.188225613919793,
+      "coherence_shifted": -0.1922211649813037,
+      "power_shifted": 11.318657431457712,
+      "cp_shifted": -2.175685517499092
+    }
+  ]
+}

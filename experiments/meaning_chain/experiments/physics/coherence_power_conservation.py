@@ -254,7 +254,7 @@ class CPConservationTester:
             paradox = landscape.strongest
 
             # Get all concepts from attractors
-            concepts = [word for word, _ in landscape.paradoxes[0].synthesis_concepts[:10]] if landscape.paradoxes else []
+            concepts = list(landscape.paradoxes[0].synthesis_concepts[:10]) if landscape.paradoxes else []
             concepts.extend([paradox.thesis, paradox.antithesis])
 
             # Get concepts from MC core attractors

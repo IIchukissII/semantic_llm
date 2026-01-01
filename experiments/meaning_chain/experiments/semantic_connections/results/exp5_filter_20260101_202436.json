@@ -1,0 +1,142 @@
+{
+  "exp5_1_filter_routing": [
+    {
+      "verbs": [
+        "find",
+        "get"
+      ],
+      "inferred": "grounded",
+      "expected": "grounded",
+      "match": true
+    },
+    {
+      "verbs": [
+        "understand",
+        "contemplate"
+      ],
+      "inferred": "deep",
+      "expected": "deep",
+      "match": true
+    },
+    {
+      "verbs": [
+        "know",
+        "feel"
+      ],
+      "inferred": "wisdom",
+      "expected": "wisdom",
+      "match": true
+    },
+    {
+      "verbs": [
+        "explore"
+      ],
+      "inferred": "balanced",
+      "expected": "balanced",
+      "match": true
+    }
+  ],
+  "exp5_2_filtered_navigation": [
+    {
+      "query": "Find me a practical solution",
+      "expected_filter": "grounded",
+      "strategy": "filtered_low-pass(\u03c4_c=1.74)",
+      "tau_mean": 1.3209758388620985,
+      "filter_match": false,
+      "tau_match": "True"
+    },
+    {
+      "query": "Help me understand the nature of consciousness",
+      "expected_filter": "deep",
+      "strategy": "filtered_high-pass(\u03c4_c=2.10)",
+      "tau_mean": 1.604517259707891,
+      "filter_match": false,
+      "tau_match": "False"
+    },
+    {
+      "query": "I want to know about wisdom",
+      "expected_filter": "wisdom",
+      "strategy": "filtered_band-pass(1.30<\u03c4<1.60)",
+      "tau_mean": 1.436255226455956,
+      "filter_match": false,
+      "tau_match": "True"
+    }
+  ],
+  "exp5_3_filtered_comparison": [
+    {
+      "goal": "filtered",
+      "strategy": "filtered_band-pass(1.34<\u03c4<2.14)",
+      "concepts": [
+        "name",
+        "knowledge",
+        "head",
+        "face",
+        "light"
+      ],
+      "tau_mean": 1.5769740882545913,
+      "resonance": 0.51306200070971,
+      "coherence": 0.7173453547282602,
+      "stability": 0.65
+    },
+    {
+      "goal": "grounded",
+      "strategy": "orbital_ground",
+      "concepts": [
+        "deal",
+        "window",
+        "lip",
+        "rest",
+        "wisdom"
+      ],
+      "tau_mean": 1.585764295736282,
+      "resonance": 0.6656120496447038,
+      "coherence": 0.7472314292481655,
+      "stability": 0.5
+    },
+    {
+      "goal": "deep",
+      "strategy": "orbital_transcend",
+      "concepts": [
+        "heart",
+        "chile",
+        "air",
+        "body",
+        "water"
+      ],
+      "tau_mean": 1.7417309925603774,
+      "resonance": 0.21303077951164304,
+      "coherence": 0.7572401157645019,
+      "stability": 0.5
+    },
+    {
+      "goal": "wisdom",
+      "strategy": "wisdom_C=0.076_P=8.28_\u03a3=0.90_eff=16.7%",
+      "concepts": [
+        "wisdom",
+        "view",
+        "all",
+        "thee",
+        "way"
+      ],
+      "tau_mean": 1.489284899623996,
+      "resonance": 1.0,
+      "coherence": 0.07641950288361375,
+      "stability": 0.1692420897718911
+    },
+    {
+      "goal": "resonant",
+      "strategy": "resonant_Z=1.80+j0.30",
+      "concepts": [
+        "pity",
+        "image",
+        "case",
+        "guard",
+        "heart"
+      ],
+      "tau_mean": 1.6934771460263,
+      "resonance": 0.9053254415068333,
+      "coherence": 0.3103607862572807,
+      "stability": 0.9287792977530541
+    }
+  ]
+}

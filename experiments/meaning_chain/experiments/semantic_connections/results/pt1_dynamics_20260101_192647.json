@@ -1,0 +1,183 @@
+{
+  "timestamp": "2026-01-01T19:26:47.071297",
+  "experiment": "PT1 Dynamics Validation",
+  "results": {
+    "pt1_saturation": [
+      {
+        "test_name": "Saturation at t=1\u03c4",
+        "expected": 0.6321205588285577,
+        "measured": 0.6321205588285577,
+        "error_percent": 0.0,
+        "passed": "True"
+      },
+      {
+        "test_name": "Saturation at t=2\u03c4",
+        "expected": 0.8646647167633873,
+        "measured": 0.8646647167633873,
+        "error_percent": 0.0,
+        "passed": "True"
+      },
+      {
+        "test_name": "Saturation at t=3\u03c4",
+        "expected": 0.950212931632136,
+        "measured": 0.950212931632136,
+        "error_percent": 0.0,
+        "passed": "True"
+      },
+      {
+        "test_name": "Saturation at t=4\u03c4",
+        "expected": 0.9816843611112658,
+        "measured": 0.9816843611112658,
+        "error_percent": 0.0,
+        "passed": "True"
+      },
+      {
+        "test_name": "Saturation at t=5\u03c4",
+        "expected": 0.9932620530009145,
+        "measured": 0.9932620530009145,
+        "error_percent": 0.0,
+        "passed": "True"
+      }
+    ],
+    "cascade_fractions": [
+      {
+        "test_name": "Cascade step 1",
+        "expected": 0.6321205588285577,
+        "measured": 0.6321205588285577,
+        "error_percent": 0.0,
+        "passed": "True"
+      },
+      {
+        "test_name": "Cascade step 2",
+        "expected": 0.8646647167633873,
+        "measured": 0.8646647167633873,
+        "error_percent": 0.0,
+        "passed": "True"
+      },
+      {
+        "test_name": "Cascade step 3",
+        "expected": 0.950212931632136,
+        "measured": 0.950212931632136,
+        "error_percent": 0.0,
+        "passed": "True"
+      },
+      {
+        "test_name": "Cascade step 4",
+        "expected": 0.9816843611112658,
+        "measured": 0.9816843611112658,
+        "error_percent": 0.0,
+        "passed": "True"
+      },
+      {
+        "test_name": "Cascade step 5",
+        "expected": 0.9932620530009145,
+        "measured": 0.9932620530009145,
+        "error_percent": 0.0,
+        "passed": "True"
+      }
+    ],
+    "rc_circuit": [
+      {
+        "test_name": "RC time constant",
+        "expected": 1.0,
+        "measured": 1.0,
+        "error_percent": 0.0,
+        "passed": true
+      },
+      {
+        "test_name": "Cutoff frequency",
+        "expected": 1.0,
+        "measured": 1.0,
+        "error_percent": 0.0,
+        "passed": true
+      },
+      {
+        "test_name": "Gain at cutoff",
+        "expected": 0.7071067811865475,
+        "measured": 0.7071067811865476,
+        "error_percent": 1.570092458683775e-14,
+        "passed": "True"
+      }
+    ],
+    "rlc_resonance": [
+      {
+        "test_name": "Resonance frequency",
+        "expected": 2.0,
+        "measured": 2.0,
+        "error_percent": 0.0,
+        "passed": "True"
+      },
+      {
+        "test_name": "Quality factor",
+        "expected": 2.0,
+        "measured": 2.0,
+        "error_percent": 0.0,
+        "passed": "True"
+      },
+      {
+        "test_name": "Damping ratio",
+        "expected": 0.25,
+        "measured": 0.25,
+        "error_percent": 0.0,
+        "passed": "True"
+      }
+    ],
+    "semantic_oscillators": [
+      {
+        "concept": "wisdom",
+        "tau": 2.5,
+        "variety": 80,
+        "degree": 300,
+        "omega_0": 2.8171808490950556,
+        "Q_factor": 0.5916079783099616,
+        "frequency_class": "surface",
+        "damping_state": "overdamped"
+      },
+      {
+        "concept": "love",
+        "tau": 2.6,
+        "variety": 90,
+        "degree": 400,
+        "omega_0": 3.3709993123162105,
+        "Q_factor": 0.3708099243547831,
+        "frequency_class": "surface",
+        "damping_state": "overdamped"
+      },
+      {
+        "concept": "table",
+        "tau": 1.3,
+        "variety": 20,
+        "degree": 50,
+        "omega_0": 3.5136418446315325,
+        "Q_factor": 2.8460498941515415,
+        "frequency_class": "surface",
+        "damping_state": "underdamped"
+      },
+      {
+        "concept": "god",
+        "tau": 3.0,
+        "variety": 95,
+        "degree": 350,
+        "omega_0": 4.879500364742665,
+        "Q_factor": 0.2927700218845601,
+        "frequency_class": "surface",
+        "damping_state": "overdamped"
+      }
+    ],
+    "euler_temperature": [
+      {
+        "test_name": "kT = e^(-1/5)",
+        "expected": 0.8187307530779818,
+        "measured": 0.8187307530779818,
+        "error_percent": 0.0,
+        "passed": "True"
+      }
+    ]
+  },
+  "summary": {
+    "total_tests": 17,
+    "passed_tests": 17,
+    "pass_rate": 1.0,
+    "status": "VALIDATED"
+  }
+}

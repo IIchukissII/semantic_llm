@@ -52,7 +52,7 @@ class CollapseState:
     """Track how intent collapsed navigation choices."""
     word: str
     tau: float
-    g: float
+    affirmation: float  # A: Affirmation score (formerly g)
     j: np.ndarray
 
     # Collapse tracking
@@ -60,6 +60,16 @@ class CollapseState:
     collapsed_by_target: bool = False  # True if target in intent space
     collapse_verb: Optional[str] = None  # Which verb caused collapse
     intent_score: float = 0.0          # How aligned with intent [0, 1]
+
+    @property
+    def A(self) -> float:
+        """Alias for affirmation."""
+        return self.affirmation
+
+    @property
+    def g(self) -> float:
+        """Legacy alias (g ≈ A)."""
+        return self.affirmation
 
 
 @dataclass
@@ -332,7 +342,7 @@ class IntentCollapse:
                     state = CollapseState(
                         word=transition['word'],
                         tau=transition['tau'],
-                        g=transition['g'],
+                        affirmation=transition.get('g', 0.0),  # g ≈ A
                         j=np.array(transition['j']) if transition['j'] else np.zeros(5),
                         collapsed_by_verb=transition.get('collapsed_by_verb', False),
                         collapsed_by_target=transition.get('collapsed_by_target', False),

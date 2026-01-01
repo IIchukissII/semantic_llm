@@ -182,8 +182,17 @@ class DataLoader:
             reader = csv.DictReader(f)
             for row in reader:
                 word = row['word']
+                # Handle string word_type (noun, verb, etc.) or int
+                wtype = row['word_type']
+                if wtype in ('noun', 'verb', 'adjective', 'adverb'):
+                    pass  # Keep as string
+                else:
+                    try:
+                        wtype = int(wtype) if wtype else 0
+                    except ValueError:
+                        wtype = 0
                 vectors[word] = {
-                    'word_type': int(row['word_type']),
+                    'word_type': wtype,
                     'tau': float(row['tau']) if row['tau'] else None,
                     'variety': float(row['variety']) if row['variety'] else None,
                     'count': int(row['count']) if row['count'] else 0,

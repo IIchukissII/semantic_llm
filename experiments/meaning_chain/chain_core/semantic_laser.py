@@ -51,14 +51,25 @@ class ExcitedState:
     """A concept in excited state after pumping."""
     word: str
     tau: float
-    g: float
+    affirmation: float               # A: Affirmation score (formerly g)
     j: np.ndarray  # 5D j-vector
+    sacred: float = 0.0              # S: Sacred score
     visits: int = 1
     sources: Set[str] = field(default_factory=set)  # Which seeds reached this
 
     # Intent collapse tracking (NEW)
     collapsed_by_intent: bool = False  # True if reached via intent-driven path
     intent_score: float = 0.0          # How aligned with intent [0, 1]
+
+    @property
+    def A(self) -> float:
+        """Alias for affirmation."""
+        return self.affirmation
+
+    @property
+    def g(self) -> float:
+        """Legacy alias (g ≈ A)."""
+        return self.affirmation
 
     @property
     def energy(self) -> float:
@@ -77,9 +88,19 @@ class CoherentBeam:
     concepts: List[str]
     j_centroid: np.ndarray  # Average j-vector (beam direction)
     coherence: float  # How aligned (0-1)
-    g_polarity: float  # Average g (good/evil)
+    affirmation: float  # Average A (Affirmation)
     tau_mean: float  # Average abstraction
     tau_spread: float  # Spread in abstraction
+
+    @property
+    def A(self) -> float:
+        """Alias for affirmation."""
+        return self.affirmation
+
+    @property
+    def g_polarity(self) -> float:
+        """Legacy alias (g ≈ A)."""
+        return self.affirmation
 
     @property
     def intensity(self) -> float:
@@ -223,7 +244,7 @@ class SemanticLaser:
             seed_state = ExcitedState(
                 word=seed,
                 tau=seed_tau,
-                g=concept.get('g', 0.0),
+                affirmation=concept.get('g', 0.0),  # g ≈ A
                 j=self._get_j_vector(concept.get('j')),
                 visits=1,
                 sources={seed}
@@ -302,7 +323,7 @@ class SemanticLaser:
                         excited[next_word] = ExcitedState(
                             word=next_word,
                             tau=next_concept.get('tau', 2.0),
-                            g=next_concept.get('g', 0.0),
+                            affirmation=next_concept.get('g', 0.0),  # g ≈ A
                             j=self._get_j_vector(next_concept.get('j')),
                             visits=1,
                             sources={seed},
@@ -411,8 +432,8 @@ class SemanticLaser:
         # Tau distribution (energy levels)
         taus = [s.tau for s in states]
 
-        # G distribution (polarity)
-        gs = [s.g for s in states]
+        # A distribution (Affirmation)
+        affirmations = [s.affirmation for s in states]
 
         # J-vectors
         js = np.array([s.j for s in states])
@@ -446,8 +467,10 @@ class SemanticLaser:
             'tau_std': np.std(taus),
             'tau_min': np.min(taus),
             'tau_max': np.max(taus),
-            'g_mean': np.mean(gs),
-            'g_std': np.std(gs),
+            'affirmation_mean': np.mean(affirmations),
+            'affirmation_std': np.std(affirmations),
+            'g_mean': np.mean(affirmations),  # Legacy alias
+            'g_std': np.std(affirmations),    # Legacy alias
             'j_centroid': j_mean,
             'j_magnitude': np.linalg.norm(j_mean),
             'total_visits': sum(visits),
@@ -575,7 +598,7 @@ class SemanticLaser:
                 # Compute beam properties
                 cluster_js = np.array([s.j for s in cluster_states])
                 cluster_taus = [s.tau for s in cluster_states]
-                cluster_gs = [s.g for s in cluster_states]
+                cluster_affirmations = [s.affirmation for s in cluster_states]
                 cluster_orbitals = [s.orbital for s in cluster_states]
 
                 j_centroid = cluster_js.mean(axis=0)
@@ -595,7 +618,7 @@ class SemanticLaser:
                     concepts=cluster_words,
                     j_centroid=j_centroid,
                     coherence=coherence,
-                    g_polarity=np.mean(cluster_gs),
+                    affirmation=np.mean(cluster_affirmations),
                     tau_mean=np.mean(cluster_taus),
                     tau_spread=np.std(cluster_taus)
                 )
@@ -802,7 +825,7 @@ def demo():
     print(f"  Mean orbital: n = {pop['mean_orbital']:.1f}")
     print(f"  Dominant orbital: n = {pop['dominant_orbital']}")
     print(f"  Human realm: {pop['human_fraction']:.1%} (below Veil)")
-    print(f"  g mean: {pop['g_mean']:.2f}")
+    print(f"  A mean: {pop['affirmation_mean']:.2f}")
     print(f"  Multi-source concepts: {pop['multi_source']}")
 
     # Show orbital distribution
@@ -823,7 +846,7 @@ def demo():
         print(f"    Concepts: {beam.concepts[:8]}")
         print(f"    Coherence: {beam.coherence:.2f}")
         print(f"    Intensity: {beam.intensity:.1f}")
-        print(f"    g-polarity: {beam.g_polarity:+.2f}")
+        print(f"    A-polarity: {beam.affirmation:+.2f}")
         print(f"    τ: {beam.tau_mean:.2f} ± {beam.tau_spread:.2f}")
         if hasattr(beam, 'orbital_mean'):
             print(f"    Orbital: n={beam.orbital_mean:.1f} ± {beam.orbital_spread:.1f}")

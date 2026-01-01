@@ -1,0 +1,46 @@
+{
+  "timestamp": "2026-01-01T19:33:34.041820",
+  "hypothesis": "Parallel paths have >1.5x coverage vs series",
+  "seeds": [
+    "wisdom",
+    "love",
+    "knowledge",
+    "feeling",
+    "word",
+    "hand"
+  ],
+  "results": [
+    {
+      "seed": "wisdom",
+      "error": "'MeaningGraph' object has no attribute 'get_neighbors'"
+    },
+    {
+      "seed": "love",
+      "error": "'MeaningGraph' object has no attribute 'get_neighbors'"
+    },
+    {
+      "seed": "knowledge",
+      "error": "'MeaningGraph' object has no attribute 'get_neighbors'"
+    },
+    {
+      "seed": "feeling",
+      "error": "'MeaningGraph' object has no attribute 'get_neighbors'"
+    },
+    {
+      "seed": "word",
+      "error": "'MeaningGraph' object has no attribute 'get_neighbors'"
+    },
+    {
+      "seed": "hand",
+      "error": "'MeaningGraph' object has no attribute 'get_neighbors'"
+    }
+  ],
+  "summary": {
+    "total_seeds": 6,
+    "successful_tests": 0,
+    "avg_coverage_ratio": 0.0,
+    "confirmed_count": 0,
+    "confirmation_rate": 0.0,
+    "hypothesis_status": "NOT CONFIRMED"
+  }
+}

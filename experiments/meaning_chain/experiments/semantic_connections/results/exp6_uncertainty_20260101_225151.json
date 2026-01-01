@@ -1,0 +1,326 @@
+{
+  "exp6_1_neighborhoods": [
+    {
+      "concept": "wisdom",
+      "tau": 1.216039645231239,
+      "n_neighbors": 20,
+      "delta_tau": 0.30709780247705376,
+      "delta_j": 1.2229912534591396,
+      "j_variance": 1.021233692634677,
+      "uncertainty": 0.37557792638595927
+    },
+    {
+      "concept": "love",
+      "tau": 1.412033698585867,
+      "n_neighbors": 20,
+      "delta_tau": 0.995450462953234,
+      "delta_j": 1.090757765483882,
+      "j_variance": 1.051727337772788,
+      "uncertainty": 1.0857953226207655
+    },
+    {
+      "concept": "time",
+      "tau": 2.488917512744099,
+      "n_neighbors": 20,
+      "delta_tau": 0.4088192964372939,
+      "delta_j": 1.6022732075640205,
+      "j_variance": 0.9890953153345664,
+      "uncertainty": 0.6550402054166491
+    },
+    {
+      "concept": "life",
+      "tau": 1.657977551612755,
+      "n_neighbors": 20,
+      "delta_tau": 0.44121212828892986,
+      "delta_j": 1.32926087136073,
+      "j_variance": 0.9789120577425255,
+      "uncertainty": 0.586486018104265
+    },
+    {
+      "concept": "truth",
+      "tau": 1.5208183398904687,
+      "n_neighbors": 20,
+      "delta_tau": 0.9964883723389504,
+      "delta_j": 1.308673836753631,
+      "j_variance": 1.0059481712176839,
+      "uncertainty": 1.304078261509195
+    },
+    {
+      "concept": "knowledge",
+      "tau": 1.4366711814229396,
+      "n_neighbors": 20,
+      "delta_tau": 0.3819550838001124,
+      "delta_j": 1.1427229344635847,
+      "j_variance": 0.8808284762701559,
+      "uncertainty": 0.43646883419334886
+    },
+    {
+      "concept": "beauty",
+      "tau": 1.3335425469335573,
+      "n_neighbors": 20,
+      "delta_tau": 0.20199061352507972,
+      "delta_j": 1.2532488267966233,
+      "j_variance": 0.951450873300446,
+      "uncertainty": 0.2531444994242363
+    },
+    {
+      "concept": "death",
+      "tau": 1.2602461331498018,
+      "n_neighbors": 20,
+      "delta_tau": 0.3009707584782393,
+      "delta_j": 1.5044429206709091,
+      "j_variance": 1.0181631167020422,
+      "uncertainty": 0.4527933269215411
+    },
+    {
+      "concept": "god",
+      "tau": 1.8182678457648163,
+      "n_neighbors": 20,
+      "delta_tau": 0.31852425604129964,
+      "delta_j": 1.3384756607507913,
+      "j_variance": 1.0370354914106277,
+      "uncertainty": 0.42633696407003274
+    },
+    {
+      "concept": "soul",
+      "tau": 1.579430848895639,
+      "n_neighbors": 20,
+      "delta_tau": 0.3206227909366642,
+      "delta_j": 1.2826878379284365,
+      "j_variance": 1.0354364985441722,
+      "uncertainty": 0.4112589544971309
+    },
+    {
+      "concept": "mind",
+      "tau": 1.6357997186649256,
+      "n_neighbors": 20,
+      "delta_tau": 1.0068168690300656,
+      "delta_j": 1.1326064534416558,
+      "j_variance": 0.935502891938377,
+      "uncertainty": 1.1403272832973748
+    },
+    {
+      "concept": "heart",
+      "tau": 1.6896033734668383,
+      "n_neighbors": 20,
+      "delta_tau": 1.353383090660073,
+      "delta_j": 1.1641586218017026,
+      "j_variance": 0.9950619126676035,
+      "uncertainty": 1.5755525935925594
+    },
+    {
+      "concept": "world",
+      "tau": 1.836708161502158,
+      "n_neighbors": 20,
+      "delta_tau": 0.39489731550314344,
+      "delta_j": 1.6369370611599083,
+      "j_variance": 1.0641186383433554,
+      "uncertainty": 0.6464220510996528
+    },
+    {
+      "concept": "nature",
+      "tau": 1.755320041224552,
+      "n_neighbors": 20,
+      "delta_tau": 1.3430345301790518,
+      "delta_j": 1.1811020356447912,
+      "j_variance": 1.0348368630837772,
+      "uncertainty": 1.586260817535724
+    },
+    {
+      "concept": "spirit",
+      "tau": 1.4816478938793212,
+      "n_neighbors": 20,
+      "delta_tau": 1.3506440826838446,
+      "delta_j": 1.2689273106826682,
+      "j_variance": 1.0388326899440499,
+      "uncertainty": 1.7138691635294703
+    },
+    {
+      "concept": "man",
+      "tau": 2.3242068161164817,
+      "n_neighbors": 20,
+      "delta_tau": 0.49054121888077384,
+      "delta_j": 1.2646688038737859,
+      "j_variance": 0.808287527347786,
+      "uncertainty": 0.6203721765327372
+    },
+    {
+      "concept": "woman",
+      "tau": 2.221431972223987,
+      "n_neighbors": 20,
+      "delta_tau": 0.4075774397977943,
+      "delta_j": 1.2584343051031173,
+      "j_variance": 0.9711062441563136,
+      "uncertainty": 0.512909432227645
+    },
+    {
+      "concept": "child",
+      "tau": 1.80091033680808,
+      "n_neighbors": 20,
+      "delta_tau": 0.33846361067989644,
+      "delta_j": 1.2668104369932682,
+      "j_variance": 1.0337561521492795,
+      "uncertainty": 0.428769234551719
+    },
+    {
+      "concept": "father",
+      "tau": 1.6042293218681383,
+      "n_neighbors": 20,
+      "delta_tau": 0.399957405189872,
+      "delta_j": 1.243882514182632,
+      "j_variance": 0.8541043655244254,
+      "uncertainty": 0.4975000227335396
+    },
+    {
+      "concept": "mother",
+      "tau": 1.531951954578631,
+      "n_neighbors": 20,
+      "delta_tau": 0.43587068802610307,
+      "delta_j": 1.2756464442576392,
+      "j_variance": 0.8615898946307974,
+      "uncertainty": 0.5560168933366292
+    }
+  ],
+  "exp6_2_tau_bands": [
+    {
+      "band": "ground",
+      "tau_range": [
+        1.0,
+        1.5
+      ],
+      "n_concepts": 24,
+      "delta_tau": 0.10263898336198467,
+      "delta_j": 1.2561789863393142,
+      "j_variance": 1.0209301851340336,
+      "uncertainty": 0.12893293407855563
+    },
+    {
+      "band": "everyday",
+      "tau_range": [
+        1.5,
+        2.0
+      ],
+      "n_concepts": 13,
+      "delta_tau": 0.11789254126772941,
+      "delta_j": 1.1461920438226803,
+      "j_variance": 1.068099411550209,
+      "uncertainty": 0.13512749282710845
+    },
+    {
+      "band": "meaningful",
+      "tau_range": [
+        2.0,
+        2.5
+      ],
+      "n_concepts": 5,
+      "delta_tau": 0.1368481838929255,
+      "delta_j": 1.4405413122562292,
+      "j_variance": 0.867534174583393,
+      "uncertainty": 0.19713546240499666
+    }
+  ],
+  "exp6_3_navigation": [
+    {
+      "query": "What is wisdom?",
+      "goals": [
+        {
+          "goal": "grounded",
+          "tau_mean": 1.635720288189887,
+          "delta_tau": 0.49175221540018854,
+          "delta_j": 1.0924217377442766,
+          "uncertainty": 0.5372008096870718
+        },
+        {
+          "goal": "deep",
+          "tau_mean": 1.7695786248815866,
+          "delta_tau": 0.572952888100042,
+          "delta_j": 1.1232286453158493,
+          "uncertainty": 0.6435570963304136
+        },
+        {
+          "goal": "resonant",
+          "tau_mean": 1.6973462674725963,
+          "delta_tau": 0.06408738706544782,
+          "delta_j": 0.7241863261045628,
+          "uncertainty": 0.046411209388567735
+        },
+        {
+          "goal": "filtered",
+          "tau_mean": 1.646071136057151,
+          "delta_tau": 0.16289034144174347,
+          "delta_j": 0.9962375586088675,
+          "uncertainty": 0.16227747607888734
+        }
+      ]
+    },
+    {
+      "query": "What is love?",
+      "goals": [
+        {
+          "goal": "grounded",
+          "tau_mean": 1.562935315581139,
+          "delta_tau": 1.0282739255426403,
+          "delta_j": 0.8478149487286846,
+          "uncertainty": 0.8717860054629768
+        },
+        {
+          "goal": "deep",
+          "tau_mean": 1.6328947970064203,
+          "delta_tau": 0.8277800036918728,
+          "delta_j": 0.5254857598920458,
+          "uncertainty": 0.43498660426346425
+        },
+        {
+          "goal": "resonant",
+          "tau_mean": 1.6973462674725963,
+          "delta_tau": 0.06408738706544782,
+          "delta_j": 0.7241863261045628,
+          "uncertainty": 0.046411209388567735
+        },
+        {
+          "goal": "filtered",
+          "tau_mean": 1.6249070414777078,
+          "delta_tau": 0.1304692420619963,
+          "delta_j": 1.0268067176573377,
+          "uncertainty": 0.1339666941969191
+        }
+      ]
+    },
+    {
+      "query": "What is truth?",
+      "goals": [
+        {
+          "goal": "grounded",
+          "tau_mean": 1.5771735196130765,
+          "delta_tau": 0.46873739804200343,
+          "delta_j": 1.0145966777565671,
+          "uncertainty": 0.4755794067936743
+        },
+        {
+          "goal": "deep",
+          "tau_mean": 1.6206807331043054,
+          "delta_tau": 0.7349763190516109,
+          "delta_j": 0.6573848636839756,
+          "uncertainty": 0.4831623073106934
+        },
+        {
+          "goal": "resonant",
+          "tau_mean": 1.6973462674725963,
+          "delta_tau": 0.06408738706544782,
+          "delta_j": 0.7241863261045628,
+          "uncertainty": 0.046411209388567735
+        },
+        {
+          "goal": "filtered",
+          "tau_mean": 1.5571851787954145,
+          "delta_tau": 0.15187588766275903,
+          "delta_j": 0.9670454336985206,
+          "uncertainty": 0.1468708836531806
+        }
+      ]
+    }
+  ],
+  "exp6_4_semantic_constant": {
+    "kappa": 0.007363193655505967
+  }
+}

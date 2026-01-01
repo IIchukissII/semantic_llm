@@ -1,0 +1,297 @@
+{
+  "exp4_1_concept_oscillators": [
+    {
+      "concept": "wisdom",
+      "tau": 1.216039645231239,
+      "variety": 10,
+      "degree": 50,
+      "L": 0.91,
+      "C": 0.1,
+      "omega_0": 3.3149677206589794,
+      "Q_factor": 3.0166206257996713,
+      "frequency_class": "surface"
+    },
+    {
+      "concept": "love",
+      "tau": 1.412033698585867,
+      "variety": 10,
+      "degree": 50,
+      "L": 0.91,
+      "C": 0.1,
+      "omega_0": 3.3149677206589794,
+      "Q_factor": 3.0166206257996713,
+      "frequency_class": "surface"
+    },
+    {
+      "concept": "time",
+      "tau": 2.488917512744099,
+      "variety": 10,
+      "degree": 50,
+      "L": 0.91,
+      "C": 0.1,
+      "omega_0": 3.3149677206589794,
+      "Q_factor": 3.0166206257996713,
+      "frequency_class": "surface"
+    },
+    {
+      "concept": "life",
+      "tau": 1.657977551612755,
+      "variety": 10,
+      "degree": 50,
+      "L": 0.91,
+      "C": 0.1,
+      "omega_0": 3.3149677206589794,
+      "Q_factor": 3.0166206257996713,
+      "frequency_class": "surface"
+    },
+    {
+      "concept": "truth",
+      "tau": 1.5208183398904687,
+      "variety": 10,
+      "degree": 50,
+      "L": 0.91,
+      "C": 0.1,
+      "omega_0": 3.3149677206589794,
+      "Q_factor": 3.0166206257996713,
+      "frequency_class": "surface"
+    },
+    {
+      "concept": "table",
+      "tau": 1.4001953628892614,
+      "variety": 10,
+      "degree": 50,
+      "L": 0.91,
+      "C": 0.1,
+      "omega_0": 3.3149677206589794,
+      "Q_factor": 3.0166206257996713,
+      "frequency_class": "surface"
+    },
+    {
+      "concept": "car",
+      "tau": 1.3340608551634583,
+      "variety": 10,
+      "degree": 50,
+      "L": 0.91,
+      "C": 0.1,
+      "omega_0": 3.3149677206589794,
+      "Q_factor": 3.0166206257996713,
+      "frequency_class": "surface"
+    },
+    {
+      "concept": "house",
+      "tau": 2.036220185034461,
+      "variety": 10,
+      "degree": 50,
+      "L": 0.91,
+      "C": 0.1,
+      "omega_0": 3.3149677206589794,
+      "Q_factor": 3.0166206257996713,
+      "frequency_class": "surface"
+    },
+    {
+      "concept": "book",
+      "tau": 1.523193880150864,
+      "variety": 10,
+      "degree": 50,
+      "L": 0.91,
+      "C": 0.1,
+      "omega_0": 3.3149677206589794,
+      "Q_factor": 3.0166206257996713,
+      "frequency_class": "surface"
+    },
+    {
+      "concept": "hand",
+      "tau": 2.4948834671266447,
+      "variety": 10,
+      "degree": 50,
+      "L": 0.91,
+      "C": 0.1,
+      "omega_0": 3.3149677206589794,
+      "Q_factor": 3.0166206257996713,
+      "frequency_class": "surface"
+    },
+    {
+      "concept": "consciousness",
+      "tau": 1.3404964634640733,
+      "variety": 10,
+      "degree": 50,
+      "L": 0.91,
+      "C": 0.1,
+      "omega_0": 3.3149677206589794,
+      "Q_factor": 3.0166206257996713,
+      "frequency_class": "surface"
+    },
+    {
+      "concept": "eternity",
+      "tau": 1.3233298663758482,
+      "variety": 10,
+      "degree": 50,
+      "L": 0.91,
+      "C": 0.1,
+      "omega_0": 3.3149677206589794,
+      "Q_factor": 3.0166206257996713,
+      "frequency_class": "surface"
+    },
+    {
+      "concept": "transcendence",
+      "tau": 1.1951797627815943,
+      "variety": 10,
+      "degree": 50,
+      "L": 0.91,
+      "C": 0.1,
+      "omega_0": 3.3149677206589794,
+      "Q_factor": 3.0166206257996713,
+      "frequency_class": "surface"
+    },
+    {
+      "concept": "infinity",
+      "tau": 1.0,
+      "variety": 10,
+      "degree": 50,
+      "L": 0.91,
+      "C": 0.1,
+      "omega_0": 3.3149677206589794,
+      "Q_factor": 3.0166206257996713,
+      "frequency_class": "surface"
+    }
+  ],
+  "exp4_2_frequency_classification": [
+    {
+      "concept": "wisdom",
+      "expected": "deep",
+      "actual": "surface",
+      "omega_0": 3.3149677206589794,
+      "match": false
+    },
+    {
+      "concept": "truth",
+      "expected": "deep",
+      "actual": "surface",
+      "omega_0": 3.3149677206589794,
+      "match": false
+    },
+    {
+      "concept": "consciousness",
+      "expected": "deep",
+      "actual": "surface",
+      "omega_0": 3.3149677206589794,
+      "match": false
+    },
+    {
+      "concept": "eternity",
+      "expected": "deep",
+      "actual": "surface",
+      "omega_0": 3.3149677206589794,
+      "match": false
+    },
+    {
+      "concept": "love",
+      "expected": "medium",
+      "actual": "surface",
+      "omega_0": 3.3149677206589794,
+      "match": true
+    },
+    {
+      "concept": "meaning",
+      "expected": "deep",
+      "actual": "surface",
+      "omega_0": 3.3149677206589794,
+      "match": false
+    },
+    {
+      "concept": "table",
+      "expected": "surface",
+      "actual": "surface",
+      "omega_0": 3.3149677206589794,
+      "match": true
+    },
+    {
+      "concept": "car",
+      "expected": "surface",
+      "actual": "surface",
+      "omega_0": 3.3149677206589794,
+      "match": true
+    },
+    {
+      "concept": "hand",
+      "expected": "medium",
+      "actual": "surface",
+      "omega_0": 3.3149677206589794,
+      "match": true
+    },
+    {
+      "concept": "house",
+      "expected": "medium",
+      "actual": "surface",
+      "omega_0": 3.3149677206589794,
+      "match": true
+    }
+  ],
+  "exp4_3_resonance_matching": [
+    {
+      "verbs": [
+        "contemplate",
+        "understand"
+      ],
+      "query_omega": 0.15000000000000002,
+      "expected_class": "deep",
+      "resonators": [],
+      "match": false
+    },
+    {
+      "verbs": [
+        "find",
+        "get"
+      ],
+      "query_omega": 0.7,
+      "expected_class": "surface",
+      "resonators": [],
+      "match": false
+    },
+    {
+      "verbs": [
+        "know",
+        "learn"
+      ],
+      "query_omega": 0.45,
+      "expected_class": "medium",
+      "resonators": [],
+      "match": false
+    }
+  ],
+  "exp4_4_rlc_damping": [
+    {
+      "R": 0.5,
+      "L": 0.5,
+      "C": 0.5,
+      "omega_0": 2.0,
+      "zeta": 0.25,
+      "Q": 2.0,
+      "expected": "underdamped",
+      "actual": "underdamped",
+      "match": true
+    },
+    {
+      "R": 1.0,
+      "L": 0.5,
+      "C": 0.5,
+      "omega_0": 2.0,
+      "zeta": 0.5,
+      "Q": 1.0,
+      "expected": "critically_damped",
+      "actual": "underdamped",
+      "match": false
+    },
+    {
+      "R": 2.0,
+      "L": 0.5,
+      "C": 0.5,
+      "omega_0": 2.0,
+      "zeta": 1.0,
+      "Q": 0.5,
+      "expected": "overdamped",
+      "actual": "critically_damped",
+      "match": false
+    }
+  ]
+}

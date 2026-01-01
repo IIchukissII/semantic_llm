@@ -1,0 +1,445 @@
+{
+  "exp3_1_query_impedance": [
+    {
+      "query": "How do I find my keys?",
+      "verbs": [
+        "find"
+      ],
+      "expected": "low",
+      "actual": "low",
+      "target_tau": 1.4,
+      "Z": "Z_query = 1.40 + j0.67",
+      "match": true
+    },
+    {
+      "query": "Can you get me the time?",
+      "verbs": [
+        "get"
+      ],
+      "expected": "low",
+      "actual": "low",
+      "target_tau": 1.3,
+      "Z": "Z_query = 1.30 + j0.67",
+      "match": true
+    },
+    {
+      "query": "I want to make dinner",
+      "verbs": [
+        "make"
+      ],
+      "expected": "low",
+      "actual": "low",
+      "target_tau": 1.5,
+      "Z": "Z_query = 1.50 + j0.67",
+      "match": true
+    },
+    {
+      "query": "I want to know the truth",
+      "verbs": [
+        "know"
+      ],
+      "expected": "medium",
+      "actual": "medium",
+      "target_tau": 1.8,
+      "Z": "Z_query = 1.80 + j0.97",
+      "match": true
+    },
+    {
+      "query": "Help me learn Python",
+      "verbs": [
+        "learn"
+      ],
+      "expected": "medium",
+      "actual": "medium",
+      "target_tau": 1.8,
+      "Z": "Z_query = 1.80 + j1.05",
+      "match": true
+    },
+    {
+      "query": "What do you feel about this?",
+      "verbs": [
+        "feel"
+      ],
+      "expected": "medium",
+      "actual": "medium",
+      "target_tau": 1.7,
+      "Z": "Z_query = 1.70 + j1.07",
+      "match": true
+    },
+    {
+      "query": "Help me understand consciousness",
+      "verbs": [
+        "understand"
+      ],
+      "expected": "high",
+      "actual": "high",
+      "target_tau": 2.3,
+      "Z": "Z_query = 2.30 + j1.19",
+      "match": true
+    },
+    {
+      "query": "I want to contemplate existence",
+      "verbs": [
+        "contemplate"
+      ],
+      "expected": "high",
+      "actual": "high",
+      "target_tau": 2.6,
+      "Z": "Z_query = 2.60 + j0.67",
+      "match": true
+    },
+    {
+      "query": "What does it mean to transcend?",
+      "verbs": [
+        "transcend"
+      ],
+      "expected": "high",
+      "actual": "high",
+      "target_tau": 3.0,
+      "Z": "Z_query = 3.00 + j1.14",
+      "match": true
+    },
+    {
+      "query": "I want to find and understand meaning",
+      "verbs": [
+        "find",
+        "understand"
+      ],
+      "expected": "mixed",
+      "actual": "medium",
+      "target_tau": 1.8499999999999999,
+      "Z": "Z_query = 1.85 + j1.19",
+      "match": "True"
+    }
+  ],
+  "exp3_2_concept_matching": [
+    {
+      "seed": "wisdom",
+      "avg_high": 0.574535056709343,
+      "avg_low": 0.657573902332122,
+      "passed": "False"
+    },
+    {
+      "seed": "love",
+      "avg_high": 0.5292234660401598,
+      "avg_low": 0.6966786767257096,
+      "passed": "False"
+    },
+    {
+      "seed": "time",
+      "avg_high": 0.6256618917782942,
+      "avg_low": 0.3137229658987545,
+      "passed": "True"
+    }
+  ],
+  "exp3_3_resonant_comparison": [
+    {
+      "query": "What is wisdom?",
+      "goals": {
+        "resonant": {
+          "concepts": [
+            "pity",
+            "image",
+            "case",
+            "guard",
+            "heart"
+          ],
+          "resonance": 0.9053254415068333,
+          "coherence": 0.3103607862572807,
+          "stability": 0.9287792977530541,
+          "tau_mean": 1.6934771460263,
+          "strategy": "resonant_Z=1.80+j0.30"
+        },
+        "accurate": {
+          "concepts": [
+            "thee",
+            "skin",
+            "name",
+            "idea",
+            "window"
+          ],
+          "resonance": 0.7824687167605675,
+          "coherence": 0.817653495512094,
+          "stability": 0.5,
+          "tau_mean": 1.4508647936612653,
+          "strategy": "orbital_auto"
+        },
+        "deep": {
+          "concepts": [
+            "lip",
+            "window",
+            "runt",
+            "tear",
+            "skin"
+          ],
+          "resonance": 0.2135530983892417,
+          "coherence": 0.7593092809750385,
+          "stability": 0.5,
+          "tau_mean": 1.7561890117628953,
+          "strategy": "orbital_transcend"
+        },
+        "parallel": {
+          "concepts": [
+            "lip",
+            "fame",
+            "hold",
+            "hand",
+            "death"
+          ],
+          "resonance": 0.30048117237620575,
+          "coherence": 0.27129411722730157,
+          "stability": 1.0,
+          "tau_mean": 3.3145961281026217,
+          "strategy": "parallel_n3"
+        }
+      }
+    },
+    {
+      "query": "How do I understand love?",
+      "goals": {
+        "resonant": {
+          "concepts": [
+            "time",
+            "man",
+            "direction",
+            "body",
+            "comfort"
+          ],
+          "resonance": 0.8334841741506298,
+          "coherence": 0.827260045119661,
+          "stability": 0.9177091297685066,
+          "tau_mean": 1.9391528759202716,
+          "strategy": "resonant_Z=2.30+j1.19"
+        },
+        "accurate": {
+          "concepts": [
+            "side",
+            "she",
+            "ear",
+            "mind",
+            "shower"
+          ],
+          "resonance": 0.6028754357657689,
+          "coherence": 0.7925011114956425,
+          "stability": 0.5,
+          "tau_mean": 1.532522813336224,
+          "strategy": "orbital_auto"
+        },
+        "deep": {
+          "concepts": [
+            "day",
+            "strength",
+            "head",
+            "runt",
+            "horn"
+          ],
+          "resonance": 0.21138727504575186,
+          "coherence": 0.8411973008239324,
+          "stability": 0.5,
+          "tau_mean": 1.6921343302819667,
+          "strategy": "orbital_transcend"
+        },
+        "parallel": {
+          "concepts": [
+            "jump",
+            "fool",
+            "wisdom",
+            "crawl",
+            "view"
+          ],
+          "resonance": 0.4380991814899239,
+          "coherence": 0.36026942682644975,
+          "stability": 1.0,
+          "tau_mean": 3.0977361541160953,
+          "strategy": "parallel_n3"
+        }
+      }
+    },
+    {
+      "query": "Find the meaning of life",
+      "goals": {
+        "resonant": {
+          "concepts": [
+            "sheep",
+            "state",
+            "legend",
+            "wrath",
+            "dejection"
+          ],
+          "resonance": 0.9088771535519256,
+          "coherence": 0.5969319843113909,
+          "stability": 0.8897926368891884,
+          "tau_mean": 1.4167626872946408,
+          "strategy": "resonant_Z=1.40+j0.67"
+        },
+        "accurate": {
+          "concepts": [
+            "deal",
+            "name",
+            "window",
+            "foot",
+            "school"
+          ],
+          "resonance": 0.6326295333312812,
+          "coherence": 0.774013976230176,
+          "stability": 0.5,
+          "tau_mean": 1.5587358270280967,
+          "strategy": "orbital_auto"
+        },
+        "deep": {
+          "concepts": [
+            "life",
+            "thing",
+            "body",
+            "she",
+            "mind"
+          ],
+          "resonance": 0.20928343906834432,
+          "coherence": 0.6322940375319799,
+          "stability": 0.5,
+          "tau_mean": 1.6169896420620438,
+          "strategy": "orbital_transcend"
+        },
+        "parallel": {
+          "concepts": [
+            "contrary",
+            "part",
+            "confidence",
+            "time",
+            "work"
+          ],
+          "resonance": 0.2736278282362523,
+          "coherence": 0.3306749597742416,
+          "stability": 0.7692307692307693,
+          "tau_mean": 3.516040386342129,
+          "strategy": "parallel_n3"
+        }
+      }
+    }
+  ],
+  "exp3_4_reflection_analysis": [
+    {
+      "query": "What is wisdom?",
+      "query_z": "Z_query = 2.30 + j1.19",
+      "matches": [
+        {
+          "concept": "time",
+          "gamma": 0.04679981965478661,
+          "quality": 0.9532001803452134,
+          "efficiency": 0.9978097768802795,
+          "tau": 2.488917512744099
+        },
+        {
+          "concept": "life",
+          "gamma": 0.28274480534759333,
+          "quality": 0.7172551946524066,
+          "efficiency": 0.9200553750489515,
+          "tau": 1.657977551612755
+        },
+        {
+          "concept": "love",
+          "gamma": 0.3849864927354692,
+          "quality": 0.6150135072645309,
+          "efficiency": 0.8517854004112425,
+          "tau": 1.412033698585867
+        },
+        {
+          "concept": "truth",
+          "gamma": 0.5461540405563206,
+          "quality": 0.45384595944367945,
+          "efficiency": 0.701715763984005,
+          "tau": 1.5208183398904687
+        },
+        {
+          "concept": "wisdom",
+          "gamma": 0.5713319162839848,
+          "quality": 0.42866808371601517,
+          "efficiency": 0.6735798414352697,
+          "tau": 1.216039645231239
+        }
+      ]
+    },
+    {
+      "query": "Find my phone",
+      "query_z": "Z_query = 1.40 + j0.67",
+      "matches": [
+        {
+          "concept": "love",
+          "gamma": 0.22818653458769794,
+          "quality": 0.7718134654123021,
+          "efficiency": 0.9479309054328573,
+          "tau": 1.412033698585867
+        },
+        {
+          "concept": "time",
+          "gamma": 0.2943417249644632,
+          "quality": 0.7056582750355368,
+          "efficiency": 0.9133629489449443,
+          "tau": 2.488917512744099
+        },
+        {
+          "concept": "life",
+          "gamma": 0.4460199730386134,
+          "quality": 0.5539800269613866,
+          "efficiency": 0.8010661836506345,
+          "tau": 1.657977551612755
+        },
+        {
+          "concept": "wisdom",
+          "gamma": 0.4705742580680913,
+          "quality": 0.5294257419319087,
+          "efficiency": 0.7785598676436655,
+          "tau": 1.216039645231239
+        },
+        {
+          "concept": "truth",
+          "gamma": 0.4864451101496021,
+          "quality": 0.5135548898503979,
+          "efficiency": 0.7633711548115415,
+          "tau": 1.5208183398904687
+        }
+      ]
+    },
+    {
+      "query": "Contemplate the infinite",
+      "query_z": "Z_query = 2.60 + j0.67",
+      "matches": [
+        {
+          "concept": "time",
+          "gamma": 0.12854655498558096,
+          "quality": 0.871453445014419,
+          "efficiency": 0.983475783201339,
+          "tau": 2.488917512744099
+        },
+        {
+          "concept": "love",
+          "gamma": 0.33396174709391246,
+          "quality": 0.6660382529060875,
+          "efficiency": 0.8884695514779817,
+          "tau": 1.412033698585867
+        },
+        {
+          "concept": "life",
+          "gamma": 0.409121372961915,
+          "quality": 0.590878627038085,
+          "efficiency": 0.8326197021857576,
+          "tau": 1.657977551612755
+        },
+        {
+          "concept": "truth",
+          "gamma": 0.43199643800032095,
+          "quality": 0.568003561999679,
+          "efficiency": 0.8133790775550349,
+          "tau": 1.5208183398904687
+        },
+        {
+          "concept": "wisdom",
+          "gamma": 0.48297129365274843,
+          "quality": 0.5170287063472516,
+          "efficiency": 0.7667387295073906,
+          "tau": 1.216039645231239
+        }
+      ]
+    }
+  ]
+}

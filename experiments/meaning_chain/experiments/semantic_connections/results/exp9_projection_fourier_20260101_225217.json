@@ -1,0 +1,70 @@
+{
+  "fourier_encoding": {
+    "test_words": [
+      "chair",
+      "beauty",
+      "love",
+      "understand",
+      "truth",
+      "god",
+      "table",
+      "wisdom"
+    ]
+  },
+  "blending": {
+    "blends": [
+      {
+        "word1": "love",
+        "word2": "knowledge",
+        "nearest": [
+          "char",
+          "haste",
+          "rule",
+          "o\u010di",
+          "praise"
+        ],
+        "tau_blend": 2.362274340603246
+      },
+      {
+        "word1": "beauty",
+        "word2": "truth",
+        "nearest": [
+          "belove",
+          "transact",
+          "vindicate",
+          "liking",
+          "substantiate"
+        ],
+        "tau_blend": 2.185308943368229
+      },
+      {
+        "word1": "life",
+        "word2": "death",
+        "nearest": [
+          "predicament",
+          "nuptial",
+          "batch",
+          "group",
+          "hallway"
+        ],
+        "tau_blend": 2.6393416332418256
+      },
+      {
+        "word1": "wisdom",
+        "word2": "strength",
+        "nearest": [
+          "frost",
+          "gun",
+          "abuse",
+          "titles",
+          "vulgar"
+        ],
+        "tau_blend": 2.184219304276912
+      }
+    ]
+  },
+  "projection": {},
+  "verb_operators": {},
+  "hierarchy_paths": {},
+  "spectrum_patterns": {}
+}
