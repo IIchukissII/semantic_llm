@@ -730,10 +730,74 @@ Measured: kT = 0.82
 Error: 0.16%
 ```
 
-**Why 1/5?** The j-vector has 5 transcendental dimensions:
-- beauty, life, sacred, good, love
+### Measurement (Honest Formulation)
 
-The temperature is the inverse decay constant in 5-dimensional meaning space.
+The temperature kT is measured directly from Boltzmann statistics:
+
+```
+N_ground / N_excited = exp(ΔE / kT)
+
+Measured:
+  N_ground = 17320 (τ ∈ [1, 3])
+  N_excited = 1180 (τ ≥ 5.5)
+  ln(ratio) = 2.686
+  ΔE = φ_excited - φ_ground = 2.193
+
+  kT = ΔE / ln(ratio) = 0.8165
+```
+
+### The "1/5" Observation
+
+We notice that kT ≈ e^(-1/n) where n ≈ 5:
+
+```
+n = -1/ln(kT) = -1/ln(0.8165) = 4.93 ≈ 5
+
+e^(-1/5) = 0.8187
+Measured kT = 0.8165
+Error: 0.27%
+```
+
+**Important**: This is an empirical observation, NOT a derived result.
+
+### Why n ≈ 5? (Open Question)
+
+The j-vector has 5 transcendental dimensions: beauty, life, sacred, good, love.
+
+But PCA shows effective dimensionality = 1.41 (Section 6.3):
+- PC1 (Affirmation): 83.3% variance
+- PC2 (Sacred): 11.7% variance
+
+**The puzzle**: Why does Boltzmann statistics "see" 5 dimensions when the effective dimensionality is ~1.4?
+
+Possible explanations (none proven):
+
+| Hypothesis | Problem |
+|------------|---------|
+| 5 evaluation channels exist even if correlated | Why doesn't correlation reduce n? |
+| Coincidence | Seems unlikely given 0.27% error |
+| Related to 5 orbital levels | But there are 6 levels (τ1-τ6) |
+| Deeper connection we don't understand | Needs theoretical work |
+
+### Relic Structure Hypothesis
+
+The best current explanation (not proven):
+
+**Temperature reflects the *structural* dimensionality of the j-space (5), not the *statistical* effective dimensionality (1.4).**
+
+Analogy with physics:
+- A 3D gas has 3 translational degrees of freedom
+- At low temperature, most molecules are in ground state
+- But temperature still reflects 3 DOF, not some "effective" number
+
+Similarly:
+- j-vector space was *defined* with 5 dimensions
+- Data "cooled" into correlated structure (eff. dim = 1.4)
+- kT = e^(-1/5) is a "relic" of the original 5D structure
+
+Like CMB (2.7K) is a relic of the early hot universe, kT ≈ 0.82 may be a relic of how semantic space was constructed.
+
+**Status**: Plausible hypothesis, not rigorously proven.
 
 **The Fundamental Identity**:
 
