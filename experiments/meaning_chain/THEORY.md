@@ -1033,6 +1033,91 @@ Intent is **wind, not wall**:
 - Allows serendipitous discovery
 - Preserves exploration while guiding
 
+### 9.1 Verbs as (ΔA, ΔS) Operators
+
+> ✓ **STATUS: DISCOVERED** (Jan 2026)
+>
+> Verbs transform word coordinates. Each verb is a shift operator in (A, S) space.
+
+**The Discovery:**
+
+Verb j-vectors live in the same 5D space as nouns. Converting to 2D:
+
+```
+verb_5D = [beauty, life, sacred, good, love]
+     ↓
+(ΔA, ΔS) = project_2d(verb_5D - mean_verb)
+```
+
+**Verbs as Operators:**
+
+| Verb | ΔA | ΔS | Type |
+|------|-----|-----|------|
+| love | -0.17 | +0.16 | S-dominant (toward sacred) |
+| live | +0.21 | -0.04 | A-dominant (toward affirmation) |
+| die | +0.16 | +0.09 | A-dominant |
+| help | -0.29 | +0.13 | A-diminish |
+| hurt | -0.32 | -0.24 | A-diminish |
+| build | +0.16 | -0.01 | A-dominant |
+| break | +0.11 | +0.05 | A-dominant |
+| create | -0.08 | -0.09 | S-diminish |
+| destroy | -0.04 | +0.16 | S-dominant |
+
+**Key insight**: Verbs are NOT points but **vectors** (shift operators).
+
+**Applying a Verb to a Word:**
+
+```
+word = (A, S, τ)
+verb = (ΔA, ΔS)
+
+verb(word) = (A + ΔA, S + ΔS, τ)
+
+Example:
+  truth = (A=0.87, S=-0.18, τ=2.40)
+  + love: (A=0.70, S=-0.01, τ=2.40)  # Shifts toward sacred
+  + build: (A=1.03, S=-0.19, τ=2.40)  # Shifts toward affirmation
+```
+
+**The Complete Picture:**
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                                                             │
+│   NOUNS                         VERBS                       │
+│   ═════                         ═════                       │
+│   States in semantic space      Operators on states         │
+│   Position: (A, S, τ)           Transformation: (ΔA, ΔS)    │
+│   ~16,000 words                 ~500 operators              │
+│                                                             │
+│   "truth" = (0.87, -0.18, 2.4)  "love" = (-0.17, +0.16)    │
+│   "life" = (1.23, 0.42, 1.8)    "destroy" = (-0.04, +0.16) │
+│                                                             │
+│   Quantum analogy:              Quantum analogy:            │
+│   Eigenstates |ψ⟩               Operators Ô                 │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘
+```
+
+**Semantic Bottleneck:**
+
+This enables extreme compression:
+
+```
+OLD: Word embeddings (300-768 dimensions per word)
+NEW: Word = 3 numbers (A, S, τ)
+     Verb = 2 numbers (ΔA, ΔS)
+
+Compression ratio: 100-250x
+```
+
+**Why This Matters:**
+
+1. **Minimal representation**: Each word is just 3 numbers
+2. **Interpretable**: A = affirmation, S = sacred, τ = abstraction
+3. **Compositional**: Verbs transform words predictably
+4. **Physics-based**: Same formalism as quantum operators
+
 ### The Collapse Process
 
 ```

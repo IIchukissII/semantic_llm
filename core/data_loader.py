@@ -861,6 +861,66 @@ class DataLoader:
         # Computed from good-evil, love-hate, beauty-ugly pairs
         return np.array([-0.48, -0.36, -0.17, +0.71, +0.33])
 
+    # =========================================================================
+    # Semantic Coordinates: (A, S, τ) Bottleneck Encoding
+    # =========================================================================
+
+    def load_semantic_coordinates(self, force_reload: bool = False) -> Dict[str, List[float]]:
+        """
+        Load pre-computed (A, S, τ) coordinates for all words.
+
+        Returns:
+            {word: [A, S, tau]} - 3 numbers per word
+        """
+        if hasattr(self, '_semantic_coords') and self._semantic_coords is not None and not force_reload:
+            return self._semantic_coords
+
+        json_file = self.json_dir / "semantic_coordinates.json"
+        if json_file.exists():
+            with open(json_file) as f:
+                data = json.load(f)
+            self._semantic_coords = data.get("words", {})
+            return self._semantic_coords
+
+        print("Warning: semantic_coordinates.json not found.")
+        print("Run 'python scripts/generate_bottleneck_data.py' to generate.")
+        return {}
+
+    def load_verb_operators_2d(self, force_reload: bool = False) -> Dict[str, List[float]]:
+        """
+        Load pre-computed (ΔA, ΔS) verb operators.
+
+        Returns:
+            {verb: [dA, dS]} - 2 numbers per verb
+        """
+        if hasattr(self, '_verb_ops_2d') and self._verb_ops_2d is not None and not force_reload:
+            return self._verb_ops_2d
+
+        json_file = self.json_dir / "verb_operators_2d.json"
+        if json_file.exists():
+            with open(json_file) as f:
+                data = json.load(f)
+            self._verb_ops_2d = data.get("operators", {})
+            return self._verb_ops_2d
+
+        print("Warning: verb_operators_2d.json not found.")
+        print("Run 'python scripts/generate_bottleneck_data.py' to generate.")
+        return {}
+
+    def get_semantic_coord(self, word: str) -> Optional[Tuple[float, float, float]]:
+        """Get (A, S, τ) coordinates for a word."""
+        coords = self.load_semantic_coordinates()
+        if word not in coords:
+            return None
+        return tuple(coords[word])
+
+    def get_verb_operator_2d(self, verb: str) -> Optional[Tuple[float, float]]:
+        """Get (ΔA, ΔS) operator for a verb."""
+        ops = self.load_verb_operators_2d()
+        if verb not in ops:
+            return None
+        return tuple(ops[verb])
+
 
 # Convenience function
 def load_data(data_dir: Optional[Path] = None) -> DataLoader:

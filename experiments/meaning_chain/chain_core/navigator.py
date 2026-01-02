@@ -63,6 +63,7 @@ class NavigationGoal(Enum):
     PARALLEL = "parallel"    # Parallel path exploration (2x coverage, stable coherence)
     RESONANT = "resonant"    # Impedance matching (Z_query ≈ Z_concept for max transfer)
     FILTERED = "filtered"    # τ-level filtering (explicit band-pass/low-pass/high-pass)
+    QUANTUM = "quantum"      # Quantum (n, θ, r) navigation with verb operators
 
 
 @dataclass
@@ -225,6 +226,7 @@ class SemanticNavigator:
             NavigationGoal.PARALLEL: {'r': 0.15, 'c': 0.30, 'd': 0.15, 's': 0.25, 'p': 0.15},  # Balanced with coverage priority
             NavigationGoal.RESONANT: {'r': 0.35, 'c': 0.25, 'd': 0.10, 's': 0.15, 'p': 0.15},  # High resonance via impedance match
             NavigationGoal.FILTERED: {'r': 0.25, 'c': 0.25, 'd': 0.20, 's': 0.15, 'p': 0.15},  # τ-filtered navigation
+            NavigationGoal.QUANTUM: {'r': 0.20, 'c': 0.30, 'd': 0.15, 's': 0.20, 'p': 0.15},  # Quantum navigation
         }
 
         # Optimal constants for WISDOM mode (from semantic energy conservation)
@@ -251,6 +253,9 @@ class SemanticNavigator:
 
         # Goal filter (lazy loaded)
         self._goal_filter = None
+
+        # Quantum encoder (lazy loaded)
+        self._quantum_encoder = None
 
     # =========================================================================
     # Lazy initialization
@@ -341,6 +346,13 @@ class SemanticNavigator:
             from experiments.semantic_connections.filters import GoalFilter
             self._goal_filter = GoalFilter
         return self._goal_filter
+
+    def _init_quantum(self):
+        """Initialize QuantumEncoder for (n, θ, r) navigation."""
+        if self._quantum_encoder is None:
+            from core.semantic_quantum import QuantumEncoder
+            self._quantum_encoder = QuantumEncoder()
+        return self._quantum_encoder
 
     # =========================================================================
     # Decomposition
@@ -499,6 +511,9 @@ class SemanticNavigator:
 
         elif goal == NavigationGoal.FILTERED:
             return self._navigate_with_filter(query, nouns, verbs, goal)
+
+        elif goal == NavigationGoal.QUANTUM:
+            return self._navigate_with_quantum(query, nouns, verbs, goal)
 
         else:  # BALANCED
             return self._navigate_balanced(query, nouns, verbs, goal)
@@ -1093,6 +1108,132 @@ class SemanticNavigator:
             return "wisdom"
         else:
             return "balanced"
+
+    def _navigate_with_quantum(self, query: str, nouns: List[str],
+                                verbs: List[str],
+                                goal: NavigationGoal) -> NavigationResult:
+        """
+        Navigate using quantum (n, θ, r) coordinates and verb operators.
+
+        Strategy:
+            1. Encode seed nouns to quantum coordinates
+            2. Apply verb operators to navigate through semantic space
+            3. Find concepts at each navigation step
+            4. Build trajectory and compute quality metrics
+
+        Quantum navigation enables:
+            - Compact 12-bit coordinate representation
+            - Verb-driven semantic transformations
+            - Regional filtering by (n, θ, r)
+
+        Use for: Verb-based semantic navigation, compact representation
+        """
+        quantum = self._init_quantum()
+
+        # Encode seed concepts
+        seeds = []
+        for noun in nouns[:3]:
+            qw = quantum.encode(noun)
+            if qw:
+                seeds.append((noun, qw))
+
+        if not seeds:
+            # Fallback: use "meaning" as seed
+            qw = quantum.encode("meaning")
+            if qw:
+                seeds.append(("meaning", qw))
+
+        # Build trajectories using verbs
+        trajectories = []
+        all_concepts = []
+
+        for seed_word, seed_qw in seeds:
+            if verbs:
+                # Navigate using verb chain
+                trajectory = quantum.chain(seed_word, verbs[:4])
+                trajectories.append(trajectory)
+
+                # Collect concepts at each step
+                for step in trajectory.steps:
+                    # Find words at this quantum position
+                    neighbors = quantum.nearest(step, k=3)
+                    for word, dist, _ in neighbors:
+                        if word not in all_concepts and dist < 1.0:
+                            all_concepts.append(word)
+            else:
+                # No verbs: just find neighbors of seed
+                neighbors = quantum.nearest(seed_qw, k=5)
+                for word, dist, _ in neighbors:
+                    if word not in all_concepts:
+                        all_concepts.append(word)
+
+        # Add seeds to concepts
+        for seed_word, _ in seeds:
+            if seed_word not in all_concepts:
+                all_concepts.insert(0, seed_word)
+
+        # Compute quality metrics from trajectories
+        if trajectories and trajectories[0].steps:
+            main_traj = trajectories[0]
+            start = main_traj.start
+            end = main_traj.end
+
+            # Phase coherence: how much did direction change?
+            phase_change = abs(main_traj.phase_change)
+            coherence = max(0, 1 - phase_change / 180)
+
+            # Resonance: did we stay in same orbital?
+            orbital_change = abs(main_traj.orbital_change)
+            resonance = max(0, 1 - orbital_change / 5)
+
+            # Stability: consistency of r across trajectory
+            r_values = [s.r for s in main_traj.steps]
+            if len(r_values) > 1:
+                r_std = np.std(r_values)
+                stability = max(0, 1 - r_std / 2)
+            else:
+                stability = 0.5
+
+            # Power: magnitude of total shift
+            total_shift = main_traj.total_shift
+            shift_magnitude = np.sqrt(total_shift[0]**2 + total_shift[1]**2)
+            power = min(1.0, shift_magnitude / 2)
+
+            # Mean tau from trajectory
+            tau_mean = np.mean([s.tau for s in main_traj.steps])
+        else:
+            coherence = 0.5
+            resonance = 0.5
+            stability = 0.5
+            power = 0.0
+            tau_mean = 2.5
+
+        quality = NavigationQuality(
+            resonance=resonance,
+            coherence=coherence,
+            stability=stability,
+            power=power,
+            tau_mean=tau_mean
+        )
+
+        # Build strategy description
+        if trajectories and trajectories[0].steps:
+            traj = trajectories[0]
+            start_hex = traj.start.to_hex() if traj.start else "???"
+            end_hex = traj.end.to_hex() if traj.end else "???"
+            strategy = f"quantum_{start_hex}→{end_hex}"
+        else:
+            strategy = "quantum_static"
+
+        return NavigationResult(
+            concepts=all_concepts[:10],
+            quality=quality,
+            query=query,
+            goal=goal,
+            strategy=strategy,
+            nouns=nouns,
+            verbs=verbs,
+        )
 
     def _navigate_balanced(self, query: str, nouns: List[str],
                            verbs: List[str],
