@@ -67,11 +67,23 @@ from collections import defaultdict
 E = math.e  # Euler's constant
 KT = E ** (-1/5)  # Semantic temperature ≈ 0.819
 
-# PC vectors for (A, S) projection
+# PC vectors for (A, S) projection - from PCA on j-vectors
+# A = "Affirmation" axis: PC1 from embedding space
+# S = "Sacred" axis: PC2 from embedding space
+#
+# These axes capture STATISTICAL variance in semantic space.
+# Labels are approximate - geometry (angles, distances) is what matters.
+#
+# Verbs are OPERATORS on nouns - both must use the SAME coordinate system.
 PC1_AFFIRMATION = np.array([-0.448, -0.519, -0.118, -0.480, -0.534])
 PC2_SACRED = np.array([-0.513, +0.128, -0.732, +0.420, +0.090])
 
 J_DIMS = ['beauty', 'life', 'sacred', 'good', 'love']
+
+# Global mean of verb j-vectors (The Pirate Insight)
+# Raw j-vectors are biased toward this mean, making opposites look similar (99% cosine).
+# Centering by subtracting this mean reveals true opposition (love/hate → -0.22).
+J_GLOBAL_MEAN = np.array([-0.82, -0.97, -0.92, -0.80, -0.95])
 
 
 # =============================================================================
@@ -85,6 +97,9 @@ class Transcendental:
 
     These are the 5 source dimensions that project down to everything else.
     They exist in a 2D reduced space: (A, S).
+
+    A = Affirmation axis (PC1 from embedding space)
+    S = Sacred axis (PC2 from embedding space)
     """
     name: str
     A: float  # Affirmation component
@@ -102,6 +117,7 @@ class Transcendental:
 
 
 # The 5 transcendentals as unit vectors in their respective dimensions
+# Projected onto (A, S) axes from PCA
 TRANSCENDENTALS = {
     'beauty': Transcendental('beauty', A=-0.448, S=-0.513),
     'life':   Transcendental('life',   A=-0.519, S=+0.128),
@@ -217,25 +233,33 @@ class QuantumWord:
 @dataclass
 class VerbOperator:
     """
-    Verb as a phase shift operator.
+    Verb as MOMENTUM operator - direction of transformation.
 
-    Verbs don't occupy positions - they TRANSFORM positions.
+    Verbs don't occupy positions - they are DIRECTIONS that transform positions.
+    Like momentum in physics: p = m × v (direction of motion)
+
     verb(noun) → noun' where:
-        θ' = θ + Δθ
-        r' = r × (1 + Δr/r_verb)
+        n' = n + Δn      (orbital shift: abstraction level)
+        θ' = θ + Δθ      (phase rotation: semantic direction)
+        r' = r + Δr      (magnitude change: intensity)
+
+    The verb's centered j-vector (i = j - j_mean) gives the DIRECTION.
     """
     verb: str
-    delta_theta: float  # Phase shift in radians
-    delta_r: float      # Magnitude shift factor
+    delta_theta: float  # Phase rotation (radians) - direction in (A,S) space
+    delta_r: float      # Magnitude shift
+    delta_n: float = 0.0  # Orbital shift (abstraction: + = abstract, - = concrete)
 
-    # The verb's own character (for computing shifts)
-    theta: float = 0.0  # Base phase
-    r: float = 0.0      # Base magnitude
+    # The verb's direction vector (from centered j)
+    theta: float = 0.0  # Direction angle
+    r: float = 0.0      # Direction magnitude
 
-    def apply(self, noun: QuantumWord) -> Tuple[float, float]:
+    def apply(self, noun: QuantumWord) -> Tuple[float, float, float]:
         """
-        Apply verb operator to noun, return new (θ, r).
+        Apply verb operator to noun, return new (n, θ, r).
         """
+        new_n = noun.n + self.delta_n
+
         new_theta = noun.theta + self.delta_theta
         # Normalize to [-π, π]
         while new_theta > math.pi:
@@ -244,7 +268,12 @@ class VerbOperator:
             new_theta += 2 * math.pi
 
         new_r = noun.r + self.delta_r
-        return new_theta, max(0, new_r)
+        return new_n, new_theta, max(0, new_r)
+
+    def apply_theta_r(self, noun: QuantumWord) -> Tuple[float, float]:
+        """Legacy: return just (θ, r) for compatibility."""
+        _, theta, r = self.apply(noun)
+        return theta, r
 
 
 # =============================================================================
@@ -506,10 +535,27 @@ class UnifiedHierarchy:
 
     def derive_verb_operators(self, word_vectors: Dict, verb_objects: Dict[str, List[str]]):
         """
-        Derive verb operators (Δθ, Δr) from verb j-vectors and typical objects.
+        Derive verb operators (Δn, Δθ, Δr) from PHASE-SHIFTED j-vectors.
 
-        A verb's effect is the DIFFERENCE between its character and neutral.
-        Verbs shift nouns toward their own character.
+        VERBS AS MOMENTUM:
+        ──────────────────
+        Verbs are DIRECTIONS that transform noun positions.
+        Like momentum p = m×v in physics.
+
+        THE PIRATE INSIGHT:
+        Raw j-vectors are biased → opposites look similar (99%).
+        CENTERING reveals true direction of push.
+
+        OPERATOR COMPONENTS:
+          Δn: orbital shift (abstraction level)
+              - Δn > 0: abstracts (toward ideas)
+              - Δn < 0: grounds (toward concrete)
+              - Derived from: sacred vs life components
+
+          Δθ: phase rotation (semantic direction)
+              - Direction of push in (A, S) space
+
+          Δr: magnitude change (intensity)
         """
         for word, data in word_vectors.items():
             if not data.get('j'):
@@ -519,24 +565,31 @@ class UnifiedHierarchy:
             if wtype not in ('verb', 1):
                 continue
 
-            j_5d = np.array([data['j'].get(d, 0) for d in J_DIMS])
-            A = float(np.dot(j_5d, PC1_AFFIRMATION))
-            S = float(np.dot(j_5d, PC2_SACRED))
+            # Raw j-vector [beauty, life, sacred, good, love]
+            j_raw = np.array([data['j'].get(d, 0) for d in J_DIMS])
+
+            # PHASE SHIFT: center by subtracting global mean
+            j_centered = j_raw - J_GLOBAL_MEAN
+
+            # Project centered j onto (A, S) axes
+            A = float(np.dot(j_centered, PC1_AFFIRMATION))
+            S = float(np.dot(j_centered, PC2_SACRED))
 
             theta = math.atan2(S, A)
             r = math.sqrt(A**2 + S**2)
 
-            # The verb operator shifts toward its own direction
-            # Δθ = verb's theta (pulls target toward verb's phase)
-            # Δr = verb's r (adds intensity)
-            #
-            # Scaling: we want small shifts, so divide by typical magnitude
-            scale = 0.1  # Verbs have ~10% effect per application
+            # ORBITAL SHIFT (Δn): sacred abstracts, life grounds
+            # j_centered[2] = sacred component, j_centered[1] = life component
+            delta_n = (j_centered[2] - j_centered[1]) * 0.1  # Scale factor
+
+            # Scaling for phase/magnitude shifts
+            scale = 0.1
 
             self.verbs[word] = VerbOperator(
                 verb=word,
                 delta_theta=theta * scale,
                 delta_r=r * scale,
+                delta_n=delta_n,
                 theta=theta,
                 r=r
             )
@@ -823,6 +876,436 @@ class SemanticNavigator:
             return ('transitional', metric)
         else:
             return ('true_opposites', metric)
+
+    # =========================================================================
+    # COMBINATION RULES (Chemistry Analogy)
+    # =========================================================================
+    #
+    # ATOM:  (n, l, m) → valence, electronegativity, energy levels
+    # WORD:  (n, θ, r) → resonance, energy, intensity
+    #
+    # Validated from bond space (565,202 bonds):
+    #   - Resonant bonds (Δθ < 30°):     1.80x enriched
+    #   - Antiresonant bonds (Δθ > 150°): 1.23x enriched
+    #   - Mean Δn = +1.7 (adj at higher n than noun)
+    # =========================================================================
+
+    # Thresholds (in radians)
+    RESONANT_THRESHOLD = math.radians(30)      # |Δθ| < 30°
+    ORTHOGONAL_LOW = math.radians(60)          # 60° < |Δθ| < 120°
+    ORTHOGONAL_HIGH = math.radians(120)
+    ANTIRESONANT_THRESHOLD = math.radians(150)  # |Δθ| > 150°
+
+    def bond_type(self, w1: QuantumWord, w2: QuantumWord) -> str:
+        """
+        Classify bond type based on phase difference.
+
+        Returns:
+            'resonant'     - Δθ < 30° (усиление, 1.8x enriched)
+            'orthogonal'   - 60° < Δθ < 120° (независимость)
+            'antiresonant' - Δθ > 150° (парадокс, 1.23x enriched)
+            'mixed'        - other
+        """
+        delta_theta = abs(w1.theta - w2.theta)
+        if delta_theta > math.pi:
+            delta_theta = 2 * math.pi - delta_theta
+
+        if delta_theta < self.RESONANT_THRESHOLD:
+            return 'resonant'
+        elif self.ORTHOGONAL_LOW < delta_theta < self.ORTHOGONAL_HIGH:
+            return 'orthogonal'
+        elif delta_theta > self.ANTIRESONANT_THRESHOLD:
+            return 'antiresonant'
+        else:
+            return 'mixed'
+
+    def bond_strength(self, w1: QuantumWord, w2: QuantumWord) -> float:
+        """
+        Compute bond strength combining resonance and energy.
+
+        Formula:
+            S = cos(Δθ) × exp(-|Δn|/kT)
+
+        Higher S = stronger bond (more likely to occur).
+
+        Returns:
+            Bond strength in range [-1, 1]
+        """
+        # Resonance component: cos(Δθ)
+        delta_theta = w1.theta - w2.theta
+        resonance = math.cos(delta_theta)
+
+        # Energy component: Boltzmann factor
+        delta_n = abs(w1.n - w2.n)
+        energy = math.exp(-delta_n / KT)
+
+        return resonance * energy
+
+    def can_combine(self, adj: str, noun: str) -> Dict:
+        """
+        Check if adjective-noun combination is valid.
+
+        Based on validated rules:
+            1. RESONANCE: Δθ < 30° preferred (1.8x)
+            2. ENERGY: |Δn| < 2 for 54.6% of bonds
+            3. ANTIRESONANCE: Δθ > 150° also valid (paradox)
+
+        Returns:
+            {
+                'valid': bool,
+                'bond_type': str,
+                'bond_strength': float,
+                'delta_theta_deg': float,
+                'delta_n': float,
+                'reason': str
+            }
+        """
+        qw_adj = self.hierarchy.adjectives.get(adj)
+        qw_noun = self.hierarchy.get_word(noun)
+
+        if not qw_adj:
+            return {'valid': False, 'reason': f"Unknown adjective: {adj}"}
+        if not qw_noun:
+            return {'valid': False, 'reason': f"Unknown noun: {noun}"}
+
+        delta_theta = qw_adj.theta - qw_noun.theta
+        delta_theta_normalized = delta_theta
+        while delta_theta_normalized > math.pi:
+            delta_theta_normalized -= 2 * math.pi
+        while delta_theta_normalized < -math.pi:
+            delta_theta_normalized += 2 * math.pi
+
+        delta_n = qw_adj.n - qw_noun.n
+        bond_t = self.bond_type(qw_adj, qw_noun)
+        strength = self.bond_strength(qw_adj, qw_noun)
+
+        result = {
+            'valid': True,
+            'bond_type': bond_t,
+            'bond_strength': strength,
+            'delta_theta_deg': math.degrees(delta_theta_normalized),
+            'delta_n': delta_n,
+        }
+
+        # Determine validity and reason
+        if bond_t == 'resonant':
+            result['reason'] = 'RESONANT: phase alignment amplifies meaning'
+        elif bond_t == 'antiresonant':
+            result['reason'] = 'ANTIRESONANT: paradox creates new meaning'
+        elif bond_t == 'orthogonal':
+            result['reason'] = 'ORTHOGONAL: independent combination'
+        else:
+            result['reason'] = 'MIXED: standard combination'
+
+        return result
+
+    def combine(self, adj: str, noun: str) -> Dict:
+        """
+        Combine adjective + noun and compute resulting semantic position.
+
+        RESONANT (Δθ ≈ 0):      усиление - amplify in same direction
+        ORTHOGONAL (Δθ ≈ 90):   combination - vector addition
+        ANTIRESONANT (Δθ ≈ 180): парадокс - synthesis required
+
+        Returns:
+            {
+                'phrase': str,
+                'bond_type': str,
+                'result_theta': float,
+                'result_r': float,
+                'result_n': float,
+                'effect': str
+            }
+        """
+        info = self.can_combine(adj, noun)
+        if not info['valid']:
+            return {'phrase': f"{adj} {noun}", 'error': info['reason']}
+
+        qw_adj = self.hierarchy.adjectives.get(adj)
+        qw_noun = self.hierarchy.get_word(noun)
+
+        bond_t = info['bond_type']
+
+        if bond_t == 'resonant':
+            # RESONANT: amplify in noun's direction, increase r
+            result_theta = qw_noun.theta
+            result_r = qw_noun.r + 0.5 * qw_adj.r  # Amplification
+            effect = 'AMPLIFICATION: meaning intensified'
+
+        elif bond_t == 'antiresonant':
+            # ANTIRESONANT: paradox - average creates new meaning
+            result_theta = (qw_adj.theta + qw_noun.theta) / 2
+            result_r = math.sqrt(qw_adj.r * qw_noun.r)  # Geometric mean
+            effect = 'PARADOX: new meaning synthesized'
+
+        elif bond_t == 'orthogonal':
+            # ORTHOGONAL: vector addition
+            A1, S1 = qw_adj.A, qw_adj.S
+            A2, S2 = qw_noun.A, qw_noun.S
+            A_sum = A1 + A2
+            S_sum = S1 + S2
+            result_theta = math.atan2(S_sum, A_sum)
+            result_r = math.sqrt(A_sum**2 + S_sum**2)
+            effect = 'COMBINATION: independent meanings merged'
+
+        else:  # mixed
+            # Weighted average
+            w1, w2 = qw_adj.r, qw_noun.r
+            total = w1 + w2
+            result_theta = (w1 * qw_adj.theta + w2 * qw_noun.theta) / total
+            result_r = (qw_adj.r + qw_noun.r) / 2
+            effect = 'BLEND: weighted combination'
+
+        # n is inherited from noun (noun determines abstraction level)
+        result_n = qw_noun.n
+
+        return {
+            'phrase': f"{adj} {noun}",
+            'bond_type': bond_t,
+            'result_theta_deg': math.degrees(result_theta),
+            'result_r': result_r,
+            'result_n': result_n,
+            'effect': effect,
+            'bond_strength': info['bond_strength']
+        }
+
+    def combine_nouns(self, n1: str, n2: str) -> Dict:
+        """
+        Combine noun + noun (compound noun).
+
+        Uses TWO analyses:
+        1. DERIVED (usage): How often these words appear together
+           → Determines syntactic compatibility
+        2. RAW (semantic): Weierstrass singularity metric
+           → Determines semantic relationship
+
+        Combination types:
+        - RESONANT + SINGULARITY:    "life death" - same thing, amplify
+        - RESONANT + TRUE_OPPOSITES: "love hate" - tension compound
+        - ORTHOGONAL + any:          novel compound (independent parts)
+        - ANTIRESONANT + any:        paradox compound
+
+        Returns:
+            {
+                'compound': str,
+                'usage_bond': str,      # resonant/orthogonal/antiresonant
+                'semantic_type': str,   # singularity/transitional/true_opposites
+                'delta_theta_usage': float,
+                'singularity_metric': float,
+                'effect': str,
+                'result_theta': float,
+                'result_r': float,
+                'result_n': float
+            }
+        """
+        qw1 = self.hierarchy.get_word(n1)
+        qw2 = self.hierarchy.get_word(n2)
+
+        if not qw1:
+            return {'compound': f"{n1} {n2}", 'error': f"Unknown: {n1}"}
+        if not qw2:
+            return {'compound': f"{n1} {n2}", 'error': f"Unknown: {n2}"}
+
+        # DERIVED analysis (usage patterns)
+        delta_theta_usage = qw1.theta - qw2.theta
+        while delta_theta_usage > math.pi:
+            delta_theta_usage -= 2 * math.pi
+        while delta_theta_usage < -math.pi:
+            delta_theta_usage += 2 * math.pi
+
+        delta_theta_abs = abs(delta_theta_usage)
+        if delta_theta_abs < self.RESONANT_THRESHOLD:
+            usage_bond = 'resonant'
+        elif self.ORTHOGONAL_LOW < delta_theta_abs < self.ORTHOGONAL_HIGH:
+            usage_bond = 'orthogonal'
+        elif delta_theta_abs > self.ANTIRESONANT_THRESHOLD:
+            usage_bond = 'antiresonant'
+        else:
+            usage_bond = 'mixed'
+
+        # RAW analysis (semantic relationship via Weierstrass)
+        delta_theta_raw = qw1.theta_raw - qw2.theta_raw
+        singularity_metric = math.tan(delta_theta_raw / 2)
+
+        if abs(singularity_metric) < 0.5:
+            semantic_type = 'singularity'
+        elif abs(singularity_metric) > 1.5:
+            semantic_type = 'true_opposites'
+        else:
+            semantic_type = 'transitional'
+
+        # Determine effect and compute result
+        if semantic_type == 'singularity':
+            if usage_bond == 'resonant':
+                effect = 'UNIFIED: same essence, maximum reinforcement'
+                # Average position, increased magnitude
+                result_theta = (qw1.theta + qw2.theta) / 2
+                result_r = qw1.r + qw2.r
+            else:
+                effect = 'FACETED: same essence, different perspectives'
+                result_theta = (qw1.theta + qw2.theta) / 2
+                result_r = max(qw1.r, qw2.r)
+
+        elif semantic_type == 'true_opposites':
+            if usage_bond == 'resonant':
+                effect = 'TENSION: opposites frequently paired, dialectic potential'
+                # Midpoint with reduced magnitude (tension)
+                result_theta = (qw1.theta + qw2.theta) / 2
+                result_r = abs(qw1.r - qw2.r)
+            elif usage_bond == 'antiresonant':
+                effect = 'PARADOX MAXIMUM: usage and meaning both oppose'
+                result_theta = (qw1.theta_raw + qw2.theta_raw) / 2
+                result_r = math.sqrt(qw1.r * qw2.r)
+            else:
+                effect = 'CONTRAST: opposites in independent combination'
+                A_sum = qw1.A + qw2.A
+                S_sum = qw1.S + qw2.S
+                result_theta = math.atan2(S_sum, A_sum)
+                result_r = math.sqrt(A_sum**2 + S_sum**2)
+
+        else:  # transitional
+            effect = 'BLEND: partial overlap, standard compound'
+            w1, w2 = qw1.r, qw2.r
+            total = w1 + w2
+            result_theta = (w1 * qw1.theta + w2 * qw2.theta) / total
+            result_r = (qw1.r + qw2.r) / 2
+
+        # n inherited from first noun (head of compound)
+        result_n = qw1.n
+
+        # Bond strength (usage-based)
+        delta_n = abs(qw1.n - qw2.n)
+        strength = math.cos(delta_theta_usage) * math.exp(-delta_n / KT)
+
+        return {
+            'compound': f"{n1} {n2}",
+            'usage_bond': usage_bond,
+            'semantic_type': semantic_type,
+            'delta_theta_usage_deg': math.degrees(delta_theta_usage),
+            'singularity_metric': singularity_metric,
+            'strength': strength,
+            'effect': effect,
+            'result_theta_deg': math.degrees(result_theta),
+            'result_r': result_r,
+            'result_n': result_n
+        }
+
+    def dialectic(self, thesis: str, antithesis: str) -> Dict:
+        """
+        Dialectical engine for semantic movement.
+
+        TRUE OPPOSITES (|S| > 1.5):
+            thesis + antithesis → synthesis
+            Hegelian movement: find concept that transcends both
+
+        SINGULARITIES (|S| < 0.5):
+            No synthesis possible - they're the same thing.
+            Instead: UNFOLD the common essence, reveal unity.
+
+        TRANSITIONAL (0.5 < |S| < 1.5):
+            Partial synthesis possible.
+
+        Returns:
+            {
+                'thesis': str,
+                'antithesis': str,
+                'classification': str,
+                'metric': float,
+                'operation': str,  # 'synthesis' | 'unfold' | 'partial'
+                'result': list of candidate words
+            }
+        """
+        classification, metric = self.classify_pair(thesis, antithesis)
+
+        qw1 = self.hierarchy.get_word(thesis)
+        qw2 = self.hierarchy.get_word(antithesis)
+
+        if not qw1 or not qw2:
+            return {
+                'thesis': thesis,
+                'antithesis': antithesis,
+                'classification': 'unknown',
+                'metric': float('nan'),
+                'operation': 'none',
+                'result': []
+            }
+
+        result = {
+            'thesis': thesis,
+            'antithesis': antithesis,
+            'classification': classification,
+            'metric': metric,
+        }
+
+        if classification == 'true_opposites':
+            # SYNTHESIS: find concept at midpoint that transcends both
+            result['operation'] = 'synthesis'
+            mid_theta = (qw1.theta_raw + qw2.theta_raw) / 2
+            mid_r = (qw1.r_raw + qw2.r_raw) / 2
+            mid_n = (qw1.n + qw2.n) / 2
+
+            # Find words near the synthesis point
+            candidates = []
+            for word, qw in self.hierarchy.nouns.items():
+                if word in (thesis, antithesis):
+                    continue
+                # Distance to midpoint
+                d_theta = abs(qw.theta_raw - mid_theta)
+                if d_theta > math.pi:
+                    d_theta = 2 * math.pi - d_theta
+                d_r = abs(qw.r_raw - mid_r)
+                d_n = abs(qw.n - mid_n)
+                dist = d_theta + 0.3 * d_r + 0.5 * d_n
+                candidates.append((word, dist))
+
+            candidates.sort(key=lambda x: x[1])
+            result['result'] = [w for w, _ in candidates[:10]]
+
+        elif classification == 'singularity':
+            # UNFOLD: reveal the common essence
+            result['operation'] = 'unfold'
+            # Find words that are singularities with BOTH thesis and antithesis
+            common_theta = (qw1.theta_raw + qw2.theta_raw) / 2
+            common_n = (qw1.n + qw2.n) / 2
+
+            candidates = []
+            for word, qw in self.hierarchy.nouns.items():
+                if word in (thesis, antithesis):
+                    continue
+                # Check if singularity with both
+                m1 = abs(math.tan((qw.theta_raw - qw1.theta_raw) / 2))
+                m2 = abs(math.tan((qw.theta_raw - qw2.theta_raw) / 2))
+                if m1 < 0.5 and m2 < 0.5:
+                    # Also similar orbital
+                    if abs(qw.n - common_n) < 1.0:
+                        avg_metric = (m1 + m2) / 2
+                        candidates.append((word, avg_metric))
+
+            candidates.sort(key=lambda x: x[1])
+            result['result'] = [w for w, _ in candidates[:10]]
+
+        else:  # transitional
+            # PARTIAL SYNTHESIS: weighted midpoint
+            result['operation'] = 'partial_synthesis'
+            weight = 1.0 - (abs(metric) - 0.5)  # Higher weight = closer to singularity
+            mid_theta = (qw1.theta_raw + qw2.theta_raw) / 2
+            mid_n = (qw1.n + qw2.n) / 2
+
+            candidates = []
+            for word, qw in self.hierarchy.nouns.items():
+                if word in (thesis, antithesis):
+                    continue
+                d_theta = abs(qw.theta_raw - mid_theta)
+                if d_theta > math.pi:
+                    d_theta = 2 * math.pi - d_theta
+                d_n = abs(qw.n - mid_n)
+                dist = d_theta + 0.5 * d_n
+                candidates.append((word, dist))
+
+            candidates.sort(key=lambda x: x[1])
+            result['result'] = [w for w, _ in candidates[:10]]
+
+        return result
 
     def path_coherence(self, words: List[str], use_raw: bool = False) -> Tuple[float, List[float]]:
         """
