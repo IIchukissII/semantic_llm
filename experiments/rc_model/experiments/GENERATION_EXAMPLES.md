@@ -1,0 +1,102 @@
+# Semantic Generation Examples
+
+Generated: 2026-01-05T21:06:53.079816
+Model: mistral:7b
+Vocabulary: 12,791 bonds
+
+## DRAMATIC
+
+### Seed 42
+
+**Skeleton:** `least bit, unheard of, full refund, last minute, warm night, many minute...`
+
+**Output:**
+
+> On a warm, still night, the least bit chilled by an eerie breeze, the train pulled into its station. The passengers disembarked, unaware of the unheard-of terror that awaited them in their final destination. A gentleman, seeking a good minute's peace from the bustling journey, found himself alone at the platform's edge, gazing at the ominous mansion looming ahead. As the first minute ticked by, a sense of foreboding crept upon him, a premonition that his request for a full refund would soon become an impossible endeavor. Yet, in the last minute before the coachman arrived to escort them, he hesitated—a decision that would haunt him for many minutes to come.
+
+---
+
+### Seed 123
+
+**Skeleton:** `unheard of, equal share, more minute, half minute, good guess, such luck...`
+
+**Output:**
+
+> Upon the unlit cusp of twilight's fading embrace, a chilling wind whispered through the desolate abbey, its stones wept with age and sorrow. Within the shadowy sanctum, six figures sat huddled around a flickering fire, their faces pale as death's own visage. A scribe, by good guess or such luck, had unearthed an ancient parchment detailing their equal share in a dreadful inheritance - the mansion on the moor, long abandoned and unheard of. The clock struck midnight, the wind howled, as if mocking their hard luck. As morning broke, the first rays pierced the darkness, illuminating an eerie spectacle: a minuscule handprint, etched into the stone hearth - a grim reminder that the next morning would be no ordinary day.
+
+---
+
+### Seed 456
+
+**Skeleton:** `few bit, very minute, close proximity, few minute, good deal, good deal...`
+
+**Output:**
+
+> Amidst the cloak of eternal night, where shadows whisper their dark secrets, our paths intertwined like twisted ivy on a crumbling tombstone. A mere bit of moonlight crept through, illuminating your countenance, a specter in the good deal of darkness that surrounded us. The minute passing felt an eternity, as if time itself feared to tread near our close proximity. In the few minutes we shared, I saw in you a worthy friend, one who bore the weight of secrets that could have shattered lesser souls. Yet, there was a resilience, a defiance that echoed within your eyes, a beacon of light amidst the gloom. The darkness seemed to recoil at our union, a testament to the power we held, bound together by fate in this very minute.
+
+---
+
+## IRONIC
+
+### Seed 42
+
+**Skeleton:** `least bit, unheard of, full refund, last minute, cold night, several minute...`
+
+**Output:**
+
+> On a chilling night, shrouded in an eerie stillness, a weary man found himself ensnared within the labyrinthine halls of an obscure bureaucratic edifice. The clock ticked past the first minute, each tick amplifying his mounting unease. He had arrived for a 'last-minute' refund, but the clerk seemed unfazed, engrossed in a task that appeared unheard of in the least bit. Minutes crawled into several, and he waited, shivering, as the cold seeped into his bones. Time stretched interminably, each half-minute feeling like an eternity, until finally, the clerk looked up, revealing a cryptic smile that sent a shiver down the man's spine. "Your refund is being processed," he intoned ominously, casting a shadow of uncertainty over the man's hopes for resolution.
+
+---
+
+### Seed 123
+
+**Skeleton:** `unheard of, equal share, more minute, half minute, close proximity, own share...`
+
+**Output:**
+
+> On a dark night, beneath an endless sky of stars, a man stood before the imposing edifice of the Unheard Office. The building loomed over him, its cold concrete walls whispering tales of bureaucratic intricacies. He had been summoned, and with equal shares of dread and anticipation, he entered. Inside, the air was thick and heavy, a testament to countless hours spent poring over paperwork. As he approached his desk in close proximity to hundreds of others, a clock chimed a half-minute past the hour. The clock's echo filled him with a strange sense of urgency, for time here seemed to move at a more minute pace. He knew he had to claim his own share, the last bit that would tip the scales in his favor, but as he reached out, his hand paused, frozen by an unseen force. The darkness closed in around him, swallowing the sounds of hundreds working and whispering secrets known only to the Unheard Office.
+
+---
+
+### Seed 456
+
+**Skeleton:** `few bit, very minute, close proximity, few minute, early riser, new recruit...`
+
+**Output:**
+
+> In the heart of a sprawling bureaucracy, nestled within the labyrinthine corridors, an unassuming new recruit found his desk - a mere bit of cold metal in the vast expanse. His alarm clock, a mechanical tick-tock echoing through the mundane silence, signaled the first pause of the day. A minute hand crept closer to nine, a distant, ominous bell tolled. The early riser stared out the window, the world a great distance away. From the other side of the glass, foggy with condensation and time, loomed the towering edifices of a city he had yet to explore. He felt a creeping dread, not quite rational, yet as real as the minute hand now pointing due north, inching closer to the hour of duty.
+
+---
+
+## BALANCED
+
+### Seed 42
+
+**Skeleton:** `least bit, unheard of, unheard of, close proximity, first minute, unheard of...`
+
+**Output:**
+
+> In the least bit anticipated, a peculiar phenomenon emerged within the confines of our small village, an occurrence unheard of in many minutes past. A certain Mr. Darcy, an enigmatic figure from afar, arrived in the first minute of a chilly morning, settling himself in close proximity to the local library. The townsfolk were perplexed, for such an event was unheard of in their humble settlement. Yet, as days passed and Mr. Darcy displayed a peculiar fondness for the dusty tomes, the villagers began to accept his presence, finding solace in the unexpected harmony that unfolded in the many minutes thereafter.
+
+---
+
+### Seed 123
+
+**Skeleton:** `unheard of, tiny bit, half second, good bit, close proximity, few second...`
+
+**Output:**
+
+> In an unheard-of twist, our lives intertwined so intricately within a fraction of a half second, as if orchestrated by some divine, unseen hand. We found ourselves in close proximity, a circumstance initially unwelcomed yet undeniably intriguing. A few seconds elapsed, a wee bit of distance separating us, but it was enough to ignite sparks that danced in the broad daylight. In this brief encounter, a good bit of mutual understanding unfolded, leaving an indelible mark on our souls, a testament to the power of chance and the unspoken connections that bind us all.
+
+---
+
+### Seed 456
+
+**Skeleton:** `few bit, more minute, close proximity, few second, broad daylight, good bit...`
+
+**Output:**
+
+> In the broad daylight of a tranquil afternoon, within close proximity of the ancient library, a curious occurrence unfolded. A fellow scholar, engrossed in his studies, absentmindedly nibbled on a morsel from his lunch, oblivious to the impending event. Suddenly, a good bit of commotion ensued, as if time itself had contracted into mere seconds. Whispers turned to murmurs, and murmurs to exclamations; the library's hushed serenity was shattered. Yet, in the last minute before chaos engulfed the scholar, he remained resolute, unperturbed by the mounting ado around him.
+
+---
+
