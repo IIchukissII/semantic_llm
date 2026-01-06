@@ -1,0 +1,82 @@
+{
+  "timestamp": "2026-01-06T20:10:35.474945",
+  "patient_type": "mixed",
+  "n_turns": 6,
+  "physics_based": true,
+  "conversation": [
+    {
+      "turn": 1,
+      "patient": "*settles into the chair with a slight smirk* \n\nWell, here we are again - me paying someone to listen to my problems when I could probably just get a dog for cheaper. *pauses, the humor fading slightly* Though I suppose dogs don't usually ask the uncomfortable questions, do they?",
+      "therapist": "The irony in your comment is that you perceive therapy as an expense, yet acknowledge its value by comparing it to a pet. You also hint at discomfort with the process and perhaps resistance towards introspection.",
+      "state": {
+        "A": 0.1528446591490901,
+        "S": 0.0732134413218441,
+        "tau": 1.1109246710800147,
+        "irony": 0.25
+      },
+      "defenses": []
+    },
+    {
+      "turn": 2,
+      "patient": "*shifts uncomfortably and lets out a short laugh*\n\nWow, we're really cutting straight to the chase today, aren't we? *runs hand through hair* I mean, yes, very astute observation about my \"resistance\" - though I'd argue that paying for emotional labor is just the honest version of what most relationships already are. *voice quiets slightly* Maybe the uncomfortable questions are exactly what I'm here for, even if I don't particularly enjoy them.",
+      "therapist": "\"You seem to be addressing the idea of emotional labor and its role in relationships.\"",
+      "state": {
+        "A": 0.18972162788265762,
+        "S": -0.03341799090208633,
+        "tau": 1.68414034902025,
+        "irony": 0.0
+      },
+      "defenses": []
+    },
+    {
+      "turn": 3,
+      "patient": "*leans back and crosses arms, then uncrosses them quickly*\n\nRight, because God forbid we just... give and receive freely without keeping some kind of ledger. *voice becomes more measured, almost clinical* I suppose I've learned to view emotional connection through a transactional lens - you invest, you expect returns, you calculate risks. *pauses, looking away* But that's exhausting, isn't it? Always wondering if someone actually cares or if they're just... performing their role.",
+      "therapist": "You see: performance and expectation in emotional connection.",
+      "state": {
+        "A": 0.06872871109009214,
+        "S": -0.025409963571692673,
+        "tau": 2.267149951787388,
+        "irony": 0.15
+      },
+      "defenses": []
+    },
+    {
+      "turn": 4,
+      "patient": "*eyes flash with something raw for a moment before the mask slips back on*\n\nPerformance, expectation... *laughs bitterly* You make it sound so theatrical. Though I guess that's exactly what it feels like sometimes - like I'm always auditioning for the part of \"person worth caring about.\" *voice drops, more vulnerable* And the worst part is, I'm not even sure what the authentic version looks like anymore underneath all the... *gestures vaguely* ...whatever this is.",
+      "therapist": "The authenticity you seek may be hidden beneath layers of performance and expectation.",
+      "state": {
+        "A": 0.17020970804789617,
+        "S": -0.0699944584924388,
+        "tau": 1.0738523180767674,
+        "irony": 0.15
+      },
+      "defenses": []
+    },
+    {
+      "turn": 5,
+      "patient": "*stares at the floor for a long moment, then looks up with a mix of frustration and something almost desperate*\n\nHidden... right. *voice wavers slightly* Like archaeological dig through decades of bullshit, is that it? *pauses, then more quietly* Sometimes I catch glimpses of... I don't know, something that feels real. Usually when I'm alone, or when I think no one's watching. *bitter smile* But the moment someone else is there, it's like I automatically switch into whatever version I think they need to see.",
+      "therapist": "\"The authentic self, glimpsed occasionally.\"",
+      "state": {
+        "A": 0.22239894370896718,
+        "S": -0.013040959598591762,
+        "tau": 1.327242967625034,
+        "irony": 0.15
+      },
+      "defenses": []
+    },
+    {
+      "turn": 6,
+      "patient": "*nods slowly, something vulnerable flickering across face*\n\nYeah... like catching your reflection unexpectedly and for just a second not recognizing the person staring back. *voice becomes quieter, more tentative* Those moments when I'm not trying to be anything - just... existing. *looks directly at therapist for the first time* But they're so fleeting, and I'm terrified that if I actually let someone see that version, they'll find it... insufficient. *swallows hard* What if the real me is just... less?",
+      "therapist": "The real you.",
+      "state": {
+        "A": 0.26963869340576313,
+        "S": -0.06628415546046817,
+        "tau": 1.2590879807511928,
+        "irony": 0.4
+      },
+      "defenses": [
+        "irony_as_distance"
+      ]
+    }
+  ]
+}

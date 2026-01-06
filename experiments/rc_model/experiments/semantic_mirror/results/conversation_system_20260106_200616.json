@@ -1,0 +1,82 @@
+{
+  "timestamp": "2026-01-06T20:06:16.338470",
+  "patient_type": "mixed",
+  "n_turns": 6,
+  "system_guided": true,
+  "conversation": [
+    {
+      "turn": 1,
+      "patient": "*settles into the chair with a slight smirk* \n\nWell, here we are again - me paying someone to listen to my problems when I could just as easily complain to my houseplants for free. *pauses, the humor fading slightly* Though I suppose they're not quite as good at the whole \"professional insight\" thing, are they?",
+      "therapist": "\"You seem to be questioning the value of being here, and there's a hint of irony in your words. You mentioned your houseplants as an alternative, suggesting you feel they might not be as bad at listening as this session.\"",
+      "state": {
+        "A": 0.22308400101066317,
+        "S": 0.05772733381853994,
+        "tau": 1.572761248910702,
+        "irony": 0.25
+      },
+      "defenses": []
+    },
+    {
+      "turn": 2,
+      "patient": "*shifts slightly, a flicker of something more genuine crossing my face before the defensive wall goes back up*\n\nOh, you caught that did you? *laughs dryly* I suppose that's what I'm paying for - someone who actually notices the subtext. *voice softens just a fraction* It's just... sometimes it feels easier to talk to things that can't talk back, you know? Less chance of... I don't know, judgment or having to actually *do* something about what comes up.",
+      "therapist": "\"You seem more open now, but then quickly return to a defensive state. You mentioned talking to things that can't talk back, suggesting some discomfort with conversation. Is there a fear or hesitation in discussing certain topics?\"",
+      "state": {
+        "A": 0.04259414445823871,
+        "S": 0.024897232599933768,
+        "tau": 1.3264163745561321,
+        "irony": 0.15
+      },
+      "defenses": []
+    },
+    {
+      "turn": 3,
+      "patient": "*runs hand through hair, looking away for a moment*\n\nFear? *scoffs, but it sounds hollow* That's a strong word, don't you think? *pause, voice becoming quieter* I mean... maybe it's not fear exactly, but more like... *struggles with words* when you open a door, you can't always control what walks through it, can you? \n\n*looks back with a wry smile that doesn't reach the eyes* And some of us have gotten quite comfortable keeping certain doors locked.",
+      "therapist": "\"You mentioned something about opening doors and not being able to control what comes through. It sounds like there might be an uncertainty or anxiety about change.\"",
+      "state": {
+        "A": 0.13118006595111534,
+        "S": -0.017314959940474973,
+        "tau": 1.3892973203558883,
+        "irony": 0.15
+      },
+      "defenses": []
+    },
+    {
+      "turn": 4,
+      "patient": "*leans back, eyes narrowing slightly with a mix of recognition and discomfort*\n\nChange... *lets out a bitter laugh* You therapists really do have a way of cutting right to it, don't you? *fidgets with hands* I suppose the irony is that I'm here because I want something to be different, but the idea of actually... *trails off, vulnerability creeping in* \n\n*voice becomes almost a whisper* What if what's behind those doors is worse than what I'm living with now? At least I know how to navigate this particular brand of misery.",
+      "therapist": "\"You seem to be acknowledging the irony of seeking change, yet fearing the unknown. Have you ever considered exploring the fears behind those doors?\"",
+      "state": {
+        "A": 0.10212683223184844,
+        "S": -0.005076083744590044,
+        "tau": 1.4404325985470907,
+        "irony": 0.15
+      },
+      "defenses": []
+    },
+    {
+      "turn": 5,
+      "patient": "*tenses up visibly, then lets out a sharp exhale*\n\nExploring them? *voice gets analytical, almost clinical* Well, from a purely psychological standpoint, avoidance behaviors often stem from early adaptive mechanisms designed to protect the ego from perceived threats... *catches myself and stops abruptly*\n\n*drops the intellectual facade, voice becoming raw* God, listen to me. I can't even talk about being scared without turning it into a fucking dissertation. *looks directly at therapist for the first time* Maybe that's the real fear - that underneath all this clever deflection, there's just... nothing worth finding.",
+      "therapist": "\"You seem to be avoiding something when you talk about fear. What lies beneath your analytical approach?\"",
+      "state": {
+        "A": 0.17519747067287347,
+        "S": -0.04147951545175511,
+        "tau": 1.1605647948028421,
+        "irony": 0.15
+      },
+      "defenses": []
+    },
+    {
+      "turn": 6,
+      "patient": "*face crumples slightly, then hardens again like a reflex*\n\nYou want to know what's underneath? *voice shakes slightly* It's this... this terrible suspicion that I've spent so long analyzing everything, dissecting every feeling until it's just... pieces on a table, that I've forgotten how to actually *feel* anything real. \n\n*grips the chair arms* Like maybe all this intellectualizing isn't protecting me from pain - maybe it's protecting me from discovering that I'm already empty. *voice drops to almost a whisper* What if there's nothing authentic left to save?",
+      "therapist": "\"You seem to be experiencing a sense of emptiness, a fear perhaps that your intellectualizing has led to a disconnection from genuine feelings. Let's explore this feeling of emptiness together.\"",
+      "state": {
+        "A": 0.10941522935344597,
+        "S": -0.014852385391639628,
+        "tau": 1.9177984651315432,
+        "irony": 0.4
+      },
+      "defenses": [
+        "irony_as_distance"
+      ]
+    }
+  ]
+}

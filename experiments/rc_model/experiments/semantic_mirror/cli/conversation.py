@@ -75,19 +75,25 @@ def run_conversation(patient_type: str = 'mixed', n_turns: int = 8):
         print(f"\n[Turn {turn + 1}]")
         print(f"Patient: {patient_text}")
 
-        # 2. Get semantic analysis
-        state = therapist.mirror.observe(patient_text)
+        # 2. Mistral generates therapist response (computes receptivity inside)
+        therapist_text = therapist.respond(patient_text)
+
+        # 3. Get semantic analysis (already computed in respond)
+        state = therapist.mirror.trajectory.current
         diagnosis = therapist.mirror.diagnose()
 
+        # Show physics parameters
+        receptivity = therapist._current_receptivity
+        tokens = therapist._current_response_length
+
         print(f"  [A={state.A:+.2f}, S={state.S:+.2f}, τ={state.tau:.1f}]", end="")
+        print(f" recv:{receptivity:.0%} tok:{tokens}", end="")
         if state.irony > 0.2:
             print(f" irony:{state.irony:.0%}", end="")
         if diagnosis['defenses']:
             print(f" [{', '.join(diagnosis['defenses'])}]", end="")
         print()
 
-        # 3. Mistral generates therapist response
-        therapist_text = therapist.respond(patient_text)
         print(f"Therapist: {therapist_text}")
 
         # 4. Update Claude's context

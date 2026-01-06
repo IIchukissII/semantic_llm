@@ -1,0 +1,82 @@
+{
+  "timestamp": "2026-01-06T20:15:03.205401",
+  "patient_type": "mixed",
+  "n_turns": 6,
+  "receptivity_based": true,
+  "conversation": [
+    {
+      "turn": 1,
+      "patient": "*settles into the chair with a slight smirk* \n\nWell, here we are again in this cozy little confession booth. I suppose you're waiting for me to dive into the depths of my psyche, but honestly, I'm not even sure what I'm looking for anymore... *pauses, the smirk fading slightly* ...or maybe that's exactly the problem.",
+      "therapist": "\"You're here, uncertain and questioning. Seems like you're searching for something, but not quite sure what.\"",
+      "state": {
+        "A": 0.16214589135523785,
+        "S": 0.013727459618041159,
+        "tau": 0.9384684745383708,
+        "irony": 0.15
+      },
+      "defenses": []
+    },
+    {
+      "turn": 2,
+      "patient": "*laughs dryly* \n\nOh, very perceptive - I literally just said that, didn't I? *shifts in chair, then looks down* But you're right, I guess... it's like being hungry but not knowing what you want to eat, except the hunger is this constant ache and the kitchen is my entire life. *voice gets quieter* Sometimes I wonder if I'm searching for something that doesn't even exist.",
+      "therapist": "\"Are you seeking a specific change or feeling unsure about what to pursue?\"",
+      "state": {
+        "A": 0.15588356131800696,
+        "S": -0.004473669213405553,
+        "tau": 1.2232089605790006,
+        "irony": 0.15
+      },
+      "defenses": []
+    },
+    {
+      "turn": 3,
+      "patient": "*runs hand through hair, looking slightly annoyed*\n\nGod, you therapists and your questions about questions... *pauses, then voice softens unexpectedly* I keep thinking if I could just fix this one thing, or figure out that one missing piece, everything would click into place. *stares at a spot on the wall* But maybe that's just another way of avoiding the fact that I'm terrified there's nothing actually wrong with me - that this emptiness is just... who I am.",
+      "therapist": "\"You're searching for answers but fear they don't exist.\"",
+      "state": {
+        "A": 0.2602437811022572,
+        "S": -0.009384936200393127,
+        "tau": 1.4189617369778607,
+        "irony": 0.15
+      },
+      "defenses": []
+    },
+    {
+      "turn": 4,
+      "patient": "*lets out a bitter laugh*\n\nWow, you really know how to cut to the chase, don't you? *voice wavers slightly* It's like... I've built this whole elaborate mystery around myself, complete with clues and red herrings, because the alternative - that I'm just fundamentally broken or worse, completely ordinary - is too pathetic to face. *looks directly at therapist for the first time* What if I spend years digging and there's just... nothing there worth finding?",
+      "therapist": "Your intricate layers and hidden clues are quite evident.",
+      "state": {
+        "A": 0.16482370726894807,
+        "S": -0.02822612893332225,
+        "tau": 1.451855496705652,
+        "irony": 0.4
+      },
+      "defenses": [
+        "irony_as_distance"
+      ]
+    },
+    {
+      "turn": 5,
+      "patient": "*raises an eyebrow, half-smiling*\n\nOh, so now I'm some fascinating psychological puzzle for you to solve? *pauses, the defensiveness cracking* Though I suppose you're not wrong... I do love my little games, don't I? *voice becomes more vulnerable* Sometimes I think I create all these layers just so someone will care enough to peel them back, but then when they try, I add ten more. *laughs shakily* It's exhausting being this... complicated.",
+      "therapist": "\"You use humor and complexity as a shield. Beneath the layers hides vulnerability.\"",
+      "state": {
+        "A": 0.09952791352594549,
+        "S": -0.017845354363628177,
+        "tau": 1.319335388841361,
+        "irony": 0.15
+      },
+      "defenses": []
+    },
+    {
+      "turn": 6,
+      "patient": "*goes quiet for a moment, the usual smirk completely gone*\n\nStop... just stop doing that. *voice barely above a whisper* You make it sound so simple, like I just choose to put on this performance every day. *looks away, then back with sudden intensity* But what if the shield is all there is? What if you strip away all the clever words and the sarcasm and the... the elaborate emotional architecture, and there's just this terrified kid who never learned how to be real with anyone? *voice breaks slightly* I don't even know who I am without all the bullshit.",
+      "therapist": "What about the fear beneath the performance?",
+      "state": {
+        "A": 0.18516617456542864,
+        "S": -0.05900204270361341,
+        "tau": 1.0329946023916772,
+        "irony": 0.15
+      },
+      "defenses": []
+    }
+  ]
+}
