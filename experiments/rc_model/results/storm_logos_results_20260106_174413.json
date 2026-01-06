@@ -1,0 +1,1108 @@
+{
+  "metadata": {
+    "timestamp": "2026-01-06T17:43:10.979848",
+    "model": "mistral:7b",
+    "n_samples": 3,
+    "n_bonds": 499679,
+    "kT": 0.65
+  },
+  "samples": [
+    {
+      "genre": "dramatic",
+      "skeleton": [
+        [
+          "room entire",
+          "world vast",
+          "teen early",
+          "way efficient"
+        ],
+        [
+          "people southern",
+          "structure same",
+          "family needy",
+          "charge early"
+        ],
+        [
+          "feast delicious",
+          "thing same",
+          "clipping several",
+          "stage early"
+        ]
+      ],
+      "skeleton_details": [
+        [
+          {
+            "noun": "entire",
+            "adj": "room",
+            "tau": 3.6989700043360187,
+            "variety": 2249
+          },
+          {
+            "noun": "vast",
+            "adj": "world",
+            "tau": 3.6989700043360187,
+            "variety": 134
+          },
+          {
+            "noun": "early",
+            "adj": "teen",
+            "tau": 3.5228787452803374,
+            "variety": 470
+          },
+          {
+            "noun": "efficient",
+            "adj": "way",
+            "tau": 3.6989700043360187,
+            "variety": 512
+          }
+        ],
+        [
+          {
+            "noun": "southern",
+            "adj": "people",
+            "tau": 3.6989700043360187,
+            "variety": 45
+          },
+          {
+            "noun": "same",
+            "adj": "structure",
+            "tau": 3.403353309757589,
+            "variety": 200
+          },
+          {
+            "noun": "needy",
+            "adj": "family",
+            "tau": 3.6989700043360187,
+            "variety": 47
+          },
+          {
+            "noun": "early",
+            "adj": "charge",
+            "tau": 3.5228787452803374,
+            "variety": 17
+          }
+        ],
+        [
+          {
+            "noun": "delicious",
+            "adj": "feast",
+            "tau": 3.5228787452803374,
+            "variety": 28
+          },
+          {
+            "noun": "same",
+            "adj": "thing",
+            "tau": 3.403353309757589,
+            "variety": 45199
+          },
+          {
+            "noun": "several",
+            "adj": "clipping",
+            "tau": 3.3979400086720375,
+            "variety": 17
+          },
+          {
+            "noun": "early",
+            "adj": "stage",
+            "tau": 3.5228787452803374,
+            "variety": 2009
+          }
+        ]
+      ],
+      "prompt": "Write a short dramatic paragraph.\n\nStyle: Gothic/Dostoevsky style: high tension, emotional intensity, philosophical depth. Create atmosphere of dread and wonder.\n\nIncorporate these semantic concepts naturally:\nroom entire, world vast, teen early, way efficient, people southern, structure same, family needy, charge early, feast delicious, thing same, clipping several, stage early\n\nWrite 2-3 sentences that feel authentically dramatic:",
+      "output": "In the heart of a sprawling, antiquated Southern manor, an adolescent stood alone in the grand, echoing room. The vast world beyond seemed but a distant memory, its vibrant hues replaced by the somber tones of the colossal structure. As twilight approached, the first stars began to pierce the velvet sky, casting eerie shadows that danced upon the ancient walls. The young boy, despite his family's pressing needs, felt a strange, unshakable sense of purpose coursing through him. That very evening, he would host an extravagant feast, using his efficiency to create a delicious spread from the meager provisions. Yet, as he meticulously clipped several herbs and spices to prepare for the stage, a shiver ran down his spine, and he couldn't shake the feeling that the same fate that had befallen so many others might soon come calling for him.",
+      "model": "mistral:7b",
+      "metrics": {
+        "n_bonds": 12,
+        "n_sentences": 3,
+        "mean_coherence": 0.7591763381112574,
+        "tau_autocorr": 0.11362620692071518,
+        "genre_distance": 0.7235899766011209,
+        "vocabulary_diversity": 0.75,
+        "variety_mean": 4243.916666666667,
+        "variety_median": 167.0,
+        "tau_mean": 3.565917635915722,
+        "tau_std": 0.1214478117247158
+      },
+      "sample_id": 0
+    },
+    {
+      "genre": "dramatic",
+      "skeleton": [
+        [
+          "consumption conspicuous",
+          "software educational",
+          "sunshine early",
+          "set massive"
+        ],
+        [
+          "person same",
+          "gait confident",
+          "subject same",
+          "face pointed"
+        ],
+        [
+          "contentment true",
+          "squeeze quick",
+          "comfort true",
+          "glass minute"
+        ]
+      ],
+      "skeleton_details": [
+        [
+          {
+            "noun": "conspicuous",
+            "adj": "consumption",
+            "tau": 3.6989700043360187,
+            "variety": 111
+          },
+          {
+            "noun": "educational",
+            "adj": "software",
+            "tau": 3.6989700043360187,
+            "variety": 20
+          },
+          {
+            "noun": "early",
+            "adj": "sunshine",
+            "tau": 3.5228787452803374,
+            "variety": 75
+          },
+          {
+            "noun": "massive",
+            "adj": "set",
+            "tau": 3.3979400086720375,
+            "variety": 87
+          }
+        ],
+        [
+          {
+            "noun": "same",
+            "adj": "person",
+            "tau": 3.403353309757589,
+            "variety": 4437
+          },
+          {
+            "noun": "confident",
+            "adj": "gait",
+            "tau": 3.0969100130080567,
+            "variety": 41
+          },
+          {
+            "noun": "same",
+            "adj": "subject",
+            "tau": 3.403353309757589,
+            "variety": 338
+          },
+          {
+            "noun": "pointed",
+            "adj": "face",
+            "tau": 3.221848749616356,
+            "variety": 201
+          }
+        ],
+        [
+          {
+            "noun": "true",
+            "adj": "contentment",
+            "tau": 2.941443197560101,
+            "variety": 24
+          },
+          {
+            "noun": "quick",
+            "adj": "squeeze",
+            "tau": 3.0991636004932257,
+            "variety": 711
+          },
+          {
+            "noun": "true",
+            "adj": "comfort",
+            "tau": 2.941443197560101,
+            "variety": 29
+          },
+          {
+            "noun": "minute",
+            "adj": "glass",
+            "tau": 2.7338720374105026,
+            "variety": 15
+          }
+        ]
+      ],
+      "prompt": "Write a short dramatic paragraph.\n\nStyle: Gothic/Dostoevsky style: high tension, emotional intensity, philosophical depth. Create atmosphere of dread and wonder.\n\nIncorporate these semantic concepts naturally:\nconsumption conspicuous, software educational, sunshine early, set massive, person same, gait confident, subject same, face pointed, contentment true, squeeze quick, comfort true, glass minute\n\nWrite 2-3 sentences that feel authentically dramatic:",
+      "output": "In the eerie gloom of a once grandiose mansion, the sun's early rays struggled to pierce the thick veil of despair, casting elongated shadows that danced in a macabre waltz on the polished marble floor. A solitary figure, clad in an ostentatious suit, paced confidently through the now silent halls, his gait echoing off the massive stone walls like the rhythm of life itself fading away. The air was thick with the stench of decay, yet within his grasp lay a mysterious educational software, a beacon of hope amidst the suffocating gloom. As he sat down before an antique glass desk, the dim light reflecting off the polished surface, he gazed intently at the screen, the contentment on his face replaced by a sudden, inexplicable dread - as if the relentless ticking of time had begun to squeeze the very life out of him.",
+      "model": "mistral:7b",
+      "metrics": {
+        "n_bonds": 12,
+        "n_sentences": 3,
+        "mean_coherence": 0.6593163686608968,
+        "tau_autocorr": 0.7778372391419397,
+        "genre_distance": 0.5113101750419687,
+        "vocabulary_diversity": 0.8333333333333334,
+        "variety_mean": 507.4166666666667,
+        "variety_median": 81.0,
+        "tau_mean": 3.263345514815661,
+        "tau_std": 0.2955471984697305
+      },
+      "sample_id": 1
+    },
+    {
+      "genre": "dramatic",
+      "skeleton": [
+        [
+          "curtain pale",
+          "notebook second",
+          "chance stupid",
+          "length unknown"
+        ],
+        [
+          "bond good",
+          "courage good",
+          "tack good",
+          "procession little"
+        ],
+        [
+          "matter essential",
+          "journey end",
+          "dread terrible",
+          "premonition terrible"
+        ]
+      ],
+      "skeleton_details": [
+        [
+          {
+            "noun": "pale",
+            "adj": "curtain",
+            "tau": 2.0587555592149713,
+            "variety": 64
+          },
+          {
+            "noun": "second",
+            "adj": "notebook",
+            "tau": 2.455626833110889,
+            "variety": 14
+          },
+          {
+            "noun": "stupid",
+            "adj": "chance",
+            "tau": 2.4268200076505018,
+            "variety": 71
+          },
+          {
+            "noun": "unknown",
+            "adj": "length",
+            "tau": 1.575522975014512,
+            "variety": 36
+          }
+        ],
+        [
+          {
+            "noun": "good",
+            "adj": "bond",
+            "tau": 1.6012070279031603,
+            "variety": 32
+          },
+          {
+            "noun": "good",
+            "adj": "courage",
+            "tau": 1.6012070279031603,
+            "variety": 52
+          },
+          {
+            "noun": "good",
+            "adj": "tack",
+            "tau": 1.6012070279031603,
+            "variety": 22
+          },
+          {
+            "noun": "little",
+            "adj": "procession",
+            "tau": 1.936742826006056,
+            "variety": 181
+          }
+        ],
+        [
+          {
+            "noun": "essential",
+            "adj": "matter",
+            "tau": 1.9053554656521288,
+            "variety": 21
+          },
+          {
+            "noun": "end",
+            "adj": "journey",
+            "tau": 1.7517064190133498,
+            "variety": 19
+          },
+          {
+            "noun": "terrible",
+            "adj": "dread",
+            "tau": 2.097125044827057,
+            "variety": 64
+          },
+          {
+            "noun": "terrible",
+            "adj": "premonition",
+            "tau": 2.097125044827057,
+            "variety": 51
+          }
+        ]
+      ],
+      "prompt": "Write a short dramatic paragraph.\n\nStyle: Gothic/Dostoevsky style: high tension, emotional intensity, philosophical depth. Create atmosphere of dread and wonder.\n\nIncorporate these semantic concepts naturally:\ncurtain pale, notebook second, chance stupid, length unknown, bond good, courage good, tack good, procession little, matter essential, journey end, dread terrible, premonition terrible\n\nWrite 2-3 sentences that feel authentically dramatic:",
+      "output": "Beneath the pale, moonlit curtain of the desolate abbey, a monk hunched over his second notebook, his quill trembling with an unspoken fear. The chance encounter with the cryptic manuscript had led him on this journey of unknown length, binding him to the terrible premonition that the revelations within would shatter the very foundations of good and courage he had sworn to uphold. As the procession of darkness crept closer, he knew that the matter was essential not just for himself, but for all mankind, as he prepared to confront the end of his journey - a terrible dread gnawing at his heart.",
+      "model": "mistral:7b",
+      "metrics": {
+        "n_bonds": 12,
+        "n_sentences": 3,
+        "mean_coherence": 0.9238835419705851,
+        "tau_autocorr": 0.4581831471813394,
+        "genre_distance": 0.8803620928802776,
+        "vocabulary_diversity": 0.75,
+        "variety_mean": 52.25,
+        "variety_median": 43.5,
+        "tau_mean": 1.9257001049188334,
+        "tau_std": 0.2996861150022034
+      },
+      "sample_id": 2
+    },
+    {
+      "genre": "ironic",
+      "skeleton": [
+        [
+          "experience religious",
+          "demand persistent",
+          "addict homeless",
+          "ceo other"
+        ],
+        [
+          "address other",
+          "halo brilliant",
+          "comment second",
+          "light brilliant"
+        ],
+        [
+          "idea second",
+          "connection miss",
+          "shifter miss",
+          "vehicle hire"
+        ]
+      ],
+      "skeleton_details": [
+        [
+          {
+            "noun": "religious",
+            "adj": "experience",
+            "tau": 3.0,
+            "variety": 395
+          },
+          {
+            "noun": "persistent",
+            "adj": "demand",
+            "tau": 3.154901959985743,
+            "variety": 13
+          },
+          {
+            "noun": "homeless",
+            "adj": "addict",
+            "tau": 3.0,
+            "variety": 21
+          },
+          {
+            "noun": "other",
+            "adj": "ceo",
+            "tau": 2.813486535946125,
+            "variety": 15
+          }
+        ],
+        [
+          {
+            "noun": "other",
+            "adj": "address",
+            "tau": 2.813486535946125,
+            "variety": 78
+          },
+          {
+            "noun": "brilliant",
+            "adj": "halo",
+            "tau": 2.5750761278022694,
+            "variety": 11
+          },
+          {
+            "noun": "second",
+            "adj": "comment",
+            "tau": 2.455626833110889,
+            "variety": 20
+          },
+          {
+            "noun": "brilliant",
+            "adj": "light",
+            "tau": 2.5750761278022694,
+            "variety": 1467
+          }
+        ],
+        [
+          {
+            "noun": "second",
+            "adj": "idea",
+            "tau": 2.455626833110889,
+            "variety": 67
+          },
+          {
+            "noun": "miss",
+            "adj": "connection",
+            "tau": 2.088299855315498,
+            "variety": 51
+          },
+          {
+            "noun": "miss",
+            "adj": "shifter",
+            "tau": 2.088299855315498,
+            "variety": 11
+          },
+          {
+            "noun": "hire",
+            "adj": "vehicle",
+            "tau": 2.638151822914649,
+            "variety": 22
+          }
+        ]
+      ],
+      "prompt": "Write a short ironic paragraph.\n\nStyle: Kafka/Poe style: underlying tension in mundane setting. Horror or absurdity emerges from ordinary things. Keep concepts everyday, but inject unease.\n\nIncorporate these semantic concepts naturally:\nexperience religious, demand persistent, addict homeless, ceo other, address other, halo brilliant, comment second, light brilliant, idea second, connection miss, shifter miss, vehicle hire\n\nWrite 2-3 sentences that feel authentically ironic:",
+      "output": "In the heart of a bustling city, beneath the glaring neon signs and the ceaseless hum of traffic, an unassuming homeless man named Elijah found himself in an unusual predicament. Every day, he would sit at the crossroads, a halo of bright light shining around him like a celestial aura. Yet, amidst the endless stream of people walking by, not a single soul seemed to acknowledge his presence or demand explanation for this persistent phenomenon. The CEOs and other shifters of the city, who usually commanded attention with their brilliance and second-to-none ideas, were baffled by this enigmatic connection they continually missed. And so, Elijah found himself an unwitting vehicle in a mysterious spectacle, leaving the city's inhabitants to ponder whether he was a divine messenger or just another homeless man lost in the shuffle.",
+      "model": "mistral:7b",
+      "metrics": {
+        "n_bonds": 12,
+        "n_sentences": 3,
+        "mean_coherence": 0.7940407687794678,
+        "tau_autocorr": 0.7477126395252773,
+        "genre_distance": 0.6338678526628679,
+        "vocabulary_diversity": 0.6666666666666666,
+        "variety_mean": 180.91666666666666,
+        "variety_median": 21.5,
+        "tau_mean": 2.638169373937496,
+        "tau_std": 0.325274964857047
+      },
+      "sample_id": 0
+    },
+    {
+      "genre": "ironic",
+      "skeleton": [
+        [
+          "bouquet huge",
+          "branch overgrown",
+          "boot huge",
+          "chamber massive"
+        ],
+        [
+          "stability mental",
+          "whisper sly",
+          "idea bad",
+          "danger unnecessary"
+        ],
+        [
+          "talk new",
+          "thank second",
+          "speaker other",
+          "talent other"
+        ]
+      ],
+      "skeleton_details": [
+        [
+          {
+            "noun": "huge",
+            "adj": "bouquet",
+            "tau": 3.5228787452803374,
+            "variety": 242
+          },
+          {
+            "noun": "overgrown",
+            "adj": "branch",
+            "tau": 3.5228787452803374,
+            "variety": 20
+          },
+          {
+            "noun": "huge",
+            "adj": "boot",
+            "tau": 3.5228787452803374,
+            "variety": 93
+          },
+          {
+            "noun": "massive",
+            "adj": "chamber",
+            "tau": 3.3979400086720375,
+            "variety": 110
+          }
+        ],
+        [
+          {
+            "noun": "mental",
+            "adj": "stability",
+            "tau": 3.3010299956639813,
+            "variety": 147
+          },
+          {
+            "noun": "sly",
+            "adj": "whisper",
+            "tau": 3.3979400086720375,
+            "variety": 11
+          },
+          {
+            "noun": "bad",
+            "adj": "idea",
+            "tau": 3.0457574905606752,
+            "variety": 10684
+          },
+          {
+            "noun": "unnecessary",
+            "adj": "danger",
+            "tau": 3.0969100130080567,
+            "variety": 87
+          }
+        ],
+        [
+          {
+            "noun": "new",
+            "adj": "talk",
+            "tau": 3.0969100130080567,
+            "variety": 22
+          },
+          {
+            "noun": "second",
+            "adj": "thank",
+            "tau": 2.455626833110889,
+            "variety": 11
+          },
+          {
+            "noun": "other",
+            "adj": "speaker",
+            "tau": 2.813486535946125,
+            "variety": 120
+          },
+          {
+            "noun": "other",
+            "adj": "talent",
+            "tau": 2.813486535946125,
+            "variety": 377
+          }
+        ]
+      ],
+      "prompt": "Write a short ironic paragraph.\n\nStyle: Kafka/Poe style: underlying tension in mundane setting. Horror or absurdity emerges from ordinary things. Keep concepts everyday, but inject unease.\n\nIncorporate these semantic concepts naturally:\nbouquet huge, branch overgrown, boot huge, chamber massive, stability mental, whisper sly, idea bad, danger unnecessary, talk new, thank second, speaker other, talent other\n\nWrite 2-3 sentences that feel authentically ironic:",
+      "output": "In the quiet heart of suburban tranquility, a massive chamber within an overgrown branch, hidden among the verdant foliage of an ordinary backyard, echoed with the sly whispers of an otherworldly speaker. The second thank you note arrived, delivered by an unassuming postman, bearing an ominous bouquet, a testament to the other's unusual talent for conveying danger in the most unnecessary and unexpected ways. As the afternoon sun cast long shadows, the huge boot stood sentinel on the porch, silently watching over the unsuspecting homeowner, who continued his daily routine with an unnerving sense of mental stability - oblivious to the bad idea that had just been subtly planted in his mind.",
+      "model": "mistral:7b",
+      "metrics": {
+        "n_bonds": 12,
+        "n_sentences": 3,
+        "mean_coherence": 0.40637726925428264,
+        "tau_autocorr": 0.7148525545745098,
+        "genre_distance": 0.5168029761861743,
+        "vocabulary_diversity": 0.8333333333333334,
+        "variety_mean": 993.6666666666666,
+        "variety_median": 101.5,
+        "tau_mean": 3.1656436392024165,
+        "tau_std": 0.3272458125722571
+      },
+      "sample_id": 1
+    },
+    {
+      "genre": "ironic",
+      "skeleton": [
+        [
+          "intention faint",
+          "track other",
+          "jewel brilliant",
+          "plume faint"
+        ],
+        [
+          "medicine bad",
+          "dancing naked",
+          "tack opposite",
+          "strict confinement"
+        ],
+        [
+          "note threatening",
+          "look messy",
+          "spike messy",
+          "date second"
+        ]
+      ],
+      "skeleton_details": [
+        [
+          {
+            "noun": "faint",
+            "adj": "intention",
+            "tau": 2.8879246544266572,
+            "variety": 11
+          },
+          {
+            "noun": "other",
+            "adj": "track",
+            "tau": 2.813486535946125,
+            "variety": 228
+          },
+          {
+            "noun": "brilliant",
+            "adj": "jewel",
+            "tau": 2.5750761278022694,
+            "variety": 21
+          },
+          {
+            "noun": "faint",
+            "adj": "plume",
+            "tau": 2.8879246544266572,
+            "variety": 26
+          }
+        ],
+        [
+          {
+            "noun": "bad",
+            "adj": "medicine",
+            "tau": 3.0457574905606752,
+            "variety": 90
+          },
+          {
+            "noun": "naked",
+            "adj": "dancing",
+            "tau": 3.154901959985743,
+            "variety": 24
+          },
+          {
+            "noun": "opposite",
+            "adj": "tack",
+            "tau": 2.736062187717555,
+            "variety": 44
+          },
+          {
+            "noun": "confinement",
+            "adj": "strict",
+            "tau": 2.4699646980890595,
+            "variety": 12
+          }
+        ],
+        [
+          {
+            "noun": "threatening",
+            "adj": "note",
+            "tau": 2.8239087409443187,
+            "variety": 95
+          },
+          {
+            "noun": "messy",
+            "adj": "look",
+            "tau": 2.503465822727693,
+            "variety": 32
+          },
+          {
+            "noun": "messy",
+            "adj": "spike",
+            "tau": 2.503465822727693,
+            "variety": 18
+          },
+          {
+            "noun": "second",
+            "adj": "date",
+            "tau": 2.455626833110889,
+            "variety": 878
+          }
+        ]
+      ],
+      "prompt": "Write a short ironic paragraph.\n\nStyle: Kafka/Poe style: underlying tension in mundane setting. Horror or absurdity emerges from ordinary things. Keep concepts everyday, but inject unease.\n\nIncorporate these semantic concepts naturally:\nintention faint, track other, jewel brilliant, plume faint, medicine bad, dancing naked, tack opposite, strict confinement, note threatening, look messy, spike messy, date second\n\nWrite 2-3 sentences that feel authentically ironic:",
+      "output": "In the heart of a bustling city, on the second day of March, under the gaze of a brilliant jewel called the sun, a man named Otto began his daily dance - a peculiar waltz in the empty confines of his living room. The plume of cigarette smoke that trailed behind him seemed to be the only evidence of his presence, the faint scent acting as an elusive track of his other. The medicine cabinet, once neatly arranged with strict regimentation, now sported a messy look, spikes of half-used pills jutting out like warnings from a threatening note. It was a stark contrast to Otto's usual meticulousness, hinting at an unsettling change within him - a second date with madness perhaps, a ball he seemed destined to dance naked and alone.",
+      "model": "mistral:7b",
+      "metrics": {
+        "n_bonds": 12,
+        "n_sentences": 3,
+        "mean_coherence": 0.6144842092946893,
+        "tau_autocorr": 0.41329236941390574,
+        "genre_distance": 0.5128694389866767,
+        "vocabulary_diversity": 0.8333333333333334,
+        "variety_mean": 123.25,
+        "variety_median": 29.0,
+        "tau_mean": 2.738130460705445,
+        "tau_std": 0.2263281316660456
+      },
+      "sample_id": 2
+    },
+    {
+      "genre": "balanced",
+      "skeleton": [
+        [
+          "coat brilliant",
+          "pupil brilliant",
+          "century nineteenth",
+          "friend stupid"
+        ],
+        [
+          "food fry",
+          "probe second",
+          "blossom brilliant",
+          "passage wet"
+        ],
+        [
+          "farth extent",
+          "outcome positive",
+          "creation little",
+          "crack wet"
+        ]
+      ],
+      "skeleton_details": [
+        [
+          {
+            "noun": "brilliant",
+            "adj": "coat",
+            "tau": 2.5750761278022694,
+            "variety": 23
+          },
+          {
+            "noun": "brilliant",
+            "adj": "pupil",
+            "tau": 2.5750761278022694,
+            "variety": 18
+          },
+          {
+            "noun": "nineteenth",
+            "adj": "century",
+            "tau": 2.795880017344075,
+            "variety": 7774
+          },
+          {
+            "noun": "stupid",
+            "adj": "friend",
+            "tau": 2.4268200076505018,
+            "variety": 102
+          }
+        ],
+        [
+          {
+            "noun": "fry",
+            "adj": "food",
+            "tau": 2.4334156836798475,
+            "variety": 219
+          },
+          {
+            "noun": "second",
+            "adj": "probe",
+            "tau": 2.455626833110889,
+            "variety": 20
+          },
+          {
+            "noun": "brilliant",
+            "adj": "blossom",
+            "tau": 2.5750761278022694,
+            "variety": 16
+          },
+          {
+            "noun": "wet",
+            "adj": "passage",
+            "tau": 2.0962127689614443,
+            "variety": 36
+          }
+        ],
+        [
+          {
+            "noun": "extent",
+            "adj": "farth",
+            "tau": 2.1956690022973624,
+            "variety": 15
+          },
+          {
+            "noun": "positive",
+            "adj": "outcome",
+            "tau": 2.1729455545767156,
+            "variety": 173
+          },
+          {
+            "noun": "little",
+            "adj": "creation",
+            "tau": 1.936742826006056,
+            "variety": 26
+          },
+          {
+            "noun": "wet",
+            "adj": "crack",
+            "tau": 2.0962127689614443,
+            "variety": 35
+          }
+        ]
+      ],
+      "prompt": "Write a short balanced paragraph.\n\nStyle: Austen/Plato style: measured, controlled tone. Clear reasoning, calm and analytical. Social observation with wit.\n\nIncorporate these semantic concepts naturally:\ncoat brilliant, pupil brilliant, century nineteenth, friend stupid, food fry, probe second, blossom brilliant, passage wet, farth extent, outcome positive, creation little, crack wet\n\nWrite 2-3 sentences that feel authentically balanced:",
+      "output": "In the nineteenth century, a young man of considerable folly, clad in a coat as bright as his intellect, found himself at a local tavern. As he fried food with an enthusiasm bordering on fanaticism, a sage observer mused, \"Indeed, it is a wonder that such a mind, destined to create little of value, can blossom so brilliantly.\" Yet, as the wet passage of time passed, it became apparent that this friend's positive outcome was not entirely due to his stupidity. It seemed that even from the depths of farth, a crack allowed something of worth to emerge, just like the brilliance that often blooms in the most unexpected places.",
+      "model": "mistral:7b",
+      "metrics": {
+        "n_bonds": 12,
+        "n_sentences": 3,
+        "mean_coherence": 0.9189763246014995,
+        "tau_autocorr": 0.6241798563546271,
+        "genre_distance": 0.4371679015039257,
+        "vocabulary_diversity": 0.75,
+        "variety_mean": 704.75,
+        "variety_median": 30.5,
+        "tau_mean": 2.361229487166262,
+        "tau_std": 0.24631514765372314
+      },
+      "sample_id": 0
+    },
+    {
+      "genre": "balanced",
+      "skeleton": [
+        [
+          "affliction mental",
+          "aide new",
+          "ship new",
+          "system mammalian"
+        ],
+        [
+          "partner new",
+          "advice spiritual",
+          "power new",
+          "parent new"
+        ],
+        [
+          "friend second",
+          "communist vietnamese",
+          "tool second",
+          "fight second"
+        ]
+      ],
+      "skeleton_details": [
+        [
+          {
+            "noun": "mental",
+            "adj": "affliction",
+            "tau": 3.3010299956639813,
+            "variety": 35
+          },
+          {
+            "noun": "new",
+            "adj": "aide",
+            "tau": 3.0969100130080567,
+            "variety": 34
+          },
+          {
+            "noun": "new",
+            "adj": "ship",
+            "tau": 3.0969100130080567,
+            "variety": 1346
+          },
+          {
+            "noun": "mammalian",
+            "adj": "system",
+            "tau": 3.221848749616356,
+            "variety": 10
+          }
+        ],
+        [
+          {
+            "noun": "new",
+            "adj": "partner",
+            "tau": 3.0969100130080567,
+            "variety": 1335
+          },
+          {
+            "noun": "spiritual",
+            "adj": "advice",
+            "tau": 3.221848749616356,
+            "variety": 22
+          },
+          {
+            "noun": "new",
+            "adj": "power",
+            "tau": 3.0969100130080567,
+            "variety": 1057
+          },
+          {
+            "noun": "new",
+            "adj": "parent",
+            "tau": 3.0969100130080567,
+            "variety": 326
+          }
+        ],
+        [
+          {
+            "noun": "second",
+            "adj": "friend",
+            "tau": 2.455626833110889,
+            "variety": 63
+          },
+          {
+            "noun": "vietnamese",
+            "adj": "communist",
+            "tau": 2.769551078621726,
+            "variety": 11
+          },
+          {
+            "noun": "second",
+            "adj": "tool",
+            "tau": 2.455626833110889,
+            "variety": 19
+          },
+          {
+            "noun": "second",
+            "adj": "fight",
+            "tau": 2.455626833110889,
+            "variety": 59
+          }
+        ]
+      ],
+      "prompt": "Write a short balanced paragraph.\n\nStyle: Austen/Plato style: measured, controlled tone. Clear reasoning, calm and analytical. Social observation with wit.\n\nIncorporate these semantic concepts naturally:\naffliction mental, aide new, ship new, system mammalian, partner new, advice spiritual, power new, parent new, friend second, communist vietnamese, tool second, fight second\n\nWrite 2-3 sentences that feel authentically balanced:",
+      "output": "In the intricate dance of human existence, one may observe a curious spectacle: the arrival of a novel mental affliction among us, akin to an unknown storm brewing on the horizon. Yet, as we weather this tempest, it also presents an opportunity for a new aid, much like a sturdy ship navigating treacherous seas, offering a chance to revise our mammalian system and evolve. In the midst of this struggle, it is prudent to seek counsel from wise partners, as one might consult with a friend or a second parent, be they a Vietnamese communist or an ordinary citizen. The power of collective wisdom can serve as a potent tool in our fight against adversity, reminding us that even the most daunting challenges may be surmounted through spiritual advice and mutual understanding.",
+      "model": "mistral:7b",
+      "metrics": {
+        "n_bonds": 12,
+        "n_sentences": 3,
+        "mean_coherence": 0.8348222128900006,
+        "tau_autocorr": 0.6587410551758716,
+        "genre_distance": 0.3839165633915992,
+        "vocabulary_diversity": 0.5,
+        "variety_mean": 359.75,
+        "variety_median": 47.0,
+        "tau_mean": 2.947142428157614,
+        "tau_std": 0.3088441640275374
+      },
+      "sample_id": 1
+    },
+    {
+      "genre": "balanced",
+      "skeleton": [
+        [
+          "beast noisy",
+          "role central",
+          "information inconsequential",
+          "piece wooden"
+        ],
+        [
+          "glance panicked",
+          "score bad",
+          "news bad",
+          "form naked"
+        ],
+        [
+          "feeling bad",
+          "time bad",
+          "people bad",
+          "enemy bad"
+        ]
+      ],
+      "skeleton_details": [
+        [
+          {
+            "noun": "noisy",
+            "adj": "beast",
+            "tau": 3.154901959985743,
+            "variety": 13
+          },
+          {
+            "noun": "central",
+            "adj": "role",
+            "tau": 3.3010299956639813,
+            "variety": 223
+          },
+          {
+            "noun": "inconsequential",
+            "adj": "information",
+            "tau": 3.3979400086720375,
+            "variety": 11
+          },
+          {
+            "noun": "wooden",
+            "adj": "piece",
+            "tau": 3.3979400086720375,
+            "variety": 105
+          }
+        ],
+        [
+          {
+            "noun": "panicked",
+            "adj": "glance",
+            "tau": 3.154901959985743,
+            "variety": 86
+          },
+          {
+            "noun": "bad",
+            "adj": "score",
+            "tau": 3.0457574905606752,
+            "variety": 23
+          },
+          {
+            "noun": "bad",
+            "adj": "news",
+            "tau": 3.0457574905606752,
+            "variety": 14401
+          },
+          {
+            "noun": "naked",
+            "adj": "form",
+            "tau": 3.154901959985743,
+            "variety": 563
+          }
+        ],
+        [
+          {
+            "noun": "bad",
+            "adj": "feeling",
+            "tau": 3.0457574905606752,
+            "variety": 4493
+          },
+          {
+            "noun": "bad",
+            "adj": "time",
+            "tau": 3.0457574905606752,
+            "variety": 4715
+          },
+          {
+            "noun": "bad",
+            "adj": "people",
+            "tau": 3.0457574905606752,
+            "variety": 1748
+          },
+          {
+            "noun": "bad",
+            "adj": "enemy",
+            "tau": 3.0457574905606752,
+            "variety": 1392
+          }
+        ]
+      ],
+      "prompt": "Write a short balanced paragraph.\n\nStyle: Austen/Plato style: measured, controlled tone. Clear reasoning, calm and analytical. Social observation with wit.\n\nIncorporate these semantic concepts naturally:\nbeast noisy, role central, information inconsequential, piece wooden, glance panicked, score bad, news bad, form naked, feeling bad, time bad, people bad, enemy bad\n\nWrite 2-3 sentences that feel authentically balanced:",
+      "output": "In the grand theatre of life, it appears that some individuals, much like a boisterous beast in a quiet forest, struggle to find their central role. They speak with fervor, but their words are often inconsequential, akin to a piece of wooden furniture in a room filled with art. A panicked glance from one such character may instill unease, yet it is rarely followed by action that would truly better the situation. The news they bring, as if on cue, is seldom good - a score that would make even the most ardent optimist question the worth of hope. They seem to be perpetually at odds with themselves and others, lacking the form or substance to truly shine. Indeed, their presence often leaves one with a feeling of disquietude, as though they are an unwelcome enemy in our otherwise peaceful society.",
+      "model": "mistral:7b",
+      "metrics": {
+        "n_bonds": 12,
+        "n_sentences": 3,
+        "mean_coherence": 0.9579988761800678,
+        "tau_autocorr": 0.6962207903694064,
+        "genre_distance": 0.10869169063645397,
+        "vocabulary_diversity": 0.5833333333333334,
+        "variety_mean": 2314.4166666666665,
+        "variety_median": 393.0,
+        "tau_mean": 3.1530134030274444,
+        "tau_std": 0.13257723550743425
+      },
+      "sample_id": 2
+    }
+  ],
+  "metrics": {
+    "dramatic": {
+      "coherence_mean": 0.7807920829142464,
+      "coherence_std": 0.1090852193342759,
+      "diversity_mean": 0.7777777777777778,
+      "diversity_std": 0.039283710065919325,
+      "tau_autocorr_mean": 0.4498821977479981,
+      "tau_autocorr_std": 0.2712265389574028
+    },
+    "ironic": {
+      "coherence_mean": 0.6049674157761465,
+      "coherence_std": 0.1584059641873463,
+      "diversity_mean": 0.7777777777777778,
+      "diversity_std": 0.07856742013183865,
+      "tau_autocorr_mean": 0.6252858545045642,
+      "tau_autocorr_std": 0.1505011064995988
+    },
+    "balanced": {
+      "coherence_mean": 0.903932471223856,
+      "coherence_std": 0.05139948597768061,
+      "diversity_mean": 0.6111111111111112,
+      "diversity_std": 0.10393492741038726,
+      "tau_autocorr_mean": 0.6597139006333017,
+      "tau_autocorr_std": 0.029418632017181194
+    }
+  }
+}

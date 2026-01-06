@@ -1,0 +1,1108 @@
+{
+  "metadata": {
+    "timestamp": "2026-01-06T18:00:01.583743",
+    "model": "mistral:7b",
+    "n_samples": 3,
+    "n_bonds": 499400,
+    "kT": 0.65
+  },
+  "samples": [
+    {
+      "genre": "dramatic",
+      "skeleton": [
+        [
+          "vous pla\u00eet",
+          "color bit",
+          "nice bit",
+          "hot fudge"
+        ],
+        [
+          "dead giveaway",
+          "initial minute",
+          "remote switch",
+          "bloody brilliant"
+        ],
+        [
+          "medium wok",
+          "raw recruit",
+          "little munchkin",
+          "soft bit"
+        ]
+      ],
+      "skeleton_details": [
+        [
+          {
+            "noun": "pla\u00eet",
+            "adj": "vous",
+            "tau": 3.3010299956639813,
+            "variety": 197
+          },
+          {
+            "noun": "bit",
+            "adj": "color",
+            "tau": 2.48235300170287,
+            "variety": 12
+          },
+          {
+            "noun": "bit",
+            "adj": "nice",
+            "tau": 2.48235300170287,
+            "variety": 343
+          },
+          {
+            "noun": "fudge",
+            "adj": "hot",
+            "tau": 2.709360862575978,
+            "variety": 405
+          }
+        ],
+        [
+          {
+            "noun": "giveaway",
+            "adj": "dead",
+            "tau": 2.87225425417439,
+            "variety": 741
+          },
+          {
+            "noun": "minute",
+            "adj": "initial",
+            "tau": 2.7338720374105026,
+            "variety": 17
+          },
+          {
+            "noun": "switch",
+            "adj": "remote",
+            "tau": 2.5084770402078025,
+            "variety": 33
+          },
+          {
+            "noun": "brilliant",
+            "adj": "bloody",
+            "tau": 2.5750761278022694,
+            "variety": 128
+          }
+        ],
+        [
+          {
+            "noun": "wok",
+            "adj": "medium",
+            "tau": 2.6089019553652317,
+            "variety": 39
+          },
+          {
+            "noun": "recruit",
+            "adj": "raw",
+            "tau": 2.383063326880369,
+            "variety": 242
+          },
+          {
+            "noun": "munchkin",
+            "adj": "little",
+            "tau": 2.5206585074234984,
+            "variety": 79
+          },
+          {
+            "noun": "bit",
+            "adj": "soft",
+            "tau": 2.48235300170287,
+            "variety": 64
+          }
+        ]
+      ],
+      "prompt": "Write a short dramatic paragraph.\n\nStyle: Gothic/Dostoevsky style: high tension, emotional intensity, philosophical depth. Create atmosphere of dread and wonder.\n\nIncorporate these semantic concepts naturally:\nvous pla\u00eet, color bit, nice bit, hot fudge, dead giveaway, initial minute, remote switch, bloody brilliant, medium wok, raw recruit, little munchkin, soft bit\n\nWrite 2-3 sentences that feel authentically dramatic:",
+      "output": "In the heart of a desolate Gothic cathedral, shrouded in an eerie mist, a raw recruit, a little munchkin of sorts, stumbled upon a chilling secret. The initial minute inside the crypt was as silent as a medium wok without a sizzle, broken only by the faint ticking of a distant clock. As he flicked the remote switch, the cathedral's cold walls seemed to come alive, revealing a bloody brilliant spectacle that was as unexpected as a dead giveaway in a game of chess. The chill in the air intensified, and the color bit of fear seeped into his soul, like hot fudge dripping down a decadent dessert, its sweetness tainted by an unsettling dread.",
+      "model": "mistral:7b",
+      "metrics": {
+        "n_bonds": 12,
+        "n_sentences": 3,
+        "mean_coherence": 0.578750842921004,
+        "tau_autocorr": 0.03240497749811559,
+        "genre_distance": 0.6235780769039653,
+        "vocabulary_diversity": 0.8333333333333334,
+        "variety_mean": 191.66666666666666,
+        "variety_median": 103.5,
+        "tau_mean": 2.638312759384386,
+        "tau_std": 0.23836045561606523
+      },
+      "sample_id": 0
+    },
+    {
+      "genre": "dramatic",
+      "skeleton": [
+        [
+          "anxious minute",
+          "new hire",
+          "sapete che",
+          "wild morning"
+        ],
+        [
+          "able breath",
+          "delicious breath",
+          "bated breath",
+          "great diligence"
+        ],
+        [
+          "beautiful resort",
+          "dry breath",
+          "following week",
+          "red vinegar"
+        ]
+      ],
+      "skeleton_details": [
+        [
+          {
+            "noun": "minute",
+            "adj": "anxious",
+            "tau": 2.7338720374105026,
+            "variety": 56
+          },
+          {
+            "noun": "hire",
+            "adj": "new",
+            "tau": 2.638151822914649,
+            "variety": 413
+          },
+          {
+            "noun": "che",
+            "adj": "sapete",
+            "tau": 3.0,
+            "variety": 10
+          },
+          {
+            "noun": "morning",
+            "adj": "wild",
+            "tau": 2.354535770273012,
+            "variety": 12
+          }
+        ],
+        [
+          {
+            "noun": "breath",
+            "adj": "able",
+            "tau": 2.4435373434464047,
+            "variety": 26
+          },
+          {
+            "noun": "breath",
+            "adj": "delicious",
+            "tau": 2.4435373434464047,
+            "variety": 17
+          },
+          {
+            "noun": "breath",
+            "adj": "bated",
+            "tau": 2.4435373434464047,
+            "variety": 645
+          },
+          {
+            "noun": "diligence",
+            "adj": "great",
+            "tau": 2.4795686923248828,
+            "variety": 43
+          }
+        ],
+        [
+          {
+            "noun": "resort",
+            "adj": "beautiful",
+            "tau": 2.357827792883269,
+            "variety": 39
+          },
+          {
+            "noun": "breath",
+            "adj": "dry",
+            "tau": 2.4435373434464047,
+            "variety": 41
+          },
+          {
+            "noun": "week",
+            "adj": "following",
+            "tau": 2.363665098496557,
+            "variety": 1070
+          },
+          {
+            "noun": "vinegar",
+            "adj": "red",
+            "tau": 1.9665279290906694,
+            "variety": 91
+          }
+        ]
+      ],
+      "prompt": "Write a short dramatic paragraph.\n\nStyle: Gothic/Dostoevsky style: high tension, emotional intensity, philosophical depth. Create atmosphere of dread and wonder.\n\nIncorporate these semantic concepts naturally:\nanxious minute, new hire, sapete che, wild morning, able breath, delicious breath, bated breath, great diligence, beautiful resort, dry breath, following week, red vinegar\n\nWrite 2-3 sentences that feel authentically dramatic:",
+      "output": "Amidst the desolate, wintry expanse of a wild morning, a new hire approached the foreboding edifice of the old resort. His breath, a blend of anxious and delicious anticipation, fogged in the cold air as he ascended the crumbling stone steps. Sapete che, every labored breath echoed ominously within the empty halls, a testament to the great diligence required to breathe life back into the once-beautiful sanctuary. The following week would undoubtedly prove tumultuous, as he found himself submerged in an atmosphere tinged with the pungent scent of red vinegar and the heavy weight of impending doom.",
+      "model": "mistral:7b",
+      "metrics": {
+        "n_bonds": 12,
+        "n_sentences": 3,
+        "mean_coherence": 0.5140683775467848,
+        "tau_autocorr": 0.30142536280731347,
+        "genre_distance": 0.7651728713748636,
+        "vocabulary_diversity": 0.75,
+        "variety_mean": 205.25,
+        "variety_median": 42.0,
+        "tau_mean": 2.47235820976493,
+        "tau_std": 0.2367022095969267
+      },
+      "sample_id": 1
+    },
+    {
+      "genre": "dramatic",
+      "skeleton": [
+        [
+          "sudden breath",
+          "relaxed breath",
+          "bad breath",
+          "laborious breath"
+        ],
+        [
+          "gentle morning",
+          "waste breath",
+          "bright bit",
+          "steamy morning"
+        ],
+        [
+          "need night",
+          "first month",
+          "german money",
+          "nervous pause"
+        ]
+      ],
+      "skeleton_details": [
+        [
+          {
+            "noun": "breath",
+            "adj": "sudden",
+            "tau": 2.4435373434464047,
+            "variety": 158
+          },
+          {
+            "noun": "breath",
+            "adj": "relaxed",
+            "tau": 2.4435373434464047,
+            "variety": 34
+          },
+          {
+            "noun": "breath",
+            "adj": "bad",
+            "tau": 2.4435373434464047,
+            "variety": 516
+          },
+          {
+            "noun": "breath",
+            "adj": "laborious",
+            "tau": 2.4435373434464047,
+            "variety": 11
+          }
+        ],
+        [
+          {
+            "noun": "morning",
+            "adj": "gentle",
+            "tau": 2.354535770273012,
+            "variety": 31
+          },
+          {
+            "noun": "breath",
+            "adj": "waste",
+            "tau": 2.4435373434464047,
+            "variety": 27
+          },
+          {
+            "noun": "bit",
+            "adj": "bright",
+            "tau": 2.48235300170287,
+            "variety": 64
+          },
+          {
+            "noun": "morning",
+            "adj": "steamy",
+            "tau": 2.354535770273012,
+            "variety": 12
+          }
+        ],
+        [
+          {
+            "noun": "night",
+            "adj": "need",
+            "tau": 2.244380358146093,
+            "variety": 11
+          },
+          {
+            "noun": "month",
+            "adj": "first",
+            "tau": 2.305772715400521,
+            "variety": 3531
+          },
+          {
+            "noun": "money",
+            "adj": "german",
+            "tau": 1.8973712499034745,
+            "variety": 13
+          },
+          {
+            "noun": "pause",
+            "adj": "nervous",
+            "tau": 2.1978027721397853,
+            "variety": 16
+          }
+        ]
+      ],
+      "prompt": "Write a short dramatic paragraph.\n\nStyle: Gothic/Dostoevsky style: high tension, emotional intensity, philosophical depth. Create atmosphere of dread and wonder.\n\nIncorporate these semantic concepts naturally:\nsudden breath, relaxed breath, bad breath, laborious breath, gentle morning, waste breath, bright bit, steamy morning, need night, first month, german money, nervous pause\n\nWrite 2-3 sentences that feel authentically dramatic:",
+      "output": "Under the steamy glow of a gentle morning, the grandiose cathedral stood tall against the skyline, its ancient stone fa\u00e7ade shrouded in a layer of damp. A sudden, labored breath echoed through the cold, empty chambers, a testament to the heavy burden that weighed upon the heart of the solitary figure who entered, his breath tainted by the bitter stench of dread and uncertainty. The first month of the new year had passed, yet he was still trapped within the dark labyrinth, his pockets lined with German money, a meager comfort in the face of despair. In this place where silence reigned supreme, the soft clink of coins against cold stone seemed to resonate like an ominous tolling bell, disrupting the uneasy tranquility and reminding him of the relentless passage of time - a waste breath of hope slipping through his fingers. The air was heavy with the weight of his past sins, each labored inhale a reminder of the consequences that haunted him, each laborious exhale a plea for redemption. A nervous pause hung over him as he stood amidst the cathedral's solemn shadows, searching for solace in the cold stone walls - a sanctuary where the bitter sting of bad breath might dissipate, and his weary soul could find rest in the warm embrace of forgiveness.",
+      "model": "mistral:7b",
+      "metrics": {
+        "n_bonds": 12,
+        "n_sentences": 3,
+        "mean_coherence": 0.3504175495134741,
+        "tau_autocorr": 0.46967199358520356,
+        "genre_distance": 0.5708641374716075,
+        "vocabulary_diversity": 0.5833333333333334,
+        "variety_mean": 368.6666666666667,
+        "variety_median": 29.0,
+        "tau_mean": 2.337869862922566,
+        "tau_std": 0.1582948980287563
+      },
+      "sample_id": 2
+    },
+    {
+      "genre": "ironic",
+      "skeleton": [
+        [
+          "close proximity",
+          "instant on",
+          "local greengrocer",
+          "mere bagatelle"
+        ],
+        [
+          "available minute",
+          "big estate",
+          "dark bit",
+          "few minute"
+        ],
+        [
+          "spontaneous combustion",
+          "shivering breath",
+          "huge breath",
+          "pen breath"
+        ]
+      ],
+      "skeleton_details": [
+        [
+          {
+            "noun": "proximity",
+            "adj": "close",
+            "tau": 3.194292908197569,
+            "variety": 2533
+          },
+          {
+            "noun": "on",
+            "adj": "instant",
+            "tau": 2.9377826328586143,
+            "variety": 40
+          },
+          {
+            "noun": "greengrocer",
+            "adj": "local",
+            "tau": 3.0457574905606752,
+            "variety": 11
+          },
+          {
+            "noun": "bagatelle",
+            "adj": "mere",
+            "tau": 3.221848749616356,
+            "variety": 28
+          }
+        ],
+        [
+          {
+            "noun": "minute",
+            "adj": "available",
+            "tau": 2.7338720374105026,
+            "variety": 20
+          },
+          {
+            "noun": "estate",
+            "adj": "big",
+            "tau": 2.6741463007166133,
+            "variety": 155
+          },
+          {
+            "noun": "bit",
+            "adj": "dark",
+            "tau": 2.48235300170287,
+            "variety": 42
+          },
+          {
+            "noun": "minute",
+            "adj": "few",
+            "tau": 2.7338720374105026,
+            "variety": 78985
+          }
+        ],
+        [
+          {
+            "noun": "combustion",
+            "adj": "spontaneous",
+            "tau": 2.645179635155807,
+            "variety": 235
+          },
+          {
+            "noun": "breath",
+            "adj": "shivering",
+            "tau": 2.4435373434464047,
+            "variety": 16
+          },
+          {
+            "noun": "breath",
+            "adj": "huge",
+            "tau": 2.4435373434464047,
+            "variety": 677
+          },
+          {
+            "noun": "breath",
+            "adj": "pen",
+            "tau": 2.4435373434464047,
+            "variety": 360
+          }
+        ]
+      ],
+      "prompt": "Write a short ironic paragraph.\n\nStyle: Kafka/Poe style: underlying tension in mundane setting. Horror or absurdity emerges from ordinary things. Keep concepts everyday, but inject unease.\n\nIncorporate these semantic concepts naturally:\nclose proximity, instant on, local greengrocer, mere bagatelle, available minute, big estate, dark bit, few minute, spontaneous combustion, shivering breath, huge breath, pen breath\n\nWrite 2-3 sentences that feel authentically ironic:",
+      "output": "In the quiet heart of the town, where the local greengrocer's vibrant displays painted a picture of life's simple pleasures, an unnerving tension simmered. The mere bagatelle of turning on a light in the big estate triggered an unsettling spectacle, as if the darkness held its breath in a spontaneous hush, waiting for the flash to illuminate the dark bit. Minutes passed like a shivering exhale, each one bringing a creeping sense that the ordinary objects around us, even the humble pen, might ignite with an unexpected and immense breath of fire.",
+      "model": "mistral:7b",
+      "metrics": {
+        "n_bonds": 12,
+        "n_sentences": 3,
+        "mean_coherence": 0.6228734181308156,
+        "tau_autocorr": 0.7054426322908,
+        "genre_distance": 0.8825248914375509,
+        "vocabulary_diversity": 0.75,
+        "variety_mean": 6925.166666666667,
+        "variety_median": 98.5,
+        "tau_mean": 2.749976401997394,
+        "tau_std": 0.2758965000308977
+      },
+      "sample_id": 0
+    },
+    {
+      "genre": "ironic",
+      "skeleton": [
+        [
+          "own behalf",
+          "mere minute",
+          "cold minute",
+          "top forty"
+        ],
+        [
+          "such fun",
+          "such fun",
+          "early being",
+          "fast succession"
+        ],
+        [
+          "select other",
+          "low priority",
+          "democratic majority",
+          "most being"
+        ]
+      ],
+      "skeleton_details": [
+        [
+          {
+            "noun": "behalf",
+            "adj": "own",
+            "tau": 2.886056647693163,
+            "variety": 412
+          },
+          {
+            "noun": "minute",
+            "adj": "mere",
+            "tau": 2.7338720374105026,
+            "variety": 673
+          },
+          {
+            "noun": "minute",
+            "adj": "cold",
+            "tau": 2.7338720374105026,
+            "variety": 23
+          },
+          {
+            "noun": "forty",
+            "adj": "top",
+            "tau": 3.093079470289818,
+            "variety": 33
+          }
+        ],
+        [
+          {
+            "noun": "fun",
+            "adj": "such",
+            "tau": 2.525404949637619,
+            "variety": 689
+          },
+          {
+            "noun": "fun",
+            "adj": "such",
+            "tau": 2.525404949637619,
+            "variety": 689
+          },
+          {
+            "noun": "being",
+            "adj": "early",
+            "tau": 2.414750238484849,
+            "variety": 10
+          },
+          {
+            "noun": "succession",
+            "adj": "fast",
+            "tau": 2.8247200491988,
+            "variety": 27
+          }
+        ],
+        [
+          {
+            "noun": "other",
+            "adj": "select",
+            "tau": 2.813486535946125,
+            "variety": 30
+          },
+          {
+            "noun": "priority",
+            "adj": "low",
+            "tau": 2.1821636506458617,
+            "variety": 293
+          },
+          {
+            "noun": "majority",
+            "adj": "democratic",
+            "tau": 2.487757059592818,
+            "variety": 33
+          },
+          {
+            "noun": "being",
+            "adj": "most",
+            "tau": 2.414750238484849,
+            "variety": 197
+          }
+        ]
+      ],
+      "prompt": "Write a short ironic paragraph.\n\nStyle: Kafka/Poe style: underlying tension in mundane setting. Horror or absurdity emerges from ordinary things. Keep concepts everyday, but inject unease.\n\nIncorporate these semantic concepts naturally:\nown behalf, mere minute, cold minute, top forty, such fun, such fun, early being, fast succession, select other, low priority, democratic majority, most being\n\nWrite 2-3 sentences that feel authentically ironic:",
+      "output": "In the mere minute it took for the radio to shift from the top forty's cheerful anthems to a hushed, ominous broadcast, a sudden chill settled upon everyone in the room. It was such fun, this early morning gathering, filled with laughter and casual chatter \u2013 or so it seemed. However, as the broadcast continued in its fast succession of somber announcements, each one addressed to us on behalf of ourselves, a sense of unease began to creep over the democratic majority, making even the most ordinary conversations feel like low priority matters amidst the cold reality that suddenly surrounded them.",
+      "model": "mistral:7b",
+      "metrics": {
+        "n_bonds": 12,
+        "n_sentences": 3,
+        "mean_coherence": 0.9484245417484225,
+        "tau_autocorr": 0.12553067288249764,
+        "genre_distance": 0.3868408470134628,
+        "vocabulary_diversity": 0.75,
+        "variety_mean": 259.0833333333333,
+        "variety_median": 115.0,
+        "tau_mean": 2.636276488702711,
+        "tau_std": 0.2429047303531855
+      },
+      "sample_id": 1
+    },
+    {
+      "genre": "ironic",
+      "skeleton": [
+        [
+          "flame bit",
+          "single second",
+          "irish estate",
+          "intervene month"
+        ],
+        [
+          "male being",
+          "screened porch",
+          "future being",
+          "concrete stoop"
+        ],
+        [
+          "exciting peek",
+          "late bit",
+          "old switch",
+          "fatal instant"
+        ]
+      ],
+      "skeleton_details": [
+        [
+          {
+            "noun": "bit",
+            "adj": "flame",
+            "tau": 2.48235300170287,
+            "variety": 10
+          },
+          {
+            "noun": "second",
+            "adj": "single",
+            "tau": 2.455626833110889,
+            "variety": 763
+          },
+          {
+            "noun": "estate",
+            "adj": "irish",
+            "tau": 2.6741463007166133,
+            "variety": 21
+          },
+          {
+            "noun": "month",
+            "adj": "intervene",
+            "tau": 2.305772715400521,
+            "variety": 58
+          }
+        ],
+        [
+          {
+            "noun": "being",
+            "adj": "male",
+            "tau": 2.414750238484849,
+            "variety": 19
+          },
+          {
+            "noun": "porch",
+            "adj": "screened",
+            "tau": 2.518623342907411,
+            "variety": 45
+          },
+          {
+            "noun": "being",
+            "adj": "future",
+            "tau": 2.414750238484849,
+            "variety": 14
+          },
+          {
+            "noun": "stoop",
+            "adj": "concrete",
+            "tau": 2.3027674247231067,
+            "variety": 77
+          }
+        ],
+        [
+          {
+            "noun": "peek",
+            "adj": "exciting",
+            "tau": 2.1088456264931796,
+            "variety": 30
+          },
+          {
+            "noun": "bit",
+            "adj": "late",
+            "tau": 2.48235300170287,
+            "variety": 65
+          },
+          {
+            "noun": "switch",
+            "adj": "old",
+            "tau": 2.5084770402078025,
+            "variety": 23
+          },
+          {
+            "noun": "instant",
+            "adj": "fatal",
+            "tau": 2.151234244283296,
+            "variety": 12
+          }
+        ]
+      ],
+      "prompt": "Write a short ironic paragraph.\n\nStyle: Kafka/Poe style: underlying tension in mundane setting. Horror or absurdity emerges from ordinary things. Keep concepts everyday, but inject unease.\n\nIncorporate these semantic concepts naturally:\nflame bit, single second, irish estate, intervene month, male being, screened porch, future being, concrete stoop, exciting peek, late bit, old switch, fatal instant\n\nWrite 2-3 sentences that feel authentically ironic:",
+      "output": "On the picturesque Irish estate, nestled amidst a sea of emerald greenery, an ordinary concrete stoop served as the stage for an extraordinary event. Every evening, a male being would patiently await the intervening month, eager for the single second when the old switch would flicker, casting a flame bit onto the screened porch, offering an exciting peek into the abyss of the future being. Yet, the anticipation was never met with satisfaction, only a lingering sense of dread and the realization that this mundane ritual could be the harbinger of a fatal instant.",
+      "model": "mistral:7b",
+      "metrics": {
+        "n_bonds": 12,
+        "n_sentences": 3,
+        "mean_coherence": 0.7053563806793618,
+        "tau_autocorr": -0.07197522445806022,
+        "genre_distance": 0.7299384962213153,
+        "vocabulary_diversity": 0.8333333333333334,
+        "variety_mean": 94.75,
+        "variety_median": 26.5,
+        "tau_mean": 2.401641667351521,
+        "tau_std": 0.15358069588170192
+      },
+      "sample_id": 2
+    },
+    {
+      "genre": "balanced",
+      "skeleton": [
+        [
+          "mid twenty",
+          "common misperception",
+          "artificial insemination",
+          "original beholder"
+        ],
+        [
+          "lit tle",
+          "last coherent",
+          "damn minute",
+          "precious minute"
+        ],
+        [
+          "dead minute",
+          "full chock",
+          "exact second",
+          "lose minute"
+        ]
+      ],
+      "skeleton_details": [
+        [
+          {
+            "noun": "twenty",
+            "adj": "mid",
+            "tau": 3.3460449529708653,
+            "variety": 112
+          },
+          {
+            "noun": "misperception",
+            "adj": "common",
+            "tau": 3.221848749616356,
+            "variety": 13
+          },
+          {
+            "noun": "insemination",
+            "adj": "artificial",
+            "tau": 2.9586073148417746,
+            "variety": 211
+          },
+          {
+            "noun": "beholder",
+            "adj": "original",
+            "tau": 2.9586073148417746,
+            "variety": 22
+          }
+        ],
+        [
+          {
+            "noun": "tle",
+            "adj": "lit",
+            "tau": 2.920818753952375,
+            "variety": 20
+          },
+          {
+            "noun": "coherent",
+            "adj": "last",
+            "tau": 3.154901959985743,
+            "variety": 22
+          },
+          {
+            "noun": "minute",
+            "adj": "damn",
+            "tau": 2.7338720374105026,
+            "variety": 312
+          },
+          {
+            "noun": "minute",
+            "adj": "precious",
+            "tau": 2.7338720374105026,
+            "variety": 512
+          }
+        ],
+        [
+          {
+            "noun": "minute",
+            "adj": "dead",
+            "tau": 2.7338720374105026,
+            "variety": 24
+          },
+          {
+            "noun": "chock",
+            "adj": "full",
+            "tau": 2.659413395537081,
+            "variety": 73
+          },
+          {
+            "noun": "second",
+            "adj": "exact",
+            "tau": 2.455626833110889,
+            "variety": 109
+          },
+          {
+            "noun": "minute",
+            "adj": "lose",
+            "tau": 2.7338720374105026,
+            "variety": 16
+          }
+        ]
+      ],
+      "prompt": "Write a short balanced paragraph.\n\nStyle: Austen/Plato style: measured, controlled tone. Clear reasoning, calm and analytical. Social observation with wit.\n\nIncorporate these semantic concepts naturally:\nmid twenty, common misperception, artificial insemination, original beholder, lit tle, last coherent, damn minute, precious minute, dead minute, full chock, exact second, lose minute\n\nWrite 2-3 sentences that feel authentically balanced:",
+      "output": "In the very essence of life's intricate tapestry, a young woman, not yet reached her mid-twenties, found herself entangled in a subject of much discourse and common misperception. Artificial insemination, a practice often shrouded in controversy, was no longer an abstract concept to her. In the last coherent minute before the hand of the clock struck the damn minute, she contemplated the gravity of relinquishing a precious minute, a moment that could potentially alter the course of her life forevermore. Indeed, the exact second she decided to proceed or retreat, she would either be fully chock with newfound possibilities or lose an irretrievable minute in the vast expanse of time.",
+      "model": "mistral:7b",
+      "metrics": {
+        "n_bonds": 12,
+        "n_sentences": 3,
+        "mean_coherence": 0.8411725250868372,
+        "tau_autocorr": 0.6743792166448659,
+        "genre_distance": 0.39337695211349255,
+        "vocabulary_diversity": 0.75,
+        "variety_mean": 120.5,
+        "variety_median": 48.5,
+        "tau_mean": 2.884279785374906,
+        "tau_std": 0.24792450226283916
+      },
+      "sample_id": 0
+    },
+    {
+      "genre": "balanced",
+      "skeleton": [
+        [
+          "last hurrah",
+          "own shortsightedness",
+          "instant on",
+          "nearby estate"
+        ],
+        [
+          "possible minute",
+          "boring minute",
+          "mere minute",
+          "hazel switch"
+        ],
+        [
+          "russian roulette",
+          "several second",
+          "whole ending",
+          "small second"
+        ]
+      ],
+      "skeleton_details": [
+        [
+          {
+            "noun": "hurrah",
+            "adj": "last",
+            "tau": 3.045097375043824,
+            "variety": 198
+          },
+          {
+            "noun": "shortsightedness",
+            "adj": "own",
+            "tau": 2.9586073148417746,
+            "variety": 13
+          },
+          {
+            "noun": "on",
+            "adj": "instant",
+            "tau": 2.9377826328586143,
+            "variety": 40
+          },
+          {
+            "noun": "estate",
+            "adj": "nearby",
+            "tau": 2.6741463007166133,
+            "variety": 42
+          }
+        ],
+        [
+          {
+            "noun": "minute",
+            "adj": "possible",
+            "tau": 2.7338720374105026,
+            "variety": 129
+          },
+          {
+            "noun": "minute",
+            "adj": "boring",
+            "tau": 2.7338720374105026,
+            "variety": 19
+          },
+          {
+            "noun": "minute",
+            "adj": "mere",
+            "tau": 2.7338720374105026,
+            "variety": 673
+          },
+          {
+            "noun": "switch",
+            "adj": "hazel",
+            "tau": 2.5084770402078025,
+            "variety": 16
+          }
+        ],
+        [
+          {
+            "noun": "roulette",
+            "adj": "russian",
+            "tau": 2.853871964321762,
+            "variety": 250
+          },
+          {
+            "noun": "second",
+            "adj": "several",
+            "tau": 2.455626833110889,
+            "variety": 8469
+          },
+          {
+            "noun": "ending",
+            "adj": "whole",
+            "tau": 2.396852431824525,
+            "variety": 13
+          },
+          {
+            "noun": "second",
+            "adj": "small",
+            "tau": 2.455626833110889,
+            "variety": 27
+          }
+        ]
+      ],
+      "prompt": "Write a short balanced paragraph.\n\nStyle: Austen/Plato style: measured, controlled tone. Clear reasoning, calm and analytical. Social observation with wit.\n\nIncorporate these semantic concepts naturally:\nlast hurrah, own shortsightedness, instant on, nearby estate, possible minute, boring minute, mere minute, hazel switch, russian roulette, several second, whole ending, small second\n\nWrite 2-3 sentences that feel authentically balanced:",
+      "output": "In the last hurrah of twilight, the nearby estate echoed with the faint strains of a pianoforte, as if playing a game of Russian roulette with its own melodies. The gentlemen, engrossed in their affairs, seemed oblivious to the potential charm hidden within those mundane notes, much like a man caught in the hazel switch of his shortsightedness and the instant on of a captivating moment. Yet, it takes but a mere minute, this whole ending or beginning of an evening, for one's world to shift from the banal to the extraordinary, like the turning of a small second hand that subtly alters the landscape of time.",
+      "model": "mistral:7b",
+      "metrics": {
+        "n_bonds": 12,
+        "n_sentences": 3,
+        "mean_coherence": 0.8289902274870458,
+        "tau_autocorr": 0.5438010141021865,
+        "genre_distance": 0.4551908520792392,
+        "vocabulary_diversity": 0.75,
+        "variety_mean": 824.0833333333334,
+        "variety_median": 41.0,
+        "tau_mean": 2.70730873652235,
+        "tau_std": 0.20770019098477238
+      },
+      "sample_id": 1
+    },
+    {
+      "genre": "balanced",
+      "skeleton": [
+        [
+          "american exceptionalism",
+          "scarlet tanager",
+          "little crass",
+          "very brink"
+        ],
+        [
+          "stand offish",
+          "free minute",
+          "windscreen wiper",
+          "wooden chock"
+        ],
+        [
+          "entail estate",
+          "fifteen minute",
+          "vital second",
+          "edge bit"
+        ]
+      ],
+      "skeleton_details": [
+        [
+          {
+            "noun": "exceptionalism",
+            "adj": "american",
+            "tau": 3.3010299956639813,
+            "variety": 53
+          },
+          {
+            "noun": "tanager",
+            "adj": "scarlet",
+            "tau": 3.3010299956639813,
+            "variety": 13
+          },
+          {
+            "noun": "crass",
+            "adj": "little",
+            "tau": 3.0457574905606752,
+            "variety": 13
+          },
+          {
+            "noun": "brink",
+            "adj": "very",
+            "tau": 2.742127198103703,
+            "variety": 196
+          }
+        ],
+        [
+          {
+            "noun": "offish",
+            "adj": "stand",
+            "tau": 2.895045160672354,
+            "variety": 20
+          },
+          {
+            "noun": "minute",
+            "adj": "free",
+            "tau": 2.7338720374105026,
+            "variety": 152
+          },
+          {
+            "noun": "wiper",
+            "adj": "windscreen",
+            "tau": 2.856148236759312,
+            "variety": 269
+          },
+          {
+            "noun": "chock",
+            "adj": "wooden",
+            "tau": 2.659413395537081,
+            "variety": 13
+          }
+        ],
+        [
+          {
+            "noun": "estate",
+            "adj": "entail",
+            "tau": 2.6741463007166133,
+            "variety": 17
+          },
+          {
+            "noun": "minute",
+            "adj": "fifteen",
+            "tau": 2.7338720374105026,
+            "variety": 1722
+          },
+          {
+            "noun": "second",
+            "adj": "vital",
+            "tau": 2.455626833110889,
+            "variety": 59
+          },
+          {
+            "noun": "bit",
+            "adj": "edge",
+            "tau": 2.48235300170287,
+            "variety": 13
+          }
+        ]
+      ],
+      "prompt": "Write a short balanced paragraph.\n\nStyle: Austen/Plato style: measured, controlled tone. Clear reasoning, calm and analytical. Social observation with wit.\n\nIncorporate these semantic concepts naturally:\namerican exceptionalism, scarlet tanager, little crass, very brink, stand offish, free minute, windscreen wiper, wooden chock, entail estate, fifteen minute, vital second, edge bit\n\nWrite 2-3 sentences that feel authentically balanced:",
+      "output": "In the grand tapestry of societal observation, one might find a striking analogy between the vibrant plumage of an elusive Scarlet Tanager and the enigma of American Exceptionalism. As the tanager, with its resplendent hues, stands out distinctly among the verdant foliage, so too does America's unique identity assert itself amidst the international landscape. However, it is essential to remember that even a resilient windscreen wiper must sometimes pause for a free minute to avoid wearing off at the very brink of its usefulness; a wooden chock serves no purpose if left unused in a moment vital to the securing of an estate, and an aloof individual, stand-offish as he may be, might find himself adrift without the occasional human interaction. Therefore, while America's exceptionalism undeniably sets it apart, it is crucial not to lose sight of the importance of balance and humility in both personal and national endeavors.",
+      "model": "mistral:7b",
+      "metrics": {
+        "n_bonds": 12,
+        "n_sentences": 3,
+        "mean_coherence": 0.8787342334750526,
+        "tau_autocorr": 0.7861994351915608,
+        "genre_distance": 0.4249175440460655,
+        "vocabulary_diversity": 0.9166666666666666,
+        "variety_mean": 211.66666666666666,
+        "variety_median": 36.5,
+        "tau_mean": 2.823368473609372,
+        "tau_std": 0.2638312835694988
+      },
+      "sample_id": 2
+    }
+  ],
+  "metrics": {
+    "dramatic": {
+      "coherence_mean": 0.4810789233270876,
+      "coherence_std": 0.09609110706986158,
+      "diversity_mean": 0.7222222222222223,
+      "diversity_std": 0.10393492741038726,
+      "tau_autocorr_mean": 0.26783411129687756,
+      "tau_autocorr_std": 0.1800868123488492
+    },
+    "ironic": {
+      "coherence_mean": 0.7588847801862001,
+      "coherence_std": 0.13819032934686937,
+      "diversity_mean": 0.7777777777777778,
+      "diversity_std": 0.039283710065919325,
+      "tau_autocorr_mean": 0.25299936023841246,
+      "tau_autocorr_std": 0.3299301246124476
+    },
+    "balanced": {
+      "coherence_mean": 0.8496323286829784,
+      "coherence_std": 0.02117062021761417,
+      "diversity_mean": 0.8055555555555555,
+      "diversity_std": 0.0785674201318386,
+      "tau_autocorr_mean": 0.6681265553128711,
+      "tau_autocorr_std": 0.09905745964491137
+    }
+  }
+}

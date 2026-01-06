@@ -1,0 +1,40 @@
+{
+  "metadata": {
+    "timestamp": "2026-01-06T18:47:42.271534",
+    "n_sentences": 3,
+    "n_coordinates": 27808
+  },
+  "samples": [
+    {
+      "genre": "ironic",
+      "text": "The cogs of industry hummed in unison, their rhythm a prayer to the gods of progress, hidden beneath the grime and oil that stained the hands of those who tended them. The cogs, though seemingly commonplace, whispered secrets of an unseen cosmos, echoing the silent symphony of relentless advancement. In this dance of time, each tick and tock resonated like a celestial calligrapher etching enigmatic verses onto the fabric of existence.",
+      "trajectory": [
+        {
+          "A": 0.3172916081305762,
+          "S": -0.46912785243183186,
+          "tau": 2.2750779062827253
+        },
+        {
+          "A": 0.26602088064710994,
+          "S": -0.31029447800416454,
+          "tau": 1.798724920374458
+        },
+        {
+          "A": 0.17789270459329914,
+          "S": -0.2111014261617639,
+          "tau": 1.4196390972384858
+        },
+        {
+          "A": 0.2173123830664955,
+          "S": -0.14561035816305487,
+          "tau": 1.238948984673573
+        }
+      ],
+      "target": {
+        "A": 0.2,
+        "S": -0.2,
+        "tau": 2.5
+      }
+    }
+  ]
+}

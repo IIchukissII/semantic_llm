@@ -1,0 +1,1324 @@
+{
+  "metadata": {
+    "timestamp": "2026-01-06T18:32:46.429541",
+    "model": "mistral:7b",
+    "n_samples": 3,
+    "n_bonds": 407627,
+    "kT": 0.8187307530779818
+  },
+  "samples": [
+    {
+      "genre": "dramatic",
+      "skeleton": [
+        [
+          "pent breath",
+          "terrible pas",
+          "safe keeping",
+          "brown noser"
+        ],
+        [
+          "own behalf",
+          "old estate",
+          "light minute",
+          "fresh bit"
+        ],
+        [
+          "slender side",
+          "human tech",
+          "vampire side",
+          "wet laundry"
+        ]
+      ],
+      "skeleton_details": [
+        [
+          {
+            "noun": "breath",
+            "adj": "pent",
+            "A": -0.22773239073400134,
+            "S": 0.0870105508863345,
+            "tau": 2.4435373434464047,
+            "variety": 88
+          },
+          {
+            "noun": "pas",
+            "adj": "terrible",
+            "A": -0.26364421161052465,
+            "S": 0.0713275844478667,
+            "tau": 2.726006592280915,
+            "variety": 18
+          },
+          {
+            "noun": "keeping",
+            "adj": "safe",
+            "A": -0.8114868917988337,
+            "S": 0.3080194649865674,
+            "tau": 2.6161748036012398,
+            "variety": 433
+          },
+          {
+            "noun": "noser",
+            "adj": "brown",
+            "A": -0.2855896838382956,
+            "S": 0.4500971957789217,
+            "tau": 2.9586073148417746,
+            "variety": 14
+          }
+        ],
+        [
+          {
+            "noun": "behalf",
+            "adj": "own",
+            "A": -0.27603708398748367,
+            "S": -0.29203287128211725,
+            "tau": 2.886056647693163,
+            "variety": 412
+          },
+          {
+            "noun": "estate",
+            "adj": "old",
+            "A": 0.04022553283804823,
+            "S": -0.3494756546533636,
+            "tau": 2.6741463007166133,
+            "variety": 229
+          },
+          {
+            "noun": "minute",
+            "adj": "light",
+            "A": 0.1761571878159693,
+            "S": -0.22429296607343405,
+            "tau": 2.7338720374105026,
+            "variety": 239
+          },
+          {
+            "noun": "bit",
+            "adj": "fresh",
+            "A": 0.14929651742243086,
+            "S": -0.000563406956053562,
+            "tau": 2.48235300170287,
+            "variety": 27
+          }
+        ],
+        [
+          {
+            "noun": "side",
+            "adj": "slender",
+            "A": 1.7049041983119375,
+            "S": 0.20837326559003214,
+            "tau": 2.413236171857967,
+            "variety": 23
+          },
+          {
+            "noun": "tech",
+            "adj": "human",
+            "A": 1.6871896990823319,
+            "S": -0.05604132378263463,
+            "tau": 2.589971096626042,
+            "variety": 15
+          },
+          {
+            "noun": "side",
+            "adj": "vampire",
+            "A": 1.7049041983119375,
+            "S": 0.20837326559003214,
+            "tau": 2.413236171857967,
+            "variety": 48
+          },
+          {
+            "noun": "laundry",
+            "adj": "wet",
+            "A": 1.3915429547029985,
+            "S": -0.2542319661027862,
+            "tau": 2.2409973075352725,
+            "variety": 79
+          }
+        ]
+      ],
+      "prompt": "Write a short dramatic paragraph.\n\nStyle: Gothic/Dostoevsky style: high tension, emotional intensity, philosophical depth. Create atmosphere of dread and wonder.\n\nIncorporate these semantic concepts naturally:\npent breath, terrible pas, safe keeping, brown noser, own behalf, old estate, light minute, fresh bit, slender side, human tech, vampire side, wet laundry\n\nWrite 2-3 sentences that feel authentically dramatic:",
+      "output": "In the light minute of a moonless night, the ancient, weathered walls of the old estate loomed ominously over the slender side of the hill. The pent breath of the wind howled through the labyrinthine corridors, echoing the terrible pas of a thousand tortured souls that still haunted the halls. A brown noser by nature, young Ivan found himself entrusted with the safe keeping of a peculiar artifact\u2014a relic from an era when humans had dabbled in forbidden knowledge, a device rumored to have a vampire's side. As he held the cold, metallic object, it seemed to pulse with an unnatural warmth, like wet laundry fresh from a long, eerie soak.",
+      "model": "mistral:7b",
+      "metrics": {
+        "n_bonds": 12,
+        "n_sentences": 3,
+        "mean_coherence": 0.7803485734807662,
+        "tau_autocorr": 0.48633426565935683,
+        "genre_distance": 0.7967413587676013,
+        "vocabulary_diversity": 0.9166666666666666,
+        "variety_mean": 135.41666666666666,
+        "variety_median": 63.5,
+        "tau_mean": 2.598182899130894,
+        "tau_std": 0.20145574736761168
+      },
+      "sample_id": 0
+    },
+    {
+      "genre": "dramatic",
+      "skeleton": [
+        [
+          "big peeve",
+          "little minx",
+          "voor mij",
+          "half minute"
+        ],
+        [
+          "heavy lifting",
+          "poor estate",
+          "entire tense",
+          "full auto"
+        ],
+        [
+          "warm cocoa",
+          "empty night",
+          "busy week",
+          "next month"
+        ]
+      ],
+      "skeleton_details": [
+        [
+          {
+            "noun": "peeve",
+            "adj": "big",
+            "A": -0.3250016174515028,
+            "S": 0.04382155591255867,
+            "tau": 3.0777515322613125,
+            "variety": 15
+          },
+          {
+            "noun": "minx",
+            "adj": "little",
+            "A": -0.08517118727914548,
+            "S": 0.03552140962453046,
+            "tau": 2.7993172464966887,
+            "variety": 493
+          },
+          {
+            "noun": "mij",
+            "adj": "voor",
+            "A": -0.1595835568463968,
+            "S": 0.09796032040156848,
+            "tau": 2.4481211540378425,
+            "variety": 49
+          },
+          {
+            "noun": "minute",
+            "adj": "half",
+            "A": 0.1761571878159693,
+            "S": -0.22429296607343405,
+            "tau": 2.7338720374105026,
+            "variety": 575
+          }
+        ],
+        [
+          {
+            "noun": "lifting",
+            "adj": "heavy",
+            "A": 0.3844575595294475,
+            "S": -0.5929468444517475,
+            "tau": 2.7505674042837374,
+            "variety": 735
+          },
+          {
+            "noun": "estate",
+            "adj": "poor",
+            "A": 0.04022553283804823,
+            "S": -0.3494756546533636,
+            "tau": 2.6741463007166133,
+            "variety": 10
+          },
+          {
+            "noun": "tense",
+            "adj": "entire",
+            "A": 0.26244078498236056,
+            "S": -0.5657734779985558,
+            "tau": 2.9147258047876705,
+            "variety": 43
+          },
+          {
+            "noun": "auto",
+            "adj": "full",
+            "A": -0.06055592316077431,
+            "S": -0.24135334219170956,
+            "tau": 2.571406837997711,
+            "variety": 448
+          }
+        ],
+        [
+          {
+            "noun": "cocoa",
+            "adj": "warm",
+            "A": 0.29762287678427296,
+            "S": -0.444217698118676,
+            "tau": 2.7342969542156705,
+            "variety": 19
+          },
+          {
+            "noun": "night",
+            "adj": "empty",
+            "A": 0.0328010392878808,
+            "S": -0.18948377697848878,
+            "tau": 2.244380358146093,
+            "variety": 167
+          },
+          {
+            "noun": "week",
+            "adj": "busy",
+            "A": 0.14643021011235563,
+            "S": -0.48801836535904397,
+            "tau": 2.363665098496557,
+            "variety": 303
+          },
+          {
+            "noun": "month",
+            "adj": "next",
+            "A": 0.17695718954290182,
+            "S": -0.5351889866329609,
+            "tau": 2.305772715400521,
+            "variety": 8871
+          }
+        ]
+      ],
+      "prompt": "Write a short dramatic paragraph.\n\nStyle: Gothic/Dostoevsky style: high tension, emotional intensity, philosophical depth. Create atmosphere of dread and wonder.\n\nIncorporate these semantic concepts naturally:\nbig peeve, little minx, voor mij, half minute, heavy lifting, poor estate, entire tense, full auto, warm cocoa, empty night, busy week, next month\n\nWrite 2-3 sentences that feel authentically dramatic:",
+      "output": "Amidst the chilling emptiness of an all-encompassing night, a towering edifice stood as a monument to a once-prosperous yet now forlorn estate. The grand structure, long plagued by neglect and decay, seemed to bear the heavy weight of its own history, groaning softly with each gusty breath of wind that swept through the desolate streets. The little minx, weary from the arduous week of relentless labor, found herself perched on a crumbling balcony, cradling a steaming mug of warm cocoa as she pondered her big peeve: the impending renovation that would soon demand more than half a minute's worth of her poor energy. Yet, there was something eerily captivating about the task that awaited her\u2014the prospect of breathing new life into the moribund mansion filled her with a strange sense of wonder, as if she were engaging in a dance with fate itself. Voor mij, it felt like facing off against a fully-automatic rifle, one shot capable of altering the course of not just her own life, but possibly the lives of those who would inhabit this once-majestic home.",
+      "model": "mistral:7b",
+      "metrics": {
+        "n_bonds": 12,
+        "n_sentences": 3,
+        "mean_coherence": 0.7464540436821963,
+        "tau_autocorr": 0.36240921068625365,
+        "genre_distance": 0.8240669761026509,
+        "vocabulary_diversity": 1.0,
+        "variety_mean": 977.3333333333334,
+        "variety_median": 235.0,
+        "tau_mean": 2.6348352870209104,
+        "tau_std": 0.24313299368673863
+      },
+      "sample_id": 1
+    },
+    {
+      "genre": "dramatic",
+      "skeleton": [
+        [
+          "glorious height",
+          "fragile sister",
+          "rare treat",
+          "cold run"
+        ],
+        [
+          "fresh wetness",
+          "funny habit",
+          "big doubt",
+          "wrong woman"
+        ],
+        [
+          "royal livery",
+          "plastic pad",
+          "renew hope",
+          "fellow parent"
+        ]
+      ],
+      "skeleton_details": [
+        [
+          {
+            "noun": "height",
+            "adj": "glorious",
+            "A": -0.020571048537468307,
+            "S": -0.20485720236040975,
+            "tau": 1.600370126611263,
+            "variety": 21
+          },
+          {
+            "noun": "sister",
+            "adj": "fragile",
+            "A": 0.3609159726746355,
+            "S": -0.01769693671490643,
+            "tau": 1.648634592732472,
+            "variety": 16
+          },
+          {
+            "noun": "treat",
+            "adj": "rare",
+            "A": 0.14478532856620502,
+            "S": -0.12607124222975252,
+            "tau": 1.10274883150272,
+            "variety": 314
+          },
+          {
+            "noun": "run",
+            "adj": "cold",
+            "A": 0.591659823053967,
+            "S": -0.014867690194304688,
+            "tau": 1.3967349849052195,
+            "variety": 16
+          }
+        ],
+        [
+          {
+            "noun": "wetness",
+            "adj": "fresh",
+            "A": 0.46135672897362845,
+            "S": -0.06092284697910365,
+            "tau": 1.2866607589209051,
+            "variety": 12
+          },
+          {
+            "noun": "habit",
+            "adj": "funny",
+            "A": 0.5924948506132961,
+            "S": 0.04905818046873663,
+            "tau": 1.2456271567541348,
+            "variety": 19
+          },
+          {
+            "noun": "doubt",
+            "adj": "big",
+            "A": 0.3948857894292564,
+            "S": -0.12001035275799513,
+            "tau": 1.36940827978755,
+            "variety": 11
+          },
+          {
+            "noun": "woman",
+            "adj": "wrong",
+            "A": 0.40557890355115084,
+            "S": 0.07785653945435471,
+            "tau": 1.1508958153678424,
+            "variety": 447
+          }
+        ],
+        [
+          {
+            "noun": "livery",
+            "adj": "royal",
+            "A": 0.17786926460507704,
+            "S": 0.019776906971100988,
+            "tau": 1.1988473698992856,
+            "variety": 46
+          },
+          {
+            "noun": "pad",
+            "adj": "plastic",
+            "A": 0.19810512147668383,
+            "S": -0.2099189919339837,
+            "tau": 1.3127380427940705,
+            "variety": 14
+          },
+          {
+            "noun": "hope",
+            "adj": "renew",
+            "A": 0.4111212949668252,
+            "S": 0.059158083175184215,
+            "tau": 1.2758589781006158,
+            "variety": 235
+          },
+          {
+            "noun": "parent",
+            "adj": "fellow",
+            "A": 0.5976801464122845,
+            "S": -0.07775002876501554,
+            "tau": 0.7788070513566864,
+            "variety": 18
+          }
+        ]
+      ],
+      "prompt": "Write a short dramatic paragraph.\n\nStyle: Gothic/Dostoevsky style: high tension, emotional intensity, philosophical depth. Create atmosphere of dread and wonder.\n\nIncorporate these semantic concepts naturally:\nglorious height, fragile sister, rare treat, cold run, fresh wetness, funny habit, big doubt, wrong woman, royal livery, plastic pad, renew hope, fellow parent\n\nWrite 2-3 sentences that feel authentically dramatic:",
+      "output": "Amidst the glorious height of a desolate cathedral, where echoes of past glory reverberated like the doubts gnawing at his heart, a solitary figure stood - a man whose eyes bore the weight of a thousand unspoken regrets. His fragile sister, her heart as vulnerable as the stained-glass windows around them, clung to him in fearful anticipation. The cold run of water from a leaking roof landed on his worn leather boots, a rare treat in this forsaken place, and yet it felt like the tears of an unseen judge, mocking their presence.\n\nInside the cathedral, a funny habit surfaced: a plastic pad lay discarded near the altar, its brightness a stark contrast to the somber atmosphere. The man, burdened by the big doubt that he had made a wrong choice in life, felt a renewed hope. A fellow parent, his child's mother, was here too, draped in royal livery, her eyes betraying a strength beyond her elegant attire. Was it possible, he pondered, that this woman - a stranger to him but a familiar face to his daughter - could be the key to redeeming his past?",
+      "model": "mistral:7b",
+      "metrics": {
+        "n_bonds": 12,
+        "n_sentences": 3,
+        "mean_coherence": 0.7662084655781031,
+        "tau_autocorr": 0.11531403600254547,
+        "genre_distance": 0.6998464294096599,
+        "vocabulary_diversity": 1.0,
+        "variety_mean": 97.41666666666667,
+        "variety_median": 18.5,
+        "tau_mean": 1.2806109990610637,
+        "tau_std": 0.21762461416333861
+      },
+      "sample_id": 2
+    },
+    {
+      "genre": "ironic",
+      "skeleton": [
+        [
+          "scant minute",
+          "large estate",
+          "heavy bit",
+          "sip chocolate"
+        ],
+        [
+          "damn week",
+          "mag lev",
+          "lovely night",
+          "poor second"
+        ],
+        [
+          "big reveal",
+          "steam breath",
+          "ph meter",
+          "bright tomorrow"
+        ]
+      ],
+      "skeleton_details": [
+        [
+          {
+            "noun": "minute",
+            "adj": "scant",
+            "A": 0.1761571878159693,
+            "S": -0.22429296607343405,
+            "tau": 2.7338720374105026,
+            "variety": 114
+          },
+          {
+            "noun": "estate",
+            "adj": "large",
+            "A": 0.04022553283804823,
+            "S": -0.3494756546533636,
+            "tau": 2.6741463007166133,
+            "variety": 448
+          },
+          {
+            "noun": "bit",
+            "adj": "heavy",
+            "A": 0.14929651742243086,
+            "S": -0.000563406956053562,
+            "tau": 2.48235300170287,
+            "variety": 26
+          },
+          {
+            "noun": "chocolate",
+            "adj": "sip",
+            "A": 0.05970134880068141,
+            "S": -0.42124272865455537,
+            "tau": 2.3055701945266236,
+            "variety": 11
+          }
+        ],
+        [
+          {
+            "noun": "week",
+            "adj": "damn",
+            "A": 0.14643021011235563,
+            "S": -0.48801836535904397,
+            "tau": 2.363665098496557,
+            "variety": 67
+          },
+          {
+            "noun": "lev",
+            "adj": "mag",
+            "A": -0.014729869056467906,
+            "S": -0.07856431625704002,
+            "tau": 2.721246399047171,
+            "variety": 127
+          },
+          {
+            "noun": "night",
+            "adj": "lovely",
+            "A": 0.0328010392878808,
+            "S": -0.18948377697848878,
+            "tau": 2.244380358146093,
+            "variety": 267
+          },
+          {
+            "noun": "second",
+            "adj": "poor",
+            "A": 0.11088154705882436,
+            "S": -0.07819307800543228,
+            "tau": 2.455626833110889,
+            "variety": 55
+          }
+        ],
+        [
+          {
+            "noun": "reveal",
+            "adj": "big",
+            "A": -0.34816398121284425,
+            "S": 0.021396172829423854,
+            "tau": 2.2966524862456157,
+            "variety": 185
+          },
+          {
+            "noun": "breath",
+            "adj": "steam",
+            "A": -0.22773239073400134,
+            "S": 0.0870105508863345,
+            "tau": 2.4435373434464047,
+            "variety": 17
+          },
+          {
+            "noun": "meter",
+            "adj": "ph",
+            "A": -0.10201586209263337,
+            "S": 0.08653186920395302,
+            "tau": 2.054795907264366,
+            "variety": 16
+          },
+          {
+            "noun": "tomorrow",
+            "adj": "bright",
+            "A": 0.01297982666122184,
+            "S": 0.031936359441964206,
+            "tau": 2.036027946323264,
+            "variety": 17
+          }
+        ]
+      ],
+      "prompt": "Write a short ironic paragraph.\n\nStyle: Kafka/Poe style: underlying tension in mundane setting. Horror or absurdity emerges from ordinary things. Keep concepts everyday, but inject unease.\n\nIncorporate these semantic concepts naturally:\nscant minute, large estate, heavy bit, sip chocolate, damn week, mag lev, lovely night, poor second, big reveal, steam breath, ph meter, bright tomorrow\n\nWrite 2-3 sentences that feel authentically ironic:",
+      "output": "Amidst the serene charm of a lovely night, as I sat sipping my chocolate on the porch of this large estate, the scant minute stretched like an eternal void. A heavy bit of unease crept in with each mag lev train's distant hum, its rhythm akin to a damning countdown for the week ahead. As I glanced at the ph meter, the steam from my breath swirling in the cool air, I couldn't shake off the feeling that the big reveal was not the grandeur of the estate but the specter of impending absurdity lurking behind the bright tomorrow.",
+      "model": "mistral:7b",
+      "metrics": {
+        "n_bonds": 12,
+        "n_sentences": 3,
+        "mean_coherence": 0.5449164737041624,
+        "tau_autocorr": 0.32424476599208824,
+        "genre_distance": 0.6248335204779871,
+        "vocabulary_diversity": 1.0,
+        "variety_mean": 112.5,
+        "variety_median": 61.0,
+        "tau_mean": 2.400989492203081,
+        "tau_std": 0.22330155420193884
+      },
+      "sample_id": 0
+    },
+    {
+      "genre": "ironic",
+      "skeleton": [
+        [
+          "light filtering",
+          "full lipped",
+          "oppo nent",
+          "rare minute"
+        ],
+        [
+          "light switch",
+          "nice estate",
+          "stand ovation",
+          "long minute"
+        ],
+        [
+          "extra breath",
+          "heavy switch",
+          "moist breath",
+          "drunken night"
+        ]
+      ],
+      "skeleton_details": [
+        [
+          {
+            "noun": "filtering",
+            "adj": "light",
+            "A": -0.03637612119039624,
+            "S": -0.31270250751301054,
+            "tau": 3.1445989673574104,
+            "variety": 425
+          },
+          {
+            "noun": "lipped",
+            "adj": "full",
+            "A": -0.6153861221467708,
+            "S": 0.013794728758548706,
+            "tau": 3.1269367105183754,
+            "variety": 43
+          },
+          {
+            "noun": "nent",
+            "adj": "oppo",
+            "A": -0.039822022003027605,
+            "S": -0.11988346412151824,
+            "tau": 3.0969100130080567,
+            "variety": 15
+          },
+          {
+            "noun": "minute",
+            "adj": "rare",
+            "A": 0.1761571878159693,
+            "S": -0.22429296607343405,
+            "tau": 2.7338720374105026,
+            "variety": 20
+          }
+        ],
+        [
+          {
+            "noun": "switch",
+            "adj": "light",
+            "A": 0.07368693553320067,
+            "S": -0.29582973991086997,
+            "tau": 2.5084770402078025,
+            "variety": 3934
+          },
+          {
+            "noun": "estate",
+            "adj": "nice",
+            "A": 0.04022553283804823,
+            "S": -0.3494756546533636,
+            "tau": 2.6741463007166133,
+            "variety": 23
+          },
+          {
+            "noun": "ovation",
+            "adj": "stand",
+            "A": 0.12193965972270542,
+            "S": -0.4412747136789692,
+            "tau": 2.9612087272942,
+            "variety": 57
+          },
+          {
+            "noun": "minute",
+            "adj": "long",
+            "A": 0.1761571878159693,
+            "S": -0.22429296607343405,
+            "tau": 2.7338720374105026,
+            "variety": 4659
+          }
+        ],
+        [
+          {
+            "noun": "breath",
+            "adj": "extra",
+            "A": -0.22773239073400134,
+            "S": 0.0870105508863345,
+            "tau": 2.4435373434464047,
+            "variety": 43
+          },
+          {
+            "noun": "switch",
+            "adj": "heavy",
+            "A": 0.07368693553320067,
+            "S": -0.29582973991086997,
+            "tau": 2.5084770402078025,
+            "variety": 10
+          },
+          {
+            "noun": "breath",
+            "adj": "moist",
+            "A": -0.22773239073400134,
+            "S": 0.0870105508863345,
+            "tau": 2.4435373434464047,
+            "variety": 98
+          },
+          {
+            "noun": "night",
+            "adj": "drunken",
+            "A": 0.0328010392878808,
+            "S": -0.18948377697848878,
+            "tau": 2.244380358146093,
+            "variety": 198
+          }
+        ]
+      ],
+      "prompt": "Write a short ironic paragraph.\n\nStyle: Kafka/Poe style: underlying tension in mundane setting. Horror or absurdity emerges from ordinary things. Keep concepts everyday, but inject unease.\n\nIncorporate these semantic concepts naturally:\nlight filtering, full lipped, oppo nent, rare minute, light switch, nice estate, stand ovation, long minute, extra breath, heavy switch, moist breath, drunken night\n\nWrite 2-3 sentences that feel authentically ironic:",
+      "output": "In the heart of that seemingly idyllic estate, where sunlight danced with the full-lipped windows, creating a spectacle of light filtering through the opulent blinds, an eerie stillness hung. The oppo nent of tranquility, a heavy switch, sat silently in the corner, awaiting its rare minute to break the serenity with a jolt that felt like an extra breath snatched away during a stand ovation on a drunken night.",
+      "model": "mistral:7b",
+      "metrics": {
+        "n_bonds": 12,
+        "n_sentences": 3,
+        "mean_coherence": 0.20367941661922392,
+        "tau_autocorr": 0.7463544648266257,
+        "genre_distance": 0.6319669981494191,
+        "vocabulary_diversity": 0.75,
+        "variety_mean": 793.75,
+        "variety_median": 50.0,
+        "tau_mean": 2.7183294932641804,
+        "tau_std": 0.29113852496691844
+      },
+      "sample_id": 1
+    },
+    {
+      "genre": "ironic",
+      "skeleton": [
+        [
+          "solid minute",
+          "wake second",
+          "huge estate",
+          "favorite bit"
+        ],
+        [
+          "other being",
+          "real fun",
+          "back beginning",
+          "alien being"
+        ],
+        [
+          "human habitation",
+          "lead investigator",
+          "more ado",
+          "same morning"
+        ]
+      ],
+      "skeleton_details": [
+        [
+          {
+            "noun": "minute",
+            "adj": "solid",
+            "A": 0.1761571878159693,
+            "S": -0.22429296607343405,
+            "tau": 2.7338720374105026,
+            "variety": 337
+          },
+          {
+            "noun": "second",
+            "adj": "wake",
+            "A": 0.11088154705882436,
+            "S": -0.07819307800543228,
+            "tau": 2.455626833110889,
+            "variety": 39
+          },
+          {
+            "noun": "estate",
+            "adj": "huge",
+            "A": 0.04022553283804823,
+            "S": -0.3494756546533636,
+            "tau": 2.6741463007166133,
+            "variety": 130
+          },
+          {
+            "noun": "bit",
+            "adj": "favorite",
+            "A": 0.14929651742243086,
+            "S": -0.000563406956053562,
+            "tau": 2.48235300170287,
+            "variety": 34
+          }
+        ],
+        [
+          {
+            "noun": "being",
+            "adj": "other",
+            "A": 0.44632719278423744,
+            "S": 0.17414863238770997,
+            "tau": 2.414750238484849,
+            "variety": 1626
+          },
+          {
+            "noun": "fun",
+            "adj": "real",
+            "A": 0.798450603154455,
+            "S": 0.07247538146300028,
+            "tau": 2.525404949637619,
+            "variety": 322
+          },
+          {
+            "noun": "beginning",
+            "adj": "back",
+            "A": 0.19304395388485088,
+            "S": -0.025502432632528275,
+            "tau": 2.368644535700164,
+            "variety": 11
+          },
+          {
+            "noun": "being",
+            "adj": "alien",
+            "A": 0.44632719278423744,
+            "S": 0.17414863238770997,
+            "tau": 2.414750238484849,
+            "variety": 258
+          }
+        ],
+        [
+          {
+            "noun": "habitation",
+            "adj": "human",
+            "A": 0.5088198120603499,
+            "S": 0.17456256257668795,
+            "tau": 2.514241587597267,
+            "variety": 562
+          },
+          {
+            "noun": "investigator",
+            "adj": "lead",
+            "A": 0.7828147741675235,
+            "S": 0.13326234774704462,
+            "tau": 2.3221612653869856,
+            "variety": 52
+          },
+          {
+            "noun": "ado",
+            "adj": "more",
+            "A": 0.3396331874866575,
+            "S": -0.012141834595148199,
+            "tau": 2.2972891979844032,
+            "variety": 186
+          },
+          {
+            "noun": "morning",
+            "adj": "same",
+            "A": 0.2784479157059136,
+            "S": 0.5122737058153143,
+            "tau": 2.354535770273012,
+            "variety": 416
+          }
+        ]
+      ],
+      "prompt": "Write a short ironic paragraph.\n\nStyle: Kafka/Poe style: underlying tension in mundane setting. Horror or absurdity emerges from ordinary things. Keep concepts everyday, but inject unease.\n\nIncorporate these semantic concepts naturally:\nsolid minute, wake second, huge estate, favorite bit, other being, real fun, back beginning, alien being, human habitation, lead investigator, more ado, same morning\n\nWrite 2-3 sentences that feel authentically ironic:",
+      "output": "Each solid minute ticked by like a wakeful second in the vast expanse of the estate, the favorite bit of solitude for its new inhabitant - an alien being, unbeknownst to the residents. The lead investigator, tasked with understanding the enigmatic nature of this otherworldly entity, found more ado about nothing on the same morning he had begun his inquiry. It was only then that he realized, with a sense of chilling irony, that the most unsettling horror was not in the unknown, but in the familiarity of human habitation itself.",
+      "model": "mistral:7b",
+      "metrics": {
+        "n_bonds": 12,
+        "n_sentences": 3,
+        "mean_coherence": 0.8086839173017762,
+        "tau_autocorr": 0.20070298714644444,
+        "genre_distance": 0.542785609384505,
+        "vocabulary_diversity": 0.9166666666666666,
+        "variety_mean": 331.0833333333333,
+        "variety_median": 222.0,
+        "tau_mean": 2.4631479963741683,
+        "tau_std": 0.12829727174413008
+      },
+      "sample_id": 2
+    },
+    {
+      "genre": "balanced",
+      "skeleton": [
+        [
+          "steal minute",
+          "new estate",
+          "short bit",
+          "creamy chocolate"
+        ],
+        [
+          "rainy month",
+          "own ending",
+          "poor night",
+          "second second"
+        ],
+        [
+          "few straggler",
+          "frantic night",
+          "brown lash",
+          "exciting peek"
+        ]
+      ],
+      "skeleton_details": [
+        [
+          {
+            "noun": "minute",
+            "adj": "steal",
+            "A": 0.1761571878159693,
+            "S": -0.22429296607343405,
+            "tau": 2.7338720374105026,
+            "variety": 30
+          },
+          {
+            "noun": "estate",
+            "adj": "new",
+            "A": 0.04022553283804823,
+            "S": -0.3494756546533636,
+            "tau": 2.6741463007166133,
+            "variety": 202
+          },
+          {
+            "noun": "bit",
+            "adj": "short",
+            "A": 0.14929651742243086,
+            "S": -0.000563406956053562,
+            "tau": 2.48235300170287,
+            "variety": 73
+          },
+          {
+            "noun": "chocolate",
+            "adj": "creamy",
+            "A": 0.05970134880068141,
+            "S": -0.42124272865455537,
+            "tau": 2.3055701945266236,
+            "variety": 45
+          }
+        ],
+        [
+          {
+            "noun": "month",
+            "adj": "rainy",
+            "A": 0.17695718954290182,
+            "S": -0.5351889866329609,
+            "tau": 2.305772715400521,
+            "variety": 14
+          },
+          {
+            "noun": "ending",
+            "adj": "own",
+            "A": 0.2522060767942707,
+            "S": -0.025159695435267956,
+            "tau": 2.396852431824525,
+            "variety": 68
+          },
+          {
+            "noun": "night",
+            "adj": "poor",
+            "A": 0.0328010392878808,
+            "S": -0.18948377697848878,
+            "tau": 2.244380358146093,
+            "variety": 43
+          },
+          {
+            "noun": "second",
+            "adj": "second",
+            "A": 0.11088154705882436,
+            "S": -0.07819307800543228,
+            "tau": 2.455626833110889,
+            "variety": 33
+          }
+        ],
+        [
+          {
+            "noun": "straggler",
+            "adj": "few",
+            "A": 0.2619678159714841,
+            "S": -0.19348894652973458,
+            "tau": 2.146005180271007,
+            "variety": 338
+          },
+          {
+            "noun": "night",
+            "adj": "frantic",
+            "A": 0.0328010392878808,
+            "S": -0.18948377697848878,
+            "tau": 2.244380358146093,
+            "variety": 14
+          },
+          {
+            "noun": "lash",
+            "adj": "brown",
+            "A": 0.2804561844630451,
+            "S": -0.11500698920859383,
+            "tau": 2.038669795883494,
+            "variety": 78
+          },
+          {
+            "noun": "peek",
+            "adj": "exciting",
+            "A": 0.19804959235594788,
+            "S": -0.19285280916096412,
+            "tau": 2.1088456264931796,
+            "variety": 30
+          }
+        ]
+      ],
+      "prompt": "Write a short balanced paragraph.\n\nStyle: Austen/Plato style: measured, controlled tone. Clear reasoning, calm and analytical. Social observation with wit.\n\nIncorporate these semantic concepts naturally:\nsteal minute, new estate, short bit, creamy chocolate, rainy month, own ending, poor night, second second, few straggler, frantic night, brown lash, exciting peek\n\nWrite 2-3 sentences that feel authentically balanced:",
+      "output": "In the quietude of a rainy month, one might find themselves stealing but a minute to observe the transient happenings in our new estate. The unpredictable weather, much like the creamy chocolate left untouched on a poor night, can either enhance or spoil the overall character of an evening. As the clock struck the second second, there emerged a frantic night where even the few stragglers seemed to be drawn to the exciting peek behind the brown lash of the grand manor's shutters, each seeking their own ending to the night's intriguing tale.",
+      "model": "mistral:7b",
+      "metrics": {
+        "n_bonds": 12,
+        "n_sentences": 3,
+        "mean_coherence": 0.6055636417120852,
+        "tau_autocorr": 0.6686904474788841,
+        "genre_distance": 0.5108647097923381,
+        "vocabulary_diversity": 0.9166666666666666,
+        "variety_mean": 80.66666666666667,
+        "variety_median": 44.0,
+        "tau_mean": 2.344706236136034,
+        "tau_std": 0.2053246749227409
+      },
+      "sample_id": 0
+    },
+    {
+      "genre": "balanced",
+      "skeleton": [
+        [
+          "look sheepish",
+          "sheer unexpectedness",
+          "multiple sclerosis",
+          "strange on"
+        ],
+        [
+          "grand prix",
+          "literary estate",
+          "crazy minute",
+          "brutal minute"
+        ],
+        [
+          "overhead switch",
+          "mag lev",
+          "slight bit",
+          "unhappy ending"
+        ]
+      ],
+      "skeleton_details": [
+        [
+          {
+            "noun": "sheepish",
+            "adj": "look",
+            "A": -0.24504557781591232,
+            "S": 0.07080585554470117,
+            "tau": 3.0969100130080567,
+            "variety": 104
+          },
+          {
+            "noun": "unexpectedness",
+            "adj": "sheer",
+            "A": -0.3726412793312466,
+            "S": -0.018225208601248873,
+            "tau": 2.886056647693163,
+            "variety": 12
+          },
+          {
+            "noun": "sclerosis",
+            "adj": "multiple",
+            "A": -0.11525486754145309,
+            "S": -0.1125249627282232,
+            "tau": 2.8239087409443187,
+            "variety": 199
+          },
+          {
+            "noun": "on",
+            "adj": "strange",
+            "A": -0.2409359909576918,
+            "S": -0.07845940614148891,
+            "tau": 2.9377826328586143,
+            "variety": 13
+          }
+        ],
+        [
+          {
+            "noun": "prix",
+            "adj": "grand",
+            "A": -0.10716858381103929,
+            "S": -0.2840243548952732,
+            "tau": 2.769551078621726,
+            "variety": 62
+          },
+          {
+            "noun": "estate",
+            "adj": "literary",
+            "A": 0.04022553283804823,
+            "S": -0.3494756546533636,
+            "tau": 2.6741463007166133,
+            "variety": 20
+          },
+          {
+            "noun": "minute",
+            "adj": "crazy",
+            "A": 0.1761571878159693,
+            "S": -0.22429296607343405,
+            "tau": 2.7338720374105026,
+            "variety": 15
+          },
+          {
+            "noun": "minute",
+            "adj": "brutal",
+            "A": 0.1761571878159693,
+            "S": -0.22429296607343405,
+            "tau": 2.7338720374105026,
+            "variety": 12
+          }
+        ],
+        [
+          {
+            "noun": "switch",
+            "adj": "overhead",
+            "A": 0.07368693553320067,
+            "S": -0.29582973991086997,
+            "tau": 2.5084770402078025,
+            "variety": 14
+          },
+          {
+            "noun": "lev",
+            "adj": "mag",
+            "A": -0.014729869056467906,
+            "S": -0.07856431625704002,
+            "tau": 2.721246399047171,
+            "variety": 127
+          },
+          {
+            "noun": "bit",
+            "adj": "slight",
+            "A": 0.14929651742243086,
+            "S": -0.000563406956053562,
+            "tau": 2.48235300170287,
+            "variety": 2114
+          },
+          {
+            "noun": "ending",
+            "adj": "unhappy",
+            "A": 0.2522060767942707,
+            "S": -0.025159695435267956,
+            "tau": 2.396852431824525,
+            "variety": 66
+          }
+        ]
+      ],
+      "prompt": "Write a short balanced paragraph.\n\nStyle: Austen/Plato style: measured, controlled tone. Clear reasoning, calm and analytical. Social observation with wit.\n\nIncorporate these semantic concepts naturally:\nlook sheepish, sheer unexpectedness, multiple sclerosis, strange on, grand prix, literary estate, crazy minute, brutal minute, overhead switch, mag lev, slight bit, unhappy ending\n\nWrite 2-3 sentences that feel authentically balanced:",
+      "output": "In the grandeur of a literary estate, where the serene and the unexpected often intertwined, an unforeseen occurrence unfolded. A gentleman, hitherto known for his composure, found himself looking sheepish as he accidentally switched on the magnetically levitating (mag lev) device during a crazy minute of distraction. The resulting commotion, comparable to the brutal start of a grand prix race, left the room in disarray. Alas, this strange onset led to an unfortunate incident that reminded us all of life's slight bits of unhappiness hidden within its sheer unexpectedness.",
+      "model": "mistral:7b",
+      "metrics": {
+        "n_bonds": 12,
+        "n_sentences": 3,
+        "mean_coherence": 0.7813033707398161,
+        "tau_autocorr": 0.6407775087058185,
+        "genre_distance": 0.4002288616191436,
+        "vocabulary_diversity": 0.9166666666666666,
+        "variety_mean": 229.83333333333334,
+        "variety_median": 41.0,
+        "tau_mean": 2.7304190301204887,
+        "tau_std": 0.19086345383677844
+      },
+      "sample_id": 1
+    },
+    {
+      "genre": "balanced",
+      "skeleton": [
+        [
+          "early minute",
+          "extra second",
+          "old estate",
+          "single bit"
+        ],
+        [
+          "arrogant being",
+          "disjoint bit",
+          "tiny beginning",
+          "slender being"
+        ],
+        [
+          "small insignificant",
+          "mid morning",
+          "messy ending",
+          "blind daylight"
+        ]
+      ],
+      "skeleton_details": [
+        [
+          {
+            "noun": "minute",
+            "adj": "early",
+            "A": 0.1761571878159693,
+            "S": -0.22429296607343405,
+            "tau": 2.7338720374105026,
+            "variety": 24
+          },
+          {
+            "noun": "second",
+            "adj": "extra",
+            "A": 0.11088154705882436,
+            "S": -0.07819307800543228,
+            "tau": 2.455626833110889,
+            "variety": 435
+          },
+          {
+            "noun": "estate",
+            "adj": "old",
+            "A": 0.04022553283804823,
+            "S": -0.3494756546533636,
+            "tau": 2.6741463007166133,
+            "variety": 229
+          },
+          {
+            "noun": "bit",
+            "adj": "single",
+            "A": 0.14929651742243086,
+            "S": -0.000563406956053562,
+            "tau": 2.48235300170287,
+            "variety": 299
+          }
+        ],
+        [
+          {
+            "noun": "being",
+            "adj": "arrogant",
+            "A": 0.44632719278423744,
+            "S": 0.17414863238770997,
+            "tau": 2.414750238484849,
+            "variety": 11
+          },
+          {
+            "noun": "bit",
+            "adj": "disjoint",
+            "A": 0.14929651742243086,
+            "S": -0.000563406956053562,
+            "tau": 2.48235300170287,
+            "variety": 13
+          },
+          {
+            "noun": "beginning",
+            "adj": "tiny",
+            "A": 0.19304395388485088,
+            "S": -0.025502432632528275,
+            "tau": 2.368644535700164,
+            "variety": 15
+          },
+          {
+            "noun": "being",
+            "adj": "slender",
+            "A": 0.44632719278423744,
+            "S": 0.17414863238770997,
+            "tau": 2.414750238484849,
+            "variety": 10
+          }
+        ],
+        [
+          {
+            "noun": "insignificant",
+            "adj": "small",
+            "A": 0.21567515856062128,
+            "S": 0.21700734076246447,
+            "tau": 2.6777807052660805,
+            "variety": 14
+          },
+          {
+            "noun": "morning",
+            "adj": "mid",
+            "A": 0.2784479157059136,
+            "S": 0.5122737058153143,
+            "tau": 2.354535770273012,
+            "variety": 92
+          },
+          {
+            "noun": "ending",
+            "adj": "messy",
+            "A": 0.2522060767942707,
+            "S": -0.025159695435267956,
+            "tau": 2.396852431824525,
+            "variety": 14
+          },
+          {
+            "noun": "daylight",
+            "adj": "blind",
+            "A": 0.16741974100680257,
+            "S": 0.20862835904232122,
+            "tau": 2.3491228737849426,
+            "variety": 14
+          }
+        ]
+      ],
+      "prompt": "Write a short balanced paragraph.\n\nStyle: Austen/Plato style: measured, controlled tone. Clear reasoning, calm and analytical. Social observation with wit.\n\nIncorporate these semantic concepts naturally:\nearly minute, extra second, old estate, single bit, arrogant being, disjoint bit, tiny beginning, slender being, small insignificant, mid morning, messy ending, blind daylight\n\nWrite 2-3 sentences that feel authentically balanced:",
+      "output": "In the early minute of mid-morning, an arrogant being arrived at the old estate, his air of superiority as thin and unsubstantial as a single bit of cobweb floating in the sunlight. Yet, this slender being's disjointed manners, much like a messy ending to a well-written sonnet, soon marred the serene atmosphere. However, it was only fair to acknowledge that even the smallest and most insignificant creatures possess their own unique charm under the blind daylight.",
+      "model": "mistral:7b",
+      "metrics": {
+        "n_bonds": 12,
+        "n_sentences": 3,
+        "mean_coherence": 0.7525504833153047,
+        "tau_autocorr": -0.107542443988532,
+        "genre_distance": 0.6026102318087122,
+        "vocabulary_diversity": 0.8333333333333334,
+        "variety_mean": 97.5,
+        "variety_median": 14.5,
+        "tau_mean": 2.48373233070518,
+        "tau_std": 0.1298709876539552
+      },
+      "sample_id": 2
+    }
+  ],
+  "metrics": {
+    "dramatic": {
+      "coherence_mean": 0.7643370275803552,
+      "coherence_std": 0.013900515522840589,
+      "diversity_mean": 0.9722222222222222,
+      "diversity_std": 0.039283710065919325,
+      "tau_autocorr_mean": 0.32135250411605204,
+      "tau_autocorr_std": 0.15422546821551447
+    },
+    "ironic": {
+      "coherence_mean": 0.5190932692083875,
+      "coherence_std": 0.24766609225508857,
+      "diversity_mean": 0.8888888888888888,
+      "diversity_std": 0.10393492741038726,
+      "tau_autocorr_mean": 0.4237674059883862,
+      "tau_autocorr_std": 0.23361285734810042
+    },
+    "balanced": {
+      "coherence_mean": 0.7131391652557353,
+      "coherence_std": 0.07696775118225155,
+      "diversity_mean": 0.8888888888888888,
+      "diversity_std": 0.03928371006591927,
+      "tau_autocorr_mean": 0.40064183739872355,
+      "tau_autocorr_std": 0.35952119170228636
+    }
+  }
+}

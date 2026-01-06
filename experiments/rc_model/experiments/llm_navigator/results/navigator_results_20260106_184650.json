@@ -1,0 +1,40 @@
+{
+  "metadata": {
+    "timestamp": "2026-01-06T18:46:47.869247",
+    "n_sentences": 3,
+    "n_coordinates": 0
+  },
+  "samples": [
+    {
+      "genre": "dramatic",
+      "text": "In the twilight's tender embrace, resilience blooms like a defiant beacon amidst the enigmatic dance of shadows and light. In the heart of this ancient cathedral, echoes of hope reverberate off stone walls, a testament to enduring fortitude and resilience. The cathedral's shadows whisper tales of trials conquered, a silent symphony of faith and rebirth.",
+      "trajectory": [
+        {
+          "A": 0.29425507555764485,
+          "S": 0.20902089126623008,
+          "tau": 1.8270860820179524
+        },
+        {
+          "A": 0.3048295680018804,
+          "S": 0.21811880213960708,
+          "tau": 1.8243774738161571
+        },
+        {
+          "A": 0.3143466112016923,
+          "S": 0.22630692192564636,
+          "tau": 1.8219397264345414
+        },
+        {
+          "A": 0.32291195008152307,
+          "S": 0.23367622973308172,
+          "tau": 1.8197457537910873
+        }
+      ],
+      "target": {
+        "A": 0.4,
+        "S": 0.3,
+        "tau": 1.8
+      }
+    }
+  ]
+}

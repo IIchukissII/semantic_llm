@@ -1,0 +1,1108 @@
+{
+  "metadata": {
+    "timestamp": "2026-01-06T18:09:38.954519",
+    "model": "mistral:7b",
+    "n_samples": 3,
+    "n_bonds": 499071,
+    "kT": 0.8187307530779818
+  },
+  "samples": [
+    {
+      "genre": "dramatic",
+      "skeleton": [
+        [
+          "very minute",
+          "enough will",
+          "crazy night",
+          "lunar month"
+        ],
+        [
+          "opening week",
+          "many second",
+          "own money",
+          "less being"
+        ],
+        [
+          "sweet morning",
+          "abnormal size",
+          "handsome friend",
+          "other wretch"
+        ]
+      ],
+      "skeleton_details": [
+        [
+          {
+            "noun": "minute",
+            "adj": "very",
+            "tau": 2.7338720374105026,
+            "variety": 756
+          },
+          {
+            "noun": "will",
+            "adj": "enough",
+            "tau": 2.1649638204912587,
+            "variety": 28
+          },
+          {
+            "noun": "night",
+            "adj": "crazy",
+            "tau": 2.244380358146093,
+            "variety": 166
+          },
+          {
+            "noun": "month",
+            "adj": "lunar",
+            "tau": 2.305772715400521,
+            "variety": 81
+          }
+        ],
+        [
+          {
+            "noun": "week",
+            "adj": "opening",
+            "tau": 2.363665098496557,
+            "variety": 14
+          },
+          {
+            "noun": "second",
+            "adj": "many",
+            "tau": 2.455626833110889,
+            "variety": 412
+          },
+          {
+            "noun": "money",
+            "adj": "own",
+            "tau": 1.8973712499034745,
+            "variety": 1614
+          },
+          {
+            "noun": "being",
+            "adj": "less",
+            "tau": 2.414750238484849,
+            "variety": 264
+          }
+        ],
+        [
+          {
+            "noun": "morning",
+            "adj": "sweet",
+            "tau": 2.354535770273012,
+            "variety": 22
+          },
+          {
+            "noun": "size",
+            "adj": "abnormal",
+            "tau": 2.104024316498545,
+            "variety": 10
+          },
+          {
+            "noun": "friend",
+            "adj": "handsome",
+            "tau": 2.0666295413311326,
+            "variety": 90
+          },
+          {
+            "noun": "wretch",
+            "adj": "other",
+            "tau": 1.5901792073850096,
+            "variety": 23
+          }
+        ]
+      ],
+      "prompt": "Write a short dramatic paragraph.\n\nStyle: Gothic/Dostoevsky style: high tension, emotional intensity, philosophical depth. Create atmosphere of dread and wonder.\n\nIncorporate these semantic concepts naturally:\nvery minute, enough will, crazy night, lunar month, opening week, many second, own money, less being, sweet morning, abnormal size, handsome friend, other wretch\n\nWrite 2-3 sentences that feel authentically dramatic:",
+      "output": "Amidst the crescendo of a crazy night during the opening week of the lunar month, under the towering silhouette of an ancient castle, a man of own means stood alone, his heart heavy with the weight of a thousand regrets. His handsome friend, now an other wretch, had succumbed to the abnormal size of despair, leaving behind a chasm wider than the minute sands of time. As the sweet morning sun began to illuminate the bleak landscape, he wondered if enough willpower could mend what little being remained of his shattered soul.",
+      "model": "mistral:7b",
+      "metrics": {
+        "n_bonds": 12,
+        "n_sentences": 3,
+        "mean_coherence": 0.9133701699457238,
+        "tau_autocorr": 0.05760764192182673,
+        "genre_distance": 0.7102411764231915,
+        "vocabulary_diversity": 1.0,
+        "variety_mean": 290.0,
+        "variety_median": 85.5,
+        "tau_mean": 2.2246475989109866,
+        "tau_std": 0.28058112347202735
+      },
+      "sample_id": 0
+    },
+    {
+      "genre": "dramatic",
+      "skeleton": [
+        [
+          "little sumpin",
+          "bloody unfair",
+          "wild civet",
+          "much deeping"
+        ],
+        [
+          "young mancer",
+          "high tensile",
+          "near toothless",
+          "full afterburner"
+        ],
+        [
+          "more breathless",
+          "tall borderman",
+          "central heating",
+          "high arching"
+        ]
+      ],
+      "skeleton_details": [
+        [
+          {
+            "noun": "sumpin",
+            "adj": "little",
+            "tau": 3.6989700043360187,
+            "variety": 11
+          },
+          {
+            "noun": "unfair",
+            "adj": "bloody",
+            "tau": 3.5228787452803374,
+            "variety": 22
+          },
+          {
+            "noun": "civet",
+            "adj": "wild",
+            "tau": 3.6989700043360187,
+            "variety": 10
+          },
+          {
+            "noun": "deeping",
+            "adj": "much",
+            "tau": 3.6989700043360187,
+            "variety": 15
+          }
+        ],
+        [
+          {
+            "noun": "mancer",
+            "adj": "young",
+            "tau": 3.3010299956639813,
+            "variety": 11
+          },
+          {
+            "noun": "tensile",
+            "adj": "high",
+            "tau": 3.6989700043360187,
+            "variety": 46
+          },
+          {
+            "noun": "toothless",
+            "adj": "near",
+            "tau": 3.3010299956639813,
+            "variety": 10
+          },
+          {
+            "noun": "afterburner",
+            "adj": "full",
+            "tau": 3.3979400086720375,
+            "variety": 26
+          }
+        ],
+        [
+          {
+            "noun": "breathless",
+            "adj": "more",
+            "tau": 3.332356825768093,
+            "variety": 21
+          },
+          {
+            "noun": "borderman",
+            "adj": "tall",
+            "tau": 3.3979400086720375,
+            "variety": 13
+          },
+          {
+            "noun": "heating",
+            "adj": "central",
+            "tau": 2.6934195247225556,
+            "variety": 548
+          },
+          {
+            "noun": "arching",
+            "adj": "high",
+            "tau": 3.1482049701690737,
+            "variety": 10
+          }
+        ]
+      ],
+      "prompt": "Write a short dramatic paragraph.\n\nStyle: Gothic/Dostoevsky style: high tension, emotional intensity, philosophical depth. Create atmosphere of dread and wonder.\n\nIncorporate these semantic concepts naturally:\nlittle sumpin, bloody unfair, wild civet, much deeping, young mancer, high tensile, near toothless, full afterburner, more breathless, tall borderman, central heating, high arching\n\nWrite 2-3 sentences that feel authentically dramatic:",
+      "output": "In the desolate heart of an ancient, sprawling manor, a Young Mancener, with eyes as wild and unpredictable as a civet, paced restlessly through its cold corridors. The high tensile air was thick with the weight of the past, filled with whispers of the Little Sumpin, that dark, inexplicable secret that seemed to haunt the estate like an ever-present specter. As he reached the tall border of the manor's central heating room, his heart raced at full afterburner, every beat echoing through the chambers like a drum, leaving him more breathless than before. The high arching fireplace loomed ahead, casting long, dancing shadows that seemed to whisper of an unfair world where reason was but a distant memory and the line between reality and nightmare grew ever thinner.",
+      "model": "mistral:7b",
+      "metrics": {
+        "n_bonds": 12,
+        "n_sentences": 3,
+        "mean_coherence": 0.5113676337775577,
+        "tau_autocorr": 0.2973875519848738,
+        "genre_distance": 0.8166291087106995,
+        "vocabulary_diversity": 1.0,
+        "variety_mean": 61.916666666666664,
+        "variety_median": 14.0,
+        "tau_mean": 3.4075566743296815,
+        "tau_std": 0.2826625070712123
+      },
+      "sample_id": 1
+    },
+    {
+      "genre": "dramatic",
+      "skeleton": [
+        [
+          "little friendss",
+          "middle thirty",
+          "single deal",
+          "dead giveaway"
+        ],
+        [
+          "deviate septum",
+          "high pitched",
+          "other minute",
+          "few fry"
+        ],
+        [
+          "single decker",
+          "standing ovation",
+          "mental switch",
+          "small estate"
+        ]
+      ],
+      "skeleton_details": [
+        [
+          {
+            "noun": "friendss",
+            "adj": "little",
+            "tau": 3.6989700043360187,
+            "variety": 20
+          },
+          {
+            "noun": "thirty",
+            "adj": "middle",
+            "tau": 3.263927520993586,
+            "variety": 138
+          },
+          {
+            "noun": "deal",
+            "adj": "single",
+            "tau": 2.988183610755666,
+            "variety": 14
+          },
+          {
+            "noun": "giveaway",
+            "adj": "dead",
+            "tau": 2.87225425417439,
+            "variety": 741
+          }
+        ],
+        [
+          {
+            "noun": "septum",
+            "adj": "deviate",
+            "tau": 3.0969100130080567,
+            "variety": 29
+          },
+          {
+            "noun": "pitched",
+            "adj": "high",
+            "tau": 3.154901959985743,
+            "variety": 111
+          },
+          {
+            "noun": "minute",
+            "adj": "other",
+            "tau": 2.7338720374105026,
+            "variety": 181
+          },
+          {
+            "noun": "fry",
+            "adj": "few",
+            "tau": 2.4334156836798475,
+            "variety": 60
+          }
+        ],
+        [
+          {
+            "noun": "decker",
+            "adj": "single",
+            "tau": 2.8970118984844806,
+            "variety": 21
+          },
+          {
+            "noun": "ovation",
+            "adj": "standing",
+            "tau": 2.9612087272942,
+            "variety": 560
+          },
+          {
+            "noun": "switch",
+            "adj": "mental",
+            "tau": 2.5084770402078025,
+            "variety": 15
+          },
+          {
+            "noun": "estate",
+            "adj": "small",
+            "tau": 2.6741463007166133,
+            "variety": 235
+          }
+        ]
+      ],
+      "prompt": "Write a short dramatic paragraph.\n\nStyle: Gothic/Dostoevsky style: high tension, emotional intensity, philosophical depth. Create atmosphere of dread and wonder.\n\nIncorporate these semantic concepts naturally:\nlittle friendss, middle thirty, single deal, dead giveaway, deviate septum, high pitched, other minute, few fry, single decker, standing ovation, mental switch, small estate\n\nWrite 2-3 sentences that feel authentically dramatic:",
+      "output": "Amidst the gloom of a grand manor, nestled in the heart of an ancient forest, resided a man in his middle thirty. His deviated septum echoed with each labored breath, a constant reminder of life's relentless march. One evening, as twilight cast its long shadows across the small estate, he encountered a peculiar sight - a single-decker carriage, abandoned on the cobblestone path. Inside lay his little friends, their lifeless forms forming a grisly spectacle that served as a dead giveaway of the sinister deal they had struck. The high-pitched shrieks of an unseen entity reverberated through the chilly air, and as he stood motionless, a mental switch was flicked, ushering in an overwhelming sense of dread and wonder. The standing ovation of crows above echoed his internal turmoil, as he realized that life had deviated into a realm beyond comprehension.",
+      "model": "mistral:7b",
+      "metrics": {
+        "n_bonds": 12,
+        "n_sentences": 3,
+        "mean_coherence": 0.7374431404511473,
+        "tau_autocorr": 0.5262019546218154,
+        "genre_distance": 0.5836489391837856,
+        "vocabulary_diversity": 1.0,
+        "variety_mean": 177.08333333333334,
+        "variety_median": 85.5,
+        "tau_mean": 2.9402732542539085,
+        "tau_std": 0.331283213312734
+      },
+      "sample_id": 2
+    },
+    {
+      "genre": "ironic",
+      "skeleton": [
+        [
+          "little feisty",
+          "necrotise fasciitis",
+          "vous anglais",
+          "private sanctum"
+        ],
+        [
+          "full afterburner",
+          "este lugar",
+          "val ey",
+          "presque vu"
+        ],
+        [
+          "deadly nightshade",
+          "half nelson",
+          "little duller",
+          "little corny"
+        ]
+      ],
+      "skeleton_details": [
+        [
+          {
+            "noun": "feisty",
+            "adj": "little",
+            "tau": 3.9690325353937896,
+            "variety": 13
+          },
+          {
+            "noun": "fasciitis",
+            "adj": "necrotise",
+            "tau": 3.6989700043360187,
+            "variety": 18
+          },
+          {
+            "noun": "anglais",
+            "adj": "vous",
+            "tau": 3.6989700043360187,
+            "variety": 12
+          },
+          {
+            "noun": "sanctum",
+            "adj": "private",
+            "tau": 3.6415808561450422,
+            "variety": 62
+          }
+        ],
+        [
+          {
+            "noun": "afterburner",
+            "adj": "full",
+            "tau": 3.3979400086720375,
+            "variety": 26
+          },
+          {
+            "noun": "lugar",
+            "adj": "este",
+            "tau": 3.6989700043360187,
+            "variety": 14
+          },
+          {
+            "noun": "ey",
+            "adj": "val",
+            "tau": 3.3979400086720375,
+            "variety": 21
+          },
+          {
+            "noun": "vu",
+            "adj": "presque",
+            "tau": 3.55532918370854,
+            "variety": 16
+          }
+        ],
+        [
+          {
+            "noun": "nightshade",
+            "adj": "deadly",
+            "tau": 3.221848749616356,
+            "variety": 74
+          },
+          {
+            "noun": "nelson",
+            "adj": "half",
+            "tau": 3.221848749616356,
+            "variety": 33
+          },
+          {
+            "noun": "duller",
+            "adj": "little",
+            "tau": 3.221848749616356,
+            "variety": 10
+          },
+          {
+            "noun": "corny",
+            "adj": "little",
+            "tau": 3.0,
+            "variety": 24
+          }
+        ]
+      ],
+      "prompt": "Write a short ironic paragraph.\n\nStyle: Kafka/Poe style: underlying tension in mundane setting. Horror or absurdity emerges from ordinary things. Keep concepts everyday, but inject unease.\n\nIncorporate these semantic concepts naturally:\nlittle feisty, necrotise fasciitis, vous anglais, private sanctum, full afterburner, este lugar, val ey, presque vu, deadly nightshade, half nelson, little duller, little corny\n\nWrite 2-3 sentences that feel authentically ironic:",
+      "output": "Nestled within the heart of Boston's vibrant Quincy Market, a quaint little bookstore - 'Little Feisty' - stood, humbly. To the unsuspecting eye, it was just another venue for the voracious reader, filled with the scent of aged pages and the hushed whispers of stories untold. Yet, beneath its unassuming veneer, a peculiar energy pulsed, as if the very air within had been infused with the deadly nightshade of Poe's tales. Here, in this private sanctum, the language of Vous Anglais seemed to necrotize the fasciitis of common understanding, propelling its patrons into a realm where everyday words took on a sinister twist. In this bookstore that was both half nelson and little duller, one could feel the subtle yet palpable pull towards the absurd - as if they were standing on the precipice of a full afterburner, teetering between reality and presque vu.",
+      "model": "mistral:7b",
+      "metrics": {
+        "n_bonds": 12,
+        "n_sentences": 3,
+        "mean_coherence": 0.5954074852237796,
+        "tau_autocorr": 0.6541722509559491,
+        "genre_distance": 0.3478976657828302,
+        "vocabulary_diversity": 1.0,
+        "variety_mean": 26.916666666666668,
+        "variety_median": 19.5,
+        "tau_mean": 3.477023237870714,
+        "tau_std": 0.267467571754861
+      },
+      "sample_id": 0
+    },
+    {
+      "genre": "ironic",
+      "skeleton": [
+        [
+          "grow on",
+          "jewish dp",
+          "little redeemer",
+          "scarlet ibis"
+        ],
+        [
+          "dangerous proximity",
+          "light breath",
+          "vous pas",
+          "russian roulette"
+        ],
+        [
+          "other infringement",
+          "little twerp",
+          "steady breath",
+          "sucking breath"
+        ]
+      ],
+      "skeleton_details": [
+        [
+          {
+            "noun": "on",
+            "adj": "grow",
+            "tau": 2.9377826328586143,
+            "variety": 15
+          },
+          {
+            "noun": "dp",
+            "adj": "jewish",
+            "tau": 3.154901959985743,
+            "variety": 10
+          },
+          {
+            "noun": "redeemer",
+            "adj": "little",
+            "tau": 3.3010299956639813,
+            "variety": 12
+          },
+          {
+            "noun": "ibis",
+            "adj": "scarlet",
+            "tau": 3.154901959985743,
+            "variety": 17
+          }
+        ],
+        [
+          {
+            "noun": "proximity",
+            "adj": "dangerous",
+            "tau": 3.194292908197569,
+            "variety": 19
+          },
+          {
+            "noun": "breath",
+            "adj": "light",
+            "tau": 2.4435373434464047,
+            "variety": 52
+          },
+          {
+            "noun": "pas",
+            "adj": "vous",
+            "tau": 2.726006592280915,
+            "variety": 116
+          },
+          {
+            "noun": "roulette",
+            "adj": "russian",
+            "tau": 2.853871964321762,
+            "variety": 250
+          }
+        ],
+        [
+          {
+            "noun": "infringement",
+            "adj": "other",
+            "tau": 2.7984311775505253,
+            "variety": 78
+          },
+          {
+            "noun": "twerp",
+            "adj": "little",
+            "tau": 2.955531673338163,
+            "variety": 171
+          },
+          {
+            "noun": "breath",
+            "adj": "steady",
+            "tau": 2.4435373434464047,
+            "variety": 1334
+          },
+          {
+            "noun": "breath",
+            "adj": "sucking",
+            "tau": 2.4435373434464047,
+            "variety": 12
+          }
+        ]
+      ],
+      "prompt": "Write a short ironic paragraph.\n\nStyle: Kafka/Poe style: underlying tension in mundane setting. Horror or absurdity emerges from ordinary things. Keep concepts everyday, but inject unease.\n\nIncorporate these semantic concepts naturally:\ngrow on, jewish dp, little redeemer, scarlet ibis, dangerous proximity, light breath, vous pas, russian roulette, other infringement, little twerp, steady breath, sucking breath\n\nWrite 2-3 sentences that feel authentically ironic:",
+      "output": "In the seemingly innocuous Jewish Displacement Camp, where every morning the sun grew on like a steady breath, casting an eerie light over the makeshift tents, a scarlet ibis with an uncanny air of the little redeemer fluttered around. The camp inhabitants, in the dangerous proximity of this unusual visitor, felt an unsettling calm, akin to Russian Roulette - the anticipation of both relief and doom hanging heavily in the air. A little twerp among them, whose breaths were as unpredictable as his actions, took it upon himself to capture the bird, setting off a chain of other infringements that would leave the camp forever changed.",
+      "model": "mistral:7b",
+      "metrics": {
+        "n_bonds": 12,
+        "n_sentences": 3,
+        "mean_coherence": 0.6585624734803338,
+        "tau_autocorr": 0.45822487690718877,
+        "genre_distance": 0.3883920739844744,
+        "vocabulary_diversity": 0.8333333333333334,
+        "variety_mean": 173.83333333333334,
+        "variety_median": 35.5,
+        "tau_mean": 2.8672802412101865,
+        "tau_std": 0.2939444239046992
+      },
+      "sample_id": 1
+    },
+    {
+      "genre": "ironic",
+      "skeleton": [
+        [
+          "first minute",
+          "color bit",
+          "little sheepish",
+          "good second"
+        ],
+        [
+          "tear breath",
+          "residential estate",
+          "agonizing night",
+          "less discerning"
+        ],
+        [
+          "only second",
+          "top bit",
+          "emotional being",
+          "low echelon"
+        ]
+      ],
+      "skeleton_details": [
+        [
+          {
+            "noun": "minute",
+            "adj": "first",
+            "tau": 2.7338720374105026,
+            "variety": 2243
+          },
+          {
+            "noun": "bit",
+            "adj": "color",
+            "tau": 2.48235300170287,
+            "variety": 12
+          },
+          {
+            "noun": "sheepish",
+            "adj": "little",
+            "tau": 3.0969100130080567,
+            "variety": 252
+          },
+          {
+            "noun": "second",
+            "adj": "good",
+            "tau": 2.455626833110889,
+            "variety": 551
+          }
+        ],
+        [
+          {
+            "noun": "breath",
+            "adj": "tear",
+            "tau": 2.4435373434464047,
+            "variety": 14
+          },
+          {
+            "noun": "estate",
+            "adj": "residential",
+            "tau": 2.6741463007166133,
+            "variety": 28
+          },
+          {
+            "noun": "night",
+            "adj": "agonizing",
+            "tau": 2.244380358146093,
+            "variety": 16
+          },
+          {
+            "noun": "discerning",
+            "adj": "less",
+            "tau": 2.920818753952375,
+            "variety": 15
+          }
+        ],
+        [
+          {
+            "noun": "second",
+            "adj": "only",
+            "tau": 2.455626833110889,
+            "variety": 855
+          },
+          {
+            "noun": "bit",
+            "adj": "top",
+            "tau": 2.48235300170287,
+            "variety": 20
+          },
+          {
+            "noun": "being",
+            "adj": "emotional",
+            "tau": 2.414750238484849,
+            "variety": 123
+          },
+          {
+            "noun": "echelon",
+            "adj": "low",
+            "tau": 2.191303446765617,
+            "variety": 102
+          }
+        ]
+      ],
+      "prompt": "Write a short ironic paragraph.\n\nStyle: Kafka/Poe style: underlying tension in mundane setting. Horror or absurdity emerges from ordinary things. Keep concepts everyday, but inject unease.\n\nIncorporate these semantic concepts naturally:\nfirst minute, color bit, little sheepish, good second, tear breath, residential estate, agonizing night, less discerning, only second, top bit, emotional being, low echelon\n\nWrite 2-3 sentences that feel authentically ironic:",
+      "output": "In the tranquil first minute of an ordinary evening within the confines of a seemingly benign residential estate, a subtle color bit began to dance across the sky, causing a little sheepish sensation among the emotionally fragile residents. The agonizing night had just begun, as if the universe was unveiling its less discerning side, revealing a hidden spectacle only for the low echelon of the world. Yet, as the emotional beings huddled indoors, they could not escape the tear-filled breath that seemed to seep through their windowpanes, carrying with it the faint yet terrifying top bit of an unspoken nightmare that threatened to consume them all.",
+      "model": "mistral:7b",
+      "metrics": {
+        "n_bonds": 12,
+        "n_sentences": 3,
+        "mean_coherence": 0.4946112404025617,
+        "tau_autocorr": -0.32697797073734874,
+        "genre_distance": 0.36831102269739197,
+        "vocabulary_diversity": 0.8333333333333334,
+        "variety_mean": 352.5833333333333,
+        "variety_median": 65.0,
+        "tau_mean": 2.5496398467965022,
+        "tau_std": 0.25240426968200713
+      },
+      "sample_id": 2
+    },
+    {
+      "genre": "balanced",
+      "skeleton": [
+        [
+          "high fifty",
+          "central locking",
+          "lousy minute",
+          "senior prom"
+        ],
+        [
+          "big other",
+          "scared witless",
+          "near habitation",
+          "cum dripped"
+        ],
+        [
+          "immortal being",
+          "very brink",
+          "wrong other",
+          "green bit"
+        ]
+      ],
+      "skeleton_details": [
+        [
+          {
+            "noun": "fifty",
+            "adj": "high",
+            "tau": 3.0747680137379056,
+            "variety": 19
+          },
+          {
+            "noun": "locking",
+            "adj": "central",
+            "tau": 3.0457574905606752,
+            "variety": 36
+          },
+          {
+            "noun": "minute",
+            "adj": "lousy",
+            "tau": 2.7338720374105026,
+            "variety": 30
+          },
+          {
+            "noun": "prom",
+            "adj": "senior",
+            "tau": 2.8608061692807834,
+            "variety": 341
+          }
+        ],
+        [
+          {
+            "noun": "other",
+            "adj": "big",
+            "tau": 2.813486535946125,
+            "variety": 21
+          },
+          {
+            "noun": "witless",
+            "adj": "scared",
+            "tau": 2.95661456439434,
+            "variety": 138
+          },
+          {
+            "noun": "habitation",
+            "adj": "near",
+            "tau": 2.514241587597267,
+            "variety": 12
+          },
+          {
+            "noun": "dripped",
+            "adj": "cum",
+            "tau": 3.0969100130080567,
+            "variety": 11
+          }
+        ],
+        [
+          {
+            "noun": "being",
+            "adj": "immortal",
+            "tau": 2.414750238484849,
+            "variety": 124
+          },
+          {
+            "noun": "brink",
+            "adj": "very",
+            "tau": 2.742127198103703,
+            "variety": 196
+          },
+          {
+            "noun": "other",
+            "adj": "wrong",
+            "tau": 2.813486535946125,
+            "variety": 10
+          },
+          {
+            "noun": "bit",
+            "adj": "green",
+            "tau": 2.48235300170287,
+            "variety": 42
+          }
+        ]
+      ],
+      "prompt": "Write a short balanced paragraph.\n\nStyle: Austen/Plato style: measured, controlled tone. Clear reasoning, calm and analytical. Social observation with wit.\n\nIncorporate these semantic concepts naturally:\nhigh fifty, central locking, lousy minute, senior prom, big other, scared witless, near habitation, cum dripped, immortal being, very brink, wrong other, green bit\n\nWrite 2-3 sentences that feel authentically balanced:",
+      "output": "Within the grand tapestry of human society, one observes an intriguing confluence of the mundane and the extraordinary. The advent of automobiles, with their central locking systems as dependable as a senior's memory at prom, has rendered us immune to being 'scared witless' by intruders during our journeys. Yet, the irony lies in the fact that we still fear the proverbial 'wrong other' in our personal lives, much like one might recoil from a drop of cum dripped on an immaculate white carpet - the very brink of disturbing our near habitation. The green bit of envy, however, persists even among the most self-assured of individuals, akin to the persistent humidity in a tropical clime, hinting at the eternal struggle between the mortal and the immortal being.",
+      "model": "mistral:7b",
+      "metrics": {
+        "n_bonds": 12,
+        "n_sentences": 3,
+        "mean_coherence": 0.8894894349452467,
+        "tau_autocorr": -0.3407725742855901,
+        "genre_distance": 0.5185244634708999,
+        "vocabulary_diversity": 0.9166666666666666,
+        "variety_mean": 81.66666666666667,
+        "variety_median": 33.0,
+        "tau_mean": 2.7957644488477666,
+        "tau_std": 0.22194608976011848
+      },
+      "sample_id": 0
+    },
+    {
+      "genre": "balanced",
+      "skeleton": [
+        [
+          "bloody brilliant",
+          "few being",
+          "breathless second",
+          "full minute"
+        ],
+        [
+          "cold bit",
+          "more pretense",
+          "further ado",
+          "little bumpy"
+        ],
+        [
+          "heavy switch",
+          "third month",
+          "terrify instant",
+          "overcast night"
+        ]
+      ],
+      "skeleton_details": [
+        [
+          {
+            "noun": "brilliant",
+            "adj": "bloody",
+            "tau": 2.5750761278022694,
+            "variety": 128
+          },
+          {
+            "noun": "being",
+            "adj": "few",
+            "tau": 2.414750238484849,
+            "variety": 122
+          },
+          {
+            "noun": "second",
+            "adj": "breathless",
+            "tau": 2.455626833110889,
+            "variety": 21
+          },
+          {
+            "noun": "minute",
+            "adj": "full",
+            "tau": 2.7338720374105026,
+            "variety": 3996
+          }
+        ],
+        [
+          {
+            "noun": "bit",
+            "adj": "cold",
+            "tau": 2.48235300170287,
+            "variety": 152
+          },
+          {
+            "noun": "pretense",
+            "adj": "more",
+            "tau": 2.5204180722802128,
+            "variety": 29
+          },
+          {
+            "noun": "ado",
+            "adj": "further",
+            "tau": 2.2972891979844032,
+            "variety": 498
+          },
+          {
+            "noun": "bumpy",
+            "adj": "little",
+            "tau": 2.45135919478213,
+            "variety": 59
+          }
+        ],
+        [
+          {
+            "noun": "switch",
+            "adj": "heavy",
+            "tau": 2.5084770402078025,
+            "variety": 10
+          },
+          {
+            "noun": "month",
+            "adj": "third",
+            "tau": 2.305772715400521,
+            "variety": 212
+          },
+          {
+            "noun": "instant",
+            "adj": "terrify",
+            "tau": 2.151234244283296,
+            "variety": 16
+          },
+          {
+            "noun": "night",
+            "adj": "overcast",
+            "tau": 2.244380358146093,
+            "variety": 49
+          }
+        ]
+      ],
+      "prompt": "Write a short balanced paragraph.\n\nStyle: Austen/Plato style: measured, controlled tone. Clear reasoning, calm and analytical. Social observation with wit.\n\nIncorporate these semantic concepts naturally:\nbloody brilliant, few being, breathless second, full minute, cold bit, more pretense, further ado, little bumpy, heavy switch, third month, terrify instant, overcast night\n\nWrite 2-3 sentences that feel authentically balanced:",
+      "output": "Upon the overcast night of the third month, a breathtlessly brilliant spectacle unfolded, leaving the few being in attendance awestruck. A sudden, cold bit of anxiety swept through the crowd, as if anticipating a heavy switch in the proceedings. Yet, after the terrifying instant had passed, they found themselves not terrified, but rather intrigued by the unexpected turn of events - a moment of stillness amidst the little bumpy path of their social lives. Further ado, my dear friends, would only be unnecessarily dramatic.",
+      "model": "mistral:7b",
+      "metrics": {
+        "n_bonds": 12,
+        "n_sentences": 3,
+        "mean_coherence": 0.8505940961683783,
+        "tau_autocorr": 0.372048727539709,
+        "genre_distance": 0.8116889656395139,
+        "vocabulary_diversity": 1.0,
+        "variety_mean": 441.0,
+        "variety_median": 90.5,
+        "tau_mean": 2.4283840884663195,
+        "tau_std": 0.15192760133673475
+      },
+      "sample_id": 1
+    },
+    {
+      "genre": "balanced",
+      "skeleton": [
+        [
+          "gorgeous night",
+          "short bit",
+          "many second",
+          "ninth week"
+        ],
+        [
+          "human night",
+          "more will",
+          "quick second",
+          "remote switch"
+        ],
+        [
+          "big say",
+          "previous direction",
+          "same month",
+          "detailed rundown"
+        ]
+      ],
+      "skeleton_details": [
+        [
+          {
+            "noun": "night",
+            "adj": "gorgeous",
+            "tau": 2.244380358146093,
+            "variety": 52
+          },
+          {
+            "noun": "bit",
+            "adj": "short",
+            "tau": 2.48235300170287,
+            "variety": 73
+          },
+          {
+            "noun": "second",
+            "adj": "many",
+            "tau": 2.455626833110889,
+            "variety": 412
+          },
+          {
+            "noun": "week",
+            "adj": "ninth",
+            "tau": 2.363665098496557,
+            "variety": 18
+          }
+        ],
+        [
+          {
+            "noun": "night",
+            "adj": "human",
+            "tau": 2.244380358146093,
+            "variety": 13
+          },
+          {
+            "noun": "will",
+            "adj": "more",
+            "tau": 2.1649638204912587,
+            "variety": 48
+          },
+          {
+            "noun": "second",
+            "adj": "quick",
+            "tau": 2.455626833110889,
+            "variety": 192
+          },
+          {
+            "noun": "switch",
+            "adj": "remote",
+            "tau": 2.5084770402078025,
+            "variety": 33
+          }
+        ],
+        [
+          {
+            "noun": "say",
+            "adj": "big",
+            "tau": 2.3560091500058817,
+            "variety": 23
+          },
+          {
+            "noun": "direction",
+            "adj": "previous",
+            "tau": 2.00225586172452,
+            "variety": 13
+          },
+          {
+            "noun": "month",
+            "adj": "same",
+            "tau": 2.305772715400521,
+            "variety": 400
+          },
+          {
+            "noun": "rundown",
+            "adj": "detailed",
+            "tau": 1.9094189190847055,
+            "variety": 16
+          }
+        ]
+      ],
+      "prompt": "Write a short balanced paragraph.\n\nStyle: Austen/Plato style: measured, controlled tone. Clear reasoning, calm and analytical. Social observation with wit.\n\nIncorporate these semantic concepts naturally:\ngorgeous night, short bit, many second, ninth week, human night, more will, quick second, remote switch, big say, previous direction, same month, detailed rundown\n\nWrite 2-3 sentences that feel authentically balanced:",
+      "output": "During the ninth week of this extraordinary season, as the sun dipped below the horizon in a gorgeous night display, a noticeable shift was perceived among the denizens of our town. The short bit between nine and ten, now filled with more will for conversation, showcased an intricate rundown of events from the previous direction. One could almost envision a remote switch flipping within the human heart, transforming its rhythm to that of an eager bee in the same month, ready to share its honeyed words at the quickest second.",
+      "model": "mistral:7b",
+      "metrics": {
+        "n_bonds": 12,
+        "n_sentences": 3,
+        "mean_coherence": 0.753393294062204,
+        "tau_autocorr": 0.11708812357706104,
+        "genre_distance": 0.4419477778317455,
+        "vocabulary_diversity": 0.8333333333333334,
+        "variety_mean": 107.75,
+        "variety_median": 40.5,
+        "tau_mean": 2.2910774991356733,
+        "tau_std": 0.1818996951318378
+      },
+      "sample_id": 2
+    }
+  ],
+  "metrics": {
+    "dramatic": {
+      "coherence_mean": 0.7207269813914764,
+      "coherence_std": 0.164541954633037,
+      "diversity_mean": 1.0,
+      "diversity_std": 0.0,
+      "tau_autocorr_mean": 0.29373238284283865,
+      "tau_autocorr_std": 0.19132028585557145
+    },
+    "ironic": {
+      "coherence_mean": 0.5828603997022251,
+      "coherence_std": 0.06751826282937277,
+      "diversity_mean": 0.888888888888889,
+      "diversity_std": 0.0785674201318386,
+      "tau_autocorr_mean": 0.2618063857085964,
+      "tau_autocorr_std": 0.42394898053559116
+    },
+    "balanced": {
+      "coherence_mean": 0.8311589417252763,
+      "coherence_std": 0.057235384230297434,
+      "diversity_mean": 0.9166666666666666,
+      "diversity_std": 0.06804138174397716,
+      "tau_autocorr_mean": 0.04945475894372666,
+      "tau_autocorr_std": 0.2949115755529644
+    }
+  }
+}

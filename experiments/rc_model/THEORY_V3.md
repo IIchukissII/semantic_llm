@@ -620,10 +620,100 @@ prompt = gen.generate_prompt('dramatic', n_bonds=8)
 
 ---
 
-## 13. Summary
+## 13. Storm-Logos Generation
+
+### 13.1 Cognitive Pattern
+
+Storm-Logos is a physics-based bond generation algorithm that mimics neocortical cognition:
 
 ```
-STATUS: VALIDATED ✓ + GENRE CLASSIFIER 85.7% ✓
+NEOCORTEX:                    STORM-LOGOS:
+──────────                    ───────────
+1. Activation burst           1. Storm (all candidates in radius R)
+2. Lateral inhibition         2. Physics filters (Boltzmann, Zipf, Gravity)
+3. Resonant patterns win      3. Coherence filter
+4. Winners trigger next       4. Selected bond → update Q state
+```
+
+### 13.2 Master Equation
+
+```
+P(bond | Q) ∝ exp(-|Δτ|/kT)^w × v^(-α(τ)) × exp(-φ/kT) × coh(Q, bond)
+
+Where:
+  exp(-|Δτ|/kT)^w  — Boltzmann factor with τ-weight w (stability)
+  v^(-α(τ))        — Zipf factor with variable α (diversity)
+  exp(-φ/kT)       — Gravity factor, φ = λτ - μA (semantic potential)
+  coh(Q, bond)     — Coherence filter (cosine similarity in A-S plane)
+```
+
+### 13.3 Algorithm
+
+```python
+def storm_logos_generate(Q_start, genre, n_sentences):
+    Q = Q_start
+    for sentence in range(n_sentences):
+        for bond_position in range(bonds_per_sentence):
+            # STORM: Get candidates in radius R
+            candidates = query_radius(Q, R=R_storm)
+
+            # LOGOS: Score by physics
+            scored = [(b, score_bond(Q, b)) for b in candidates
+                      if coherence(Q, b) >= threshold]
+
+            # SELECT: Weighted sample
+            selected = weighted_sample(scored)
+
+            # UPDATE: RC dynamics
+            Q = update_rc(Q, selected)
+
+        # BOUNDARY: Genre-specific jump
+        Q = apply_boundary_jump(Q, genre)
+```
+
+### 13.4 Results (500K bonds, Mistral 7B)
+
+| Genre | Coherence | Diversity | τ-Autocorr |
+|-------|-----------|-----------|------------|
+| DRAMATIC | 0.78 | 0.78 | 0.45 |
+| IRONIC | 0.60 | 0.78 | 0.63 |
+| BALANCED | 0.90 | 0.61 | 0.66 |
+
+### 13.5 Sample Outputs
+
+**DRAMATIC** (skeleton → Mistral):
+```
+Skeleton: room entire, world vast, teen early, way efficient...
+
+"In the heart of a sprawling, antiquated Southern manor,
+an adolescent stood alone in the grand, echoing room.
+The vast world beyond seemed but a distant memory..."
+```
+
+**IRONIC** (skeleton → Mistral):
+```
+Skeleton: experience religious, demand persistent, addict homeless...
+
+"In the heart of a bustling city, beneath the glaring neon
+signs, an unassuming homeless man found himself in an
+unusual predicament... a halo of bright light shining
+around him like a celestial aura."
+```
+
+### 13.6 Key Insight
+
+Storm-Logos demonstrates that **semantic generation can be physics-based**:
+- No training required
+- Genre emerges from geometry
+- Coherent text from pure mathematics
+- LLM serves only for grammatical rendering
+
+---
+
+## 14. Summary
+
+```
+STATUS: VALIDATED ✓ + GENRE CLASSIFIER 85.7% ✓ + STORM-LOGOS GENERATION ✓
 
 TEXT → SENTENCES → BONDS → COORDINATES → TRAJECTORY → CARDIOGRAM
 
@@ -657,17 +747,18 @@ VALIDATED RESULTS:
   ✓ Kafka formula: controlled + emotional + mundane
   ✓ kT × Σ = 1.000000 (thermodynamics)
 
-GENERATION PIPELINE:
-  Genre Pattern → Semantic Skeleton → LLM Prompt → Grammatical Text
+GENERATION PIPELINE (Storm-Logos):
+  Genre Pattern → Storm (candidates) → Logos (physics) → Skeleton → LLM → Text
 
-  Tested with Mistral 7B:
-  - Dramatic → Gothic atmosphere, emotional intensity
-  - Ironic → Mundane setting with underlying dread
-  - Balanced → Measured, Austen-like prose
+  Tested with Mistral 7B on 500K bonds:
+  - Dramatic → Gothic atmosphere, emotional intensity (coh=0.78)
+  - Ironic → Mundane setting with underlying dread (coh=0.60)
+  - Balanced → Measured, Austen-like prose (coh=0.90)
 
 No training. From physics. Explains literature.
+Storm-Logos: Neocortical cognition meets semantic geometry.
 ```
 
 ---
 
-*Version 3.3 (Genre Classifier + Generation) — January 2026*
+*Version 3.4 (Genre Classifier + Storm-Logos Generation) — January 2026*

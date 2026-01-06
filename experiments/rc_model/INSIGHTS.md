@@ -199,12 +199,86 @@ Output:
   Center            3M bonds          generates text
 ```
 
+## Storm-Logos Generation v5
+
+### Cognitive Pattern
+```
+STORM: Explosion of candidate bonds in radius R around state Q
+LOGOS: Physics filter (Boltzmann × Zipf × Gravity × Coherence)
+RESULT: Coherent bond chain for LLM rendering
+```
+
+### Master Equation
+```
+P(bond | Q) ∝ exp(-|Δτ|/kT) × v^(-α(τ)) × exp(-φ/kT) × coherence(Q, bond)
+              ─────────────   ─────────   ──────────   ─────────────────
+              Boltzmann        Zipf        Gravity      Resonance Filter
+
+Where:
+  kT = e^(-1/5) ≈ 0.819     (Boltzmann temperature)
+  α(τ) = 2.5 - 1.4×τ        (τ-dependent Zipf exponent)
+  φ = λ×τ - μ×A             (gravity potential)
+  variety_cap = 500         (prevents high-freq domination)
+```
+
+### Diversity Penalties
+```
+Adjective penalty:  score *= 0.5^(adj_count)   # Prevents "bad X, bad Y"
+Noun penalty:       score *= 0.3^(noun_count)  # Prevents "X breath, Y breath"
+```
+
+### English Filter (Data-Driven)
+```
+Nouns:  Must exist in coord_dict (99K English words from corpus)
+Adjs:   Must be ASCII AND exist in coord_dict
+Result: 408K bonds (filtered from 500K)
+```
+
+### Results v5 (408K bonds, Mistral 7B)
+
+| Genre | Coherence | Diversity | τ-Autocorr |
+|-------|-----------|-----------|------------|
+| dramatic | 0.57 | 0.94 | 0.27 |
+| ironic | 0.67 | 0.89 | 0.26 |
+| balanced | 0.73 | 0.81 | 0.36 |
+
+### Evolution of Results
+
+| Version | Fix Applied | Dramatic Div | Issue Solved |
+|---------|-------------|--------------|--------------|
+| v1 | baseline | 0.56 | — |
+| v2 | adj diversity | 0.72 | "bad X, bad Y" |
+| v3 | kT=0.82, noun div | 1.00 | "X breath, Y breath" |
+| v5 | English filter | 0.94 | "vous plaît", "aucun doute" |
+
+### Sample Output (DRAMATIC v5)
+Skeleton: `look sheepish, third week, large estate, overcast night`
+
+> *"Amidst the third week of an unseasonably stormy night, a vast, desolate
+> estate loomed under the heavy clouds. His handsome friend, now an other
+> wretch, had succumbed to the abnormal size of despair..."*
+
+### Sample Output (BALANCED v5)
+Skeleton: `silver bit, huge estate, light night`
+
+> *"Amidst the light night, a silver bit of moon cast an ethereal glow upon
+> the vast estate, creating an atmosphere of quiet contemplation..."*
+
+### Pipeline
+```
+Genre Pattern → Storm-Logos Physics → Semantic Skeleton → LLM Prompt → Text
+     ↓                  ↓                    ↓                ↓           ↓
+  (τ,A,S)         Boltz×Zipf×Grav      Bond sequence    Style hints   Mistral
+  params          + diversity pen      (English only)
+```
+
 ## Next Steps
 
-1. **Style Transfer**: Transform text from one genre to another via re-sampling
-2. **Author Fingerprinting**: Unique (τ, A, S) patterns per author
-3. **Real-time Analysis**: Genre detection during reading
-4. **Guided Generation**: Control LLM output via semantic constraints
+1. **Coherence Tuning**: Optimize coherence_threshold per genre
+2. **Genre Separation Test**: Verify genres differ in (τ, A, S) space
+3. **Author Fingerprinting**: Unique (τ, A, S) patterns per author
+4. **Style Transfer**: Transform text from one genre to another via re-sampling
+5. **Real-time Analysis**: Genre detection during reading
 
 ## Theoretical Implications
 
@@ -212,3 +286,4 @@ Output:
 2. **Boundaries are Information**: Sentence breaks encode structure
 3. **RC Dynamics Work**: Capacitor model captures semantic memory
 4. **Three Axes Suffice**: (τ, A, S) captures narrative essence
+5. **Storm-Logos = Neocortex**: Explosion → Filter → Selection mimics cognition

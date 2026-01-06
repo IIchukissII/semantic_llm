@@ -1,0 +1,1108 @@
+{
+  "metadata": {
+    "timestamp": "2026-01-06T18:23:25.149045",
+    "model": "mistral:7b",
+    "n_samples": 3,
+    "n_bonds": 499309,
+    "kT": 0.8187307530779818
+  },
+  "samples": [
+    {
+      "genre": "dramatic",
+      "skeleton": [
+        [
+          "stand offish",
+          "local gendarmerie",
+          "local constabulary",
+          "jeho o\u010di"
+        ],
+        [
+          "likely other",
+          "electronic piracy",
+          "separate deal",
+          "clean fun"
+        ],
+        [
+          "little giddy",
+          "grand prix",
+          "dead faint",
+          "rag breath"
+        ]
+      ],
+      "skeleton_details": [
+        [
+          {
+            "noun": "offish",
+            "adj": "stand",
+            "tau": 2.895045160672354,
+            "variety": 20
+          },
+          {
+            "noun": "gendarmerie",
+            "adj": "local",
+            "tau": 3.3979400086720375,
+            "variety": 13
+          },
+          {
+            "noun": "constabulary",
+            "adj": "local",
+            "tau": 3.1608869799585704,
+            "variety": 161
+          },
+          {
+            "noun": "o\u010di",
+            "adj": "jeho",
+            "tau": 3.1468855806096294,
+            "variety": 38
+          }
+        ],
+        [
+          {
+            "noun": "other",
+            "adj": "likely",
+            "tau": 2.813486535946125,
+            "variety": 31
+          },
+          {
+            "noun": "piracy",
+            "adj": "electronic",
+            "tau": 3.119241684622003,
+            "variety": 487
+          },
+          {
+            "noun": "deal",
+            "adj": "separate",
+            "tau": 2.988183610755666,
+            "variety": 16
+          },
+          {
+            "noun": "fun",
+            "adj": "clean",
+            "tau": 2.525404949637619,
+            "variety": 72
+          }
+        ],
+        [
+          {
+            "noun": "giddy",
+            "adj": "little",
+            "tau": 3.221848749616356,
+            "variety": 69
+          },
+          {
+            "noun": "prix",
+            "adj": "grand",
+            "tau": 2.769551078621726,
+            "variety": 62
+          },
+          {
+            "noun": "faint",
+            "adj": "dead",
+            "tau": 2.8879246544266572,
+            "variety": 338
+          },
+          {
+            "noun": "breath",
+            "adj": "rag",
+            "tau": 2.4435373434464047,
+            "variety": 53
+          }
+        ]
+      ],
+      "prompt": "Write a short dramatic paragraph.\n\nStyle: Gothic/Dostoevsky style: high tension, emotional intensity, philosophical depth. Create atmosphere of dread and wonder.\n\nIncorporate these semantic concepts naturally:\nstand offish, local gendarmerie, local constabulary, jeho o\u010di, likely other, electronic piracy, separate deal, clean fun, little giddy, grand prix, dead faint, rag breath\n\nWrite 2-3 sentences that feel authentically dramatic:",
+      "output": "Amidst the desolate expanse of St. Petersburg's cobblestone streets, shrouded in a dense fog that seemed to cling to every surface like a mournful specter, stood the imposing edifice of the local gendarmerie. The standoffish officers within, their eyes (jeho o\u010di) piercing through the gloom, were locked in an intense debate over the unfathomable act of electronic piracy that had recently taken the city by storm. As the clock struck midnight, a shadowy figure slipped into the station, his ragged breath betraying a mixture of fear and exhilaration - likely another casualty of this mysterious affair. The grand prix was just a week away, but with each passing day, the atmosphere grew increasingly tense, leaving even the hardiest residents feeling a little giddy with dread, as if they were on the precipice of something monumental, yet inescapably tragic.",
+      "model": "mistral:7b",
+      "metrics": {
+        "n_bonds": 12,
+        "n_sentences": 3,
+        "mean_coherence": 0.6595787318017391,
+        "tau_autocorr": -0.09766009698410075,
+        "genre_distance": 0.6260218747197138,
+        "vocabulary_diversity": 1.0,
+        "variety_mean": 113.33333333333333,
+        "variety_median": 57.5,
+        "tau_mean": 2.9474946947487624,
+        "tau_std": 0.27121196549931753
+      },
+      "sample_id": 0
+    },
+    {
+      "genre": "dramatic",
+      "skeleton": [
+        [
+          "angry breath",
+          "short shrift",
+          "instant on",
+          "equal say"
+        ],
+        [
+          "melt chocolate",
+          "come week",
+          "wee bit",
+          "entire minute"
+        ],
+        [
+          "beautiful morning",
+          "kid size",
+          "british friend",
+          "loser friend"
+        ]
+      ],
+      "skeleton_details": [
+        [
+          {
+            "noun": "breath",
+            "adj": "angry",
+            "tau": 2.4435373434464047,
+            "variety": 219
+          },
+          {
+            "noun": "shrift",
+            "adj": "short",
+            "tau": 3.221848749616356,
+            "variety": 284
+          },
+          {
+            "noun": "on",
+            "adj": "instant",
+            "tau": 2.9377826328586143,
+            "variety": 40
+          },
+          {
+            "noun": "say",
+            "adj": "equal",
+            "tau": 2.3560091500058817,
+            "variety": 24
+          }
+        ],
+        [
+          {
+            "noun": "chocolate",
+            "adj": "melt",
+            "tau": 2.3055701945266236,
+            "variety": 285
+          },
+          {
+            "noun": "week",
+            "adj": "come",
+            "tau": 2.363665098496557,
+            "variety": 589
+          },
+          {
+            "noun": "bit",
+            "adj": "wee",
+            "tau": 2.48235300170287,
+            "variety": 1428
+          },
+          {
+            "noun": "minute",
+            "adj": "entire",
+            "tau": 2.7338720374105026,
+            "variety": 148
+          }
+        ],
+        [
+          {
+            "noun": "morning",
+            "adj": "beautiful",
+            "tau": 2.354535770273012,
+            "variety": 588
+          },
+          {
+            "noun": "size",
+            "adj": "kid",
+            "tau": 2.104024316498545,
+            "variety": 15
+          },
+          {
+            "noun": "friend",
+            "adj": "british",
+            "tau": 2.0666295413311326,
+            "variety": 102
+          },
+          {
+            "noun": "friend",
+            "adj": "loser",
+            "tau": 2.0666295413311326,
+            "variety": 34
+          }
+        ]
+      ],
+      "prompt": "Write a short dramatic paragraph.\n\nStyle: Gothic/Dostoevsky style: high tension, emotional intensity, philosophical depth. Create atmosphere of dread and wonder.\n\nIncorporate these semantic concepts naturally:\nangry breath, short shrift, instant on, equal say, melt chocolate, come week, wee bit, entire minute, beautiful morning, kid size, british friend, loser friend\n\nWrite 2-3 sentences that feel authentically dramatic:",
+      "output": "Amidst the haunting gloom of the ancient abbey, a beautiful morning unraveled its ethereal splendor, casting an eerie glow upon the crumbling stones. The angry breath of the wind echoed through the hollow corridors, whispering tales of dread and wonder to the listening walls. As my British friend and I, two lost souls wandering in the shadow of our pasts, stumbled upon a kid-sized door hidden within the labyrinthine depths, a sudden sensation of equal say filled the air \u2013 as if the ancient spirits themselves were extending an invitation for us to step into their mysterious realm. The seconds stretched into an entire minute as we hesitated, our hearts pounding like the instant on of a long-silent clock, knowing that once that door was shut, there would be no coming week to change our minds. And yet, in that wee bit of time, the air felt alive with a sense of melancholic wonder, as if the sweet, chocolatey scent of fate itself were swirling around us like a sugary embrace, promising both delight and despair in equal measure.",
+      "model": "mistral:7b",
+      "metrics": {
+        "n_bonds": 12,
+        "n_sentences": 3,
+        "mean_coherence": 0.5952054912274338,
+        "tau_autocorr": 0.497248368226492,
+        "genre_distance": 0.5484170298657758,
+        "vocabulary_diversity": 0.9166666666666666,
+        "variety_mean": 313.0,
+        "variety_median": 183.5,
+        "tau_mean": 2.4530381147914695,
+        "tau_std": 0.33852004094765337
+      },
+      "sample_id": 1
+    },
+    {
+      "genre": "dramatic",
+      "skeleton": [
+        [
+          "little terrifying",
+          "skin being",
+          "bloody brilliant",
+          "endless succession"
+        ],
+        [
+          "substantial majority",
+          "similar deal",
+          "dead thousand",
+          "pende deal"
+        ],
+        [
+          "hard breath",
+          "equal share",
+          "slow learner",
+          "undisturbed night"
+        ]
+      ],
+      "skeleton_details": [
+        [
+          {
+            "noun": "terrifying",
+            "adj": "little",
+            "tau": 2.9586073148417746,
+            "variety": 23
+          },
+          {
+            "noun": "being",
+            "adj": "skin",
+            "tau": 2.414750238484849,
+            "variety": 12
+          },
+          {
+            "noun": "brilliant",
+            "adj": "bloody",
+            "tau": 2.5750761278022694,
+            "variety": 128
+          },
+          {
+            "noun": "succession",
+            "adj": "endless",
+            "tau": 2.8247200491988,
+            "variety": 160
+          }
+        ],
+        [
+          {
+            "noun": "majority",
+            "adj": "substantial",
+            "tau": 2.487757059592818,
+            "variety": 13
+          },
+          {
+            "noun": "deal",
+            "adj": "similar",
+            "tau": 2.988183610755666,
+            "variety": 30
+          },
+          {
+            "noun": "thousand",
+            "adj": "dead",
+            "tau": 2.5383261973026783,
+            "variety": 33
+          },
+          {
+            "noun": "deal",
+            "adj": "pende",
+            "tau": 2.988183610755666,
+            "variety": 19
+          }
+        ],
+        [
+          {
+            "noun": "breath",
+            "adj": "hard",
+            "tau": 2.4435373434464047,
+            "variety": 546
+          },
+          {
+            "noun": "share",
+            "adj": "equal",
+            "tau": 2.365607740163236,
+            "variety": 239
+          },
+          {
+            "noun": "learner",
+            "adj": "slow",
+            "tau": 2.652006811424946,
+            "variety": 199
+          },
+          {
+            "noun": "night",
+            "adj": "undisturbed",
+            "tau": 2.244380358146093,
+            "variety": 12
+          }
+        ]
+      ],
+      "prompt": "Write a short dramatic paragraph.\n\nStyle: Gothic/Dostoevsky style: high tension, emotional intensity, philosophical depth. Create atmosphere of dread and wonder.\n\nIncorporate these semantic concepts naturally:\nlittle terrifying, skin being, bloody brilliant, endless succession, substantial majority, similar deal, dead thousand, pende deal, hard breath, equal share, slow learner, undisturbed night\n\nWrite 2-3 sentences that feel authentically dramatic:",
+      "output": "Amidst the undisturbed night, a little terrifying spectacle unfolded, as if a brilliant painting drenched in blood was coming to life. The skin of the earth seemed to shudder under the weight of a substantial majority of dead thousands, their silent screams echoing through the endless succession of shadows. Beneath the slow learner's hard breath, a similar deal was being struck between despair and the human soul, a pact that left an equal share of dread and wonder in its wake.",
+      "model": "mistral:7b",
+      "metrics": {
+        "n_bonds": 12,
+        "n_sentences": 3,
+        "mean_coherence": 0.4164302461565569,
+        "tau_autocorr": -0.3945873894533053,
+        "genre_distance": 0.9154571046035219,
+        "vocabulary_diversity": 0.9166666666666666,
+        "variety_mean": 117.83333333333333,
+        "variety_median": 31.5,
+        "tau_mean": 2.6234280384929334,
+        "tau_std": 0.24728795695643757
+      },
+      "sample_id": 2
+    },
+    {
+      "genre": "ironic",
+      "skeleton": [
+        [
+          "deep keel",
+          "small indent",
+          "monthly giveaway",
+          "tall twenty"
+        ],
+        [
+          "uncounted other",
+          "little avail",
+          "separate deal",
+          "own behalf"
+        ],
+        [
+          "reasonable proximity",
+          "grand reopening",
+          "force breath",
+          "inaudible breath"
+        ]
+      ],
+      "skeleton_details": [
+        [
+          {
+            "noun": "keel",
+            "adj": "deep",
+            "tau": 3.0015644226847185,
+            "variety": 16
+          },
+          {
+            "noun": "indent",
+            "adj": "small",
+            "tau": 3.453570932238845,
+            "variety": 578
+          },
+          {
+            "noun": "giveaway",
+            "adj": "monthly",
+            "tau": 2.87225425417439,
+            "variety": 14
+          },
+          {
+            "noun": "twenty",
+            "adj": "tall",
+            "tau": 3.3460449529708653,
+            "variety": 19
+          }
+        ],
+        [
+          {
+            "noun": "other",
+            "adj": "uncounted",
+            "tau": 2.813486535946125,
+            "variety": 12
+          },
+          {
+            "noun": "avail",
+            "adj": "little",
+            "tau": 2.755523490151292,
+            "variety": 90
+          },
+          {
+            "noun": "deal",
+            "adj": "separate",
+            "tau": 2.988183610755666,
+            "variety": 16
+          },
+          {
+            "noun": "behalf",
+            "adj": "own",
+            "tau": 2.886056647693163,
+            "variety": 412
+          }
+        ],
+        [
+          {
+            "noun": "proximity",
+            "adj": "reasonable",
+            "tau": 3.194292908197569,
+            "variety": 11
+          },
+          {
+            "noun": "reopening",
+            "adj": "grand",
+            "tau": 3.0969100130080567,
+            "variety": 45
+          },
+          {
+            "noun": "breath",
+            "adj": "force",
+            "tau": 2.4435373434464047,
+            "variety": 18
+          },
+          {
+            "noun": "breath",
+            "adj": "inaudible",
+            "tau": 2.4435373434464047,
+            "variety": 12
+          }
+        ]
+      ],
+      "prompt": "Write a short ironic paragraph.\n\nStyle: Kafka/Poe style: underlying tension in mundane setting. Horror or absurdity emerges from ordinary things. Keep concepts everyday, but inject unease.\n\nIncorporate these semantic concepts naturally:\ndeep keel, small indent, monthly giveaway, tall twenty, uncounted other, little avail, separate deal, own behalf, reasonable proximity, grand reopening, force breath, inaudible breath\n\nWrite 2-3 sentences that feel authentically ironic:",
+      "output": "In the reasonable proximity of a bustling city, nestled within an unseen small indent, lay a tall twenty-story building with a deep keel, ominously silent amidst the clamor. Every month, like clockwork, a little avail of breath would force itself out of its cold stone facade, barely audible in the hush, signaling the grand reopening of its monthly giveaway, promising an enigmatic prize to one fortunate individual on behalf of its unknown proprietors, a separate deal entirely. Yet, despite these assurances, it seemed that little changed for the uncounted others who passed by, oblivious or indifferent to the eerie allure of this peculiar structure.",
+      "model": "mistral:7b",
+      "metrics": {
+        "n_bonds": 12,
+        "n_sentences": 3,
+        "mean_coherence": 0.644135904510617,
+        "tau_autocorr": 0.1365721695279099,
+        "genre_distance": 0.8001611506979233,
+        "vocabulary_diversity": 0.9166666666666666,
+        "variety_mean": 103.58333333333333,
+        "variety_median": 17.0,
+        "tau_mean": 2.941246871226125,
+        "tau_std": 0.2992342133346666
+      },
+      "sample_id": 0
+    },
+    {
+      "genre": "ironic",
+      "skeleton": [
+        [
+          "no se\u00f1or",
+          "less discerning",
+          "much oftener",
+          "cubic metre"
+        ],
+        [
+          "ready breath",
+          "faux pas",
+          "few breath",
+          "occasional interjection"
+        ],
+        [
+          "polite morning",
+          "extra size",
+          "frosty morning",
+          "reassuring news"
+        ]
+      ],
+      "skeleton_details": [
+        [
+          {
+            "noun": "se\u00f1or",
+            "adj": "no",
+            "tau": 2.920818753952375,
+            "variety": 10
+          },
+          {
+            "noun": "discerning",
+            "adj": "less",
+            "tau": 2.920818753952375,
+            "variety": 15
+          },
+          {
+            "noun": "oftener",
+            "adj": "much",
+            "tau": 2.886056647693163,
+            "variety": 19
+          },
+          {
+            "noun": "metre",
+            "adj": "cubic",
+            "tau": 2.358258335769377,
+            "variety": 32
+          }
+        ],
+        [
+          {
+            "noun": "breath",
+            "adj": "ready",
+            "tau": 2.4435373434464047,
+            "variety": 55
+          },
+          {
+            "noun": "pas",
+            "adj": "faux",
+            "tau": 2.726006592280915,
+            "variety": 742
+          },
+          {
+            "noun": "breath",
+            "adj": "few",
+            "tau": 2.4435373434464047,
+            "variety": 2835
+          },
+          {
+            "noun": "interjection",
+            "adj": "occasional",
+            "tau": 2.6777807052660805,
+            "variety": 13
+          }
+        ],
+        [
+          {
+            "noun": "morning",
+            "adj": "polite",
+            "tau": 2.354535770273012,
+            "variety": 24
+          },
+          {
+            "noun": "size",
+            "adj": "extra",
+            "tau": 2.104024316498545,
+            "variety": 18
+          },
+          {
+            "noun": "morning",
+            "adj": "frosty",
+            "tau": 2.354535770273012,
+            "variety": 107
+          },
+          {
+            "noun": "news",
+            "adj": "reassuring",
+            "tau": 2.163542751671974,
+            "variety": 17
+          }
+        ]
+      ],
+      "prompt": "Write a short ironic paragraph.\n\nStyle: Kafka/Poe style: underlying tension in mundane setting. Horror or absurdity emerges from ordinary things. Keep concepts everyday, but inject unease.\n\nIncorporate these semantic concepts naturally:\nno se\u00f1or, less discerning, much oftener, cubic metre, ready breath, faux pas, few breath, occasional interjection, polite morning, extra size, frosty morning, reassuring news\n\nWrite 2-3 sentences that feel authentically ironic:",
+      "output": "In the crisp, frosty mornings of suburbia, Senor Gonzales found himself standing before an imposing supermarket, his heart beating like a drum in extra size. With each polite morning greeting to the checkout clerks, he felt less discerning eyes upon him, and the occasional interjection of \"ready breath\" from the produce section echoed ominously through the cubic metre of the store. However, as he reached for the oversized bag of apples, it was not the faux pas of overestimating his consumption that sent a shiver down his spine; instead, it was the reassuring news that they were \"few breaths\" away from being sold by weight, not number.",
+      "model": "mistral:7b",
+      "metrics": {
+        "n_bonds": 12,
+        "n_sentences": 3,
+        "mean_coherence": 0.7086873684051364,
+        "tau_autocorr": 0.527671717007621,
+        "genre_distance": 0.3754978808349686,
+        "vocabulary_diversity": 0.8333333333333334,
+        "variety_mean": 323.9166666666667,
+        "variety_median": 21.5,
+        "tau_mean": 2.529454423710303,
+        "tau_std": 0.2760249767195435
+      },
+      "sample_id": 1
+    },
+    {
+      "genre": "ironic",
+      "skeleton": [
+        [
+          "subsequent purchaser",
+          "last bit",
+          "scant minute",
+          "many other"
+        ],
+        [
+          "overwhelming majority",
+          "do deal",
+          "good fun",
+          "enough deal"
+        ],
+        [
+          "evolve being",
+          "free share",
+          "unnatural being",
+          "silver night"
+        ]
+      ],
+      "skeleton_details": [
+        [
+          {
+            "noun": "purchaser",
+            "adj": "subsequent",
+            "tau": 2.8321019159324057,
+            "variety": 445
+          },
+          {
+            "noun": "bit",
+            "adj": "last",
+            "tau": 2.48235300170287,
+            "variety": 4755
+          },
+          {
+            "noun": "minute",
+            "adj": "scant",
+            "tau": 2.7338720374105026,
+            "variety": 114
+          },
+          {
+            "noun": "other",
+            "adj": "many",
+            "tau": 2.813486535946125,
+            "variety": 7590
+          }
+        ],
+        [
+          {
+            "noun": "majority",
+            "adj": "overwhelming",
+            "tau": 2.487757059592818,
+            "variety": 316
+          },
+          {
+            "noun": "deal",
+            "adj": "do",
+            "tau": 2.988183610755666,
+            "variety": 819
+          },
+          {
+            "noun": "fun",
+            "adj": "good",
+            "tau": 2.525404949637619,
+            "variety": 780
+          },
+          {
+            "noun": "deal",
+            "adj": "enough",
+            "tau": 2.988183610755666,
+            "variety": 36
+          }
+        ],
+        [
+          {
+            "noun": "being",
+            "adj": "evolve",
+            "tau": 2.414750238484849,
+            "variety": 12
+          },
+          {
+            "noun": "share",
+            "adj": "free",
+            "tau": 2.365607740163236,
+            "variety": 25
+          },
+          {
+            "noun": "being",
+            "adj": "unnatural",
+            "tau": 2.414750238484849,
+            "variety": 11
+          },
+          {
+            "noun": "night",
+            "adj": "silver",
+            "tau": 2.244380358146093,
+            "variety": 14
+          }
+        ]
+      ],
+      "prompt": "Write a short ironic paragraph.\n\nStyle: Kafka/Poe style: underlying tension in mundane setting. Horror or absurdity emerges from ordinary things. Keep concepts everyday, but inject unease.\n\nIncorporate these semantic concepts naturally:\nsubsequent purchaser, last bit, scant minute, many other, overwhelming majority, do deal, good fun, enough deal, evolve being, free share, unnatural being, silver night\n\nWrite 2-3 sentences that feel authentically ironic:",
+      "output": "In the scant minute before the subsequent purchaser finalized the deal, an unnatural silence fell upon the crowd. The overwhelming majority had enjoyed the good fun up until that point, but as the last bit of the being's essence was transferred, a shuddering dread pervaded the room. It seemed the free share in the evolving entity came with an unsettling catch - for once, having enough deal proved to be anything but amusing. The silver night outside gleamed ominously, as if the moon itself bore witness to this unwelcome evolution.",
+      "model": "mistral:7b",
+      "metrics": {
+        "n_bonds": 12,
+        "n_sentences": 3,
+        "mean_coherence": 0.7576622427225504,
+        "tau_autocorr": -0.08911262565937526,
+        "genre_distance": 0.6762306236918884,
+        "vocabulary_diversity": 0.8333333333333334,
+        "variety_mean": 1243.0833333333333,
+        "variety_median": 215.0,
+        "tau_mean": 2.607569274751058,
+        "tau_std": 0.2415399814955427
+      },
+      "sample_id": 2
+    },
+    {
+      "genre": "balanced",
+      "skeleton": [
+        [
+          "slim jim",
+          "aucun doute",
+          "sexual deviancy",
+          "print ersion"
+        ],
+        [
+          "old maidish",
+          "early midlife",
+          "engaging multimedia",
+          "polar icecap"
+        ],
+        [
+          "little loopy",
+          "vous rencontrer",
+          "papi mache",
+          "little spoiling"
+        ]
+      ],
+      "skeleton_details": [
+        [
+          {
+            "noun": "jim",
+            "adj": "slim",
+            "tau": 3.6989700043360187,
+            "variety": 23
+          },
+          {
+            "noun": "doute",
+            "adj": "aucun",
+            "tau": 3.6989700043360187,
+            "variety": 41
+          },
+          {
+            "noun": "deviancy",
+            "adj": "sexual",
+            "tau": 3.6989700043360187,
+            "variety": 33
+          },
+          {
+            "noun": "ersion",
+            "adj": "print",
+            "tau": 3.6989700043360187,
+            "variety": 14
+          }
+        ],
+        [
+          {
+            "noun": "maidish",
+            "adj": "old",
+            "tau": 3.5228787452803374,
+            "variety": 21
+          },
+          {
+            "noun": "midlife",
+            "adj": "early",
+            "tau": 3.3979400086720375,
+            "variety": 10
+          },
+          {
+            "noun": "multimedia",
+            "adj": "engaging",
+            "tau": 3.3979400086720375,
+            "variety": 10
+          },
+          {
+            "noun": "icecap",
+            "adj": "polar",
+            "tau": 3.3010299956639813,
+            "variety": 24
+          }
+        ],
+        [
+          {
+            "noun": "loopy",
+            "adj": "little",
+            "tau": 3.5228787452803374,
+            "variety": 45
+          },
+          {
+            "noun": "rencontrer",
+            "adj": "vous",
+            "tau": 3.6989700043360187,
+            "variety": 49
+          },
+          {
+            "noun": "mache",
+            "adj": "papi",
+            "tau": 3.5228787452803374,
+            "variety": 94
+          },
+          {
+            "noun": "spoiling",
+            "adj": "little",
+            "tau": 3.0969100130080567,
+            "variety": 13
+          }
+        ]
+      ],
+      "prompt": "Write a short balanced paragraph.\n\nStyle: Austen/Plato style: measured, controlled tone. Clear reasoning, calm and analytical. Social observation with wit.\n\nIncorporate these semantic concepts naturally:\nslim jim, aucun doute, sexual deviancy, print ersion, old maidish, early midlife, engaging multimedia, polar icecap, little loopy, vous rencontrer, papi mache, little spoiling\n\nWrite 2-3 sentences that feel authentically balanced:",
+      "output": "In the early midlife of our modern society, one cannot help but observe the intriguing transformation of social norms. The once venerated 'Old Maid' now finds herself subsumed by the charms of the 'Slim Jim', a term not referencing a snack, but rather a man who, despite his age, maintains an engaging allure that captivates the multimedia landscape. This shift in societal dynamics has led to a reinterpretation of traditional concepts, such as sexual deviancy, once shrouded in secrecy and now subtly depicted in various print versions. Yet, amidst this polar icecap of change, there remains a 'little loopy' notion that persists: the belief that one must find a partner by a certain age, a sentiment reminiscent of the Austen era, echoing the plaintive cry of \"vous rencontrer, papi mache\". However, it is essential to remember that in this rapidly evolving world, little spoiling will be done to those who choose a different path.",
+      "model": "mistral:7b",
+      "metrics": {
+        "n_bonds": 12,
+        "n_sentences": 3,
+        "mean_coherence": 0.6426566888567978,
+        "tau_autocorr": 0.4944634412315125,
+        "genre_distance": 0.3787771428487521,
+        "vocabulary_diversity": 1.0,
+        "variety_mean": 31.416666666666668,
+        "variety_median": 23.5,
+        "tau_mean": 3.5214421902947683,
+        "tau_std": 0.18639150054095535
+      },
+      "sample_id": 0
+    },
+    {
+      "genre": "balanced",
+      "skeleton": [
+        [
+          "main topgallant",
+          "hot siberian",
+          "much scarier",
+          "most inopportune"
+        ],
+        [
+          "sexual harassment",
+          "other forty",
+          "late forty",
+          "spare minute"
+        ],
+        [
+          "full regalia",
+          "missing bit",
+          "half second",
+          "many if"
+        ]
+      ],
+      "skeleton_details": [
+        [
+          {
+            "noun": "topgallant",
+            "adj": "main",
+            "tau": 3.3979400086720375,
+            "variety": 14
+          },
+          {
+            "noun": "siberian",
+            "adj": "hot",
+            "tau": 3.5228787452803374,
+            "variety": 61
+          },
+          {
+            "noun": "scarier",
+            "adj": "much",
+            "tau": 3.0969100130080567,
+            "variety": 27
+          },
+          {
+            "noun": "inopportune",
+            "adj": "most",
+            "tau": 3.3979400086720375,
+            "variety": 139
+          }
+        ],
+        [
+          {
+            "noun": "harassment",
+            "adj": "sexual",
+            "tau": 3.181781584315057,
+            "variety": 960
+          },
+          {
+            "noun": "forty",
+            "adj": "other",
+            "tau": 3.093079470289818,
+            "variety": 11
+          },
+          {
+            "noun": "forty",
+            "adj": "late",
+            "tau": 3.093079470289818,
+            "variety": 1298
+          },
+          {
+            "noun": "minute",
+            "adj": "spare",
+            "tau": 2.7338720374105026,
+            "variety": 217
+          }
+        ],
+        [
+          {
+            "noun": "regalia",
+            "adj": "full",
+            "tau": 2.5252270654067894,
+            "variety": 459
+          },
+          {
+            "noun": "bit",
+            "adj": "missing",
+            "tau": 2.48235300170287,
+            "variety": 19
+          },
+          {
+            "noun": "second",
+            "adj": "half",
+            "tau": 2.455626833110889,
+            "variety": 486
+          },
+          {
+            "noun": "if",
+            "adj": "many",
+            "tau": 2.554116360685952,
+            "variety": 96
+          }
+        ]
+      ],
+      "prompt": "Write a short balanced paragraph.\n\nStyle: Austen/Plato style: measured, controlled tone. Clear reasoning, calm and analytical. Social observation with wit.\n\nIncorporate these semantic concepts naturally:\nmain topgallant, hot siberian, much scarier, most inopportune, sexual harassment, other forty, late forty, spare minute, full regalia, missing bit, half second, many if\n\nWrite 2-3 sentences that feel authentically balanced:",
+      "output": "In the most inopportune of moments, during a grand ball at the height of society's festivities, where men donned their full regalia and ladies displayed their finest attire, a heated debate was stirred. A hot Siberian, clad in his main topgallant, addressed the gathering with a bold assertion, remarking that 'much scarier than a tiger' was the subject of sexual harassment, a topic as relevant and unsettling in our late forty as it would be to other forty. A missing bit from his eloquent speech occurred when he dared to jest about it in a half second, leaving many if present, including this humble observer, somewhat nonplussed.",
+      "model": "mistral:7b",
+      "metrics": {
+        "n_bonds": 12,
+        "n_sentences": 3,
+        "mean_coherence": 0.7868560508236477,
+        "tau_autocorr": 0.8455829334772178,
+        "genre_distance": 0.42111982384998764,
+        "vocabulary_diversity": 0.9166666666666666,
+        "variety_mean": 315.5833333333333,
+        "variety_median": 117.5,
+        "tau_mean": 2.9612337165703466,
+        "tau_std": 0.37540985030493446
+      },
+      "sample_id": 1
+    },
+    {
+      "genre": "balanced",
+      "skeleton": [
+        [
+          "drive thru",
+          "measure breath",
+          "sound breath",
+          "major pas"
+        ],
+        [
+          "reluctant breath",
+          "more diligence",
+          "first picking",
+          "low night"
+        ],
+        [
+          "fucking second",
+          "real bit",
+          "abrupt switch",
+          "own chocolate"
+        ]
+      ],
+      "skeleton_details": [
+        [
+          {
+            "noun": "thru",
+            "adj": "drive",
+            "tau": 3.053603090438375,
+            "variety": 89
+          },
+          {
+            "noun": "breath",
+            "adj": "measure",
+            "tau": 2.4435373434464047,
+            "variety": 69
+          },
+          {
+            "noun": "breath",
+            "adj": "sound",
+            "tau": 2.4435373434464047,
+            "variety": 30
+          },
+          {
+            "noun": "pas",
+            "adj": "major",
+            "tau": 2.726006592280915,
+            "variety": 28
+          }
+        ],
+        [
+          {
+            "noun": "breath",
+            "adj": "reluctant",
+            "tau": 2.4435373434464047,
+            "variety": 15
+          },
+          {
+            "noun": "diligence",
+            "adj": "more",
+            "tau": 2.4795686923248828,
+            "variety": 26
+          },
+          {
+            "noun": "picking",
+            "adj": "first",
+            "tau": 2.253099701257548,
+            "variety": 13
+          },
+          {
+            "noun": "night",
+            "adj": "low",
+            "tau": 2.244380358146093,
+            "variety": 20
+          }
+        ],
+        [
+          {
+            "noun": "second",
+            "adj": "fucking",
+            "tau": 2.455626833110889,
+            "variety": 171
+          },
+          {
+            "noun": "bit",
+            "adj": "real",
+            "tau": 2.48235300170287,
+            "variety": 26
+          },
+          {
+            "noun": "switch",
+            "adj": "abrupt",
+            "tau": 2.5084770402078025,
+            "variety": 26
+          },
+          {
+            "noun": "chocolate",
+            "adj": "own",
+            "tau": 2.3055701945266236,
+            "variety": 25
+          }
+        ]
+      ],
+      "prompt": "Write a short balanced paragraph.\n\nStyle: Austen/Plato style: measured, controlled tone. Clear reasoning, calm and analytical. Social observation with wit.\n\nIncorporate these semantic concepts naturally:\ndrive thru, measure breath, sound breath, major pas, reluctant breath, more diligence, first picking, low night, fucking second, real bit, abrupt switch, own chocolate\n\nWrite 2-3 sentences that feel authentically balanced:",
+      "output": "In the modern world's ceaseless march, one cannot help but observe with amusement the peculiarities that surface in our daily lives. The drive-thru, once a novelty, has become an integral part of many routines; yet, it seems, the art of measuring one's breath before speaking has been relegated to the realms of antiquity. A reluctant breath escapes as we find ourselves ordering our Major Pas through an intercom instead of engaging in civil conversation. Yet, perhaps a return to more diligence in such matters may prove beneficial, for it is said that a sound beginning sets the tone for the rest of the meal\u2014even if one's first picking of the day is merely a low-night chocolate bar.",
+      "model": "mistral:7b",
+      "metrics": {
+        "n_bonds": 12,
+        "n_sentences": 3,
+        "mean_coherence": 0.7509263096117617,
+        "tau_autocorr": 0.09419807063931467,
+        "genre_distance": 0.5083085275994573,
+        "vocabulary_diversity": 0.8333333333333334,
+        "variety_mean": 44.833333333333336,
+        "variety_median": 26.0,
+        "tau_mean": 2.4866081278612673,
+        "tau_std": 0.21052338557544537
+      },
+      "sample_id": 2
+    }
+  ],
+  "metrics": {
+    "dramatic": {
+      "coherence_mean": 0.5570714897285766,
+      "coherence_std": 0.1028621993109308,
+      "diversity_mean": 0.9444444444444443,
+      "diversity_std": 0.039283710065919325,
+      "tau_autocorr_mean": 0.001666960596361992,
+      "tau_autocorr_std": 0.3708028703096107
+    },
+    "ironic": {
+      "coherence_mean": 0.7034951718794346,
+      "coherence_std": 0.046492125107547036,
+      "diversity_mean": 0.8611111111111112,
+      "diversity_std": 0.03928371006591927,
+      "tau_autocorr_mean": 0.19171042029205188,
+      "tau_autocorr_std": 0.2548017547856722
+    },
+    "balanced": {
+      "coherence_mean": 0.7268130164307358,
+      "coherence_std": 0.061288673118487576,
+      "diversity_mean": 0.9166666666666666,
+      "diversity_std": 0.06804138174397716,
+      "tau_autocorr_mean": 0.47808148178268167,
+      "tau_autocorr_std": 0.3069702259959653
+    }
+  }
+}
