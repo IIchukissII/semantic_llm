@@ -461,6 +461,43 @@ class BookProcessor:
             'domain': 'mythology',
         },
         # NOTE: apollodorus_library.txt contains wrong book (Sabatini), skipping
+
+        # Comparative Mythology (Campbell alternatives)
+        'Frazer_The_Golden_Bough.txt': {
+            'title': 'The Golden Bough: A Study of Magic and Religion',
+            'author': 'James George Frazer',
+            'genre': 'mythology',
+            'era': '19th_century',
+            'domain': 'comparative_religion',
+        },
+        'Spence_Introduction_to_Mythology.txt': {
+            'title': 'An Introduction to Mythology',
+            'author': 'Lewis Spence',
+            'genre': 'mythology',
+            'era': '20th_century',
+            'domain': 'comparative_mythology',
+        },
+        'Fiske_Myths_and_Myth_Makers.txt': {
+            'title': 'Myths and Myth-Makers',
+            'author': 'John Fiske',
+            'genre': 'mythology',
+            'era': '19th_century',
+            'domain': 'comparative_mythology',
+        },
+        'Lang_Modern_Mythology.txt': {
+            'title': 'Modern Mythology',
+            'author': 'Andrew Lang',
+            'genre': 'mythology',
+            'era': '19th_century',
+            'domain': 'comparative_mythology',
+        },
+        'Doane_Bible_Myths.txt': {
+            'title': 'Bible Myths and their Parallels in Other Religions',
+            'author': 'Thomas William Doane',
+            'genre': 'mythology',
+            'era': '19th_century',
+            'domain': 'comparative_religion',
+        },
     }
 
     def __init__(self, neo4j: Neo4jData = None):

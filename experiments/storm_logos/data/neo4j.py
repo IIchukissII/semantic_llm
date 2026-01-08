@@ -9,7 +9,24 @@ Extended Schema:
 
     (:Author)-[:WROTE]->(:Book)
     (:Book)-[:CONTAINS {chapter, sentence, position}]->(:Bond)
-    (:Bond)-[:FOLLOWS {book_id, chapter, sentence, position}]->(:Bond)
+    (:Bond)-[:FOLLOWS {book_id, chapter, sentence, position, weight, last_used, last_reinforced, source}]->(:Bond)
+
+Weight Dynamics:
+    dw/dt = lambda * (w_target - w)
+
+    Decay formula:  w(t+dt) = w_min + (w - w_min) * e^(-lambda_forget * dt)
+    Learn formula:  w(t+1) = w_max - (w_max - w) * e^(-lambda_learn)
+
+    Parameters:
+        w_min = 0.1         Floor - never fully forgotten
+        w_max = 1.0         Ceiling - fully learned
+        lambda_learn = 0.3  Learning rate (per reinforcement)
+        lambda_forget = 0.05    Forgetting rate (per day)
+
+    Weight Sources:
+        Corpus (books):     1.0   - Established knowledge
+        Conversation:       0.2   - Needs reinforcement
+        Context-inferred:   0.1   - Weakest, most uncertain
 """
 
 from typing import List, Optional, Dict
@@ -44,13 +61,17 @@ class Book:
 
 @dataclass
 class FollowsEdge:
-    """A FOLLOWS edge between bonds."""
+    """A FOLLOWS edge between bonds with weight dynamics."""
     source_id: str
     target_id: str
     book_id: str
     chapter: int
     sentence: int
     position: int
+    weight: float = 1.0       # Edge weight [0.1, 1.0]
+    source: str = 'corpus'    # 'corpus', 'conversation', 'context'
+    last_used: Optional[datetime] = None
+    last_reinforced: Optional[datetime] = None
 
 
 class Neo4jData:
@@ -281,8 +302,20 @@ class Neo4jData:
 
     def add_follows(self, source: Bond, target: Bond,
                     book_id: str, chapter: int, sentence: int,
-                    position: int) -> bool:
-        """Add a FOLLOWS edge between bonds."""
+                    position: int, weight: float = 1.0,
+                    edge_source: str = 'corpus') -> bool:
+        """Add a FOLLOWS edge between bonds with weight dynamics.
+
+        Args:
+            source: Source bond
+            target: Target bond
+            book_id: Book ID
+            chapter: Chapter number
+            sentence: Sentence number
+            position: Position in trajectory
+            weight: Initial weight (default 1.0 for corpus)
+            edge_source: Source type ('corpus', 'conversation', 'context')
+        """
         if not self._connected:
             return False
 
@@ -293,6 +326,11 @@ class Neo4jData:
         MATCH (s:Bond {id: $source_id}), (t:Bond {id: $target_id})
         MERGE (s)-[f:FOLLOWS {book_id: $book_id, chapter: $chapter,
                               sentence: $sentence, position: $position}]->(t)
+        ON CREATE SET
+            f.weight = $weight,
+            f.source = $edge_source,
+            f.created_at = datetime(),
+            f.last_used = datetime()
         """
 
         with self._driver.session() as session:
@@ -303,6 +341,8 @@ class Neo4jData:
                 chapter=chapter,
                 sentence=sentence,
                 position=position,
+                weight=weight,
+                edge_source=edge_source,
             )
 
         return True
@@ -466,6 +506,664 @@ class Neo4jData:
                 ))
 
         return trajectory
+
+    # ========================================================================
+    # WEIGHT DYNAMICS - LEARNING & FORGETTING
+    # ========================================================================
+
+    def apply_decay(self, days_elapsed: float = 1.0,
+                    dry_run: bool = False) -> Dict:
+        """
+        Apply forgetting decay to user-learned FOLLOWS edge weights.
+
+        IMPORTANT: Only decays edges from 'conversation' or 'context' sources.
+        Corpus edges (from books) are permanent and never decay.
+
+        Formula: w(t+dt) = w_min + (w - w_min) * e^(-lambda * dt)
+
+        This implements the "nightly decay" where user-walked paths not recently
+        reinforced gradually lose weight toward w_min (0.1).
+
+        Args:
+            days_elapsed: Days since last decay (default 1.0 for nightly)
+            dry_run: If True, compute but don't apply changes
+
+        Returns:
+            Statistics about the decay operation
+        """
+        if not self._connected:
+            return {"error": "Not connected"}
+
+        from .weight_dynamics import W_MIN, LAMBDA_FORGET, DORMANCY_THRESHOLD
+        import math
+
+        decay_factor = math.exp(-LAMBDA_FORGET * days_elapsed)
+
+        with self._driver.session() as session:
+            if dry_run:
+                # Preview what would happen - only user-learned edges
+                result = session.run("""
+                    MATCH ()-[f:FOLLOWS]->()
+                    WHERE f.weight IS NOT NULL
+                      AND f.weight > $w_min
+                      AND (f.source IS NULL OR f.source <> 'corpus')
+                    WITH f,
+                         f.weight as w_before,
+                         $w_min + (f.weight - $w_min) * $decay_factor as w_after
+                    RETURN count(f) as edge_count,
+                           sum(w_before) as total_before,
+                           sum(w_after) as total_after,
+                           sum(w_before - w_after) as total_decay,
+                           avg(w_before) as avg_before,
+                           avg(w_after) as avg_after,
+                           sum(CASE WHEN w_before > $threshold AND w_after <= $threshold THEN 1 ELSE 0 END) as newly_dormant
+                """, w_min=W_MIN, decay_factor=decay_factor,
+                     threshold=DORMANCY_THRESHOLD)
+
+                record = result.single()
+                return {
+                    "dry_run": True,
+                    "days_elapsed": days_elapsed,
+                    "decay_factor": decay_factor,
+                    "edges_affected": record["edge_count"],
+                    "total_weight_before": record["total_before"],
+                    "total_weight_after": record["total_after"],
+                    "total_decay": record["total_decay"],
+                    "avg_weight_before": record["avg_before"],
+                    "avg_weight_after": record["avg_after"],
+                    "newly_dormant": record["newly_dormant"],
+                    "note": "Only user-learned edges (not corpus) are decayed"
+                }
+            else:
+                # Actually apply the decay - only user-learned edges
+                result = session.run("""
+                    MATCH ()-[f:FOLLOWS]->()
+                    WHERE f.weight IS NOT NULL
+                      AND f.weight > $w_min
+                      AND (f.source IS NULL OR f.source <> 'corpus')
+                    WITH f,
+                         f.weight as w_before,
+                         $w_min + (f.weight - $w_min) * $decay_factor as w_after
+                    SET f.weight = w_after,
+                        f.last_decay = datetime()
+                    RETURN count(f) as edge_count,
+                           sum(w_before) as total_before,
+                           sum(w_after) as total_after,
+                           sum(w_before - w_after) as total_decay,
+                           sum(CASE WHEN w_before > $threshold AND w_after <= $threshold THEN 1 ELSE 0 END) as newly_dormant
+                """, w_min=W_MIN, decay_factor=decay_factor,
+                     threshold=DORMANCY_THRESHOLD)
+
+                record = result.single()
+                return {
+                    "dry_run": False,
+                    "days_elapsed": days_elapsed,
+                    "decay_factor": decay_factor,
+                    "edges_affected": record["edge_count"],
+                    "total_weight_before": record["total_before"],
+                    "total_weight_after": record["total_after"],
+                    "total_decay": record["total_decay"],
+                    "newly_dormant": record["newly_dormant"],
+                    "applied_at": datetime.now().isoformat(),
+                    "note": "Only user-learned edges (not corpus) were decayed"
+                }
+
+    def apply_decay_since_last_use(self, dry_run: bool = False) -> Dict:
+        """
+        Apply decay based on each edge's individual last_used timestamp.
+
+        IMPORTANT: Only decays edges from 'conversation' or 'context' sources.
+        Corpus edges (from books) are permanent and never decay.
+
+        More accurate than apply_decay() - decays each edge based on
+        how long since it was actually used.
+
+        Args:
+            dry_run: If True, compute but don't apply changes
+
+        Returns:
+            Statistics about the decay operation
+        """
+        if not self._connected:
+            return {"error": "Not connected"}
+
+        from .weight_dynamics import W_MIN, LAMBDA_FORGET, DORMANCY_THRESHOLD
+
+        with self._driver.session() as session:
+            if dry_run:
+                result = session.run("""
+                    MATCH ()-[f:FOLLOWS]->()
+                    WHERE f.weight IS NOT NULL
+                      AND f.weight > $w_min
+                      AND f.last_used IS NOT NULL
+                      AND (f.source IS NULL OR f.source <> 'corpus')
+                    WITH f,
+                         f.weight as w_before,
+                         duration.inDays(f.last_used, datetime()).days as days_since,
+                         $w_min + (f.weight - $w_min) * exp(-$lambda * duration.inDays(f.last_used, datetime()).days) as w_after
+                    RETURN count(f) as edge_count,
+                           sum(w_before) as total_before,
+                           sum(w_after) as total_after,
+                           avg(days_since) as avg_days_since_use,
+                           max(days_since) as max_days_since_use,
+                           sum(CASE WHEN w_before > $threshold AND w_after <= $threshold THEN 1 ELSE 0 END) as newly_dormant
+                """, w_min=W_MIN, lambda_val=LAMBDA_FORGET,
+                     threshold=DORMANCY_THRESHOLD)
+
+                record = result.single()
+                if record["edge_count"] == 0:
+                    return {
+                        "dry_run": True,
+                        "edges_with_timestamp": 0,
+                        "note": "No user-learned edges have last_used timestamp set"
+                    }
+
+                return {
+                    "dry_run": True,
+                    "edges_affected": record["edge_count"],
+                    "total_weight_before": record["total_before"],
+                    "total_weight_after": record["total_after"],
+                    "avg_days_since_use": record["avg_days_since_use"],
+                    "max_days_since_use": record["max_days_since_use"],
+                    "newly_dormant": record["newly_dormant"],
+                    "note": "Only user-learned edges (not corpus) are decayed"
+                }
+            else:
+                # Apply decay based on individual timestamps - only user-learned edges
+                result = session.run("""
+                    MATCH ()-[f:FOLLOWS]->()
+                    WHERE f.weight IS NOT NULL
+                      AND f.weight > $w_min
+                      AND f.last_used IS NOT NULL
+                      AND (f.source IS NULL OR f.source <> 'corpus')
+                    WITH f,
+                         f.weight as w_before,
+                         duration.inDays(f.last_used, datetime()).days as days_since
+                    WITH f, w_before, days_since,
+                         $w_min + (w_before - $w_min) * exp(-$lambda * days_since) as w_after
+                    SET f.weight = w_after,
+                        f.last_decay = datetime()
+                    RETURN count(f) as edge_count,
+                           sum(w_before) as total_before,
+                           sum(w_after) as total_after,
+                           sum(CASE WHEN w_before > $threshold AND w_after <= $threshold THEN 1 ELSE 0 END) as newly_dormant
+                """, w_min=W_MIN, lambda_val=LAMBDA_FORGET,
+                     threshold=DORMANCY_THRESHOLD)
+
+                record = result.single()
+                return {
+                    "dry_run": False,
+                    "edges_affected": record["edge_count"],
+                    "total_weight_before": record["total_before"],
+                    "total_weight_after": record["total_after"],
+                    "newly_dormant": record["newly_dormant"],
+                    "applied_at": datetime.now().isoformat(),
+                    "note": "Only user-learned edges (not corpus) were decayed"
+                }
+
+    def reinforce_edge(self, source_id: str, target_id: str) -> bool:
+        """
+        Reinforce a FOLLOWS edge (increase weight via learning).
+
+        Call this when a transition is walked during navigation.
+        Formula: w += 0.05 (up to w_max)
+
+        Args:
+            source_id: Source bond ID
+            target_id: Target bond ID
+
+        Returns:
+            True if edge was reinforced
+        """
+        if not self._connected:
+            return False
+
+        from .weight_dynamics import W_MAX, LEARNING_INCREMENT
+
+        query = """
+        MATCH (s:Bond {id: $source_id})-[f:FOLLOWS]->(t:Bond {id: $target_id})
+        SET f.weight = CASE
+            WHEN f.weight IS NULL THEN $increment
+            WHEN f.weight < $w_max THEN f.weight + $increment
+            ELSE f.weight
+        END,
+        f.last_used = datetime(),
+        f.last_reinforced = datetime()
+        RETURN f.weight as new_weight
+        """
+
+        with self._driver.session() as session:
+            result = session.run(query,
+                source_id=source_id,
+                target_id=target_id,
+                w_max=W_MAX,
+                increment=LEARNING_INCREMENT)
+            record = result.single()
+            return record is not None
+
+    def reinforce_transition(self, source: Bond, target: Bond) -> bool:
+        """
+        Reinforce a transition between two bonds.
+
+        Convenience wrapper for reinforce_edge.
+
+        Args:
+            source: Source bond
+            target: Target bond
+
+        Returns:
+            True if edge was reinforced
+        """
+        source_id = f"{source.adj}_{source.noun}" if source.adj else source.noun
+        target_id = f"{target.adj}_{target.noun}" if target.adj else target.noun
+        return self.reinforce_edge(source_id, target_id)
+
+    def mark_edge_used(self, source_id: str, target_id: str):
+        """
+        Mark a FOLLOWS edge as recently used (updates last_used timestamp).
+
+        Call this during navigation to track edge usage for decay.
+
+        Args:
+            source_id: Source bond ID
+            target_id: Target bond ID
+        """
+        if not self._connected:
+            return
+
+        query = """
+        MATCH (s:Bond {id: $source_id})-[f:FOLLOWS]->(t:Bond {id: $target_id})
+        SET f.last_used = datetime()
+        """
+
+        with self._driver.session() as session:
+            session.run(query, source_id=source_id, target_id=target_id)
+
+    def get_decay_stats(self) -> Dict:
+        """
+        Get statistics about edge weights and decay state.
+
+        Returns:
+            Dictionary with weight distribution and dormancy stats
+        """
+        if not self._connected:
+            return {"error": "Not connected"}
+
+        from .weight_dynamics import DORMANCY_THRESHOLD
+
+        with self._driver.session() as session:
+            result = session.run("""
+                MATCH ()-[f:FOLLOWS]->()
+                RETURN count(f) as total_edges,
+                       avg(coalesce(f.weight, 1.0)) as avg_weight,
+                       min(coalesce(f.weight, 1.0)) as min_weight,
+                       max(coalesce(f.weight, 1.0)) as max_weight,
+                       sum(CASE WHEN coalesce(f.weight, 1.0) <= $threshold THEN 1 ELSE 0 END) as dormant_count,
+                       sum(CASE WHEN coalesce(f.weight, 1.0) > $threshold THEN 1 ELSE 0 END) as active_count,
+                       sum(CASE WHEN coalesce(f.weight, 1.0) >= 0.9 THEN 1 ELSE 0 END) as saturated_count,
+                       sum(CASE WHEN f.last_used IS NOT NULL THEN 1 ELSE 0 END) as edges_with_timestamp,
+                       sum(CASE WHEN f.weight IS NOT NULL THEN 1 ELSE 0 END) as edges_with_weight
+            """, threshold=DORMANCY_THRESHOLD)
+
+            record = result.single()
+            total = record["total_edges"]
+
+            return {
+                "total_edges": total,
+                "avg_weight": record["avg_weight"],
+                "min_weight": record["min_weight"],
+                "max_weight": record["max_weight"],
+                "dormant_count": record["dormant_count"],
+                "active_count": record["active_count"],
+                "saturated_count": record["saturated_count"],
+                "dormant_percentage": (record["dormant_count"] / total * 100) if total > 0 else 0,
+                "edges_with_timestamp": record["edges_with_timestamp"],
+                "edges_with_weight": record["edges_with_weight"],
+                "dormancy_threshold": DORMANCY_THRESHOLD
+            }
+
+    def initialize_weights(self, default_weight: float = 1.0) -> Dict:
+        """
+        Initialize weights on edges that don't have them.
+
+        Useful when adding weight support to existing edges.
+
+        Args:
+            default_weight: Weight to set (default 1.0 for corpus edges)
+
+        Returns:
+            Statistics about initialization
+        """
+        if not self._connected:
+            return {"error": "Not connected"}
+
+        with self._driver.session() as session:
+            result = session.run("""
+                MATCH ()-[f:FOLLOWS]->()
+                WHERE f.weight IS NULL
+                SET f.weight = $weight,
+                    f.source = 'corpus',
+                    f.last_used = datetime()
+                RETURN count(f) as initialized
+            """, weight=default_weight)
+
+            record = result.single()
+            return {
+                "initialized": record["initialized"],
+                "default_weight": default_weight
+            }
+
+    def get_weight_distribution(self, buckets: int = 10) -> List[Dict]:
+        """
+        Get histogram of edge weights.
+
+        Args:
+            buckets: Number of histogram buckets
+
+        Returns:
+            List of {range_start, range_end, count} dicts
+        """
+        if not self._connected:
+            return []
+
+        from .weight_dynamics import W_MIN, W_MAX
+
+        bucket_size = (W_MAX - W_MIN) / buckets
+        distribution = []
+
+        with self._driver.session() as session:
+            for i in range(buckets):
+                low = W_MIN + i * bucket_size
+                high = low + bucket_size
+
+                result = session.run("""
+                    MATCH ()-[f:FOLLOWS]->()
+                    WHERE coalesce(f.weight, 1.0) >= $low AND coalesce(f.weight, 1.0) < $high
+                    RETURN count(f) as count
+                """, low=low, high=high)
+
+                record = result.single()
+                distribution.append({
+                    "range_start": round(low, 2),
+                    "range_end": round(high, 2),
+                    "count": record["count"]
+                })
+
+        return distribution
+
+    # ========================================================================
+    # LEARNING: Runtime Bond Learning
+    # ========================================================================
+
+    def learn_bond(self, bond: Bond, source: str = 'conversation') -> str:
+        """Learn a new bond from conversation (creates or updates node).
+
+        Unlike add_bond() which is for corpus loading, this method:
+        - Sets appropriate source marker
+        - Is idempotent (safe to call multiple times)
+
+        Args:
+            bond: Bond to learn
+            source: Source type ('conversation', 'context')
+
+        Returns:
+            Bond ID
+        """
+        if not self._connected:
+            return ''
+
+        bond_id = f"{bond.adj}_{bond.noun}" if bond.adj else bond.noun
+
+        query = """
+        MERGE (b:Bond {id: $id})
+        ON CREATE SET
+            b.adj = $adj,
+            b.noun = $noun,
+            b.A = $A,
+            b.S = $S,
+            b.tau = $tau,
+            b.source = $source,
+            b.created_at = datetime()
+        ON MATCH SET
+            b.last_used = datetime()
+        RETURN b.id
+        """
+
+        with self._driver.session() as session:
+            session.run(query,
+                id=bond_id,
+                adj=bond.adj,
+                noun=bond.noun,
+                A=bond.A,
+                S=bond.S,
+                tau=bond.tau,
+                source=source,
+            )
+
+        return bond_id
+
+    def learn_transition(self, source: Bond, target: Bond,
+                         conversation_id: str = 'default',
+                         source_type: str = 'conversation') -> bool:
+        """Learn a transition between bonds from conversation.
+
+        Creates FOLLOWS edge with conversation weight (0.2) that is
+        subject to decay. Unlike add_follows() which creates corpus edges.
+
+        Args:
+            source: Source bond
+            target: Target bond
+            conversation_id: Conversation identifier
+            source_type: 'conversation' or 'context'
+
+        Returns:
+            True if edge was created/updated
+        """
+        if not self._connected:
+            return False
+
+        from .weight_dynamics import WEIGHT_CONVERSATION, WEIGHT_CONTEXT
+
+        source_id = f"{source.adj}_{source.noun}" if source.adj else source.noun
+        target_id = f"{target.adj}_{target.noun}" if target.adj else target.noun
+
+        # Determine initial weight based on source type
+        init_weight = WEIGHT_CONVERSATION if source_type == 'conversation' else WEIGHT_CONTEXT
+
+        query = """
+        MATCH (s:Bond {id: $source_id}), (t:Bond {id: $target_id})
+        MERGE (s)-[f:FOLLOWS {conversation_id: $conv_id}]->(t)
+        ON CREATE SET
+            f.weight = $init_weight,
+            f.source = $source_type,
+            f.created_at = datetime(),
+            f.last_used = datetime()
+        ON MATCH SET
+            f.weight = CASE
+                WHEN f.weight < 1.0 THEN f.weight + 0.05
+                ELSE f.weight
+            END,
+            f.last_used = datetime()
+        RETURN f.weight as weight
+        """
+
+        with self._driver.session() as session:
+            result = session.run(query,
+                source_id=source_id,
+                target_id=target_id,
+                conv_id=conversation_id,
+                init_weight=init_weight,
+                source_type=source_type,
+            )
+            record = result.single()
+            return record is not None
+
+    def learn_trajectory(self, bonds: List[Bond],
+                         conversation_id: str = 'default',
+                         source_type: str = 'conversation') -> int:
+        """Learn a sequence of bonds from conversation.
+
+        Creates Bond nodes and FOLLOWS edges for the trajectory.
+
+        Args:
+            bonds: List of bonds in order
+            conversation_id: Conversation identifier
+            source_type: 'conversation' or 'context'
+
+        Returns:
+            Number of edges created
+        """
+        if not self._connected or len(bonds) < 2:
+            return 0
+
+        count = 0
+        for i in range(len(bonds)):
+            # Create/update bond node
+            self.learn_bond(bonds[i], source=source_type)
+
+            # Create transition to next bond
+            if i > 0:
+                self.learn_transition(
+                    bonds[i-1], bonds[i],
+                    conversation_id=conversation_id,
+                    source_type=source_type
+                )
+                count += 1
+
+        return count
+
+    def get_learned_bonds(self, limit: int = 100) -> List[Bond]:
+        """Get bonds learned from conversations (not corpus).
+
+        Args:
+            limit: Maximum bonds to return
+
+        Returns:
+            List of learned bonds
+        """
+        if not self._connected:
+            return []
+
+        query = """
+        MATCH (b:Bond)
+        WHERE b.source IN ['conversation', 'context']
+        RETURN b.adj, b.noun, b.A, b.S, b.tau
+        ORDER BY b.created_at DESC
+        LIMIT $limit
+        """
+
+        bonds = []
+        with self._driver.session() as session:
+            records = session.run(query, limit=limit)
+            for r in records:
+                bonds.append(Bond(
+                    adj=r['b.adj'],
+                    noun=r['b.noun'],
+                    A=r['b.A'] or 0.0,
+                    S=r['b.S'] or 0.0,
+                    tau=r['b.tau'] or 2.5,
+                ))
+
+        return bonds
+
+    def get_conversation_trajectory(self, conversation_id: str,
+                                    limit: int = 100) -> Trajectory:
+        """Get the trajectory of a specific conversation.
+
+        Args:
+            conversation_id: Conversation identifier
+            limit: Maximum bonds to return
+
+        Returns:
+            Trajectory of the conversation
+        """
+        if not self._connected:
+            return Trajectory()
+
+        query = """
+        MATCH (b1:Bond)-[f:FOLLOWS {conversation_id: $conv_id}]->(b2:Bond)
+        RETURN b1.adj, b1.noun, b1.A, b1.S, b1.tau,
+               b2.adj, b2.noun, b2.A, b2.S, b2.tau,
+               f.created_at
+        ORDER BY f.created_at
+        LIMIT $limit
+        """
+
+        trajectory = Trajectory(metadata={'conversation_id': conversation_id})
+        seen = set()
+
+        with self._driver.session() as session:
+            records = session.run(query, conv_id=conversation_id, limit=limit)
+            for r in records:
+                # Add source bond if not seen
+                bond1_id = f"{r['b1.adj']}_{r['b1.noun']}"
+                if bond1_id not in seen:
+                    trajectory.bonds.append(Bond(
+                        adj=r['b1.adj'],
+                        noun=r['b1.noun'],
+                        A=r['b1.A'] or 0.0,
+                        S=r['b1.S'] or 0.0,
+                        tau=r['b1.tau'] or 2.5,
+                    ))
+                    seen.add(bond1_id)
+
+                # Add target bond if not seen
+                bond2_id = f"{r['b2.adj']}_{r['b2.noun']}"
+                if bond2_id not in seen:
+                    trajectory.bonds.append(Bond(
+                        adj=r['b2.adj'],
+                        noun=r['b2.noun'],
+                        A=r['b2.A'] or 0.0,
+                        S=r['b2.S'] or 0.0,
+                        tau=r['b2.tau'] or 2.5,
+                    ))
+                    seen.add(bond2_id)
+
+        return trajectory
+
+    def get_learning_stats(self) -> Dict:
+        """Get statistics about learned (non-corpus) content.
+
+        Returns:
+            Dictionary with learning statistics
+        """
+        if not self._connected:
+            return {"error": "Not connected"}
+
+        with self._driver.session() as session:
+            # Count learned bonds
+            result = session.run("""
+                MATCH (b:Bond)
+                WHERE b.source IN ['conversation', 'context']
+                RETURN count(b) as count
+            """)
+            n_learned_bonds = result.single()["count"]
+
+            # Count learned edges
+            result = session.run("""
+                MATCH ()-[f:FOLLOWS]->()
+                WHERE f.source IN ['conversation', 'context']
+                RETURN count(f) as count,
+                       avg(f.weight) as avg_weight
+            """)
+            record = result.single()
+            n_learned_edges = record["count"]
+            avg_learned_weight = record["avg_weight"] or 0.0
+
+            # Count unique conversations
+            result = session.run("""
+                MATCH ()-[f:FOLLOWS]->()
+                WHERE f.conversation_id IS NOT NULL
+                RETURN count(DISTINCT f.conversation_id) as count
+            """)
+            n_conversations = result.single()["count"]
+
+            return {
+                "learned_bonds": n_learned_bonds,
+                "learned_edges": n_learned_edges,
+                "avg_learned_weight": avg_learned_weight,
+                "conversations": n_conversations,
+            }
 
 
 # ============================================================================

@@ -6,7 +6,7 @@ Uses the full Storm-Logos system for therapy:
 - Generates therapeutic responses
 - Adapts approach based on feedback
 
-Supports both Ollama (local) and Claude (API) backends.
+Supports Ollama (local), Claude (API), and Groq (API) backends.
 """
 
 from typing import Optional, List, Dict, Any
@@ -50,9 +50,10 @@ class Therapist:
         """Initialize therapist.
 
         Args:
-            model: 'claude' for Claude API, or Ollama model name (e.g., 'mistral:7b')
-            base_url: Ollama base URL (only used for non-Claude models)
-            api_key: Claude API key (reads from ANTHROPIC_API_KEY env if not provided)
+            model: 'claude' for Claude API, 'groq:model-name' for Groq API,
+                   or Ollama model name (e.g., 'mistral:7b')
+            base_url: Ollama base URL (only used for Ollama models)
+            api_key: API key (reads from env if not provided)
         """
         self.metrics = MetricsEngine()
         self.feedback = FeedbackEngine()
@@ -62,12 +63,19 @@ class Therapist:
 
         self.model = model
         self.use_claude = model.lower().startswith('claude')
+        self.use_groq = model.lower().startswith('groq:')
 
         if self.use_claude:
             self.api_key = api_key or os.environ.get('ANTHROPIC_API_KEY')
             if not self.api_key:
                 raise ValueError("ANTHROPIC_API_KEY not set")
             self._claude_client = None
+        elif self.use_groq:
+            self.api_key = api_key or os.environ.get('GROQ_API_KEY')
+            if not self.api_key:
+                raise ValueError("GROQ_API_KEY not set")
+            self.groq_model = model.split(':', 1)[1]  # e.g., 'llama-3.3-70b-versatile'
+            self._groq_client = None
         else:
             self.renderer = Renderer(model=model, base_url=base_url)
             self.base_url = base_url
@@ -217,6 +225,8 @@ Examples of GOOD responses:
 
         if self.use_claude:
             return self._generate_claude(system_prompt, user_message, max_tokens)
+        elif self.use_groq:
+            return self._generate_groq(system_prompt, user_message, max_tokens)
         else:
             return self._generate_ollama(system_prompt, user_message, max_tokens)
 
@@ -241,6 +251,29 @@ Examples of GOOD responses:
 
         except Exception as e:
             return f"[Claude error: {e}]"
+
+    def _generate_groq(self, system: str, user: str, max_tokens: int) -> str:
+        """Generate response via Groq API."""
+        try:
+            from groq import Groq
+
+            if self._groq_client is None:
+                self._groq_client = Groq(api_key=self.api_key)
+
+            response = self._groq_client.chat.completions.create(
+                model=self.groq_model,
+                max_tokens=max_tokens,
+                temperature=0.7,
+                messages=[
+                    {"role": "system", "content": system},
+                    {"role": "user", "content": user}
+                ]
+            )
+
+            return response.choices[0].message.content.strip()
+
+        except Exception as e:
+            return f"[Groq error: {e}]"
 
     def _generate_ollama(self, system: str, user: str, max_tokens: int) -> str:
         """Generate response via Ollama."""

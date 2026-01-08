@@ -17,12 +17,9 @@ import anthropic
 from storm_logos.applications.therapist import Therapist
 
 
-# Load API key from env file if not set
-def load_api_key():
-    """Load API key from env file."""
-    if os.environ.get('ANTHROPIC_API_KEY'):
-        return os.environ['ANTHROPIC_API_KEY']
-
+# Load API keys from env file if not set
+def load_api_keys():
+    """Load API keys from env file."""
     env_paths = [
         Path(__file__).parent.parent / '.env',  # storm_logos/.env
         Path('/home/chukiss/text_project/hypothesis/experiments/semantic_llm/archive/phase3_generation/.env'),
@@ -33,12 +30,21 @@ def load_api_key():
         if env_path.exists():
             with open(env_path) as f:
                 for line in f:
-                    if line.startswith('ANTHROPIC_API_KEY='):
-                        key = line.split('=', 1)[1].strip()
-                        os.environ['ANTHROPIC_API_KEY'] = key
-                        return key
+                    line = line.strip()
+                    if '=' in line and not line.startswith('#'):
+                        key, value = line.split('=', 1)
+                        if key in ('ANTHROPIC_API_KEY', 'GROQ_API_KEY') and not os.environ.get(key):
+                            os.environ[key] = value
 
-    raise ValueError("ANTHROPIC_API_KEY not found")
+    if not os.environ.get('ANTHROPIC_API_KEY'):
+        raise ValueError("ANTHROPIC_API_KEY not found")
+
+    return os.environ['ANTHROPIC_API_KEY']
+
+
+def load_api_key():
+    """Load API key from env file (legacy wrapper)."""
+    return load_api_keys()
 
 
 def create_patient_client(api_key: str):
@@ -83,11 +89,11 @@ Keep responses 1-3 sentences."""
     return response.content[0].text.strip()
 
 
-def run_therapy_session(n_turns: int = 10):
+def run_therapy_session(n_turns: int = 10, model: str = 'claude'):
     """Run a therapy session with Claude as patient."""
     print("=" * 60)
     print("STORM-LOGOS THERAPY TEST")
-    print("Claude as Patient, Storm-Logos as Therapist")
+    print(f"Claude as Patient, {model} as Therapist")
     print("=" * 60)
     print()
 
@@ -96,8 +102,11 @@ def run_therapy_session(n_turns: int = 10):
     print(f"API key loaded: {api_key[:20]}...")
     print()
 
-    # Create therapist (uses same API key)
-    therapist = Therapist(model='claude', api_key=api_key)
+    # Create therapist
+    if model.lower().startswith('claude'):
+        therapist = Therapist(model='claude', api_key=api_key)
+    else:
+        therapist = Therapist(model=model)  # Ollama model
 
     # Create patient client
     patient_client = create_patient_client(api_key)
@@ -212,9 +221,11 @@ if __name__ == '__main__':
                         help='Interactive mode (you are the patient)')
     parser.add_argument('--turns', '-n', type=int, default=10,
                         help='Number of turns for automated session')
+    parser.add_argument('--model', '-m', type=str, default='claude',
+                        help='Therapist model: claude or Ollama model (e.g., mistral:7b)')
     args = parser.parse_args()
 
     if args.interactive:
         interactive_session()
     else:
-        run_therapy_session(n_turns=args.turns)
+        run_therapy_session(n_turns=args.turns, model=args.model)
