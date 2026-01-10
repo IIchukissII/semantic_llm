@@ -88,3 +88,9 @@ export const getInfo = () => api('/info');
 // Corpus/Books
 export const getCorpusBooks = () => api('/corpus/books');
 export const processBook = (text, title, author) => api('/corpus/process', 'POST', { text, title, author });
+
+// Dreams
+export const analyzeDream = (dream) => api('/dreams/analyze', 'POST', { dream });
+export const saveDream = (data) => api('/dreams/save', 'POST', data);
+export const listDreams = () => api('/dreams/list');
+export const deleteDream = (dreamId) => api(`/dreams/${dreamId}`, 'DELETE');

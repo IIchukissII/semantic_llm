@@ -7,6 +7,7 @@ import Chat from './components/Chat'
 import HistoryModal from './components/HistoryModal'
 import ProfileModal from './components/ProfileModal'
 import BooksTab from './components/BooksTab'
+import DreamTab from './components/DreamTab'
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('chat')
@@ -216,6 +217,12 @@ export default function App() {
           Session
         </button>
         <button
+          className={`tab ${activeTab === 'dream' ? 'active' : ''}`}
+          onClick={() => setActiveTab('dream')}
+        >
+          Dream
+        </button>
+        <button
           className={`tab ${activeTab === 'books' ? 'active' : ''}`}
           onClick={() => setActiveTab('books')}
         >
@@ -224,7 +231,7 @@ export default function App() {
       </div>
 
       <main>
-        {activeTab === 'chat' ? (
+        {activeTab === 'chat' && (
           <>
             <Sidebar
               sessionInfo={sessionInfo}
@@ -241,9 +248,9 @@ export default function App() {
               onDelete={handleDeleteSession}
             />
           </>
-        ) : (
-          <BooksTab />
         )}
+        {activeTab === 'dream' && <DreamTab />}
+        {activeTab === 'books' && <BooksTab />}
       </main>
     </div>
   )

@@ -272,6 +272,207 @@ async def process_book_text(data: dict):
         return {"error": str(e), "trace": traceback.format_exc()}
 
 
+from fastapi import Depends
+from .deps import get_current_user, get_optional_user
+
+
+@app.post("/dreams/analyze")
+async def analyze_dream(data: dict):
+    """Quick dream analysis without conversation.
+
+    Returns symbols, archetypes, interpretation, and corpus resonances.
+    """
+    dream_text = data.get("dream", "").strip()
+
+    if not dream_text or len(dream_text) < 20:
+        return {"error": "Dream text too short (min 20 chars)"}
+
+    try:
+        engine = get_dream_engine()
+        analysis = engine.analyze(dream_text)
+
+        # Format symbols
+        symbols = []
+        for s in analysis.symbols:
+            symbols.append({
+                "text": s.raw_text,
+                "archetype": s.archetype or "",
+                "interpretation": s.interpretation or "",
+                "A": s.bond.A,
+                "S": s.bond.S,
+                "tau": s.bond.tau,
+                "corpus_sources": s.corpus_sources or [],
+            })
+
+        # Get archetype scores
+        state = analysis.state
+        archetypes = {
+            "shadow": state.shadow,
+            "anima_animus": state.anima_animus,
+            "self": state.self_archetype,
+            "mother": state.mother,
+            "father": state.father,
+            "hero": state.hero,
+            "trickster": state.trickster,
+            "death_rebirth": state.death_rebirth,
+        }
+
+        dominant, score = state.dominant_archetype()
+
+        return {
+            "dream": dream_text,
+            "symbols": symbols,
+            "archetypes": archetypes,
+            "dominant_archetype": dominant,
+            "dominant_score": score,
+            "coordinates": {
+                "A": state.A,
+                "S": state.S,
+                "tau": state.tau,
+            },
+            "markers": {
+                "transformation": state.transformation,
+                "journey": state.journey,
+                "confrontation": state.confrontation,
+            },
+            "interpretation": analysis.interpretation,
+            "corpus_resonances": analysis.corpus_resonances,
+            "timestamp": analysis.timestamp,
+        }
+
+    except Exception as e:
+        import traceback
+        return {"error": str(e), "trace": traceback.format_exc()}
+
+
+@app.post("/dreams/save")
+async def save_dream(
+    data: dict,
+    current_user: dict = Depends(get_current_user)
+):
+    """Save a dream analysis to user's collection."""
+    from datetime import datetime
+
+    dream_text = data.get("dream", "").strip()
+    interpretation = data.get("interpretation", "")
+    symbols = data.get("symbols", [])
+    archetypes = data.get("archetypes", {})
+    dominant = data.get("dominant_archetype", "")
+    title = data.get("title", "")
+
+    if not dream_text:
+        return {"error": "No dream text provided"}
+
+    try:
+        ug = get_user_graph()
+        dream_id = datetime.now().strftime("%Y%m%d_%H%M%S")
+
+        # Save to Neo4j
+        with ug._driver.session() as session:
+            session.run("""
+                MATCH (u:User {user_id: $user_id})
+                CREATE (d:Dream {
+                    id: $dream_id,
+                    title: $title,
+                    text: $dream_text,
+                    interpretation: $interpretation,
+                    dominant_archetype: $dominant,
+                    timestamp: $timestamp
+                })
+                CREATE (u)-[:DREAMED]->(d)
+                WITH d
+                UNWIND $symbols as sym
+                MERGE (s:DreamSymbol {text: sym.text})
+                SET s.archetype = sym.archetype, s.A = sym.A, s.S = sym.S
+                CREATE (d)-[:CONTAINS_SYMBOL]->(s)
+            """,
+                user_id=current_user["user_id"],
+                dream_id=dream_id,
+                title=title or f"Dream {dream_id}",
+                dream_text=dream_text[:2000],
+                interpretation=interpretation[:3000],
+                dominant=dominant,
+                timestamp=datetime.now().isoformat(),
+                symbols=symbols[:20]
+            )
+
+        return {
+            "success": True,
+            "dream_id": dream_id,
+            "message": "Dream saved"
+        }
+
+    except Exception as e:
+        import traceback
+        return {"error": str(e), "trace": traceback.format_exc()}
+
+
+@app.get("/dreams/list")
+async def list_dreams(
+    current_user: dict = Depends(get_current_user)
+):
+    """Get user's saved dreams."""
+    try:
+        ug = get_user_graph()
+
+        with ug._driver.session() as session:
+            result = session.run("""
+                MATCH (u:User {user_id: $user_id})-[:DREAMED]->(d:Dream)
+                OPTIONAL MATCH (d)-[:CONTAINS_SYMBOL]->(s:DreamSymbol)
+                WITH d, collect(DISTINCT {text: s.text, archetype: s.archetype}) as symbols
+                RETURN d.id as id, d.title as title, d.text as text,
+                       d.interpretation as interpretation,
+                       d.dominant_archetype as dominant_archetype,
+                       d.timestamp as timestamp, symbols
+                ORDER BY d.timestamp DESC
+            """, user_id=current_user["user_id"])
+
+            dreams = []
+            for record in result:
+                dreams.append({
+                    "id": record["id"],
+                    "title": record["title"],
+                    "text": record["text"][:200] + "..." if len(record["text"] or "") > 200 else record["text"],
+                    "interpretation": record["interpretation"],
+                    "dominant_archetype": record["dominant_archetype"],
+                    "timestamp": record["timestamp"],
+                    "symbols": [s for s in record["symbols"] if s.get("text")],
+                })
+
+        return {"dreams": dreams, "total": len(dreams)}
+
+    except Exception as e:
+        import traceback
+        return {"dreams": [], "total": 0, "error": str(e)}
+
+
+@app.delete("/dreams/{dream_id}")
+async def delete_dream(
+    dream_id: str,
+    current_user: dict = Depends(get_current_user)
+):
+    """Delete a saved dream."""
+    try:
+        ug = get_user_graph()
+
+        with ug._driver.session() as session:
+            result = session.run("""
+                MATCH (u:User {user_id: $user_id})-[:DREAMED]->(d:Dream {id: $dream_id})
+                DETACH DELETE d
+                RETURN count(d) as deleted
+            """, user_id=current_user["user_id"], dream_id=dream_id)
+
+            deleted = result.single()["deleted"]
+
+        if deleted > 0:
+            return {"success": True, "message": "Dream deleted"}
+        else:
+            return {"error": "Dream not found"}
+
+    except Exception as e:
+        return {"error": str(e)}
+
+
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)

@@ -908,6 +908,448 @@ select:focus {
   color: var(--accent);
 }
 
+/* ==================== DREAM TAB ==================== */
+
+.dream-tab {
+  flex: 1;
+  padding: 2rem;
+  overflow-y: auto;
+}
+
+.dream-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+}
+
+.dream-header-left h2 {
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+
+.dream-header .hint {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.saved-dreams-btn {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  color: var(--text);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.saved-dreams-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* Saved Dreams Panel */
+.saved-dreams-panel {
+  background: var(--glass-bg);
+  backdrop-filter: var(--blur);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.saved-dreams-panel h3 {
+  color: var(--accent);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.saved-dreams-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.saved-dream-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  padding: 0.75rem;
+}
+
+.saved-dream-content {
+  flex: 1;
+  cursor: pointer;
+}
+
+.saved-dream-content:hover .saved-dream-title {
+  color: var(--accent);
+}
+
+.saved-dream-title {
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+  transition: color 0.2s;
+}
+
+.saved-dream-meta {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-bottom: 0.25rem;
+}
+
+.saved-dream-preview {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.delete-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+}
+
+.delete-btn:hover {
+  color: var(--accent);
+}
+
+/* Selected Dream View */
+.selected-dream {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.selected-dream-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.selected-dream-header h3 {
+  color: var(--accent);
+}
+
+.selected-dream-header button {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  color: var(--text);
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.selected-dream-header button:hover {
+  border-color: var(--accent);
+}
+
+/* Dream Input */
+.dream-input-section {
+  margin-bottom: 2rem;
+}
+
+.dream-title-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--glass-border);
+  border-radius: 8px;
+  color: var(--text);
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.dream-title-input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.dream-input-section textarea {
+  width: 100%;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--glass-border);
+  border-radius: 8px;
+  color: var(--text);
+  font-size: 1rem;
+  resize: vertical;
+  margin-bottom: 1rem;
+}
+
+.dream-input-section textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px var(--accent-glow);
+}
+
+.dream-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.analyze-btn {
+  background: linear-gradient(135deg, var(--accent), #c73e54);
+  color: white;
+  border: none;
+  padding: 0.75rem 2rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.analyze-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px var(--accent-glow);
+}
+
+.analyze-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.save-btn {
+  background: linear-gradient(135deg, #4ade80, #22c55e);
+  color: white;
+  border: none;
+  padding: 0.75rem 2rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.save-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(74, 222, 128, 0.3);
+}
+
+.save-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Analysis Results */
+.dream-analysis {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.analysis-section {
+  background: var(--glass-bg);
+  backdrop-filter: var(--blur);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  padding: 1.25rem;
+}
+
+.analysis-section h3 {
+  color: var(--accent);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--glass-border);
+}
+
+/* Dominant Archetype */
+.dominant-archetype .archetype-badge {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.archetype-badge .archetype-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--text);
+}
+
+.archetype-badge .archetype-score {
+  background: var(--accent);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+}
+
+/* Coordinates */
+.coord-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.coord-item {
+  text-align: center;
+  padding: 0.75rem;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+}
+
+.coord-label {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-bottom: 0.25rem;
+}
+
+.coord-value {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.coord-value.positive {
+  color: #4ade80;
+}
+
+.coord-value.negative {
+  color: #f87171;
+}
+
+/* Archetype Bars */
+.archetype-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.archetype-bar {
+  display: grid;
+  grid-template-columns: 120px 1fr 50px;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.bar-label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.bar-track {
+  height: 8px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), #ff6b8a);
+  border-radius: 4px;
+  transition: width 0.5s ease;
+}
+
+.bar-value {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-align: right;
+}
+
+/* Symbols Grid */
+.symbols-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+.symbol-card {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  padding: 0.75rem;
+}
+
+.symbol-text {
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+}
+
+.symbol-archetype {
+  font-size: 0.75rem;
+  color: var(--accent);
+  margin-bottom: 0.25rem;
+}
+
+.symbol-interp {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-bottom: 0.25rem;
+}
+
+.symbol-coords {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  font-family: monospace;
+}
+
+/* Interpretation */
+.interpretation-text {
+  line-height: 1.7;
+  color: var(--text);
+  white-space: pre-wrap;
+}
+
+/* Resonances */
+.resonance-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.resonance-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  flex-wrap: wrap;
+}
+
+.resonance-symbol {
+  color: var(--accent);
+}
+
+.resonance-arrow {
+  color: var(--text-muted);
+}
+
+.resonance-source {
+  font-style: italic;
+}
+
+.resonance-author {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+/* Markers */
+.markers-list {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.marker {
+  background: rgba(233, 69, 96, 0.2);
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   main {
@@ -927,5 +1369,17 @@ select:focus {
 
   .message {
     max-width: 90%;
+  }
+
+  .coord-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .archetype-bar {
+    grid-template-columns: 100px 1fr 40px;
+  }
+
+  .symbols-grid {
+    grid-template-columns: 1fr;
   }
 }
