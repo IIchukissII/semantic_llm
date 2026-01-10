@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Storm-Logos | Dream Therapy</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Auth Modal -->
+        <div id="auth-modal" class="modal">
+            <div class="modal-content">
+                <h2 id="auth-title">Welcome</h2>
+                <form id="auth-form">
+                    <input type="text" id="username" placeholder="Username" required>
+                    <input type="password" id="password" placeholder="Password" required>
+                    <div class="auth-buttons">
+                        <button type="submit" id="login-btn">Login</button>
+                        <button type="button" id="register-btn">Register</button>
+                    </div>
+                    <button type="button" id="skip-auth" class="secondary">Continue as Guest</button>
+                </form>
+                <p id="auth-error" class="error"></p>
+            </div>
+        </div>
+
+        <!-- Main App -->
+        <header>
+            <h1>Storm-Logos</h1>
+            <div class="header-right">
+                <span id="user-info"></span>
+                <button id="history-btn" class="icon-btn" title="Session History">📋</button>
+                <button id="profile-btn" class="icon-btn" title="Profile">👤</button>
+                <button id="logout-btn" class="icon-btn" title="Logout">🚪</button>
+            </div>
+        </header>
+
+        <main>
+            <!-- Sidebar -->
+            <aside id="sidebar">
+                <div class="sidebar-section">
+                    <h3>Session</h3>
+                    <div id="session-info">
+                        <p>Mode: <span id="session-mode">-</span></p>
+                        <p>Turn: <span id="session-turn">0</span></p>
+                        <p>Model: <span id="session-model">-</span></p>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <h3>Symbols</h3>
+                    <ul id="symbols-list"></ul>
+                </div>
+
+                <div class="sidebar-section">
+                    <h3>Themes</h3>
+                    <div id="themes-list" class="tags"></div>
+                </div>
+
+                <div class="sidebar-section">
+                    <h3>Emotions</h3>
+                    <div id="emotions-list" class="tags"></div>
+                </div>
+            </aside>
+
+            <!-- Chat Area -->
+            <section id="chat-area">
+                <div id="messages"></div>
+                <div id="input-area">
+                    <textarea id="message-input" placeholder="Share a dream, or just start talking..." rows="3"></textarea>
+                    <div class="input-buttons">
+                        <select id="mode-select">
+                            <option value="hybrid">Auto</option>
+                            <option value="dream">Dream</option>
+                            <option value="therapy">Therapy</option>
+                        </select>
+                        <button id="send-btn">Send</button>
+                        <button id="pause-btn" class="secondary" title="Save and pause">Pause</button>
+                        <button id="end-btn" class="secondary">End</button>
+                        <button id="delete-btn" class="secondary" title="Discard without saving">Delete</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- History Modal -->
+        <div id="history-modal" class="modal hidden">
+            <div class="modal-content large">
+                <button class="close-btn" onclick="closeHistory()">&times;</button>
+                <h2>Session History</h2>
+                <div id="history-list"></div>
+            </div>
+        </div>
+
+        <!-- Profile Modal -->
+        <div id="profile-modal" class="modal hidden">
+            <div class="modal-content large">
+                <button class="close-btn" onclick="closeProfile()">×</button>
+                <h2>Your Archetype Profile</h2>
+                <div id="profile-content">
+                    <div id="profile-stats"></div>
+                    <div id="archetype-chart"></div>
+                    <div id="evolution-section">
+                        <h3>Archetype Evolution</h3>
+                        <select id="archetype-select">
+                            <option value="shadow">Shadow</option>
+                            <option value="anima_animus">Anima/Animus</option>
+                            <option value="self">Self</option>
+                            <option value="mother">Mother</option>
+                            <option value="father">Father</option>
+                            <option value="hero">Hero</option>
+                            <option value="trickster">Trickster</option>
+                            <option value="death_rebirth">Death/Rebirth</option>
+                        </select>
+                        <div id="evolution-list"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

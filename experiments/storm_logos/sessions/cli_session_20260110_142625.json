@@ -1,0 +1,194 @@
+{
+  "session_id": "20260110_142625",
+  "mode": "dream",
+  "start_time": "2026-01-10T14:26:25.146021",
+  "end_time": "2026-01-10T14:26:32.716959",
+  "turns": 3,
+  "dream_text": "I had this vivid dream last night. I was standing at the edge of a dark forest, \nand there was a white deer watching me. It felt ancient, like it knew secrets about me \nI didn't know myself. It started walking into the forest and I followed it. \nWe came to a river - it was the same river from my childhood. Under the water I could see \nsleeping bears. I was scared but the deer nudged me toward the water. One bear woke up \nand came toward me. I was terrified but it just touched my hand with its nose, gently.\nI woke up feeling like something important happened.",
+  "symbols": [
+    {
+      "text": "vivid dream",
+      "archetype": "",
+      "A": 0.19780352017659322,
+      "S": -0.04721152447705018
+    },
+    {
+      "text": "dream",
+      "archetype": "",
+      "A": 0.39560704035318645,
+      "S": -0.09442304895410036
+    },
+    {
+      "text": "last night",
+      "archetype": "",
+      "A": 0.5280837755229978,
+      "S": -0.10934187589864922
+    },
+    {
+      "text": "edge",
+      "archetype": "",
+      "A": -0.163147682781782,
+      "S": -0.10534914899885642
+    },
+    {
+      "text": "dark forest",
+      "archetype": "mother",
+      "A": 0.32026481975728677,
+      "S": -0.014978594543097183
+    },
+    {
+      "text": "forest",
+      "archetype": "mother",
+      "A": 0.48572841158026775,
+      "S": 0.0046517697055478684
+    },
+    {
+      "text": "white deer",
+      "archetype": "",
+      "A": 0.397790213252666,
+      "S": 0.048726491581623003
+    },
+    {
+      "text": "secret",
+      "archetype": "",
+      "A": 0.21370617670084963,
+      "S": -0.11125003175335468
+    },
+    {
+      "text": "river",
+      "archetype": "mother",
+      "A": 0.44214992393808766,
+      "S": 0.15075243956607656
+    },
+    {
+      "text": "same river",
+      "archetype": "mother",
+      "A": 0.3290331752685567,
+      "S": -0.17747891418257317
+    },
+    {
+      "text": "childhood",
+      "archetype": "",
+      "A": 0.7970544918069561,
+      "S": -0.46542550111436115
+    },
+    {
+      "text": "water",
+      "archetype": "mother",
+      "A": 0.046288052381439355,
+      "S": -0.07661152082027414
+    },
+    {
+      "text": "bear",
+      "archetype": "",
+      "A": -0.12431720786918495,
+      "S": 0.09240950366882203
+    },
+    {
+      "text": "deer",
+      "archetype": "",
+      "A": 0.43666698387320757,
+      "S": 0.043154710693564004
+    },
+    {
+      "text": "hand",
+      "archetype": "",
+      "A": 0.43284551218893713,
+      "S": 0.009348979867520518
+    },
+    {
+      "text": "dream",
+      "archetype": "",
+      "A": 0.39560704035318645,
+      "S": -0.09442304895410036
+    }
+  ],
+  "themes": [
+    "sleeping bears",
+    "white deer",
+    "grandmother",
+    "grandparents house",
+    "river",
+    "dark forest"
+  ],
+  "emotions": [
+    "curiosity",
+    "wonder",
+    "nostalgia",
+    "sadness",
+    "terror",
+    "fear",
+    "hopeful",
+    "sad"
+  ],
+  "history": [
+    {
+      "turn": 1,
+      "user": "I had this vivid dream last night. I was standing at the edge of a dark forest, \nand there was a white deer watching me. It felt ancient, like it knew secrets about me \nI didn't know myself. It started walking into the forest and I followed it. \nWe came to a river - it was the same river from my childhood. Under the water I could see \nsleeping bears. I was scared but the deer nudged me toward the water. One bear woke up \nand came toward me. I was terrified but it just touched my hand with its nose, gently.\nI woke up feeling like something important happened.",
+      "therapist": "It sounds like this dream had a profound impact on you, leaving you with a sense of something important happening. I'm struck by the contrast between the fear and terror you felt, and the gentle touch of the bear's nose on your hand. Can you tell me more about what you felt in that moment when the bear touched your hand - was it a sense of calm, or perhaps a feeling of being seen or understood in some way?",
+      "analysis": {
+        "type": "dream_content",
+        "mode_hint": "dream",
+        "contains_dream": true,
+        "emotions_detected": [
+          "fear",
+          "terror",
+          "curiosity",
+          "wonder"
+        ],
+        "key_symbols": [
+          "dark forest",
+          "white deer",
+          "river",
+          "sleeping bears"
+        ],
+        "needs_clarification": false,
+        "clarification_needed": null,
+        "summary": "User shared a vivid dream about following a white deer into a dark forest, encountering a river with sleeping bears, and having a gentle interaction with one of the bears"
+      },
+      "timestamp": "2026-01-10T14:26:30.282782"
+    },
+    {
+      "turn": 2,
+      "user": "The river reminded me of summers at my grandparents house. My grandmother died when I was young.",
+      "therapist": "The river in your dream seems to be connected to a sense of nostalgia and loss, particularly with the memory of your grandmother. Can you tell me more about what comes up for you emotionally when you think about those summers at your grandparents' house, and how you felt about your grandmother's passing?",
+      "analysis": {
+        "type": "association",
+        "mode_hint": "dream",
+        "contains_dream": false,
+        "emotions_detected": [
+          "sadness",
+          "nostalgia"
+        ],
+        "key_symbols": [
+          "river",
+          "grandparents house",
+          "grandmother"
+        ],
+        "needs_clarification": false,
+        "clarification_needed": "",
+        "summary": "User associates the river with summers at their grandparents house and mentions their grandmother's death"
+      },
+      "timestamp": "2026-01-10T14:26:30.998632"
+    },
+    {
+      "turn": 3,
+      "user": "I feel sad but also... hopeful? Like she was trying to tell me something through the dream.",
+      "therapist": "It sounds like this dream has touched a tender spot, evoking both sadness and a sense of hope. The white deer and the river seem to be carrying a message from your grandmother, and you're sensing a deep connection. Can you tell me more about what you felt when the deer started walking into the forest, and what compelled you to follow it?",
+      "analysis": {
+        "type": "emotion",
+        "mode_hint": "dream",
+        "contains_dream": true,
+        "emotions_detected": [
+          "sad",
+          "hopeful"
+        ],
+        "key_symbols": [],
+        "needs_clarification": false,
+        "clarification_needed": "",
+        "summary": "User feels sad and hopeful, sensing a message from their grandmother in the dream"
+      },
+      "timestamp": "2026-01-10T14:26:31.788869"
+    }
+  ]
+}

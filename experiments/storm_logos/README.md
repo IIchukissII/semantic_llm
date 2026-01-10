@@ -761,6 +761,116 @@ integration. Dominant shadow archetype indicates repressed aspects seeking ackno
 | Hero | journey, battle, quest, victory | Ego's individuation journey |
 | Death/Rebirth | dying, transform, renewal | Transformation |
 
+## Web Application
+
+Storm-Logos includes a full-stack web application for therapy sessions with user tracking.
+
+### Quick Start
+
+```bash
+# Start API server
+cd storm_logos
+uvicorn storm_logos.services.api.main:app --reload --port 8000
+
+# Start React frontend (in another terminal)
+cd services/frontend-react
+npm install
+npm run dev
+```
+
+Open http://localhost:3000 for the glassmorphism UI.
+
+### Features
+
+- **Authentication**: Register/login with JWT tokens
+- **Therapy Sessions**: Real-time chat with Jungian analysis
+- **Session Management**: Pause, resume, end, or delete sessions
+- **User Evolution**: Track archetype manifestations over time
+- **Corpus Library**: Browse 27 processed books, add new texts
+- **Profile**: View archetype stats and evolution history
+
+### API Endpoints
+
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/auth/register` | POST | Create account |
+| `/auth/login` | POST | Get JWT token |
+| `/sessions/start` | POST | Start therapy session |
+| `/sessions/{id}/message` | POST | Send message |
+| `/sessions/{id}/pause` | POST | Pause session (saves to Neo4j) |
+| `/sessions/{id}/resume` | POST | Resume paused session |
+| `/sessions/{id}/end` | POST | End session (extracts archetypes) |
+| `/sessions/history` | GET | List user's sessions |
+| `/evolution/profile` | GET | User's archetype profile |
+| `/corpus/books` | GET | List processed books |
+| `/corpus/process` | POST | Process new book text |
+
+### Environment Variables
+
+```bash
+# Required
+GROQ_API_KEY=gsk_...
+
+# Neo4j (for user tracking)
+NEO4J_URI=bolt://localhost:7687
+NEO4J_USER=neo4j
+NEO4J_PASSWORD=your_password
+
+# Optional
+JWT_SECRET=your_secret  # Auto-generated if not set
+LLM_MODEL=groq:llama-3.3-70b-versatile
+```
+
+### Docker Deployment
+
+```bash
+cd docker
+docker-compose up
+```
+
+Services:
+- **API**: http://localhost:8000
+- **Frontend**: http://localhost:3000
+- **Neo4j**: bolt://localhost:7687
+
+### React Frontend Structure
+
+```
+services/frontend-react/
+├── src/
+│   ├── App.jsx           # Main app with tabs
+│   ├── api.js            # API client
+│   ├── styles.css        # Glassmorphism theme
+│   └── components/
+│       ├── AuthModal.jsx     # Login/register
+│       ├── Header.jsx        # Navigation
+│       ├── Sidebar.jsx       # Session info
+│       ├── Chat.jsx          # Message interface
+│       ├── BooksTab.jsx      # Corpus library
+│       ├── HistoryModal.jsx  # Past sessions
+│       └── ProfileModal.jsx  # Archetype profile
+```
+
+### User Evolution Schema (Neo4j)
+
+```cypher
+(:User {user_id, username, password_hash})
+(:TherapySession {session_id, mode, timestamp, dream_text, history, status})
+(:ArchetypeManifestation {context, timestamp})
+(:Archetype {name})
+(:Symbol {text})
+(:Emotion {name})
+(:BookConcept {text})
+(:CorpusSource {name})
+
+(:User)-[:SESSION]->(:TherapySession)
+(:TherapySession)-[:MANIFESTED]->(:ArchetypeManifestation)
+(:ArchetypeManifestation)-[:OF_ARCHETYPE]->(:Archetype)
+(:ArchetypeManifestation)-[:THROUGH_SYMBOL]->(:Symbol)
+(:ArchetypeManifestation)-[:FELT_AS]->(:Emotion)
+(:TherapySession)-[:RESONATED]->(:ConceptResonance)-[:WITH_CONCEPT]->(:BookConcept)
+```
+
 ## Theory
 
 The system is based on the RC-Model theory of semantic dynamics:

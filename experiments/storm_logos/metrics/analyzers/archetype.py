@@ -10,13 +10,14 @@ Based on Carl Jung's archetypal theory, identifies patterns of:
 - Trickster: agent of change, boundary-crossing
 - Death/Rebirth: transformation through symbolic death
 
-Patterns are loaded from config/archetypes.json - NOT hardcoded.
+Uses LLM for dynamic archetype detection when symbols are not in static config.
+Config file (config/archetypes.json) provides fallback patterns.
 """
 
 import re
 import json
 from pathlib import Path
-from typing import Dict, List, Tuple, Optional
+from typing import Dict, List, Tuple, Optional, Callable
 from dataclasses import dataclass
 
 from ...data.models import Bond, DreamState
@@ -63,23 +64,26 @@ def load_archetypes_config(config_path: Optional[Path] = None) -> Dict:
 class ArchetypeAnalyzer:
     """Detect Jungian archetypes in text and symbols.
 
-    Uses keyword matching, phrase detection, and semantic coordinate
-    alignment to identify archetypal patterns.
+    Uses LLM for dynamic archetype detection with fallback to keyword
+    matching, phrase detection, and semantic coordinate alignment.
 
-    All patterns are loaded from config/archetypes.json.
+    Config file provides fallback patterns, but LLM is preferred.
     """
 
-    def __init__(self, config_path: Optional[Path] = None):
+    def __init__(self, config_path: Optional[Path] = None,
+                 llm_caller: Optional[Callable[[str, str], str]] = None):
         """Initialize analyzer with patterns from config.
 
         Args:
             config_path: Optional custom config path.
+            llm_caller: Optional function(system, prompt) -> response for LLM calls.
         """
         config = load_archetypes_config(config_path)
 
         self.archetypes: Dict[str, ArchetypePattern] = {}
         self.dream_symbols: Dict[str, Tuple[str, str]] = {}
         self._compiled_patterns: Dict[str, List] = {}
+        self._llm_caller = llm_caller
 
         # Load archetypes from config
         for name, data in config.get("archetypes", {}).items():
@@ -172,18 +176,86 @@ class ArchetypeAnalyzer:
 
         return scores
 
-    def get_symbol_interpretation(self, symbol: Bond) -> Tuple[str, str]:
+    def set_llm_caller(self, llm_caller: Callable[[str, str], str]):
+        """Set LLM caller for dynamic archetype detection.
+
+        Args:
+            llm_caller: Function(system, prompt) -> response
+        """
+        self._llm_caller = llm_caller
+
+    def _detect_archetype_via_llm(self, symbol_text: str, A: float, S: float) -> Tuple[str, str]:
+        """Use LLM to detect archetype for a symbol.
+
+        Args:
+            symbol_text: The symbol text (e.g., "dark forest", "bear")
+            A: Affirmation coordinate
+            S: Sacred coordinate
+
+        Returns:
+            (archetype_name, interpretation) - archetype is one of the known types
+        """
+        if not self._llm_caller:
+            return ("", "")
+
+        archetype_names = ", ".join(self.archetypes.keys())
+
+        system = """You are a Jungian symbol analyst. Identify the archetype a dream symbol belongs to.
+
+Available archetypes (choose ONE):
+- shadow: repressed, unknown aspects of self (dark, threatening, hidden)
+- anima_animus: contrasexual aspect (mysterious stranger, lover, guide)
+- self: wholeness, integration (center, light, divine, mandala)
+- mother: nurturing/devouring maternal (water, cave, earth, home)
+- father: authority, order, spiritual principle (king, sky, law, tower)
+- hero: ego's journey, individuation (battle, quest, victory, bridge)
+- trickster: change, boundary-crossing (fool, transform, chaos, animal)
+- death_rebirth: transformation (dying, renewal, phoenix, egg)
+
+Respond with ONLY a JSON object: {"archetype": "name", "interpretation": "brief meaning"}
+If the symbol doesn't clearly fit any archetype, use the closest match based on symbolic meaning."""
+
+        prompt = f"""Symbol: "{symbol_text}"
+Semantic coordinates: A={A:+.2f} (positive=affirming, negative=threatening), S={S:+.2f} (positive=sacred, negative=profane)
+
+What archetype does this symbol represent?"""
+
+        try:
+            response = self._llm_caller(system, prompt)
+            # Parse JSON response
+            import json as json_module
+            # Clean response - find JSON object
+            start = response.find('{')
+            end = response.rfind('}') + 1
+            if start >= 0 and end > start:
+                data = json_module.loads(response[start:end])
+                archetype = data.get("archetype", "").lower().replace(" ", "_")
+                interpretation = data.get("interpretation", "")
+                # Validate archetype is known
+                if archetype in self.archetypes:
+                    return (archetype, interpretation)
+                # Try to match partial names
+                for name in self.archetypes:
+                    if archetype in name or name in archetype:
+                        return (name, interpretation)
+        except Exception:
+            pass
+
+        return ("", "")
+
+    def get_symbol_interpretation(self, symbol: Bond, use_llm: bool = True) -> Tuple[str, str]:
         """Get archetype and interpretation for a specific symbol.
 
         Args:
             symbol: Bond to interpret
+            use_llm: Whether to use LLM for detection (default True)
 
         Returns:
             (archetype_name, interpretation_text)
         """
         text = symbol.text.lower()
 
-        # Check known symbols first
+        # Check known symbols first (fast path)
         for sym_word, (archetype, interpretation) in self.dream_symbols.items():
             if sym_word in text:
                 return (archetype, interpretation)
@@ -205,7 +277,18 @@ class ArchetypeAnalyzer:
                 best_score = score
                 best_match = (name, pattern.description)
 
-        return best_match if best_score >= 2 else ("", "")
+        # If good static match found, use it
+        if best_score >= 2:
+            return best_match
+
+        # Use LLM for dynamic detection
+        if use_llm and self._llm_caller:
+            llm_result = self._detect_archetype_via_llm(text, symbol.A, symbol.S)
+            if llm_result[0]:
+                return llm_result
+
+        # Return best static match even if score < 2
+        return best_match
 
     def create_dream_state(self, text: str, symbols: List[Bond]) -> DreamState:
         """Create a DreamState from text and symbols.

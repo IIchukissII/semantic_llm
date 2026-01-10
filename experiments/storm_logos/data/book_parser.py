@@ -156,6 +156,48 @@ class BookParser:
 
         return result
 
+    def parse_text(self, text: str, author: str = 'Unknown',
+                   title: str = 'Untitled') -> ParsedBook:
+        """Parse raw text and extract bonds.
+
+        Args:
+            text: Raw text content
+            author: Author name
+            title: Book title
+
+        Returns:
+            ParsedBook with extracted bonds
+        """
+        # Detect chapters
+        chapters = self._detect_chapters(text)
+
+        # Parse and extract bonds
+        result = ParsedBook(
+            title=title,
+            author=author,
+            n_chapters=len(chapters) if chapters else 1,
+        )
+
+        if chapters:
+            for i, chapter in enumerate(chapters):
+                start = chapter.start_char
+                end = chapters[i + 1].start_char if i + 1 < len(chapters) else len(text)
+                chapter_text = text[start:end]
+
+                bonds, n_sents = self._extract_bonds_from_text(
+                    chapter_text,
+                    chapter_num=chapter.number,
+                    position_offset=len(result.bonds)
+                )
+                result.bonds.extend(bonds)
+                result.n_sentences += n_sents
+        else:
+            bonds, n_sents = self._extract_bonds_from_text(text, chapter_num=0)
+            result.bonds = bonds
+            result.n_sentences = n_sents
+
+        return result
+
     def _extract_gutenberg_metadata(self, text: str) -> Dict[str, str]:
         """Extract metadata from Gutenberg header."""
         meta = {}

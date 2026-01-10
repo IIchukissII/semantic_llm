@@ -81,7 +81,15 @@ class DreamEngine:
         if not self._neo4j.connect():
             print("Warning: Neo4j not connected (corpus search disabled)")
 
+        # Set LLM caller on archetype analyzer for dynamic detection
+        archetype_analyzer = get_archetype_analyzer()
+        archetype_analyzer.set_llm_caller(self._call_llm_short)
+
         return True
+
+    def _call_llm_short(self, system: str, user: str) -> str:
+        """Short LLM call for archetype detection."""
+        return self._call_llm(system, user, max_tokens=100)
 
     def _get_nlp(self):
         """Lazy-load spaCy model."""
