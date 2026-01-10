@@ -1,0 +1,101 @@
+{
+  "session_id": "20260108_203650",
+  "start_time": "2026-01-08T20:36:50.327429",
+  "end_time": "2026-01-08T20:37:13.540857",
+  "model": "groq:llama-3.3-70b-versatile",
+  "n_turns": 5,
+  "turns": [
+    {
+      "turn": 1,
+      "patient": "I don't know why I'm here. My wife made me come. Everything's fine, I guess.",
+      "therapist": "You keep saying \"fine\". Tell me more about that.",
+      "state": {
+        "A": 0.6491198756099019,
+        "S": -0.06839958280293824,
+        "tau": 2.5,
+        "irony": 0.0
+      },
+      "metrics": {
+        "coherence": 1.0,
+        "tension": 0.5469471736440983,
+        "defenses": []
+      },
+      "timestamp": "2026-01-08T20:36:51.028617"
+    },
+    {
+      "turn": 2,
+      "patient": "*shrugs* I mean, what else am I supposed to say? \"Fine\" works - it gets people off my back and we can all move on with our lives. *fidgets with sleeve* Though I guess if \"fine\" was actually fine, I probably wouldn't be sitting in this chair, would I?",
+      "therapist": "\"Fine\" doesn't sound fine. You're here, and \"fine\" got you a seat in this chair.",
+      "state": {
+        "A": 0.39321128141901074,
+        "S": -0.01896681499759203,
+        "tau": 2.5,
+        "irony": 0.25
+      },
+      "metrics": {
+        "coherence": 0.872994391047653,
+        "tension": 0.6353347501249044,
+        "defenses": []
+      },
+      "timestamp": "2026-01-08T20:36:55.318998"
+    },
+    {
+      "turn": 3,
+      "patient": "*lets out a dry laugh* Well, aren't you perceptive. *shifts in chair* Look, my sister made me come here after I... had a bit of a meltdown at Thanksgiving dinner. Apparently throwing mashed potatoes and storming out isn't \"fine\" behavior. *rolls eyes* Who knew?",
+      "therapist": "That meltdown was more than just about the dinner. The anger's still right there under the surface.",
+      "state": {
+        "A": 0.09392861256762582,
+        "S": -0.030143116499338506,
+        "tau": 2.5,
+        "irony": 0.4
+      },
+      "metrics": {
+        "coherence": 0.727280705231145,
+        "tension": 0.47390874482148393,
+        "defenses": []
+      },
+      "timestamp": "2026-01-08T20:36:59.550302"
+    },
+    {
+      "turn": 4,
+      "patient": "*jaw tightens slightly* Yeah, well, maybe it is. *looks away* But it's not like I woke up that morning planning to redecorate the dining room with side dishes. *voice gets quieter* Everyone was just sitting there, pretending everything was perfect, and I... I couldn't do it anymore.",
+      "therapist": "The perfection facade cracked that morning. What were you really smashing with those side dishes?",
+      "state": {
+        "A": 0.5011026103654691,
+        "S": 0.04948080106515511,
+        "tau": 2.5,
+        "irony": 0.15
+      },
+      "metrics": {
+        "coherence": 0.7901446477248142,
+        "tension": 0.6288205708639985,
+        "defenses": []
+      },
+      "timestamp": "2026-01-08T20:37:03.984871"
+    },
+    {
+      "turn": 5,
+      "patient": "*stares at the floor for a moment* I don't know... everything? *voice wavers slightly* The way my mom kept asking when I was going to \"figure my life out,\" my dad ignoring me like usual, everyone acting like we're this happy family when we all know it's bullshit. *clenches fists* I guess I was smashing the whole damn lie.",
+      "therapist": "The anger is directed at your family, but the words are about something more specific. Tell me about the \"lie\" you were smashing.",
+      "state": {
+        "A": 0.3277074810550506,
+        "S": -0.02948467101712299,
+        "tau": 2.5,
+        "irony": 0.15
+      },
+      "metrics": {
+        "coherence": 0.8425508826599521,
+        "tension": 0.5740451490566866,
+        "defenses": []
+      },
+      "timestamp": "2026-01-08T20:37:09.154150"
+    }
+  ],
+  "summary": {
+    "avg_A": 0.39301397220341167,
+    "avg_S": -0.019502676850367332,
+    "avg_irony": 0.19,
+    "A_movement": -0.3214123945548513,
+    "irony_movement": 0.15
+  }
+}

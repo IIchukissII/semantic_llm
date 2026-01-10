@@ -1,0 +1,275 @@
+{
+  "session_id": "20260110_112536",
+  "start_time": "2026-01-10T11:25:36.777125",
+  "end_time": "2026-01-10T11:26:40.574053",
+  "model": "groq:llama-3.3-70b-versatile",
+  "n_turns": 15,
+  "turns": [
+    {
+      "turn": 1,
+      "patient": "I don't know why I'm here. My wife made me come. Everything's fine, I guess.",
+      "therapist": "You keep saying \"fine\". What's not fine?",
+      "state": {
+        "A": 0.6491198756099019,
+        "S": -0.06839958280293824,
+        "tau": 2.5,
+        "irony": 0.0
+      },
+      "metrics": {
+        "coherence": 1.0,
+        "tension": 0.5469471736440983,
+        "defenses": []
+      },
+      "timestamp": "2026-01-10T11:25:37.264184"
+    },
+    {
+      "turn": 2,
+      "patient": "*shifts uncomfortably* Well, if I had a nickel for every time someone asked me that... *forces a laugh* Look, fine is fine, okay? I mean, I'm here aren't I? That's gotta count for something.",
+      "therapist": "The laugh doesn't match the discomfort. You're not fine.",
+      "state": {
+        "A": 0.3001492297170122,
+        "S": -0.14713085662561215,
+        "tau": 2.5,
+        "irony": 0.15
+      },
+      "metrics": {
+        "coherence": 0.9949701158975643,
+        "tension": 0.45171260068197827,
+        "defenses": []
+      },
+      "timestamp": "2026-01-10T11:25:40.593555"
+    },
+    {
+      "turn": 3,
+      "patient": "*stops mid-laugh and looks away* Yeah, well... *fidgets with hands* Maybe fine is just easier to say than whatever this actually is. *voice gets quieter* I don't even know what \"not fine\" looks like anymore.",
+      "therapist": "The laughter stopped quickly. You're not sure what \"not fine\" looks like, but you know \"fine\" doesn't fit.",
+      "state": {
+        "A": 0.37664341416902275,
+        "S": -0.04374130904636913,
+        "tau": 2.5,
+        "irony": 0.15
+      },
+      "metrics": {
+        "coherence": 0.8417196295711051,
+        "tension": 0.3952773306628875,
+        "defenses": [
+          "minimization"
+        ]
+      },
+      "timestamp": "2026-01-10T11:25:44.094070"
+    },
+    {
+      "turn": 4,
+      "patient": "*lets out a long breath* It's like... *pauses, struggling* I used to feel things, you know? Real things. Now it's just this... gray static where feelings should be. *looks up briefly* And yeah, the jokes help fill the silence, but they're getting old even to me.",
+      "therapist": "The jokes are a substitute for something. What's behind the gray static?",
+      "state": {
+        "A": 0.17722805593702445,
+        "S": -0.02068447361668235,
+        "tau": 2.5,
+        "irony": 0.15
+      },
+      "metrics": {
+        "coherence": 0.6800779877414591,
+        "tension": 0.6934571446269464,
+        "defenses": []
+      },
+      "timestamp": "2026-01-10T11:25:48.207511"
+    },
+    {
+      "turn": 5,
+      "patient": "*jaw tightens slightly* I don't know, alright? *voice gets sharper* Maybe there's nothing behind it. Maybe that's the problem. *looks down* It's like... when I try to reach for something real, there's just... nothing there.",
+      "therapist": "Your voice changed when you said \"nothing behind it\". What's making you clench your jaw?",
+      "state": {
+        "A": 0.29318537583257925,
+        "S": -0.13527598796199825,
+        "tau": 2.5,
+        "irony": 0.15
+      },
+      "metrics": {
+        "coherence": 0.723470342913129,
+        "tension": 0.5408323016745027,
+        "defenses": []
+      },
+      "timestamp": "2026-01-10T11:25:51.480031"
+    },
+    {
+      "turn": 6,
+      "patient": "*touches jaw unconsciously, then drops hand* I... *voice wavers slightly* I hate that you notice that stuff. *looks away, then back* Maybe I'm pissed off that there's supposed to be something there and there isn't. Like everyone else got the manual on how to be human and I just... didn't.",
+      "therapist": "You're angry about being different, not just about being noticed. The manual comment suggests you feel like you're missing some basic instructions.",
+      "state": {
+        "A": 0.5575278515294867,
+        "S": 0.0029303264888491686,
+        "tau": 2.5,
+        "irony": 0.15
+      },
+      "metrics": {
+        "coherence": 0.9105570962166607,
+        "tension": 0.623683766996874,
+        "defenses": []
+      },
+      "timestamp": "2026-01-10T11:25:55.570463"
+    },
+    {
+      "turn": 7,
+      "patient": "*nods slowly, then looks directly at you for the first time* Yeah... yeah, that's exactly it. *voice cracks slightly* Like everyone else just knows how to do this - how to feel things, how to connect - and I'm over here pretending I know what I'm doing. *bitter laugh* And I'm so tired of pretending.",
+      "therapist": "The pretending is exhausting. What's behind the fear of not knowing how to feel things?",
+      "state": {
+        "A": 0.33509167588967115,
+        "S": -0.06530274163731939,
+        "tau": 2.5,
+        "irony": 0.15
+      },
+      "metrics": {
+        "coherence": 0.9215860679863763,
+        "tension": 0.7896118851977408,
+        "defenses": []
+      },
+      "timestamp": "2026-01-10T11:25:59.472020"
+    },
+    {
+      "turn": 8,
+      "patient": "*looks down, voice barely above a whisper* What if... what if I let people see who I really am and there's just... nothing worth seeing? *swallows hard* At least when I'm pretending, there's something there, even if it's fake. *meets your eyes briefly* But if I stop pretending and I'm still empty... then what?",
+      "therapist": "You're afraid that without the pretense, you'll be exposed as empty and worthless. The emptiness is what you're really trying to hide.",
+      "state": {
+        "A": 0.26473115349825543,
+        "S": -0.016329164713659385,
+        "tau": 2.5,
+        "irony": 0.4
+      },
+      "metrics": {
+        "coherence": 0.5837551352715065,
+        "tension": 0.737702973274292,
+        "defenses": []
+      },
+      "timestamp": "2026-01-10T11:26:03.345798"
+    },
+    {
+      "turn": 9,
+      "patient": "*tears start to well up, voice shaking* Stop... stop doing that. *wipes eyes quickly* You're not supposed to just... say it like that. *takes a shaky breath* That's the thing I can't even say to myself and you just... *trails off, looking vulnerable* What if that's all I am? What if empty is just... me?",
+      "therapist": "The emptiness scares you more than you're letting on. You're trying to hold back tears, not just words.",
+      "state": {
+        "A": 0.1434652945917341,
+        "S": -0.05613406368317566,
+        "tau": 2.5,
+        "irony": 0.4
+      },
+      "metrics": {
+        "coherence": 0.6381372470375742,
+        "tension": 0.6215831613389132,
+        "defenses": [
+          "minimization"
+        ]
+      },
+      "timestamp": "2026-01-10T11:26:07.543584"
+    },
+    {
+      "turn": 10,
+      "patient": "*tears fall despite trying to stop them* Fuck... *voice breaking* I don't want to cry about this. *wipes face roughly* But yeah, it terrifies me. *looks up with wet eyes* What if I peel back all these layers and there's just... a black hole where a person should be? *voice gets smaller* What if that's why no one really sticks around?",
+      "therapist": "The fear of emptiness is louder than the tears. What's behind the idea that you're the reason people leave?",
+      "state": {
+        "A": 0.14024021491955158,
+        "S": -0.10109083584821119,
+        "tau": 2.5,
+        "irony": 0.4
+      },
+      "metrics": {
+        "coherence": 0.6338780735983645,
+        "tension": 0.5358523044950765,
+        "defenses": []
+      },
+      "timestamp": "2026-01-10T11:26:12.650253"
+    },
+    {
+      "turn": 11,
+      "patient": "*voice cracks* Because they always do, don't they? *wipes nose with back of hand* At first they think I'm funny, charming... but then they get close enough to see that it's all surface. *looks away* And when they realize there's nothing deeper to discover, they just... drift away. *bitter whisper* Can't really blame them for not wanting to stick around for an empty shell.",
+      "therapist": "The emptiness is what you're showing them. Tell me more about the emptiness.",
+      "state": {
+        "A": 0.12012537530136452,
+        "S": -0.06891702163104883,
+        "tau": 2.5,
+        "irony": 0.15
+      },
+      "metrics": {
+        "coherence": 0.6380617740388232,
+        "tension": 0.6107102963441038,
+        "defenses": []
+      },
+      "timestamp": "2026-01-10T11:26:17.197562"
+    },
+    {
+      "turn": 12,
+      "patient": "*stares at hands, voice hollow* It's like... *long pause* ...like being hungry but for something that doesn't exist. *looks up briefly* I watch other people laugh - really laugh - or get excited about things, and I try to copy it but it feels like I'm wearing a costume that doesn't fit. *voice gets quieter* Even when good things happen, there's just this... void where the feeling should be.",
+      "therapist": "The emptiness is more real to you than the good things that happen. You're describing a life that feels like a performance.",
+      "state": {
+        "A": 0.3736712866553983,
+        "S": -0.000831815592775757,
+        "tau": 2.5,
+        "irony": 0.15
+      },
+      "metrics": {
+        "coherence": 0.7378217260173655,
+        "tension": 0.6056888802207251,
+        "defenses": []
+      },
+      "timestamp": "2026-01-10T11:26:21.920143"
+    },
+    {
+      "turn": 13,
+      "patient": "*nods slowly, voice quiet* Yeah... that's exactly what it is. *looks up with tired eyes* Every day I wake up and put on the show, and I'm so good at it now that sometimes I almost fool myself. *voice breaks slightly* But when the lights go down and everyone goes home... it's just me and this huge, aching nothing. *whispers* And I don't even know who I'd be without the performance.",
+      "therapist": "The performance is all that's left of you. Tell me more about the nothing.",
+      "state": {
+        "A": 0.3515401641041475,
+        "S": -0.09786319472535049,
+        "tau": 2.5,
+        "irony": 0.15
+      },
+      "metrics": {
+        "coherence": 0.9371299605326595,
+        "tension": 0.6605426084748353,
+        "defenses": []
+      },
+      "timestamp": "2026-01-10T11:26:26.116242"
+    },
+    {
+      "turn": 14,
+      "patient": "*closes eyes for a moment* The nothing is... *voice barely audible* it's like being in a room where all the sound has been sucked out. You can see your mouth moving but there's no voice. *opens eyes, staring ahead* It's not sadness or anger or fear - those would be something. It's just... absence. *voice trembles* Like someone scooped out everything that was supposed to make me human and left this hollow shell walking around pretending.",
+      "therapist": "The emptiness is a physical sensation for you. Tell me more about this hollow shell.",
+      "state": {
+        "A": 0.16417423464518505,
+        "S": -0.123692257116451,
+        "tau": 2.5,
+        "irony": 0.15
+      },
+      "metrics": {
+        "coherence": 0.8980078288331009,
+        "tension": 0.6107102963441038,
+        "defenses": []
+      },
+      "timestamp": "2026-01-10T11:26:30.928092"
+    },
+    {
+      "turn": 15,
+      "patient": "*touches chest unconsciously* It's... *voice shaking* it literally feels hollow. Like there's this cavern in my chest where my heart should be beating with actual feelings. *looks down* Sometimes I press my hand here and wonder if other people can tell - like, can they see right through me? *voice gets smaller* The shell just goes through the motions... eating, sleeping, working, laughing at the right times... but there's nobody home.",
+      "therapist": "The emptiness is a physical sensation for you. You're checking if others notice the gap between your outward actions and inner void.",
+      "state": {
+        "A": 0.38440230113764823,
+        "S": -0.08781978314557845,
+        "tau": 2.5,
+        "irony": 0.15
+      },
+      "metrics": {
+        "coherence": 0.7045398758147179,
+        "tension": 0.532617701671465,
+        "defenses": []
+      },
+      "timestamp": "2026-01-10T11:26:35.759499"
+    }
+  ],
+  "summary": {
+    "avg_A": 0.3087530335691989,
+    "avg_S": -0.06868551744388807,
+    "avg_irony": 0.19,
+    "A_movement": -0.2647175744722537,
+    "irony_movement": 0.15
+  }
+}

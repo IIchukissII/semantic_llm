@@ -1,0 +1,50 @@
+{
+  "session_id": "20260107_205053",
+  "start_time": "2026-01-07T20:50:53.521323",
+  "end_time": "2026-01-07T20:50:59.131634",
+  "model": "claude",
+  "n_turns": 2,
+  "turns": [
+    {
+      "turn": 1,
+      "patient": "I feel like nothing matters anymore.",
+      "therapist": "That emptiness has weight to it.",
+      "state": {
+        "A": 0.0,
+        "S": 0.0,
+        "tau": 2.5,
+        "irony": 0.0
+      },
+      "metrics": {
+        "coherence": 0.0,
+        "tension": 0.0,
+        "defenses": []
+      },
+      "timestamp": "2026-01-07T20:50:56.543968"
+    },
+    {
+      "turn": 2,
+      "patient": "I just want to sleep all the time.",
+      "therapist": "What happens when you're awake that sleep feels better?",
+      "state": {
+        "A": 0.6681393384664912,
+        "S": -0.27675696390877963,
+        "tau": 2.5,
+        "irony": 0.0
+      },
+      "metrics": {
+        "coherence": 1.0,
+        "tension": 0.3731388570899937,
+        "defenses": []
+      },
+      "timestamp": "2026-01-07T20:50:59.131492"
+    }
+  ],
+  "summary": {
+    "avg_A": 0.3340696692332456,
+    "avg_S": -0.13837848195438981,
+    "avg_irony": 0.0,
+    "A_movement": 0.6681393384664912,
+    "irony_movement": 0.0
+  }
+}

@@ -1,0 +1,194 @@
+{
+  "version": "1.0",
+  "description": "Jungian archetype patterns for dream analysis. Edit this file to customize archetype detection.",
+  "archetypes": {
+    "shadow": {
+      "description": "The repressed, unknown aspects of the self",
+      "A_range": [-1.0, 0.2],
+      "S_range": [-0.5, 0.3],
+      "keywords": [
+        "dark", "black", "monster", "enemy", "hidden", "unknown",
+        "threatening", "evil", "dangerous", "fear", "chase", "attack",
+        "shadow", "demon", "beast", "nightmare", "horror", "terror",
+        "lurking", "sinister", "menacing", "dread", "darkness",
+        "underground", "basement", "cellar", "depths", "abyss"
+      ],
+      "phrases": [
+        "something (dark|evil|dangerous)",
+        "(chased|pursued|hunted) by",
+        "(hiding|lurking) in the (dark|shadows)",
+        "(monster|creature|beast) (following|chasing)",
+        "couldn't see (its|their|his|her) face",
+        "felt (threatened|scared|terrified)"
+      ]
+    },
+    "anima_animus": {
+      "description": "The contrasexual aspect of the psyche",
+      "A_range": [-0.3, 0.7],
+      "S_range": [0.0, 0.8],
+      "keywords": [
+        "woman", "man", "beautiful", "mysterious", "lover", "guide",
+        "feminine", "masculine", "attractive", "strange", "enchanting",
+        "seductive", "wise", "goddess", "god", "prince", "princess",
+        "stranger", "beloved", "soul", "mate", "union"
+      ],
+      "phrases": [
+        "(beautiful|mysterious|strange) (woman|man|figure)",
+        "fell in love",
+        "(guided|led) by a (woman|man)",
+        "(he|she) knew me",
+        "(deep|mysterious) eyes",
+        "soul (mate|connection)"
+      ]
+    },
+    "self": {
+      "description": "The archetype of wholeness and integration",
+      "A_range": [0.3, 1.0],
+      "S_range": [0.4, 1.0],
+      "keywords": [
+        "center", "whole", "mandala", "circle", "light", "unity",
+        "god", "divine", "complete", "transcendent", "sacred", "holy",
+        "enlightenment", "illumination", "radiant", "golden", "sun",
+        "integration", "wholeness", "totality", "infinite", "eternal"
+      ],
+      "phrases": [
+        "(bright|brilliant|golden) light",
+        "felt (complete|whole|unified)",
+        "(divine|sacred|holy) (presence|being)",
+        "(center|heart) of everything",
+        "(became|was) one with",
+        "(transcendent|infinite|eternal) (feeling|sense|awareness)"
+      ]
+    },
+    "mother": {
+      "description": "The nurturing/devouring maternal principle",
+      "A_range": [-0.5, 0.8],
+      "S_range": [-0.2, 0.6],
+      "keywords": [
+        "mother", "earth", "water", "cave", "womb", "nurturing",
+        "protective", "devouring", "nature", "birth", "ocean", "sea",
+        "lake", "river", "garden", "forest", "home", "house",
+        "embrace", "comfort", "shelter", "nourish", "feed"
+      ],
+      "phrases": [
+        "(my|the) mother",
+        "(deep|vast) (water|ocean|sea)",
+        "(inside|entering) a cave",
+        "(warm|safe|protected) (feeling|embrace)",
+        "(nurturing|caring|loving) (figure|presence)",
+        "(gave|giving) birth",
+        "(swallowed|consumed|engulfed)"
+      ]
+    },
+    "father": {
+      "description": "Authority, order, and spiritual principle",
+      "A_range": [-0.3, 0.7],
+      "S_range": [0.2, 0.8],
+      "keywords": [
+        "father", "king", "authority", "sky", "law", "order",
+        "strict", "wise", "powerful", "judgment", "throne", "crown",
+        "ruler", "lord", "master", "teacher", "elder", "patriarch",
+        "command", "discipline", "structure", "principle"
+      ],
+      "phrases": [
+        "(my|the) father",
+        "(old|wise) (man|king|ruler)",
+        "(sat|sitting) on (a|the) throne",
+        "(gave|handed) me (a|the)",
+        "(voice of|spoke with) authority",
+        "(judged|judging|judgment)",
+        "(rules|laws|commands)"
+      ]
+    },
+    "hero": {
+      "description": "The ego's journey toward individuation",
+      "A_range": [0.0, 0.8],
+      "S_range": [0.1, 0.7],
+      "keywords": [
+        "hero", "journey", "battle", "dragon", "quest", "victory",
+        "sword", "brave", "fight", "overcome", "rescue", "save",
+        "adventure", "challenge", "trial", "courage", "warrior",
+        "conquer", "triumph", "climb", "cross", "bridge"
+      ],
+      "phrases": [
+        "had to (fight|battle|overcome)",
+        "on a (quest|journey|mission)",
+        "(slayed|killed|defeated) the",
+        "(rescued|saved) (her|him|them)",
+        "(found|discovered) (the|a) (treasure|prize|answer)",
+        "(crossed|climbed|descended)",
+        "(brave|courageous) (enough|act)"
+      ]
+    },
+    "trickster": {
+      "description": "The agent of change and boundary-crossing",
+      "A_range": [-0.3, 0.5],
+      "S_range": [-0.3, 0.3],
+      "keywords": [
+        "fool", "clown", "trick", "chaos", "change", "boundary",
+        "joke", "transform", "animal", "wild", "jester", "coyote",
+        "fox", "raven", "shapeshifter", "mischief", "paradox",
+        "absurd", "ridiculous", "unexpected", "surprise"
+      ],
+      "phrases": [
+        "(everything|things) (changed|shifted|transformed)",
+        "(made|played) a (trick|joke)",
+        "(unexpected|surprising) (turn|twist)",
+        "(broke|crossed) (the|a) (rule|boundary)",
+        "(shapeshifted|transformed|changed) into",
+        "(absurd|ridiculous|impossible) (situation|scene)"
+      ]
+    },
+    "death_rebirth": {
+      "description": "Transformation through symbolic death",
+      "A_range": [-0.8, 0.5],
+      "S_range": [0.0, 0.8],
+      "keywords": [
+        "death", "dying", "dead", "grave", "rebirth", "transform",
+        "end", "beginning", "decay", "renewal", "phoenix", "resurrection",
+        "funeral", "corpse", "burial", "tomb", "skeleton", "bones",
+        "dissolve", "emerge", "awaken", "reborn", "new"
+      ],
+      "phrases": [
+        "(was|felt|seemed) (dead|dying)",
+        "(came back|returned) to life",
+        "(ended|finished) and (began|started)",
+        "(buried|underground|tomb)",
+        "(transformed|became) (something|someone) (new|different)",
+        "(old|former) (self|life|me) (died|ended)",
+        "(reborn|resurrected|renewed)"
+      ]
+    }
+  },
+  "dream_symbols": {
+    "snake": {"archetype": "shadow", "meaning": "Transformation, healing, repressed instincts"},
+    "spider": {"archetype": "shadow", "meaning": "Feminine power, creativity, or fear"},
+    "wolf": {"archetype": "shadow", "meaning": "Instinct, freedom, or threat"},
+    "stranger": {"archetype": "shadow", "meaning": "Unknown aspects of self"},
+    "mirror": {"archetype": "anima_animus", "meaning": "Self-reflection, other self"},
+    "bride": {"archetype": "anima_animus", "meaning": "Integration, union"},
+    "prince": {"archetype": "anima_animus", "meaning": "Masculine ideal"},
+    "princess": {"archetype": "anima_animus", "meaning": "Feminine ideal"},
+    "sun": {"archetype": "self", "meaning": "Consciousness, wholeness"},
+    "mandala": {"archetype": "self", "meaning": "Integration, totality"},
+    "diamond": {"archetype": "self", "meaning": "Indestructible self"},
+    "temple": {"archetype": "self", "meaning": "Sacred space of psyche"},
+    "water": {"archetype": "mother", "meaning": "Unconscious, emotions, maternal"},
+    "ocean": {"archetype": "mother", "meaning": "Collective unconscious"},
+    "cave": {"archetype": "mother", "meaning": "Womb, return to origin"},
+    "garden": {"archetype": "mother", "meaning": "Nurturing nature"},
+    "house": {"archetype": "mother", "meaning": "Psyche, self-structure"},
+    "mountain": {"archetype": "father", "meaning": "Aspiration, challenge"},
+    "tower": {"archetype": "father", "meaning": "Ambition, isolation"},
+    "sword": {"archetype": "father", "meaning": "Discrimination, power"},
+    "book": {"archetype": "father", "meaning": "Knowledge, authority"},
+    "bridge": {"archetype": "hero", "meaning": "Transition, connection"},
+    "door": {"archetype": "hero", "meaning": "Opportunity, threshold"},
+    "path": {"archetype": "hero", "meaning": "Life direction, choice"},
+    "stairs": {"archetype": "hero", "meaning": "Ascent/descent, progress"},
+    "fire": {"archetype": "death_rebirth", "meaning": "Transformation, passion"},
+    "butterfly": {"archetype": "death_rebirth", "meaning": "Metamorphosis"},
+    "egg": {"archetype": "death_rebirth", "meaning": "Potential, new beginning"},
+    "phoenix": {"archetype": "death_rebirth", "meaning": "Resurrection"}
+  }
+}

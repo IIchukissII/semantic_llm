@@ -1,5 +1,5 @@
 # Storm-Logos ignores
 .env
-sessions/
+# sessions/
 __pycache__/
 *.pyc

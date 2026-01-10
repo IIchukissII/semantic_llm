@@ -487,19 +487,50 @@ result = learn_from_text("The ancient temple was mysterious.")
 
 ## Processed Books
 
-| Author | Books | Bonds | Genre |
-|--------|-------|-------|-------|
-| Carl Jung | 5 | 34,034 | Psychology |
-| Homer | 2 | 11,680 | Epic |
-| Ovid | 1 | 5,155 | Mythology |
-| Thomas Bulfinch | 1 | 11,774 | Mythology |
-| James George Frazer | 1 | 20,046 | Comparative Religion |
-| Lewis Spence | 1 | 7,290 | Mythology |
-| John Fiske | 1 | 4,474 | Mythology |
-| Andrew Lang | 1 | 2,719 | Mythology |
-| Thomas William Doane | 1 | 10,987 | Comparative Religion |
+### Psychology & Psychoanalysis
 
-**Total:** 14 books, 64,167 unique bonds, 108,154 FOLLOWS edges
+| Author | Books | Bonds | Works |
+|--------|-------|-------|-------|
+| Carl Jung | 5 | 34,034 | Four Archetypes, Man and His Symbols, Memories Dreams Reflections, Collected Papers, Psychology of the Unconscious |
+| Sigmund Freud | 6 | 20,847 | General Introduction to Psychoanalysis, Dream Psychology, Totem and Taboo, Three Contributions to Theory of Sex, Psychopathology of Everyday Life, Group Psychology |
+| Otto Rank | 1 | 1,899 | The Myth of the Birth of the Hero |
+
+### Mythology & Religion
+
+| Author | Books | Bonds | Works |
+|--------|-------|-------|-------|
+| Homer | 2 | 11,680 | The Odyssey (2 translations) |
+| Ovid | 1 | 5,155 | Metamorphoses |
+| Thomas Bulfinch | 1 | 11,774 | Bulfinch's Mythology |
+| James George Frazer | 1 | 20,046 | The Golden Bough |
+| Lewis Spence | 1 | 7,290 | An Introduction to Mythology |
+| John Fiske | 1 | 4,474 | Myths and Myth-Makers |
+| Andrew Lang | 1 | 2,719 | Modern Mythology |
+| Thomas William Doane | 1 | 10,987 | Bible Myths and their Parallels |
+| Bible (KJV) | 2 | 836 | Genesis, Book of Job |
+
+### Literature
+
+| Author | Books | Bonds | Works |
+|--------|-------|-------|-------|
+| Fyodor Dostoevsky | 4 | 22,670 | Crime and Punishment, The Brothers Karamazov, Notes from Underground, The Gambler |
+
+**Total:** 27 books, 85,157 unique bonds, 154,393 FOLLOWS edges
+
+### Sync Learned Bonds
+
+Sync bonds learned during conversations from PostgreSQL to Neo4j:
+
+```bash
+# Sync all learned bonds
+python -m storm_logos.scripts.sync_bonds --all
+
+# Sync only frequently-used bonds
+python -m storm_logos.scripts.sync_bonds --min-use 3
+
+# Preview without syncing
+python -m storm_logos.scripts.sync_bonds --dry-run
+```
 
 ## Project Structure
 
@@ -550,6 +581,71 @@ storm_logos/
     ├── test_weight_dynamics.py  # Weight dynamics tests
     └── test_bond_learning.py    # Bond learning tests
 ```
+
+## Example: Therapy Session
+
+A 15-turn therapy session demonstrating emotional trajectory tracking:
+
+### Session Transcript (Excerpts)
+
+```
+PATIENT: I don't know why I'm here. My wife made me come. Everything's fine, I guess.
+
+THERAPIST [1]: You keep saying "fine". What's not fine?
+  [Analysis: A=+0.65, S=-0.07, irony=0%]
+
+PATIENT: *shifts uncomfortably* Well, if I had a nickel for every time someone
+asked me that... *forces a laugh* Look, fine is fine, okay?
+
+THERAPIST [2]: The laugh doesn't match the discomfort. You're not fine.
+  [Analysis: A=+0.30, S=-0.15, irony=15%]
+
+PATIENT: *stops mid-laugh* Maybe fine is just easier to say than whatever
+this actually is. I don't even know what "not fine" looks like anymore.
+
+THERAPIST [3]: You know "fine" doesn't fit.
+  [Analysis: A=+0.38, S=-0.04, irony=15%, defense: minimization]
+
+PATIENT: It's like... gray static where feelings should be. The jokes help
+fill the silence, but they're getting old even to me.
+
+THERAPIST [4]: What's behind the gray static?
+  [Analysis: A=+0.18, S=-0.02, irony=15%]
+
+...
+
+PATIENT [Turn 9]: *tears fall* I don't want to cry about this. But yeah,
+it terrifies me. What if I peel back all these layers and there's just...
+a black hole where a person should be?
+
+THERAPIST [9]: The emptiness scares you more than you're letting on.
+  [Analysis: A=+0.14, S=-0.06, irony=40%]
+
+PATIENT [Turn 14]: It literally feels hollow. Like there's this cavern in
+my chest where my heart should be beating with actual feelings.
+
+THERAPIST [14]: The emptiness is a physical sensation for you.
+  [Analysis: A=+0.16, S=-0.12, irony=15%]
+```
+
+### Emotional Trajectory
+
+| Turn | A (Affirmation) | Irony | Key Moment |
+|------|-----------------|-------|------------|
+| 1 | +0.65 | 0% | Defensive "fine" |
+| 2 | +0.30 | 15% | Forced laugh exposed |
+| 4 | +0.18 | 15% | "Gray static where feelings should be" |
+| 6 | +0.56 | 15% | Anger: "missing the manual on being human" |
+| 9 | +0.14 | 40% | Tears, fear of emptiness |
+| 14 | +0.16 | 15% | Physical sensation of hollowness |
+
+**Movement:** A dropped from +0.65 → +0.16 (defensive → vulnerable)
+
+### Defenses Detected
+
+- **Turn 3**: Minimization ("fine is just easier to say")
+- **Turn 2, 6**: Intellectualization via humor
+- **Turn 8-10**: Irony peaks at 40% during emotional breakthrough
 
 ## Session Analysis
 
@@ -605,6 +701,65 @@ result = neo._driver.execute_query(query)
   }
 }
 ```
+
+## Dream Analysis
+
+Psychoanalytic dream interpretation using semantic space navigation.
+
+### Usage
+
+```bash
+# Analyze a specific dream
+python -m storm_logos.scripts.dream_analysis --dream "I was falling through darkness..."
+
+# Interactive session (multiple dreams)
+python -m storm_logos.scripts.dream_analysis --interactive --turns 3
+
+# Use different LLM
+python -m storm_logos.scripts.dream_analysis --model claude
+```
+
+### Example Analysis
+
+**Dream:**
+> I was walking through a dark forest at night. The trees seemed alive, their twisted
+> branches reaching toward me. I could hear water somewhere but couldn't find it.
+> Then I saw an old woman with a lantern. She pointed toward a cave, and I knew I
+> had to enter it. Inside the cave was a mirror, but my reflection wasn't me - it
+> was a child version of myself, crying.
+
+**Symbols Extracted:**
+
+| Symbol | A (valence) | S (sacred) | Archetype |
+|--------|-------------|------------|-----------|
+| dark forest | +0.32 | -0.01 | Shadow |
+| twisted branches | +0.34 | -0.04 | - |
+| water | +0.05 | -0.08 | Mother |
+| old woman | +0.80 | +0.10 | Anima |
+| cave | - | - | Mother/Rebirth |
+| mirror | - | - | Self |
+| child | - | - | Self/Rebirth |
+
+**Corpus Resonances:**
+- "dark forest" appears in *The Golden Bough* (Frazer), *Modern Mythology* (Lang)
+- Connected to shadow archetype patterns in Jung's writings
+
+**Interpretation:**
+The dream expresses a journey into the unconscious (dark forest) guided by inner
+wisdom (old woman/anima). The cave represents the womb/rebirth, while the mirror
+confrontation with the crying child suggests unresolved childhood emotions requiring
+integration. Dominant shadow archetype indicates repressed aspects seeking acknowledgment.
+
+### Archetypes Recognized
+
+| Archetype | Keywords | Meaning |
+|-----------|----------|---------|
+| Shadow | dark, monster, hidden, chase | Repressed aspects of self |
+| Anima/Animus | woman, man, mysterious, guide | Contrasexual psyche |
+| Self | center, whole, light, divine | Wholeness and integration |
+| Mother | earth, water, cave, nurturing | Maternal principle |
+| Hero | journey, battle, quest, victory | Ego's individuation journey |
+| Death/Rebirth | dying, transform, renewal | Transformation |
 
 ## Theory
 

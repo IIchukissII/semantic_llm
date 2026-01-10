@@ -1,0 +1,273 @@
+{
+  "session_id": "20260108_203922",
+  "start_time": "2026-01-08T20:39:22.934921",
+  "end_time": "2026-01-08T20:40:30.832650",
+  "model": "groq:llama-3.3-70b-versatile",
+  "n_turns": 15,
+  "turns": [
+    {
+      "turn": 1,
+      "patient": "I don't know why I'm here. My wife made me come. Everything's fine, I guess.",
+      "therapist": "You keep saying \"fine\". What's really going on at home?",
+      "state": {
+        "A": 0.6491198756099019,
+        "S": -0.06839958280293824,
+        "tau": 2.5,
+        "irony": 0.0
+      },
+      "metrics": {
+        "coherence": 1.0,
+        "tension": 0.5469471736440983,
+        "defenses": []
+      },
+      "timestamp": "2026-01-08T20:39:23.462940"
+    },
+    {
+      "turn": 2,
+      "patient": "*shifts in chair and lets out a short laugh* \n\nWell, \"fine\" is such a versatile word, isn't it? Everything's just... peachy. My partner barely looks up from their phone anymore, but hey, at least the Wi-Fi's working great.",
+      "therapist": "The laugh doesn't sound amused. You're saying everything's \"peachy\", but it's clearly not.",
+      "state": {
+        "A": 0.37141499497403624,
+        "S": -0.006948062866618879,
+        "tau": 2.5,
+        "irony": 0.15
+      },
+      "metrics": {
+        "coherence": 0.8266544190738088,
+        "tension": 0.31784576316045915,
+        "defenses": []
+      },
+      "timestamp": "2026-01-08T20:39:27.356617"
+    },
+    {
+      "turn": 3,
+      "patient": "*stops laughing abruptly and looks away*\n\nYeah, well... what do you want me to say? That I feel like I'm living with a roommate instead of a partner? *shrugs* That would just sound pathetic.",
+      "therapist": "The laugh stopped quickly. You're saying \"pathetic\", but that's not what you're feeling.",
+      "state": {
+        "A": 0.1980430618889605,
+        "S": -0.026457276099284516,
+        "tau": 2.5,
+        "irony": 0.15
+      },
+      "metrics": {
+        "coherence": 0.7105413145406319,
+        "tension": 0.5011171309208443,
+        "defenses": []
+      },
+      "timestamp": "2026-01-08T20:39:31.226390"
+    },
+    {
+      "turn": 4,
+      "patient": "*jaw tightens slightly*\n\nOh, so now you're analyzing my laugh too? *crosses arms* Look, I said what I said - it IS pathetic to feel invisible in your own house. But apparently I'm not allowed to call it what it is without you picking it apart.",
+      "therapist": "Your laugh wasn't being analyzed, but your reaction to being questioned is. You're still talking about feeling invisible, not about being called out for saying it's pathetic.",
+      "state": {
+        "A": 0.0368647963633959,
+        "S": -0.011076194808276249,
+        "tau": 2.5,
+        "irony": 0.0
+      },
+      "metrics": {
+        "coherence": 0.49967806266995207,
+        "tension": 0.5219010273305568,
+        "defenses": []
+      },
+      "timestamp": "2026-01-08T20:39:35.286227"
+    },
+    {
+      "turn": 5,
+      "patient": "*stares at the floor for a moment, then looks back up with irritation*\n\nSo what if I'm defensive? Maybe I don't like being... dissected every time I open my mouth. *voice gets quieter* And yeah, invisible is exactly what I feel like - like I could disappear tomorrow and it would take them three days to notice.",
+      "therapist": "You're saying it's like you're already gone, and no one would even notice. Your anger is a thin cover for feeling completely invisible.",
+      "state": {
+        "A": 0.2983596260415944,
+        "S": -0.030713792739757752,
+        "tau": 2.5,
+        "irony": 0.15
+      },
+      "metrics": {
+        "coherence": 0.7150477516153372,
+        "tension": 0.42586446674049794,
+        "defenses": []
+      },
+      "timestamp": "2026-01-08T20:39:39.307101"
+    },
+    {
+      "turn": 6,
+      "patient": "*looks down and fidgets with sleeves*\n\nI... *voice cracks slightly* God, I hate that you just said that. *pauses* Because you're right and I don't want you to be right. It's easier to be pissed off than to admit I feel like... like nothing.",
+      "therapist": "The emptiness is harder to face than the anger. Tell me more about the nothing.",
+      "state": {
+        "A": 0.30859602711095324,
+        "S": -0.04433172350364196,
+        "tau": 2.5,
+        "irony": 0.15
+      },
+      "metrics": {
+        "coherence": 0.7539239390586632,
+        "tension": 0.866197281311433,
+        "defenses": []
+      },
+      "timestamp": "2026-01-08T20:39:42.688872"
+    },
+    {
+      "turn": 7,
+      "patient": "*takes a shaky breath and wraps arms around self*\n\nIt's like... there's this hollow space where I used to be, you know? *voice barely above a whisper* Like I'm just going through the motions of being a person, but there's nothing actually there. Even my anger feels... borrowed, like it's not really mine.",
+      "therapist": "The emptiness is a physical feeling for you. Tell me more about this hollow space.",
+      "state": {
+        "A": 0.09877846302115045,
+        "S": -0.01475108165487053,
+        "tau": 2.5,
+        "irony": 0.15
+      },
+      "metrics": {
+        "coherence": 0.7703847087748925,
+        "tension": 0.866197281311433,
+        "defenses": []
+      },
+      "timestamp": "2026-01-08T20:39:48.701048"
+    },
+    {
+      "turn": 8,
+      "patient": "*presses hand to chest*\n\nIt's... it's like there's this actual void right here. *taps chest* Like someone scooped out everything that used to make me... me. And the worst part is I can't even remember when it started happening - I just woke up one day and realized I was empty.",
+      "therapist": "The emptiness has a physical location for you. Tell me more about the void in your chest.",
+      "state": {
+        "A": 0.22910867594087048,
+        "S": -0.014494367605575311,
+        "tau": 2.5,
+        "irony": 0.15
+      },
+      "metrics": {
+        "coherence": 0.748209155171053,
+        "tension": 0.737702973274292,
+        "defenses": []
+      },
+      "timestamp": "2026-01-08T20:39:52.279492"
+    },
+    {
+      "turn": 9,
+      "patient": "*presses both hands against chest now, eyes getting watery*\n\nIt's... it aches. Like a constant dull pain that I've gotten so used to I almost forgot it was there. *voice trembling* Sometimes I catch myself holding my breath, like maybe if I don't breathe too deep, it won't hurt as much. But it's always there, this... this absence.",
+      "therapist": "The ache is in your chest, but the pain is not physical. Tell me more about the absence.",
+      "state": {
+        "A": 0.2972983394140585,
+        "S": -0.033232619855089574,
+        "tau": 2.5,
+        "irony": 0.15
+      },
+      "metrics": {
+        "coherence": 0.7509736832332886,
+        "tension": 0.36811211155564355,
+        "defenses": []
+      },
+      "timestamp": "2026-01-08T20:39:57.025635"
+    },
+    {
+      "turn": 10,
+      "patient": "*tears start to fall, voice breaking*\n\nThe absence is... it's where I used to feel things. Where I used to care about stuff, get excited, feel... alive. *wipes eyes roughly* Now it's just this black hole that swallows everything - every compliment, every good moment, every reason to hope. Like nothing can fill it because there's nothing left of me to fill.",
+      "therapist": "The emptiness has a shape, it's where your emotions used to be. Tell me more about what happened there.",
+      "state": {
+        "A": 0.3109608343203745,
+        "S": -0.012008658635376044,
+        "tau": 2.5,
+        "irony": 0.15
+      },
+      "metrics": {
+        "coherence": 0.7042315995717727,
+        "tension": 0.4035675029112832,
+        "defenses": []
+      },
+      "timestamp": "2026-01-08T20:40:01.506363"
+    },
+    {
+      "turn": 11,
+      "patient": "*covers face with hands, shoulders shaking*\n\nI don't... I don't know what happened. *voice muffled* It's like someone just... turned off the lights inside me, one by one, until everything went dark. *looks up with red eyes* Maybe I did it myself - maybe I shut down so I wouldn't have to feel... whatever I was supposed to feel. But now I can't turn them back on.",
+      "therapist": "The darkness is a specific feeling, not just an absence of something. What's the first light that went out?",
+      "state": {
+        "A": 0.13495631238940184,
+        "S": -0.02853069992787016,
+        "tau": 2.5,
+        "irony": 0.15
+      },
+      "metrics": {
+        "coherence": 0.6150900532728634,
+        "tension": 0.47390874482148393,
+        "defenses": [
+          "minimization"
+        ]
+      },
+      "timestamp": "2026-01-08T20:40:05.924277"
+    },
+    {
+      "turn": 12,
+      "patient": "*goes very still, staring at nothing*\n\nI think... I think it was hope. *voice barely audible* The light that made me believe things could get better, that I mattered, that... that someone would fight for me. *long pause* When I realized they weren't going to fight for me - for us - that light just... went out. And then the others followed.",
+      "therapist": "The loss of that one person's support extinguished all the others. Tell me about the others.",
+      "state": {
+        "A": 0.5180274413089249,
+        "S": -0.012026008809069458,
+        "tau": 2.5,
+        "irony": 0.15
+      },
+      "metrics": {
+        "coherence": 0.9604663630423528,
+        "tension": 0.402295198526078,
+        "defenses": []
+      },
+      "timestamp": "2026-01-08T20:40:11.006834"
+    },
+    {
+      "turn": 13,
+      "patient": "*voice hollow and distant*\n\nAfter hope went out, it was... trust. Then joy - that one flickered for a while before it died completely. *wraps arms tighter around self* Self-worth was next, I think. And then... *pauses, struggling* Then the light that made me believe I deserved love. That I was worth staying for. *whispers* Now it's just... darkness where all of those used to be.",
+      "therapist": "The emptiness you're describing isn't just an absence, it's a replacement. What's filling the space where those feelings used to be?",
+      "state": {
+        "A": 0.3975101807988238,
+        "S": -0.12149780741396962,
+        "tau": 2.5,
+        "irony": 0.15
+      },
+      "metrics": {
+        "coherence": 0.6418438124887947,
+        "tension": 0.5962847387838658,
+        "defenses": []
+      },
+      "timestamp": "2026-01-08T20:40:16.241689"
+    },
+    {
+      "turn": 14,
+      "patient": "*looks up with a mix of fear and recognition*\n\nNothing good. *voice gets smaller* It's... it's this heavy, cold thing that whispers I'm not enough. That I never was enough. *shudders* And sometimes it feels like... like it's feeding on me, getting stronger while I get smaller. *whispers* Like it wants me to disappear completely.",
+      "therapist": "That voice has a name, doesn't it? Tell me about when you first heard it.",
+      "state": {
+        "A": 0.267632037538259,
+        "S": -0.0023168308624845874,
+        "tau": 2.5,
+        "irony": 0.15
+      },
+      "metrics": {
+        "coherence": 0.713148106366952,
+        "tension": 0.5574521930839518,
+        "defenses": []
+      },
+      "timestamp": "2026-01-08T20:40:20.760504"
+    },
+    {
+      "turn": 15,
+      "patient": "*goes very pale and still*\n\nI... *swallows hard* I don't want to give it a name. That makes it... real. *voice shaking* But I've heard it my whole life, haven't I? Even when the lights were still on, it was there in the background, waiting. *whispers* It sounds like... like everyone who ever left.",
+      "therapist": "The silence is more terrifying than the sound. What happens when you try to listen to it more closely?",
+      "state": {
+        "A": 0.18728925820328474,
+        "S": -0.133132274272651,
+        "tau": 2.5,
+        "irony": 0.15
+      },
+      "metrics": {
+        "coherence": 0.6295123977527436,
+        "tension": 0.5574521930839518,
+        "defenses": []
+      },
+      "timestamp": "2026-01-08T20:40:25.974761"
+    }
+  ],
+  "summary": {
+    "avg_A": 0.28693066166159936,
+    "avg_S": -0.03732779879049826,
+    "avg_irony": 0.13,
+    "A_movement": -0.4618306174066172,
+    "irony_movement": 0.15
+  }
+}

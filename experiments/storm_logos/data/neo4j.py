@@ -1165,6 +1165,118 @@ class Neo4jData:
                 "conversations": n_conversations,
             }
 
+    # ========================================================================
+    # SYNC HELPERS
+    # ========================================================================
+
+    def get_existing_bond_ids(self) -> set:
+        """Get all existing bond IDs in Neo4j.
+
+        Useful for sync operations to check what's already present.
+
+        Returns:
+            Set of bond IDs (format: "{adj}_{noun}")
+        """
+        if not self._connected:
+            return set()
+
+        query = "MATCH (b:Bond) RETURN b.id as id"
+
+        bond_ids = set()
+        with self._driver.session() as session:
+            records = session.run(query)
+            for record in records:
+                bond_ids.add(record["id"])
+
+        return bond_ids
+
+    def bulk_add_bonds(self, bonds: List[Bond]) -> int:
+        """Add multiple bonds in a single transaction.
+
+        More efficient than calling add_bond() multiple times.
+
+        Args:
+            bonds: List of bonds to add
+
+        Returns:
+            Number of bonds added
+        """
+        if not self._connected or not bonds:
+            return 0
+
+        query = """
+        UNWIND $bonds as bond
+        MERGE (b:Bond {id: bond.id})
+        SET b.adj = bond.adj, b.noun = bond.noun,
+            b.A = bond.A, b.S = bond.S, b.tau = bond.tau,
+            b.synced_at = datetime()
+        """
+
+        bond_data = []
+        for bond in bonds:
+            bond_id = f"{bond.adj}_{bond.noun}" if bond.adj else bond.noun
+            bond_data.append({
+                'id': bond_id,
+                'adj': bond.adj,
+                'noun': bond.noun,
+                'A': bond.A,
+                'S': bond.S,
+                'tau': bond.tau,
+            })
+
+        with self._driver.session() as session:
+            session.run(query, bonds=bond_data)
+
+        return len(bond_data)
+
+    def bulk_add_follows(self, edges: List[tuple]) -> int:
+        """Add multiple FOLLOWS edges in a single transaction.
+
+        Args:
+            edges: List of (source_bond, target_bond, metadata) tuples
+                   metadata should contain: book_id, chapter, sentence, position,
+                   weight, source
+
+        Returns:
+            Number of edges added
+        """
+        if not self._connected or not edges:
+            return 0
+
+        query = """
+        UNWIND $edges as edge
+        MATCH (s:Bond {id: edge.source_id}), (t:Bond {id: edge.target_id})
+        MERGE (s)-[f:FOLLOWS {book_id: edge.book_id}]->(t)
+        ON CREATE SET
+            f.chapter = edge.chapter,
+            f.sentence = edge.sentence,
+            f.position = edge.position,
+            f.weight = edge.weight,
+            f.source = edge.source,
+            f.created_at = datetime(),
+            f.last_used = datetime()
+        """
+
+        edge_data = []
+        for source, target, meta in edges:
+            source_id = f"{source.adj}_{source.noun}" if source.adj else source.noun
+            target_id = f"{target.adj}_{target.noun}" if target.adj else target.noun
+            edge_data.append({
+                'source_id': source_id,
+                'target_id': target_id,
+                'book_id': meta.get('book_id', 'conversation'),
+                'chapter': meta.get('chapter', 0),
+                'sentence': meta.get('sentence', 0),
+                'position': meta.get('position', 0),
+                'weight': meta.get('weight', 0.2),
+                'source': meta.get('source', 'conversation'),
+            })
+
+        with self._driver.session() as session:
+            session.run(query, edges=edge_data)
+
+        return len(edge_data)
+
 
 # ============================================================================
 # SINGLETON

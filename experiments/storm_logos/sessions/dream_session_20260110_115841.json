@@ -1,0 +1,244 @@
+{
+  "session_id": "20260110_115841",
+  "start_time": "2026-01-10T11:58:41.144524",
+  "end_time": "2026-01-10T11:58:48.398888",
+  "model": "groq:llama-3.3-70b-versatile",
+  "n_analyses": 1,
+  "analyses": [
+    {
+      "dream_text": "\nThe dream arose not as a plot, but as a revelation. It didn't start - it just happened. \nWhite deer. Pure, majestic, silent. He looked straight into his soul, but did not demand, \ndid not scare, did not call - he just stood. His gaze was older than any human age. \nThere was something in it from forests in which man had never set foot, from stars \nshining before words appeared. And at the same time - something surprisingly personal, close. \nIt was like he knew you. I always knew. And you stand. Not like in front of an animal. \nLike before a sign. Before the spirit. In front of you? This is not fear or delight. \nThis is silence. Stopping time. Presence. He doesn't speak, but you hear: \"You are ready\". \nWhy is unclear. But inside everything agrees. Something warm rises from your chest - \nalmost like tears, but not from pain. From touching something real. To the present in yourself.\n\nHe leads, leads along the river near which you spent your entire childhood, but he does \nnot run away, you could even approach him and touch him, you feel it, but you do not dare. \nHe takes you through the reeds to the playa, the beach from childhood and brings you to \nthe water, clear water, under which you notice sleeping polar bears. You feel and are \nslightly frightened by this sleeping power and are unconsciously afraid to wake them up, \nbut the deer lets you down, even pushes you towards the water and you, without even fully \nrealizing what and why you are doing this, approach it and suddenly notice that one bear \nhas come out from under the water and is purposefully moving in your direction. You're scared, \nnot terrified, but confused. The bear is already at arm's length from you. You have already \nresigned yourself, come what may, I can't run away... And he pokes at you with his wet, soft nose.\n",
+      "symbols": [
+        {
+          "text": "dream",
+          "bond": "dream",
+          "A": 0.39560704035318645,
+          "S": -0.09442304895410036,
+          "tau": 0.7908152635823762,
+          "archetype": "",
+          "archetype_score": 0.0,
+          "interpretation": "",
+          "corpus_sources": [
+            "A General Introduction to Psychoanalysis",
+            "The Brothers Karamazov",
+            "A General Introduction to Psychoanalysis"
+          ]
+        },
+        {
+          "text": "plot",
+          "bond": "plot",
+          "A": 0.3530974272074681,
+          "S": 0.0031242355186711255,
+          "tau": 0.4234973096663802,
+          "archetype": "",
+          "archetype_score": 0.0,
+          "interpretation": "",
+          "corpus_sources": [
+            "Bulfinch's Mythology",
+            "Bulfinch's Mythology"
+          ]
+        },
+        {
+          "text": "revelation",
+          "bond": "revelation",
+          "A": 0.18737635487276955,
+          "S": -0.16992250571373585,
+          "tau": 0.576960769199647,
+          "archetype": "",
+          "archetype_score": 0.0,
+          "interpretation": "",
+          "corpus_sources": []
+        },
+        {
+          "text": "white deer",
+          "bond": "white deer",
+          "A": 0.397790213252666,
+          "S": 0.048726491581623003,
+          "tau": 0.6943038952725114,
+          "archetype": "",
+          "archetype_score": 0.0,
+          "interpretation": "",
+          "corpus_sources": []
+        },
+        {
+          "text": "soul",
+          "bond": "soul",
+          "A": 0.5729205707234934,
+          "S": -0.04772098652746969,
+          "tau": 0.7071926602530493,
+          "archetype": "",
+          "archetype_score": 0.0,
+          "interpretation": "",
+          "corpus_sources": []
+        },
+        {
+          "text": "gaze",
+          "bond": "gaze",
+          "A": 0.14851786356730978,
+          "S": 0.02476784507853795,
+          "tau": 0.47397361475218114,
+          "archetype": "",
+          "archetype_score": 0.0,
+          "interpretation": "",
+          "corpus_sources": []
+        },
+        {
+          "text": "human age",
+          "bond": "human age",
+          "A": 0.7058012144633969,
+          "S": -0.09173312467965367,
+          "tau": 1.0736363007698326,
+          "archetype": "",
+          "archetype_score": 0.0,
+          "interpretation": "",
+          "corpus_sources": []
+        },
+        {
+          "text": "age",
+          "bond": "age",
+          "A": 0.5308823359497172,
+          "S": -0.300723784219254,
+          "tau": 1.3904314366208963,
+          "archetype": "",
+          "archetype_score": 0.0,
+          "interpretation": "",
+          "corpus_sources": []
+        },
+        {
+          "text": "forest",
+          "bond": "forest",
+          "A": 0.48572841158026775,
+          "S": 0.0046517697055478684,
+          "tau": 0.7094288684899597,
+          "archetype": "mother",
+          "archetype_score": 0.0,
+          "interpretation": "The nurturing/devouring maternal principle",
+          "corpus_sources": []
+        },
+        {
+          "text": "man",
+          "bond": "man",
+          "A": 0.452261811542963,
+          "S": 0.10307529815012278,
+          "tau": 1.0596310745361088,
+          "archetype": "anima_animus",
+          "archetype_score": 0.0,
+          "interpretation": "The contrasexual aspect of the psyche",
+          "corpus_sources": []
+        },
+        {
+          "text": "foot",
+          "bond": "foot",
+          "A": 0.6334581592840364,
+          "S": -0.027875498270656496,
+          "tau": 1.14952689289409,
+          "archetype": "",
+          "archetype_score": 0.0,
+          "interpretation": "",
+          "corpus_sources": []
+        },
+        {
+          "text": "star",
+          "bond": "star",
+          "A": 0.2464481906209319,
+          "S": -0.03433312335983598,
+          "tau": 0.43734287423089213,
+          "archetype": "",
+          "archetype_score": 0.0,
+          "interpretation": "",
+          "corpus_sources": []
+        },
+        {
+          "text": "word",
+          "bond": "word",
+          "A": 0.5787726214375605,
+          "S": -0.03820178676895802,
+          "tau": 0.8657570879078519,
+          "archetype": "",
+          "archetype_score": 0.0,
+          "interpretation": "",
+          "corpus_sources": []
+        },
+        {
+          "text": "same time",
+          "bond": "same time",
+          "A": 0.44202788253275843,
+          "S": -0.3912336159200013,
+          "tau": 2.422061236464148,
+          "archetype": "",
+          "archetype_score": 0.0,
+          "interpretation": "",
+          "corpus_sources": []
+        },
+        {
+          "text": "time",
+          "bond": "time",
+          "A": 0.6681393384664912,
+          "S": -0.27675696390877963,
+          "tau": 1.4407691631707076,
+          "archetype": "",
+          "archetype_score": 0.0,
+          "interpretation": "",
+          "corpus_sources": []
+        }
+      ],
+      "state": {
+        "coordinates": {
+          "A": 0.4532552957236678,
+          "S": -0.08590525321919615,
+          "tau": 0.9476885631873755
+        },
+        "archetypes": {
+          "shadow": 0.2,
+          "anima_animus": 0.6,
+          "self": 0.05,
+          "mother": 0.65,
+          "father": 0.0,
+          "hero": 0.075,
+          "trickster": 0.55,
+          "death_rebirth": 0.425
+        },
+        "markers": {
+          "lucidity": 0.0,
+          "transformation": 0.0,
+          "journey": 0.0,
+          "confrontation": 0.0
+        },
+        "dominant_archetype": "mother"
+      },
+      "interpretation": "This dream reveals a profound moment of self-awareness and connection to one's inner world. The white deer, with its majestic and silent presence, embodies the archetype of the Self, guiding the dreamer towards a deeper understanding of their own soul. The deer's gaze, which is \"older than any human age,\" suggests a connection to the collective unconscious, transcending personal experiences and tapping into universal wisdom. The dreamer's feeling of being seen and understood by the deer indicates a growing awareness of their own inner truth, unencumbered by the demands and expectations of the external world.\n\nThe journey along the river and the encounter with the sleeping polar bears symbolize the dreamer's willingness to confront their own unconscious fears and desires. The bears, representing the repressed or hidden aspects of the self, are initially frightening, but the deer's gentle encouragement allows the dreamer to approach them without fear. The bear's soft, wet nose poking at the dreamer may indicate a newfound ability to navigate and integrate their own shadow, acknowledging and accepting the parts of themselves that were previously hidden or denied. This process of integration is facilitated by the mother archetype, which is dominant in this dream, providing a sense of nurturing and guidance.\n\nThe dream's emphasis on silence, presence, and stillness suggests a longing for a deeper connection to one's own inner world, untainted by the distractions and chaos of everyday life. The feeling of warmth rising from the chest, \"like tears, but not from pain,\" indicates a sense of emotional release and a growing awareness of one's own emotional resonance. This dream may be seen as an invitation to explore and deepen one's connection to their own psyche, embracing the mystery and wisdom that lies within, and cultivating a greater sense of self-awareness and inner guidance.",
+      "corpus_resonances": [
+        {
+          "symbol": "dream",
+          "book": "A General Introduction to Psychoanalysis",
+          "author": "Sigmund Freud",
+          "bond": "beautiful_dream"
+        },
+        {
+          "symbol": "dream",
+          "book": "The Brothers Karamazov",
+          "author": "Fyodor Dostoevsky",
+          "bond": "beautiful_dream"
+        },
+        {
+          "symbol": "dream",
+          "book": "A General Introduction to Psychoanalysis",
+          "author": "Sigmund Freud",
+          "bond": "beautiful_dream"
+        },
+        {
+          "symbol": "plot",
+          "book": "Bulfinch's Mythology",
+          "author": "Thomas Bulfinch",
+          "bond": "little_plot"
+        },
+        {
+          "symbol": "plot",
+          "book": "Bulfinch's Mythology",
+          "author": "Thomas Bulfinch",
+          "bond": "whole_plot"
+        }
+      ],
+      "timestamp": "2026-01-10T11:58:45.030332"
+    }
+  ]
+}

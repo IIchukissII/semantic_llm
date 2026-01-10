@@ -1,0 +1,1017 @@
+{
+  "session_id": "20260110_114128",
+  "start_time": "2026-01-10T11:41:28.308990",
+  "end_time": "2026-01-10T11:43:25.767467",
+  "therapist_model": "groq:llama-3.3-70b-versatile",
+  "turns": [
+    {
+      "turn": 1,
+      "dreamer": "*shifts in the chair, looking thoughtful and a bit unsettled*\n\nI keep having this one dream... it's so vivid, I can still feel it when I wake up. \n\nI'm standing at the edge of this enormous library - but it's not like any library I've ever seen. The shelves stretch up impossibly high, disappearing into darkness above, and they're not quite straight... they curve and twist like they're alive. The books themselves seem to be breathing, their covers expanding and contracting slowly.\n\nI'm searching for something - I don't know what, but there's this urgent feeling in my chest, like I'm running out of time. As I walk deeper into the library, my footsteps echo strangely, almost like whispers. Then I notice that my shadow on the floor isn't following me properly. It's walking slightly ahead, leading me somewhere.\n\nThe strangest part is when I reach this circular room in the center. There's an old woman there - she has these incredibly bright eyes, almost silver - sitting behind a desk made of what looks like crystallized water. She's holding out a key to me, but when I reach for it, my hand passes right through it like smoke.\n\nI always wake up right then, with this feeling of... frustration? Longing? Like I was so close to understanding something important.\n\n*pauses, touching my chest unconsciously*\n\nThe emotions linger for hours afterward. What do you think it could mean?",
+      "therapist": "It sounds like a deeply evocative and unsettling dream. The image of the old woman with silver eyes and the crystallized water desk is particularly striking. Can you tell me more about what you associate with the old woman - what feelings or qualities does she evoke in you, and do you see any aspects of yourself or others in her?",
+      "symbols": [
+        {
+          "text": "shift",
+          "A": 0.1988844858041265,
+          "S": -0.16632552283110993,
+          "tau": 0.6161876391161303
+        },
+        {
+          "text": "chair",
+          "A": 0.5130947000991953,
+          "S": 0.04363236078338901,
+          "tau": 0.5310750054097302
+        },
+        {
+          "text": "dream",
+          "A": 0.39560704035318645,
+          "S": -0.09442304895410036,
+          "tau": 0.7908152635823762
+        },
+        {
+          "text": "edge",
+          "A": -0.163147682781782,
+          "S": -0.10534914899885642,
+          "tau": 0.7602405302355958
+        },
+        {
+          "text": "enormous library",
+          "A": -0.09222508215808686,
+          "S": -0.08170220650340668,
+          "tau": 0.7793895396558326
+        },
+        {
+          "text": "library",
+          "A": -0.09222508215808686,
+          "S": -0.08170220650340668,
+          "tau": 0.7793895396558326
+        },
+        {
+          "text": "shelf",
+          "A": -0.05970169063024488,
+          "S": -0.11041111260187066,
+          "tau": 0.9870953807760763
+        },
+        {
+          "text": "darkness",
+          "A": -0.3113522493034016,
+          "S": 0.004477443455062377,
+          "tau": 0.5726732832608561
+        },
+        {
+          "text": "book",
+          "A": 0.7346025734021747,
+          "S": 0.021517069682784818,
+          "tau": 0.6372689612263543
+        },
+        {
+          "text": "cover",
+          "A": 0.4775517494330243,
+          "S": 0.09366543469500763,
+          "tau": 0.5422148752810174
+        }
+      ],
+      "state": {
+        "A": 0.1601088762060105,
+        "S": -0.04766209377765069
+      },
+      "corpus_resonances": [
+        {
+          "symbol": "shift",
+          "book": "Man and His Symbols",
+          "author": "Carl Jung"
+        },
+        {
+          "symbol": "shift",
+          "book": "The Odyssey",
+          "author": "Homer"
+        },
+        {
+          "symbol": "chair",
+          "book": "The Odyssey",
+          "author": "Homer"
+        },
+        {
+          "symbol": "chair",
+          "book": "The Odyssey (Pope Translation)",
+          "author": "Homer"
+        },
+        {
+          "symbol": "dream",
+          "book": "A General Introduction to Psychoanalysis",
+          "author": "Sigmund Freud"
+        }
+      ],
+      "timestamp": "2026-01-10T11:41:40.176856"
+    },
+    {
+      "turn": 2,
+      "dreamer": "*leans forward slightly, eyes distant as I recall*\n\nThe old woman... *pauses, touching my temple* She feels both completely foreign and strangely familiar at the same time. When I look at her in the dream, there's this sense of... ancient knowing? Like she's seen everything, understands everything. Her presence is both comforting and terrifying.\n\n*hesitates, looking uncertain*\n\nThe silver eyes - they remind me of my grandmother's eyes, actually. Not the color, but the way they seemed to see right through you. My grandmother died when I was twelve, and she always said I asked too many questions, that I was \"searching for something that couldn't be found in books.\"\n\n*shifts uncomfortably*\n\nBut there's something else about the woman that feels like... like looking in a mirror from the future? Does that make sense? As if she might be some version of myself - older, wiser, but also somehow unreachable. The frustration I feel when the key turns to smoke... it's like she's offering me wisdom or answers, but I'm not ready to receive them yet.\n\n*voice becomes quieter, more vulnerable*\n\nOr maybe I'm afraid of what those answers might be? The crystallized water desk - it's beautiful but also fragile-looking, like it could shatter if I touched it too roughly. Sometimes I wonder if I'm afraid of my own intensity, my own need to understand everything.\n\nWhat do you think? Am I reading too much into this?",
+      "therapist": "It sounds like the old woman in your dream is embodying the archetype of the wise, all-seeing feminine, and her silver eyes are piercing through to a deep level of your psyche. I'm struck by the connection you made to your grandmother, and the sense of searching for answers that seems to be a recurring theme in your life. Can you tell me more about what you think your grandmother meant by saying you were \"searching for something that couldn't be found in books\" - what do you think she saw in you that led her to say that?",
+      "symbols": [
+        {
+          "text": "distant eye",
+          "A": -0.4092070397732414,
+          "S": -0.15676088380081746,
+          "tau": 1.353366931391963
+        },
+        {
+          "text": "old woman",
+          "A": 0.7986755653228552,
+          "S": 0.0987429947853688,
+          "tau": 1.1803531286485822
+        },
+        {
+          "text": "temple",
+          "A": 0.15460396843440602,
+          "S": -0.0011829813606825015,
+          "tau": 0.8085594763302578
+        },
+        {
+          "text": "same time",
+          "A": 0.44202788253275843,
+          "S": -0.3912336159200013,
+          "tau": 2.422061236464148
+        },
+        {
+          "text": "time",
+          "A": 0.6681393384664912,
+          "S": -0.27675696390877963,
+          "tau": 1.4407691631707076
+        },
+        {
+          "text": "dream",
+          "A": 0.39560704035318645,
+          "S": -0.09442304895410036,
+          "tau": 0.7908152635823762
+        },
+        {
+          "text": "ancient knowing",
+          "A": 0.8100012678103414,
+          "S": -0.021021717679233935,
+          "tau": 0.383042280270105
+        },
+        {
+          "text": "knowing",
+          "A": 0.14634246041165425,
+          "S": -0.05973585662647995,
+          "tau": 0.20948954835299127
+        },
+        {
+          "text": "presence",
+          "A": 0.0633888249493365,
+          "S": 0.008477612414892642,
+          "tau": 0.44050864811642443
+        },
+        {
+          "text": "hesitate",
+          "A": 1.785663864346309,
+          "S": 0.19741024508378327,
+          "tau": 0.20372838062428678
+        }
+      ],
+      "state": {
+        "A": 0.4855243172854097,
+        "S": -0.06964842159660503
+      },
+      "corpus_resonances": [
+        {
+          "symbol": "old woman",
+          "book": "Four Archetypes",
+          "author": "Carl Jung"
+        },
+        {
+          "symbol": "old woman",
+          "book": "The Brothers Karamazov",
+          "author": "Fyodor Dostoevsky"
+        },
+        {
+          "symbol": "temple",
+          "book": "The Golden Bough: A Study of Magic and Religion",
+          "author": "James George Frazer"
+        },
+        {
+          "symbol": "temple",
+          "book": "Four Archetypes",
+          "author": "Carl Jung"
+        },
+        {
+          "symbol": "same time",
+          "book": "Four Archetypes",
+          "author": "Carl Jung"
+        }
+      ],
+      "timestamp": "2026-01-10T11:41:50.677840"
+    },
+    {
+      "turn": 3,
+      "dreamer": "*eyes well up slightly, voice becoming softer and more reflective*\n\nOh... *takes a shaky breath* I haven't thought about that phrase in years, but hearing you say it back to me... it hits differently now.\n\nMy grandmother used to find me curled up in the strangest places with books - under the dining room table, in her closet, even once in the garden shed. I was always reading about mythology, ancient civilizations, anything about mysteries or the unknown. She'd watch me with this expression... part amusement, part concern.\n\n*pauses, wrapping arms around myself*\n\nI think she saw that I wasn't just reading for information. I was... hungry for something deeper. Like I was trying to fill this hollow space inside me that felt ancient, you know? Even as a child, I felt like there were answers just beyond my reach, truths that everyone else seemed to accept but that I needed to *understand*.\n\n*voice becomes more uncertain*\n\nShe'd say it when I'd get frustrated - when I'd throw down a book or cry because I couldn't grasp something. \"Child, what you're looking for can't be found in those pages. It has to be lived, felt, experienced.\" But I never knew what she meant by that.\n\n*looks up with sudden realization*\n\nMaybe that's why the key in the dream turns to smoke? I'm still trying to intellectualize or grasp something that needs to be... what? Surrendered to? Felt instead of thought?\n\n*voice drops to almost a whisper*\n\nBut that terrifies me. What if I let go of trying to understand and there's just... emptiness?",
+      "therapist": "It's as if your grandmother's phrase has awakened a deep longing within you, a sense of yearning for something that transcends intellectual understanding. I'm struck by the image of you as a child, curled up in hidden spaces, seeking answers in mythology and ancient civilizations - it's as if your anima, your feminine aspect, was guiding you towards the mysteries of the collective unconscious. Can you tell me more about what you mean by \"that hollow space inside\" you, and how you've experienced it throughout your life?",
+      "symbols": [
+        {
+          "text": "eye",
+          "A": 0.13970026395433333,
+          "S": 0.005625396621308404,
+          "tau": 0.8473722823827134
+        },
+        {
+          "text": "voice",
+          "A": 0.28481602510667864,
+          "S": -0.24219272967546712,
+          "tau": 0.5835220046084805
+        },
+        {
+          "text": "shaky breath",
+          "A": -0.08673192893090068,
+          "S": 0.23977978374061065,
+          "tau": 1.2217686717232024
+        },
+        {
+          "text": "breath",
+          "A": -0.22773239073400134,
+          "S": 0.0870105508863345,
+          "tau": 2.4435373434464047
+        },
+        {
+          "text": "phrase",
+          "A": 0.1455500023224285,
+          "S": -0.10949588214660762,
+          "tau": 0.3556352093695736
+        },
+        {
+          "text": "year",
+          "A": 0.17428051853346282,
+          "S": -0.43385018617175153,
+          "tau": 1.7924850857214354
+        },
+        {
+          "text": "grandmother",
+          "A": 1.5855397597721395,
+          "S": 0.1415494317076512,
+          "tau": 2.236671902143177
+        },
+        {
+          "text": "strange place",
+          "A": 0.36312795434379863,
+          "S": -0.03123676757276008,
+          "tau": 0.5985244360794526
+        },
+        {
+          "text": "place",
+          "A": 0.3080958852556121,
+          "S": -0.12650644591318908,
+          "tau": 0.807550181043466
+        },
+        {
+          "text": "book",
+          "A": 0.7346025734021747,
+          "S": 0.021517069682784818,
+          "tau": 0.6372689612263543
+        }
+      ],
+      "state": {
+        "A": 0.3421248663025726,
+        "S": -0.044779977884108584
+      },
+      "corpus_resonances": [
+        {
+          "symbol": "eye",
+          "book": "Man and His Symbols",
+          "author": "Carl Jung"
+        },
+        {
+          "symbol": "eye",
+          "book": "Four Archetypes",
+          "author": "Carl Jung"
+        },
+        {
+          "symbol": "voice",
+          "book": "A General Introduction to Psychoanalysis",
+          "author": "Sigmund Freud"
+        },
+        {
+          "symbol": "voice",
+          "book": "Man and His Symbols",
+          "author": "Carl Jung"
+        },
+        {
+          "symbol": "breath",
+          "book": "Four Archetypes",
+          "author": "Carl Jung"
+        }
+      ],
+      "timestamp": "2026-01-10T11:42:02.946801"
+    },
+    {
+      "turn": 4,
+      "dreamer": "*becomes very still, staring at hands folded in lap*\n\nThe hollow space... *voice barely audible* It's like having a cavern inside your chest that echoes. Sometimes I forget it's there, but then something will trigger it - a piece of music, the way light falls through trees, even just silence - and suddenly I'm aware of this vast emptiness.\n\n*looks up with vulnerable eyes*\n\nIt started young. I remember being maybe seven or eight, lying in bed and suddenly feeling this overwhelming sense that I was... displaced? Like I was homesick for somewhere I'd never been. My parents thought I was just sensitive, maybe too imaginative.\n\n*voice strengthens slightly*\n\nBut it's not sadness, exactly. It's more like... longing without an object. Like missing someone you've never met. Sometimes I wonder if it's what mystics talk about - that sense of separation from something divine or whole.\n\n*shifts uncomfortably*\n\nIn college, I tried to fill it with relationships, achievements, even traveled to some of those ancient places I'd read about as a child. Nothing worked. The hollow space just... observed everything I poured into it and remained unchanged.\n\n*pauses, looking directly at therapist*\n\nWhat's strange is that in the dream, when I'm following my shadow through that impossible library, I don't feel the hollow space. It's like the searching itself fills it temporarily. But then I wake up and... *gestures helplessly* there it is again.\n\nDo you think some people are just born with this kind of spiritual hunger? This sense of being incomplete?",
+      "therapist": "It's as if the hollow space within you has become a constant companion, a reminder of a deeper longing that cannot be satiated by external means. I'm struck by the image of the cavern in your chest, echoing with the silence of unfulfilled yearning. Can you tell me more about what you mean by \"spiritual hunger\" - how do you associate this term with the hollow space, and what do you think you're hungering for?",
+      "symbols": [
+        {
+          "text": "hand",
+          "A": 0.43284551218893713,
+          "S": 0.009348979867520518,
+          "tau": 1.2594198516195976
+        },
+        {
+          "text": "lap",
+          "A": 0.5028661771928717,
+          "S": -0.227315863564867,
+          "tau": 0.733957676239454
+        },
+        {
+          "text": "hollow space",
+          "A": -0.03456235854950002,
+          "S": 0.02198903554893708,
+          "tau": 0.7535551415892658
+        },
+        {
+          "text": "cavern",
+          "A": 0.3422075392805133,
+          "S": -0.07724614741571506,
+          "tau": 0.6653556012630885
+        },
+        {
+          "text": "chest",
+          "A": 0.6787969184245514,
+          "S": 0.0031318641926551816,
+          "tau": 0.8834271671491928
+        },
+        {
+          "text": "piece",
+          "A": 0.45381953295165084,
+          "S": -0.022488819406381998,
+          "tau": 0.6097868351833108
+        },
+        {
+          "text": "music",
+          "A": 0.25761082509431016,
+          "S": 0.04238452562241274,
+          "tau": 0.6641206296613766
+        },
+        {
+          "text": "light",
+          "A": 0.21480966096810258,
+          "S": 0.0026453718962863517,
+          "tau": 0.655715047607473
+        },
+        {
+          "text": "tree",
+          "A": 0.595504812293268,
+          "S": 0.04664152529711191,
+          "tau": 0.4889786054546319
+        },
+        {
+          "text": "vast emptiness",
+          "A": -0.1964878404420505,
+          "S": -0.013845672601679288,
+          "tau": 2.1658106104449883
+        }
+      ],
+      "state": {
+        "A": 0.32474107794026547,
+        "S": -0.021475520056371954
+      },
+      "corpus_resonances": [
+        {
+          "symbol": "hand",
+          "book": "Four Archetypes",
+          "author": "Carl Jung"
+        },
+        {
+          "symbol": "hand",
+          "book": "The Brothers Karamazov",
+          "author": "Fyodor Dostoevsky"
+        },
+        {
+          "symbol": "lap",
+          "book": "Man and His Symbols",
+          "author": "Carl Jung"
+        },
+        {
+          "symbol": "lap",
+          "book": "Man and His Symbols",
+          "author": "Carl Jung"
+        },
+        {
+          "symbol": "cavern",
+          "book": "Myths and Myth-Makers",
+          "author": "John Fiske"
+        }
+      ],
+      "timestamp": "2026-01-10T11:42:14.668641"
+    },
+    {
+      "turn": 5,
+      "dreamer": "*closes eyes for a moment, hand moving instinctively to chest*\n\nSpiritual hunger... *opens eyes slowly* It's like being desperately thirsty, but for something that isn't water. Something that doesn't exist in the physical world, at least not in a way I can grasp.\n\n*voice becomes more animated, searching*\n\nYou know how sometimes you'll catch a fragment of a dream just as you're waking up, and for that split second it feels more real than reality? The hunger feels like that - like I'm remembering something I've lost, or maybe something I never had but was meant to have.\n\n*leans forward intensely*\n\nI think... I think I'm hungry for connection to something larger than myself, but not in a religious way exactly. More like... belonging to the mystery itself? When I read about ancient peoples who lived close to the earth, who saw spirits in rivers and trees, I feel this sharp pang of envy. Not for their beliefs, but for their sense of being woven into something sacred.\n\n*voice drops, becomes more vulnerable*\n\nSometimes I wonder if the hollow space isn't empty at all. What if it's actually full of something I can't perceive yet? Like how they say dark matter makes up most of the universe, but we can't see it directly?\n\n*looks uncertain*\n\nMaybe that's why my shadow leads me in the dream - it knows something my conscious mind doesn't. Maybe the hunger isn't meant to be filled but... honored? Followed?\n\n*shakes head*\n\nI don't know if that makes sense. It feels important but I can't quite grasp it.",
+      "therapist": "It sounds like you're yearning for a deeper sense of connection to the world and the mysteries that lie beyond the physical realm. The image of your hand moving instinctively to your chest suggests a longing that's deeply personal and perhaps even emotional. Can you tell me more about what you mean by \"honoring\" this hunger, and what you think your shadow might be guiding you towards in the dream?",
+      "symbols": [
+        {
+          "text": "eye",
+          "A": 0.13970026395433333,
+          "S": 0.005625396621308404,
+          "tau": 0.8473722823827134
+        },
+        {
+          "text": "moment",
+          "A": 0.44532700713078943,
+          "S": -0.12552097263622553,
+          "tau": 1.446714212730675
+        },
+        {
+          "text": "hand",
+          "A": 0.43284551218893713,
+          "S": 0.009348979867520518,
+          "tau": 1.2594198516195976
+        },
+        {
+          "text": "spiritual hunger",
+          "A": 0.167097489134342,
+          "S": -0.06704618512586231,
+          "tau": 1.826047249757842
+        },
+        {
+          "text": "hunger",
+          "A": 0.334194978268684,
+          "S": -0.13409237025172463,
+          "tau": 0.43024574989932785
+        },
+        {
+          "text": "physical world",
+          "A": -0.13004889961754312,
+          "S": -0.07070100352744095,
+          "tau": 1.0098500677755502
+        },
+        {
+          "text": "world",
+          "A": 0.017558257957865992,
+          "S": -0.014661506417260823,
+          "tau": 1.0043894453811237
+        },
+        {
+          "text": "way",
+          "A": 0.8203484985492876,
+          "S": 0.018713168788069313,
+          "tau": 1.198207154903463
+        },
+        {
+          "text": "voice",
+          "A": 0.28481602510667864,
+          "S": -0.24219272967546712,
+          "tau": 0.5835220046084805
+        },
+        {
+          "text": "fragment",
+          "A": 0.4768141231035113,
+          "S": 0.011416345952842034,
+          "tau": 0.6527315212200424
+        }
+      ],
+      "state": {
+        "A": 0.29886532557768863,
+        "S": -0.06091108764042411
+      },
+      "corpus_resonances": [
+        {
+          "symbol": "eye",
+          "book": "Man and His Symbols",
+          "author": "Carl Jung"
+        },
+        {
+          "symbol": "eye",
+          "book": "Four Archetypes",
+          "author": "Carl Jung"
+        },
+        {
+          "symbol": "moment",
+          "book": "Four Archetypes",
+          "author": "Carl Jung"
+        },
+        {
+          "symbol": "moment",
+          "book": "The Brothers Karamazov",
+          "author": "Fyodor Dostoevsky"
+        },
+        {
+          "symbol": "hand",
+          "book": "Four Archetypes",
+          "author": "Carl Jung"
+        }
+      ],
+      "timestamp": "2026-01-10T11:42:26.901885"
+    },
+    {
+      "turn": 6,
+      "dreamer": "*touches chest again, this time more deliberately, as if feeling for something*\n\nHonoring the hunger... *voice becomes thoughtful, almost reverent* I think it means stopping the fight against it. I've spent so much energy trying to solve it, cure it, fill it up. But what if that's like trying to solve the ocean by draining it?\n\n*sits back, looking out as if seeing something beyond the room*\n\nMy shadow in the dream - she doesn't seem frustrated or desperate like I am. She moves with this quiet certainty, like she knows exactly where we're going. When I think about it now, following her doesn't feel scary... it feels like coming home to something I'd forgotten.\n\n*voice becomes more uncertain, vulnerable*\n\nMaybe she's guiding me toward accepting that I don't have to understand everything? That some truths are meant to be lived in the body, felt in the bones, the way my grandmother said?\n\n*pauses, looking conflicted*\n\nBut there's something else... In the dream, when I'm following my shadow, I notice the books on the shelves aren't trying to be read anymore. They're just... being. Breathing. Existing. Like they have their own secret life that doesn't depend on my understanding.\n\n*looks directly at therapist with sudden intensity*\n\nWhat if honoring the hunger means learning to coexist with mystery instead of trying to master it? What if my shadow is leading me toward a different kind of knowing - one that happens in the spaces between thoughts, in the silence?\n\n*voice drops to whisper*\n\nThat terrifies me. But it also feels... true somehow.",
+      "therapist": "The image of the books on the shelves, simply existing and breathing, is a powerful one. It suggests that your shadow is guiding you toward a state of acceptance and surrender, where the need for control and understanding is relinquished. Can you tell me more about what you mean by \"the spaces between thoughts, in the silence\" - what does that feel like for you, and what do you think your shadow might be trying to show you in those quiet moments?",
+      "symbols": [
+        {
+          "text": "chest",
+          "A": 0.6787969184245514,
+          "S": 0.0031318641926551816,
+          "tau": 0.8834271671491928
+        },
+        {
+          "text": "hunger",
+          "A": 0.334194978268684,
+          "S": -0.13409237025172463,
+          "tau": 0.43024574989932785
+        },
+        {
+          "text": "voice",
+          "A": 0.28481602510667864,
+          "S": -0.24219272967546712,
+          "tau": 0.5835220046084805
+        },
+        {
+          "text": "fight",
+          "A": 0.2332046319601552,
+          "S": 0.08881821179264864,
+          "tau": 0.7603658477036646
+        },
+        {
+          "text": "much energy",
+          "A": 0.0075215573112353,
+          "S": -0.22071385138236607,
+          "tau": 0.5028209664133556
+        },
+        {
+          "text": "energy",
+          "A": 0.3430565408411821,
+          "S": -0.06282542059916844,
+          "tau": 0.5462149929873172
+        },
+        {
+          "text": "ocean",
+          "A": 0.09609255523775331,
+          "S": 0.15055401316909586,
+          "tau": 0.7372918498220982
+        },
+        {
+          "text": "room",
+          "A": 0.124068179101364,
+          "S": 0.022079471308547118,
+          "tau": 0.7533938607912433
+        },
+        {
+          "text": "shadow",
+          "A": -0.13623320541339756,
+          "S": -0.14609653603545056,
+          "tau": 0.9287030386123707
+        },
+        {
+          "text": "dream",
+          "A": 0.39560704035318645,
+          "S": -0.09442304895410036,
+          "tau": 0.7908152635823762
+        }
+      ],
+      "state": {
+        "A": 0.23611252211913927,
+        "S": -0.06357603964353305
+      },
+      "corpus_resonances": [
+        {
+          "symbol": "chest",
+          "book": "The Brothers Karamazov",
+          "author": "Fyodor Dostoevsky"
+        },
+        {
+          "symbol": "chest",
+          "book": "Man and His Symbols",
+          "author": "Carl Jung"
+        },
+        {
+          "symbol": "hunger",
+          "book": "Man and His Symbols",
+          "author": "Carl Jung"
+        },
+        {
+          "symbol": "hunger",
+          "book": "Psychology of the Unconscious",
+          "author": "Carl Jung"
+        },
+        {
+          "symbol": "voice",
+          "book": "A General Introduction to Psychoanalysis",
+          "author": "Sigmund Freud"
+        }
+      ],
+      "timestamp": "2026-01-10T11:42:37.726407"
+    },
+    {
+      "turn": 7,
+      "dreamer": "*becomes very still, eyes growing distant*\n\nThe spaces between thoughts... *voice becomes softer, more dreamy* It's like when you're listening to music and suddenly become aware of the silence that holds the notes together. Without that silence, there would be no music, just noise.\n\n*closes eyes briefly*\n\nI've experienced it a few times - usually by accident. Once, I was sitting by a lake at dawn, not thinking about anything in particular, and suddenly... *struggles for words* it was like the hollow space wasn't empty anymore. It was full of everything - the water, the sky, the sound of my own breathing. But not in a way I could think about or analyze.\n\n*opens eyes, looking almost startled by the memory*\n\nFor maybe thirty seconds, I wasn't separate from anything. The hunger was still there, but it wasn't painful - it was more like... the lake being thirsty for the sky's reflection? Natural. Necessary.\n\n*voice becomes more animated but hushed*\n\nI think that's what my shadow knows. She's not trying to solve the mystery or fill the hollow space. She's showing me how to inhabit it, how to be in relationship with it. Like learning to dance with a partner you'll never fully understand but can still move with.\n\n*looks uncertain again*\n\nBut my conscious mind immediately tries to capture these moments, turn them into concepts I can file away. And then they're gone, like trying to hold water in my hands.\n\n*touches chest again*\n\nMaybe that's why the key turns to smoke in the dream? I'm still reaching for it instead of becoming it?",
+      "therapist": "It sounds like you're touching on a profound experience of unity and interconnectedness, where the boundaries between yourself and the world around you dissolve. I'm struck by the image of the lake being thirsty for the sky's reflection - it's as if you're describing a deep, instinctual longing that's not just about filling a void, but about being in harmony with the world. Can you tell me more about what you mean by \"becoming the key\" instead of reaching for it - what does that feel like, or what does it evoke in you?",
+      "symbols": [
+        {
+          "text": "eye",
+          "A": 0.13970026395433333,
+          "S": 0.005625396621308404,
+          "tau": 0.8473722823827134
+        },
+        {
+          "text": "space",
+          "A": 0.07609536027538129,
+          "S": 0.020066173047775963,
+          "tau": 0.7662655338970198
+        },
+        {
+          "text": "thought",
+          "A": 0.8924108500641265,
+          "S": -0.2617132408719959,
+          "tau": 0.7494992653507265
+        },
+        {
+          "text": "voice",
+          "A": 0.28481602510667864,
+          "S": -0.24219272967546712,
+          "tau": 0.5835220046084805
+        },
+        {
+          "text": "soft dreamy",
+          "A": 0.01582659645973018,
+          "S": -0.025111761750290253,
+          "tau": 2.1144168691225906
+        },
+        {
+          "text": "more dreamy",
+          "A": -0.49665493222141754,
+          "S": -0.0392732293193212,
+          "tau": 1.0867846350868853
+        },
+        {
+          "text": "music",
+          "A": 0.25761082509431016,
+          "S": 0.04238452562241274,
+          "tau": 0.6641206296613766
+        },
+        {
+          "text": "silence",
+          "A": -0.12000230701237932,
+          "S": -0.06670298107225538,
+          "tau": 0.8173679384025856
+        },
+        {
+          "text": "note",
+          "A": 0.4747924697217975,
+          "S": -0.1421148279482117,
+          "tau": 0.7711017161928724
+        },
+        {
+          "text": "accident",
+          "A": 0.15017467190961306,
+          "S": 0.025505882676528823,
+          "tau": 0.7342284736475851
+        }
+      ],
+      "state": {
+        "A": 0.16747698233521738,
+        "S": -0.06835267926695157
+      },
+      "corpus_resonances": [
+        {
+          "symbol": "eye",
+          "book": "Man and His Symbols",
+          "author": "Carl Jung"
+        },
+        {
+          "symbol": "eye",
+          "book": "Four Archetypes",
+          "author": "Carl Jung"
+        },
+        {
+          "symbol": "space",
+          "book": "Four Archetypes",
+          "author": "Carl Jung"
+        },
+        {
+          "symbol": "space",
+          "book": "Four Archetypes",
+          "author": "Carl Jung"
+        },
+        {
+          "symbol": "thought",
+          "book": "Four Archetypes",
+          "author": "Carl Jung"
+        }
+      ],
+      "timestamp": "2026-01-10T11:42:49.850465"
+    },
+    {
+      "turn": 8,
+      "dreamer": "*sits in profound stillness for a long moment, eyes wide with recognition*\n\nOh... *voice barely a whisper* Becoming the key...\n\n*hands open slowly in lap, as if releasing something*\n\nWhen I reach for the key in the dream, I'm still operating from that place of... grasping. Wanting. Needing to possess the answer. But what if... *voice grows stronger with sudden understanding* what if I already am what I'm searching for?\n\n*looks up with a mixture of wonder and fear*\n\nIt's like the difference between trying to catch your own shadow and realizing you ARE the thing casting it. The old woman - maybe she's not withholding the key from me. Maybe she's showing me that I am the key, and keys don't unlock themselves by reaching outward.\n\n*voice becomes more vulnerable*\n\nBecoming it would mean... *struggles* trusting that the hollow space isn't a flaw to be fixed but a sacred opening. Like how a flute needs emptiness to make music. The hunger isn't something wrong with me - it's the very thing that allows me to resonate with mystery.\n\n*suddenly looks frightened*\n\nBut that would mean giving up the story that I'm broken, incomplete, searching for something outside myself. It would mean trusting that I already contain what I need, even if I can't see it or understand it.\n\n*voice drops to almost inaudible*\n\nWhat if becoming the key means accepting that I am both the question and the answer, the seeker and the sought? That feels... too big. Too much responsibility. What if I'm not ready for that kind of wholeness?",
+      "therapist": "It's as if you're touching upon the concept of the Self, the idea that you already possess the wholeness and wisdom you've been seeking outside of yourself. I sense a mix of excitement and trepidation in your words, a feeling of being on the cusp of a profound realization. Can you tell me more about what arises for you when you consider the possibility of embracing this wholeness, of being both the question and the answer - what does that stir up in your emotions, and what are your deepest fears about embracing that level of responsibility?",
+      "symbols": [
+        {
+          "text": "profound stillness",
+          "A": -0.22261631873682522,
+          "S": -0.04945885295790565,
+          "tau": 1.972414795035212
+        },
+        {
+          "text": "stillness",
+          "A": -0.44523263747365044,
+          "S": -0.0989177059158113,
+          "tau": 0.6437995944064429
+        },
+        {
+          "text": "long moment",
+          "A": 0.7715374534209873,
+          "S": -0.0602068188895508,
+          "tau": 0.78253866675468
+        },
+        {
+          "text": "moment",
+          "A": 0.44532700713078943,
+          "S": -0.12552097263622553,
+          "tau": 1.446714212730675
+        },
+        {
+          "text": "eye",
+          "A": 0.13970026395433333,
+          "S": 0.005625396621308404,
+          "tau": 0.8473722823827134
+        },
+        {
+          "text": "wide eye",
+          "A": 0.5617079330271144,
+          "S": 0.16493736631278286,
+          "tau": 2.92179157652168
+        },
+        {
+          "text": "recognition",
+          "A": -0.04351784051352779,
+          "S": -0.13309952038112374,
+          "tau": 0.769539269572061
+        },
+        {
+          "text": "whisper",
+          "A": 0.27405271266928927,
+          "S": -0.03907744123472961,
+          "tau": 0.6625910752209213
+        },
+        {
+          "text": "hand",
+          "A": 0.43284551218893713,
+          "S": 0.009348979867520518,
+          "tau": 1.2594198516195976
+        },
+        {
+          "text": "lap",
+          "A": 0.5028661771928717,
+          "S": -0.227315863564867,
+          "tau": 0.733957676239454
+        }
+      ],
+      "state": {
+        "A": 0.24166702628603193,
+        "S": -0.055368543277860185
+      },
+      "corpus_resonances": [
+        {
+          "symbol": "stillness",
+          "book": "Memories, Dreams, Reflections",
+          "author": "Carl Jung"
+        },
+        {
+          "symbol": "stillness",
+          "book": "An Introduction to Mythology",
+          "author": "Lewis Spence"
+        },
+        {
+          "symbol": "moment",
+          "book": "Four Archetypes",
+          "author": "Carl Jung"
+        },
+        {
+          "symbol": "moment",
+          "book": "The Brothers Karamazov",
+          "author": "Fyodor Dostoevsky"
+        },
+        {
+          "symbol": "eye",
+          "book": "Man and His Symbols",
+          "author": "Carl Jung"
+        }
+      ],
+      "timestamp": "2026-01-10T11:43:01.921986"
+    },
+    {
+      "turn": 9,
+      "dreamer": "*wraps arms around myself, beginning to tremble slightly*\n\nThe wholeness... *voice shaking* When I really let myself feel into that possibility, it's like standing at the edge of an ocean and realizing I'm supposed to become the water itself, not just wade in.\n\n*rocks slightly, emotions intensifying*\n\nThere's this part of me that feels... electric with recognition. Like every cell in my body is saying \"yes, finally, you're remembering.\" But then this wave of terror crashes over me because... *voice breaks slightly* because if I'm already whole, if I already contain everything I need, then what have I been doing with my life?\n\n*looks up with raw vulnerability*\n\nAll those years of seeking, studying, searching - was it all just elaborate avoidance? And if I accept this responsibility of being both question and answer, then I can't hide behind \"I don't know\" anymore. I can't stay small and safe in my confusion.\n\n*voice becomes almost desperate*\n\nWhat if I embrace this wholeness and then... fail? What if I can't live up to it? Right now, the hollow space is familiar - it hurts, but it's mine. It gives me something to do, somewhere to put my energy. \n\n*pauses, looking terrified*\n\nBut if I'm already complete, then I have to actually LIVE. I have to show up fully, trust my inner knowing, stop waiting for permission from some external authority. I'd have to... *whispers* I'd have to be responsible for my own wisdom.\n\n*tears forming*\n\nWhat if I'm not brave enough? What if being whole means being alone in a different way?",
+      "therapist": "I can feel the weight of your vulnerability and the depth of your introspection. It's as if you're standing at the edge of a great transformation, and the prospect of embracing your wholeness is both exhilarating and terrifying. Can you tell me more about what you mean by \"being alone in a different way\" - what is it about being whole that seems to threaten your sense of connection or community?",
+      "symbols": [
+        {
+          "text": "arm",
+          "A": -0.07424836782225114,
+          "S": 0.04952335677482762,
+          "tau": 1.073414679935794
+        },
+        {
+          "text": "wholeness",
+          "A": 1.006004534152315,
+          "S": -0.6534110861304333,
+          "tau": 0.07311675686817731
+        },
+        {
+          "text": "voice",
+          "A": 0.28481602510667864,
+          "S": -0.24219272967546712,
+          "tau": 0.5835220046084805
+        },
+        {
+          "text": "possibility",
+          "A": 0.7976292464478475,
+          "S": 0.122129356121347,
+          "tau": 0.8683448016924533
+        },
+        {
+          "text": "edge",
+          "A": -0.163147682781782,
+          "S": -0.10534914899885642,
+          "tau": 0.7602405302355958
+        },
+        {
+          "text": "ocean",
+          "A": 0.09609255523775331,
+          "S": 0.15055401316909586,
+          "tau": 0.7372918498220982
+        },
+        {
+          "text": "rock",
+          "A": 0.3581670500286158,
+          "S": -0.03956891439251318,
+          "tau": 0.544758182124484
+        },
+        {
+          "text": "emotion",
+          "A": 0.5092334786747346,
+          "S": -0.152568130138071,
+          "tau": 0.6130316548448145
+        },
+        {
+          "text": "recognition",
+          "A": -0.04351784051352779,
+          "S": -0.13309952038112374,
+          "tau": 0.769539269572061
+        },
+        {
+          "text": "cell",
+          "A": 0.1434625853103364,
+          "S": 0.031145936757200295,
+          "tau": 0.5578897647864622
+        }
+      ],
+      "state": {
+        "A": 0.29144915838407204,
+        "S": -0.09728368668939939
+      },
+      "corpus_resonances": [
+        {
+          "symbol": "arm",
+          "book": "Four Archetypes",
+          "author": "Carl Jung"
+        },
+        {
+          "symbol": "arm",
+          "book": "Psychology of the Unconscious",
+          "author": "Carl Jung"
+        },
+        {
+          "symbol": "wholeness",
+          "book": "Four Archetypes",
+          "author": "Carl Jung"
+        },
+        {
+          "symbol": "wholeness",
+          "book": "Memories, Dreams, Reflections",
+          "author": "Carl Jung"
+        },
+        {
+          "symbol": "voice",
+          "book": "A General Introduction to Psychoanalysis",
+          "author": "Sigmund Freud"
+        }
+      ],
+      "timestamp": "2026-01-10T11:43:13.778272"
+    },
+    {
+      "turn": 10,
+      "dreamer": "*tears spill over, voice becoming raw and unsteady*\n\nBeing alone in a different way... *clutches chest* Right now, my searching connects me to others. I can bond with people over our shared confusion, our mutual seeking. There's this... comfort in being fellow wanderers, all of us lost together.\n\n*voice cracks with emotion*\n\nBut if I step into wholeness, if I trust my own inner knowing... what if I can't relate to that anymore? What if I become one of those people who speaks in certainties while everyone else is still struggling? What if I lose the ability to sit with others in their questions because I've found my answers?\n\n*looks up with desperate fear*\n\nAnd there's something deeper... *voice drops to whisper* If I'm whole, complete, then I don't NEED anyone the same way. Right now, my incompleteness creates connection - I reach out because I'm hungry, I seek community because I'm searching. But whole people... do they still need love the same way?\n\n*suddenly sits forward intensely*\n\nWhat if embracing my wholeness means I'll be like that old woman in the dream - wise, knowing, but sitting alone behind a crystallized desk that no one can touch? What if wisdom creates a kind of sacred loneliness?\n\n*voice becomes almost childlike*\n\nI don't want to stop needing people. I don't want to become so self-contained that I lose the beautiful messiness of human connection. What if being the answer means I can't ask for help anymore? What if it means others can't find me?\n\n*whispers*\n\nWhat if wholeness is another kind of exile?",
+      "therapist": "I can feel the depth of your fear and vulnerability as you consider the possibility of embracing your wholeness. It's as if you're torn between the comfort of shared uncertainty and the potential isolation of self-discovery. Can you tell me more about what you associate with the \"crystallized desk\" in the dream - what does it represent to you, and how does it relate to your fear of becoming \"self-contained\" and losing human connection?",
+      "symbols": [
+        {
+          "text": "tear",
+          "A": 0.552127385054288,
+          "S": -0.17820469368455927,
+          "tau": 0.9070023878523403
+        },
+        {
+          "text": "voice",
+          "A": 0.28481602510667864,
+          "S": -0.24219272967546712,
+          "tau": 0.5835220046084805
+        },
+        {
+          "text": "different way",
+          "A": 0.8203484985492876,
+          "S": 0.018713168788069313,
+          "tau": 1.198207154903463
+        },
+        {
+          "text": "way",
+          "A": 0.8203484985492876,
+          "S": 0.018713168788069313,
+          "tau": 1.198207154903463
+        },
+        {
+          "text": "clutch",
+          "A": -0.11591745263409305,
+          "S": -0.005096899955239738,
+          "tau": 0.7069091503577191
+        },
+        {
+          "text": "searching",
+          "A": 0.287342624567702,
+          "S": -0.1623369113887272,
+          "tau": 0.7941144529131483
+        },
+        {
+          "text": "other",
+          "A": 0.5451218241463885,
+          "S": 0.11195988917196942,
+          "tau": 2.813486535946125
+        },
+        {
+          "text": "people",
+          "A": 1.2975329496375303,
+          "S": 0.12872246884300384,
+          "tau": 1.3393437999150075
+        },
+        {
+          "text": "shared confusion",
+          "A": 0.038801256990998866,
+          "S": -0.013746552127778087,
+          "tau": 0.5588158047590652
+        },
+        {
+          "text": "confusion",
+          "A": 0.038801256990998866,
+          "S": -0.013746552127778087,
+          "tau": 0.5588158047590652
+        }
+      ],
+      "state": {
+        "A": 0.4569322866959068,
+        "S": -0.033721564336843764
+      },
+      "corpus_resonances": [
+        {
+          "symbol": "tear",
+          "book": "Collected Papers on Analytical Psychology",
+          "author": "Carl Jung"
+        },
+        {
+          "symbol": "tear",
+          "book": "Psychology of the Unconscious",
+          "author": "Carl Jung"
+        },
+        {
+          "symbol": "voice",
+          "book": "A General Introduction to Psychoanalysis",
+          "author": "Sigmund Freud"
+        },
+        {
+          "symbol": "voice",
+          "book": "Man and His Symbols",
+          "author": "Carl Jung"
+        },
+        {
+          "symbol": "different way",
+          "book": "Man and His Symbols",
+          "author": "Carl Jung"
+        }
+      ],
+      "timestamp": "2026-01-10T11:43:25.767415"
+    }
+  ],
+  "summary": {
+    "n_turns": 10,
+    "total_symbols": 100,
+    "avg_A": 0.30050024391323144,
+    "A_start": 0.1601088762060105,
+    "A_end": 0.4569322866959068,
+    "top_symbols": [
+      "shift",
+      "chair",
+      "dream",
+      "edge",
+      "enormous library",
+      "library",
+      "shelf",
+      "darkness",
+      "book",
+      "cover"
+    ]
+  }
+}

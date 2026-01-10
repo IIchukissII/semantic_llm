@@ -1,0 +1,244 @@
+{
+  "session_id": "20260110_115739",
+  "start_time": "2026-01-10T11:57:39.751480",
+  "end_time": "2026-01-10T11:57:56.188176",
+  "model": "groq:llama-3.3-70b-versatile",
+  "n_analyses": 1,
+  "analyses": [
+    {
+      "dream_text": "I found myself standing at the edge of a vast, dark forest, my bare feet pressing into earth that felt both foreign and familiar. The trees towered above me like ancient guardians, their branches intertwining to form a canopy so thick that only fragments of silver moonlight pierced through. I knew, with that strange dream-certainty, that I had to enter.\n\nAs I crossed the threshold between the moonlit clearing and the forest's embrace, the air grew thick and warm, like breathing through velvet. My shadow, cast by the fractured light above, seemed to move independently\u2014sometimes leading, sometimes following, always just slightly out of sync with my steps.\n\nDeep in the woods, I came upon a still, black pool that reflected not the trees above, but memories I thought I'd forgotten. A white stag emerged from the water, droplets cascading from its magnificent antlers like liquid starlight. It looked at me with eyes that held infinite patience and beckoned with a tilt of its head.\n\nI followed the stag to a crumbling stone archway covered in moss and crawling with luminescent vines. Standing beneath it was an old woman whose face I couldn't quite see, but whose voice I recognized as my own grandmother's. \"You've been running from yourself,\" she said, offering me a small, glowing seed. \"Plant this, and stop running.\"\n\nThe moment the seed touched my palm, I felt myself dissolving and reforming\u2014my skin became bark, my hair turned to leaves rustling with ancient whispers. I was rooted, finally still, yet somehow more free than I'd ever felt. When I woke, my hand was still tingling where the seed had been.",
+      "symbols": [
+        {
+          "text": "edge",
+          "bond": "edge",
+          "A": -0.163147682781782,
+          "S": -0.10534914899885642,
+          "tau": 0.7602405302355958,
+          "archetype": "",
+          "archetype_score": 0.0,
+          "interpretation": "",
+          "corpus_sources": [
+            "Psychology of the Unconscious",
+            "Four Archetypes",
+            "A General Introduction to Psychoanalysis"
+          ]
+        },
+        {
+          "text": "vast forest",
+          "bond": "vast forest",
+          "A": 0.24286420579013387,
+          "S": 0.0023258848527739342,
+          "tau": 2.2041994364129893,
+          "archetype": "mother",
+          "archetype_score": 0.0,
+          "interpretation": "The nurturing/devouring maternal principle",
+          "corpus_sources": [
+            "Bible Myths and their Parallels in Other Religions",
+            "The Golden Bough: A Study of Magic and Religion"
+          ]
+        },
+        {
+          "text": "dark forest",
+          "bond": "dark forest",
+          "A": 0.32026481975728677,
+          "S": -0.014978594543097183,
+          "tau": 0.6596947471947073,
+          "archetype": "mother",
+          "archetype_score": 0.0,
+          "interpretation": "The nurturing/devouring maternal principle",
+          "corpus_sources": []
+        },
+        {
+          "text": "forest",
+          "bond": "forest",
+          "A": 0.48572841158026775,
+          "S": 0.0046517697055478684,
+          "tau": 0.7094288684899597,
+          "archetype": "mother",
+          "archetype_score": 0.0,
+          "interpretation": "The nurturing/devouring maternal principle",
+          "corpus_sources": []
+        },
+        {
+          "text": "bare foot",
+          "bond": "bare foot",
+          "A": 0.4852464746561471,
+          "S": 0.05854922164694806,
+          "tau": 0.8099644544647586,
+          "archetype": "",
+          "archetype_score": 0.0,
+          "interpretation": "",
+          "corpus_sources": []
+        },
+        {
+          "text": "earth",
+          "bond": "earth",
+          "A": 0.06929567723290865,
+          "S": -0.028790211885610095,
+          "tau": 0.5774310221190088,
+          "archetype": "mother",
+          "archetype_score": 0.0,
+          "interpretation": "The nurturing/devouring maternal principle",
+          "corpus_sources": []
+        },
+        {
+          "text": "ancient guardian",
+          "bond": "ancient guardian",
+          "A": 0.9979626958160714,
+          "S": 0.032680520825673146,
+          "tau": 0.770978284172405,
+          "archetype": "",
+          "archetype_score": 0.0,
+          "interpretation": "",
+          "corpus_sources": []
+        },
+        {
+          "text": "guardian",
+          "bond": "guardian",
+          "A": 0.5222653164231145,
+          "S": 0.04766862038333421,
+          "tau": 0.9853615561575912,
+          "archetype": "",
+          "archetype_score": 0.0,
+          "interpretation": "",
+          "corpus_sources": []
+        },
+        {
+          "text": "branch",
+          "bond": "branch",
+          "A": 0.6867181244847953,
+          "S": -0.08913231270061671,
+          "tau": 0.5073218639159643,
+          "archetype": "",
+          "archetype_score": 0.0,
+          "interpretation": "",
+          "corpus_sources": []
+        },
+        {
+          "text": "canopy",
+          "bond": "canopy",
+          "A": 0.5290102297883541,
+          "S": 0.0273314201212518,
+          "tau": 0.6293225762390287,
+          "archetype": "",
+          "archetype_score": 0.0,
+          "interpretation": "",
+          "corpus_sources": []
+        },
+        {
+          "text": "fragment",
+          "bond": "fragment",
+          "A": 0.4768141231035113,
+          "S": 0.011416345952842034,
+          "tau": 0.6527315212200424,
+          "archetype": "",
+          "archetype_score": 0.0,
+          "interpretation": "",
+          "corpus_sources": []
+        },
+        {
+          "text": "moonlight",
+          "bond": "moonlight",
+          "A": -0.390325850553879,
+          "S": -0.12254986362479692,
+          "tau": 1.060916847516582,
+          "archetype": "",
+          "archetype_score": 0.0,
+          "interpretation": "",
+          "corpus_sources": []
+        },
+        {
+          "text": "strange certainty",
+          "bond": "strange certainty",
+          "A": 0.14257195920726598,
+          "S": 0.028742399744738432,
+          "tau": 0.6562195600710872,
+          "archetype": "anima_animus",
+          "archetype_score": 0.0,
+          "interpretation": "The contrasexual aspect of the psyche",
+          "corpus_sources": []
+        },
+        {
+          "text": "certainty",
+          "bond": "certainty",
+          "A": -0.1330161050174532,
+          "S": -0.006548111278192049,
+          "tau": 0.9229404290267351,
+          "archetype": "",
+          "archetype_score": 0.0,
+          "interpretation": "",
+          "corpus_sources": []
+        },
+        {
+          "text": "threshold",
+          "bond": "threshold",
+          "A": 0.7133230231399205,
+          "S": -0.3918299585232456,
+          "tau": 1.0276096595236162,
+          "archetype": "",
+          "archetype_score": 0.0,
+          "interpretation": "",
+          "corpus_sources": []
+        }
+      ],
+      "state": {
+        "coordinates": {
+          "A": 0.33237169484177753,
+          "S": -0.03638746788808703,
+          "tau": 0.862290757117338
+        },
+        "archetypes": {
+          "shadow": 0.625,
+          "anima_animus": 0.65,
+          "self": 0.2,
+          "mother": 0.75,
+          "father": 0.0,
+          "hero": 0.15000000000000002,
+          "trickster": 0.5,
+          "death_rebirth": 0.525
+        },
+        "markers": {
+          "lucidity": 0.0,
+          "transformation": 0.3,
+          "journey": 0.0,
+          "confrontation": 0.3
+        },
+        "dominant_archetype": "mother"
+      },
+      "interpretation": "This dream presents a profound exploration of the unconscious, guided by the dominant archetype of the mother. The vast, dark forest embodies the maternal realm, symbolizing the unknown, the unconscious, and the feminine aspects of the self. The dreamer's decision to enter the forest suggests a willingness to confront and integrate the repressed or hidden aspects of their psyche. The bare feet pressing into the earth indicate a desire for grounding and connection with one's roots, while the feeling of the earth being both foreign and familiar hints at a sense of disconnection from one's own instinctual nature.\n\nThe appearance of the white stag, a symbol of purity and guidance, suggests the emergence of the anima (the feminine aspect of the male psyche) or the integration of the feminine principles. The stag's patience and gentle beckoning represent the nurturing and compassionate qualities of the mother archetype, encouraging the dreamer to confront their own shadow and repressed memories. The old woman, resembling the dreamer's grandmother, embodies the wisdom and guidance of the collective unconscious, offering the seed as a symbol of transformation and growth. The dreamer's subsequent dissolution and reformation, becoming one with nature, indicates a profound sense of integration and wholeness, as if the dreamer has finally found a sense of rootedness and connection to their own psyche.\n\nThe emotional resonance of this dream is one of transformation, growth, and self-acceptance. The dreamer's journey into the forest, guided by the mother archetype, represents a confrontation with their own shadow and a willingness to integrate the repressed aspects of their psyche. The seed, symbolizing new life and growth, suggests that the dreamer is ready to embark on a journey of self-discovery and transformation, letting go of the need to \"run from themselves\" and instead embracing their true nature. The dream's message is one of hope and renewal, encouraging the dreamer to cultivate self-awareness, self-acceptance, and a deeper connection to their own unconscious mind.",
+      "corpus_resonances": [
+        {
+          "symbol": "edge",
+          "book": "Psychology of the Unconscious",
+          "author": "Carl Jung",
+          "bond": "empirical_knowledge"
+        },
+        {
+          "symbol": "edge",
+          "book": "Four Archetypes",
+          "author": "Carl Jung",
+          "bond": "empirical_knowledge"
+        },
+        {
+          "symbol": "edge",
+          "book": "A General Introduction to Psychoanalysis",
+          "author": "Sigmund Freud",
+          "bond": "superior_knowledge"
+        },
+        {
+          "symbol": "vast forest",
+          "book": "Bible Myths and their Parallels in Other Religions",
+          "author": "Thomas William Doane",
+          "bond": "vast_forest"
+        },
+        {
+          "symbol": "vast forest",
+          "book": "The Golden Bough: A Study of Magic and Religion",
+          "author": "James George Frazer",
+          "bond": "vast_forest"
+        }
+      ],
+      "timestamp": "2026-01-10T11:57:55.193157"
+    }
+  ]
+}

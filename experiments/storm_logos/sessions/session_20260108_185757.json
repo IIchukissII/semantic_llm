@@ -1,0 +1,33 @@
+{
+  "session_id": "20260108_185757",
+  "start_time": "2026-01-08T18:57:57.277553",
+  "end_time": "2026-01-08T18:57:58.539209",
+  "model": "mistral:7b",
+  "n_turns": 1,
+  "turns": [
+    {
+      "turn": 1,
+      "patient": "I feel overwhelmed by everything lately.",
+      "therapist": " You seem to be feeling overwhelmed by many things right now. Let's focus on one issue at a time and see if we can find a way to manage it better. Shall we start with something specific?",
+      "state": {
+        "A": 0.0,
+        "S": 0.0,
+        "tau": 2.5,
+        "irony": 0.0
+      },
+      "metrics": {
+        "coherence": 1.0,
+        "tension": 0.2040816326530612,
+        "defenses": []
+      },
+      "timestamp": "2026-01-08T18:57:58.538999"
+    }
+  ],
+  "summary": {
+    "avg_A": 0.0,
+    "avg_S": 0.0,
+    "avg_irony": 0.0,
+    "A_movement": 0,
+    "irony_movement": 0
+  }
+}

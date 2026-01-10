@@ -372,3 +372,119 @@ class Parameters:
     def copy(self) -> 'Parameters':
         """Create a copy."""
         return Parameters(**self.as_dict())
+
+
+# ============================================================================
+# DREAM ANALYSIS MODELS
+# ============================================================================
+
+@dataclass
+class DreamSymbol:
+    """A symbol extracted from a dream with archetypal analysis."""
+    bond: Bond
+    raw_text: str
+    archetype: str = ""          # shadow, anima, self, mother, father, hero, trickster
+    archetype_score: float = 0.0  # Confidence in archetype identification
+    interpretation: str = ""      # Symbol-specific interpretation
+    corpus_sources: List[str] = field(default_factory=list)  # Books where symbol appears
+
+    def as_dict(self) -> Dict:
+        return {
+            "text": self.raw_text,
+            "bond": self.bond.text,
+            "A": self.bond.A,
+            "S": self.bond.S,
+            "tau": self.bond.tau,
+            "archetype": self.archetype,
+            "archetype_score": self.archetype_score,
+            "interpretation": self.interpretation,
+            "corpus_sources": self.corpus_sources,
+        }
+
+
+@dataclass
+class DreamState:
+    """State of a dream analysis session.
+
+    Tracks emotional trajectory and archetypal patterns through dream exploration.
+    """
+    # Semantic coordinates (averaged from symbols)
+    A: float = 0.0
+    S: float = 0.0
+    tau: float = 2.5
+
+    # Archetypal scores (0-1 presence strength)
+    shadow: float = 0.0
+    anima_animus: float = 0.0
+    self_archetype: float = 0.0
+    mother: float = 0.0
+    father: float = 0.0
+    hero: float = 0.0
+    trickster: float = 0.0
+    death_rebirth: float = 0.0
+
+    # Dream-specific markers
+    lucidity: float = 0.0        # Awareness within dream
+    transformation: float = 0.0   # Presence of change/metamorphosis
+    journey: float = 0.0          # Quest/travel elements
+    confrontation: float = 0.0    # Conflict/facing something
+
+    def dominant_archetype(self) -> Tuple[str, float]:
+        """Return the strongest archetype and its score."""
+        archetypes = {
+            "shadow": self.shadow,
+            "anima_animus": self.anima_animus,
+            "self": self.self_archetype,
+            "mother": self.mother,
+            "father": self.father,
+            "hero": self.hero,
+            "trickster": self.trickster,
+            "death_rebirth": self.death_rebirth,
+        }
+        if not any(archetypes.values()):
+            return ("unknown", 0.0)
+        best = max(archetypes.items(), key=lambda x: x[1])
+        return best
+
+    def as_dict(self) -> Dict:
+        return {
+            "coordinates": {"A": self.A, "S": self.S, "tau": self.tau},
+            "archetypes": {
+                "shadow": self.shadow,
+                "anima_animus": self.anima_animus,
+                "self": self.self_archetype,
+                "mother": self.mother,
+                "father": self.father,
+                "hero": self.hero,
+                "trickster": self.trickster,
+                "death_rebirth": self.death_rebirth,
+            },
+            "markers": {
+                "lucidity": self.lucidity,
+                "transformation": self.transformation,
+                "journey": self.journey,
+                "confrontation": self.confrontation,
+            },
+            "dominant_archetype": self.dominant_archetype()[0],
+        }
+
+
+@dataclass
+class DreamAnalysis:
+    """Complete analysis of a dream."""
+    dream_text: str
+    symbols: List[DreamSymbol] = field(default_factory=list)
+    state: DreamState = field(default_factory=DreamState)
+    interpretation: str = ""
+    corpus_resonances: List[Dict] = field(default_factory=list)
+    timestamp: str = ""
+
+    def as_dict(self) -> Dict:
+        return {
+            "dream_text": self.dream_text,
+            "symbols": [s.as_dict() for s in self.symbols],
+            "state": self.state.as_dict(),
+            "interpretation": self.interpretation,
+            "corpus_resonances": self.corpus_resonances,
+            "timestamp": self.timestamp,
+        }

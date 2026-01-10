@@ -473,11 +473,13 @@ class Neo4jLearningStore:
         (:Concept) - semantic state (extended with learning properties)
         (:Adjective) - adjective node for tracking observations
         (:Concept)-[:DESCRIBED_BY {count, source}]->(:Adjective)
+        (:Concept)-[:VIA {weight, last_used, last_reinforced}]->(:Concept)
 
     This allows:
         - Tracking all adj-noun observations in the graph
         - Recomputing τ, g, j from the actual distribution
         - Sharing adjective vectors across concepts
+        - Weight decay (forgetting) based on time since last use
     """
 
     def __init__(self, driver):
@@ -490,6 +492,18 @@ class Neo4jLearningStore:
         self.driver = driver
         self.entropy_calc = EntropyCalculator()
         self.vector_calc = VectorCalculator()
+
+        # Import weight dynamics
+        from .weight_dynamics import (
+            W_MIN, W_MAX, LAMBDA_FORGET, DORMANCY_THRESHOLD,
+            decay_weight, decay_statistics
+        )
+        self.W_MIN = W_MIN
+        self.W_MAX = W_MAX
+        self.LAMBDA_FORGET = LAMBDA_FORGET
+        self.DORMANCY_THRESHOLD = DORMANCY_THRESHOLD
+        self._decay_weight = decay_weight
+        self._decay_statistics = decay_statistics
 
     def setup_schema(self):
         """Create indexes and constraints for learning."""
@@ -760,6 +774,375 @@ class Neo4jLearningStore:
                 "avg_variety": concept_stats["avg_variety"],
                 "avg_tau": concept_stats["avg_tau"],
                 "avg_confidence": concept_stats["avg_confidence"]
+            }
+
+    # =========================================================================
+    # WEIGHT DECAY (FORGETTING) METHODS
+    # =========================================================================
+
+    def apply_decay(self, days_elapsed: float = 1.0,
+                    dry_run: bool = False) -> Dict:
+        """
+        Apply forgetting decay to all VIA edge weights.
+
+        Formula: w(t+dt) = w_min + (w - w_min) * e^(-lambda * dt)
+
+        This implements the "nightly decay" where edges not recently
+        reinforced gradually lose weight toward w_min (0.1).
+
+        Args:
+            days_elapsed: Days since last decay (default 1.0 for nightly)
+            dry_run: If True, compute but don't apply changes
+
+        Returns:
+            Statistics about the decay operation
+        """
+        if not self.driver:
+            return {"error": "Not connected"}
+
+        import math
+        decay_factor = math.exp(-self.LAMBDA_FORGET * days_elapsed)
+
+        with self.driver.session() as session:
+            if dry_run:
+                # Preview what would happen
+                result = session.run("""
+                    MATCH ()-[r:VIA]->()
+                    WHERE r.weight > $w_min
+                    WITH r,
+                         r.weight as w_before,
+                         $w_min + (r.weight - $w_min) * $decay_factor as w_after
+                    RETURN count(r) as edge_count,
+                           sum(w_before) as total_before,
+                           sum(w_after) as total_after,
+                           sum(w_before - w_after) as total_decay,
+                           avg(w_before) as avg_before,
+                           avg(w_after) as avg_after,
+                           sum(CASE WHEN w_before > $threshold AND w_after <= $threshold THEN 1 ELSE 0 END) as newly_dormant
+                """, w_min=self.W_MIN, decay_factor=decay_factor,
+                     threshold=self.DORMANCY_THRESHOLD)
+
+                record = result.single()
+                return {
+                    "dry_run": True,
+                    "days_elapsed": days_elapsed,
+                    "decay_factor": decay_factor,
+                    "edges_affected": record["edge_count"],
+                    "total_weight_before": record["total_before"],
+                    "total_weight_after": record["total_after"],
+                    "total_decay": record["total_decay"],
+                    "avg_weight_before": record["avg_before"],
+                    "avg_weight_after": record["avg_after"],
+                    "newly_dormant": record["newly_dormant"]
+                }
+            else:
+                # Actually apply the decay
+                result = session.run("""
+                    MATCH ()-[r:VIA]->()
+                    WHERE r.weight > $w_min
+                    WITH r,
+                         r.weight as w_before,
+                         $w_min + (r.weight - $w_min) * $decay_factor as w_after
+                    SET r.weight = w_after,
+                        r.last_decay = datetime()
+                    RETURN count(r) as edge_count,
+                           sum(w_before) as total_before,
+                           sum(w_after) as total_after,
+                           sum(w_before - w_after) as total_decay,
+                           sum(CASE WHEN w_before > $threshold AND w_after <= $threshold THEN 1 ELSE 0 END) as newly_dormant
+                """, w_min=self.W_MIN, decay_factor=decay_factor,
+                     threshold=self.DORMANCY_THRESHOLD)
+
+                record = result.single()
+                return {
+                    "dry_run": False,
+                    "days_elapsed": days_elapsed,
+                    "decay_factor": decay_factor,
+                    "edges_affected": record["edge_count"],
+                    "total_weight_before": record["total_before"],
+                    "total_weight_after": record["total_after"],
+                    "total_decay": record["total_decay"],
+                    "newly_dormant": record["newly_dormant"],
+                    "applied_at": datetime.now().isoformat()
+                }
+
+    def apply_decay_since_last_use(self, dry_run: bool = False) -> Dict:
+        """
+        Apply decay based on each edge's individual last_used timestamp.
+
+        More accurate than apply_decay() - decays each edge based on
+        how long since it was actually used.
+
+        Args:
+            dry_run: If True, compute but don't apply changes
+
+        Returns:
+            Statistics about the decay operation
+        """
+        if not self.driver:
+            return {"error": "Not connected"}
+
+        with self.driver.session() as session:
+            if dry_run:
+                result = session.run("""
+                    MATCH ()-[r:VIA]->()
+                    WHERE r.weight > $w_min AND r.last_used IS NOT NULL
+                    WITH r,
+                         r.weight as w_before,
+                         duration.inDays(r.last_used, datetime()).days as days_since,
+                         $w_min + (r.weight - $w_min) * exp(-$lambda * duration.inDays(r.last_used, datetime()).days) as w_after
+                    RETURN count(r) as edge_count,
+                           sum(w_before) as total_before,
+                           sum(w_after) as total_after,
+                           avg(days_since) as avg_days_since_use,
+                           max(days_since) as max_days_since_use,
+                           sum(CASE WHEN w_before > $threshold AND w_after <= $threshold THEN 1 ELSE 0 END) as newly_dormant
+                """, w_min=self.W_MIN, lambda_val=self.LAMBDA_FORGET,
+                     threshold=self.DORMANCY_THRESHOLD)
+
+                record = result.single()
+                if record["edge_count"] == 0:
+                    return {
+                        "dry_run": True,
+                        "edges_with_timestamp": 0,
+                        "note": "No edges have last_used timestamp set"
+                    }
+
+                return {
+                    "dry_run": True,
+                    "edges_affected": record["edge_count"],
+                    "total_weight_before": record["total_before"],
+                    "total_weight_after": record["total_after"],
+                    "avg_days_since_use": record["avg_days_since_use"],
+                    "max_days_since_use": record["max_days_since_use"],
+                    "newly_dormant": record["newly_dormant"]
+                }
+            else:
+                # Apply decay based on individual timestamps
+                result = session.run("""
+                    MATCH ()-[r:VIA]->()
+                    WHERE r.weight > $w_min AND r.last_used IS NOT NULL
+                    WITH r,
+                         r.weight as w_before,
+                         duration.inDays(r.last_used, datetime()).days as days_since
+                    WITH r, w_before, days_since,
+                         $w_min + (w_before - $w_min) * exp(-$lambda * days_since) as w_after
+                    SET r.weight = w_after,
+                        r.last_decay = datetime()
+                    RETURN count(r) as edge_count,
+                           sum(w_before) as total_before,
+                           sum(w_after) as total_after,
+                           sum(CASE WHEN w_before > $threshold AND w_after <= $threshold THEN 1 ELSE 0 END) as newly_dormant
+                """, w_min=self.W_MIN, lambda_val=self.LAMBDA_FORGET,
+                     threshold=self.DORMANCY_THRESHOLD)
+
+                record = result.single()
+                return {
+                    "dry_run": False,
+                    "edges_affected": record["edge_count"],
+                    "total_weight_before": record["total_before"],
+                    "total_weight_after": record["total_after"],
+                    "newly_dormant": record["newly_dormant"],
+                    "applied_at": datetime.now().isoformat()
+                }
+
+    def mark_edge_used(self, subject: str, verb: str, obj: str):
+        """
+        Mark a VIA edge as recently used (updates last_used timestamp).
+
+        Call this during navigation to track edge usage for decay.
+
+        Args:
+            subject: Source concept word
+            verb: The verb on the edge
+            obj: Target concept word
+        """
+        if not self.driver:
+            return
+
+        with self.driver.session() as session:
+            session.run("""
+                MATCH (s:Concept {word: $subject})
+                      -[r:VIA {verb: $verb}]->
+                      (o:Concept {word: $obj})
+                SET r.last_used = datetime()
+            """, subject=subject, verb=verb, obj=obj)
+
+    def mark_edges_used_batch(self, edges: List[Tuple[str, str, str]]):
+        """
+        Mark multiple edges as recently used.
+
+        Args:
+            edges: List of (subject, verb, object) tuples
+        """
+        if not self.driver or not edges:
+            return
+
+        edge_data = [
+            {"subject": s, "verb": v, "object": o}
+            for s, v, o in edges
+        ]
+
+        with self.driver.session() as session:
+            session.run("""
+                UNWIND $edges AS e
+                MATCH (s:Concept {word: e.subject})
+                      -[r:VIA {verb: e.verb}]->
+                      (o:Concept {word: e.object})
+                SET r.last_used = datetime()
+            """, edges=edge_data)
+
+    def get_decay_stats(self) -> Dict:
+        """
+        Get statistics about edge weights and decay state.
+
+        Returns:
+            Dictionary with weight distribution and dormancy stats
+        """
+        if not self.driver:
+            return {"error": "Not connected"}
+
+        with self.driver.session() as session:
+            result = session.run("""
+                MATCH ()-[r:VIA]->()
+                RETURN count(r) as total_edges,
+                       avg(r.weight) as avg_weight,
+                       min(r.weight) as min_weight,
+                       max(r.weight) as max_weight,
+                       sum(CASE WHEN r.weight <= $threshold THEN 1 ELSE 0 END) as dormant_count,
+                       sum(CASE WHEN r.weight > $threshold THEN 1 ELSE 0 END) as active_count,
+                       sum(CASE WHEN r.weight >= 0.9 THEN 1 ELSE 0 END) as saturated_count,
+                       sum(CASE WHEN r.last_used IS NOT NULL THEN 1 ELSE 0 END) as edges_with_timestamp,
+                       sum(CASE WHEN r.last_decay IS NOT NULL THEN 1 ELSE 0 END) as edges_with_decay_record
+            """, threshold=self.DORMANCY_THRESHOLD)
+
+            record = result.single()
+            total = record["total_edges"]
+
+            return {
+                "total_edges": total,
+                "avg_weight": record["avg_weight"],
+                "min_weight": record["min_weight"],
+                "max_weight": record["max_weight"],
+                "dormant_count": record["dormant_count"],
+                "active_count": record["active_count"],
+                "saturated_count": record["saturated_count"],
+                "dormant_percentage": (record["dormant_count"] / total * 100) if total > 0 else 0,
+                "edges_with_timestamp": record["edges_with_timestamp"],
+                "edges_with_decay_record": record["edges_with_decay_record"],
+                "dormancy_threshold": self.DORMANCY_THRESHOLD
+            }
+
+    def get_weight_distribution(self, buckets: int = 10) -> List[Dict]:
+        """
+        Get histogram of edge weights.
+
+        Args:
+            buckets: Number of histogram buckets
+
+        Returns:
+            List of {range_start, range_end, count} dicts
+        """
+        if not self.driver:
+            return []
+
+        bucket_size = (self.W_MAX - self.W_MIN) / buckets
+        distribution = []
+
+        with self.driver.session() as session:
+            for i in range(buckets):
+                low = self.W_MIN + i * bucket_size
+                high = low + bucket_size
+
+                result = session.run("""
+                    MATCH ()-[r:VIA]->()
+                    WHERE r.weight >= $low AND r.weight < $high
+                    RETURN count(r) as count
+                """, low=low, high=high)
+
+                record = result.single()
+                distribution.append({
+                    "range_start": round(low, 2),
+                    "range_end": round(high, 2),
+                    "count": record["count"]
+                })
+
+        return distribution
+
+    def get_stale_edges(self, days_threshold: int = 30,
+                        limit: int = 100) -> List[Dict]:
+        """
+        Get edges that haven't been used in a while.
+
+        Args:
+            days_threshold: Days of inactivity to consider stale
+            limit: Maximum edges to return
+
+        Returns:
+            List of stale edge information
+        """
+        if not self.driver:
+            return []
+
+        with self.driver.session() as session:
+            result = session.run("""
+                MATCH (s:Concept)-[r:VIA]->(o:Concept)
+                WHERE r.last_used IS NOT NULL
+                  AND duration.inDays(r.last_used, datetime()).days >= $days
+                RETURN s.word as subject,
+                       r.verb as verb,
+                       o.word as object,
+                       r.weight as weight,
+                       duration.inDays(r.last_used, datetime()).days as days_since_use
+                ORDER BY days_since_use DESC
+                LIMIT $limit
+            """, days=days_threshold, limit=limit)
+
+            return [dict(record) for record in result]
+
+    def initialize_last_used_timestamps(self):
+        """
+        Initialize last_used timestamps for edges that don't have them.
+
+        Sets last_used to created_at if available, otherwise to now.
+        This is useful when first enabling timestamp-based decay.
+        """
+        if not self.driver:
+            return {"error": "Not connected"}
+
+        with self.driver.session() as session:
+            # Use created_at if available
+            result1 = session.run("""
+                MATCH ()-[r:VIA]->()
+                WHERE r.last_used IS NULL AND r.created_at IS NOT NULL
+                SET r.last_used = r.created_at
+                RETURN count(r) as updated
+            """)
+            from_created = result1.single()["updated"]
+
+            # For edges without created_at, use last_reinforced
+            result2 = session.run("""
+                MATCH ()-[r:VIA]->()
+                WHERE r.last_used IS NULL AND r.last_reinforced IS NOT NULL
+                SET r.last_used = r.last_reinforced
+                RETURN count(r) as updated
+            """)
+            from_reinforced = result2.single()["updated"]
+
+            # For remaining edges, set to now
+            result3 = session.run("""
+                MATCH ()-[r:VIA]->()
+                WHERE r.last_used IS NULL
+                SET r.last_used = datetime()
+                RETURN count(r) as updated
+            """)
+            from_now = result3.single()["updated"]
+
+            return {
+                "initialized_from_created_at": from_created,
+                "initialized_from_last_reinforced": from_reinforced,
+                "initialized_to_now": from_now,
+                "total_initialized": from_created + from_reinforced + from_now
             }
 
 

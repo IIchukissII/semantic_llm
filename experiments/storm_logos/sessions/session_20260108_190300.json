@@ -1,0 +1,105 @@
+{
+  "session_id": "20260108_190300",
+  "start_time": "2026-01-08T19:03:00.023423",
+  "end_time": "2026-01-08T19:03:29.983624",
+  "model": "mistral:7b",
+  "n_turns": 5,
+  "turns": [
+    {
+      "turn": 1,
+      "patient": "I don't know why I'm here. My wife made me come. Everything's fine, I guess.",
+      "therapist": " \"It seems like you're questioning the reason for being here despite asserting that everything is fine. Can we discuss your doubts about this situation?\"",
+      "state": {
+        "A": 0.6491198756099019,
+        "S": -0.06839958280293824,
+        "tau": 2.5,
+        "irony": 0.0
+      },
+      "metrics": {
+        "coherence": 1.0,
+        "tension": 0.5469471736440983,
+        "defenses": []
+      },
+      "timestamp": "2026-01-08T19:03:03.799766"
+    },
+    {
+      "turn": 2,
+      "patient": "*shifts in chair and lets out a dry laugh* \n\nOh, so now we're analyzing my doubts about my doubts? That's very... meta of you. Look, I'm here because someone thought it would be a good idea, but honestly, I feel like we're just going through the motions here.",
+      "therapist": " \"It seems like there's some skepticism about this process. You might feel like things are being done without much purpose or sincerity.\"",
+      "state": {
+        "A": 0.45405622823553005,
+        "S": 0.1081904119803491,
+        "tau": 2.5,
+        "irony": 0.15
+      },
+      "metrics": {
+        "coherence": 0.8526604933412776,
+        "tension": 0.3647060293840796,
+        "defenses": []
+      },
+      "timestamp": "2026-01-08T19:03:09.541599"
+    },
+    {
+      "turn": 3,
+      "patient": "*rolls eyes and crosses arms* \n\nWell yeah, I mean... it's like everyone expects some big breakthrough moment, right? Like I'm supposed to have some tearful revelation and suddenly everything clicks into place. *pauses, looking away* But what if there's just... nothing there to find?",
+      "therapist": " You seem frustrated with the expectation of a dramatic breakthrough moment, almost like it feels insincere or unattainable. It might feel like there's no revelation to be found, which can be disheartening. Let's continue exploring these feelings together.",
+      "state": {
+        "A": 0.30201515538065815,
+        "S": -0.06746672137388592,
+        "tau": 2.5,
+        "irony": 0.4
+      },
+      "metrics": {
+        "coherence": 0.715855637074981,
+        "tension": 0.3473435125381007,
+        "defenses": []
+      },
+      "timestamp": "2026-01-08T19:03:15.214137"
+    },
+    {
+      "turn": 4,
+      "patient": "*lets out a bitter laugh and shakes head*\n\n\"Disheartening\" - that's a nice clinical way to put it. *fidgets with hands* Maybe I'm just not the kind of person who has those deep, meaningful feelings everyone keeps talking about. Maybe some of us are just... *trails off, staring at the floor* ...running on empty.",
+      "therapist": " \"It seems like you're questioning your emotional depth. Let's talk more about what makes you feel this way.\"",
+      "state": {
+        "A": 0.3860506387665013,
+        "S": -0.04456561690759033,
+        "tau": 2.5,
+        "irony": 0.15
+      },
+      "metrics": {
+        "coherence": 0.9116861138390628,
+        "tension": 0.3988471919525804,
+        "defenses": [
+          "minimization"
+        ]
+      },
+      "timestamp": "2026-01-08T19:03:20.512090"
+    },
+    {
+      "turn": 5,
+      "patient": "*looks up sharply with a flash of irritation*\n\nYou know what makes me feel this way? Questions like that. *voice gets tighter* Everyone always wants to dig deeper, like there's some hidden treasure chest of feelings just waiting to be unlocked. But what if the well is just... dry? *laughs humorlessly* What if this is all there is?",
+      "therapist": " I can see you're feeling exhausted by the constant need for introspection, as if your feelings are a treasure chest to be discovered. It seems like you're questioning the depth of your own emotions, wondering if they've run dry.",
+      "state": {
+        "A": 0.34554209502439504,
+        "S": -0.06362961671670142,
+        "tau": 2.5,
+        "irony": 0.4
+      },
+      "metrics": {
+        "coherence": 0.8390348876855422,
+        "tension": 0.5793538703834175,
+        "defenses": [
+          "minimization"
+        ]
+      },
+      "timestamp": "2026-01-08T19:03:26.257091"
+    }
+  ],
+  "summary": {
+    "avg_A": 0.42735679860339726,
+    "avg_S": -0.027174225164153364,
+    "avg_irony": 0.22000000000000003,
+    "A_movement": -0.3035777805855069,
+    "irony_movement": 0.4
+  }
+}

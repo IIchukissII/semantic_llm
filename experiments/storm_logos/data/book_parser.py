@@ -498,6 +498,105 @@ class BookProcessor:
             'era': '19th_century',
             'domain': 'comparative_religion',
         },
+
+        # Freud (6 books)
+        'Freud, Sigmund - A General Introduction to Psychoanalysis.txt': {
+            'title': 'A General Introduction to Psychoanalysis',
+            'author': 'Sigmund Freud',
+            'genre': 'psychology',
+            'era': '20th_century',
+            'domain': 'psychoanalysis',
+        },
+        'Freud, Sigmund - Three Contributions to the Theory of Sex.txt': {
+            'title': 'Three Contributions to the Theory of Sex',
+            'author': 'Sigmund Freud',
+            'genre': 'psychology',
+            'era': '20th_century',
+            'domain': 'psychoanalysis',
+        },
+        'Freud, Sigmund - Group Psychology and the Analysis of the Ego.txt': {
+            'title': 'Group Psychology and the Analysis of the Ego',
+            'author': 'Sigmund Freud',
+            'genre': 'psychology',
+            'era': '20th_century',
+            'domain': 'psychoanalysis',
+        },
+        'Freud, Sigmund - Psychopathology of Everyday Life.txt': {
+            'title': 'Psychopathology of Everyday Life',
+            'author': 'Sigmund Freud',
+            'genre': 'psychology',
+            'era': '20th_century',
+            'domain': 'psychoanalysis',
+        },
+        'Freud, Sigmund - Totem and Taboo.txt': {
+            'title': 'Totem and Taboo',
+            'author': 'Sigmund Freud',
+            'genre': 'psychology',
+            'era': '20th_century',
+            'domain': 'psychoanalysis',
+        },
+        'Freud, Sigmund - Dream Psychology.txt': {
+            'title': 'Dream Psychology: Psychoanalysis for Beginners',
+            'author': 'Sigmund Freud',
+            'genre': 'psychology',
+            'era': '20th_century',
+            'domain': 'psychoanalysis',
+        },
+
+        # Otto Rank
+        'Rank, Otto - The Myth of the Birth of the Hero.txt': {
+            'title': 'The Myth of the Birth of the Hero',
+            'author': 'Otto Rank',
+            'genre': 'psychology',
+            'era': '20th_century',
+            'domain': 'psychoanalysis',
+        },
+
+        # Bible (KJV)
+        'Bible - Genesis (KJV).txt': {
+            'title': 'Genesis',
+            'author': 'Bible (KJV)',
+            'genre': 'religious',
+            'era': 'ancient',
+            'domain': 'scripture',
+        },
+        'Bible - Job (KJV).txt': {
+            'title': 'Book of Job',
+            'author': 'Bible (KJV)',
+            'genre': 'religious',
+            'era': 'ancient',
+            'domain': 'scripture',
+        },
+
+        # Dostoevsky (4 books)
+        'Dostoevsky, Fyodor - Crime and Punishment.txt': {
+            'title': 'Crime and Punishment',
+            'author': 'Fyodor Dostoevsky',
+            'genre': 'fiction',
+            'era': '19th_century',
+            'domain': 'literature',
+        },
+        'Dostoevsky, Fyodor - Notes from the Underground.txt': {
+            'title': 'Notes from Underground',
+            'author': 'Fyodor Dostoevsky',
+            'genre': 'fiction',
+            'era': '19th_century',
+            'domain': 'literature',
+        },
+        'Dostoevsky, Fyodor - The Brothers Karamazov.txt': {
+            'title': 'The Brothers Karamazov',
+            'author': 'Fyodor Dostoevsky',
+            'genre': 'fiction',
+            'era': '19th_century',
+            'domain': 'literature',
+        },
+        'Dostoevsky, Fyodor - The Gambler.txt': {
+            'title': 'The Gambler',
+            'author': 'Fyodor Dostoevsky',
+            'genre': 'fiction',
+            'era': '19th_century',
+            'domain': 'literature',
+        },
     }
 
     def __init__(self, neo4j: Neo4jData = None):

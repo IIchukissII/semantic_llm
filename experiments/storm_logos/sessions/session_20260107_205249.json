@@ -1,0 +1,154 @@
+{
+  "session_id": "20260107_205249",
+  "start_time": "2026-01-07T20:52:49.756181",
+  "end_time": "2026-01-07T20:53:44.853204",
+  "model": "claude",
+  "n_turns": 8,
+  "turns": [
+    {
+      "turn": 1,
+      "patient": "I don't know why I'm here. My wife made me come. Everything's fine, I guess.",
+      "therapist": "You said \"fine\" twice in ten seconds.",
+      "state": {
+        "A": 0.6491198756099019,
+        "S": -0.06839958280293824,
+        "tau": 2.5,
+        "irony": 0.0
+      },
+      "metrics": {
+        "coherence": 1.0,
+        "tension": 0.5469471736440983,
+        "defenses": []
+      },
+      "timestamp": "2026-01-07T20:52:52.401727"
+    },
+    {
+      "turn": 2,
+      "patient": "*shifts uncomfortably* Well, yeah, because I *am* fine. I mean, what else am I supposed to say - that I'm having an existential crisis over my morning coffee? *laughs dryly*",
+      "therapist": "You just did say that.",
+      "state": {
+        "A": 0.12718520178095702,
+        "S": -0.028537969531426063,
+        "tau": 2.5,
+        "irony": 0.0
+      },
+      "metrics": {
+        "coherence": 0.47991807411631465,
+        "tension": 0.3697700682467825,
+        "defenses": []
+      },
+      "timestamp": "2026-01-07T20:52:58.621287"
+    },
+    {
+      "turn": 3,
+      "patient": "*stops mid-laugh and looks away* \n\nShit. *pause* I mean... that's just how I talk, you know? Everything's a joke. *fidgets with sleeves* It doesn't mean anything.",
+      "therapist": "Everything being a joke means everything.",
+      "state": {
+        "A": 0.39280255836788236,
+        "S": -0.07641015892452521,
+        "tau": 2.5,
+        "irony": 0.15
+      },
+      "metrics": {
+        "coherence": 0.7102973261092266,
+        "tension": 0.335829623480619,
+        "defenses": []
+      },
+      "timestamp": "2026-01-07T20:53:04.294969"
+    },
+    {
+      "turn": 4,
+      "patient": "*rolls eyes* Oh great, now we're doing the cryptic fortune cookie thing. *crosses arms defensively* Look, some of us just have a sense of humor, okay? Not everything has to be some deep psychological... *trails off, jaw tightening slightly* \n\nJust because I don't walk around crying about every little thing doesn't mean I'm broken.",
+      "therapist": "The humor's doing a lot of work right now.",
+      "state": {
+        "A": 0.06376931898033605,
+        "S": 0.16080604946681334,
+        "tau": 2.5,
+        "irony": 0.15
+      },
+      "metrics": {
+        "coherence": 0.3953193251962369,
+        "tension": 0.4403638655416937,
+        "defenses": [
+          "minimization"
+        ]
+      },
+      "timestamp": "2026-01-07T20:53:11.774478"
+    },
+    {
+      "turn": 5,
+      "patient": "*stares at the floor for a moment, then looks back up with forced casualness*\n\nYeah, well... someone's gotta pay the bills. *voice quieter now* \n\n*long pause, fidgeting with hands*\n\nIt's just easier, okay? People like you better when you're funny.",
+      "therapist": "The easier path is wearing you out.",
+      "state": {
+        "A": 0.34516215030891223,
+        "S": -0.007612531681436516,
+        "tau": 2.5,
+        "irony": 0.15
+      },
+      "metrics": {
+        "coherence": 0.6443382358791712,
+        "tension": 0.47138855509622163,
+        "defenses": []
+      },
+      "timestamp": "2026-01-07T20:53:18.523658"
+    },
+    {
+      "turn": 6,
+      "patient": "*shoulders slump slightly, some of the fight going out*\n\nI... *starts to say something, then stops* \n\n*voice barely above a whisper* I'm so fucking tired. *immediately straightens up, forcing a weak smile* But hey, at least I'm consistently exhausted, right? That's something.",
+      "therapist": "The joke isn't working anymore.",
+      "state": {
+        "A": 0.16189900048894676,
+        "S": 0.04174804476853789,
+        "tau": 2.5,
+        "irony": 0.15
+      },
+      "metrics": {
+        "coherence": 0.7477058645935554,
+        "tension": 0.2040816326530612,
+        "defenses": []
+      },
+      "timestamp": "2026-01-07T20:53:24.993474"
+    },
+    {
+      "turn": 7,
+      "patient": "*face crumples for just a second before I catch myself*\n\nNo, it's... *voice cracks slightly* \n\n*puts head in hands* \n\nFuck. I don't know how to do this without the jokes. I don't know who I am if I'm not... *gestures vaguely* ...this.",
+      "therapist": "The real you is right there in the crumpled face.",
+      "state": {
+        "A": 0.3589387362886544,
+        "S": -0.03968101607751994,
+        "tau": 2.5,
+        "irony": 0.15
+      },
+      "metrics": {
+        "coherence": 0.4759171178058816,
+        "tension": 0.6994670371498493,
+        "defenses": []
+      },
+      "timestamp": "2026-01-07T20:53:33.208096"
+    },
+    {
+      "turn": 8,
+      "patient": "*looks up with tears in my eyes, angry and vulnerable at the same time*\n\nDon't. *voice shaking* Don't do that thing where you... where you see me. I hate that. \n\n*wipes eyes roughly* \n\nThe real me is a fucking mess who can't even order coffee without making three self-deprecating jokes. That's not... that's not someone worth knowing.",
+      "therapist": "You're fighting being seen and wanting it at the same time.\n\n*pause*\n\nThose jokes aren't protecting you - they're bleeding you dry.",
+      "state": {
+        "A": 0.3118853710201627,
+        "S": -0.10895031537886948,
+        "tau": 2.5,
+        "irony": 0.15
+      },
+      "metrics": {
+        "coherence": 0.8352474068250098,
+        "tension": 0.566040761119747,
+        "defenses": []
+      },
+      "timestamp": "2026-01-07T20:53:40.711077"
+    }
+  ],
+  "summary": {
+    "avg_A": 0.3013452766057192,
+    "avg_S": -0.01587968502017053,
+    "avg_irony": 0.11249999999999999,
+    "A_movement": -0.3372345045897392,
+    "irony_movement": 0.15
+  }
+}
